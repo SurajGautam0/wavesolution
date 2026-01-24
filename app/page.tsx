@@ -12,8 +12,8 @@ import { WorkerShowcase } from "@/components/worker-showcase"
 import { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "CRYSTALFRONT | Top Cleaning Services in Bhaisepati & Lalitpur",
-  description: "Experience professional cleaning excellence with CRYSTALFRONT. We provide high-quality residential and commercial cleaning in Bhaisepati, Sanepa, and surrounding Lalitpur areas.",
+  title: "CRYSTALFRONT | Top Cleaning Services in Kathmandu, Lalitpur & Bhaktapur",
+  description: "Experience professional cleaning excellence with CRYSTALFRONT. We provide high-quality residential and commercial cleaning across the Kathmandu Valley, including Bhaisepati, Sanepa, and Bhaktapur.",
 }
 
 export default function Home() {

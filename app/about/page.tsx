@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 
 export const metadata: Metadata = {
-  title: "About CRYSTALFRONT - Best Cleaning Solutions in Lalitpur Since 2010",
+  title: "About CRYSTALFRONT - Best Cleaning Solutions in Lalitpur Since 2026",
   description: "Learn about the mission, values, and expert team behind CRYSTALFRONT. Providing top-tier residential and commercial cleaning services in Bhaisepati and Lalitpur for over a decade.",
   keywords: ["about CRYSTALFRONT", "cleaning company Lalitpur", "professional cleaning team Nepal", "best cleaners Bhaisepati"],
 }
@@ -28,7 +28,7 @@ const teamMembers: TeamMember[] = [
   {
     name: "John Anderson",
     position: "Founder & CEO",
-    bio: "John founded CRYSTALFRONT in 2010 with a vision to provide exceptional cleaning services in Bhaisepati, Lalitpur. With over 20 years of experience in the industry, he leads our team with passion and dedication.",
+    bio: "After spending years mastering advanced cleaning technologies and standards in international markets, our founder returned to Nepal to modernize the industry. He established CRYSTALFRONT in 2026 to bring world-class precision to Lalitpur.",
     image: "/placeholder.svg?height=400&width=400",
     social: {
       linkedin: "https://linkedin.com",
@@ -70,14 +70,23 @@ const teamMembers: TeamMember[] = [
 export default function AboutPage() {
   return (
     <div className="flex min-h-screen flex-col">
-      {/* Page Header */}
-      <div className="page-header">
+      <div className="page-header relative overflow-hidden">
+        {/* Background Overlay with Nepali vibe */}
+        <div className="absolute inset-0 z-0 opacity-20">
+          <Image
+            src="https://images.unsplash.com/photo-1544806030-22d206f9d150?auto=format&fit=crop&q=80&w=2000"
+            alt="Kathmandu Valley Background"
+            fill
+            className="object-cover"
+          />
+          <div className="absolute inset-0 bg-primary/60 backdrop-blur-sm" />
+        </div>
         <div className="classic-container relative z-10">
           <div className="max-w-3xl mx-auto text-center">
             <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl mb-6">About CRYSTALFRONT</h1>
             <div className="w-20 h-1 bg-secondary mx-auto mb-6"></div>
             <p className="text-xl text-white/80 mb-8">
-              Bhaisepati, Lalitpur's premier cleaning service provider, dedicated to excellence since 2010.
+              The Kathmandu Valley's premier cleaning service provider, bringing international standards since 2026.
             </p>
           </div>
         </div>
@@ -92,28 +101,26 @@ export default function AboutPage() {
               <div className="w-16 h-1 bg-secondary mb-6"></div>
               <div className="space-y-4 text-muted-foreground">
                 <p>
-                  CRYSTALFRONT was founded in 2010 with a simple mission: to provide exceptional cleaning services that
-                  exceed customer expectations. What began as a small team of dedicated professionals has grown into one
-                  of Bhaisepati, Lalitpur's most trusted cleaning service providers.
+                  The CRYSTALFRONT story began in the international cleaning industry, where our founders spent years mastering advanced techniques, eco-friendly standards, and high-precision equipment. While working abroad, they observed a significant gap: while the world was moving towards automated and scientific cleaning, the local industry in our home country remained largely traditional and unregulated.
                 </p>
                 <p>
-                  Our journey has been driven by a passion for cleanliness and a commitment to quality. We understand
-                  that a clean environment contributes to health, productivity, and overall well-being, which is why we
-                  approach each job with meticulous attention to detail.
+                  Driven by the desire to elevate standards in Nepal, we returned with a mission to bridge this gap. We realized that true excellence comes from training, not just tools. In 2026, we officially launched CRYSTALFRONT after months of intensive staff training, where we taught our employees the international 'Crystal Clear' methodology.
                 </p>
                 <p>
-                  Over the years, we've expanded our services to meet the diverse needs of our clients, from residential
-                  homes to commercial spaces, while maintaining the personalized approach that has become our hallmark.
+                  Today, we are proud to offer a service that combines global expertise with local dedication. We don't just clean; we import a standard of hygiene and professionalism that Bhaisepati and Lalitpur deserve.
                 </p>
               </div>
             </div>
-            <div className="relative h-[400px] rounded-lg overflow-hidden shadow-xl">
+            <div className="relative h-[400px] rounded-lg overflow-hidden shadow-xl border-4 border-white/50">
               <Image
-                src="/placeholder.svg?height=800&width=1200"
-                alt="CRYSTALFRONT team"
+                src="/about.jpg"
+                alt="CRYSTALFRONT Professional Standards"
                 fill
                 className="object-cover"
               />
+              <div className="absolute bottom-4 left-4 bg-secondary text-white px-4 py-2 rounded-full text-xs font-black uppercase tracking-widest">
+                Our Mission in Motion
+              </div>
             </div>
           </div>
         </div>
@@ -319,13 +326,14 @@ export default function AboutPage() {
                 </Button>
               </div>
             </div>
-            <div className="relative h-[400px] rounded-lg overflow-hidden shadow-xl order-1 md:order-2">
+            <div className="relative h-[400px] rounded-lg overflow-hidden shadow-xl order-1 md:order-2 border-4 border-white/50">
               <Image
-                src="/placeholder.svg?height=800&width=1200"
-                alt="Professional cleaning team"
+                src="/images/cleaning-service.jpg"
+                alt="Professional cleaning team in action"
                 fill
                 className="object-cover"
               />
+              <div className="absolute inset-0 bg-gradient-to-t from-primary/40 to-transparent" />
             </div>
           </div>
         </div>

@@ -4,6 +4,7 @@ import type React from "react"
 
 import { useState } from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { MapPin, Phone, Mail, Clock, Send, CheckCircle } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
@@ -62,14 +63,24 @@ export default function ContactPage() {
 
   return (
     <div className="flex min-h-screen flex-col">
-      {/* Page Header */}
-      <div className="page-header">
+      <div className="page-header relative overflow-hidden">
+        {/* Background Overlay with Nepali vibe */}
+        <div className="absolute inset-0 z-0 opacity-20">
+          <Image
+            src="https://images.unsplash.com/photo-1544806030-22d206f9d150?auto=format&fit=crop&q=80&w=2000"
+            alt="Kathmandu Skyline"
+            fill
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-primary/60 backdrop-blur-sm" />
+        </div>
         <div className="classic-container relative z-10">
           <div className="max-w-3xl mx-auto text-center">
             <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl mb-6">Contact Us</h1>
             <div className="w-20 h-1 bg-secondary mx-auto mb-6"></div>
             <p className="text-xl text-white/80 mb-8">
-              Have questions or ready to book? We're here to help you with all your cleaning needs.
+              Serving every corner of the Kathmandu Valley. We're here to help you with all your professional cleaning needs.
             </p>
           </div>
         </div>

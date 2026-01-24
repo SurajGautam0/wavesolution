@@ -5,9 +5,9 @@ import { Button } from "@/components/ui/button"
 import { ServiceCard } from "@/components/service-card"
 
 export const metadata: Metadata = {
-  title: "Professional Cleaning Services in Lalitpur - Window, Glass & Commercial",
-  description: "Discover our comprehensive cleaning services in Bhaisepati and Lalitpur. We specialize in residential window cleaning, commercial glass cleaning, storefronts, and showroom excellence.",
-  keywords: ["window cleaning Lalitpur", "glass cleaning Nepal", "commercial cleaners Bhaisepati", "storefront cleaning", "showroom cleaning services"],
+  title: "Professional Cleaning Services in Kathmandu Valley - Window, Glass & Commercial",
+  description: "Discover our comprehensive cleaning services across Kathmandu, Lalitpur, and Bhaktapur. We specialize in residential window cleaning, commercial glass cleaning, storefronts, and showroom excellence.",
+  keywords: ["window cleaning Kathmandu", "glass cleaning Lalitpur", "commercial cleaners Bhaktapur", "storefront cleaning Nepal", "showroom cleaning services Kathmandu"],
 }
 
 export default function ServicesPage() {

@@ -24,7 +24,8 @@ export function Sidebar() {
             <MapPin className="mr-2 h-5 w-5 text-primary shrink-0 mt-0.5" />
             <div>
               <p className="font-medium">Our Location</p>
-              <p className="text-sm text-muted-foreground">Bhaisepati, Lalitpur</p>
+              <p className="text-sm text-muted-foreground">Serving Kathmandu, Lalitpur & Bhaktapur</p>
+              <p className="text-[10px] text-muted-foreground uppercase tracking-widest mt-1">H.O. Bhaisepati, Lalitpur</p>
             </div>
           </div>
           <div className="flex items-start">

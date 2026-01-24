@@ -20,11 +20,11 @@ const openSans = Open_Sans({
 
 export const metadata: Metadata = {
   title: {
-    default: "CRYSTALFRONT - Professional Cleaning Services in Bhaisepati, Lalitpur",
+    default: "CRYSTALFRONT - Professional Cleaning Services in Kathmandu, Lalitpur & Bhaktapur",
     template: "%s | CRYSTALFRONT"
   },
-  description: "Expert residential and commercial cleaning services in Bhaisepati, Lalitpur. Reliable, professional, and thorough cleaning for homes, offices, windows, and storefronts.",
-  keywords: ["cleaning services Lalitpur", "professional cleaners Bhaisepati", "residential cleaning Nepal", "commercial cleaning Lalitpur", "window cleaning", "glass cleaning", "CRYSTALFRONT cleaning"],
+  description: "Expert residential and commercial cleaning services across Kathmandu, Lalitpur, and Bhaktapur. Professional window, glass, and storefront cleaning in Bhaisepati and the entire Valley.",
+  keywords: ["cleaning services Kathmandu", "professional cleaners Lalitpur", "cleaning company Bhaktapur", "residential cleaning Nepal", "commercial cleaning Kathmandu", "window cleaning", "glass cleaning", "CRYSTALFRONT cleaning"],
   authors: [{ name: "CRYSTALFRONT" }],
   creator: "CRYSTALFRONT",
   publisher: "CRYSTALFRONT",
@@ -38,8 +38,8 @@ export const metadata: Metadata = {
     locale: "en_NP",
     url: "https://crystalfront.com.np",
     siteName: "CRYSTALFRONT",
-    title: "CRYSTALFRONT - Professional Cleaning Services in Lalitpur",
-    description: "Expert cleaning services for homes and businesses in Bhaisepati, Lalitpur. Book your professional cleaning today.",
+    title: "CRYSTALFRONT - Professional Cleaning Services in Kathmandu Valley",
+    description: "Expert cleaning services for homes and businesses in Kathmandu, Lalitpur, and Bhaktapur. Book your professional cleaning today.",
     images: [
       {
         url: "/og-image.jpg",
@@ -52,7 +52,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "CRYSTALFRONT - Professional Cleaning Services",
-    description: "Expert residential and commercial cleaning in Bhaisepati, Lalitpur.",
+    description: "Expert residential and commercial cleaning across Kathmandu, Lalitpur, and Bhaktapur.",
     images: ["/og-image.jpg"],
   },
   robots: {
@@ -76,6 +76,20 @@ const jsonLd = {
   "@id": "https://crystalfront.com.np",
   "url": "https://crystalfront.com.np",
   "telephone": "+977-XXXXXXXXXX", // Replace with real number if known
+  "areaServed": [
+    {
+      "@type": "City",
+      "name": "Kathmandu"
+    },
+    {
+      "@type": "City",
+      "name": "Lalitpur"
+    },
+    {
+      "@type": "City",
+      "name": "Bhaktapur"
+    }
+  ],
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "Bhaisepati",

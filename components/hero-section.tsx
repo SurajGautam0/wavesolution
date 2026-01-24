@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { Calendar, Clock, MapPin, Sparkles } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
@@ -16,10 +17,22 @@ export function HeroSection() {
 
   return (
     <section className="relative overflow-hidden bg-primary py-12 sm:py-20 md:py-32">
+      {/* Nepali Hero Background */}
+      <div className="absolute inset-0 z-0 overflow-hidden opacity-30">
+        <Image
+          src="https://images.unsplash.com/photo-1544806030-22d206f9d150?auto=format&fit=crop&q=80&w=2400"
+          alt="Kathmandu Valley Landscape"
+          fill
+          className="object-cover scale-110 blur-[2px]"
+          priority
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary/80 to-transparent" />
+      </div>
+
       {/* Abstract Background Decoration */}
       <div className="absolute top-0 right-0 w-[50%] h-full bg-secondary/5 -skew-x-12 transform origin-top-right hidden lg:block" />
-      <div className="absolute -top-24 -left-24 w-64 h-64 bg-secondary/10 rounded-full blur-3xl" />
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-blue-400/5 rounded-full blur-3xl" />
+      <div className="absolute -top-24 -left-24 w-64 h-64 bg-secondary/10 rounded-full blur-3xl opacity-50" />
+      <div className="absolute bottom-0 right-0 w-96 h-96 bg-blue-400/5 rounded-full blur-3xl opacity-50" />
 
       <div className="classic-container relative z-10">
         <div className="grid gap-12 lg:grid-cols-2 items-center">
