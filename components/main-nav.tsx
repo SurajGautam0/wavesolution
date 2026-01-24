@@ -4,7 +4,7 @@ import * as React from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import Image from "next/image"
-import { Facebook, Instagram, Linkedin, Mail, Menu, Phone, Twitter, ChevronDown } from "lucide-react"
+import { Facebook, Instagram, Linkedin, Mail, Menu, Phone, Twitter, ChevronDown, Glasses, Sparkles, Store, ShoppingBag, Building2, Sun, Layout, Square, Eraser, Monitor, Utensils, Briefcase } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
@@ -35,12 +35,18 @@ export function MainNav() {
   ]
 
   const serviceRoutes = [
-    { href: "/services/home-cleaning", label: "Home Cleaning", icon: "🏠" },
-    { href: "/services/office-cleaning", label: "Office Cleaning", icon: "🏢" },
-    { href: "/services/deep-cleaning", label: "Deep Cleaning", icon: "✨" },
-    { href: "/services/move-in-out", label: "Move In/Out", icon: "📦" },
-    { href: "/services/window-cleaning", label: "Window Cleaning", icon: "🪟" },
-    { href: "/services/carpet-cleaning", label: "Carpet Cleaning", icon: "🧹" },
+    { href: "/services", label: "Window Cleaning", description: "Crystal clear views for homes & businesses", icon: Glasses },
+    { href: "/services", label: "Glass Cleaning", description: "Specialized streak-free glass treatment", icon: Sparkles },
+    { href: "/services", label: "Storefront Glass", description: "Welcoming entrances for your shop", icon: Store },
+    { href: "/services", label: "Shop Front", description: "Keep your commercial frontage spotless", icon: ShoppingBag },
+    { href: "/services", label: "Commercial Glass", description: "Large scale glass cleaning solutions", icon: Building2 },
+    { href: "/services", label: "Exterior Glass", description: "Safe cleaning for high-reach windows", icon: Sun },
+    { href: "/services", label: "Interior Glass", description: "Detailed cleaning for inside partitions", icon: Layout },
+    { href: "/services", label: "Frame & Sill", description: "Complete frame and track maintenance", icon: Square },
+    { href: "/services", label: "Spot & Stain Removal", description: "Expert mineral deposit & spot removal", icon: Eraser },
+    { href: "/services", label: "Showroom Glass", description: "Display-ready glass for showrooms", icon: Monitor },
+    { href: "/services", label: "Restaurant & Café", description: "Hygienic cleaning for dining spaces", icon: Utensils },
+    { href: "/services", label: "Office Windows", description: "Bright and clear workspaces", icon: Briefcase },
   ]
 
   return (
@@ -174,18 +180,49 @@ export function MainNav() {
 
                   {/* Mega Dropdown */}
                   {route.hasSubmenu && isServicesHovered && (
-                    <div className="absolute left-0 top-full pt-4 w-64 z-[100] animate-in fade-in slide-in-from-top-1 duration-200">
-                      <div className="bg-white rounded-3xl shadow-2xl border border-primary/5 p-2 grid grid-cols-1 gap-1">
-                        {serviceRoutes.map((service) => (
-                          <Link
-                            key={service.href}
-                            href={service.href}
-                            className="flex items-center px-4 py-3 rounded-2xl hover:bg-primary/5 group/item transition-all"
-                          >
-                            <span className="mr-3 text-lg group-hover/item:scale-110 transition-transform">{service.icon}</span>
-                            <span className="text-sm font-bold text-gray-900 group-hover/item:text-primary transition-colors">{service.label}</span>
-                          </Link>
-                        ))}
+                    <div className="absolute left-0 top-full pt-4 w-[600px] z-[100] animate-in fade-in slide-in-from-top-2 duration-300">
+                      <div className="bg-white rounded-[2.5rem] shadow-2xl border border-primary/5 p-6 overflow-hidden relative">
+                        {/* Decorative Background */}
+                        <div className="absolute top-0 right-0 w-32 h-32 bg-secondary/5 rounded-full blur-3xl -mr-16 -mt-16" />
+
+                        <div className="relative z-10">
+                          <div className="flex items-center justify-between mb-6 px-2">
+                            <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-blue-900/40">Our Specialized Services</h4>
+                            <Link href="/services" className="text-[10px] font-black uppercase tracking-widest text-secondary hover:underline transition-all">View All →</Link>
+                          </div>
+
+                          <div className="grid grid-cols-2 gap-2">
+                            {serviceRoutes.map((service) => (
+                              <Link
+                                key={service.label}
+                                href={service.href}
+                                className="flex items-start p-3 rounded-2xl hover:bg-blue-50/50 group/item transition-all duration-300 border border-transparent hover:border-blue-100"
+                              >
+                                <div className="mr-4 p-2.5 rounded-xl bg-blue-50 text-primary group-hover/item:bg-primary group-hover/item:text-white transition-all duration-300 shrink-0">
+                                  <service.icon className="w-5 h-5" />
+                                </div>
+                                <div className="flex flex-col">
+                                  <span className="text-[13px] font-black text-blue-950 group-hover/item:text-primary transition-colors leading-none mb-1.5">{service.label}</span>
+                                  <span className="text-[11px] font-medium text-muted-foreground leading-tight line-clamp-1">{service.description}</span>
+                                </div>
+                              </Link>
+                            ))}
+                          </div>
+                        </div>
+
+                        {/* Dropdown Footer */}
+                        <div className="mt-6 pt-6 border-t border-blue-50 flex items-center justify-between px-2">
+                          <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest flex items-center">
+                            <Sparkles className="w-3 h-3 mr-2 text-secondary" /> Crystal Clear Satisfaction Guaranteed
+                          </p>
+                          <div className="flex -space-x-2">
+                            {[1, 2, 3].map(i => (
+                              <div key={i} className="w-6 h-6 rounded-full border-2 border-white bg-blue-100 flex items-center justify-center text-[10px] font-black text-primary overflow-hidden">
+                                <Image src={`/placeholder.svg?height=30&width=30`} alt="User" width={24} height={24} />
+                              </div>
+                            ))}
+                          </div>
+                        </div>
                       </div>
                     </div>
                   )}
@@ -193,6 +230,7 @@ export function MainNav() {
               ))}
             </nav>
           </div>
+
 
           <div className="flex items-center">
             <Button

@@ -31,43 +31,80 @@ export default function ServicesPage() {
       <section className="container py-12 md:py-24">
         <div className="mx-auto grid max-w-5xl grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
           <ServiceCard
-            title="Home Cleaning"
-            description="Regular cleaning services for your home, keeping it spotless and fresh."
-            icon="Home"
-            price="From $120"
-          />
-          <ServiceCard
-            title="Office Cleaning"
-            description="Professional cleaning for offices and commercial spaces."
-            icon="Building2"
-            price="From $200"
-          />
-          <ServiceCard
-            title="Deep Cleaning"
-            description="Thorough cleaning of all areas, including hard-to-reach spots."
-            icon="Sparkles"
-            price="From $250"
-          />
-          <ServiceCard
-            title="Move In/Out"
-            description="Comprehensive cleaning for when you're moving in or out of a property."
-            icon="Truck"
-            price="From $300"
-          />
-          <ServiceCard
             title="Window Cleaning"
-            description="Crystal clear windows for homes and commercial buildings."
+            description="Professional window cleaning for crystal clear views and enhanced curb appeal."
             icon="Glasses"
-            price="From $150"
+            price="Contact for Quote"
           />
           <ServiceCard
-            title="Carpet Cleaning"
-            description="Deep cleaning for carpets, removing stains and odors."
-            icon="Carpet"
-            price="From $180"
+            title="Glass Cleaning"
+            description="Expert cleaning for all types of glass surfaces, ensuring a streak-free finish."
+            icon="Sparkles"
+            price="Contact for Quote"
+          />
+          <ServiceCard
+            title="Storefront Glass Cleaning"
+            description="Keep your business looking its best with spotless and inviting storefronts."
+            icon="Store"
+            price="Contact for Quote"
+          />
+          <ServiceCard
+            title="Shop Front Cleaning"
+            description="Thorough cleaning for shop fronts to attract more customers to your business."
+            icon="ShoppingBag"
+            price="Contact for Quote"
+          />
+          <ServiceCard
+            title="Commercial Glass Cleaning"
+            description="Specialized glass cleaning solutions for commercial buildings and high-rises."
+            icon="Building2"
+            price="Contact for Quote"
+          />
+          <ServiceCard
+            title="Exterior Glass Cleaning"
+            description="Safe and effective cleaning for even the most hard-to-reach exterior glass surfaces."
+            icon="Sun"
+            price="Contact for Quote"
+          />
+          <ServiceCard
+            title="Interior Glass Cleaning"
+            description="Detailed cleaning for all interior glass, partitions, and decorative mirrors."
+            icon="Layout"
+            price="Contact for Quote"
+          />
+          <ServiceCard
+            title="Frame & Sill Cleaning"
+            description="Complete cleaning including frames and sills for a perfectly maintained look."
+            icon="Square"
+            price="Contact for Quote"
+          />
+          <ServiceCard
+            title="Spot & Stain Removal"
+            description="Expert removal of tough mineral deposits, spots, and stains from glass."
+            icon="Eraser"
+            price="Contact for Quote"
+          />
+          <ServiceCard
+            title="Showroom Glass Cleaning"
+            description="Ensure your displayed products shine through perfectly clear showroom glass."
+            icon="Monitor"
+            price="Contact for Quote"
+          />
+          <ServiceCard
+            title="Restaurant & Café Glass Cleaning"
+            description="Hygienic and sparkling glass cleaning tailored for the food and beverage industry."
+            icon="Utensils"
+            price="Contact for Quote"
+          />
+          <ServiceCard
+            title="Office Window Cleaning"
+            description="Improve your workplace environment with clean, bright, and streak-free windows."
+            icon="Briefcase"
+            price="Contact for Quote"
           />
         </div>
       </section>
+
 
       {/* CTA Section */}
       <section className="bg-primary text-primary-foreground py-12 md:py-24">

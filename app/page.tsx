@@ -48,23 +48,24 @@ export default function Home() {
               </div>
               <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
                 <ServiceCard
-                  title="Home Cleaning"
-                  description="Regular cleaning services for your home, keeping it spotless and fresh."
-                  icon="Home"
-                  price="From $120"
+                  title="Window Cleaning"
+                  description="Professional window cleaning for crystal clear views and enhanced curb appeal."
+                  icon="Glasses"
+                  price="Contact for Quote"
                 />
                 <ServiceCard
-                  title="Office Cleaning"
-                  description="Professional cleaning for offices and commercial spaces."
-                  icon="Building2"
-                  price="From $200"
-                />
-                <ServiceCard
-                  title="Deep Cleaning"
-                  description="Thorough cleaning of all areas, including hard-to-reach spots."
+                  title="Glass Cleaning"
+                  description="Expert cleaning for all types of glass surfaces, ensuring a streak-free finish."
                   icon="Sparkles"
-                  price="From $250"
+                  price="Contact for Quote"
                 />
+                <ServiceCard
+                  title="Storefront Glass Cleaning"
+                  description="Keep your business looking its best with spotless and inviting storefronts."
+                  icon="Store"
+                  price="Contact for Quote"
+                />
+
               </div>
               <div className="flex justify-center mt-8">
                 <Button asChild className="classic-button">

@@ -1,4 +1,4 @@
-import { Building2, CarIcon as Carpet, Glasses, Home, Sparkles, Truck } from "lucide-react"
+import { Building2, CarIcon as Carpet, Glasses, Home, Sparkles, Truck, Store, ShoppingBag, Sun, Layout, Square, Eraser, Monitor, Utensils, Briefcase } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
@@ -25,6 +25,24 @@ export function ServiceCard({ title, description, icon, price }: ServiceCardProp
         return <Glasses className="h-10 w-10 text-primary" />
       case "Carpet":
         return <Carpet className="h-10 w-10 text-primary" />
+      case "Store":
+        return <Store className="h-10 w-10 text-primary" />
+      case "ShoppingBag":
+        return <ShoppingBag className="h-10 w-10 text-primary" />
+      case "Sun":
+        return <Sun className="h-10 w-10 text-primary" />
+      case "Layout":
+        return <Layout className="h-10 w-10 text-primary" />
+      case "Square":
+        return <Square className="h-10 w-10 text-primary" />
+      case "Eraser":
+        return <Eraser className="h-10 w-10 text-primary" />
+      case "Monitor":
+        return <Monitor className="h-10 w-10 text-primary" />
+      case "Utensils":
+        return <Utensils className="h-10 w-10 text-primary" />
+      case "Briefcase":
+        return <Briefcase className="h-10 w-10 text-primary" />
       default:
         return <Home className="h-10 w-10 text-primary" />
     }
@@ -47,4 +65,5 @@ export function ServiceCard({ title, description, icon, price }: ServiceCardProp
     </div>
   )
 }
+
 

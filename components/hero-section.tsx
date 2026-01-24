@@ -73,11 +73,13 @@ export function HeroSection() {
                             <SelectValue placeholder="What can we clean for you?" />
                           </SelectTrigger>
                           <SelectContent className="rounded-2xl border-gray-100 shadow-2xl">
-                            <SelectItem value="home">Home Cleaning</SelectItem>
-                            <SelectItem value="office">Office Cleaning</SelectItem>
-                            <SelectItem value="deep">Deep Cleaning</SelectItem>
-                            <SelectItem value="move">Move In/Out Cleaning</SelectItem>
+                            <SelectItem value="window">Window Cleaning</SelectItem>
+                            <SelectItem value="glass">Glass Cleaning</SelectItem>
+                            <SelectItem value="storefront">Storefront Cleaning</SelectItem>
+                            <SelectItem value="commercial">Commercial Cleaning</SelectItem>
+                            <SelectItem value="interior">Interior Glass Cleaning</SelectItem>
                           </SelectContent>
+
                         </Select>
                       </div>
                       <div className="space-y-3">
