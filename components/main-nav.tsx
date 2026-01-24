@@ -84,62 +84,62 @@ export function MainNav() {
         )}
       >
         <div className="classic-container relative flex items-center justify-between h-16 sm:h-20 lg:h-24">
-          {/* Mobile Burger Menu (Left) */}
-          <div className="flex items-center lg:hidden z-10">
-            <Sheet open={isOpen} onOpenChange={setIsOpen}>
-              <SheetTrigger asChild>
-                <Button
-                  variant="ghost"
-                  className={cn(
-                    "h-10 w-10 flex items-center justify-center rounded-xl",
-                    isScrolled ? "text-primary hover:bg-primary/5" : "text-white hover:bg-white/10",
-                  )}
-                >
-                  <Menu className="h-6 w-6" />
-                </Button>
-              </SheetTrigger>
-              <SheetContent side="left" className="w-[300px] p-0 border-none bg-white">
-                <div className="bg-primary p-8 sm:p-12 text-white flex flex-col items-center">
-                  <div className="relative w-full max-w-[200px] aspect-[3/1] mb-6">
-                    <Image
-                      src="/logo.png"
-                      alt="CRYSTALFRONT"
-                      fill
-                      className="object-contain brightness-0 invert"
-                    />
+          <div className="flex items-center flex-1 lg:flex-none">
+            {/* Mobile Burger Menu (Left) */}
+            <div className="flex items-center lg:hidden z-10 mr-4">
+              <Sheet open={isOpen} onOpenChange={setIsOpen}>
+                <SheetTrigger asChild>
+                  <Button
+                    variant="ghost"
+                    className={cn(
+                      "h-10 w-10 flex items-center justify-center rounded-xl",
+                      isScrolled ? "text-primary hover:bg-primary/5" : "text-white hover:bg-white/10",
+                    )}
+                  >
+                    <Menu className="h-6 w-6" />
+                  </Button>
+                </SheetTrigger>
+                <SheetContent side="left" className="w-[300px] p-0 border-none bg-white">
+                  <div className="bg-primary p-8 sm:p-12 text-white flex flex-col items-center">
+                    <div className="relative w-full max-w-[200px] aspect-[3/1] mb-6">
+                      <Image
+                        src="/logo.png"
+                        alt="CRYSTALFRONT"
+                        fill
+                        className="object-contain brightness-0 invert"
+                      />
+                    </div>
+                    <p className="text-white/60 text-[10px] sm:text-xs uppercase tracking-[0.3em] font-black underline underline-offset-8 decoration-secondary/30 text-center">Premium Cleaning Service</p>
                   </div>
-                  <p className="text-white/60 text-[10px] sm:text-xs uppercase tracking-[0.3em] font-black underline underline-offset-8 decoration-secondary/30 text-center">Premium Cleaning Service</p>
-                </div>
-                <div className="p-6 space-y-6">
-                  <nav className="space-y-1">
-                    {mainRoutes.map((route) => (
-                      <Link
-                        key={route.href}
-                        href={route.href}
-                        onClick={() => setIsOpen(false)}
-                        className={cn(
-                          "flex items-center px-4 py-3 rounded-xl text-sm font-bold transition-all",
-                          route.active ? "bg-primary text-white shadow-lg shadow-primary/20" : "text-gray-600 hover:bg-gray-50"
-                        )}
-                      >
-                        {route.label}
-                      </Link>
-                    ))}
-                  </nav>
-                  <div className="pt-6 border-t border-gray-100 italic text-xs text-gray-400 text-center">
-                    Trusted by 500+ locals in Lalitpur
+                  <div className="p-6 space-y-6">
+                    <nav className="space-y-1">
+                      {mainRoutes.map((route) => (
+                        <Link
+                          key={route.href}
+                          href={route.href}
+                          onClick={() => setIsOpen(false)}
+                          className={cn(
+                            "flex items-center px-4 py-3 rounded-xl text-sm font-bold transition-all",
+                            route.active ? "bg-primary text-white shadow-lg shadow-primary/20" : "text-gray-600 hover:bg-gray-50"
+                          )}
+                        >
+                          {route.label}
+                        </Link>
+                      ))}
+                    </nav>
+                    <div className="pt-6 border-t border-gray-100 italic text-xs text-gray-400 text-center">
+                      Trusted by 500+ locals in Lalitpur
+                    </div>
                   </div>
-                </div>
-              </SheetContent>
-            </Sheet>
-          </div>
+                </SheetContent>
+              </Sheet>
+            </div>
 
-          {/* Logo (Centered on Mobile, Left on Desktop) */}
-          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 lg:static lg:translate-x-0 lg:translate-y-0 lg:flex lg:items-center">
+            {/* Logo (Next to Hamburger on Mobile, Left on Desktop) */}
             <Link href="/" className="flex items-center group shrink-0">
               <div className={cn(
-                "relative transition-all duration-500 group-hover:scale-105 origin-center lg:origin-left",
-                "w-44 h-12 sm:w-56 sm:h-16 md:w-64 md:h-18 lg:w-72 lg:h-22"
+                "relative transition-all duration-500 group-hover:scale-105 origin-left",
+                "w-36 h-10 sm:w-48 sm:h-14 md:w-56 md:h-16 lg:w-64 lg:h-20"
               )}>
                 <Image
                   src="/logo.png"
@@ -154,6 +154,7 @@ export function MainNav() {
               </div>
             </Link>
           </div>
+
 
           {/* Nav Items (Desktop only) */}
           <nav className="hidden lg:flex items-center space-x-1 ml-10">
