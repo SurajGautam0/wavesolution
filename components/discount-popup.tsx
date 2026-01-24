@@ -31,39 +31,31 @@ export function DiscountPopup() {
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogContent className="max-w-md rounded-2xl p-0 bg-gradient-to-br from-blue-700 via-blue-500 to-blue-300 text-white shadow-2xl border-0 overflow-hidden">
+      <DialogContent className="w-[90vw] max-w-md rounded-[2rem] p-0 bg-gradient-to-br from-blue-700 via-blue-500 to-blue-300 text-white shadow-2xl border-0 overflow-hidden sm:w-full">
         <div className="flex flex-col items-center text-center gap-0 relative">
-          <button
-            className="absolute top-4 right-4 text-white/80 hover:text-white transition-colors"
-            onClick={() => setOpen(false)}
-            aria-label="Close"
-          >
-            <X className="w-6 h-6" />
-          </button>
-          <div className="w-full flex flex-col items-center justify-center py-8 px-6">
-            <div className="flex items-center justify-center mb-2">
-              <BadgePercent className="w-10 h-10 text-yellow-300 drop-shadow-lg animate-bounce" />
-              <span className="ml-2 text-4xl font-extrabold tracking-tight text-yellow-300 drop-shadow-lg">
+          <div className="w-full flex flex-col items-center justify-center py-10 px-6 sm:py-12 sm:px-10">
+            <div className="flex items-center justify-center mb-4">
+              <BadgePercent className="w-10 h-10 sm:w-14 sm:h-14 text-yellow-300 drop-shadow-lg animate-bounce" />
+              <span className="ml-2 text-4xl sm:text-6xl font-extrabold tracking-tight text-yellow-300 drop-shadow-lg">
                 60% OFF
               </span>
             </div>
-            <div className="text-2xl font-bold mb-1 flex items-center justify-center gap-2">
-              <Sparkles className="w-6 h-6 text-blue-100 animate-pulse" />
+            <div className="text-xl sm:text-3xl font-black mb-3 text-center tracking-tighter">
               INTERIOR CLEANING
-              <Sparkles className="w-6 h-6 text-blue-100 animate-pulse" />
             </div>
-            <div className="text-base font-medium text-blue-50 mb-4">
+
+            <div className="text-sm sm:text-lg font-medium text-blue-50 mb-8 max-w-[280px] sm:max-w-none">
               Limited time offer for all new bookings!
-              <br />Don't miss out on a sparkling clean interior.
+              <br className="hidden sm:block" /> Don't miss out on a sparkling clean interior.
             </div>
             <Button
-              className="mt-2 rounded-full bg-yellow-400 text-blue-900 font-bold px-8 py-2 text-lg hover:bg-yellow-300 shadow-lg transition-all duration-200"
+              className="w-full sm:w-auto rounded-full bg-yellow-400 text-blue-900 font-black px-10 py-6 sm:py-7 text-lg sm:text-xl hover:bg-yellow-300 shadow-2xl shadow-yellow-400/20 transition-all duration-300 hover:scale-105 active:scale-95"
               onClick={handleClaim}
             >
               Claim Discount &rarr;
             </Button>
-            <div className="mt-4 text-xs text-blue-100/80 italic">
-              * Discount automatically applied on booking page
+            <div className="mt-6 text-[10px] sm:text-xs text-blue-100/60 font-bold uppercase tracking-widest">
+              * Applied automatically at checkout
             </div>
           </div>
         </div>
@@ -71,3 +63,4 @@ export function DiscountPopup() {
     </Dialog>
   );
 }
+

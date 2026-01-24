@@ -2,13 +2,31 @@
 
 import { useState } from "react"
 import { useRouter } from "next/navigation"
+import Link from "next/link"
+
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import * as z from "zod"
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { toast } from "sonner"
-import { Loader2, CheckCircle2, MapPin, Contact, Phone, User, Settings2, ClipboardList, TrendingUp, Sparkles } from "lucide-react"
+import {
+	Loader2,
+	CheckCircle2,
+	MapPin,
+	Contact,
+	Phone,
+	User,
+	Settings2,
+	ClipboardList,
+	TrendingUp,
+	Sparkles,
+	ArrowRight,
+	ShieldCheck,
+	Zap,
+	MessageCircle
+} from "lucide-react"
 import { saveBooking } from "@/lib/firebase-service"
 import {
 	Form,
@@ -32,28 +50,32 @@ const windowPackages = [
 		category: "Everest (XL)",
 		area: "Biggest XL showrooms, wide glass fronts",
 		prices: [6500, 8000],
+		icon: "🏔️"
 	},
 	{
 		category: "Lhotse (Large)",
-		area: "Auto showrooms, large restaurants, medium showrooms",
+		area: "Auto showrooms, large restaurants",
 		prices: [3500, 4000, 5000],
+		icon: "🏔️"
 	},
 	{
 		category: "Manaslu (Medium)",
 		area: "Restaurants, retail stores",
 		prices: [3000, 4000, 4500],
+		icon: "🏔️"
 	},
 	{
 		category: "Annapurna (Small)",
-		area: "Small shops, pharmacies, boutiques",
+		area: "Small shops, boutiques",
 		prices: [2500, 3500, 4000],
+		icon: "🏔️"
 	},
 ]
 
 const frequencyLabels = [
-	"4x/Month (Weekly)",
-	"6x/Month (5 days)",
-	"8x/Month (Bi-Weekly)",
+	"Weekly",
+	"Bi-Weekly",
+	"Monthly",
 ]
 
 const formSchema = z.object({
@@ -80,9 +102,8 @@ export default function BookingPageClient() {
 	const freqIdx = frequencyLabels.indexOf(selectedFrequency)
 	const exteriorPrice = selectedPackage && selectedPackage.prices[freqIdx] ? selectedPackage.prices[freqIdx] : 0
 
-	// Interior is 70% of exterior price normally, then 60% off
 	const interiorOriginalPrice = Math.round(exteriorPrice * 0.7)
-	const interiorDiscountedPrice = Math.round(interiorOriginalPrice * 0.4) // 60% off means paying 40%
+	const interiorDiscountedPrice = Math.round(interiorOriginalPrice * 0.4)
 
 	const selectedPrice = exteriorPrice + (includeInterior ? interiorDiscountedPrice : 0)
 
@@ -137,74 +158,79 @@ export default function BookingPageClient() {
 	}
 
 	return (
-		<div className="min-h-screen bg-slate-50 py-8 sm:py-16 md:py-24 px-4">
+		<div className="min-h-screen bg-white py-12 sm:py-20 md:py-32">
 			<div className="classic-container">
-				<div className="mx-auto max-w-5xl">
-					{/* Responsive Header */}
-					<div className="flex flex-col space-y-4 text-center mb-10 sm:mb-16">
-						<span className="text-[10px] sm:text-xs font-black uppercase tracking-[0.3em] text-blue-600">Premium Service Booking</span>
-						<h1 className="text-3xl sm:text-5xl md:text-6xl font-serif font-black tracking-tighter text-blue-950">
-							Book Your Service
+				<div className="mx-auto max-w-6xl">
+					{/* Premium Branding Section */}
+					<div className="flex flex-col items-center mb-16 sm:mb-24 text-center px-4">
+						<div className="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-blue-50 border border-blue-100 mb-6 group hover:scale-105 transition-all duration-500">
+							<ShieldCheck className="w-4 h-4 text-primary" />
+							<span className="text-[10px] font-black uppercase tracking-[0.2em] text-primary">Crystal Front Trust Verified</span>
+						</div>
+						<h1 className="text-4xl sm:text-6xl md:text-7xl font-serif font-black tracking-tighter text-blue-950 mb-6 leading-none">
+							Schedule Your <span className="text-secondary italic">Brilliant</span> Service
 						</h1>
-						<div className="w-20 sm:w-28 h-2 bg-blue-600 mx-auto rounded-full"></div>
-						<p className="text-muted-foreground text-sm sm:text-lg max-w-2xl mx-auto px-4 font-medium">
-							Experience the CRYSTALFRONT standard. Select your package and confirm your details.
+						<div className="w-24 sm:w-32 h-2 bg-secondary rounded-full mb-8"></div>
+						<p className="text-muted-foreground text-lg sm:text-xl max-w-3xl font-medium leading-relaxed">
+							Join hundreds of premium properties in the Valley that trust our professional glass artisans for a world-class finish.
 						</p>
 					</div>
 
-					<div className="bg-white rounded-[2rem] sm:rounded-[3rem] shadow-2xl shadow-blue-900/10 border border-blue-50 overflow-hidden">
+					<div className="bg-white rounded-[3rem] shadow-[0_32px_128px_-32px_rgba(30,58,138,0.15)] border border-blue-50 overflow-hidden relative">
 						<Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-							<TabsList className="grid w-full grid-cols-2 h-16 sm:h-24 bg-blue-50/50 p-2 sm:p-3 gap-2 sm:gap-4">
+							<TabsList className="grid w-full grid-cols-2 h-20 sm:h-28 bg-blue-50/30 p-2 sm:p-4 gap-2 sm:gap-6 border-b border-blue-50">
 								<TabsTrigger
 									value="package"
-									className="rounded-xl sm:rounded-2xl text-xs sm:text-xl font-black uppercase tracking-widest data-[state=active]:bg-blue-600 data-[state=active]:text-white data-[state=active]:shadow-xl transition-all duration-500"
+									className="rounded-2xl sm:rounded-3xl text-sm sm:text-lg font-black uppercase tracking-widest data-[state=active]:bg-primary data-[state=active]:text-white data-[state=active]:shadow-2xl data-[state=active]:shadow-primary/30 transition-all duration-500 gap-3"
 								>
-									<Settings2 className="w-4 h-4 sm:w-6 sm:h-6 mr-1 sm:mr-3" />
-									1. Package
+									<Settings2 className="w-5 h-5 sm:w-6 sm:h-6 hidden sm:block" />
+									1. Select Package
 								</TabsTrigger>
 								<TabsTrigger
 									value="details"
-									className="rounded-xl sm:rounded-2xl text-xs sm:text-xl font-black uppercase tracking-widest data-[state=active]:bg-blue-600 data-[state=active]:text-white data-[state=active]:shadow-xl transition-all duration-500"
+									className="rounded-2xl sm:rounded-3xl text-sm sm:text-lg font-black uppercase tracking-widest data-[state=active]:bg-primary data-[state=active]:text-white data-[state=active]:shadow-2xl data-[state=active]:shadow-primary/30 transition-all duration-500 gap-3"
 								>
-									<ClipboardList className="w-4 h-4 sm:w-6 sm:h-6 mr-1 sm:mr-3" />
-									2. Details
+									<ClipboardList className="w-5 h-5 sm:w-6 sm:h-6 hidden sm:block" />
+									2. Your Details
 								</TabsTrigger>
 							</TabsList>
 
-							<div className="p-4 sm:p-10 md:p-14">
-								<TabsContent value="package" className="mt-0 space-y-8 sm:space-y-12 animate-in fade-in slide-in-from-left-4 duration-700">
-									<div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+							<div className="p-6 sm:p-12 md:p-16">
+								<TabsContent value="package" className="mt-0 space-y-12 animate-in fade-in slide-in-from-bottom-8 duration-700">
+									<div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
 										<div>
-											<h2 className="text-2xl sm:text-3xl font-black text-blue-950 tracking-tight">Select Package</h2>
-											<p className="text-blue-700/60 font-medium text-sm sm:text-base mt-2">Choose the size that fits your space.</p>
+											<h2 className="text-3xl sm:text-4xl font-black text-blue-950 tracking-tight mb-2">Choose Service Level</h2>
+											<p className="text-blue-700/60 font-medium text-base sm:text-lg">Select the scale that matches your property.</p>
 										</div>
-										<div className="flex items-center space-x-2 bg-blue-50 px-4 py-2 rounded-full w-fit">
-											<TrendingUp className="w-4 h-4 text-blue-600" />
-											<span className="text-[10px] font-black uppercase tracking-widest text-blue-800">Popular in Lalitpur</span>
+										<div className="flex items-center space-x-3 bg-blue-50 border border-blue-100 px-6 py-3 rounded-2xl w-fit">
+											<TrendingUp className="w-5 h-5 text-primary" />
+											<span className="text-[11px] font-black uppercase tracking-widest text-primary">High Demand: Valley Central</span>
 										</div>
 									</div>
 
-									{/* Mobile Package Grid (Visible on mobile only) */}
-									<div className="grid grid-cols-1 gap-4 lg:hidden">
+									{/* New Visual Package Grid */}
+									<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
 										{windowPackages.map((row) => (
 											<button
 												key={row.category}
 												onClick={() => setSelectedCategory(row.category)}
 												className={cn(
-													"flex flex-col p-6 rounded-3xl border-2 transition-all duration-300 text-left",
+													"flex flex-col p-8 rounded-[2.5rem] border-2 text-left transition-all duration-500 group relative",
 													selectedCategory === row.category
-														? "bg-blue-600 border-blue-600 text-white shadow-xl scale-[1.02]"
-														: "bg-white border-blue-50 hover:border-blue-200"
+														? "bg-primary border-primary text-white shadow-2xl scale-[1.03] -translate-y-2"
+														: "bg-white border-blue-50 hover:border-primary/20 hover:shadow-xl"
 												)}
 											>
-												<span className={cn("text-xs font-black uppercase tracking-widest mb-1", selectedCategory === row.category ? "text-blue-100" : "text-blue-500")}>
-													Category
+												<span className={cn("text-xs font-black uppercase tracking-widest mb-4 block", selectedCategory === row.category ? "text-blue-100" : "text-primary")}>
+													Level {windowPackages.indexOf(row) + 1}
 												</span>
-												<h3 className="text-xl font-black mb-2 tracking-tight">{row.category}</h3>
-												<p className={cn("text-xs font-medium leading-relaxed mb-4", selectedCategory === row.category ? "text-blue-50" : "text-gray-500")}>
+												<div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-500">{row.icon}</div>
+												<h3 className="text-2xl font-black mb-3 tracking-tighter leading-none">{row.category}</h3>
+												<p className={cn("text-xs font-medium leading-relaxed mb-8 h-10 line-clamp-2", selectedCategory === row.category ? "text-blue-50" : "text-gray-500")}>
 													{row.area}
 												</p>
-												<div className="mt-auto flex flex-wrap gap-2">
+
+												<div className="mt-auto space-y-3">
 													{frequencyLabels.map((freq, i) => (
 														<div
 															key={freq}
@@ -215,14 +241,14 @@ export default function BookingPageClient() {
 																setSelectedFrequency(freq);
 															}}
 															className={cn(
-																"flex-1 px-3 py-3 rounded-xl text-[10px] font-black text-center transition-all",
+																"flex items-center justify-between p-3 rounded-xl text-[11px] font-black transition-all border",
 																(selectedFrequency === freq && selectedCategory === row.category)
-																	? "bg-white text-blue-600 shadow-sm"
-																	: !row.prices[i] ? "opacity-40 cursor-not-allowed bg-gray-100 text-gray-400" : selectedCategory === row.category ? "bg-white/10 text-white" : "bg-blue-50 text-blue-900 border border-blue-100"
+																	? "bg-white text-primary border-white"
+																	: !row.prices[i] ? "opacity-20 cursor-not-allowed hidden" : selectedCategory === row.category ? "bg-white/10 text-white border-white/20 hover:bg-white/20" : "bg-blue-50/50 text-blue-900 border-transparent hover:border-blue-100"
 															)}
 														>
-															{freq.split('(')[0]}<br />
-															{row.prices[i] ? `NPR ${row.prices[i].toLocaleString()}` : "N/A"}
+															<span>{freq}</span>
+															<span>{row.prices[i] ? `M${row.prices[i] / 1000}k` : "-"}</span>
 														</div>
 													))}
 												</div>
@@ -230,245 +256,242 @@ export default function BookingPageClient() {
 										))}
 									</div>
 
-									{/* Desktop Table (Hidden on mobile) */}
-									<div className="hidden lg:block overflow-hidden rounded-[2rem] border border-blue-100 shadow-2xl shadow-blue-900/5">
-										<table className="min-w-full divide-y divide-blue-50">
-											<thead className="bg-blue-50/30">
-												<tr>
-													<th className="px-8 py-6 text-left text-[10px] font-black text-blue-900 uppercase tracking-[0.2em]">Package Level</th>
-													<th className="px-8 py-6 text-left text-[10px] font-black text-blue-900 uppercase tracking-[0.2em]">Area Expertise</th>
-													{frequencyLabels.map((label) => (
-														<th key={label} className="px-8 py-6 text-center text-[10px] font-black text-blue-900 uppercase tracking-[0.2em]">
-															{label}
-														</th>
-													))}
-												</tr>
-											</thead>
-											<tbody className="bg-white divide-y divide-blue-50">
-												{windowPackages.map((row) => (
-													<tr key={row.category} className="hover:bg-blue-50/20 transition-colors group">
-														<td className="px-8 py-7">
-															<button
-																type="button"
-																className={cn(
-																	"px-5 py-3 rounded-2xl font-black text-xs uppercase tracking-widest whitespace-nowrap transition-all duration-500",
-																	selectedCategory === row.category
-																		? "bg-blue-600 text-white shadow-xl scale-110"
-																		: "bg-blue-50 text-blue-800 group-hover:bg-blue-100"
-																)}
-																onClick={() => setSelectedCategory(row.category)}
-															>
-																{row.category}
-															</button>
-														</td>
-														<td className="px-8 py-7 text-sm font-bold text-gray-500 max-w-[200px] leading-relaxed">
-															{row.area}
-														</td>
-														{frequencyLabels.map((freq, i) => (
-															<td key={freq} className="px-8 py-7 text-center">
-																<button
-																	type="button"
-																	className={cn(
-																		"px-5 py-3 rounded-full font-black text-xs transition-all duration-500",
-																		(selectedFrequency === freq && selectedCategory === row.category)
-																			? "bg-blue-600 text-white shadow-2xl scale-110 shadow-blue-600/30"
-																			: "bg-white border border-blue-100 text-blue-900 hover:border-blue-400 hover:text-blue-600"
-																	)}
-																	onClick={() => {
-																		setSelectedCategory(row.category)
-																		setSelectedFrequency(freq)
-																	}}
-																>
-																	{row.prices[i] ? `NPR ${row.prices[i].toLocaleString()}` : "-"}
-																</button>
-															</td>
-														))}
-													</tr>
-												))}
-											</tbody>
-										</table>
-									</div>
-
-									{/* Interior Add-on Section */}
-									<div className="bg-blue-50/50 p-6 sm:p-10 rounded-[2rem] border-2 border-dashed border-blue-200">
-										<div className="flex flex-col md:flex-row items-center justify-between gap-6">
-											<div className="flex items-center space-x-6">
-												<div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center shadow-sm border border-blue-100">
-													<Sparkles className="w-8 h-8 text-blue-600" />
+									{/* Advanced Add-ons Detail */}
+									<div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch pt-4">
+										<div className="bg-white p-8 sm:p-10 rounded-[2.5rem] border border-blue-50 shadow-sm flex flex-col justify-center">
+											<div className="flex items-center space-x-6 mb-8">
+												<div className="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center shrink-0">
+													<Sparkles className="w-8 h-8 text-primary" />
 												</div>
 												<div>
-													<h3 className="text-xl font-black text-blue-950 uppercase tracking-tight">Interior Cleaning Add-on</h3>
-													<p className="text-blue-700/60 font-medium text-sm">Get your interiors sparkling clean with our professional team.</p>
+													<h3 className="text-2xl font-black text-blue-950 tracking-tight">Interior Brilliance</h3>
+													<p className="text-muted-foreground font-medium text-sm">Full deep clean of all interior glass surfaces.</p>
 												</div>
 											</div>
-											<div className="flex flex-col items-center sm:items-end">
-												<div className="flex items-center space-x-3 mb-2">
-													<span className="bg-secondary text-white text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-widest animate-pulse">Save 60% Today</span>
-													<span className="text-blue-900/30 line-through font-bold">NPR {interiorOriginalPrice.toLocaleString()}</span>
-												</div>
-												<div className="flex items-center space-x-6">
-													<div className="text-right">
-														<p className="text-[10px] font-black text-blue-500 uppercase tracking-widest leading-none mb-1">Promo Price</p>
-														<p className="text-2xl font-black text-blue-950 leading-none">NPR {interiorDiscountedPrice.toLocaleString()}</p>
+
+											<div className="flex flex-wrap items-center gap-6">
+												<div className="flex flex-col">
+													<span className="text-secondary text-[10px] font-black uppercase tracking-widest animate-pulse mb-1">Limited Offer -60%</span>
+													<div className="flex items-center space-x-3">
+														<span className="text-3xl font-black text-blue-950">NPR {interiorDiscountedPrice.toLocaleString()}</span>
+														<span className="text-sm text-muted-foreground line-through font-bold">{interiorOriginalPrice.toLocaleString()}</span>
 													</div>
-													<button
-														onClick={() => setIncludeInterior(!includeInterior)}
-														className={cn(
-															"w-14 h-8 rounded-full transition-all duration-300 relative",
-															includeInterior ? "bg-blue-600" : "bg-gray-200"
-														)}
-													>
-														<div className={cn(
-															"absolute top-1 w-6 h-6 bg-white rounded-full transition-all duration-300 shadow-md",
-															includeInterior ? "left-7" : "left-1"
-														)} />
-													</button>
 												</div>
+												<button
+													onClick={() => setIncludeInterior(!includeInterior)}
+													className={cn(
+														"ml-auto h-12 px-8 rounded-full font-black text-xs uppercase tracking-widest transition-all duration-300 flex items-center gap-3 shadow-lg",
+														includeInterior ? "bg-primary text-white" : "bg-blue-50 text-primary border border-blue-100"
+													)}
+												>
+													{includeInterior ? <CheckCircle2 className="w-4 h-4" /> : <Zap className="w-4 h-4" />}
+													{includeInterior ? "Applied" : "Add to Order"}
+												</button>
 											</div>
 										</div>
-									</div>
 
-									{/* Total Visualization Card */}
-									<div className="flex flex-col lg:flex-row lg:items-center justify-between bg-blue-950 text-white p-6 sm:p-12 rounded-[2.5rem] shadow-2xl mt-8 sm:mt-12 overflow-hidden relative group">
-										<div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl -mr-32 -mt-32 transition-transform duration-1000 group-hover:scale-150" />
-
-										<div className="flex items-center space-x-4 sm:space-x-8 mb-8 lg:mb-0 relative z-10">
-											<div className="w-16 h-16 sm:w-20 sm:h-20 bg-white/10 rounded-2xl sm:rounded-3xl flex items-center justify-center backdrop-blur-md border border-white/20 shadow-2xl">
-												<CheckCircle2 className="w-8 h-8 sm:w-10 sm:h-10 text-white" />
+										<div className="bg-blue-950 p-8 sm:p-10 rounded-[2.5rem] text-white flex flex-col justify-center relative overflow-hidden group">
+											<div className="absolute top-0 right-0 w-32 h-32 bg-primary/20 rounded-full blur-3xl -mr-16 -mt-16" />
+											<div className="relative z-10">
+												<div className="flex items-center justify-between mb-8">
+													<div>
+														<p className="text-primary text-[10px] font-black uppercase tracking-[0.3em] mb-2">Total Monthly Investment</p>
+														<h4 className="text-4xl sm:text-5xl font-black tracking-tighter tabular-nums leading-none">
+															{selectedPrice ? `NPR ${selectedPrice.toLocaleString()}` : "Contact Us"}
+														</h4>
+													</div>
+													<div className="text-right hidden sm:block">
+														<p className="text-white/40 text-[10px] font-black uppercase tracking-widest mb-1">Status</p>
+														<span className="bg-green-500/20 text-green-400 text-[9px] font-black px-3 py-1 rounded-full uppercase tracking-widest border border-green-500/20">Active</span>
+													</div>
+												</div>
+												<Button
+													onClick={() => {
+														window.scrollTo({ top: 0, behavior: 'smooth' });
+														setTimeout(() => setActiveTab("details"), 300);
+													}}
+													className="w-full h-16 rounded-2xl bg-primary hover:bg-primary/90 text-white font-black text-lg uppercase tracking-widest shadow-2xl shadow-primary/40 transition-all hover:scale-[1.02] active:scale-95 group-hover:gap-6 duration-500"
+												>
+													Step 2: Confirm Details
+													<ArrowRight className="w-5 h-5 ml-4" />
+												</Button>
 											</div>
-											<div>
-												<p className="text-blue-400 text-[10px] font-black uppercase tracking-[0.3em] mb-2 leading-none">Your Configuration</p>
-												<h3 className="text-2xl sm:text-4xl font-black tracking-tighter leading-none">{selectedCategory}</h3>
-												<p className="text-white/50 text-xs sm:text-sm font-bold mt-3 uppercase tracking-widest">
-													{selectedFrequency} {includeInterior && "+ Interior Cleaning"}
-												</p>
-											</div>
-										</div>
-										<div className="flex flex-col sm:flex-row items-center gap-6 relative z-10">
-											<div className="text-center sm:text-right">
-												<p className="text-blue-400 text-[10px] font-black uppercase tracking-[0.3em] mb-2 leading-none">Final Price</p>
-												<p className="text-4xl sm:text-5xl font-black text-white leading-none whitespace-nowrap">
-													{selectedPrice ? `NPR ${selectedPrice.toLocaleString()}` : "Contact Us"}
-												</p>
-											</div>
-											<Button
-												onClick={() => {
-													window.scrollTo({ top: 0, behavior: 'smooth' });
-													setTimeout(() => setActiveTab("details"), 300);
-												}}
-												className="w-full sm:w-auto h-16 sm:h-20 px-10 sm:px-14 rounded-full bg-blue-600 hover:bg-blue-500 text-white font-black text-base sm:text-lg uppercase tracking-widest shadow-2xl shadow-blue-600/20 transition-all hover:scale-105 active:scale-95"
-											>
-												Confirm Details →
-											</Button>
 										</div>
 									</div>
 								</TabsContent>
 
-								<TabsContent value="details" className="mt-0 space-y-10 animate-in fade-in slide-in-from-right-4 duration-700">
-									<div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-6 sm:p-10 bg-blue-50/50 rounded-[2rem] border border-blue-50 shadow-sm">
-										<div>
-											<h2 className="text-2xl sm:text-3xl font-black text-blue-950 tracking-tight">Final Details</h2>
-											<p className="text-blue-700/60 font-medium text-sm sm:text-base mt-2">Almost there! Complete your information.</p>
+								<TabsContent value="details" className="mt-0 space-y-12 animate-in fade-in slide-in-from-right-8 duration-700">
+									<div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+										<div className="lg:col-span-2 space-y-12">
+											<div>
+												<h2 className="text-3xl sm:text-4xl font-black text-blue-950 tracking-tight mb-2">Contact Information</h2>
+												<p className="text-blue-700/60 font-medium text-base">We'll use these details to secure your service window.</p>
+											</div>
+
+											<Form {...form}>
+												<form onSubmit={form.handleSubmit(onSubmit)} className="space-y-10">
+													<div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-8">
+														<FormField
+															control={form.control}
+															name="name"
+															render={({ field }) => (
+																<FormItem className="space-y-3">
+																	<FormLabel className="flex items-center text-blue-950 font-black text-[10px] uppercase tracking-[0.2em] ml-1">
+																		Full Name
+																	</FormLabel>
+																	<FormControl>
+																		<div className="relative">
+																			<User className="absolute left-6 top-1/2 -translate-y-1/2 w-5 h-5 text-primary/30" />
+																			<Input placeholder="Johnathan Doe" {...field} className="h-16 pl-14 border-blue-50 bg-blue-50/20 hover:border-primary/30 focus:bg-white focus:border-primary focus:ring-8 focus:ring-primary/5 rounded-2xl transition-all font-bold text-lg" />
+																		</div>
+																	</FormControl>
+																	<FormMessage className="font-bold text-xs" />
+																</FormItem>
+															)}
+														/>
+														<FormField
+															control={form.control}
+															name="phone"
+															render={({ field }) => (
+																<FormItem className="space-y-3">
+																	<FormLabel className="flex items-center text-blue-950 font-black text-[10px] uppercase tracking-[0.2em] ml-1">
+																		Direct Contact
+																	</FormLabel>
+																	<FormControl>
+																		<div className="relative">
+																			<Phone className="absolute left-6 top-1/2 -translate-y-1/2 w-5 h-5 text-primary/30" />
+																			<Input placeholder="98XXXXXXXX" {...field} className="h-16 pl-14 border-blue-50 bg-blue-50/20 hover:border-primary/30 focus:bg-white focus:border-primary focus:ring-8 focus:ring-primary/5 rounded-2xl transition-all font-bold text-lg" />
+																		</div>
+																	</FormControl>
+																	<FormMessage className="font-bold text-xs" />
+																</FormItem>
+															)}
+														/>
+														<FormField
+															control={form.control}
+															name="email"
+															render={({ field }) => (
+																<FormItem className="space-y-3">
+																	<FormLabel className="flex items-center text-blue-950 font-black text-[10px] uppercase tracking-[0.2em] ml-1">
+																		Email Address
+																	</FormLabel>
+																	<FormControl>
+																		<div className="relative">
+																			<Contact className="absolute left-6 top-1/2 -translate-y-1/2 w-5 h-5 text-primary/30" />
+																			<Input placeholder="john@example.com" {...field} className="h-16 pl-14 border-blue-50 bg-blue-50/20 hover:border-primary/30 focus:bg-white focus:border-primary focus:ring-8 focus:ring-primary/5 rounded-2xl transition-all font-bold text-lg" />
+																		</div>
+																	</FormControl>
+																	<FormMessage className="font-bold text-xs" />
+																</FormItem>
+															)}
+														/>
+														<FormField
+															control={form.control}
+															name="address"
+															render={({ field }) => (
+																<FormItem className="space-y-3">
+																	<FormLabel className="flex items-center text-blue-950 font-black text-[10px] uppercase tracking-[0.2em] ml-1">
+																		Property Location
+																	</FormLabel>
+																	<FormControl>
+																		<div className="relative">
+																			<MapPin className="absolute left-6 top-1/2 -translate-y-1/2 w-5 h-5 text-primary/30" />
+																			<Input placeholder="Bhaisepati, Ward 2" {...field} className="h-16 pl-14 border-blue-50 bg-blue-50/20 hover:border-primary/30 focus:bg-white focus:border-primary focus:ring-8 focus:ring-primary/5 rounded-2xl transition-all font-bold text-lg" />
+																		</div>
+																	</FormControl>
+																	<FormMessage className="font-bold text-xs" />
+																</FormItem>
+															)}
+														/>
+													</div>
+
+													<div className="flex flex-col sm:flex-row items-center gap-6 pt-10 border-t border-blue-50">
+														<Button
+															type="submit"
+															disabled={isSubmitting}
+															className="w-full sm:w-auto min-w-[280px] h-20 rounded-2xl bg-primary hover:bg-blue-900 text-white text-xl font-black uppercase tracking-widest shadow-2xl shadow-primary/30 transition-all duration-500 transform hover:scale-[1.02] active:scale-95"
+														>
+															{isSubmitting ? (
+																<>
+																	<Loader2 className="mr-4 h-7 w-7 animate-spin" />
+																	Verifying...
+																</>
+															) : (
+																"Confirm Booking"
+															)}
+														</Button>
+														<button
+															type="button"
+															onClick={() => setActiveTab("package")}
+															className="text-xs font-black text-gray-400 hover:text-primary transition-colors uppercase tracking-[0.3em]"
+														>
+															← Edit Selected Order
+														</button>
+													</div>
+												</form>
+											</Form>
 										</div>
-										<div className="text-left sm:text-right bg-white p-4 sm:p-6 rounded-2xl shadow-sm border border-blue-50">
-											<p className="text-[10px] font-black text-blue-500 uppercase tracking-widest mb-1">Total Amount</p>
-											<p className="text-3xl font-black text-blue-950 leading-none">NPR {(selectedPrice || 0).toLocaleString()}</p>
+
+										<div className="space-y-8">
+											<div className="bg-blue-50/50 p-8 rounded-[2.5rem] border border-blue-100">
+												<h3 className="text-xl font-black text-blue-950 uppercase tracking-tight mb-6 flex items-center">
+													<ClipboardList className="w-5 h-5 mr-3 text-primary" /> Order Summary
+												</h3>
+												<div className="space-y-5">
+													<div className="flex justify-between items-center pb-4 border-b border-blue-100">
+														<span className="text-xs font-bold text-muted-foreground">Category</span>
+														<span className="text-sm font-black text-blue-950">{selectedCategory}</span>
+													</div>
+													<div className="flex justify-between items-center pb-4 border-b border-blue-100">
+														<span className="text-xs font-bold text-muted-foreground">Frequency</span>
+														<span className="text-sm font-black text-blue-950">{selectedFrequency}</span>
+													</div>
+													<div className="flex justify-between items-center pb-4 border-b border-blue-100">
+														<span className="text-xs font-bold text-muted-foreground">Interior Add-on</span>
+														<span className={cn("text-sm font-black", includeInterior ? "text-green-600" : "text-gray-400")}>{includeInterior ? "Included" : "None"}</span>
+													</div>
+													<div className="pt-4 flex justify-between items-center">
+														<span className="text-xs font-black uppercase tracking-widest text-primary">Monthly Total</span>
+														<span className="text-2xl font-black text-primary">NPR {selectedPrice.toLocaleString()}</span>
+													</div>
+												</div>
+											</div>
+
+											<div className="p-8 rounded-[2.5rem] border border-blue-50 bg-white relative overflow-hidden">
+												<div className="absolute top-0 right-0 w-24 h-24 bg-secondary/5 rounded-full blur-2xl -mr-12 -mt-12" />
+												<h3 className="text-lg font-black text-blue-950 uppercase tracking-tight mb-4">Support</h3>
+												<p className="text-sm text-muted-foreground font-medium mb-6">Need help with your configuration? Our experts are a call away.</p>
+												<div className="space-y-4">
+													<Link href="tel:0450833683" className="flex items-center text-primary font-black text-lg hover:underline group">
+														<Phone className="w-5 h-5 mr-3 text-primary group-hover:scale-110 transition-transform" /> 0450 833 683
+													</Link>
+													<Link href="https://wa.me/61450833683" target="_blank" className="flex items-center text-[#25D366] font-black text-lg hover:underline group">
+														<MessageCircle className="w-5 h-5 mr-3 text-[#25D366] group-hover:scale-110 transition-transform" /> WhatsApp Support
+													</Link>
+												</div>
+											</div>
+
 										</div>
 									</div>
-
-									<Form {...form}>
-										<form onSubmit={form.handleSubmit(onSubmit)} className="space-y-12">
-											<div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
-												<FormField
-													control={form.control}
-													name="name"
-													render={({ field }) => (
-														<FormItem className="space-y-3">
-															<FormLabel className="flex items-center text-blue-950 font-black text-[10px] uppercase tracking-[0.2em] ml-1">
-																<User className="w-4 h-4 mr-2 text-blue-600" /> Full Name
-															</FormLabel>
-															<FormControl>
-																<Input placeholder="Johnathan Doe" {...field} className="h-16 border-blue-100 bg-white hover:border-blue-300 focus:bg-white focus:border-blue-600 focus:ring-8 focus:ring-blue-600/5 rounded-2xl transition-all font-bold text-lg" />
-															</FormControl>
-															<FormMessage className="font-bold text-xs" />
-														</FormItem>
-													)}
-												/>
-												<FormField
-													control={form.control}
-													name="phone"
-													render={({ field }) => (
-														<FormItem className="space-y-3">
-															<FormLabel className="flex items-center text-blue-950 font-black text-[10px] uppercase tracking-[0.2em] ml-1">
-																<Phone className="w-4 h-4 mr-2 text-blue-600" /> Phone
-															</FormLabel>
-															<FormControl>
-																<Input placeholder="98XXXXXXXX" {...field} className="h-16 border-blue-100 bg-white hover:border-blue-300 focus:bg-white focus:border-blue-600 focus:ring-8 focus:ring-blue-600/5 rounded-2xl transition-all font-bold text-lg" />
-															</FormControl>
-															<FormMessage className="font-bold text-xs" />
-														</FormItem>
-													)}
-												/>
-												<FormField
-													control={form.control}
-													name="email"
-													render={({ field }) => (
-														<FormItem className="space-y-3">
-															<FormLabel className="flex items-center text-blue-950 font-black text-[10px] uppercase tracking-[0.2em] ml-1">
-																<Contact className="w-4 h-4 mr-2 text-blue-600" /> Email
-															</FormLabel>
-															<FormControl>
-																<Input placeholder="john@example.com" {...field} className="h-16 border-blue-100 bg-white hover:border-blue-300 focus:bg-white focus:border-blue-600 focus:ring-8 focus:ring-blue-600/5 rounded-2xl transition-all font-bold text-lg" />
-															</FormControl>
-															<FormMessage className="font-bold text-xs" />
-														</FormItem>
-													)}
-												/>
-												<FormField
-													control={form.control}
-													name="address"
-													render={({ field }) => (
-														<FormItem className="space-y-3">
-															<FormLabel className="flex items-center text-blue-950 font-black text-[10px] uppercase tracking-[0.2em] ml-1">
-																<MapPin className="w-4 h-4 mr-2 text-blue-600" /> Address
-															</FormLabel>
-															<FormControl>
-																<Input placeholder="Bhaisepati, Ward 2" {...field} className="h-16 border-blue-100 bg-white hover:border-blue-300 focus:bg-white focus:border-blue-600 focus:ring-8 focus:ring-blue-600/5 rounded-2xl transition-all font-bold text-lg" />
-															</FormControl>
-															<FormMessage className="font-bold text-xs" />
-														</FormItem>
-													)}
-												/>
-											</div>
-
-											<div className="flex flex-col items-center pt-12 border-t border-gray-100">
-												<Button
-													type="submit"
-													disabled={isSubmitting}
-													className="w-full md:w-auto min-w-[320px] h-20 rounded-full bg-blue-600 hover:bg-blue-700 text-white text-2xl font-black uppercase tracking-widest shadow-2xl shadow-blue-600/30 transition-all duration-500 transform hover:scale-105 active:scale-95"
-												>
-													{isSubmitting ? (
-														<>
-															<Loader2 className="mr-4 h-8 w-8 animate-spin" />
-															SECURED...
-														</>
-													) : (
-														"CONFIRM BOOKING"
-													)}
-												</Button>
-												<button
-													type="button"
-													onClick={() => setActiveTab("package")}
-													className="mt-8 text-xs font-black text-gray-400 hover:text-blue-600 transition-colors uppercase tracking-[0.4em]"
-												>
-													← Change Selected Package
-												</button>
-											</div>
-										</form>
-									</Form>
 								</TabsContent>
 							</div>
 						</Tabs>
+					</div>
+
+					{/* Social Proof Section */}
+					<div className="mt-16 sm:mt-24 grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-12 text-center">
+						<div className="space-y-2">
+							<p className="text-4xl font-serif font-black text-blue-950">500+</p>
+							<p className="text-[10px] font-black uppercase tracking-[0.2em] text-primary">Happy Properties</p>
+						</div>
+						<div className="space-y-2">
+							<p className="text-4xl font-serif font-black text-blue-950">15 min</p>
+							<p className="text-[10px] font-black uppercase tracking-[0.2em] text-primary">Response Time</p>
+						</div>
+						<div className="space-y-2">
+							<p className="text-4xl font-serif font-black text-blue-950">100%</p>
+							<p className="text-[10px] font-black uppercase tracking-[0.2em] text-primary">Brilliance Rate</p>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -477,35 +500,35 @@ export default function BookingPageClient() {
 			<Dialog open={showSuccessDialog} onOpenChange={setShowSuccessDialog}>
 				<DialogContent className="sm:max-w-xl rounded-[3rem] p-0 overflow-hidden border-none shadow-2xl">
 					<div className="bg-blue-950 p-10 sm:p-14 text-center text-white relative overflow-hidden">
-						<div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl -mr-32 -mt-32" />
+						<div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-3xl -mr-32 -mt-32" />
 						<div className="mx-auto w-24 h-24 bg-white/10 rounded-3xl flex items-center justify-center mb-8 backdrop-blur-md border border-white/20 shadow-2xl">
 							<CheckCircle2 className="w-12 h-12 text-white" />
 						</div>
-						<DialogTitle className="text-3xl sm:text-5xl font-black tracking-tighter mb-4">Confirmed!</DialogTitle>
+						<DialogTitle className="text-3xl sm:text-5xl font-serif font-black tracking-tighter mb-4">Confirmed!</DialogTitle>
 						<DialogDescription className="text-white/60 text-lg font-medium leading-relaxed">
-							Your premium cleaning service for <span className="text-white font-black">{selectedCategory}</span> {includeInterior && "including Interior"} has been successfully scheduled.
+							Your premium cleaning appointment is being secured. Our team will contact you within 15 minutes to finalize the schedule.
 						</DialogDescription>
 					</div>
 					<div className="p-8 sm:p-12 space-y-8 bg-white">
-						<div className="bg-blue-50 rounded-3xl p-8 space-y-5 border border-blue-50 shadow-inner">
+						<div className="bg-blue-50/50 rounded-3xl p-8 space-y-5 border border-blue-50 shadow-inner">
 							<div className="flex justify-between items-center px-2">
-								<span className="text-[10px] font-black text-blue-500 uppercase tracking-widest">Selected Item</span>
+								<span className="text-[10px] font-black text-primary uppercase tracking-widest">Order Level</span>
 								<span className="text-blue-950 font-black text-lg">{selectedCategory}</span>
 							</div>
 							<div className="flex justify-between items-center px-2 pt-5 border-t border-blue-100">
-								<span className="text-[10px] font-black text-blue-500 uppercase tracking-widest">Final Price</span>
-								<span className="text-blue-600 font-black text-3xl tabular-nums">NPR {(selectedPrice || 0).toLocaleString()}</span>
+								<span className="text-[10px] font-black text-primary uppercase tracking-widest">Investment</span>
+								<span className="text-primary font-black text-3xl tabular-nums">NPR {(selectedPrice || 0).toLocaleString()}</span>
 							</div>
 						</div>
 						<div className="flex flex-col space-y-4">
 							<Button
-								className="bg-blue-600 hover:bg-blue-700 text-white h-16 sm:h-20 rounded-full font-black text-xl uppercase tracking-widest shadow-2xl shadow-blue-600/20 transition-all active:scale-95"
+								className="bg-primary hover:bg-blue-900 text-white h-16 sm:h-20 rounded-2xl font-black text-xl uppercase tracking-widest shadow-2xl shadow-primary/20 transition-all active:scale-95"
 								onClick={() => router.push("/")}
 							>
-								Return Home
+								Return to Experience
 							</Button>
 							<p className="text-center text-[10px] font-black text-gray-400 uppercase tracking-[0.4em] pt-2">
-								Redirecting to home in 5s...
+								Automatic redirect in 5s...
 							</p>
 						</div>
 					</div>
@@ -514,3 +537,4 @@ export default function BookingPageClient() {
 		</div>
 	)
 }
+
