@@ -92,11 +92,10 @@ export function MainNav() {
                   <Button
                     variant="ghost"
                     className={cn(
-                      "h-10 w-10 flex items-center justify-center rounded-xl p-0",
+                      "h-10 w-6 flex items-center justify-center rounded-xl p-0",
                       isScrolled ? "text-primary hover:bg-primary/5" : "text-white hover:bg-white/10",
                     )}
                   >
-
                     <Menu className="h-6 w-6" />
                   </Button>
                 </SheetTrigger>
@@ -137,10 +136,9 @@ export function MainNav() {
             </div>
 
             {/* Logo (Next to Hamburger on Mobile, Left on Desktop) */}
-            <Link href="/" className="flex items-center group shrink-0 -ml-3 sm:ml-0">
-
-
+            <Link href="/" className="flex items-center group shrink-0 -ml-5 sm:ml-0">
               <div className={cn(
+
                 "relative transition-all duration-500 group-hover:scale-105 origin-left",
                 "w-32 h-10 sm:w-40 sm:h-12 md:w-56 md:h-16 lg:w-64 lg:h-20"
               )}>
