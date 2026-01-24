@@ -83,15 +83,15 @@ export function MainNav() {
             : "bg-primary py-0.5 sm:py-1 border-b border-white/5",
         )}
       >
-        <div className="classic-container flex items-center justify-between">
-          <div className="flex items-center flex-1 lg:flex-none">
-            {/* Mobile Burger Menu */}
+        <div className="classic-container relative flex items-center justify-between h-16 sm:h-20 lg:h-24">
+          {/* Mobile Burger Menu (Left) */}
+          <div className="flex items-center lg:hidden z-10">
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
               <SheetTrigger asChild>
                 <Button
                   variant="ghost"
                   className={cn(
-                    "lg:hidden mr-3 h-10 w-10 flex items-center justify-center rounded-xl",
+                    "h-10 w-10 flex items-center justify-center rounded-xl",
                     isScrolled ? "text-primary hover:bg-primary/5" : "text-white hover:bg-white/10",
                   )}
                 >
@@ -100,7 +100,7 @@ export function MainNav() {
               </SheetTrigger>
               <SheetContent side="left" className="w-[300px] p-0 border-none bg-white">
                 <div className="bg-primary p-8 sm:p-12 text-white flex flex-col items-center">
-                  <div className="relative w-full max-w-[250px] aspect-[2/1] mb-6">
+                  <div className="relative w-full max-w-[200px] aspect-[3/1] mb-6">
                     <Image
                       src="/logo.png"
                       alt="CRYSTALFRONT"
@@ -126,21 +126,21 @@ export function MainNav() {
                       </Link>
                     ))}
                   </nav>
-                  <div className="pt-6 border-t border-gray-100 italic text-xs text-gray-400">
+                  <div className="pt-6 border-t border-gray-100 italic text-xs text-gray-400 text-center">
                     Trusted by 500+ locals in Lalitpur
                   </div>
                 </div>
               </SheetContent>
             </Sheet>
+          </div>
 
-            {/* Logo */}
+          {/* Logo (Centered on Mobile, Left on Desktop) */}
+          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 lg:static lg:translate-x-0 lg:translate-y-0 lg:flex lg:items-center">
             <Link href="/" className="flex items-center group shrink-0">
               <div className={cn(
-                "relative transition-all duration-500 group-hover:scale-110 origin-left",
-                "w-32 h-10 min-[400px]:w-40 min-[400px]:h-12 sm:w-48 sm:h-14 md:w-56 md:h-16 lg:w-64 lg:h-20"
+                "relative transition-all duration-500 group-hover:scale-105 origin-center lg:origin-left",
+                "w-36 h-10 sm:w-48 sm:h-14 md:w-56 md:h-16 lg:w-64 lg:h-20"
               )}>
-
-
                 <Image
                   src="/logo.png"
                   alt="CRYSTALFRONT Logo"
@@ -153,96 +153,97 @@ export function MainNav() {
                 />
               </div>
             </Link>
+          </div>
 
-            {/* Desktop Nav */}
-            <nav className="hidden lg:flex items-center space-x-1 ml-10">
-              {mainRoutes.map((route) => (
-                <div
-                  key={route.href}
-                  className="relative group"
-                  onMouseEnter={() => route.hasSubmenu && setIsServicesHovered(true)}
-                  onMouseLeave={() => route.hasSubmenu && setIsServicesHovered(false)}
+          {/* Nav Items (Desktop only) */}
+          <nav className="hidden lg:flex items-center space-x-1 ml-10">
+            {mainRoutes.map((route) => (
+              <div
+                key={route.href}
+                className="relative group"
+                onMouseEnter={() => route.hasSubmenu && setIsServicesHovered(true)}
+                onMouseLeave={() => route.hasSubmenu && setIsServicesHovered(false)}
+              >
+                <Link
+                  href={route.href}
+                  className={cn(
+                    "px-4 py-2 text-[13px] font-black uppercase tracking-widest rounded-full transition-all relative overflow-hidden",
+                    isScrolled
+                      ? route.active ? "text-primary" : "text-primary/60 hover:text-primary"
+                      : route.active ? "text-secondary" : "text-white/70 hover:text-white",
+                  )}
                 >
-                  <Link
-                    href={route.href}
-                    className={cn(
-                      "px-4 py-2 text-[13px] font-black uppercase tracking-widest rounded-full transition-all relative overflow-hidden",
-                      isScrolled
-                        ? route.active ? "text-primary" : "text-primary/60 hover:text-primary"
-                        : route.active ? "text-secondary" : "text-white/70 hover:text-white",
-                    )}
-                  >
-                    {route.label}
-                    {route.hasSubmenu && <ChevronDown className="ml-1 h-3.5 w-3.5 inline transition-transform group-hover:rotate-180" />}
-                    <span className={cn(
-                      "absolute bottom-0 left-4 right-4 h-0.5 transform scale-x-0 transition-transform origin-left group-hover:scale-x-100",
-                      isScrolled ? "bg-primary" : "bg-secondary"
-                    )} />
-                  </Link>
+                  {route.label}
+                  {route.hasSubmenu && <ChevronDown className="ml-1 h-3.5 w-3.5 inline transition-transform group-hover:rotate-180" />}
+                  <span className={cn(
+                    "absolute bottom-0 left-4 right-4 h-0.5 transform scale-x-0 transition-transform origin-left group-hover:scale-x-100",
+                    isScrolled ? "bg-primary" : "bg-secondary"
+                  )} />
+                </Link>
 
-                  {/* Mega Dropdown */}
-                  {route.hasSubmenu && isServicesHovered && (
-                    <div className="absolute left-0 top-full pt-4 w-[600px] z-[100] animate-in fade-in slide-in-from-top-2 duration-300">
-                      <div className="bg-white rounded-[2.5rem] shadow-2xl border border-primary/5 p-6 overflow-hidden relative">
-                        {/* Decorative Background */}
-                        <div className="absolute top-0 right-0 w-32 h-32 bg-secondary/5 rounded-full blur-3xl -mr-16 -mt-16" />
+                {/* Mega Dropdown */}
+                {route.hasSubmenu && isServicesHovered && (
+                  <div className="absolute left-0 top-full pt-4 w-[600px] z-[100] animate-in fade-in slide-in-from-top-2 duration-300">
+                    <div className="bg-white rounded-[2.5rem] shadow-2xl border border-primary/5 p-6 overflow-hidden relative">
+                      {/* Decorative Background */}
+                      <div className="absolute top-0 right-0 w-32 h-32 bg-secondary/5 rounded-full blur-3xl -mr-16 -mt-16" />
 
-                        <div className="relative z-10">
-                          <div className="flex items-center justify-between mb-6 px-2">
-                            <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-blue-900/40">Our Specialized Services</h4>
-                            <Link href="/services" className="text-[10px] font-black uppercase tracking-widest text-secondary hover:underline transition-all">View All →</Link>
-                          </div>
-
-                          <div className="grid grid-cols-2 gap-2">
-                            {serviceRoutes.map((service) => (
-                              <Link
-                                key={service.label}
-                                href={service.href}
-                                className="flex items-start p-3 rounded-2xl hover:bg-blue-50/50 group/item transition-all duration-300 border border-transparent hover:border-blue-100"
-                              >
-                                <div className="mr-4 p-2.5 rounded-xl bg-blue-50 text-primary group-hover/item:bg-primary group-hover/item:text-white transition-all duration-300 shrink-0">
-                                  <service.icon className="w-5 h-5" />
-                                </div>
-                                <div className="flex flex-col">
-                                  <span className="text-[13px] font-black text-blue-950 group-hover/item:text-primary transition-colors leading-none mb-1.5">{service.label}</span>
-                                  <span className="text-[11px] font-medium text-muted-foreground leading-tight line-clamp-1">{service.description}</span>
-                                </div>
-                              </Link>
-                            ))}
-                          </div>
+                      <div className="relative z-10">
+                        <div className="flex items-center justify-between mb-6 px-2">
+                          <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-blue-900/40">Our Specialized Services</h4>
+                          <Link href="/services" className="text-[10px] font-black uppercase tracking-widest text-secondary hover:underline transition-all">View All →</Link>
                         </div>
 
-                        {/* Dropdown Footer */}
-                        <div className="mt-6 pt-6 border-t border-blue-50 flex items-center justify-between px-2">
-                          <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest flex items-center">
-                            <Sparkles className="w-3 h-3 mr-2 text-secondary" /> Crystal Clear Satisfaction Guaranteed
-                          </p>
-                          <div className="flex -space-x-2">
-                            {[1, 2, 3].map(i => (
-                              <div key={i} className="w-6 h-6 rounded-full border-2 border-white bg-blue-100 flex items-center justify-center text-[10px] font-black text-primary overflow-hidden">
-                                <Image src={`/placeholder.svg?height=30&width=30`} alt="User" width={24} height={24} />
+                        <div className="grid grid-cols-2 gap-2">
+                          {serviceRoutes.map((service) => (
+                            <Link
+                              key={service.label}
+                              href={service.href}
+                              className="flex items-start p-3 rounded-2xl hover:bg-blue-50/50 group/item transition-all duration-300 border border-transparent hover:border-blue-100"
+                            >
+                              <div className="mr-4 p-2.5 rounded-xl bg-blue-50 text-primary group-hover/item:bg-primary group-hover/item:text-white transition-all duration-300 shrink-0">
+                                <service.icon className="w-5 h-5" />
                               </div>
-                            ))}
-                          </div>
+                              <div className="flex flex-col">
+                                <span className="text-[13px] font-black text-blue-950 group-hover/item:text-primary transition-colors leading-none mb-1.5">{service.label}</span>
+                                <span className="text-[11px] font-medium text-muted-foreground leading-tight line-clamp-1">{service.description}</span>
+                              </div>
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Dropdown Footer */}
+                      <div className="mt-6 pt-6 border-t border-blue-50 flex items-center justify-between px-2">
+                        <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest flex items-center">
+                          <Sparkles className="w-3 h-3 mr-2 text-secondary" /> Crystal Clear Satisfaction Guaranteed
+                        </p>
+                        <div className="flex -space-x-2">
+                          {[1, 2, 3].map(i => (
+                            <div key={i} className="w-6 h-6 rounded-full border-2 border-white bg-blue-100 flex items-center justify-center text-[10px] font-black text-primary overflow-hidden">
+                              <Image src={`/placeholder.svg?height=30&width=30`} alt="User" width={24} height={24} />
+                            </div>
+                          ))}
                         </div>
                       </div>
                     </div>
-                  )}
-                </div>
-              ))}
-            </nav>
-          </div>
+                  </div>
+                )}
+              </div>
+            ))}
+          </nav>
 
-
-          <div className="flex items-center">
+          {/* Right Section (Book Now) */}
+          <div className="flex items-center z-10">
             <Button
               asChild
-              className="h-8 sm:h-10 px-4 sm:px-7 rounded-full bg-secondary hover:bg-secondary/90 text-white font-black text-[10px] sm:text-xs uppercase tracking-widest transition-all hover:scale-105 active:scale-95 shadow-lg shadow-secondary/20"
+              className="h-9 sm:h-12 px-4 sm:px-8 rounded-full bg-secondary hover:bg-secondary/90 text-white font-black text-[11px] sm:text-xs uppercase tracking-widest transition-all hover:scale-105 active:scale-95 shadow-xl shadow-secondary/20"
             >
               <Link href="/book">Book Now</Link>
             </Button>
           </div>
         </div>
+
       </header>
     </>
   )

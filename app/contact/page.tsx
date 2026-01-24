@@ -292,12 +292,18 @@ export default function ContactPage() {
             </p>
           </div>
 
-          <div className="h-[400px] rounded-lg overflow-hidden shadow-lg">
-            {/* This would be a real map in a production environment */}
-            <div className="w-full h-full bg-gray-200 flex items-center justify-center">
-              <p className="text-gray-500">Interactive Map Would Be Displayed Here</p>
-            </div>
+          <div className="h-[450px] rounded-[2.5rem] overflow-hidden shadow-2xl border-4 border-white">
+            <iframe
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              loading="lazy"
+              allowFullScreen
+              referrerPolicy="no-referrer-when-downgrade"
+              src="https://maps.google.com/maps?q=27.658933,85.306565&z=17&output=embed"
+            ></iframe>
           </div>
+
         </div>
       </section>
 
