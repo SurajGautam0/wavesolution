@@ -11,16 +11,12 @@ export function SiteFooter() {
       <div className="classic-container py-12 md:py-16">
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
           <div className="space-y-6">
-            <Link href="/" className="inline-block transition-transform hover:scale-105">
-              <div className="relative w-32 h-12 min-[400px]:w-40 min-[400px]:h-16 sm:w-48 sm:h-20 md:w-56 md:h-24">
-                <Image
-                  src="/logo.png"
-                  alt="CRYSTALFRONT"
-                  fill
-                  className="object-contain brightness-0 invert"
-                />
-              </div>
+            <Link href="/" className="inline-block transition-all duration-300 hover:scale-105">
+              <span className="text-3xl sm:text-4xl font-serif font-black tracking-tighter text-white uppercase">
+                Crystal<span className="text-secondary">Front</span>
+              </span>
             </Link>
+
             <p className="text-white/80">Professional cleaning services for homes and businesses in Bhaisepati, Lalitpur.</p>
             <div className="flex space-x-4">
               <Link

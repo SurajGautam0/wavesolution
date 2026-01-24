@@ -100,13 +100,10 @@ export function MainNav() {
               </SheetTrigger>
               <SheetContent side="left" className="w-[300px] p-0 border-none bg-white">
                 <div className="bg-primary p-8 sm:p-12 text-white flex flex-col items-center">
-                  <div className="relative w-full max-w-[200px] aspect-[3/1] mb-6">
-                    <Image
-                      src="/logo.png"
-                      alt="CRYSTALFRONT"
-                      fill
-                      className="object-contain brightness-0 invert"
-                    />
+                  <div className="flex flex-col items-center group">
+                    <span className="text-3xl sm:text-4xl font-serif font-black tracking-tighter text-white uppercase leading-none">
+                      Crystal<span className="text-secondary">Front</span>
+                    </span>
                   </div>
                   <p className="text-white/60 text-[10px] sm:text-xs uppercase tracking-[0.3em] font-black underline underline-offset-8 decoration-secondary/30 text-center">Premium Cleaning Service</p>
                 </div>
@@ -134,24 +131,15 @@ export function MainNav() {
             </Sheet>
           </div>
 
-          {/* Logo (Centered on Mobile, Left on Desktop) */}
           <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 lg:static lg:translate-x-0 lg:translate-y-0 lg:flex lg:items-center">
             <Link href="/" className="flex items-center group shrink-0">
-              <div className={cn(
-                "relative transition-all duration-500 group-hover:scale-105 origin-center lg:origin-left",
-                "w-36 h-10 sm:w-48 sm:h-14 md:w-56 md:h-16 lg:w-64 lg:h-20"
+              <span className={cn(
+                "font-serif font-black tracking-tighter uppercase transition-all duration-500",
+                "text-2xl sm:text-3xl md:text-4xl lg:text-5xl",
+                isScrolled ? "text-primary" : "text-white"
               )}>
-                <Image
-                  src="/logo.png"
-                  alt="CRYSTALFRONT Logo"
-                  fill
-                  priority
-                  className={cn(
-                    "object-contain transition-all duration-500",
-                    isScrolled ? "brightness-100" : "brightness-0 invert"
-                  )}
-                />
-              </div>
+                Crystal<span className="text-secondary">Front</span>
+              </span>
             </Link>
           </div>
 
