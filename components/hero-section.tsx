@@ -30,8 +30,9 @@ export function HeroSection() {
                 <span className="text-[10px] font-black uppercase tracking-[0.2em]">Crystal Clear Results</span>
               </div>
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-serif font-black tracking-tighter leading-[1.1]">
-                Professional Cleaning Excellence in <span className="text-secondary shimmer-text">Lalitpur</span>
+                Professional Cleaning Excellence in <span className="text-secondary shimmer-text">Valley</span>
               </h1>
+
               <div className="w-24 h-1.5 bg-secondary mx-auto lg:mx-0 rounded-full"></div>
               <p className="max-w-[600px] mx-auto lg:mx-0 text-lg sm:text-xl text-white/70 leading-relaxed font-medium">
                 Experience the CRYSTALFRONT standard. We bring a new level of clean to your Bhaisepati home or office with eco-friendly products.
