@@ -9,6 +9,12 @@ import { HeroSection } from "@/components/hero-section"
 import { Sidebar } from "@/components/sidebar"
 import { DiscountPopup } from "@/components/discount-popup"
 import { WorkerShowcase } from "@/components/worker-showcase"
+import { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "CRYSTALFRONT | Top Cleaning Services in Bhaisepati & Lalitpur",
+  description: "Experience professional cleaning excellence with CRYSTALFRONT. We provide high-quality residential and commercial cleaning in Bhaisepati, Sanepa, and surrounding Lalitpur areas.",
+}
 
 export default function Home() {
   return (

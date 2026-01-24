@@ -7,8 +7,9 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 
 export const metadata: Metadata = {
-  title: "About Us | CRYSTALFRONT",
-  description: "Learn about CRYSTALFRONT, Bhaisepati, Lalitpur's premier cleaning service provider.",
+  title: "About CRYSTALFRONT - Best Cleaning Solutions in Lalitpur Since 2010",
+  description: "Learn about the mission, values, and expert team behind CRYSTALFRONT. Providing top-tier residential and commercial cleaning services in Bhaisepati and Lalitpur for over a decade.",
+  keywords: ["about CRYSTALFRONT", "cleaning company Lalitpur", "professional cleaning team Nepal", "best cleaners Bhaisepati"],
 }
 
 interface TeamMember {
