@@ -1,5 +1,5 @@
 import { collection, doc, setDoc, getDocs, query, where } from "firebase/firestore"
-import { db } from "./config"
+import { db } from "../firebase"
 import type { ServicePrice, Coupon, Post } from "@/lib/types"
 import { registerUser } from "./auth"
 

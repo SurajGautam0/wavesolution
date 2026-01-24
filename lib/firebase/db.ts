@@ -13,7 +13,7 @@ import {
   type DocumentData,
 } from "firebase/firestore"
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage"
-import { db, storage } from "./config"
+import { db, storage } from "../firebase"
 import type { User, Booking, Coupon, Post, ServicePrice } from "@/lib/types"
 
 // Convert Firestore timestamp to ISO string
