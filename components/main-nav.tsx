@@ -84,18 +84,19 @@ export function MainNav() {
         )}
       >
         <div className="classic-container relative flex items-center justify-between h-16 sm:h-20 lg:h-24">
-          <div className="flex items-center flex-1 lg:flex-none">
+          <div className="flex items-center">
             {/* Mobile Burger Menu (Left) */}
-            <div className="flex items-center lg:hidden z-10 mr-4">
+            <div className="flex items-center lg:hidden z-10 mr-0">
               <Sheet open={isOpen} onOpenChange={setIsOpen}>
                 <SheetTrigger asChild>
                   <Button
                     variant="ghost"
                     className={cn(
-                      "h-10 w-10 flex items-center justify-center rounded-xl",
+                      "h-10 w-10 flex items-center justify-center rounded-xl p-0",
                       isScrolled ? "text-primary hover:bg-primary/5" : "text-white hover:bg-white/10",
                     )}
                   >
+
                     <Menu className="h-6 w-6" />
                   </Button>
                 </SheetTrigger>
@@ -136,10 +137,12 @@ export function MainNav() {
             </div>
 
             {/* Logo (Next to Hamburger on Mobile, Left on Desktop) */}
-            <Link href="/" className="flex items-center group shrink-0">
+            <Link href="/" className="flex items-center group shrink-0 -ml-3 sm:ml-0">
+
+
               <div className={cn(
                 "relative transition-all duration-500 group-hover:scale-105 origin-left",
-                "w-36 h-10 sm:w-48 sm:h-14 md:w-56 md:h-16 lg:w-64 lg:h-20"
+                "w-32 h-10 sm:w-40 sm:h-12 md:w-56 md:h-16 lg:w-64 lg:h-20"
               )}>
                 <Image
                   src="/logo.png"
