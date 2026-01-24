@@ -32,12 +32,11 @@ export function Sidebar() {
             <div>
               <p className="font-medium">Business Hours</p>
               <p className="text-sm text-muted-foreground">
-                Monday - Friday: 8am - 6pm
+                Available 24/7
                 <br />
-                Saturday: 9am - 4pm
-                <br />
-                Sunday: Closed
+                Every day of the week
               </p>
+
             </div>
           </div>
         </div>
@@ -68,32 +67,34 @@ export function Sidebar() {
             <p className="font-medium">Cleaning Workshop</p>
             <div className="flex items-center text-sm text-muted-foreground">
               <CalendarDays className="mr-2 h-4 w-4 text-primary" />
-              <span>March 25, 2024</span>
+              <span>February 15, 2026</span>
             </div>
             <p className="text-sm text-muted-foreground mt-1">
-              Learn professional cleaning techniques from our experts.
+              Learn professional cleaning techniques from our experts in Kathmandu.
             </p>
           </div>
           <div className="border-b pb-4">
             <p className="font-medium">Community Clean-up</p>
             <div className="flex items-center text-sm text-muted-foreground">
               <CalendarDays className="mr-2 h-4 w-4 text-primary" />
-              <span>April 15, 2024</span>
+              <span>February 05, 2026</span>
             </div>
             <p className="text-sm text-muted-foreground mt-1">
-              Join us for a community clean-up event at Sydney Harbor.
+              Join us for a community clean-up event at Bhaisepati Park.
             </p>
           </div>
           <div>
             <p className="font-medium">Eco-Cleaning Seminar</p>
             <div className="flex items-center text-sm text-muted-foreground">
               <CalendarDays className="mr-2 h-4 w-4 text-primary" />
-              <span>May 10, 2024</span>
+              <span>January 28, 2026</span>
             </div>
             <p className="text-sm text-muted-foreground mt-1">
-              Learn about environmentally friendly cleaning solutions.
+              Learn about environmentally friendly cleaning solutions for Nepali homes.
             </p>
           </div>
+
+
         </div>
       </div>
 
@@ -105,20 +106,21 @@ export function Sidebar() {
             <Link href="/blog/cleaning-tips" className="font-medium hover:text-primary">
               10 Cleaning Tips for a Spotless Home
             </Link>
-            <p className="text-xs text-muted-foreground mt-1">March 15, 2024</p>
+            <p className="text-xs text-muted-foreground mt-1">February 15, 2026</p>
           </div>
           <div className="border-b pb-4">
             <Link href="/blog/eco-friendly" className="font-medium hover:text-primary">
               Eco-Friendly Cleaning Solutions
             </Link>
-            <p className="text-xs text-muted-foreground mt-1">February 28, 2024</p>
+            <p className="text-xs text-muted-foreground mt-1">February 02, 2026</p>
           </div>
           <div>
             <Link href="/blog/office-cleaning" className="font-medium hover:text-primary">
               How Often Should You Clean Your Office?
             </Link>
-            <p className="text-xs text-muted-foreground mt-1">February 10, 2024</p>
+            <p className="text-xs text-muted-foreground mt-1">January 20, 2026</p>
           </div>
+
         </div>
       </div>
     </aside>

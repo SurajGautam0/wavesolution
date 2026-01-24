@@ -100,7 +100,7 @@ export function MainNav() {
               </SheetTrigger>
               <SheetContent side="left" className="w-[300px] p-0 border-none bg-white">
                 <div className="bg-primary p-8 sm:p-12 text-white flex flex-col items-center">
-                  <div className="relative w-full max-w-[200px] aspect-[2/1] mb-4">
+                  <div className="relative w-full max-w-[250px] aspect-[2/1] mb-6">
                     <Image
                       src="/logo.png"
                       alt="CRYSTALFRONT"
@@ -134,11 +134,13 @@ export function MainNav() {
             </Sheet>
 
             {/* Logo */}
-            <Link href="/" className="flex items-center group">
+            <Link href="/" className="flex items-center group shrink-0">
               <div className={cn(
-                "relative transition-all duration-500 group-hover:scale-105",
-                "w-24 h-7 min-[400px]:w-32 min-[400px]:h-9 sm:w-40 sm:h-12 md:w-48 md:h-14 lg:w-56 lg:h-16"
+                "relative transition-all duration-500 group-hover:scale-110 origin-left",
+                "w-32 h-10 min-[400px]:w-40 min-[400px]:h-12 sm:w-48 sm:h-14 md:w-56 md:h-16 lg:w-64 lg:h-20"
               )}>
+
+
                 <Image
                   src="/logo.png"
                   alt="CRYSTALFRONT Logo"

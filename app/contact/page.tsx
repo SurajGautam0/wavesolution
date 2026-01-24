@@ -137,6 +137,8 @@ export default function ContactPage() {
                   <h3 className="text-xl font-bold mb-2">Business Hours</h3>
                   <ul className="text-muted-foreground space-y-1">
                     <li>Available 24/7</li>
+                    <li>Every day of the week</li>
+
                   </ul>
                 </div>
               </CardContent>
