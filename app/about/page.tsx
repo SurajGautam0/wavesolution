@@ -8,7 +8,7 @@ import { Card, CardContent } from "@/components/ui/card"
 
 export const metadata: Metadata = {
   title: "About CRYSTALFRONT - Best Cleaning Solutions in Lalitpur Since 2026",
-  description: "Learn about the mission, values, and expert team behind CRYSTALFRONT. Providing top-tier residential and commercial cleaning services in Bhaisepati and Lalitpur for over a decade.",
+  description: "Learn about the mission, values, and expert team behind CRYSTALFRONT. Providing top-tier residential and commercial cleaning services in Bhaisepati and Lalitpur with international precision.",
   keywords: ["about CRYSTALFRONT", "cleaning company Lalitpur", "professional cleaning team Nepal", "best cleaners Bhaisepati"],
 }
 
@@ -26,43 +26,33 @@ interface TeamMember {
 
 const teamMembers: TeamMember[] = [
   {
-    name: "John Anderson",
+    name: "Bikram Basnet",
     position: "Founder & CEO",
-    bio: "After spending years mastering advanced cleaning technologies and standards in international markets, our founder returned to Nepal to modernize the industry. He established CRYSTALFRONT in 2026 to bring world-class precision to Lalitpur.",
-    image: "/placeholder.svg?height=400&width=400",
+    bio: "After spending years mastering advanced cleaning technologies and standards in international markets, Bikram returned to Nepal to modernize the industry. He established CRYSTALFRONT in 2026 to bring world-class precision to Lalitpur.",
+    image: "/team/bikram.png",
     social: {
       linkedin: "https://linkedin.com",
       twitter: "https://twitter.com",
     },
   },
   {
-    name: "Sarah Mitchell",
-    position: "Operations Manager",
-    bio: "Sarah oversees all cleaning operations, ensuring our high standards are maintained across all services. Her attention to detail and commitment to excellence has been instrumental in our growth.",
-    image: "/placeholder.svg?height=400&width=400",
+    name: "Sameet Gautam",
+    position: "General Manager",
+    bio: "Sameet oversees all cleaning operations, ensuring our high standards are maintained across all services. His attention to detail and commitment to excellence has been instrumental in our growth.",
+    image: "/team/sameet.png",
     social: {
       linkedin: "https://linkedin.com",
       instagram: "https://instagram.com",
     },
   },
   {
-    name: "Michael Chen",
-    position: "Customer Relations",
-    bio: "Michael is dedicated to ensuring our customers receive the best possible experience. He manages our customer service team and is always looking for ways to improve our service delivery.",
-    image: "/placeholder.svg?height=400&width=400",
+    name: "Joseph Thapa",
+    position: "Supervisor",
+    bio: "Joseph is dedicated to ensuring our customers receive the best possible experience and that every cleaning job meets our rigorous quality standards. He manages our on-site teams with precision.",
+    image: "/team/joseph.png",
     social: {
       linkedin: "https://linkedin.com",
       twitter: "https://twitter.com",
-    },
-  },
-  {
-    name: "Emma Thompson",
-    position: "Training Specialist",
-    bio: "Emma is responsible for training our cleaning staff, ensuring they are equipped with the latest techniques and knowledge. Her expertise ensures our team delivers consistent, high-quality results.",
-    image: "/placeholder.svg?height=400&width=400",
-    social: {
-      linkedin: "https://linkedin.com",
-      instagram: "https://instagram.com",
     },
   },
 ]
@@ -101,10 +91,10 @@ export default function AboutPage() {
               <div className="w-16 h-1 bg-secondary mb-6"></div>
               <div className="space-y-4 text-muted-foreground">
                 <p>
-                  The CRYSTALFRONT story began in the international cleaning industry, where our founders spent years mastering advanced techniques, eco-friendly standards, and high-precision equipment. While working abroad, they observed a significant gap: while the world was moving towards automated and scientific cleaning, the local industry in our home country remained largely traditional and unregulated.
+                  The CRYSTALFRONT story began in the international cleaning industry, where our founder, Bikram Basnet, spent years mastering advanced techniques, eco-friendly standards, and high-precision equipment. While working abroad, he observed a significant gap: while the world was moving towards automated and scientific cleaning, the local industry in our home country remained largely traditional and unregulated.
                 </p>
                 <p>
-                  Driven by the desire to elevate standards in Nepal, we returned with a mission to bridge this gap. We realized that true excellence comes from training, not just tools. In 2026, we officially launched CRYSTALFRONT after months of intensive staff training, where we taught our employees the international 'Crystal Clear' methodology.
+                  Driven by the desire to elevate standards in Nepal, he returned with a mission to bridge this gap. We realized that true excellence comes from training, not just tools. In 2026, we officially launched CRYSTALFRONT after months of intensive staff training, where we taught our employees the international 'Crystal Clear' methodology.
                 </p>
                 <p>
                   Today, we are proud to offer a service that combines global expertise with local dedication. We don't just clean; we import a standard of hygiene and professionalism that Bhaisepati and Lalitpur deserve.
