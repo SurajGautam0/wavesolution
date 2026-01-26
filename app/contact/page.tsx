@@ -65,15 +65,16 @@ export default function ContactPage() {
     <div className="flex min-h-screen flex-col">
       <div className="page-header relative overflow-hidden">
         {/* Background Overlay with Nepali vibe */}
-        <div className="absolute inset-0 z-0 opacity-20">
+        <div className="absolute inset-0 z-0 opacity-40">
           <Image
-            src="https://images.unsplash.com/photo-1544806030-22d206f9d150?auto=format&fit=crop&q=80&w=2000"
-            alt="Kathmandu Skyline"
+            src="/Untitled video - Made with Clipchamp (1).gif"
+            alt="Background Animation"
             fill
             className="object-cover"
             priority
+            unoptimized
           />
-          <div className="absolute inset-0 bg-primary/60 backdrop-blur-sm" />
+          <div className="absolute inset-0 bg-primary/40 backdrop-blur-[2px]" />
         </div>
         <div className="classic-container relative z-10">
           <div className="max-w-3xl mx-auto text-center">

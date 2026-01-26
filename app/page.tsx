@@ -1,4 +1,5 @@
 import Link from "next/link"
+import Image from "next/image"
 import { ArrowRight, CheckCircle, Clock, MapPin } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
@@ -123,68 +124,86 @@ export default function Home() {
             </section>
 
             {/* Testimonials */}
-            <section className="classic-card p-6 sm:p-10">
-              <div className="flex flex-col items-center justify-center space-y-6 text-center mb-10">
-                <h2 className="classic-heading text-3xl sm:text-4xl">What Our Customers Say</h2>
+            <section className="relative overflow-hidden rounded-[3rem] p-6 sm:p-12 mb-12">
+              {/* GIF Background with Nepali Vibe */}
+              <div className="absolute inset-0 z-0 opacity-50">
+                <Image
+                  src="/Untitled video - Made with Clipchamp (1).gif"
+                  alt="Testimonials Background"
+                  fill
+                  className="object-cover"
+                  unoptimized
+                />
+                <div className="absolute inset-0 bg-primary/70 backdrop-blur-[1px]" />
+              </div>
+
+              <div className="relative z-10 flex flex-col items-center justify-center space-y-6 text-center mb-10 text-white">
+                <div className="flex items-center gap-3">
+                  <span className="text-3xl">🇳🇵</span>
+                  <h2 className="text-3xl sm:text-4xl font-serif font-black uppercase tracking-tight">What Our Customers Say</h2>
+                  <span className="text-3xl">🇳🇵</span>
+                </div>
                 <div className="w-24 h-1.5 bg-secondary rounded-full"></div>
-                <p className="text-muted-foreground text-lg">
-                  Trusted by our local community in Lalitpur.
+                <p className="text-white/80 text-lg max-w-2xl font-medium">
+                  Read what our satisfied customers in Kathmandu Valley have to say about their experience with our professional cleaning service.
                 </p>
               </div>
-              <Tabs defaultValue="residential">
-                <div className="flex justify-center mb-6">
-                  <TabsList className="bg-muted">
-                    <TabsTrigger
-                      value="residential"
-                      className="data-[state=active]:bg-secondary data-[state=active]:text-white"
-                    >
-                      Residential
-                    </TabsTrigger>
-                    <TabsTrigger
-                      value="commercial"
-                      className="data-[state=active]:bg-secondary data-[state=active]:text-white"
-                    >
-                      Commercial
-                    </TabsTrigger>
-                  </TabsList>
-                </div>
-                <TabsContent value="residential">
-                  <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-                    <TestimonialCard
-                      name="राम बहादुर थापा"
-                      location="भैसेपाटी, ललितपुर"
-                      rating={5}
-                      testimonial="CRYSTALFRONT ले मेरो घरको सरसफाई निकै राम्रोसँग गरिरहेको छ। उनीहरूको काम निकै व्यवस्थित र भरपर्दो छ। विशेष गरि भैसेपाटी क्षेत्रमा यति राम्रो सर्भिस पाउनु एकदमै खुसीको कुरा हो।"
-                      image="/placeholder.svg?height=80&width=80"
-                    />
-                    <TestimonialCard
-                      name="सीता कुमारी राई"
-                      location="सानेपा, ललितपुर"
-                      rating={5}
-                      testimonial="मैले धेरै ठाउँमा सरसफाई गराएँ तर CRYSTALFRONT जस्तो सफा गर्ने कोही भेटिन। उनीहरूको टिमु निकै मिहिनेती छ। घरको कुनाकुनासम्म धेरै राम्रोसँग सफा गर्छन्।"
-                      image="/placeholder.svg?height=80&width=80"
-                    />
+              <div className="relative z-10">
+                <Tabs defaultValue="residential">
+                  <div className="flex justify-center mb-6">
+                    <TabsList className="bg-white/10 backdrop-blur-md border border-white/20">
+                      <TabsTrigger
+                        value="residential"
+                        className="data-[state=active]:bg-secondary data-[state=active]:text-white text-white/70"
+                      >
+                        Residential
+                      </TabsTrigger>
+                      <TabsTrigger
+                        value="commercial"
+                        className="data-[state=active]:bg-secondary data-[state=active]:text-white text-white/70"
+                      >
+                        Commercial
+                      </TabsTrigger>
+                    </TabsList>
                   </div>
-                </TabsContent>
-                <TabsContent value="commercial">
-                  <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-                    <TestimonialCard
-                      name="राजेश खत्री"
-                      location="एकान्तकुना, ललितपुर"
-                      rating={5}
-                      testimonial="हाम्रो अफिसको सरसफाईको जिम्मा CRYSTALFRONT लाई दिएका छौं। उनीहरूले निकै राम्रो काम गरिरहेका छन्। अफिस सफा भएपछि कर्मचारीहरूको मनोबल पनि बढेको महसुस गरेका छौं।"
-                      image="/placeholder.svg?height=80&width=80"
-                    />
-                    <TestimonialCard
-                      name="बिनीता बस्नेत"
-                      location="बखुन्डोल, ललितपुर"
-                      rating={5}
-                      testimonial="हाम्रो रेस्टुरेन्टको लागि CRYSTALFRONT को सरसफाई निकै प्रभावकारी छ। उनीहरूले किचेन र डाइनिङ हल निकै राम्रोसँग सेनिटाइज गर्छन्। उनीहरूको काममा हामी धेरै सन्तुष्ट छौं।"
-                      image="/placeholder.svg?height=80&width=80"
-                    />
-                  </div>
-                </TabsContent>
-              </Tabs>
+                  <TabsContent value="residential">
+                    <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+                      <TestimonialCard
+                        name="राम बहादुर थापा"
+                        location="भैसेपाटी, ललितपुर"
+                        rating={5}
+                        testimonial="CRYSTALFRONT ले मेरो घरको सरसफाई निकै राम्रोसँग गरिरहेको छ। उनीहरूको काम निकै व्यवस्थित र भरपर्दो छ। विशेष गरि भैसेपाटी क्षेत्रमा यति राम्रो सर्भिस पाउनु एकदमै खुसीको कुरा हो।"
+                        image="/placeholder.svg?height=80&width=80"
+                      />
+                      <TestimonialCard
+                        name="सीता कुमारी राई"
+                        location="सानेपा, ललितपुर"
+                        rating={5}
+                        testimonial="मैले धेरै ठाउँमा सरसफाई गराएँ तर CRYSTALFRONT जस्तो सफा गर्ने कोही भेटिन। उनीहरूको टिमु निकै मिहिनेती छ। घरको कुनाकुनासम्म धेरै राम्रोसँग सफा गर्छन्।"
+                        image="/placeholder.svg?height=80&width=80"
+                      />
+                    </div>
+                  </TabsContent>
+                  <TabsContent value="commercial">
+                    <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+                      <TestimonialCard
+                        name="राजेश खत्री"
+                        location="एकान्तकुना, ललितपुर"
+                        rating={5}
+                        testimonial="हाम्रो अफिसको सरसफाईको जिम्मा CRYSTALFRONT लाई दिएका छौं। उनीहरूले निकै राम्रो काम गरिरहेका छन्। अफिस सफा भएपछि कर्मचारीहरूको मनोबल पनि बढेको महसुस गरेका छौं।"
+                        image="/placeholder.svg?height=80&width=80"
+                      />
+                      <TestimonialCard
+                        name="बिनीता बस्नेत"
+                        location="बखुन्डोल, ललितपुर"
+                        rating={5}
+                        testimonial="हाम्रो रेस्टुरेन्टको लागि CRYSTALFRONT को सरसफाई निकै प्रभावकारी छ। उनीहरूले किचेन र डाइनिङ हल निकै राम्रोसँग सेनिटाइज गर्छन्। उनीहरूको काममा हामी धेरै सन्तुष्ट छौं।"
+                        image="/placeholder.svg?height=80&width=80"
+                      />
+                    </div>
+                  </TabsContent>
+                </Tabs>
+              </div>
             </section>
           </div>
 
