@@ -1,16 +1,11 @@
-import type { Metadata } from "next"
+"use client"
+
 import Image from "next/image"
 import Link from "next/link"
-import { CheckCircle, Instagram, Linkedin, Twitter } from "lucide-react"
+import { CheckCircle, Instagram, Linkedin, Twitter, Sparkles, Target } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-
-export const metadata: Metadata = {
-  title: "About CRYSTALFRONT - Best Cleaning Solutions in Lalitpur Since 2026",
-  description: "Learn about the mission, values, and expert team behind CRYSTALFRONT. Providing top-tier residential and commercial cleaning services in Bhaisepati and Lalitpur with international precision.",
-  keywords: ["about CRYSTALFRONT", "cleaning company Lalitpur", "professional cleaning team Nepal", "best cleaners Bhaisepati"],
-}
 
 interface TeamMember {
   name: string
@@ -60,26 +55,87 @@ const teamMembers: TeamMember[] = [
 export default function AboutPage() {
   return (
     <div className="flex min-h-screen flex-col">
-      <div className="page-header relative overflow-hidden">
-        {/* Background Overlay with Nepali vibe */}
-        <div className="absolute inset-0 z-0 opacity-20">
-          <Image
-            src="https://images.unsplash.com/photo-1544806030-22d206f9d150?auto=format&fit=crop&q=80&w=2000"
-            alt="Kathmandu Valley Background"
-            fill
-            className="object-cover"
-          />
-          <div className="absolute inset-0 bg-primary/60 backdrop-blur-sm" />
+      {/* Premium Page Header */}
+      <div className="page-header relative min-h-[50vh] flex items-center overflow-hidden bg-primary py-0">
+        {/* Animated Background Container */}
+        <div className="absolute inset-0 z-0">
+          <div className="relative h-full w-full overflow-hidden">
+            <Image
+              src="/aboutreal.jpeg"
+              alt="Professional Cleaning Team"
+              fill
+              className="object-cover scale-110"
+              style={{ animation: "ken-burns 20s ease-in-out infinite alternate" }}
+              priority
+            />
+          </div>
+          {/* Multi-layered Premium Overlays */}
+          <div className="absolute inset-0 bg-gradient-to-r from-primary/90 via-primary/50 to-transparent z-10" />
+          <div className="absolute inset-0 bg-gradient-to-t from-primary via-transparent to-transparent z-10" />
+
+          {/* Decorative Animated Light Leaks */}
+          <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-secondary/20 rounded-full blur-[120px] animate-pulse" />
+          <div className="absolute bottom-[-10%] right-[-10%] w-[30%] h-[30%] bg-blue-400/20 rounded-full blur-[100px] animate-pulse delay-700" />
         </div>
-        <div className="classic-container relative z-10">
-          <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl mb-6">About CRYSTALFRONT</h1>
-            <div className="w-20 h-1 bg-secondary mx-auto mb-6"></div>
-            <p className="text-xl text-white/80 mb-8">
-              The Kathmandu Valley's premier cleaning service provider, bringing international standards since 2026.
+
+        <div className="classic-container relative z-20 py-20 text-white">
+          <div className="max-w-3xl text-left animate-fadeIn">
+            {/* Glassmorphism Badge */}
+            <div className="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 mb-8 overflow-hidden">
+              <Target className="w-4 h-4 text-secondary" />
+              <span className="text-[10px] font-black uppercase tracking-[0.3em]">Redefining Standards Since 2026</span>
+            </div>
+
+            <h1 className="text-5xl font-black tracking-tight sm:text-7xl md:text-8xl mb-8 leading-[0.9]">
+              Driven by <br />
+              <span className="text-secondary shimmer-text">Quality</span>
+            </h1>
+
+            <div className="w-24 h-2 bg-secondary mb-10 rounded-full" />
+
+            <p className="text-xl sm:text-2xl text-white/80 max-w-2xl font-medium leading-relaxed mb-10">
+              The Kathmandu Valley's premier cleaning service provider, bringing
+              <span className="text-white font-black italic"> international precision </span>
+              to every doorstep in Lalitpur.
             </p>
+
+            <div className="flex flex-wrap gap-6 pt-4">
+              <div className="flex items-center space-x-3">
+                <div className="w-10 h-10 rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center">
+                  <Sparkles className="w-5 h-5 text-secondary" />
+                </div>
+                <div className="flex flex-col">
+                  <span className="text-sm font-black">Eco-Friendly</span>
+                  <span className="text-[10px] text-white/40 font-bold uppercase tracking-widest">Global Standards</span>
+                </div>
+              </div>
+              <div className="flex items-center space-x-3">
+                <div className="w-10 h-10 rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center">
+                  <CheckCircle className="w-5 h-5 text-secondary" />
+                </div>
+                <div className="flex flex-col">
+                  <span className="text-sm font-black">Certified Team</span>
+                  <span className="text-[10px] text-white/40 font-bold uppercase tracking-widest">100% Verified</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
+
+        {/* Custom Keyframes in-line */}
+        <style jsx>{`
+          @keyframes ken-burns {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.15) translate(1%, 1%); }
+          }
+           @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+          }
+          .animate-fadeIn {
+            animation: fadeIn 1s ease-out forwards;
+          }
+        `}</style>
       </div>
 
       {/* Our Story Section */}
