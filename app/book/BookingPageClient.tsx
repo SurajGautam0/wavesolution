@@ -47,35 +47,39 @@ import { cn } from "@/lib/utils"
 
 const windowPackages = [
 	{
-		category: "Everest (XL)",
-		area: "Biggest XL showrooms, wide glass fronts",
-		prices: [6500, 8000],
-		icon: "🏔️"
-	},
-	{
-		category: "Lhotse (Large)",
-		area: "Auto showrooms, large restaurants",
-		prices: [3500, 4000, 5000],
+		category: "Annapurna (Small)",
+		subText: "Upto 50sq. ft.",
+		area: "Small shops, pharmacies, boutiques",
+		prices: [2500, 3500, 4000],
 		icon: "🏔️"
 	},
 	{
 		category: "Manaslu (Medium)",
-		area: "Restaurants, retail stores",
+		subText: "Upto 100 sq. ft.",
+		area: "Cafés, restaurants, retail stores",
 		prices: [3000, 4000, 4500],
 		icon: "🏔️"
 	},
 	{
-		category: "Annapurna (Small)",
-		area: "Small shops, boutiques",
-		prices: [2500, 3500, 4000],
+		category: "Lhotse (Large)",
+		subText: "Upto 200 sq. ft.",
+		area: "Large restaurants, medium showrooms",
+		prices: [3500, 4000, 5000],
+		icon: "🏔️"
+	},
+	{
+		category: "Everest (XL Showroom)",
+		subText: "350 sq. ft.",
+		area: "Auto showrooms, wide glass fronts",
+		prices: [6500, 7500, 8000],
 		icon: "🏔️"
 	},
 ]
 
 const frequencyLabels = [
-	"Weekly",
-	"Bi-Weekly",
-	"Monthly",
+	"4x/Month (Weekly)",
+	"6x/Month (Every 5 Days)",
+	"8x/Month (Bi-Weekly)",
 ]
 
 const formSchema = z.object({
@@ -225,8 +229,11 @@ export default function BookingPageClient() {
 													Level {windowPackages.indexOf(row) + 1}
 												</span>
 												<div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-500">{row.icon}</div>
-												<h3 className="text-2xl font-black mb-3 tracking-tighter leading-none">{row.category}</h3>
-												<p className={cn("text-xs font-medium leading-relaxed mb-8 h-10 line-clamp-2", selectedCategory === row.category ? "text-blue-50" : "text-gray-500")}>
+												<h3 className="text-2xl font-black mb-1 tracking-tighter leading-none">{row.category}</h3>
+												<p className={cn("text-[10px] font-bold mb-2", selectedCategory === row.category ? "text-blue-100/80" : "text-blue-600")}>
+													{row.subText}
+												</p>
+												<p className={cn("text-[11px] font-medium leading-relaxed mb-6 h-10 line-clamp-2", selectedCategory === row.category ? "text-blue-50" : "text-gray-500")}>
 													{row.area}
 												</p>
 
@@ -247,13 +254,47 @@ export default function BookingPageClient() {
 																	: !row.prices[i] ? "opacity-20 cursor-not-allowed hidden" : selectedCategory === row.category ? "bg-white/10 text-white border-white/20 hover:bg-white/20" : "bg-blue-50/50 text-blue-900 border-transparent hover:border-blue-100"
 															)}
 														>
-															<span>{freq}</span>
-															<span>{row.prices[i] ? `M${row.prices[i] / 1000}k` : "-"}</span>
+															<span>{freq.split(" (")[0]}</span>
+															<span>{row.prices[i] ? `NPR ${row.prices[i]}` : "-"}</span>
 														</div>
 													))}
 												</div>
 											</button>
 										))}
+									</div>
+
+									{/* Detailed Pricing Table - Image Reference */}
+									<div className="mt-16 overflow-hidden rounded-[2rem] border border-blue-100 bg-white shadow-xl">
+										<div className="bg-blue-950 p-6 text-white text-center">
+											<h3 className="text-xl font-black tracking-tight uppercase">CrystalFront — Storefront Window Cleaning Pricing (Exterior)</h3>
+										</div>
+										<div className="overflow-x-auto">
+											<table className="w-full text-left border-collapse">
+												<thead>
+													<tr className="bg-blue-50/50">
+														<th className="p-4 sm:p-6 text-[11px] font-black uppercase tracking-widest text-primary border-b border-r border-blue-100">Size Category</th>
+														<th className="p-4 sm:p-6 text-[11px] font-black uppercase tracking-widest text-primary border-b border-r border-blue-100">Typical Window Area</th>
+														<th className="p-4 sm:p-6 text-[11px] font-black uppercase tracking-widest text-primary border-b border-r border-blue-100">4x/Month (Weekly)</th>
+														<th className="p-4 sm:p-6 text-[11px] font-black uppercase tracking-widest text-primary border-b border-r border-blue-100">6x/Month (Every 5 Days)</th>
+														<th className="p-4 sm:p-6 text-[11px] font-black uppercase tracking-widest text-primary border-b">8x/Month (Bi-Weekly)</th>
+													</tr>
+												</thead>
+												<tbody className="text-blue-950">
+													{windowPackages.map((row, idx) => (
+														<tr key={idx} className="hover:bg-blue-50/30 transition-colors">
+															<td className="p-4 sm:p-6 border-b border-r border-blue-50 font-bold">
+																<div>{row.category}</div>
+																<div className="text-[10px] text-blue-600/70 font-black">{row.subText}</div>
+															</td>
+															<td className="p-4 sm:p-6 border-b border-r border-blue-50 text-sm font-medium">{row.area}</td>
+															<td className="p-4 sm:p-6 border-b border-r border-blue-50 font-black text-center">NPR {row.prices[0].toLocaleString()}</td>
+															<td className="p-4 sm:p-6 border-b border-r border-blue-50 font-black text-center">NPR {row.prices[1].toLocaleString()}</td>
+															<td className="p-4 sm:p-6 border-b font-black text-center">NPR {row.prices[2].toLocaleString()}</td>
+														</tr>
+													))}
+												</tbody>
+											</table>
+										</div>
 									</div>
 
 									{/* Advanced Add-ons Detail */}
