@@ -1,4 +1,5 @@
-import type { Metadata } from "next"
+"use client"
+
 import Image from "next/image"
 import Link from "next/link"
 import { Star, Quote } from "lucide-react"
@@ -6,11 +7,6 @@ import { Star, Quote } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-
-export const metadata: Metadata = {
-  title: "Testimonials | CRYSTALFRONT",
-  description: "Read what our customers have to say about our cleaning services.",
-}
 
 interface TestimonialProps {
   name: string
@@ -188,17 +184,73 @@ function TestimonialCard({ testimonial }: { testimonial: TestimonialProps }) {
 export default function TestimonialsPage() {
   return (
     <div className="flex min-h-screen flex-col">
-      {/* Page Header */}
-      <div className="page-header">
-        <div className="classic-container relative z-10">
-          <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl mb-6">What Our Customers Say</h1>
-            <div className="w-20 h-1 bg-secondary mx-auto mb-6"></div>
-            <p className="text-xl text-white/80 mb-8">
-              Read what our satisfied customers have to say about their experience with our service.
+      {/* Premium Page Header */}
+      <div className="page-header relative min-h-[50vh] flex items-center overflow-hidden bg-primary py-0">
+        {/* Animated Background Container */}
+        <div className="absolute inset-0 z-0">
+          <div className="relative h-full w-full overflow-hidden">
+            <Image
+              src="/1cleaning.jpg"
+              alt="Professional Cleaning"
+              fill
+              className="object-cover animate-pulse-slow scale-110"
+              style={{ animation: "ken-burns 20s ease-in-out infinite alternate" }}
+              priority
+            />
+          </div>
+          {/* Multi-layered Premium Overlays */}
+          <div className="absolute inset-0 bg-gradient-to-r from-primary/90 via-primary/50 to-transparent z-10" />
+          <div className="absolute inset-0 bg-gradient-to-t from-primary via-transparent to-transparent z-10" />
+
+          {/* Decorative Animated Light Leaks */}
+          <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-secondary/20 rounded-full blur-[120px] animate-pulse" />
+          <div className="absolute bottom-[-10%] right-[-10%] w-[30%] h-[30%] bg-blue-400/20 rounded-full blur-[100px] animate-pulse delay-700" />
+        </div>
+
+        <div className="classic-container relative z-20 py-20">
+          <div className="max-w-3xl text-left">
+            {/* Glassmorphism Badge */}
+            <div className="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 mb-8 animate-fadeIn">
+              <Star className="w-4 h-4 text-secondary fill-secondary" />
+              <span className="text-[10px] font-black uppercase tracking-[0.3em] text-white">Trusted by 500+ Clients</span>
+            </div>
+
+            <h1 className="text-5xl font-black tracking-tight sm:text-7xl md:text-8xl mb-8 text-white leading-[0.9] animate-fadeIn">
+              Stories of <br />
+              <span className="text-secondary shimmer-text">Brilliance</span>
+            </h1>
+
+            <div className="w-24 h-2 bg-secondary mb-10 rounded-full animate-fadeIn" />
+
+            <p className="text-xl sm:text-2xl text-white/80 max-w-2xl font-medium leading-relaxed mb-10 animate-fadeIn">
+              Real experiences from our customers who transformed their spaces with the CRYSTALFRONT standard of excellence.
             </p>
+
+            <div className="flex gap-4 animate-fadeIn">
+              <div className="flex -space-x-3">
+                {[1, 2, 3, 4].map((i) => (
+                  <div key={i} className="w-12 h-12 rounded-full border-2 border-primary bg-blue-100 flex items-center justify-center overflow-hidden">
+                    <Image src={`/placeholder-user.jpg`} alt="User" width={48} height={48} className="object-cover" />
+                  </div>
+                ))}
+              </div>
+              <div className="flex flex-col justify-center">
+                <div className="flex items-center space-x-1">
+                  {[1, 2, 3, 4, 5].map((i) => <Star key={i} className="w-3 h-3 fill-secondary text-secondary" />)}
+                </div>
+                <p className="text-xs font-black uppercase tracking-widest text-white/60">4.9/5 Average Rating</p>
+              </div>
+            </div>
           </div>
         </div>
+
+        {/* Custom Keyframes in-line */}
+        <style jsx>{`
+          @keyframes ken-burns {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.15) translate(1%, 1%); }
+          }
+        `}</style>
       </div>
 
       {/* Testimonials Section */}
