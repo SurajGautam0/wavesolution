@@ -1,6 +1,6 @@
 import Link from "next/link"
 import Image from "next/image"
-import { Facebook, Instagram, Linkedin, Mail, MapPin, Phone, Twitter } from "lucide-react"
+import { Facebook, Instagram, Mail, MapPin, Phone } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -35,15 +35,6 @@ export function SiteFooter() {
                 <span className="sr-only">Facebook</span>
               </Link>
               <Link
-                href="https://twitter.com"
-                target="_blank"
-                rel="noreferrer"
-                className="text-white/80 hover:text-secondary"
-              >
-                <Twitter className="h-5 w-5" />
-                <span className="sr-only">Twitter</span>
-              </Link>
-              <Link
                 href="https://www.instagram.com/crystalfrontwincare?igsh=eWt5czdydGxuODF1&utm_source=qr"
                 target="_blank"
                 rel="noreferrer"
@@ -53,13 +44,26 @@ export function SiteFooter() {
                 <span className="sr-only">Instagram</span>
               </Link>
               <Link
-                href="https://linkedin.com"
+                href="https://www.tiktok.com/@crystalfront2026"
                 target="_blank"
                 rel="noreferrer"
                 className="text-white/80 hover:text-secondary"
               >
-                <Linkedin className="h-5 w-5" />
-                <span className="sr-only">LinkedIn</span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="h-5 w-5"
+                >
+                  <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
+                </svg>
+                <span className="sr-only">TikTok</span>
               </Link>
             </div>
           </div>
@@ -70,6 +74,11 @@ export function SiteFooter() {
               <li>
                 <Link href="/services" className="text-white/80 hover:text-secondary">
                   Services
+                </Link>
+              </li>
+              <li>
+                <Link href="/gallery" className="text-white/80 hover:text-secondary">
+                  Gallery
                 </Link>
               </li>
               <li>

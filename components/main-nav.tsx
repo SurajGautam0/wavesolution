@@ -4,7 +4,7 @@ import * as React from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import Image from "next/image"
-import { Facebook, Instagram, Linkedin, Mail, Menu, Phone, Twitter, ChevronDown, Glasses, Sparkles, Store, ShoppingBag, Building2, Sun, Layout, Square, Eraser, Monitor, Utensils, Briefcase } from "lucide-react"
+import { Facebook, Instagram, Mail, Menu, Phone, ChevronDown, Glasses, Sparkles, Store, ShoppingBag, Building2, Sun, Layout, Square, Eraser, Monitor, Utensils, Briefcase } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
@@ -28,6 +28,7 @@ export function MainNav() {
   const mainRoutes = [
     { href: "/", label: "Home", active: pathname === "/" },
     { href: "/services", label: "Services", active: pathname === "/services" || pathname.startsWith("/services/"), hasSubmenu: true },
+    { href: "/gallery", label: "Gallery", active: pathname === "/gallery" },
     { href: "/about", label: "About", active: pathname === "/about" },
     { href: "/testimonials", label: "Testimonials", active: pathname === "/testimonials" },
     { href: "/contact", label: "Contact", active: pathname === "/contact" },
@@ -65,8 +66,29 @@ export function MainNav() {
             </Link>
           </div>
           <div className="flex items-center space-x-4">
-            {[Facebook, Twitter, Instagram, Linkedin].map((Icon, i) => (
-              <Link key={i} href="#" className="text-white/60 hover:text-secondary transition-all hover:scale-110">
+            {[
+              { Icon: Facebook, href: "https://facebook.com" },
+              { Icon: Instagram, href: "https://www.instagram.com/crystalfrontwincare?igsh=eWt5czdydGxuODF1&utm_source=qr" },
+              {
+                Icon: () => (
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
+                  </svg>
+                ),
+                href: "https://www.tiktok.com/@crystalfront2026"
+              },
+            ].map(({ Icon, href }, i) => (
+              <Link key={i} href={href} target="_blank" rel="noreferrer" className="text-white/60 hover:text-secondary transition-all hover:scale-110">
                 <Icon className="h-3.5 w-3.5" />
               </Link>
             ))}

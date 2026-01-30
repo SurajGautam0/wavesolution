@@ -2,7 +2,7 @@
 
 import Image from "next/image"
 import Link from "next/link"
-import { CheckCircle, Instagram, Linkedin, Twitter, Sparkles, Target } from "lucide-react"
+import { CheckCircle, Instagram, Sparkles, Target } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
@@ -13,8 +13,6 @@ interface TeamMember {
   bio: string
   image: string
   social: {
-    linkedin?: string
-    twitter?: string
     instagram?: string
   }
 }
@@ -25,18 +23,14 @@ const teamMembers: TeamMember[] = [
     position: "Founder & CEO",
     bio: "After spending years mastering advanced cleaning technologies and standards in international markets, Bikram returned to Nepal to modernize the industry. He established CRYSTALFRONT in 2026 to bring world-class precision to Lalitpur.",
     image: "/team/bikram.png",
-    social: {
-      linkedin: "https://linkedin.com",
-      twitter: "https://twitter.com",
-    },
+    social: {},
   },
   {
     name: "Sameet Gautam",
     position: "General Manager",
     bio: "Sameet oversees all cleaning operations, ensuring our high standards are maintained across all services. His attention to detail and commitment to excellence has been instrumental in our growth.",
-    image: "/team/sameet.png",
+    image: "/sameetgautam.jpeg",
     social: {
-      linkedin: "https://linkedin.com",
       instagram: "https://www.instagram.com/crystalfrontwincare?igsh=eWt5czdydGxuODF1&utm_source=qr",
     },
   },
@@ -44,11 +38,8 @@ const teamMembers: TeamMember[] = [
     name: "Joseph Thapa",
     position: "Supervisor",
     bio: "Joseph is dedicated to ensuring our customers receive the best possible experience and that every cleaning job meets our rigorous quality standards. He manages our on-site teams with precision.",
-    image: "/team/joseph.png",
-    social: {
-      linkedin: "https://linkedin.com",
-      twitter: "https://twitter.com",
-    },
+    image: "/josep.jpeg",
+    social: {},
   },
 ]
 
@@ -260,54 +251,33 @@ export default function AboutPage() {
 
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
             {teamMembers.map((member, index) => (
-              <div key={index} className="team-member-card overflow-hidden rounded-lg shadow-lg">
-                <div className="relative h-64 w-full">
+              <div key={index} className="group relative bg-white rounded-[2.5rem] p-4 shadow-xl border border-primary/5 transition-all duration-500 hover:shadow-2xl hover:-translate-y-2">
+                <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[2rem] mb-6 shadow-inner">
                   <Image
                     src={member.image || "/placeholder.svg"}
                     alt={member.name}
                     fill
-                    className="object-cover team-member-image"
+                    className="object-cover transition-transform duration-700 group-hover:scale-110"
                   />
-                </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-primary">{member.name}</h3>
-                  <p className="text-secondary font-medium mb-2">{member.position}</p>
-                  <p className="text-sm text-muted-foreground mb-4">{member.bio}</p>
-                  <div className="flex space-x-3">
-                    {member.social.linkedin && (
-                      <a
-                        href={member.social.linkedin}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-gray-400 hover:text-primary"
-                      >
-                        <Linkedin className="h-5 w-5" />
-                        <span className="sr-only">LinkedIn</span>
-                      </a>
-                    )}
-                    {member.social.twitter && (
-                      <a
-                        href={member.social.twitter}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-gray-400 hover:text-primary"
-                      >
-                        <Twitter className="h-5 w-5" />
-                        <span className="sr-only">Twitter</span>
-                      </a>
-                    )}
-                    {member.social.instagram && (
-                      <a
-                        href={member.social.instagram}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-gray-400 hover:text-primary"
-                      >
-                        <Instagram className="h-5 w-5" />
-                        <span className="sr-only">Instagram</span>
-                      </a>
-                    )}
+                  {/* Subtle Gradient Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end justify-center p-6">
+                    <div className="text-white text-[10px] font-black uppercase tracking-widest transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                      Crystalfront Professional
+                    </div>
                   </div>
+                </div>
+
+                <div className="text-center px-4 pb-4">
+                  <div className="inline-block px-3 py-1 rounded-full bg-secondary/10 text-secondary text-[10px] font-black uppercase tracking-widest mb-3">
+                    {member.position}
+                  </div>
+                  <h3 className="text-2xl font-black text-primary mb-3 leading-tight tracking-tight">
+                    {member.name}
+                  </h3>
+                  <div className="w-8 h-1 bg-secondary mx-auto mb-4 rounded-full transition-all duration-500 group-hover:w-16" />
+                  <p className="text-xs text-muted-foreground leading-relaxed line-clamp-4 font-medium italic">
+                    "{member.bio}"
+                  </p>
                 </div>
               </div>
             ))}
