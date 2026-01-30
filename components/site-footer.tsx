@@ -44,7 +44,7 @@ export function SiteFooter() {
                 <span className="sr-only">Twitter</span>
               </Link>
               <Link
-                href="https://instagram.com"
+                href="https://www.instagram.com/crystalfrontwincare?igsh=eWt5czdydGxuODF1&utm_source=qr"
                 target="_blank"
                 rel="noreferrer"
                 className="text-white/80 hover:text-secondary"

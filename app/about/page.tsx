@@ -37,7 +37,7 @@ const teamMembers: TeamMember[] = [
     image: "/team/sameet.png",
     social: {
       linkedin: "https://linkedin.com",
-      instagram: "https://instagram.com",
+      instagram: "https://www.instagram.com/crystalfrontwincare?igsh=eWt5czdydGxuODF1&utm_source=qr",
     },
   },
   {

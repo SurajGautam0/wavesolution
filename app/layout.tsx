@@ -119,7 +119,7 @@ const jsonLd = {
   },
   "sameAs": [
     "https://facebook.com/crystalfront",
-    "https://instagram.com/crystalfront"
+    "https://www.instagram.com/crystalfrontwincare?igsh=eWt5czdydGxuODF1&utm_source=qr"
   ]
 }
 
