@@ -3,6 +3,7 @@
 import { useState } from "react"
 import { useRouter } from "next/navigation"
 import Link from "next/link"
+import Image from "next/image"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import * as z from "zod"
@@ -89,8 +90,15 @@ export default function LoginPage() {
 
                 <div className="relative z-10 space-y-8 max-w-lg">
                     <div className="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 backdrop-blur-sm">
-                        <Sparkles className="w-4 h-4 text-secondary" />
-                        <span className="text-[10px] font-black uppercase tracking-[0.2em]">Client Success Portal</span>
+                        <div className="relative w-4 h-4 overflow-hidden">
+                            <Image
+                                src="/logo.png"
+                                alt="Logo"
+                                fill
+                                className="object-contain brightness-0 invert"
+                            />
+                        </div>
+                        <span className="text-[10px] font-black uppercase tracking-[0.2em]">#1 Cleaning Services</span>
                     </div>
                     <h1 className="text-5xl font-serif font-black tracking-tighter leading-tight">
                         Experience a New Level of <span className="text-secondary">Clarity</span> and Service.

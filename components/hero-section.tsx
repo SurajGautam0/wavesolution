@@ -39,8 +39,15 @@ export function HeroSection() {
           <div className="flex flex-col justify-center space-y-8 text-white text-center lg:text-left">
             <div className="space-y-6">
               <div className="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 backdrop-blur-sm self-center lg:self-start">
-                <Sparkles className="w-4 h-4 text-secondary" />
-                <span className="text-[10px] font-black uppercase tracking-[0.2em]">Crystal Clear Results</span>
+                <div className="relative w-4 h-4 overflow-hidden">
+                  <Image
+                    src="/logo.png"
+                    alt="Logo"
+                    fill
+                    className="object-contain brightness-0 invert"
+                  />
+                </div>
+                <span className="text-[10px] font-black uppercase tracking-[0.2em]">#1 Cleaning Services</span>
               </div>
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-serif font-black tracking-tighter leading-[1.1]">
                 Professional Cleaning Excellence in <span className="text-secondary shimmer-text">Valley</span>

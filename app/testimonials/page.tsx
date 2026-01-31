@@ -211,8 +211,15 @@ export default function TestimonialsPage() {
           <div className="max-w-3xl text-left">
             {/* Glassmorphism Badge */}
             <div className="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 mb-8 animate-fadeIn">
-              <Star className="w-4 h-4 text-secondary fill-secondary" />
-              <span className="text-[10px] font-black uppercase tracking-[0.3em] text-white">Trusted by 500+ Clients</span>
+              <div className="relative w-4 h-4 overflow-hidden">
+                <Image
+                  src="/logo.png"
+                  alt="Logo"
+                  fill
+                  className="object-contain brightness-0 invert"
+                />
+              </div>
+              <span className="text-[10px] font-black uppercase tracking-[0.3em] text-white">#1 Cleaning Services</span>
             </div>
 
             <h1 className="text-5xl font-black tracking-tight sm:text-7xl md:text-8xl mb-8 text-white leading-[0.9] animate-fadeIn">

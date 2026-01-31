@@ -79,8 +79,15 @@ export function WorkerShowcase() {
                     {/* Top Right Luxury Badge */}
                     <div className="absolute top-6 right-6 animate-fadeIn">
                         <div className="bg-white/10 backdrop-blur-xl border border-white/20 px-4 py-2 rounded-full flex items-center gap-2 shadow-2xl">
-                            <div className="w-2 h-2 bg-secondary rounded-full animate-pulse" />
-                            <span className="text-[10px] font-black uppercase tracking-[0.2em] text-white">Verified Excellence</span>
+                            <div className="relative w-4 h-4 overflow-hidden">
+                                <Image
+                                    src="/logo.png"
+                                    alt="Logo"
+                                    fill
+                                    className="object-contain brightness-0 invert"
+                                />
+                            </div>
+                            <span className="text-[10px] font-black uppercase tracking-[0.2em] text-white">#1 Cleaning Services</span>
                         </div>
                     </div>
 

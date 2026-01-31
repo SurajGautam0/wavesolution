@@ -168,8 +168,15 @@ export default function BookingPageClient() {
 					{/* Premium Branding Section */}
 					<div className="flex flex-col items-center mb-16 sm:mb-24 text-center px-4">
 						<div className="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-blue-50 border border-blue-100 mb-6 group hover:scale-105 transition-all duration-500">
-							<ShieldCheck className="w-4 h-4 text-primary" />
-							<span className="text-[10px] font-black uppercase tracking-[0.2em] text-primary">Crystal Front Trust Verified</span>
+							<div className="relative w-4 h-4 overflow-hidden">
+								<Image
+									src="/logo.png"
+									alt="Logo"
+									fill
+									className="object-contain"
+								/>
+							</div>
+							<span className="text-[10px] font-black uppercase tracking-[0.2em] text-primary">#1 Cleaning Services</span>
 						</div>
 						<h1 className="text-4xl sm:text-6xl md:text-7xl font-serif font-black tracking-tighter text-blue-950 mb-6 leading-none">
 							Schedule Your <span className="text-secondary italic">Brilliant</span> Service
