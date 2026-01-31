@@ -1,9 +1,17 @@
 "use client"
 
+import { useState, useEffect } from "react"
 import Image from "next/image"
 import { ShieldCheck, Star, Users, Zap } from "lucide-react"
 
 export function WorkerShowcase() {
+    const [randomImage, setRandomImage] = useState("/cleaning_training.png")
+
+    useEffect(() => {
+        const imageNumber = Math.floor(Math.random() * 8) + 1
+        setRandomImage(`/gallary_${imageNumber}.jpeg`)
+    }, [])
+
     const trainingFeatures = [
         {
             icon: ShieldCheck,
@@ -54,17 +62,67 @@ export function WorkerShowcase() {
                     </div>
                 </div>
 
-                <div className="relative min-h-[400px] lg:min-h-full bg-slate-100 group overflow-hidden">
+                <div className="relative min-h-[500px] lg:min-h-full bg-slate-100 group overflow-hidden">
                     <Image
-                        src="/cleaning_training.png"
+                        src={randomImage}
                         alt="CRYSTALFRONT Training Session"
                         fill
-                        className="object-cover transition-transform duration-700 group-hover:scale-110"
+                        className="object-cover transition-transform duration-1000 group-hover:scale-110"
+                        key={randomImage}
+                        priority
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-blue-950/60 to-transparent flex flex-col justify-end p-8 lg:p-12">
-                        <div className="bg-white/10 backdrop-blur-md border border-white/20 p-6 rounded-2xl">
-                            <p className="text-white text-xs font-black uppercase tracking-widest mb-1">Live Training Insight</p>
-                            <p className="text-white/80 text-sm font-medium italic">"Precision in every stroke is what separates us from the rest."</p>
+
+                    {/* Premium Overlays */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-blue-950/80 via-blue-950/20 to-transparent opacity-90" />
+                    <div className="absolute inset-0 bg-blue-950/20 group-hover:bg-transparent transition-colors duration-700" />
+
+                    {/* Top Right Luxury Badge */}
+                    <div className="absolute top-6 right-6 animate-fadeIn">
+                        <div className="bg-white/10 backdrop-blur-xl border border-white/20 px-4 py-2 rounded-full flex items-center gap-2 shadow-2xl">
+                            <div className="w-2 h-2 bg-secondary rounded-full animate-pulse" />
+                            <span className="text-[10px] font-black uppercase tracking-[0.2em] text-white">Verified Excellence</span>
+                        </div>
+                    </div>
+
+                    {/* Bottom Content - Immersive Glassmorphism */}
+                    <div className="absolute inset-x-0 bottom-0 p-8 lg:p-12 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-700">
+                        <div className="relative">
+                            {/* Decorative Line */}
+                            <div className="absolute -left-4 top-0 bottom-0 w-1 bg-secondary rounded-full scale-y-0 group-hover:scale-y-100 transition-transform duration-1000 origin-top" />
+
+                            <div className="bg-white/10 backdrop-blur-2xl border border-white/10 p-8 rounded-[2rem] shadow-2xl overflow-hidden">
+                                {/* Soft Light Leak Effect */}
+                                <div className="absolute -top-24 -right-24 w-48 h-48 bg-secondary/20 rounded-full blur-[80px]" />
+
+                                <div className="relative z-10 flex flex-col space-y-3">
+                                    <div className="flex items-center space-x-2">
+                                        <div className="h-px w-8 bg-secondary" />
+                                        <p className="text-secondary text-[10px] font-black uppercase tracking-[0.3em]">Project Spotlight</p>
+                                    </div>
+                                    <h3 className="text-white text-2xl font-black tracking-tight leading-tight">
+                                        The <span className="italic text-white/90">Crystalfront</span> Standard
+                                    </h3>
+                                    <p className="text-white/70 text-sm font-medium leading-relaxed max-w-sm">
+                                        Every image in our portfolio represents a certified technician delivering international-grade precision.
+                                    </p>
+
+                                    <div className="pt-4 flex items-center justify-between border-t border-white/10 mt-2">
+                                        <div className="flex items-center space-x-3">
+                                            <div className="flex -space-x-2">
+                                                {[1, 2, 3].map((i) => (
+                                                    <div key={i} className="w-6 h-6 rounded-full border border-white/20 bg-blue-100 overflow-hidden">
+                                                        <Image src={`/placeholder-user.jpg`} alt="Worker" width={24} height={24} className="object-cover" />
+                                                    </div>
+                                                ))}
+                                            </div>
+                                            <span className="text-[9px] text-white/50 font-bold uppercase tracking-widest">Expert Crew Assigned</span>
+                                        </div>
+                                        <div className="flex items-center space-x-1">
+                                            {[1, 2, 3, 4, 5].map((i) => <Star key={i} className="w-2.5 h-2.5 fill-secondary text-secondary" />)}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

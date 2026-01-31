@@ -252,12 +252,12 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
             {teamMembers.map((member, index) => (
               <div key={index} className="group relative bg-white rounded-[2.5rem] p-4 shadow-xl border border-primary/5 transition-all duration-500 hover:shadow-2xl hover:-translate-y-2">
-                <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[2rem] mb-6 shadow-inner">
+                <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[2rem] mb-6">
                   <Image
                     src={member.image || "/placeholder.svg"}
                     alt={member.name}
                     fill
-                    className="object-cover transition-transform duration-700 group-hover:scale-110"
+                    className="object-cover transition-transform duration-700 group-hover:scale-110 scale-[1.01]"
                   />
                   {/* Subtle Gradient Overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end justify-center p-6">
