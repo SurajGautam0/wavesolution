@@ -87,7 +87,7 @@ export default function AboutPage() {
             <p className="text-xl sm:text-2xl text-white/80 max-w-2xl font-medium leading-relaxed mb-10">
               The Kathmandu Valley's premier cleaning service provider, bringing
               <span className="text-white font-black italic"> international precision </span>
-              to every doorstep in Lalitpur.
+              to every doorstep in Kathmandu, Lalitpur, and Bhaktapur.
             </p>
 
             <div className="flex flex-wrap gap-6 pt-4">

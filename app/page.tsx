@@ -12,8 +12,8 @@ import { WorkerShowcase } from "@/components/worker-showcase"
 import { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "CRYSTALFRONT | Top Cleaning Services in Kathmandu, Lalitpur & Bhaktapur",
-  description: "Experience professional cleaning excellence with CRYSTALFRONT. We provide high-quality residential and commercial cleaning across the Kathmandu Valley, including Bhaisepati, Sanepa, and Bhaktapur.",
+  title: "#1 Cleaning Services in Kathmandu, Lalitpur & Bhaktapur | CRYSTALFRONT",
+  description: "CRYSTALFRONT is the leading professional cleaning company in Kathmandu, Lalitpur, and Bhaktapur. We specialize in residential deep cleaning, office maintenance, and high-glass cleaning. Book the best cleaners in Nepal.",
 }
 
 export default function Home() {
@@ -29,15 +29,14 @@ export default function Home() {
             {/* Welcome Section */}
             <section className="classic-card p-6 sm:p-10">
               <div className="flex flex-col items-center justify-center space-y-6 text-center">
-                <h2 className="classic-heading text-3xl sm:text-4xl">Welcome to CRYSTALFRONT</h2>
+                <h1 className="classic-heading text-3xl sm:text-5xl">Best Cleaning Services in Kathmandu & Lalitpur</h1>
                 <div className="w-24 h-1.5 bg-secondary rounded-full"></div>
                 <div className="space-y-4 max-w-2xl">
                   <p className="text-muted-foreground text-lg leading-relaxed">
-                    We are Bhaisepati, Lalitpur's premier cleaning service provider, dedicated to making your home or office spotless
-                    and fresh.
+                    CRYSTALFRONT is the premier provider of **professional cleaning services in Kathmandu, Lalitpur, and Bhaktapur**. Whether you need residential deep cleaning or commercial office maintenance, we bring international standards to the local industry.
                   </p>
                   <p className="text-muted-foreground text-lg leading-relaxed">
-                    With years of professional experience, we deliver exceptional results every time, exceeding your expectations with every swipe.
+                    Based in **Bhaisepati, Lalitpur**, our certified team uses eco-friendly technology to ensure your space remains pristine. Experience the highest standard of **window and high-glass cleaning in Nepal**.
                   </p>
                 </div>
               </div>
@@ -46,7 +45,7 @@ export default function Home() {
             {/* Services Section */}
             <section className="classic-card p-6 sm:p-10">
               <div className="flex flex-col items-center justify-center space-y-6 text-center mb-10">
-                <h2 className="classic-heading text-3xl sm:text-4xl">Our Services</h2>
+                <h2 className="classic-heading text-3xl sm:text-4xl">Professional Cleaning Solutions in Nepal</h2>
                 <div className="w-24 h-1.5 bg-secondary rounded-full"></div>
                 <p className="text-muted-foreground text-lg max-w-xl">
                   Tailored cleaning solutions for every requirement.

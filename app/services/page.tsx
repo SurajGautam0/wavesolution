@@ -5,9 +5,9 @@ import { Button } from "@/components/ui/button"
 import { ServiceCard } from "@/components/service-card"
 
 export const metadata: Metadata = {
-  title: "Professional Cleaning Services in Kathmandu Valley - Window, Glass & Commercial",
-  description: "Discover our comprehensive cleaning services across Kathmandu, Lalitpur, and Bhaktapur. We specialize in residential window cleaning, commercial glass cleaning, storefronts, and showroom excellence.",
-  keywords: ["window cleaning Kathmandu", "glass cleaning Lalitpur", "commercial cleaners Bhaktapur", "storefront cleaning Nepal", "showroom cleaning services Kathmandu"],
+  title: "Professional Cleaning Services in Kathmandu Valley | #1 Cleaning Company",
+  description: "Explore the best professional cleaning services in Kathmandu, Lalitpur, and Bhaktapur. From residential deep cleaning to high-end commercial glass maintenance, CRYSTALFRONT is your trusted partner for a spotless space.",
+  keywords: ["cleaning services Kathmandu", "deep cleaning Lalitpur", "commercial cleaners Bhaktapur", "best cleaning company Nepal", "professional house cleaning Kathmandu"],
 }
 
 export default function ServicesPage() {
@@ -18,11 +18,10 @@ export default function ServicesPage() {
         <div className="container">
           <div className="flex flex-col items-center justify-center space-y-4 text-center">
             <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
-              Our Professional Cleaning Services
+              Professional Cleaning Services in Kathmandu, Lalitpur & Bhaktapur
             </h1>
             <p className="max-w-[700px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-              We offer a wide range of cleaning services to meet your needs. From residential to commercial, we've got
-              you covered.
+              We provide the highest quality residential and commercial cleaning solutions across the entire Kathmandu Valley. Elite standards, certified teams, and eco-friendly technology.
             </p>
           </div>
         </div>

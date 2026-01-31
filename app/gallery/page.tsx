@@ -28,16 +28,16 @@ const galleryItems = [
     {
         id: 1,
         category: "residential",
-        title: "Bhaisepati Villa Exterior",
-        description: "Multi-stage glass sanitization for a high-end residence.",
+        title: "Premium Villa Glass Maintenance",
+        description: "Advanced multi-stage High Glass Cleaning for high-end residential exteriors.",
         image: "/gallary_1.jpeg",
         stats: "Crystal Clear"
     },
     {
         id: 2,
         category: "commercial",
-        title: "Sanepa Business Plaza",
-        description: "Streak-free mineral deposit removal for premium commercial glass.",
+        title: "Commercial Plaza Window Care",
+        description: "Streak-free High Glass Cleaning and mineral deposit removal for premium commercial buildings.",
         image: "/gallary_2.jpeg",
         stats: "Commercial Grade"
     },
@@ -45,55 +45,55 @@ const galleryItems = [
         id: 3,
         category: "industrial",
         title: "Industrial Facility Restoration",
-        description: "Heavy-duty specialized cleaning for high-traffic industrial zones.",
+        description: "Heavy-duty High Glass Cleaning for high-traffic industrial zones and specialized facilities.",
         image: "/gallary_3.jpeg",
         stats: "Ultra Sanitize"
     },
     {
         id: 4,
         category: "residential",
-        title: "Luxury Apartment Balcony",
-        description: "Detailed frame and glass treatment for panoramic city views.",
+        title: "Luxury Apartment Glass Treatment",
+        description: "Detailed frame and glass treatment for panoramic views using High Glass Cleaning techniques.",
         image: "/gallary_4.jpeg",
         stats: "Family Safe"
     },
     {
         id: 5,
         category: "commercial",
-        title: "Premium Showroom Front",
-        description: "Display-ready glass treatment for high-end retail storefronts.",
+        title: "High Glass Showroom Cleaning",
+        description: "Display-ready glass treatment for high-end retail storefronts and luxury showrooms.",
         image: "/gallary_5.jpeg",
         stats: "Showroom Quality"
     },
     {
         id: 6,
         category: "industrial",
-        title: "Warehouse High-Reach Clean",
-        description: "Specialized high-access cleaning for large scale facilities.",
+        title: "High-Reach Facility Maintenance",
+        description: "Specialized High Glass Cleaning for large scale warehouses and high-access industrial sites.",
         image: "/gallary_6.jpeg",
         stats: "Safety First"
     },
     {
         id: 7,
         category: "residential",
-        title: "Modern Home Interior Glass",
-        description: "Intricate cleaning for glass partitions and internal windows.",
+        title: "Modern Interior Glass Detailing",
+        description: "Precision cleaning for intricate glass partitions and internal decorative glass work.",
         image: "/gallary_7.jpeg",
         stats: "Home Harmony"
     },
     {
         id: 8,
         category: "commercial",
-        title: "Corporate Lobby Glass",
-        description: "Maintaining a professional first impression for business entries.",
+        title: "Corporate Office Glass Sanitization",
+        description: "Maintaining a professional first impression with expert High Glass Cleaning for corporate entries.",
         image: "/gallary_8.jpeg",
         stats: "Ultra Clean"
     },
     {
         id: 9,
         category: "industrial",
-        title: "Workshop Degreasing",
-        description: "Effective removal of tough industrial stains and residues.",
+        title: "Industrial Stain & Residue Removal",
+        description: "Effective chemical-free removal of tough industrial stains from large glass surfaces.",
         image: "/gallary_9.jpeg",
         stats: "Tough Stains"
     },
@@ -101,31 +101,31 @@ const galleryItems = [
         id: 10,
         category: "residential",
         title: "Residential Terrace Care",
-        description: "Complete cleaning for outdoor living spaces and railings.",
+        description: "Complete High Glass Cleaning for terrace living spaces and specialized glass railings.",
         image: "/gallary_10.jpeg",
         stats: "Weather Proof"
     },
     {
         id: 11,
         category: "commercial",
-        title: "Retail Window Excellence",
-        description: "Boosting curb appeal with sparkling retail shopfronts.",
+        title: "Retail Shopfront Excellence",
+        description: "Boosting commercial curb appeal with professional High Glass Cleaning for premium retail units.",
         image: "/gallary_11.jpeg",
         stats: "Attract Clients"
     },
     {
         id: 12,
         category: "industrial",
-        title: "Site Handover Cleaning",
-        description: "Final precision cleaning before project delivery and occupation.",
+        title: "Post-Construction Precision Cleaning",
+        description: "Final High Glass Cleaning and detailing before project delivery and occupation.",
         image: "/gallary_12.jpeg",
         stats: "Ready to Move"
     },
     {
         id: 13,
         category: "all",
-        title: "Masterworks Series",
-        description: "A showcase of our most complex cleaning challenges successfully delivered.",
+        title: "Elite Series Masterworks",
+        description: "A showcase of our most complex High Glass Cleaning challenges successfully delivered.",
         image: "/gallary_13.jpeg",
         stats: "Elite Standard"
     },
@@ -167,15 +167,15 @@ export default function GalleryPage() {
 
                         <h1 className="text-5xl font-black tracking-tight sm:text-7xl md:text-8xl mb-8 leading-[0.9]">
                             Our <br />
-                            <span className="text-secondary shimmer-text">Gallary</span>
+                            <span className="text-secondary shimmer-text">Gallery</span>
                         </h1>
 
                         <div className="w-24 h-2 bg-secondary mb-10 rounded-full" />
 
                         <p className="text-xl sm:text-2xl text-white/80 max-w-2xl font-medium leading-relaxed">
-                            Witness the transformation from ordinary to extraordinary. Our works define the
-                            <span className="text-white font-black italic"> Crystalfront Standard </span>
-                            across the Kathmandu Valley.
+                            Witness the transformation from ordinary to extraordinary. Our works define the highest standard of
+                            <span className="text-white font-black italic"> Professional Excellence </span>
+                            in high-reach glass maintenance across Kathmandu, Lalitpur, and Bhaktapur.
                         </p>
                     </div>
                 </div>
@@ -338,7 +338,7 @@ export default function GalleryPage() {
                         <div className="relative z-10">
                             <h2 className="text-4xl md:text-6xl font-serif font-black mb-8">Ready for a Cleaner Space?</h2>
                             <p className="text-white/70 text-lg md:text-xl mb-12 max-w-2xl mx-auto font-medium">
-                                Experience the Crystalfront Standard in your own property. Book your professional cleaning today.
+                                Experience the highest standard of professional glass maintenance in your own property. Book your expert cleaning today.
                             </p>
                             <div className="flex flex-col sm:flex-row gap-6 justify-center">
                                 <Button asChild size="lg" className="h-16 px-12 rounded-full !bg-secondary hover:!bg-secondary/90 text-white font-black text-sm uppercase tracking-widest shadow-2xl shadow-secondary/20 transition-all hover:scale-105">

@@ -20,11 +20,23 @@ const openSans = Open_Sans({
 
 export const metadata: Metadata = {
   title: {
-    default: "CRYSTALFRONT - Professional Cleaning Services in Kathmandu, Lalitpur & Bhaktapur",
-    template: "%s | CRYSTALFRONT"
+    default: "Best Cleaning Services in Kathmandu, Lalitpur & Bhaktapur | CRYSTALFRONT",
+    template: "%s | CRYSTALFRONT Cleaning Nepal"
   },
-  description: "Expert residential and commercial cleaning services across Kathmandu, Lalitpur, and Bhaktapur. Professional window, glass, and storefront cleaning in Bhaisepati and the entire Valley.",
-  keywords: ["cleaning services Kathmandu", "professional cleaners Lalitpur", "cleaning company Bhaktapur", "residential cleaning Nepal", "commercial cleaning Kathmandu", "window cleaning", "glass cleaning", "CRYSTALFRONT cleaning"],
+  description: "Ranked #1 for professional cleaning services in Kathmandu Valley. Expert home, office, and high-glass cleaning in Lalitpur, Kathmandu, and Bhaktapur. Book premium cleaning today.",
+  keywords: [
+    "cleaning services Kathmandu",
+    "best cleaners in Lalitpur",
+    "professional cleaning Bhaktapur",
+    "house cleaning Nepal",
+    "office cleaning Kathmandu",
+    "glass cleaning Lalitpur",
+    "window cleaning Nepal",
+    "Bhaisepati cleaning services",
+    "deep cleaning Kathmandu",
+    "apartment cleaning Lalitpur",
+    "commercial cleaning Bhaktapur"
+  ],
   authors: [{ name: "CRYSTALFRONT" }],
   creator: "CRYSTALFRONT",
   publisher: "CRYSTALFRONT",
@@ -88,6 +100,18 @@ const jsonLd = {
     {
       "@type": "City",
       "name": "Bhaktapur"
+    },
+    {
+      "@type": "Neighborhood",
+      "name": "Bhaisepati"
+    },
+    {
+      "@type": "Neighborhood",
+      "name": "Sanepa"
+    },
+    {
+      "@type": "Neighborhood",
+      "name": "Jhamsikhel"
     }
   ],
   "address": {
@@ -115,7 +139,7 @@ const jsonLd = {
       "Sunday"
     ],
     "opens": "07:00",
-    "closes": "20:00"
+    "closes": "21:00"
   },
   "sameAs": [
     "https://facebook.com/crystalfront",
