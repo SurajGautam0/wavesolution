@@ -33,10 +33,10 @@ export default function Home() {
                 <div className="w-24 h-1.5 bg-secondary rounded-full"></div>
                 <div className="space-y-4 max-w-2xl">
                   <p className="text-muted-foreground text-lg leading-relaxed">
-                    CRYSTALFRONT is the premier provider of **professional cleaning services in Kathmandu, Lalitpur, and Bhaktapur**. Whether you need residential deep cleaning or commercial office maintenance, we bring international standards to the local industry.
+                    CRYSTALFRONT is the premier provider of <strong>professional cleaning services in Kathmandu, Lalitpur, and Bhaktapur</strong>. Whether you need residential deep cleaning or commercial office maintenance, we bring international standards to the local industry.
                   </p>
                   <p className="text-muted-foreground text-lg leading-relaxed">
-                    Based in **Bhaisepati, Lalitpur**, our certified team uses eco-friendly technology to ensure your space remains pristine. Experience the highest standard of **window and high-glass cleaning in Nepal**.
+                    Based in <strong>Bhaisepati, Lalitpur</strong>, our certified team uses eco-friendly technology to ensure your space remains pristine. Experience the highest standard of <strong>window and high-glass cleaning in Nepal</strong>.
                   </p>
                 </div>
               </div>
