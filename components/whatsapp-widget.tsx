@@ -10,6 +10,10 @@ export function WhatsAppWidget() {
     const [isHovered, setIsHovered] = useState(false)
     const [showPopup, setShowPopup] = useState(false)
 
+    // WhatsApp number and prefilled message
+    const whatsappNumber = "9779823674105"
+    const message = encodeURIComponent("Hi CRYSTALFRONT! I'm interested in your cleaning services. Could you please provide more information?")
+
     useEffect(() => {
         const timer = setTimeout(() => {
             setIsVisible(true)
@@ -49,7 +53,7 @@ export function WhatsAppWidget() {
                     </div>
                 </div>
                 <Link
-                    href="https://wa.me/9779800000000"
+                    href={`https://wa.me/${whatsappNumber}?text=${message}`}
                     target="_blank"
                     className="block w-full text-center bg-[#25D366] hover:bg-[#20bd5a] text-white text-xs font-bold py-2 rounded-lg transition-colors"
                 >
@@ -59,7 +63,7 @@ export function WhatsAppWidget() {
 
             {/* Main Button */}
             <Link
-                href="https://wa.me/9779800000000"
+                href={`https://wa.me/${whatsappNumber}?text=${message}`}
                 target="_blank"
                 className="group relative flex items-center justify-center w-14 h-14 rounded-full bg-[#25D366] hover:bg-[#20bd5a] shadow-lg shadow-green-500/30 transition-all hover:scale-110"
                 onMouseEnter={() => setIsHovered(true)}
