@@ -196,16 +196,16 @@ export default function BookingPageClient() {
 								</TabsTrigger>
 							</TabsList>
 
-							<div className="p-6 sm:p-12 md:p-16">
+							<div className="p-4 sm:p-8 md:p-12">
 								<TabsContent value="package" className="mt-0 space-y-12 animate-in fade-in slide-in-from-bottom-8 duration-700">
 									<div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
 										<div>
-											<h2 className="text-3xl sm:text-4xl font-black text-blue-950 tracking-tight mb-2">Choose Service Level</h2>
-											<p className="text-blue-700/60 font-medium text-base sm:text-lg">Select the scale that matches your property.</p>
+											<h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-blue-950 tracking-tight mb-2">Choose Service Level</h2>
+											<p className="text-slate-600 font-medium text-sm sm:text-base">Select the scale that matches your property.</p>
 										</div>
-										<div className="flex items-center space-x-3 bg-blue-50 border border-blue-100 px-6 py-3 rounded-2xl w-fit">
-											<TrendingUp className="w-5 h-5 text-primary" />
-											<span className="text-[11px] font-black uppercase tracking-widest text-primary">High Demand: Valley Central</span>
+										<div className="flex items-center space-x-2 bg-blue-50 border border-blue-100 px-3 sm:px-6 py-2 sm:py-3 rounded-2xl w-fit">
+											<TrendingUp className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
+											<span className="text-[9px] sm:text-[11px] font-black uppercase tracking-widest text-primary">High Demand</span>
 										</div>
 									</div>
 
@@ -216,7 +216,7 @@ export default function BookingPageClient() {
 												key={row.category}
 												onClick={() => setSelectedCategory(row.category)}
 												className={cn(
-													"flex flex-col p-8 rounded-[2.5rem] border-2 text-left transition-all duration-500 group relative",
+													"flex flex-col p-4 sm:p-6 md:p-8 rounded-2xl sm:rounded-[2.5rem] border-2 text-left transition-all duration-500 group relative",
 													selectedCategory === row.category
 														? "bg-primary border-primary text-white shadow-2xl scale-[1.03] -translate-y-2"
 														: "bg-white border-blue-50 hover:border-primary/20 hover:shadow-xl"
@@ -225,8 +225,8 @@ export default function BookingPageClient() {
 												<span className={cn("text-xs font-black uppercase tracking-widest mb-4 block", selectedCategory === row.category ? "text-blue-100" : "text-primary")}>
 													Level {windowPackages.indexOf(row) + 1}
 												</span>
-												<div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-500">{row.icon}</div>
-												<h3 className="text-2xl font-black mb-1 tracking-tighter leading-none">{row.category}</h3>
+												<div className="text-3xl sm:text-4xl mb-3 sm:mb-4 group-hover:scale-110 transition-transform duration-500">{row.icon}</div>
+												<h3 className="text-lg sm:text-xl md:text-2xl font-black mb-1 tracking-tighter leading-none">{row.category}</h3>
 												<p className={cn("text-[10px] font-bold mb-2", selectedCategory === row.category ? "text-blue-100/80" : "text-blue-600")}>
 													{row.subText}
 												</p>
@@ -245,7 +245,7 @@ export default function BookingPageClient() {
 																setSelectedFrequency(freq);
 															}}
 															className={cn(
-																"flex items-center justify-between p-3 rounded-xl text-[11px] font-black transition-all border",
+																"flex items-center justify-between p-2 sm:p-3 rounded-lg sm:rounded-xl text-[10px] sm:text-[11px] font-black transition-all border",
 																(selectedFrequency === freq && selectedCategory === row.category)
 																	? "bg-white text-primary border-white"
 																	: !row.prices[i] ? "opacity-20 cursor-not-allowed hidden" : selectedCategory === row.category ? "bg-white/10 text-white border-white/20 hover:bg-white/20" : "bg-blue-50/50 text-blue-900 border-transparent hover:border-blue-100"
@@ -261,10 +261,10 @@ export default function BookingPageClient() {
 									</div>
 
 									{/* Detailed Pricing Table - Collapsible */}
-									<div className="mt-16">
+									<div className="mt-8 sm:mt-12 md:mt-16">
 										<button
 											onClick={() => setShowPricingTable(!showPricingTable)}
-											className="w-full bg-primary hover:bg-primary/90 text-white p-6 rounded-2xl font-bold text-lg flex items-center justify-between transition-all mb-4"
+											className="w-full bg-primary hover:bg-primary/90 text-white p-4 sm:p-6 rounded-xl sm:rounded-2xl font-bold text-sm sm:text-base md:text-lg flex items-center justify-between transition-all mb-4"
 										>
 											<span>View Detailed Pricing Table</span>
 											<ArrowRight className={cn("w-5 h-5 transition-transform", showPricingTable && "rotate-90")} />
@@ -308,7 +308,7 @@ export default function BookingPageClient() {
 
 									{/* Advanced Add-ons Detail */}
 									<div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch pt-4">
-										<div className="bg-white p-8 sm:p-10 rounded-[2.5rem] border border-blue-50 shadow-sm flex flex-col justify-center">
+										<div className="bg-white p-6 sm:p-8 md:p-10 rounded-2xl sm:rounded-[2.5rem] border border-blue-50 shadow-sm flex flex-col justify-center">
 											<div className="flex items-center space-x-6 mb-8">
 												<div className="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center shrink-0">
 													<Sparkles className="w-8 h-8 text-primary" />
@@ -340,13 +340,13 @@ export default function BookingPageClient() {
 											</div>
 										</div>
 
-										<div className="bg-blue-950 p-8 sm:p-10 rounded-[2.5rem] text-white flex flex-col justify-center relative overflow-hidden group">
+										<div className="bg-blue-950 p-6 sm:p-8 md:p-10 rounded-2xl sm:rounded-[2.5rem] text-white flex flex-col justify-center relative overflow-hidden group">
 											<div className="absolute top-0 right-0 w-32 h-32 bg-primary/20 rounded-full blur-3xl -mr-16 -mt-16" />
 											<div className="relative z-10">
 												<div className="flex items-center justify-between mb-8">
 													<div>
 														<p className="text-primary text-[10px] font-black uppercase tracking-[0.3em] mb-2">Total Monthly Investment</p>
-														<h4 className="text-4xl sm:text-5xl font-black tracking-tighter tabular-nums leading-none">
+														<h4 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tighter tabular-nums leading-none">
 															{selectedPrice ? `NPR ${selectedPrice.toLocaleString()}` : "Contact Us"}
 														</h4>
 													</div>
@@ -360,7 +360,7 @@ export default function BookingPageClient() {
 														window.scrollTo({ top: 0, behavior: 'smooth' });
 														setTimeout(() => setActiveTab("details"), 300);
 													}}
-													className="w-full h-16 rounded-2xl bg-orange-500 hover:bg-orange-600 text-white font-black text-lg uppercase tracking-widest shadow-2xl shadow-orange-500/40 transition-all hover:scale-[1.02] active:scale-95 group-hover:gap-6 duration-500"
+													className="w-full h-14 sm:h-16 rounded-xl sm:rounded-2xl bg-orange-500 hover:bg-orange-600 text-white font-black text-sm sm:text-base md:text-lg uppercase tracking-wider sm:tracking-widest shadow-2xl shadow-orange-500/40 transition-all hover:scale-[1.02] active:scale-95 group-hover:gap-6 duration-500"
 												>
 													Step 2: Confirm Details
 													<ArrowRight className="w-5 h-5 ml-4" />
