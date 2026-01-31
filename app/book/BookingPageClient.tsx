@@ -100,6 +100,7 @@ export default function BookingPageClient() {
 	const [selectedCategory, setSelectedCategory] = useState(windowPackages[0].category)
 	const [selectedFrequency, setSelectedFrequency] = useState(frequencyLabels[0])
 	const [includeInterior, setIncludeInterior] = useState(false)
+	const [showPricingTable, setShowPricingTable] = useState(false)
 
 	// Automatically calculate price
 	const selectedPackage = windowPackages.find((row) => row.category === selectedCategory)
@@ -162,46 +163,35 @@ export default function BookingPageClient() {
 	}
 
 	return (
-		<div className="min-h-screen bg-white py-12 sm:py-20 md:py-32">
+		<div className="min-h-screen bg-slate-50 py-12 sm:py-20">
 			<div className="classic-container">
 				<div className="mx-auto max-w-6xl">
-					{/* Premium Branding Section */}
-					<div className="flex flex-col items-center mb-16 sm:mb-24 text-center px-4">
-						<div className="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-blue-50 border border-blue-100 mb-6 group hover:scale-105 transition-all duration-500">
-							<div className="relative w-4 h-4 overflow-hidden">
-								<Image
-									src="/logo.png"
-									alt="Logo"
-									fill
-									className="object-contain"
-								/>
-							</div>
-							<span className="text-[10px] font-black uppercase tracking-[0.2em] text-primary">#1 Cleaning Services</span>
+					{/* Classic Header Section */}
+					<section className="classic-card p-6 sm:p-10 mb-12">
+						<div className="flex flex-col items-center justify-center space-y-6 text-center">
+							<h1 className="classic-heading text-3xl sm:text-5xl">Book Your Cleaning Service</h1>
+							<div className="w-24 h-1.5 bg-secondary rounded-full"></div>
+							<p className="text-muted-foreground text-lg max-w-3xl leading-relaxed">
+								Professional cleaning services for homes and businesses in Kathmandu, Lalitpur, and Bhaktapur. Choose your package and schedule your service today.
+							</p>
 						</div>
-						<h1 className="text-4xl sm:text-6xl md:text-7xl font-serif font-black tracking-tighter text-blue-950 mb-6 leading-none">
-							Schedule Your <span className="text-secondary italic">Brilliant</span> Service
-						</h1>
-						<div className="w-24 sm:w-32 h-2 bg-secondary rounded-full mb-8"></div>
-						<p className="text-muted-foreground text-lg sm:text-xl max-w-3xl font-medium leading-relaxed">
-							Join hundreds of premium properties in the Valley that trust our professional glass artisans for a world-class finish.
-						</p>
-					</div>
+					</section>
 
-					<div className="bg-white rounded-[3rem] shadow-[0_32px_128px_-32px_rgba(30,58,138,0.15)] border border-blue-50 overflow-hidden relative">
+					<div className="classic-card overflow-hidden">
 						<Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-							<TabsList className="grid w-full grid-cols-2 h-20 sm:h-28 bg-blue-50/30 p-2 sm:p-4 gap-2 sm:gap-6 border-b border-blue-50">
+							<TabsList className="grid w-full grid-cols-2 h-20 bg-slate-50 p-2 gap-4 border-b">
 								<TabsTrigger
 									value="package"
-									className="rounded-2xl sm:rounded-3xl text-sm sm:text-lg font-black uppercase tracking-widest data-[state=active]:bg-primary data-[state=active]:text-white data-[state=active]:shadow-2xl data-[state=active]:shadow-primary/30 transition-all duration-500 gap-3"
+									className="classic-button data-[state=active]:bg-primary data-[state=active]:text-white text-sm sm:text-base font-bold"
 								>
-									<Settings2 className="w-5 h-5 sm:w-6 sm:h-6 hidden sm:block" />
+									<Settings2 className="w-5 h-5 mr-2" />
 									1. Select Package
 								</TabsTrigger>
 								<TabsTrigger
 									value="details"
-									className="rounded-2xl sm:rounded-3xl text-sm sm:text-lg font-black uppercase tracking-widest data-[state=active]:bg-primary data-[state=active]:text-white data-[state=active]:shadow-2xl data-[state=active]:shadow-primary/30 transition-all duration-500 gap-3"
+									className="classic-button data-[state=active]:bg-primary data-[state=active]:text-white text-sm sm:text-base font-bold"
 								>
-									<ClipboardList className="w-5 h-5 sm:w-6 sm:h-6 hidden sm:block" />
+									<ClipboardList className="w-5 h-5 mr-2" />
 									2. Your Details
 								</TabsTrigger>
 							</TabsList>
@@ -270,38 +260,50 @@ export default function BookingPageClient() {
 										))}
 									</div>
 
-									{/* Detailed Pricing Table - Image Reference */}
-									<div className="mt-16 overflow-hidden rounded-[2rem] border border-blue-100 bg-white shadow-xl">
-										<div className="bg-blue-950 p-6 text-white text-center">
-											<h3 className="text-xl font-black tracking-tight uppercase">CrystalFront — Storefront Window Cleaning Pricing (Exterior)</h3>
-										</div>
-										<div className="overflow-x-auto">
-											<table className="w-full text-left border-collapse">
-												<thead>
-													<tr className="bg-blue-50/50">
-														<th className="p-4 sm:p-6 text-[11px] font-black uppercase tracking-widest text-primary border-b border-r border-blue-100">Size Category</th>
-														<th className="p-4 sm:p-6 text-[11px] font-black uppercase tracking-widest text-primary border-b border-r border-blue-100">Typical Window Area</th>
-														<th className="p-4 sm:p-6 text-[11px] font-black uppercase tracking-widest text-primary border-b border-r border-blue-100">4x/Month (Weekly)</th>
-														<th className="p-4 sm:p-6 text-[11px] font-black uppercase tracking-widest text-primary border-b border-r border-blue-100">6x/Month (Every 5 Days)</th>
-														<th className="p-4 sm:p-6 text-[11px] font-black uppercase tracking-widest text-primary border-b">8x/Month (Bi-Weekly)</th>
-													</tr>
-												</thead>
-												<tbody className="text-blue-950">
-													{windowPackages.map((row, idx) => (
-														<tr key={idx} className="hover:bg-blue-50/30 transition-colors">
-															<td className="p-4 sm:p-6 border-b border-r border-blue-50 font-bold">
-																<div>{row.category}</div>
-																<div className="text-[10px] text-blue-600/70 font-black">{row.subText}</div>
-															</td>
-															<td className="p-4 sm:p-6 border-b border-r border-blue-50 text-sm font-medium">{row.area}</td>
-															<td className="p-4 sm:p-6 border-b border-r border-blue-50 font-black text-center">NPR {row.prices[0].toLocaleString()}</td>
-															<td className="p-4 sm:p-6 border-b border-r border-blue-50 font-black text-center">NPR {row.prices[1].toLocaleString()}</td>
-															<td className="p-4 sm:p-6 border-b font-black text-center">NPR {row.prices[2].toLocaleString()}</td>
-														</tr>
-													))}
-												</tbody>
-											</table>
-										</div>
+									{/* Detailed Pricing Table - Collapsible */}
+									<div className="mt-16">
+										<button
+											onClick={() => setShowPricingTable(!showPricingTable)}
+											className="w-full bg-primary hover:bg-primary/90 text-white p-6 rounded-2xl font-bold text-lg flex items-center justify-between transition-all mb-4"
+										>
+											<span>View Detailed Pricing Table</span>
+											<ArrowRight className={cn("w-5 h-5 transition-transform", showPricingTable && "rotate-90")} />
+										</button>
+
+										{showPricingTable && (
+											<div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-lg animate-in slide-in-from-top-4 duration-300">
+												<div className="bg-primary p-6 text-white text-center">
+													<h3 className="text-xl font-bold">CrystalFront — Storefront Window Cleaning Pricing (Exterior)</h3>
+												</div>
+												<div className="overflow-x-auto">
+													<table className="w-full text-left border-collapse">
+														<thead>
+															<tr className="bg-slate-50">
+																<th className="p-4 sm:p-6 text-xs font-bold uppercase text-slate-700 border-b border-r border-slate-200">Size Category</th>
+																<th className="p-4 sm:p-6 text-xs font-bold uppercase text-slate-700 border-b border-r border-slate-200">Typical Window Area</th>
+																<th className="p-4 sm:p-6 text-xs font-bold uppercase text-slate-700 border-b border-r border-slate-200">4x/Month (Weekly)</th>
+																<th className="p-4 sm:p-6 text-xs font-bold uppercase text-slate-700 border-b border-r border-slate-200">6x/Month (Every 5 Days)</th>
+																<th className="p-4 sm:p-6 text-xs font-bold uppercase text-slate-700 border-b">8x/Month (Bi-Weekly)</th>
+															</tr>
+														</thead>
+														<tbody className="text-slate-900">
+															{windowPackages.map((row, idx) => (
+																<tr key={idx} className="hover:bg-slate-50 transition-colors">
+																	<td className="p-4 sm:p-6 border-b border-r border-slate-100 font-bold">
+																		<div>{row.category}</div>
+																		<div className="text-xs text-slate-500 font-semibold">{row.subText}</div>
+																	</td>
+																	<td className="p-4 sm:p-6 border-b border-r border-slate-100 text-sm">{row.area}</td>
+																	<td className="p-4 sm:p-6 border-b border-r border-slate-100 font-bold text-center">NPR {row.prices[0].toLocaleString()}</td>
+																	<td className="p-4 sm:p-6 border-b border-r border-slate-100 font-bold text-center">NPR {row.prices[1].toLocaleString()}</td>
+																	<td className="p-4 sm:p-6 border-b font-bold text-center">NPR {row.prices[2].toLocaleString()}</td>
+																</tr>
+															))}
+														</tbody>
+													</table>
+												</div>
+											</div>
+										)}
 									</div>
 
 									{/* Advanced Add-ons Detail */}
@@ -358,7 +360,7 @@ export default function BookingPageClient() {
 														window.scrollTo({ top: 0, behavior: 'smooth' });
 														setTimeout(() => setActiveTab("details"), 300);
 													}}
-													className="w-full h-16 rounded-2xl bg-primary hover:bg-primary/90 text-white font-black text-lg uppercase tracking-widest shadow-2xl shadow-primary/40 transition-all hover:scale-[1.02] active:scale-95 group-hover:gap-6 duration-500"
+													className="w-full h-16 rounded-2xl bg-orange-500 hover:bg-orange-600 text-white font-black text-lg uppercase tracking-widest shadow-2xl shadow-orange-500/40 transition-all hover:scale-[1.02] active:scale-95 group-hover:gap-6 duration-500"
 												>
 													Step 2: Confirm Details
 													<ArrowRight className="w-5 h-5 ml-4" />
