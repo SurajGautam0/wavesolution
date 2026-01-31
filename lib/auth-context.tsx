@@ -8,6 +8,8 @@ import {
   onAuthStateChanged,
   User as FirebaseUser,
   UserCredential,
+  GoogleAuthProvider,
+  signInWithPopup,
 } from "firebase/auth"
 import { auth } from "./firebase"
 import { saveUser, getUserById } from "./firebase-service"
@@ -25,8 +27,9 @@ interface AuthContextType {
   loading: boolean
   signIn: (email: string, password: string) => Promise<UserCredential>
   signUp: (email: string, password: string, name: string) => Promise<void>
+  signInWithGoogle: () => Promise<void>
   logout: () => Promise<void>
-  updateUserProfile: (userData: Partial<Omit<User, 'id'>>) => Promise<void>
+  updateUserProfile: (userData: Partial<Omit<User, 'id'>>) => Promise<any>
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined)
@@ -67,7 +70,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           await fetchUserData(firebaseUser.uid)
         } catch (error) {
           console.error("Error fetching user data:", error)
-          
+
           // If Firestore fetch fails or user doesn't exist, use basic info
           if (!user) {
             const basicUser = {
@@ -76,7 +79,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
               name: firebaseUser.displayName || "User",
               role: "user",
             }
-            
+
             // Try to save this basic user to Firestore
             try {
               await saveUser(basicUser)
@@ -111,7 +114,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const signUp = async (email: string, password: string, name: string) => {
     try {
       const result = await createUserWithEmailAndPassword(auth, email, password)
-      
+
       // Create user profile
       const newUser = {
         id: result.user.uid,
@@ -119,11 +122,11 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         name,
         role: "user",
       }
-      
+
       // Save to Firestore with retry logic
       let saveAttempts = 0
       const maxAttempts = 3
-      
+
       while (saveAttempts < maxAttempts) {
         try {
           await saveUser(newUser)
@@ -131,7 +134,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         } catch (error: any) {
           console.error(`Error saving user (attempt ${saveAttempts + 1}):`, error)
           saveAttempts++
-          
+
           if (saveAttempts >= maxAttempts) {
             // If we've reached max attempts, still allow the account to be created
             // but notify the user there was an issue saving profile details
@@ -142,13 +145,45 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           }
         }
       }
-      
+
       // Update local state
       setUser(newUser)
       localStorage.setItem("user", JSON.stringify(newUser))
-      
+
     } catch (error) {
       console.error("Error creating user:", error)
+      throw error
+    }
+  }
+
+  const signInWithGoogle = async () => {
+    try {
+      const provider = new GoogleAuthProvider()
+      const result = await signInWithPopup(auth, provider)
+
+      // Check if user exists in Firestore
+      const userDoc = await getUserById(result.user.uid)
+
+      if (!userDoc) {
+        // Create new user if not exists
+        const newUser = {
+          id: result.user.uid,
+          email: result.user.email || "",
+          name: result.user.displayName || "Google User",
+          role: "user",
+        }
+
+        await saveUser(newUser)
+        setUser(newUser)
+        localStorage.setItem("user", JSON.stringify(newUser))
+        document.cookie = `user=${JSON.stringify(newUser)}; path=/; max-age=86400`
+      } else {
+        setUser(userDoc as User)
+        localStorage.setItem("user", JSON.stringify(userDoc))
+        document.cookie = `user=${JSON.stringify(userDoc)}; path=/; max-age=86400`
+      }
+    } catch (error) {
+      console.error("Error signing in with Google:", error)
       throw error
     }
   }
@@ -157,20 +192,21 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     if (!user || !user.id) {
       throw new Error("No user is currently logged in")
     }
-    
+
     try {
       // Update the user data in Firestore
       const updatedUser = {
         ...user,
         ...userData
       }
-      
+
       await saveUser(updatedUser)
-      
+
       // Update local state
       setUser(updatedUser)
       localStorage.setItem("user", JSON.stringify(updatedUser))
-      
+      document.cookie = `user=${JSON.stringify(updatedUser)}; path=/; max-age=86400`
+
       return updatedUser
     } catch (error) {
       console.error("Error updating user profile:", error)
@@ -182,10 +218,11 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     await signOut(auth)
     setUser(null)
     localStorage.removeItem("user")
+    document.cookie = "user=; path=/; max-age=0"
   }
 
   return (
-    <AuthContext.Provider value={{ user, loading, signIn, signUp, logout, updateUserProfile }}>
+    <AuthContext.Provider value={{ user, loading, signIn, signUp, signInWithGoogle, logout, updateUserProfile }}>
       {children}
     </AuthContext.Provider>
   )

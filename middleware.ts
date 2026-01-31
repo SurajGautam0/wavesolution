@@ -25,7 +25,7 @@ export function middleware(request: NextRequest) {
         return NextResponse.redirect(new URL("/dashboard", request.url))
       }
 
-      if (path.startsWith("/dashboard") && userData.role !== "user") {
+      if (path.startsWith("/dashboard") && userData.role === "admin") {
         return NextResponse.redirect(new URL("/admin", request.url))
       }
     } catch (error) {

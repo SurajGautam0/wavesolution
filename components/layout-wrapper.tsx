@@ -7,7 +7,7 @@ import { AuthProvider } from "@/lib/auth-context"
 
 export function LayoutWrapper({ children }: { children: React.ReactNode }) {
     const pathname = usePathname()
-    const isAdminPage = pathname.startsWith("/admin") || pathname.startsWith("/login") || pathname.startsWith("/register")
+    const isAdminPage = pathname?.startsWith("/admin") || pathname?.startsWith("/login") || pathname?.startsWith("/register") || pathname?.startsWith("/dashboard")
 
     const Content = () => {
         if (isAdminPage) {

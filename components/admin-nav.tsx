@@ -87,21 +87,21 @@ export function AdminNav({ activeTab = "dashboard", setActiveTab = () => { } }: 
   ]
 
   return (
-    <nav className="grid items-start gap-1">
+    <nav className="grid items-start gap-1 p-2">
       {routes.map((route) => (
         <Button
           key={route.id}
           variant="ghost"
           className={cn(
-            "w-full justify-start h-12 rounded-2xl transition-all duration-300 px-4",
+            "w-full justify-start h-10 rounded-lg transition-all duration-200 px-3",
             route.active
-              ? "bg-primary text-white shadow-lg shadow-primary/20 hover:bg-primary/90"
-              : "text-blue-900/60 hover:bg-blue-50 hover:text-primary"
+              ? "bg-blue-50 text-blue-700 font-semibold"
+              : "text-slate-600 hover:bg-slate-50 hover:text-slate-900"
           )}
           onClick={() => setActiveTab(route.id)}
         >
-          <route.icon className={cn("mr-3 h-4 w-4 transition-transform", route.active ? "scale-110" : "group-hover:scale-110")} />
-          <span className="text-xs font-black uppercase tracking-widest">{route.label}</span>
+          <route.icon className={cn("mr-2.5 h-4 w-4 transition-colors", route.active ? "text-blue-600" : "text-slate-500")} />
+          <span className="text-sm">{route.label}</span>
         </Button>
       ))}
     </nav>
