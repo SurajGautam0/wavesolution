@@ -151,17 +151,17 @@ export default function Home() {
                 <TabsContent value="residential">
                   <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
                     <TestimonialCard
-                      name="राम बहादुर थापा"
-                      location="भैसेपाटी, ललितपुर"
+                      name="Ram Bahadur Thapa"
+                      location="Bhaisepati, Lalitpur"
                       rating={5}
-                      testimonial="CRYSTALFRONT ले मेरो घरको सरसफाई निकै राम्रोसँग गरिरहेको छ। उनीहरूको काम निकै व्यवस्थित र भरपर्दो छ। विशेष गरि भैसेपाटी क्षेत्रमा यति राम्रो सर्भिस पाउनु एकदमै खुसीको कुरा हो।"
+                      testimonial="CRYSTALFRONT has been providing exceptional cleaning for my home. Their work is highly organized and reliable. It's a pleasure to have such high-quality service in the Bhaisepati area."
                       image="/placeholder.svg?height=80&width=80"
                     />
                     <TestimonialCard
-                      name="सीता कुमारी राई"
-                      location="सानेपा, ललितपुर"
+                      name="Sita Kumari Rai"
+                      location="Sanepa, Lalitpur"
                       rating={5}
-                      testimonial="मैले धेरै ठाउँमा सरसफाई गराएँ तर CRYSTALFRONT जस्तो सफा गर्ने कोही भेटिन। उनीहरूको टिमु निकै मिहिनेती छ। घरको कुनाकुनासम्म धेरै राम्रोसँग सफा गर्छन्।"
+                      testimonial="I have tried several cleaning services, but none compare to CRYSTALFRONT. Their team is extremely hardworking and they clean every corner of the house meticulously."
                       image="/placeholder.svg?height=80&width=80"
                     />
                   </div>
@@ -169,17 +169,17 @@ export default function Home() {
                 <TabsContent value="commercial">
                   <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
                     <TestimonialCard
-                      name="राजेश खत्री"
-                      location="एकान्तकुना, ललितपुर"
+                      name="Rajesh Khatri"
+                      location="Ekantakuna, Lalitpur"
                       rating={5}
-                      testimonial="हाम्रो अफिसको सरसफाईको जिम्मा CRYSTALFRONT लाई दिएका छौं। उनीहरूले निकै राम्रो काम गरिरहेका छन्। अफिस सफा भएपछि कर्मचारीहरूको मनोबल पनि बढेको महसुस गरेका छौं।"
+                      testimonial="We have entrusted CRYSTALFRONT with our office cleaning. They are doing a fantastic job. We've noticed a boost in employee morale since the office has been so clean."
                       image="/placeholder.svg?height=80&width=80"
                     />
                     <TestimonialCard
-                      name="बिनीता बस्नेत"
-                      location="बखुन्डोल, ललितपुर"
+                      name="Binita Basnet"
+                      location="Bakhundole, Lalitpur"
                       rating={5}
-                      testimonial="हाम्रो रेस्टुरेन्टको लागि CRYSTALFRONT को सरसफाई निकै प्रभावकारी छ। उनीहरूले किचेन र डाइनिङ हल निकै राम्रोसँग सेनिटाइज गर्छन्। उनीहरूको काममा हामी धेरै सन्तुष्ट छौं।"
+                      testimonial="CRYSTALFRONT's cleaning service is very effective for our restaurant. They sanitize the kitchen and dining area thoroughly. We are extremely satisfied with their work."
                       image="/placeholder.svg?height=80&width=80"
                     />
                   </div>

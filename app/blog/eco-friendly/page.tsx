@@ -5,27 +5,27 @@ import { Calendar, User, Clock, Sparkles, ArrowLeft, Leaf, Zap } from "lucide-re
 import { Button } from "@/components/ui/button"
 
 export const metadata: Metadata = {
-    title: "वातावरणमैत्री सरसफाईका उपायहरू | CRYSTALFRONT Blog",
-    description: "तपाईंको घरलाई रासायनिक रसायन बिना कसरी वातावरणमैत्री तरिकाले सफा राख्ने भन्ने बारे उपयोगी जानकारी।",
+    title: "Eco-Friendly Cleaning: Sustainable Solutions for a Safer Home | CRYSTALFRONT Blog",
+    description: "Learn how to maintain a pristine home using sustainable, non-toxic methods that protect both your family and the environment.",
 }
 
 export default function EcoFriendlyCleaningPage() {
     const ecoTips = [
         {
-            title: "प्राकृतिक क्लिनरको प्रयोग",
-            description: "भिनेगर र बेकिङ सोडा जस्ता घरमै उपलब्ध हुने वस्तुहरूले कडा रसायन भन्दा राम्रो काम गर्न सक्छन्।",
+            title: "Leverage Natural Cleaners",
+            description: "Everyday pantry staples like white vinegar and baking soda can outperform harsh industrial chemicals, providing a deep clean without toxic residues.",
         },
         {
-            title: "कागतीको शक्ति",
-            description: "कागतीले धातुका सामान र बेसिनमा भएको खया र दाग हटाउनुका साथै राम्रो बासना प्रदान गर्दछ।",
+            title: "The Power of Citrus",
+            description: "Lemon juice naturally dissolves mineral deposits and stains on metal fixtures while leaving behind a refreshing, organic scent.",
         },
         {
-            title: "वाष्प सरसफाई (Steam Cleaning)",
-            description: "रसायनको सट्टा तातो वाफ प्रयोग गर्दा किटाणुहरू मर्छन् र भुइँ गहिरो रूपले सफा हुन्छ।",
+            title: "Advanced Steam Cleaning",
+            description: "High-temperature steam effectively sanitizes surfaces and kills bacteria without the need for chemical agents, ensuring a deep, sterile clean.",
         },
         {
-            title: "पुन: प्रयोग गर्न मिल्ने सामग्री",
-            description: "एकपटक प्रयोग गरेर फाल्ने पेपर टावलको सट्टा धोएर फेरि प्रयोग गर्न मिल्ने कपडाहरू प्रयोग गर्नुहोस्।",
+            title: "Sustainable Cleaning Tools",
+            description: "Transition from disposable paper towels to reusable, high-performance microfiber cloths to significantly reduce waste and improve efficiency.",
         }
     ]
 
@@ -36,10 +36,10 @@ export default function EcoFriendlyCleaningPage() {
 
                 <div className="classic-container relative z-10 text-center">
                     <Link href="/" className="inline-flex items-center text-secondary text-sm font-black uppercase tracking-widest mb-8 hover:gap-2 transition-all">
-                        <ArrowLeft className="w-4 h-4 mr-2" /> मुख्य पृष्ठमा जानुहोस्
+                        <ArrowLeft className="w-4 h-4 mr-2" /> Back to Home
                     </Link>
                     <h1 className="text-3xl sm:text-5xl md:text-6xl font-serif font-black tracking-tighter mb-8 leading-tight max-w-4xl mx-auto">
-                        वातावरणमैत्री <span className="text-secondary">सरसफाईका</span> प्रभावकारी उपायहरू
+                        Effective <span className="text-secondary">Eco-Friendly</span> Cleaning Solutions
                     </h1>
 
                     <div className="flex flex-wrap items-center justify-center gap-6 text-sm font-bold opacity-80 uppercase tracking-widest">
@@ -58,7 +58,7 @@ export default function EcoFriendlyCleaningPage() {
                             </div>
 
                             <p className="text-lg text-muted-foreground mb-12">
-                                हामीले प्रयोग गर्ने धेरै जसो सरसफाईका साधनहरूमा कडा रसायनहरू हुन्छन् जसले हाम्रो स्वास्थ्य र वातावरण दुवैलाई असर गर्छ। इको-फ्रेन्डली सरसफाईले तपाईंको घरलाई सुरक्षित र स्वस्थ बनाउँछ।
+                                Many conventional cleaning products contain harsh chemicals that can impact both indoor air quality and the environment. Adopting eco-friendly practices ensures your home remains a safe, healthy sanctuary for your family.
                             </p>
 
                             <div className="grid gap-6 text-left">
@@ -74,12 +74,12 @@ export default function EcoFriendlyCleaningPage() {
                             </div>
 
                             <div className="mt-16 pt-10 border-t border-blue-50">
-                                <h3 className="text-2xl font-black text-blue-950 mb-6 uppercase tracking-tight">CRYSTALFRONT को प्रतिवद्धता</h3>
+                                <h3 className="text-2xl font-black text-blue-950 mb-6 uppercase tracking-tight">CRYSTALFRONT Commitment</h3>
                                 <p className="text-muted-foreground mb-8">
-                                    हाम्रो टिमले सरसफाई गर्दा सकेसम्म वातावरणलाई कम असर पर्ने जैविक र सुरक्षित उत्पादनहरू प्रयोग गर्दछ। हामी तपाईंको घर मात्र सफा गर्दैनौँ, वातावरणको पनि ख्याल राख्छौँ।
+                                    Our team is dedicated to environmental stewardship. We prioritize biodegradable and non-toxic products in all our services, ensuring a pristine clean that respects the planet.
                                 </p>
                                 <Button asChild className="rounded-full bg-secondary text-white font-black uppercase tracking-widest px-10 h-14">
-                                    <Link href="/book">हामीसँग जोड्नुहोस्</Link>
+                                    <Link href="/book">Schedule a Clean</Link>
                                 </Button>
                             </div>
                         </div>

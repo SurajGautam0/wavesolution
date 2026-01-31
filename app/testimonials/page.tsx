@@ -25,7 +25,7 @@ const testimonials: Record<string, TestimonialProps[]> = {
       location: "Bhaisepati, Lalitpur",
       rating: 5,
       testimonial:
-        "CRYSTALFRONT ले मेरो घरको सरसफाई निकै राम्रोसँग गरिरहेको छ। उनीहरूको काम निकै व्यवस्थित र भरपर्दो छ। विशेष गरि भैसेपाटी क्षेत्रमा यति राम्रो सर्भिस पाउनु एकदमै खुसीको कुरा हो।",
+        "CRYSTALFRONT has been providing exceptional cleaning for my home. Their work is highly organized and reliable. It's a pleasure to have such high-quality service in the Bhaisepati area.",
       image: "/placeholder.svg?height=80&width=80",
       date: "January 15, 2026",
       service: "Home Cleaning",
@@ -35,7 +35,7 @@ const testimonials: Record<string, TestimonialProps[]> = {
       location: "Sanepa, Lalitpur",
       rating: 5,
       testimonial:
-        "मैले धेरै ठाउँमा सरसफाई गराएँ तर CRYSTALFRONT जस्तो सफा गर्ने कोही भेटिन। उनीहरूको टिमु निकै मिहिनेती छ। घरको कुनाकुनासम्म धेरै राम्रोसँग सफा गर्छन्।",
+        "I have tried several cleaning services, but none compare to CRYSTALFRONT. Their team is extremely hardworking and they clean every corner of the house meticulously.",
       image: "/placeholder.svg?height=80&width=80",
       date: "January 10, 2026",
       service: "Deep Cleaning",
@@ -45,7 +45,7 @@ const testimonials: Record<string, TestimonialProps[]> = {
       location: "Jhamsikhel, Lalitpur",
       rating: 4,
       testimonial:
-        "घरको सिसा र झ्याल सफा गर्नको लागि निकै राम्रो कम्पनी हो। काम निकै राम्रो छ तर अलिकति ढिलो आइपुगे। बाहेक अरु सबै कुरा उत्कृष्ट छ।",
+        "An excellent company for window and glass cleaning. The work is top-tier, although they arrived slightly late once. Everything else is outstanding.",
       image: "/placeholder.svg?height=80&width=80",
       date: "January 5, 2026",
       service: "Window Cleaning",
@@ -55,7 +55,7 @@ const testimonials: Record<string, TestimonialProps[]> = {
       location: "Nakkhu, Lalitpur",
       rating: 5,
       testimonial:
-        "CRYSTALFRONT को सर्भिस निकै प्रोफेसनल छ। उनीहरूले प्रयोग गर्ने केमिकलहरू पनि वातावरण र स्वास्थ्यको लागि ठिक छन्। म सबैलाई यो सेवा लिन अनुरोध गर्दछु।",
+        "CRYSTALFRONT's service is highly professional. The cleaning agents they use are environmentally friendly and safe for health. I highly recommend their services to everyone.",
       image: "/placeholder.svg?height=80&width=80",
       date: "December 28, 2025",
       service: "Home Cleaning",
@@ -67,7 +67,7 @@ const testimonials: Record<string, TestimonialProps[]> = {
       location: "Ekantakuna, Lalitpur",
       rating: 5,
       testimonial:
-        "हाम्रो अफिसको सरसफाईको जिम्मा CRYSTALFRONT लाई दिएका छौं। उनीहरूले निकै राम्रो काम गरिरहेका छन्। अफिस सफा भएपछि कर्मचारीहरूको मनोबल पनि बढेको महसुस गरेका छौं।",
+        "We have entrusted CRYSTALFRONT with our office cleaning. They are doing a fantastic job. We've noticed a boost in employee morale since the office has been so clean.",
       image: "/placeholder.svg?height=80&width=80",
       date: "January 12, 2026",
       service: "Office Cleaning",
@@ -77,7 +77,7 @@ const testimonials: Record<string, TestimonialProps[]> = {
       location: "Bakhundole, Lalitpur",
       rating: 5,
       testimonial:
-        "हाम्रो रेस्टुरेन्टको लागि CRYSTALFRONT को सरसफाई निकै प्रभावकारी छ। उनीहरूले किचेन र डाइनिङ हल निकै राम्रोसँग सेनिटाइज गर्छन्। उनीहरूको काममा हामी धेरै सन्तुष्ट छौं।",
+        "CRYSTALFRONT's cleaning service is very effective for our restaurant. They sanitize the kitchen and dining area thoroughly. We are extremely satisfied with their work.",
       image: "/placeholder.svg?height=80&width=80",
       date: "January 8, 2026",
       service: "Restaurant Cleaning",
@@ -87,7 +87,7 @@ const testimonials: Record<string, TestimonialProps[]> = {
       location: "Kupandole, Lalitpur",
       rating: 4,
       testimonial:
-        "मेडिकल सेन्टरको सरसफाई निकै संवेदनशील हुन्छ। CRYSTALFRONT ले यो काम निकै कुशलतापूर्वक गरिरहेको छ। उनीहरूको सरसफाईको मानक निकै उच्च छ।",
+        "Cleaning a medical center requires high sensitivity. CRYSTALFRONT handles this task with great expertise. Their cleaning standards are remarkably high.",
       image: "/placeholder.svg?height=80&width=80",
       date: "December 20, 2025",
       service: "Medical Facility Cleaning",
@@ -97,7 +97,7 @@ const testimonials: Record<string, TestimonialProps[]> = {
       location: "Jawalakhel, Lalitpur",
       rating: 5,
       testimonial:
-        "हाम्रो कर्पोरेट अफिसको लागि CRYSTALFRONT सधैं पहिलो रोजाईमा पर्छ। उनीहरू समयको ख्याल राख्छन् र काम निकै गुणस्तरीय हुन्छ।",
+        "CRYSTALFRONT is always our first choice for our corporate office. They are punctual and their work is of consistent high quality.",
       image: "/placeholder.svg?height=80&width=80",
       date: "December 15, 2025",
       service: "Office Cleaning",
@@ -109,7 +109,7 @@ const testimonials: Record<string, TestimonialProps[]> = {
       location: "Imadol, Lalitpur",
       rating: 5,
       testimonial:
-        "कार्पेट सरसफाईको लागि CRYSTALFRONT उत्कृष्ट छ। उनीहरूले मेरो पुरानो कार्पेटलाई नयाँ जस्तै बनाइदिए। दागहरू सबै हटेर गएका छन्।",
+        "CRYSTALFRONT is excellent for carpet cleaning. They made my old carpet look brand new again. All the stubborn stains are completely gone.",
       image: "/placeholder.svg?height=80&width=80",
       date: "January 14, 2026",
       service: "Carpet Cleaning",
@@ -119,7 +119,7 @@ const testimonials: Record<string, TestimonialProps[]> = {
       location: "Dhobighat, Lalitpur",
       rating: 5,
       testimonial:
-        "वाटर ट्याङ्की र सेप्टिक ट्याङ्की सरसफाईको काम निकै गाह्रो हुन्छ तर उनीहरूले निकै राम्रोसँग गरिदिए। सफा गर्ने मान्छेहरू निकै अनुशासित थिए।",
+        "Water tank and septic tank cleaning is a difficult job, but they did it very well. The cleaning crew was very disciplined and professional.",
       image: "/placeholder.svg?height=80&width=80",
       date: "January 6, 2026",
       service: "Tank Cleaning",
@@ -129,7 +129,7 @@ const testimonials: Record<string, TestimonialProps[]> = {
       location: "Latitpur-5",
       rating: 4,
       testimonial:
-        "घर बनिसके पछिको सरसफाईको लागि CRYSTALFRONT लाई बोलाएको थिएँ। सिमेन्ट र रङका दागहरू सबै हटाइदिए। काम निकै गुणस्तरीय छ।",
+        "I called CRYSTALFRONT for post-construction cleaning. They removed all the cement and paint stains. The work quality is superb.",
       image: "/placeholder.svg?height=80&width=80",
       date: "December 30, 2025",
       service: "Post-Construction Cleaning",
@@ -139,7 +139,7 @@ const testimonials: Record<string, TestimonialProps[]> = {
       location: "Sanepa, Lalitpur",
       rating: 5,
       testimonial:
-        "सोफा सरसफाईको लागि उनीहरूको प्रविधि निकै आधुनिक छ। सोफाको रङ र चमक फेरि फर्किएको छ। म धेरै सन्तुष्ट छु।",
+        "Their sofa cleaning technology is very modern. The color and shine of the sofa have been restored. I am very satisfied with the results.",
       image: "/placeholder.svg?height=80&width=80",
       date: "December 22, 2025",
       service: "Sofa Cleaning",
@@ -311,12 +311,12 @@ export default function TestimonialsPage() {
       <section className="py-16 bg-white">
         <div className="classic-container">
           <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl font-bold tracking-tight mb-6 text-primary">आफ्नो अनुभव साझा गर्नुहोस्</h2>
+            <h2 className="text-3xl font-bold tracking-tight mb-6 text-primary">Share Your Experience</h2>
             <p className="text-lg text-muted-foreground mb-8">
-              हामी तपाईंको प्रतिक्रियाको कदर गर्छौं! यदि तपाईंले हाम्रो सेवा लिनुभएको छ भने, तपाईंको अनुभव हामीलाई सुनाउनुहोस्।
+              We value your feedback! If you have used our services, please share your experience with us.
             </p>
             <Button asChild size="lg" className="classic-button">
-              <Link href="/contact?testimonial=true">तपाईंको प्रतिक्रिया पठाउनुहोस्</Link>
+              <Link href="/contact?testimonial=true">Submit Your Feedback</Link>
             </Button>
           </div>
         </div>

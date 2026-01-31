@@ -5,51 +5,51 @@ import { Calendar, User, Clock, ChevronRight, CheckCircle2, Sparkles, ArrowLeft 
 import { Button } from "@/components/ui/button"
 
 export const metadata: Metadata = {
-    title: "१० घर सफा राख्ने उपयोगी टिप्स | CRYSTALFRONT Blog",
-    description: "तपाईंको घरलाई सधैं चम्किलो र सफा राख्नका लागि १० महत्वपूर्ण टिप्सहरू।",
+    title: "10 Essential Tips for a Pristine Home | CRYSTALFRONT Blog",
+    description: "Discover the secrets to maintaining a sparkling clean home with our expert tips tailored for modern living.",
 }
 
 export default function CleaningTipsPage() {
     const tips = [
         {
-            title: "१. दैनिक धुलो पुछ्ने बानी बसाल्नुहोस्",
-            content: "काठमाडौं र ललितपुर जस्ता सहरहरूमा धुलोको समस्या धेरै हुने गर्दछ। त्यसैले, दैनिक रूपमा झ्यालका ढोका र सरसामानको हल्का पुछपाछ गर्दा घर सधैं नयाँ जस्तै देखिन्छ।"
+            title: "1. Establish a Daily Dusting Habit",
+            content: "In metropolitan hubs like Kathmandu and Lalitpur, dust accumulation is a constant challenge. A quick daily wipe of surfaces and window sills ensures your home remains fresh and prevents long-term grime buildup."
         },
         {
-            title: "२. माइक्रोफाइबर कपडाको प्रयोग",
-            content: "साधारण सुतीको कपडा भन्दा माइक्रोफाइबर कपडाले धुलो र फोहोरलाई राम्रोसँग तान्छ र काँचका सामानहरूमा दाग बस्न दिँदैन।"
+            title: "2. The Power of Microfiber",
+            content: "Replace traditional cotton cloths with high-quality microfiber. These advanced fibers trap dust and allergens more effectively without leaving streaks or lint on delicate glass and polished surfaces."
         },
         {
-            title: "३. भिनेगर र बेकिङ सोडाको जादु",
-            content: "रसायनयुक्त सफा गर्ने साधनको सट्टा घरमै पाइने भिनेगर र बेकिङ सोडाको मिश्रणले भान्छा र बाथरुमका कडा दागहरू सजिलै हटाउन सकिन्छ।"
+            title: "3. Natural Cleaning Solutions",
+            content: "Harness the power of kitchen staples like white vinegar and baking soda. This eco-friendly combination effectively dissolves tough stains in kitchens and bathrooms without exposing your family to harsh chemicals."
         },
         {
-            title: "४. झ्याल र काँचको विशेष ध्यान",
-            content: "काँच सफा गर्दा सधैं माथिबाट तल तिर सफा गर्नुहोस्। यसले गर्दा पानीको रेखा बस्न पाउँदैन र झ्याल पूर्ण रूपमा चम्किलो हुन्छ।"
+            title: "4. Mastering Glass and Windows",
+            content: "To achieve a professional, streak-free shine, always clean glass surfaces from top to bottom. This technique prevents residue from dripping onto already cleaned areas, ensuring crystal-clear results."
         },
         {
-            title: "५. फोहोरको समयमै व्यवस्थापन",
-            content: "भान्छाको सड्ने फोहोर र नसड्ने फोहोरलाई छुट्टाछुट्टै राख्नुहोस्। यसले घरमा दुर्गन्ध फैलाउन दिँदैन र सरसफाईमा सहजता ल्याउँछ।"
+            title: "5. Strategic Waste Management",
+            content: "Implement a dual-bin system to separate organic and inorganic waste at the source. This prevents odors and streamlines the cleaning process, keeping your environment hygienic and organized."
         },
         {
-            title: "६. बाथरुमलाई सुख्खा राख्नुहोस्",
-            content: "नुहाइसकेपछि बाथरुमको भुँइ र भित्तालाई सुख्खा राख्ने प्रयास गर्नुहोस्। यसले गर्दा लेउ (Mould) लाग्ने सम्भावना कम हुन्छ।"
+            title: "6. Moisture Control in Bathrooms",
+            content: "Prevent mold and mildew growth by keeping your bathroom dry. Squeegee walls and floors after use to maintain a pristine, spa-like atmosphere."
         },
         {
-            title: "७. ओछ्यान मिलाउने बानी",
-            content: "बिहान उठ्ने बित्तिकै ओछ्यान मिलाउँदा कोठा तुरुन्तै सफा र व्यवस्थित देखिन्छ। यो मनोवैज्ञानिक रूपमा पनि सकारात्मक हुन्छ।"
+            title: "7. The Morning Bed Reset",
+            content: "Making your bed immediately after waking up is a simple ritual that instantly elevates the room's aesthetic and sets a disciplined, productive tone for your entire day."
         },
         {
-            title: "८. भुइँको सरसफाई (Mopping)",
-            content: "हप्तामा कम्तिमा दुई पटक भुइँलाई राम्रो किटाणुनाशक प्रयोग गरेर पुछ्नुहोस्। विशेष गरी बालबालिका भएका घरमा यो अनिवार्य छ।"
+            title: "8. Systematic Floor Care",
+            content: "Deep clean your floors at least twice a week using a high-quality disinfectant. This is essential for maintaining a safe and healthy environment, especially for households with children."
         },
         {
-            title: "९. अनावश्यक सामान हटाउनुहोस् (Declutter)",
-            content: "नचाहिने पुराना लुगा, पत्रिका र प्लास्टिकका सामानहरू हटाउँदा घरमा ठाउँ बढ्छ र सफा गर्न सजिलो हुन्छ।"
+            title: "9. Declutter for Clarity",
+            content: "Regularly remove unused clothing, old periodicals, and unnecessary plastics. A minimalist approach not only makes cleaning easier but also creates a more tranquil and spacious living area."
         },
         {
-            title: "१०. व्यावसायिक सरसफाई सेवाको मद्दत",
-            content: "कहिलेकाँही घरको गहिरो सरसफाई (Deep Cleaning) का लागि विशेषज्ञहरूको मद्दत लिनु फाइदाजनक हुन्छ। CRYSTALFRONT जस्ता विशेषज्ञहरूले तपाईंको घरलाई नयाँ रूप दिन सक्छन्।"
+            title: "10. Professional Deep Cleaning Services",
+            content: "Sometimes, your home requires a specialized touch. CRYSTALFRONT’s professional deep cleaning services utilize industrial-grade equipment and expertise to restore your home to its original brilliance."
         }
     ]
 
@@ -68,7 +68,7 @@ export default function CleaningTipsPage() {
                         <ArrowLeft className="w-4 h-4 mr-2" /> Back to Home
                     </Link>
                     <h1 className="text-3xl sm:text-5xl md:text-6xl font-serif font-black tracking-tighter mb-8 leading-tight max-w-4xl mx-auto">
-                        10 Useful Tips to Keep Your Home <span className="text-secondary">Sparkling Always</span>
+                        10 Essential Tips for a <span className="text-secondary">Sparkling Home</span>
                     </h1>
 
 
@@ -80,7 +80,7 @@ export default function CleaningTipsPage() {
                             <Calendar className="w-4 h-4 mr-2 text-secondary" /> February 15, 2026
                         </div>
                         <div className="flex items-center">
-                            <Clock className="w-4 h-4 mr-2 text-secondary" /> ५ मिनेट पढ्नुहोस्
+                            <Clock className="w-4 h-4 mr-2 text-secondary" /> 5 Minute Read
                         </div>
                     </div>
                 </div>
@@ -92,7 +92,7 @@ export default function CleaningTipsPage() {
                     <div className="mx-auto max-w-4xl">
                         <div className="bg-white rounded-[3rem] shadow-2xl shadow-blue-900/5 p-8 sm:p-16 border border-blue-50">
                             <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed mb-12 italic border-l-4 border-secondary pl-6">
-                                घरलाई सफा र स्वास्थ्यकर राख्नु केवल बाहिरी चमक मात्र होइन, यो एक सुखद जीवनशैली पनि हो। यहाँ हामीले नेपाली परिवेश अनुसार घरलाई कसरी व्यवस्थित र चम्किलो राख्ने भन्ने बारे केही व्यावहारिक टिप्सहरू प्रस्तुत गरेका छौं।
+                                Maintaining a clean and hygienic home is more than just about aesthetics—it&apos;s a commitment to a healthier, more vibrant lifestyle. We&apos;ve curated these professional tips to help you keep your living space pristine in any environment.
                             </p>
 
                             <div className="space-y-12 mb-16">
@@ -129,7 +129,7 @@ export default function CleaningTipsPage() {
                         {/* Back to Home Button */}
                         <div className="text-center mt-12">
                             <Link href="/" className="text-sm font-black text-blue-950/40 hover:text-primary transition-colors uppercase tracking-[0.4em]">
-                                ← फिर्ता जानुहोस्
+                                ← Back to Homepage
                             </Link>
                         </div>
                     </div>
@@ -139,14 +139,14 @@ export default function CleaningTipsPage() {
             {/* Newsletter / CTA */}
             <section className="bg-primary text-white py-16 text-center">
                 <div className="classic-container px-4">
-                    <h2 className="text-3xl font-serif font-black mb-6">हाम्रा नयाँ सेवाहरूको बारेमा जानकारी पाउनुहोस्</h2>
-                    <p className="text-white/60 mb-8 max-w-xl mx-auto uppercase tracking-widest font-bold text-xs">हाम्रो सफाइ विशेषज्ञ टोलीसँग जोडिनुहोस्</p>
+                    <h2 className="text-3xl font-serif font-black mb-6">Stay Informed on Our Premium Services</h2>
+                    <p className="text-white/60 mb-8 max-w-xl mx-auto uppercase tracking-widest font-bold text-xs">Connect with our team of cleaning experts today</p>
                     <div className="flex flex-col sm:flex-row justify-center gap-4">
                         <Button asChild variant="outline" className="h-14 px-10 rounded-full border-2 border-white/20 hover:border-white text-white font-black">
-                            <Link href="/services">हाम्रा सेवाहरू हेर्नुहोस्</Link>
+                            <Link href="/services">View Our Services</Link>
                         </Button>
                         <Button asChild className="h-14 px-10 rounded-full bg-secondary hover:bg-secondary/90 text-white font-black">
-                            <Link href="/contact">सम्पर्क गर्नुहोस्</Link>
+                            <Link href="/contact">Contact Us</Link>
                         </Button>
                     </div>
                 </div>
