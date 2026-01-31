@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
 import Link from "next/link"
 import Image from "next/image"
@@ -42,8 +42,15 @@ type LoginFormValues = z.infer<typeof loginSchema>
 
 export default function LoginPage() {
     const router = useRouter()
-    const { signIn } = useAuth()
+    const { signIn, user } = useAuth()
     const [isSubmitting, setIsSubmitting] = useState(false)
+
+    // Redirect if user is already logged in
+    useEffect(() => {
+        if (user) {
+            router.push("/admin")
+        }
+    }, [user, router])
 
     const form = useForm<LoginFormValues>({
         resolver: zodResolver(loginSchema),
@@ -56,18 +63,17 @@ export default function LoginPage() {
     async function onSubmit(values: LoginFormValues) {
         setIsSubmitting(true)
         try {
-            const result = await signIn(values.email, values.password)
+            console.log("Attempting sign in...")
+            await signIn(values.email, values.password)
+            console.log("Sign in successful")
             toast.success("Welcome back to CRYSTALFRONT!")
 
-            // Redirect based on role if available, or default to dashboard
-            // Note: The role is handled by the AuthProvider after sign-in
-            setTimeout(() => {
-                router.push("/admin") // Defaulting to admin for demonstration, or based on user.role
-            }, 1000)
+            // Redirect is now handled by the useEffect above when 'user' state updates
+            // But we keep manual redirect as fallback
+            router.push("/admin")
         } catch (error: any) {
             console.error("Login Error:", error)
             toast.error(error.message || "Invalid credentials. Please try again.")
-        } finally {
             setIsSubmitting(false)
         }
     }

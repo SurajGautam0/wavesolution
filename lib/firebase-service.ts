@@ -1,13 +1,13 @@
 import { db } from './firebase';
-import { 
-  collection, 
-  doc, 
-  setDoc, 
-  addDoc, 
-  getDoc, 
-  getDocs, 
-  query, 
-  where, 
+import {
+  collection,
+  doc,
+  setDoc,
+  addDoc,
+  getDoc,
+  getDocs,
+  query,
+  where,
   orderBy,
   updateDoc,
   deleteDoc,
@@ -48,11 +48,11 @@ export const getAllBookings = async () => {
     const bookingsQuery = query(collection(db, BOOKINGS_COLLECTION), orderBy('createdAt', 'desc'));
     const querySnapshot = await getDocs(bookingsQuery);
     const bookings: any[] = [];
-    
+
     querySnapshot.forEach((doc) => {
       bookings.push({ id: doc.id, ...doc.data() });
     });
-    
+
     return bookings;
   } catch (error) {
     console.error("Error getting bookings: ", error);
@@ -64,17 +64,17 @@ export const getAllBookings = async () => {
 export const getBookingsByUser = async (userId: string) => {
   try {
     const bookingsQuery = query(
-      collection(db, BOOKINGS_COLLECTION), 
+      collection(db, BOOKINGS_COLLECTION),
       where('userId', '==', userId),
       orderBy('createdAt', 'desc')
     );
     const querySnapshot = await getDocs(bookingsQuery);
     const bookings: any[] = [];
-    
+
     querySnapshot.forEach((doc) => {
       bookings.push({ id: doc.id, ...doc.data() });
     });
-    
+
     return bookings;
   } catch (error) {
     console.error("Error getting user bookings: ", error);
@@ -88,24 +88,24 @@ export const saveUser = async (userData: any) => {
     if (!userData.id) {
       throw new Error("User ID is required");
     }
-    
+
     // Check if the document already exists
     const userDoc = await getDoc(doc(db, USERS_COLLECTION, userData.id));
-    
+
     // Prepare user data with timestamps
     const userDataWithTimestamps = {
       ...userData,
       updatedAt: serverTimestamp()
     };
-    
+
     // If user doesn't exist, add created timestamp
     if (!userDoc.exists()) {
       userDataWithTimestamps.createdAt = serverTimestamp();
     }
-    
+
     // Use setDoc with merge option to update or create
     await setDoc(doc(db, USERS_COLLECTION, userData.id), userDataWithTimestamps, { merge: true });
-    
+
     return userData;
   } catch (error) {
     console.error("Error saving user: ", error);
@@ -149,17 +149,17 @@ export const saveTestimonial = async (testimonialData: any) => {
 export const getApprovedTestimonials = async () => {
   try {
     const testimonialsQuery = query(
-      collection(db, TESTIMONIALS_COLLECTION), 
+      collection(db, TESTIMONIALS_COLLECTION),
       where('approved', '==', true),
       orderBy('createdAt', 'desc')
     );
     const querySnapshot = await getDocs(testimonialsQuery);
     const testimonials: any[] = [];
-    
+
     querySnapshot.forEach((doc) => {
       testimonials.push({ id: doc.id, ...doc.data() });
     });
-    
+
     return testimonials;
   } catch (error) {
     console.error("Error getting testimonials: ", error);
@@ -179,6 +179,67 @@ export const saveContact = async (contactData: any) => {
     return { id: contactRef.id, ...contactData };
   } catch (error) {
     console.error("Error saving contact: ", error);
+    throw error;
+  }
+};
+
+// Get all contacts
+export const getAllContacts = async () => {
+  try {
+    const contactsQuery = query(collection(db, CONTACTS_COLLECTION), orderBy('createdAt', 'desc'));
+    const querySnapshot = await getDocs(contactsQuery);
+    const contacts: any[] = [];
+
+    querySnapshot.forEach((doc) => {
+      contacts.push({ id: doc.id, ...doc.data() });
+    });
+
+    return contacts;
+  } catch (error) {
+    console.error("Error getting contacts: ", error);
+    throw error;
+  }
+};
+
+// Subscriptions
+const SUBSCRIPTIONS_COLLECTION = 'subscriptions';
+
+export const saveSubscription = async (email: string) => {
+  try {
+    // Check if email already exists
+    const q = query(collection(db, SUBSCRIPTIONS_COLLECTION), where("email", "==", email));
+    const querySnapshot = await getDocs(q);
+
+    if (!querySnapshot.empty) {
+      return { id: querySnapshot.docs[0].id, email, exists: true };
+    }
+
+    const subRef = await addDoc(collection(db, SUBSCRIPTIONS_COLLECTION), {
+      email,
+      id: uuidv4(),
+      createdAt: serverTimestamp(),
+      status: 'active'
+    });
+    return { id: subRef.id, email, exists: false };
+  } catch (error) {
+    console.error("Error saving subscription: ", error);
+    throw error;
+  }
+};
+
+export const getAllSubscriptions = async () => {
+  try {
+    const subsQuery = query(collection(db, SUBSCRIPTIONS_COLLECTION), orderBy('createdAt', 'desc'));
+    const querySnapshot = await getDocs(subsQuery);
+    const subs: any[] = [];
+
+    querySnapshot.forEach((doc) => {
+      subs.push({ id: doc.id, ...doc.data() });
+    });
+
+    return subs;
+  } catch (error) {
+    console.error("Error getting subscriptions: ", error);
     throw error;
   }
 };
@@ -215,11 +276,11 @@ export const getAllServices = async () => {
     const servicesQuery = query(collection(db, SERVICES_COLLECTION), orderBy('createdAt', 'desc'));
     const querySnapshot = await getDocs(servicesQuery);
     const services: any[] = [];
-    
+
     querySnapshot.forEach((doc) => {
       services.push({ id: doc.id, ...doc.data() });
     });
-    
+
     return services;
   } catch (error) {
     console.error("Error getting services: ", error);
@@ -302,11 +363,11 @@ export const getAllProducts = async () => {
     const productsQuery = query(collection(db, PRODUCTS_COLLECTION), orderBy('createdAt', 'desc'));
     const querySnapshot = await getDocs(productsQuery);
     const products: any[] = [];
-    
+
     querySnapshot.forEach((doc) => {
       products.push({ id: doc.id, ...doc.data() });
     });
-    
+
     return products;
   } catch (error) {
     console.error("Error getting products: ", error);
@@ -376,17 +437,17 @@ export const createOrder = async (orderData: any) => {
 export const getOrdersByUser = async (userId: string) => {
   try {
     const ordersQuery = query(
-      collection(db, ORDERS_COLLECTION), 
+      collection(db, ORDERS_COLLECTION),
       where('userId', '==', userId),
       orderBy('createdAt', 'desc')
     );
     const querySnapshot = await getDocs(ordersQuery);
     const orders: any[] = [];
-    
+
     querySnapshot.forEach((doc) => {
       orders.push({ id: doc.id, ...doc.data() });
     });
-    
+
     return orders;
   } catch (error) {
     console.error("Error getting user orders: ", error);

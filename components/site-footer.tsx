@@ -4,6 +4,7 @@ import { Facebook, Instagram, Mail, MapPin, Phone } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
+import { NewsletterForm } from "@/components/newsletter-form"
 
 export function SiteFooter() {
   return (
@@ -129,14 +130,7 @@ export function SiteFooter() {
             <h3 className="mb-4 text-lg font-serif font-bold">Newsletter</h3>
             <div className="w-12 h-1 bg-secondary mb-4"></div>
             <p className="mb-4 text-white/80">Subscribe to our newsletter for the latest updates and offers.</p>
-            <div className="space-y-2">
-              <Input
-                placeholder="Your email address"
-                type="email"
-                className="bg-white/10 border-white/20 text-white placeholder:text-white/50"
-              />
-              <Button className="classic-button w-full">Subscribe</Button>
-            </div>
+            <NewsletterForm />
           </div>
         </div>
         <div className="mt-12 border-t border-white/20 pt-6">

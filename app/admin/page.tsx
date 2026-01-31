@@ -17,7 +17,7 @@ import {
     ShieldCheck,
     Zap
 } from "lucide-react"
-import { getAllBookings, getApprovedTestimonials } from "@/lib/firebase-service"
+import { getAllBookings, getApprovedTestimonials, getAllServices, getAllContacts, getAllSubscriptions } from "@/lib/firebase-service"
 import { cn } from "@/lib/utils"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
@@ -26,6 +26,9 @@ export default function AdminDashboardPage() {
     const [activeTab, setActiveTab] = useState("dashboard")
     const [bookings, setBookings] = useState<any[]>([])
     const [testimonials, setTestimonials] = useState<any[]>([])
+    const [services, setServices] = useState<any[]>([])
+    const [contacts, setContacts] = useState<any[]>([])
+    const [subscriptions, setSubscriptions] = useState<any[]>([])
     const [loading, setLoading] = useState(true)
     const [searchTerm, setSearchTerm] = useState("")
 
@@ -33,12 +36,18 @@ export default function AdminDashboardPage() {
         async function fetchData() {
             try {
                 setLoading(true)
-                const [bookingsData, testimonialsData] = await Promise.all([
+                const [bookingsData, testimonialsData, servicesData, contactsData, subscriptionsData] = await Promise.all([
                     getAllBookings(),
-                    getApprovedTestimonials()
+                    getApprovedTestimonials(),
+                    getAllServices(),
+                    getAllContacts(),
+                    getAllSubscriptions()
                 ])
                 setBookings(bookingsData)
                 setTestimonials(testimonialsData)
+                setServices(servicesData)
+                setContacts(contactsData)
+                setSubscriptions(subscriptionsData)
             } catch (error) {
                 console.error("Error fetching admin data:", error)
             } finally {
@@ -343,7 +352,148 @@ export default function AdminDashboardPage() {
                         </div>
                     )}
 
-                    {activeTab !== "dashboard" && activeTab !== "bookings" && (
+                    {activeTab === "services" && (
+                        <div className="space-y-8 animate-in fade-in slide-in-from-right-6 duration-700">
+                            <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+                                <div className="space-y-1">
+                                    <h1 className="text-4xl sm:text-5xl font-black text-blue-950 tracking-tighter">Services</h1>
+                                    <p className="text-muted-foreground font-medium text-lg">Manage all service offerings.</p>
+                                </div>
+                            </div>
+
+                            <Card className="border-none shadow-2xl shadow-blue-900/5 bg-white rounded-[2.5rem] overflow-hidden">
+                                <CardContent className="p-0">
+                                    <div className="overflow-x-auto">
+                                        <table className="w-full text-left border-collapse min-w-[800px]">
+                                            <thead className="bg-slate-50/50 border-b border-gray-100">
+                                                <tr>
+                                                    <th className="px-10 py-8 text-[10px] font-black text-blue-950 uppercase tracking-[0.2em]">Service Name</th>
+                                                    <th className="px-10 py-8 text-[10px] font-black text-blue-950 uppercase tracking-[0.2em]">Description</th>
+                                                    <th className="px-10 py-8 text-[10px] font-black text-blue-950 uppercase tracking-[0.2em] text-right">Actions</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody className="divide-y divide-gray-50">
+                                                {services.map((service, i) => (
+                                                    <tr key={i} className="hover:bg-slate-50/80 transition-all group">
+                                                        <td className="px-10 py-8 font-black text-blue-950">{service.title || service.name}</td>
+                                                        <td className="px-10 py-8 text-sm text-muted-foreground">{service.description}</td>
+                                                        <td className="px-10 py-8 text-right">
+                                                            <Button variant="ghost" className="h-8 w-8 p-0">
+                                                                <span className="sr-only">Edit</span>
+                                                            </Button>
+                                                        </td>
+                                                    </tr>
+                                                ))}
+                                                {services.length === 0 && (
+                                                    <tr>
+                                                        <td colSpan={3} className="px-10 py-8 text-center text-muted-foreground">No services found.</td>
+                                                    </tr>
+                                                )}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </CardContent>
+                            </Card>
+                        </div>
+                    )}
+
+                    {activeTab === "messages" && (
+                        <div className="space-y-8 animate-in fade-in slide-in-from-right-6 duration-700">
+                            <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+                                <div className="space-y-1">
+                                    <h1 className="text-4xl sm:text-5xl font-black text-blue-950 tracking-tighter">Messages</h1>
+                                    <p className="text-muted-foreground font-medium text-lg">Inquiries from the contact form.</p>
+                                </div>
+                            </div>
+
+                            <Card className="border-none shadow-2xl shadow-blue-900/5 bg-white rounded-[2.5rem] overflow-hidden">
+                                <CardContent className="p-0">
+                                    <div className="overflow-x-auto">
+                                        <table className="w-full text-left border-collapse min-w-[800px]">
+                                            <thead className="bg-slate-50/50 border-b border-gray-100">
+                                                <tr>
+                                                    <th className="px-10 py-8 text-[10px] font-black text-blue-950 uppercase tracking-[0.2em]">Date</th>
+                                                    <th className="px-10 py-8 text-[10px] font-black text-blue-950 uppercase tracking-[0.2em]">Name</th>
+                                                    <th className="px-10 py-8 text-[10px] font-black text-blue-950 uppercase tracking-[0.2em]">Subject</th>
+                                                    <th className="px-10 py-8 text-[10px] font-black text-blue-950 uppercase tracking-[0.2em]">Message</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody className="divide-y divide-gray-50">
+                                                {contacts.map((contact, i) => (
+                                                    <tr key={i} className="hover:bg-slate-50/80 transition-all group">
+                                                        <td className="px-10 py-8 text-xs text-muted-foreground font-bold">
+                                                            {contact.createdAt ? new Date(contact.createdAt.seconds * 1000).toLocaleDateString() : 'N/A'}
+                                                        </td>
+                                                        <td className="px-10 py-8">
+                                                            <div className="font-black text-blue-950">{contact.name}</div>
+                                                            <div className="text-xs text-muted-foreground">{contact.email}</div>
+                                                            <div className="text-xs text-muted-foreground">{contact.phone}</div>
+                                                        </td>
+                                                        <td className="px-10 py-8 text-sm font-medium text-blue-950">{contact.subject}</td>
+                                                        <td className="px-10 py-8 text-sm text-muted-foreground max-w-xs truncate">{contact.message}</td>
+                                                    </tr>
+                                                ))}
+                                                {contacts.length === 0 && (
+                                                    <tr>
+                                                        <td colSpan={4} className="px-10 py-8 text-center text-muted-foreground">No messages found.</td>
+                                                    </tr>
+                                                )}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </CardContent>
+                            </Card>
+                        </div>
+                    )}
+
+                    {activeTab === "subscribers" && (
+                        <div className="space-y-8 animate-in fade-in slide-in-from-right-6 duration-700">
+                            <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+                                <div className="space-y-1">
+                                    <h1 className="text-4xl sm:text-5xl font-black text-blue-950 tracking-tighter">Subscribers</h1>
+                                    <p className="text-muted-foreground font-medium text-lg">Newsletter email list.</p>
+                                </div>
+                            </div>
+
+                            <Card className="border-none shadow-2xl shadow-blue-900/5 bg-white rounded-[2.5rem] overflow-hidden">
+                                <CardContent className="p-0">
+                                    <div className="overflow-x-auto">
+                                        <table className="w-full text-left border-collapse min-w-[800px]">
+                                            <thead className="bg-slate-50/50 border-b border-gray-100">
+                                                <tr>
+                                                    <th className="px-10 py-8 text-[10px] font-black text-blue-950 uppercase tracking-[0.2em]">Email Address</th>
+                                                    <th className="px-10 py-8 text-[10px] font-black text-blue-950 uppercase tracking-[0.2em]">Subscribed On</th>
+                                                    <th className="px-10 py-8 text-[10px] font-black text-blue-950 uppercase tracking-[0.2em] text-right">Status</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody className="divide-y divide-gray-50">
+                                                {subscriptions.map((sub, i) => (
+                                                    <tr key={i} className="hover:bg-slate-50/80 transition-all group">
+                                                        <td className="px-10 py-8 font-black text-blue-950">{sub.email}</td>
+                                                        <td className="px-10 py-8 text-xs text-muted-foreground font-bold">
+                                                            {sub.createdAt ? new Date(sub.createdAt.seconds * 1000).toLocaleDateString() : 'N/A'}
+                                                        </td>
+                                                        <td className="px-10 py-8 text-right">
+                                                            <span className="inline-flex items-center px-3 py-1 rounded-full text-[9px] font-black uppercase tracking-widest bg-green-50 text-green-600 border border-green-100">
+                                                                {sub.status || 'Active'}
+                                                            </span>
+                                                        </td>
+                                                    </tr>
+                                                ))}
+                                                {subscriptions.length === 0 && (
+                                                    <tr>
+                                                        <td colSpan={3} className="px-10 py-8 text-center text-muted-foreground">No subscribers found.</td>
+                                                    </tr>
+                                                )}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </CardContent>
+                            </Card>
+                        </div>
+                    )}
+
+                    {activeTab !== "dashboard" && activeTab !== "bookings" && activeTab !== "services" && activeTab !== "messages" && activeTab !== "subscribers" && (
                         <div className="flex flex-col items-center justify-center py-32 animate-in fade-in duration-1000">
                             <div className="w-28 h-28 bg-blue-50 rounded-[3rem] flex items-center justify-center mb-10 shadow-inner border border-blue-50 relative overflow-hidden group">
                                 <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity" />

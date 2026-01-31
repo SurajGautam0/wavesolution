@@ -14,6 +14,7 @@ import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { useToast } from "@/hooks/use-toast"
+import { saveContact } from "@/lib/firebase-service"
 
 export default function ContactPage() {
   const { toast } = useToast()
@@ -41,8 +42,10 @@ export default function ContactPage() {
     setIsSubmitting(true)
 
     try {
-      // Simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 1500))
+      await saveContact({
+        ...formData,
+        timestamp: new Date().toISOString()
+      })
 
       toast({
         title: "Message Sent",
