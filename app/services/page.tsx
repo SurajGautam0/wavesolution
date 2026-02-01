@@ -102,6 +102,30 @@ export default function ServicesPage() {
             icon="Briefcase"
             price="Contact for Quote"
           />
+          <ServiceCard
+            title="Commercial Deep Cleaning"
+            description="Comprehensive deep cleaning solutions for commercial spaces, ensuring a pristine environment."
+            icon="Building2"
+            price="Contact for Quote"
+          />
+          <ServiceCard
+            title="Commercial Spring Cleaning"
+            description="Thorough seasonal cleaning to refresh and revitalize your commercial property."
+            icon="Sparkles"
+            price="Contact for Quote"
+          />
+          <ServiceCard
+            title="Post Construction Windows Cleaning"
+            description="Specialized cleaning to remove construction debris and residue from new or renovated windows."
+            icon="HardHat"
+            price="Contact for Quote"
+          />
+          <ServiceCard
+            title="Paints/Stains and Stickers Removal"
+            description="Expert removal of paint splatters, stubborn stains, and adhesive residue from glass surfaces."
+            icon="Eraser"
+            price="Contact for Quote"
+          />
         </div>
       </section>
 

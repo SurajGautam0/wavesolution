@@ -31,30 +31,43 @@ export function DiscountPopup() {
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogContent className="w-[90vw] max-w-md rounded-[2rem] p-0 bg-gradient-to-br from-blue-700 via-blue-500 to-blue-300 text-white shadow-2xl border-0 overflow-hidden sm:w-full">
+      <DialogContent className="w-[90vw] max-w-md rounded-[2rem] p-0 bg-white shadow-2xl border border-gray-200 overflow-hidden sm:w-full">
         <div className="flex flex-col items-center text-center gap-0 relative">
-          <div className="w-full flex flex-col items-center justify-center py-10 px-6 sm:py-12 sm:px-10">
-            <div className="flex items-center justify-center mb-4">
-              <BadgePercent className="w-10 h-10 sm:w-14 sm:h-14 text-yellow-300 drop-shadow-lg animate-bounce" />
-              <span className="ml-2 text-4xl sm:text-6xl font-extrabold tracking-tight text-yellow-300 drop-shadow-lg">
-                60% OFF
-              </span>
+          {/* Header with Primary Color */}
+          <div className="w-full bg-primary py-8 px-6 sm:py-10 sm:px-10 relative overflow-hidden">
+            <div className="absolute inset-0 opacity-10">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-secondary rounded-full blur-3xl -mr-16 -mt-16" />
+              <div className="absolute bottom-0 left-0 w-32 h-32 bg-secondary rounded-full blur-3xl -ml-16 -mb-16" />
             </div>
-            <div className="text-xl sm:text-3xl font-black mb-3 text-center tracking-tighter">
-              INTERIOR CLEANING
+            <div className="relative z-10">
+              <div className="flex items-center justify-center mb-4">
+                <BadgePercent className="w-10 h-10 sm:w-12 sm:h-12 text-secondary drop-shadow-lg animate-bounce" />
+                <span className="ml-2 text-5xl sm:text-6xl font-black tracking-tight text-secondary drop-shadow-lg font-serif">
+                  60% OFF
+                </span>
+              </div>
+              <div className="text-xl sm:text-2xl font-black text-white tracking-tight font-serif">
+                INTERIOR WINDOW CLEANING
+              </div>
+            </div>
+          </div>
+
+          {/* Content Section */}
+          <div className="w-full flex flex-col items-center justify-center py-8 px-6 sm:py-10 sm:px-10 bg-white">
+            <div className="text-sm sm:text-base text-muted-foreground mb-6 max-w-[280px] sm:max-w-none leading-relaxed">
+              Limited time offer for all new bookings!
+              <br className="hidden sm:block" />
+              Don't miss out on sparkling clean windows.
             </div>
 
-            <div className="text-sm sm:text-lg font-medium text-blue-50 mb-8 max-w-[280px] sm:max-w-none">
-              Limited time offer for all new bookings!
-              <br className="hidden sm:block" /> Don't miss out on a sparkling clean interior.
-            </div>
             <Button
-              className="w-full sm:w-auto rounded-full bg-yellow-400 text-blue-900 font-black px-10 py-6 sm:py-7 text-lg sm:text-xl hover:bg-yellow-300 shadow-2xl shadow-yellow-400/20 transition-all duration-300 hover:scale-105 active:scale-95"
+              className="w-full sm:w-auto rounded-full bg-secondary hover:bg-secondary/90 text-secondary-foreground font-black px-10 py-6 sm:py-7 text-base sm:text-lg uppercase tracking-widest shadow-xl shadow-secondary/20 transition-all duration-300 hover:scale-105 active:scale-95"
               onClick={handleClaim}
             >
-              Claim Discount &rarr;
+              Claim Discount →
             </Button>
-            <div className="mt-6 text-[10px] sm:text-xs text-blue-100/60 font-bold uppercase tracking-widest">
+
+            <div className="mt-6 text-[10px] sm:text-xs text-muted-foreground font-bold uppercase tracking-widest">
               * Applied automatically at checkout
             </div>
           </div>

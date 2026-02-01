@@ -55,7 +55,7 @@ export function HeroSection() {
 
               <div className="w-24 h-1.5 bg-secondary mx-auto lg:mx-0 rounded-full"></div>
               <p className="max-w-[600px] mx-auto lg:mx-0 text-lg sm:text-xl text-white/70 leading-relaxed font-medium">
-                Experience the CRYSTALFRONT standard. We bring a new level of clean to your Bhaisepati home or office with eco-friendly products.
+                Experience the Crystal Front standard. We bring a new level of shine to your commercial store front windows at your convenient time and subscription basis. We take care of your windows and brand image weekly, biweekly or of your choice, you take care of your customers and business. We take care of the planet earth and our products are eco-friendly too.
               </p>
             </div>
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4">

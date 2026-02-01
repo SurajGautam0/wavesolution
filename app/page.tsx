@@ -38,6 +38,9 @@ export default function Home() {
                   <p className="text-muted-foreground text-lg leading-relaxed">
                     Based in <strong>Bhaisepati, Lalitpur</strong>, our certified team uses eco-friendly technology to ensure your space remains pristine. Experience the highest standard of <strong>window and high-glass cleaning in Nepal</strong>.
                   </p>
+                  <p className="text-muted-foreground text-lg leading-relaxed">
+                    We use <strong>high professional grade gears and equipment from Unger International</strong>. We specialize in <strong>store front Traditional Cleaning Services on Monthly basis</strong>.
+                  </p>
                 </div>
               </div>
             </section>
