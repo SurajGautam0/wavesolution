@@ -6,8 +6,17 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 
 export const metadata: Metadata = {
-  title: "Home Cleaning Services | CRYSTALFRONT",
-  description: "Professional home cleaning services for a spotless and fresh living space.",
+  title: "Home Cleaning Services Gold Coast | House Cleaners from $120",
+  description: "Professional home cleaning services in Gold Coast from $120. Regular weekly, fortnightly or one-off house cleaning. Trusted by 2,000+ Gold Coast families. Eco-friendly products. Fully insured cleaners. Book online or call 0450 833 683.",
+  keywords: ["home cleaning Gold Coast", "house cleaning Gold Coast", "house cleaners near me", "domestic cleaning Gold Coast", "regular cleaning Gold Coast", "weekly cleaning Gold Coast", "home cleaners Southport", "affordable house cleaning Gold Coast"],
+  alternates: {
+    canonical: "https://www.wavesolution.com.au/services/home-cleaning",
+  },
+  openGraph: {
+    title: "Home Cleaning Services Gold Coast | From $120 | WaveSolution",
+    description: "Trusted home cleaning across Gold Coast. From $120/clean. Book online today.",
+    url: "https://www.wavesolution.com.au/services/home-cleaning",
+  },
 }
 
 export default function HomeCleaningPage() {

@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-    const baseUrl = 'https://crystalfront.com.np'
+    const baseUrl = 'https://www.wavesolution.com.au'
     const lastModified = new Date()
 
     return [
@@ -12,16 +12,40 @@ export default function sitemap(): MetadataRoute.Sitemap {
             priority: 1,
         },
         {
-            url: `${baseUrl}/about`,
-            lastModified,
-            changeFrequency: 'weekly',
-            priority: 0.8,
-        },
-        {
             url: `${baseUrl}/services`,
             lastModified,
             changeFrequency: 'weekly',
+            priority: 0.95,
+        },
+        {
+            url: `${baseUrl}/services/home-cleaning`,
+            lastModified,
+            changeFrequency: 'weekly',
             priority: 0.9,
+        },
+        {
+            url: `${baseUrl}/book`,
+            lastModified,
+            changeFrequency: 'weekly',
+            priority: 0.9,
+        },
+        {
+            url: `${baseUrl}/about`,
+            lastModified,
+            changeFrequency: 'monthly',
+            priority: 0.8,
+        },
+        {
+            url: `${baseUrl}/contact`,
+            lastModified,
+            changeFrequency: 'monthly',
+            priority: 0.8,
+        },
+        {
+            url: `${baseUrl}/testimonials`,
+            lastModified,
+            changeFrequency: 'weekly',
+            priority: 0.7,
         },
         {
             url: `${baseUrl}/gallery`,
@@ -30,33 +54,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
             priority: 0.7,
         },
         {
-            url: `${baseUrl}/testimonials`,
-            lastModified,
-            changeFrequency: 'weekly',
-            priority: 0.6,
-        },
-        {
-            url: `${baseUrl}/contact`,
-            lastModified,
-            changeFrequency: 'monthly',
-            priority: 0.5,
-        },
-        {
             url: `${baseUrl}/blog/cleaning-tips`,
             lastModified,
-            changeFrequency: 'weekly',
+            changeFrequency: 'monthly',
             priority: 0.8,
         },
         {
             url: `${baseUrl}/blog/eco-friendly`,
             lastModified,
-            changeFrequency: 'weekly',
+            changeFrequency: 'monthly',
             priority: 0.8,
         },
         {
             url: `${baseUrl}/blog/office-cleaning`,
             lastModified,
-            changeFrequency: 'weekly',
+            changeFrequency: 'monthly',
             priority: 0.8,
         },
     ]

@@ -5,15 +5,24 @@ import { Calendar, User, Clock, ChevronRight, CheckCircle2, Sparkles, ArrowLeft 
 import { Button } from "@/components/ui/button"
 
 export const metadata: Metadata = {
-    title: "10 Essential Tips for a Pristine Home | CRYSTALFRONT Blog",
-    description: "Discover the secrets to maintaining a sparkling clean home with our expert tips tailored for modern living.",
+    title: "10 House Cleaning Tips for Gold Coast Homes | Expert Cleaning Guide",
+    description: "Expert house cleaning tips from Gold Coast's top cleaners. Learn professional cleaning techniques for kitchens, bathrooms, windows & more. Practical tips for maintaining a spotless Gold Coast home year-round.",
+    keywords: ["house cleaning tips Gold Coast", "home cleaning guide", "how to clean house", "cleaning tips Australia", "kitchen cleaning tips", "bathroom cleaning hacks"],
+    alternates: {
+        canonical: "https://www.wavesolution.com.au/blog/cleaning-tips",
+    },
+    openGraph: {
+        title: "10 Expert House Cleaning Tips for Gold Coast Homes",
+        description: "Professional cleaning tips from Gold Coast's trusted cleaners. Keep your home spotless year-round.",
+        url: "https://www.wavesolution.com.au/blog/cleaning-tips",
+    },
 }
 
 export default function CleaningTipsPage() {
     const tips = [
         {
             title: "1. Establish a Daily Dusting Habit",
-            content: "In metropolitan hubs like Kathmandu and Lalitpur, dust accumulation is a constant challenge. A quick daily wipe of surfaces and window sills ensures your home remains fresh and prevents long-term grime buildup."
+            content: "In metropolitan hubs like Gold Coast and Brisbane, dust accumulation is a constant challenge. A quick daily wipe of surfaces and window sills ensures your home remains fresh and prevents long-term grime buildup."
         },
         {
             title: "2. The Power of Microfiber",
@@ -49,7 +58,7 @@ export default function CleaningTipsPage() {
         },
         {
             title: "10. Professional Deep Cleaning Services",
-            content: "Sometimes, your home requires a specialized touch. CRYSTALFRONT’s professional deep cleaning services utilize industrial-grade equipment and expertise to restore your home to its original brilliance."
+            content: "Sometimes, your home requires a specialized touch. WaveSolution’s professional deep cleaning services utilize industrial-grade equipment and expertise to restore your home to its original brilliance."
         }
     ]
 
@@ -74,7 +83,7 @@ export default function CleaningTipsPage() {
 
                     <div className="flex flex-wrap items-center justify-center gap-6 text-sm font-bold opacity-80 uppercase tracking-widest">
                         <div className="flex items-center">
-                            <User className="w-4 h-4 mr-2 text-secondary" /> CrystalFront Expert
+                            <User className="w-4 h-4 mr-2 text-secondary" /> WaveSolution Expert
                         </div>
                         <div className="flex items-center">
                             <Calendar className="w-4 h-4 mr-2 text-secondary" /> February 15, 2026
@@ -116,7 +125,7 @@ export default function CleaningTipsPage() {
                                 <div>
                                     <h3 className="text-2xl font-black text-blue-950 mb-3">Conclusion</h3>
                                     <p className="text-muted-foreground font-medium mb-6">
-                                        Following these simple yet effective tips will keep your home always fresh and vibrant. If you need deep cleaning or specialized window cleaning, CRYSTALFRONT is always ready to serve you.
+                                        Following these simple yet effective tips will keep your home always fresh and vibrant. If you need deep cleaning or specialized window cleaning, WaveSolution is always ready to serve you.
                                     </p>
                                     <Button asChild className="rounded-full h-12 px-8 bg-primary hover:bg-blue-900 text-white font-black uppercase tracking-widest transition-all">
                                         <Link href="/book">Book Now</Link>

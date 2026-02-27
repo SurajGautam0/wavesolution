@@ -19,27 +19,36 @@ interface TeamMember {
 
 const teamMembers: TeamMember[] = [
   {
-    name: "Bikram Basnet",
+    name: "Sushant Timalcena",
     position: "Founder & CEO",
-    bio: "After spending years mastering advanced cleaning technologies and standards in international markets, Bikram returned to Nepal to modernize the industry. He established CRYSTALFRONT in 2026 to bring world-class precision to Lalitpur.",
-    image: "/team/bikram.png",
+    bio: "Sushant founded WaveSolution in 2010 with a vision to provide exceptional cleaning services across Australia. With over 20 years of experience in the industry, he leads our team with passion and dedication.",
+    image: "/placeholder.svg?height=400&width=300",
     social: {},
   },
   {
-    name: "Sameet Gautam",
-    position: "General Manager",
-    bio: "Sameet oversees all cleaning operations, ensuring our high standards are maintained across all services. His attention to detail and commitment to excellence has been instrumental in our growth.",
-    image: "/sameetgautam.jpeg",
+    name: "Veshraj Gautam",
+    position: "Operations Manager",
+    bio: "Veshraj oversees all cleaning operations, ensuring our high standards are maintained across all services. His attention to detail and commitment to excellence has been instrumental in our growth.",
+    image: "/placeholder.svg?height=400&width=300",
     social: {
-      instagram: "https://www.instagram.com/crystalfrontwincare?igsh=eWt5czdydGxuODF1&utm_source=qr",
+      instagram: "https://instagram.com/",
     },
   },
   {
-    name: "Joseph Thapa",
-    position: "Supervisor",
-    bio: "Joseph is dedicated to ensuring our customers receive the best possible experience and that every cleaning job meets our rigorous quality standards. He manages our on-site teams with precision.",
-    image: "/josep.jpeg",
+    name: "Michael Chen",
+    position: "Customer Relations",
+    bio: "Michael is dedicated to ensuring our customers receive the best possible experience. He manages our customer service team and is always looking for ways to improve our service delivery.",
+    image: "/placeholder.svg?height=400&width=300",
     social: {},
+  },
+  {
+    name: "Emma Thompson",
+    position: "Training Specialist",
+    bio: "Emma is responsible for training our cleaning staff, ensuring they are equipped with the latest techniques and knowledge. Her expertise ensures our team delivers consistent, high-quality results.",
+    image: "/placeholder.svg?height=400&width=300",
+    social: {
+      instagram: "https://instagram.com/",
+    },
   },
 ]
 
@@ -52,7 +61,7 @@ export default function AboutPage() {
         <div className="absolute inset-0 z-0">
           <div className="relative h-full w-full overflow-hidden">
             <Image
-              src="/aboutreal.jpeg"
+              src="/about.png"
               alt="Professional Cleaning Team"
               fill
               className="object-cover scale-110"
@@ -81,7 +90,7 @@ export default function AboutPage() {
                   className="object-contain brightness-0 invert"
                 />
               </div>
-              <span className="text-[10px] font-black uppercase tracking-[0.3em]">#1 Cleaning Services</span>
+              <span className="text-[10px] font-black uppercase tracking-[0.3em]">Australia's Premier Cleaning</span>
             </div>
 
             <h1 className="text-5xl font-black tracking-tight sm:text-7xl md:text-8xl mb-8 leading-[0.9]">
@@ -92,9 +101,7 @@ export default function AboutPage() {
             <div className="w-24 h-2 bg-secondary mb-10 rounded-full" />
 
             <p className="text-xl sm:text-2xl text-white/80 max-w-2xl font-medium leading-relaxed mb-10">
-              The Kathmandu Valley's premier cleaning service provider, bringing
-              <span className="text-white font-black italic"> international precision </span>
-              to every doorstep in Kathmandu, Lalitpur, and Bhaktapur.
+              Australia's premier cleaning service provider, dedicated to excellence since 2010.
             </p>
 
             <div className="flex flex-wrap gap-6 pt-4">
@@ -145,20 +152,28 @@ export default function AboutPage() {
               <div className="w-16 h-1 bg-secondary mb-6"></div>
               <div className="space-y-4 text-muted-foreground">
                 <p>
-                  The CRYSTALFRONT story began in the international cleaning industry, where our founder, Bikram Basnet, spent years mastering advanced techniques, eco-friendly standards, and high-precision equipment. While working abroad, he observed a significant gap: while the world was moving towards automated and scientific cleaning, the local industry in our home country remained largely traditional and unregulated.
+                  WaveSolution was founded in 2010 with a simple mission: to provide exceptional
+                  cleaning services that exceed customer expectations. What began as a small team
+                  of dedicated professionals has grown into one of Australia's most trusted
+                  cleaning service providers.
                 </p>
                 <p>
-                  Driven by the desire to elevate standards in Nepal, he returned with a mission to bridge this gap. We realized that true excellence comes from training, not just tools. In 2026, we officially launched CRYSTALFRONT after months of intensive staff training, where we taught our employees the international 'Crystal Clear' methodology.
+                  Our journey has been driven by a passion for cleanliness and a commitment to
+                  quality. We understand that a clean environment contributes to health,
+                  productivity, and overall well-being, which is why we approach each job with meticulous
+                  attention to detail.
                 </p>
                 <p>
-                  Today, we are proud to offer a service that combines global expertise with local dedication. We don't just clean; we import a standard of hygiene and professionalism that Bhaisepati and Lalitpur deserve.
+                  Over the years, we've expanded our services to meet the diverse needs of our
+                  clients, from residential homes to commercial spaces, while maintaining the
+                  personalized approach that has become our hallmark.
                 </p>
               </div>
             </div>
             <div className="relative h-[400px] rounded-lg overflow-hidden shadow-xl border-4 border-white/50">
               <Image
                 src="/about.jpg"
-                alt="CRYSTALFRONT Professional Standards"
+                alt="WaveSolution Professional Standards"
                 fill
                 className="object-cover"
               />
@@ -177,7 +192,7 @@ export default function AboutPage() {
             <h2 className="text-3xl font-bold text-primary mb-4">Our Values</h2>
             <div className="w-16 h-1 bg-secondary mx-auto mb-6"></div>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              At CRYSTALFRONT, our values guide everything we do. They shape our approach to service delivery and define
+              At WaveSolution, our values guide everything we do. They shape our approach to service delivery and define
               our relationships with our clients and team members.
             </p>
           </div>
@@ -252,7 +267,7 @@ export default function AboutPage() {
             <div className="w-16 h-1 bg-secondary mx-auto mb-6"></div>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               Our success is built on the dedication and expertise of our team. Get to know the people who make
-              CRYSTALFRONT exceptional.
+              WaveSolution exceptional.
             </p>
           </div>
 
@@ -269,7 +284,7 @@ export default function AboutPage() {
                   {/* Subtle Gradient Overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end justify-center p-6">
                     <div className="text-white text-[10px] font-black uppercase tracking-widest transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                      Crystalfront Professional
+                      WaveSolution Professional
                     </div>
                   </div>
                 </div>
@@ -297,7 +312,7 @@ export default function AboutPage() {
         <div className="classic-container">
           <div className="grid grid-cols-1 gap-12 md:grid-cols-2 items-center">
             <div className="order-2 md:order-1">
-              <h2 className="text-3xl font-bold text-primary mb-6">Why Choose CRYSTALFRONT?</h2>
+              <h2 className="text-3xl font-bold text-primary mb-6">Why Choose WaveSolution?</h2>
               <div className="w-16 h-1 bg-secondary mb-6"></div>
               <ul className="space-y-4">
                 <li className="flex items-start">
@@ -367,10 +382,10 @@ export default function AboutPage() {
         <div className="classic-container">
           <div className="classic-card p-8 text-center">
             <h2 className="text-3xl font-serif font-bold text-primary mb-4">
-              Ready to Experience the CRYSTALFRONT Difference?
+              Ready to Experience the WaveSolution Difference?
             </h2>
             <p className="text-muted-foreground mb-6">
-              Book your cleaning service today and see why we're Bhaisepati, Lalitpur's premier cleaning provider.
+              Book your cleaning service today and see why we're Australia's premier cleaning provider.
             </p>
             <div className="flex flex-col gap-4 sm:flex-row justify-center">
               <Button asChild className="classic-button">

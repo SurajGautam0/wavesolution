@@ -12,8 +12,17 @@ import { WorkerShowcase } from "@/components/worker-showcase"
 import { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "#1 Cleaning Services in Kathmandu, Lalitpur & Bhaktapur | CRYSTALFRONT",
-  description: "CRYSTALFRONT is the leading professional cleaning company in Kathmandu, Lalitpur, and Bhaktapur. We specialize in residential deep cleaning, office maintenance, and high-glass cleaning. Book the best cleaners in Nepal.",
+  title: "Professional Cleaning Services Gold Coast | Home & Office Cleaners | WaveSolution",
+  description: "Gold Coast's most trusted cleaning & pest control company. Professional home cleaning from $120, office cleaning, deep cleaning, carpet cleaning, pest control & end of lease cleaning in Gold Coast, Southport & all QLD. Book online or call 0450 833 683.",
+  alternates: {
+    canonical: "https://www.wavesolution.com.au",
+  },
+  openGraph: {
+    title: "WaveSolution - #1 Professional Cleaning Services in Gold Coast",
+    description: "Trusted by 2,000+ Gold Coast homes & businesses. Home cleaning from $120. Pest control from $150. Free quotes. Same-day service available.",
+    url: "https://www.wavesolution.com.au",
+    type: "website",
+  },
 }
 
 export default function Home() {
@@ -29,17 +38,18 @@ export default function Home() {
             {/* Welcome Section */}
             <section className="classic-card p-6 sm:p-10">
               <div className="flex flex-col items-center justify-center space-y-6 text-center">
-                <h1 className="classic-heading text-3xl sm:text-5xl">Best Cleaning Services in Kathmandu & Lalitpur</h1>
+                <h1 className="classic-heading text-3xl sm:text-5xl">Welcome to WaveSolution</h1>
                 <div className="w-24 h-1.5 bg-secondary rounded-full"></div>
                 <div className="space-y-4 max-w-2xl">
                   <p className="text-muted-foreground text-lg leading-relaxed">
-                    CRYSTALFRONT is the premier provider of <strong>professional cleaning services in Kathmandu, Lalitpur, and Bhaktapur</strong>. Whether you need residential deep cleaning or commercial office maintenance, we bring international standards to the local industry.
+                    We are Australia's premier cleaning and pest control service provider, dedicated to making your
+                    home or office spotless, fresh and pest-free. With years of experience and a team of
+                    professional cleaners, we deliver exceptional results every time.
                   </p>
                   <p className="text-muted-foreground text-lg leading-relaxed">
-                    Based in <strong>Bhaisepati, Lalitpur</strong>, our certified team uses eco-friendly technology to ensure your space remains pristine. Experience the highest standard of <strong>window and high-glass cleaning in Nepal</strong>.
-                  </p>
-                  <p className="text-muted-foreground text-lg leading-relaxed">
-                    We use <strong>high professional grade gears and equipment from Unger International</strong>. We specialize in <strong>store front Traditional Cleaning Services on Monthly basis</strong>.
+                    Whether you need regular home cleaning, a deep clean for your office,
+                    specialized services like carpet cleaning, or reliable pest control, our team is equipped with the skills and
+                    tools to exceed your expectations.
                   </p>
                 </div>
               </div>
@@ -48,32 +58,50 @@ export default function Home() {
             {/* Services Section */}
             <section className="classic-card p-6 sm:p-10">
               <div className="flex flex-col items-center justify-center space-y-6 text-center mb-10">
-                <h2 className="classic-heading text-3xl sm:text-4xl">Professional Cleaning Solutions in Nepal</h2>
+                <h2 className="classic-heading text-3xl sm:text-4xl">Professional Cleaning Services</h2>
                 <div className="w-24 h-1.5 bg-secondary rounded-full"></div>
                 <p className="text-muted-foreground text-lg max-w-xl">
-                  Tailored cleaning solutions for every requirement.
+                  Our team of experienced professionals uses the latest cleaning techniques and
+                  eco-friendly products to ensure your space is not just clean, but healthy too.
                 </p>
               </div>
               <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
                 <ServiceCard
-                  title="Window Cleaning"
-                  description="Professional window cleaning for crystal clear views and enhanced curb appeal."
-                  icon="Glasses"
-                  price="Contact for Quote"
+                  title="Home Cleaning"
+                  description="Regular cleaning services for your home, keeping it spotless and fresh."
+                  icon="Home"
+                  price="From $120"
                 />
                 <ServiceCard
-                  title="Glass Cleaning"
-                  description="Expert cleaning for all types of glass surfaces, ensuring a streak-free finish."
+                  title="Office Cleaning"
+                  description="Professional cleaning for offices and commercial spaces."
+                  icon="Building2"
+                  price="From $200"
+                />
+                <ServiceCard
+                  title="Deep Cleaning"
+                  description="Thorough cleaning of all areas, including hard-to-reach spots."
                   icon="Sparkles"
-                  price="Contact for Quote"
+                  price="From $250"
                 />
                 <ServiceCard
-                  title="Storefront Glass Cleaning"
-                  description="Keep your business looking its best with spotless and inviting storefronts."
-                  icon="Store"
-                  price="Contact for Quote"
+                  title="Regular House Cleaning"
+                  description="Scheduled weekly or fortnightly cleaning to keep your home consistently spotless."
+                  icon="Repeat"
+                  price="From $120/visit"
                 />
-
+                <ServiceCard
+                  title="Same Day Service"
+                  description="Need it cleaned today? Fast same-day cleaning with no compromise on quality."
+                  icon="CalendarClock"
+                  price="From $120"
+                />
+                <ServiceCard
+                  title="Pest Control"
+                  description="Safe and effective pest control for homes and businesses."
+                  icon="Bug"
+                  price="From $150"
+                />
               </div>
               <div className="flex justify-center mt-8">
                 <Button asChild className="classic-button">
@@ -130,7 +158,7 @@ export default function Home() {
                 <h2 className="classic-heading text-3xl sm:text-4xl">What Our Customers Say</h2>
                 <div className="w-24 h-1.5 bg-secondary rounded-full"></div>
                 <p className="text-muted-foreground text-lg">
-                  Trusted by our local community in Lalitpur.
+                  Don't just take our word for it. Here's what our satisfied customers have to say.
                 </p>
               </div>
               <Tabs defaultValue="residential">
@@ -153,17 +181,17 @@ export default function Home() {
                 <TabsContent value="residential">
                   <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
                     <TestimonialCard
-                      name="Ram Bahadur Thapa"
-                      location="Bhaisepati, Lalitpur"
+                      name="Sarah Johnson"
+                      location="Southport, QLD"
                       rating={5}
-                      testimonial="CRYSTALFRONT has been providing exceptional cleaning for my home. Their work is highly organized and reliable. It's a pleasure to have such high-quality service in the Bhaisepati area."
+                      testimonial="WaveSolution has been cleaning my home for over a year now, and I couldn't be happier with their service. The team is always punctual, thorough, and friendly."
                       image="/placeholder.svg?height=80&width=80"
                     />
                     <TestimonialCard
-                      name="Sita Kumari Rai"
-                      location="Sanepa, Lalitpur"
+                      name="Michael Thompson"
+                      location="Melbourne, VIC"
                       rating={5}
-                      testimonial="I have tried several cleaning services, but none compare to CRYSTALFRONT. Their team is extremely hardworking and they clean every corner of the house meticulously."
+                      testimonial="I was amazed at how spotless my apartment was after WaveSolution's deep cleaning service. They paid attention to every detail and exceeded my expectations."
                       image="/placeholder.svg?height=80&width=80"
                     />
                   </div>
@@ -171,17 +199,17 @@ export default function Home() {
                 <TabsContent value="commercial">
                   <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
                     <TestimonialCard
-                      name="Rajesh Khatri"
-                      location="Ekantakuna, Lalitpur"
+                      name="David Williams"
+                      location="Robina, QLD"
                       rating={5}
-                      testimonial="We have entrusted CRYSTALFRONT with our office cleaning. They are doing a fantastic job. We've noticed a boost in employee morale since the office has been so clean."
+                      testimonial="Our office has never looked better since we started using WaveSolution's commercial cleaning service. Highly professional and consistent."
                       image="/placeholder.svg?height=80&width=80"
                     />
                     <TestimonialCard
-                      name="Binita Basnet"
-                      location="Bakhundole, Lalitpur"
+                      name="Emma Roberts"
+                      location="Brisbane, QLD"
                       rating={5}
-                      testimonial="CRYSTALFRONT's cleaning service is very effective for our restaurant. They sanitize the kitchen and dining area thoroughly. We are extremely satisfied with their work."
+                      testimonial="WaveSolution's cleaning service is very effective for our restaurant. They sanitize the kitchen and dining area thoroughly. We are extremely satisfied with their work."
                       image="/placeholder.svg?height=80&width=80"
                     />
                   </div>
@@ -204,7 +232,7 @@ export default function Home() {
             <div className="relative z-10">
               <h2 className="text-3xl sm:text-5xl font-serif font-black mb-6">Ready for a Cleaner Space?</h2>
               <p className="text-white/70 text-lg sm:text-xl mb-10 max-w-2xl mx-auto">
-                Book your professional cleaning service today and experience the CRYSTALFRONT excellence.
+                Book your cleaning service today and experience the WaveSolution difference.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button asChild size="lg" className="h-16 px-10 rounded-full bg-secondary hover:bg-secondary/90 text-white font-black text-lg uppercase tracking-widest shadow-2xl shadow-secondary/20 transition-all hover:scale-105">

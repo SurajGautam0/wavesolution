@@ -5,9 +5,17 @@ import { Button } from "@/components/ui/button"
 import { ServiceCard } from "@/components/service-card"
 
 export const metadata: Metadata = {
-  title: "Professional Cleaning Services in Kathmandu Valley | #1 Cleaning Company",
-  description: "Explore the best professional cleaning services in Kathmandu, Lalitpur, and Bhaktapur. From residential deep cleaning to high-end commercial glass maintenance, CRYSTALFRONT is your trusted partner for a spotless space.",
-  keywords: ["cleaning services Kathmandu", "deep cleaning Lalitpur", "commercial cleaners Bhaktapur", "best cleaning company Nepal", "professional house cleaning Kathmandu"],
+  title: "Cleaning & Pest Control Services Gold Coast | Home, Office, Deep Cleaning & Pest Control",
+  description: "Full range of professional cleaning and pest control services in Gold Coast: home cleaning from $120, office cleaning from $200, deep cleaning from $250, pest control from $150, carpet cleaning, end of lease cleaning & more. Servicing all Gold Coast suburbs.",
+  keywords: ["cleaning services Gold Coast", "pest control Gold Coast", "home cleaning Gold Coast", "office cleaning Gold Coast", "deep cleaning Gold Coast", "carpet cleaning Gold Coast", "window cleaning Gold Coast", "end of lease cleaning Gold Coast", "bond cleaning Gold Coast", "move out cleaning Gold Coast", "commercial cleaning Southport"],
+  alternates: {
+    canonical: "https://www.wavesolution.com.au/services",
+  },
+  openGraph: {
+    title: "All Cleaning & Pest Control Services Gold Coast | WaveSolution",
+    description: "Home, office, deep, carpet cleaning & pest control across Gold Coast. Prices from $120. Book online today.",
+    url: "https://www.wavesolution.com.au/services",
+  },
 }
 
 export default function ServicesPage() {
@@ -18,10 +26,12 @@ export default function ServicesPage() {
         <div className="container">
           <div className="flex flex-col items-center justify-center space-y-4 text-center">
             <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
-              Professional Cleaning Services in Kathmandu, Lalitpur & Bhaktapur
+              Our Professional Cleaning & Pest Control Services
             </h1>
             <p className="max-w-[700px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-              We provide the highest quality residential and commercial cleaning solutions across the entire Kathmandu Valley. Elite standards, certified teams, and eco-friendly technology.
+              We offer a wide range of cleaning services to meet your needs. From residential
+              to commercial, we've got you covered with our professional and reliable cleaning
+              solutions.
             </p>
           </div>
         </div>
@@ -31,100 +41,58 @@ export default function ServicesPage() {
       <section className="container py-12 md:py-24">
         <div className="mx-auto grid max-w-5xl grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
           <ServiceCard
+            title="Home Cleaning"
+            description="Regular cleaning services for your home, keeping it spotless and fresh."
+            icon="Home"
+            price="From $120"
+          />
+          <ServiceCard
+            title="Office Cleaning"
+            description="Professional cleaning for offices and commercial spaces."
+            icon="Building2"
+            price="From $200"
+          />
+          <ServiceCard
+            title="Deep Cleaning"
+            description="Thorough cleaning of all areas, including hard-to-reach spots."
+            icon="Sparkles"
+            price="From $250"
+          />
+          <ServiceCard
+            title="Move In/Out Cleaning"
+            description="Comprehensive cleaning for when you're moving in or out of a property."
+            icon="Truck"
+            price="From $300"
+          />
+          <ServiceCard
             title="Window Cleaning"
-            description="Professional window cleaning for crystal clear views and enhanced curb appeal."
-            icon="Glasses"
-            price="Contact for Quote"
+            description="Crystal clear windows for homes and commercial buildings."
+            icon="Home"
+            price="From $150"
           />
           <ServiceCard
-            title="Glass Cleaning"
-            description="Expert cleaning for all types of glass surfaces, ensuring a streak-free finish."
+            title="Carpet Cleaning"
+            description="Deep cleaning for carpets, removing stains and odors."
             icon="Sparkles"
-            price="Contact for Quote"
+            price="From $180"
           />
           <ServiceCard
-            title="Storefront Glass Cleaning"
-            description="Keep your business looking its best with spotless and inviting storefronts."
-            icon="Store"
-            price="Contact for Quote"
+            title="Regular House Cleaning"
+            description="Scheduled weekly or fortnightly cleaning to keep your home consistently spotless."
+            icon="Repeat"
+            price="From $120/visit"
           />
           <ServiceCard
-            title="Shop Front Cleaning"
-            description="Thorough cleaning for shop fronts to attract more customers to your business."
-            icon="ShoppingBag"
-            price="Contact for Quote"
+            title="Same Day Service"
+            description="Need it cleaned today? We offer fast same-day cleaning with no compromise on quality."
+            icon="CalendarClock"
+            price="From $120"
           />
           <ServiceCard
-            title="Commercial Glass Cleaning"
-            description="Specialized glass cleaning solutions for commercial buildings and high-rises."
-            icon="Building2"
-            price="Contact for Quote"
-          />
-          <ServiceCard
-            title="Exterior Glass Cleaning"
-            description="Safe and effective cleaning for even the most hard-to-reach exterior glass surfaces."
-            icon="Sun"
-            price="Contact for Quote"
-          />
-          <ServiceCard
-            title="Interior Glass Cleaning"
-            description="Detailed cleaning for all interior glass, partitions, and decorative mirrors."
-            icon="Layout"
-            price="Contact for Quote"
-          />
-          <ServiceCard
-            title="Frame & Sill Cleaning"
-            description="Complete cleaning including frames and sills for a perfectly maintained look."
-            icon="Square"
-            price="Contact for Quote"
-          />
-          <ServiceCard
-            title="Spot & Stain Removal"
-            description="Expert removal of tough mineral deposits, spots, and stains from glass."
-            icon="Eraser"
-            price="Contact for Quote"
-          />
-          <ServiceCard
-            title="Showroom Glass Cleaning"
-            description="Ensure your displayed products shine through perfectly clear showroom glass."
-            icon="Monitor"
-            price="Contact for Quote"
-          />
-          <ServiceCard
-            title="Restaurant & Café Glass Cleaning"
-            description="Hygienic and sparkling glass cleaning tailored for the food and beverage industry."
-            icon="Utensils"
-            price="Contact for Quote"
-          />
-          <ServiceCard
-            title="Office Window Cleaning"
-            description="Improve your workplace environment with clean, bright, and streak-free windows."
-            icon="Briefcase"
-            price="Contact for Quote"
-          />
-          <ServiceCard
-            title="Commercial Deep Cleaning"
-            description="Comprehensive deep cleaning solutions for commercial spaces, ensuring a pristine environment."
-            icon="Building2"
-            price="Contact for Quote"
-          />
-          <ServiceCard
-            title="Commercial Spring Cleaning"
-            description="Thorough seasonal cleaning to refresh and revitalize your commercial property."
-            icon="Sparkles"
-            price="Contact for Quote"
-          />
-          <ServiceCard
-            title="Post Construction Windows Cleaning"
-            description="Specialized cleaning to remove construction debris and residue from new or renovated windows."
-            icon="HardHat"
-            price="Contact for Quote"
-          />
-          <ServiceCard
-            title="Paints/Stains and Stickers Removal"
-            description="Expert removal of paint splatters, stubborn stains, and adhesive residue from glass surfaces."
-            icon="Eraser"
-            price="Contact for Quote"
+            title="Pest Control"
+            description="Safe and effective pest control for homes and businesses. Ants, spiders, cockroaches & more."
+            icon="Bug"
+            price="From $150"
           />
         </div>
       </section>
@@ -138,7 +106,7 @@ export default function ServicesPage() {
               Ready to Experience Our Services?
             </h2>
             <p className="max-w-[700px] md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-              Book your cleaning service today and experience the CRYSTALFRONT difference.
+              Book your cleaning service today and experience the WaveSolution difference.
             </p>
             <div className="flex flex-col gap-4 sm:flex-row">
               <Button asChild size="lg" variant="secondary">

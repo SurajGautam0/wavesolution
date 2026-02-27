@@ -59,7 +59,7 @@ export default function RegisterPage() {
         setIsSubmitting(true)
         try {
             await signUp(values.email, values.password, values.name)
-            toast.success("Account created successfully! Welcome to CRYSTALFRONT.")
+            toast.success("Account created successfully! Welcome to WaveSolution.")
 
             setTimeout(() => {
                 router.push("/admin") // Defaulting to dashboard/admin for demonstration
@@ -83,7 +83,7 @@ export default function RegisterPage() {
                 <div className="relative z-10">
                     <Link href="/" className="inline-block">
                         <div className="relative w-48 h-12">
-                            <img src="/logo.png" alt="CRYSTALFRONT" className="object-contain brightness-0 invert" />
+                            <img src="/logo.png" alt="WaveSolution" className="object-contain brightness-0 invert" />
                         </div>
                     </Link>
                 </div>
@@ -119,7 +119,7 @@ export default function RegisterPage() {
                 </div>
 
                 <div className="relative z-10">
-                    <p className="text-white/40 text-[10px] font-black uppercase tracking-[0.4em]">&copy; 2026 CRYSTALFRONT PREMIUM SERVICES</p>
+                    <p className="text-white/40 text-[10px] font-black uppercase tracking-[0.4em]">&copy; 2026 WaveSolution PREMIUM SERVICES</p>
                 </div>
             </div>
 
@@ -130,7 +130,7 @@ export default function RegisterPage() {
                 <div className="w-full max-w-md space-y-12 relative z-10">
                     <div className="space-y-4">
                         <div className="lg:hidden mb-8">
-                            <img src="/logo.png" alt="CRYSTALFRONT" className="h-10 object-contain mx-auto" />
+                            <img src="/logo.png" alt="WaveSolution" className="h-10 object-contain mx-auto" />
                         </div>
                         <h2 className="text-4xl font-black text-blue-950 tracking-tighter">Create Account</h2>
                         <p className="text-muted-foreground font-medium text-lg">Your journey to a cleaner lifestyle starts here.</p>
@@ -227,7 +227,7 @@ export default function RegisterPage() {
                                         <span className="w-full border-t border-slate-100" />
                                     </div>
                                     <div className="relative flex justify-center text-[10px] uppercase font-black tracking-widest">
-                                        <span className="bg-white px-4 text-slate-400">Join CRYSTALFRONT</span>
+                                        <span className="bg-white px-4 text-slate-400">Join WaveSolution</span>
                                     </div>
                                 </div>
 

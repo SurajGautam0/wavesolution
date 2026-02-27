@@ -121,7 +121,7 @@ export default function AdminDashboardPage() {
                             <div className="bg-slate-900 p-6 text-white relative overflow-hidden">
                                 <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full blur-2xl -mr-16 -mt-16" />
                                 <h2 className="text-lg font-bold relative z-10">Admin Panel</h2>
-                                <p className="text-slate-400 text-xs font-medium mt-1 relative z-10">Crystalfront v2.1</p>
+                                <p className="text-slate-400 text-xs font-medium mt-1 relative z-10">WaveSolution v2.1</p>
                             </div>
                             <CardContent className="p-4">
                                 <AdminNav activeTab={activeTab} setActiveTab={setActiveTab} />

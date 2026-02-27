@@ -4,8 +4,17 @@ import { Calendar, User, Building2, Briefcase, CheckCircle2, ArrowLeft } from "l
 import { Button } from "@/components/ui/button"
 
 export const metadata: Metadata = {
-    title: "Office Cleaning: Frequency and Best Practices | CRYSTALFRONT Blog",
-    description: "A clean workspace boosts employee productivity. Explore our guide on the ideal office cleaning schedule for a healthier workplace.",
+    title: "Office Cleaning Guide Gold Coast | How Often Should You Clean Your Office?",
+    description: "Expert guide on office cleaning frequency & best practices for Gold Coast businesses. Daily, weekly & monthly cleaning schedules. Learn how a clean workspace boosts productivity by 15%. Tips from Gold Coast's top commercial cleaners.",
+    keywords: ["office cleaning guide Gold Coast", "commercial cleaning tips", "office cleaning schedule", "workplace cleaning best practices", "office hygiene Gold Coast", "commercial cleaning frequency"],
+    alternates: {
+        canonical: "https://www.wavesolution.com.au/blog/office-cleaning",
+    },
+    openGraph: {
+        title: "Office Cleaning Guide | Best Practices for Gold Coast Businesses",
+        description: "How often should you clean your office? Expert guide from Gold Coast's commercial cleaning professionals.",
+        url: "https://www.wavesolution.com.au/blog/office-cleaning",
+    },
 }
 
 export default function OfficeCleaningPage() {
@@ -63,7 +72,7 @@ export default function OfficeCleaningPage() {
                             <Building2 className="w-12 h-12 text-primary mb-6" />
                             <h3 className="text-2xl font-black text-blue-950 mb-4 uppercase tracking-tight">Our Corporate Solutions</h3>
                             <p className="text-muted-foreground mb-8">
-                                CRYSTALFRONT provides bespoke cleaning solutions ranging from boutique offices to sprawling corporate complexes. We specialize in exterior glass maintenance and comprehensive facility hygiene.
+                                WaveSolution provides bespoke cleaning solutions ranging from boutique offices to sprawling corporate complexes. We specialize in exterior glass maintenance and comprehensive facility hygiene.
                             </p>
                             <Button asChild className="rounded-full bg-primary hover:bg-blue-900 text-white font-black uppercase tracking-widest px-10 h-14">
                                 <Link href="/contact">Consult with Our Experts</Link>

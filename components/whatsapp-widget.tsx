@@ -11,8 +11,8 @@ export function WhatsAppWidget() {
     const [showPopup, setShowPopup] = useState(false)
 
     // WhatsApp number and prefilled message
-    const whatsappNumber = "9779823674105"
-    const message = encodeURIComponent("Hi CRYSTALFRONT! I'm interested in your cleaning services. Could you please provide more information?")
+    const whatsappNumber = "61450833683"
+    const message = encodeURIComponent("Hi WaveSolution! I'm interested in your cleaning services. Could you please provide more information?")
 
     useEffect(() => {
         const timer = setTimeout(() => {

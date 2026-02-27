@@ -5,8 +5,17 @@ import { Calendar, User, Clock, Sparkles, ArrowLeft, Leaf, Zap } from "lucide-re
 import { Button } from "@/components/ui/button"
 
 export const metadata: Metadata = {
-    title: "Eco-Friendly Cleaning: Sustainable Solutions for a Safer Home | CRYSTALFRONT Blog",
-    description: "Learn how to maintain a pristine home using sustainable, non-toxic methods that protect both your family and the environment.",
+    title: "Eco-Friendly Cleaning Products & Methods | Green Cleaning Gold Coast",
+    description: "Discover eco-friendly cleaning solutions for Gold Coast homes. Non-toxic, child & pet-safe natural cleaning methods. WaveSolution uses green cleaning products across all Gold Coast suburbs. Sustainable cleaning guide.",
+    keywords: ["eco-friendly cleaning Gold Coast", "green cleaning products", "natural cleaning methods", "non-toxic cleaning Gold Coast", "sustainable cleaning Australia", "pet safe cleaning"],
+    alternates: {
+        canonical: "https://www.wavesolution.com.au/blog/eco-friendly",
+    },
+    openGraph: {
+        title: "Eco-Friendly Cleaning Solutions | Green Cleaning Gold Coast",
+        description: "Non-toxic, sustainable cleaning methods for Gold Coast homes. Safe for kids & pets.",
+        url: "https://www.wavesolution.com.au/blog/eco-friendly",
+    },
 }
 
 export default function EcoFriendlyCleaningPage() {
@@ -74,7 +83,7 @@ export default function EcoFriendlyCleaningPage() {
                             </div>
 
                             <div className="mt-16 pt-10 border-t border-blue-50">
-                                <h3 className="text-2xl font-black text-blue-950 mb-6 uppercase tracking-tight">CRYSTALFRONT Commitment</h3>
+                                <h3 className="text-2xl font-black text-blue-950 mb-6 uppercase tracking-tight">WaveSolution Commitment</h3>
                                 <p className="text-muted-foreground mb-8">
                                     Our team is dedicated to environmental stewardship. We prioritize biodegradable and non-toxic products in all our services, ensuring a pristine clean that respects the planet.
                                 </p>

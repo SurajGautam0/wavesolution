@@ -23,7 +23,7 @@ export function DashboardHeader() {
         <div className="mr-8 hidden md:flex">
           <Link href="/" className="flex items-center">
             <div className="relative w-32 h-10 lg:w-44 lg:h-14">
-              <Image src="/logo.png" alt="CRYSTALFRONT" fill className="object-contain" priority />
+              <Image src="/logo.png" alt="WaveSolution" fill className="object-contain" priority />
             </div>
           </Link>
         </div>
@@ -40,7 +40,7 @@ export function DashboardHeader() {
           <SheetContent side="left" className="pr-0">
             <Link href="/" className="flex items-center p-6">
               <div className="relative w-full max-w-[160px] aspect-[3/1]">
-                <Image src="/logo.png" alt="CRYSTALFRONT" fill className="object-contain" />
+                <Image src="/logo.png" alt="WaveSolution" fill className="object-contain" />
               </div>
             </Link>
             <div className="my-4">
@@ -50,7 +50,7 @@ export function DashboardHeader() {
         </Sheet>
         <Link href="/" className="flex items-center md:hidden">
           <div className="relative w-24 h-7 min-[400px]:w-32 min-[400px]:h-9">
-            <Image src="/logo.png" alt="CRYSTALFRONT" fill className="object-contain" priority />
+            <Image src="/logo.png" alt="WaveSolution" fill className="object-contain" priority />
           </div>
         </Link>
         <div className="flex flex-1 items-center justify-end space-x-4">

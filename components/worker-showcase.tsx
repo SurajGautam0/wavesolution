@@ -5,11 +5,11 @@ import Image from "next/image"
 import { ShieldCheck, Star, Users, Zap } from "lucide-react"
 
 export function WorkerShowcase() {
-    const [randomImage, setRandomImage] = useState("/cleaning_training.png")
+    const [randomImage, setRandomImage] = useState("/about.png")
 
     useEffect(() => {
-        const imageNumber = Math.floor(Math.random() * 8) + 1
-        setRandomImage(`/gallary_${imageNumber}.jpeg`)
+        // Use about.png as the showcase image
+        setRandomImage("/about.png")
     }, [])
 
     const trainingFeatures = [
@@ -40,10 +40,10 @@ export function WorkerShowcase() {
                             <span className="text-[10px] font-black uppercase tracking-[0.2em] text-primary">Academy of Excellence</span>
                         </div>
                         <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-black text-blue-950 tracking-tighter leading-tight">
-                            Our Pro <span className="text-secondary">Cleaning Classes</span>
+                            Professional <span className="text-secondary">Cleaning Services</span>
                         </h2>
                         <p className="text-muted-foreground text-lg font-medium leading-relaxed max-w-md">
-                            At CRYSTALFRONT, we don't just hire cleaners; we train artisans. Our dedicated training academy ensures every worker masters the 'Crystal Clear' standard.
+                            Our team of experienced professionals uses the latest cleaning techniques and eco-friendly products to ensure your space is not just clean, but healthy too.
                         </p>
                     </div>
 
@@ -65,7 +65,7 @@ export function WorkerShowcase() {
                 <div className="relative min-h-[500px] lg:min-h-full bg-slate-100 group overflow-hidden">
                     <Image
                         src={randomImage}
-                        alt="CRYSTALFRONT Training Session"
+                        alt="WaveSolution Professional Cleaning"
                         fill
                         className="object-cover transition-transform duration-1000 group-hover:scale-110"
                         key={randomImage}
@@ -87,7 +87,7 @@ export function WorkerShowcase() {
                                     className="object-contain brightness-0 invert"
                                 />
                             </div>
-                            <span className="text-[10px] font-black uppercase tracking-[0.2em] text-white">#1 Cleaning Services</span>
+                            <span className="text-[10px] font-black uppercase tracking-[0.2em] text-white">Australia Wide</span>
                         </div>
                     </div>
 
@@ -107,10 +107,10 @@ export function WorkerShowcase() {
                                         <p className="text-secondary text-[10px] font-black uppercase tracking-[0.3em]">Project Spotlight</p>
                                     </div>
                                     <h3 className="text-white text-2xl font-black tracking-tight leading-tight">
-                                        The <span className="italic text-white/90">Crystalfront</span> Standard
+                                        The <span className="italic text-white/90">WaveSolution</span> Standard
                                     </h3>
                                     <p className="text-white/70 text-sm font-medium leading-relaxed max-w-sm">
-                                        Every image in our portfolio represents a certified technician delivering international-grade precision.
+                                        Whether it's your home, office, or commercial space, we pay attention to every detail to deliver exceptional results.
                                     </p>
 
                                     <div className="pt-4 flex items-center justify-between border-t border-white/10 mt-2">

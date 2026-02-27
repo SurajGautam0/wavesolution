@@ -72,7 +72,7 @@ export default function LoginPage() {
             console.log("Attempting sign in...")
             await signIn(values.email, values.password)
             console.log("Sign in successful")
-            toast.success("Welcome back to CRYSTALFRONT!")
+            toast.success("Welcome back to WaveSolution!")
 
             // Redirect is now handled by the useEffect above when 'user' state updates
             // But we keep manual redirect as fallback
@@ -95,7 +95,7 @@ export default function LoginPage() {
                 <div className="relative z-10">
                     <Link href="/" className="inline-block">
                         <div className="relative w-48 h-12">
-                            <img src="/logo.png" alt="CRYSTALFRONT" className="object-contain brightness-0 invert" />
+                            <img src="/logo.png" alt="WaveSolution" className="object-contain brightness-0 invert" />
                         </div>
                     </Link>
                 </div>
@@ -138,7 +138,7 @@ export default function LoginPage() {
                 </div>
 
                 <div className="relative z-10">
-                    <p className="text-white/40 text-[10px] font-black uppercase tracking-[0.4em]">&copy; 2026 CRYSTALFRONT PREMIUM SERVICES</p>
+                    <p className="text-white/40 text-[10px] font-black uppercase tracking-[0.4em]">&copy; 2026 WaveSolution PREMIUM SERVICES</p>
                 </div>
             </div>
 
@@ -149,7 +149,7 @@ export default function LoginPage() {
                 <div className="w-full max-w-md space-y-12 relative z-10">
                     <div className="space-y-4">
                         <div className="lg:hidden mb-8">
-                            <img src="/logo.png" alt="CRYSTALFRONT" className="h-10 object-contain mx-auto" />
+                            <img src="/logo.png" alt="WaveSolution" className="h-10 object-contain mx-auto" />
                         </div>
                         <h2 className="text-4xl font-black text-blue-950 tracking-tighter">Welcome Back</h2>
                         <p className="text-muted-foreground font-medium text-lg">Enter your professional credentials to continue.</p>
@@ -170,7 +170,7 @@ export default function LoginPage() {
                                                     </FormLabel>
                                                     <FormControl>
                                                         <Input
-                                                            placeholder="admin@crystalfront.com"
+                                                            placeholder="admin@WaveSolution.com"
                                                             {...field}
                                                             className="h-14 border-slate-100 bg-slate-50/50 hover:border-primary/30 focus:bg-white focus:border-primary focus:ring-8 focus:ring-primary/5 rounded-2xl transition-all font-bold"
                                                         />
@@ -241,7 +241,7 @@ export default function LoginPage() {
                                         onClick={async () => {
                                             try {
                                                 await signInWithGoogle()
-                                                toast.success("Welcome back to CRYSTALFRONT!")
+                                                toast.success("Welcome back to WaveSolution!")
                                             } catch (error) {
                                                 toast.error("Google Sign-In failed.")
                                             }

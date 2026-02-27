@@ -67,7 +67,7 @@ export default function ContactPage() {
   return (
     <div className="flex min-h-screen flex-col">
       <div className="page-header relative overflow-hidden">
-        {/* Background Overlay with Nepali vibe */}
+        {/* Background Overlay */}
         <div className="absolute inset-0 z-0 opacity-40">
           <Image
             src="/Untitled video - Made with Clipchamp (1).gif"
@@ -84,7 +84,7 @@ export default function ContactPage() {
             <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl mb-6">Contact Us</h1>
             <div className="w-20 h-1 bg-secondary mx-auto mb-6"></div>
             <p className="text-xl text-white/80 mb-8">
-              Serving every corner of the Kathmandu Valley. We're here to help you with all your professional cleaning needs.
+              We're here to help you with all your professional cleaning needs across Australia.
             </p>
           </div>
         </div>
@@ -101,7 +101,7 @@ export default function ContactPage() {
                     <Phone className="h-6 w-6 text-primary" />
                   </div>
                   <h3 className="text-xl font-bold mb-2">Call Us</h3>
-                  <p className="text-muted-foreground mb-2">We're available 24/7</p>
+                  <p className="text-muted-foreground mb-2">We're available during business hours</p>
                   <Link href="tel:0450833683" className="text-primary hover:underline font-medium">
                     0450 833 683
                   </Link>
@@ -117,8 +117,8 @@ export default function ContactPage() {
                   </div>
                   <h3 className="text-xl font-bold mb-2">Email Us</h3>
                   <p className="text-muted-foreground mb-2">We'll respond to your inquiry within 24 hours</p>
-                  <Link href="mailto:info@crystalfront.com" className="text-primary hover:underline font-medium">
-                    info@crystalfront.com
+                  <Link href="mailto:susanttimalcena@gmail.com" className="text-primary hover:underline font-medium">
+                    susanttimalcena@gmail.com
                   </Link>
                 </div>
               </CardContent>
@@ -131,13 +131,13 @@ export default function ContactPage() {
                     <MapPin className="h-6 w-6 text-primary" />
                   </div>
                   <h3 className="text-xl font-bold mb-2">Visit Us</h3>
-                  <p className="text-muted-foreground mb-2">Our main office is located in Bhaisepati, Lalitpur</p>
+                  <p className="text-muted-foreground mb-2">Our main office is located in Gold Coast, QLD</p>
                   <address className="not-italic text-primary">
-                    Bhaisepati
+                    Gold Coast
                     <br />
-                    Lalitpur
+                    QLD 4215
                     <br />
-                    Nepal
+                    Australia
                   </address>
                 </div>
               </CardContent>
@@ -151,9 +151,9 @@ export default function ContactPage() {
                   </div>
                   <h3 className="text-xl font-bold mb-2">Business Hours</h3>
                   <ul className="text-muted-foreground space-y-1">
-                    <li>Available 24/7</li>
-                    <li>Every day of the week</li>
-
+                    <li>Monday - Friday: 8am - 6pm</li>
+                    <li>Saturday: 9am - 4pm</li>
+                    <li>Sunday: Closed</li>
                   </ul>
                 </div>
               </CardContent>
@@ -303,7 +303,7 @@ export default function ContactPage() {
             <h2 className="text-3xl font-bold text-primary mb-4">Find Us</h2>
             <div className="w-16 h-1 bg-secondary mx-auto mb-6"></div>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              We serve clients in Bhaisepati, Lalitpur, with our main office located in Bhaisepati.
+              We serve clients across the Gold Coast region, with our main office located in Gold Coast.
             </p>
           </div>
 
@@ -315,7 +315,7 @@ export default function ContactPage() {
               loading="lazy"
               allowFullScreen
               referrerPolicy="no-referrer-when-downgrade"
-              src="https://maps.google.com/maps?q=27.658933,85.306565&z=17&output=embed"
+              src="https://maps.google.com/maps?q=-28.1038271,153.4339270&z=16&output=embed"
             ></iframe>
           </div>
 
@@ -328,7 +328,7 @@ export default function ContactPage() {
           <div className="classic-card p-8 text-center">
             <h2 className="text-3xl font-serif font-bold text-primary mb-4">Ready for a Cleaner Space?</h2>
             <p className="text-muted-foreground mb-6">
-              Book your cleaning service today and experience the CRYSTALFRONT difference.
+              Book your cleaning service today and experience the WaveSolution difference.
             </p>
             <div className="flex flex-col gap-4 sm:flex-row justify-center">
               <Button asChild className="classic-button">

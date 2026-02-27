@@ -2,31 +2,31 @@ import React from "react";
 
 const pricingData = [
   {
-    category: "Everest (XL)",
-    description: "Biggest XL showrooms, wide glass fronts",
-    prices: ["NPR 6,500", "NPR 8,000"],
+    category: "Essential (1-2 Bed)",
+    description: "Apartments, studios, small houses",
+    prices: ["$120", "$200", "$250"],
   },
   {
-    category: "Lhotse (Large)",
-    description: "Large restaurants, showrooms",
-    prices: ["NPR 3,500", "NPR 4,000", "NPR 5,000"],
+    category: "Standard (3 Bed)",
+    description: "Family homes, townhouses, duplexes",
+    prices: ["$180", "$280", "$350"],
   },
   {
-    category: "Manaslu (Medium)",
-    description: "Restaurants, retail stores, medium showrooms",
-    prices: ["NPR 3,000", "NPR 4,000", "NPR 4,500"],
+    category: "Premium (4+ Bed)",
+    description: "Large family homes, multi-storey houses",
+    prices: ["$250", "$380", "$450"],
   },
   {
-    category: "Annapurna (Small)",
-    description: "Small shops, pharmacies, boutiques",
-    prices: ["NPR 2,500", "NPR 3,500", "NPR 4,000"],
+    category: "Commercial (Office)",
+    description: "Offices, retail stores, commercial spaces",
+    prices: ["$350", "$500", "$600"],
   },
 ];
 
 const frequencyLabels = [
-  "4x/Month (Weekly)",
-  "6x/Month (Every 5 days)",
-  "8x/Month (Bi-Weekly)",
+  "Weekly",
+  "Fortnightly",
+  "Monthly",
 ];
 
 export function BookingPricingTable() {
@@ -54,7 +54,7 @@ export function BookingPricingTable() {
           ))}
         </tbody>
       </table>
-      <div className="text-xs text-gray-500 mt-2">* Prices are for window cleaning packages. Contact us for custom quotes.</div>
+      <div className="text-xs text-gray-500 mt-2">* Prices are for cleaning service packages in AUD. Contact us for custom quotes.</div>
     </div>
   );
 }

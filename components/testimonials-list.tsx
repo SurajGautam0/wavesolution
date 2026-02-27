@@ -101,10 +101,10 @@ export function TestimonialsList() {
             {
               id: "1",
               name: "Sarah Johnson",
-              location: "Sydney, NSW",
+              location: "Southport, QLD",
               rating: 5,
               testimonial:
-                "CRYSTALFRONT has been cleaning my home for over a year now, and I couldn't be happier with their service. The team is always punctual, thorough, and friendly.",
+                "WaveSolution has been cleaning my home for over a year now, and I couldn't be happier with their service. The team is always punctual, thorough, and friendly.",
               image: "/placeholder.svg?height=80&width=80",
               date: "March 15, 2024",
               service: "Home Cleaning",
@@ -118,7 +118,7 @@ export function TestimonialsList() {
               location: "Perth, WA",
               rating: 5,
               testimonial:
-                "CRYSTALFRONT has been maintaining our office building for the past two years. Their attention to detail and reliability have made them an invaluable partner.",
+                "WaveSolution has been maintaining our office building for the past two years. Their attention to detail and reliability have made them an invaluable partner.",
               image: "/placeholder.svg?height=80&width=80",
               date: "March 10, 2024",
               service: "Office Cleaning",
@@ -132,7 +132,7 @@ export function TestimonialsList() {
               location: "Brisbane, QLD",
               rating: 5,
               testimonial:
-                "I was impressed with CRYSTALFRONT's carpet cleaning service. They removed stains that I thought were permanent and revitalized my old carpets.",
+                "I was impressed with WaveSolution's carpet cleaning service. They removed stains that I thought were permanent and revitalized my old carpets.",
               image: "/placeholder.svg?height=80&width=80",
               date: "February 20, 2024",
               service: "Carpet Cleaning",

@@ -21,128 +21,128 @@ interface TestimonialProps {
 const testimonials: Record<string, TestimonialProps[]> = {
   residential: [
     {
-      name: "Ram Bahadur Thapa",
-      location: "Bhaisepati, Lalitpur",
+      name: "Sarah Johnson",
+      location: "Southport, QLD",
       rating: 5,
       testimonial:
-        "CRYSTALFRONT has been providing exceptional cleaning for my home. Their work is highly organized and reliable. It's a pleasure to have such high-quality service in the Bhaisepati area.",
+        "WaveSolution has been cleaning my home for over a year now, and I couldn't be happier with their service. The team is always punctual, thorough, and friendly.",
       image: "/placeholder.svg?height=80&width=80",
-      date: "January 15, 2026",
+      date: "March 15, 2024",
       service: "Home Cleaning",
     },
     {
-      name: "Sita Kumari Rai",
-      location: "Sanepa, Lalitpur",
+      name: "Michael Thompson",
+      location: "Melbourne, VIC",
       rating: 5,
       testimonial:
-        "I have tried several cleaning services, but none compare to CRYSTALFRONT. Their team is extremely hardworking and they clean every corner of the house meticulously.",
+        "I was amazed at how spotless my apartment was after WaveSolution's deep cleaning service. They paid attention to every detail and exceeded my expectations.",
       image: "/placeholder.svg?height=80&width=80",
-      date: "January 10, 2026",
+      date: "March 10, 2024",
       service: "Deep Cleaning",
     },
     {
-      name: "Prakash Shrestha",
-      location: "Jhamsikhel, Lalitpur",
+      name: "Jennifer Lee",
+      location: "Broadbeach, QLD",
       rating: 4,
       testimonial:
-        "An excellent company for window and glass cleaning. The work is top-tier, although they arrived slightly late once. Everything else is outstanding.",
+        "An excellent company for window and general cleaning. The work is top-tier. Everything is outstanding.",
       image: "/placeholder.svg?height=80&width=80",
-      date: "January 5, 2026",
+      date: "March 5, 2024",
       service: "Window Cleaning",
     },
     {
-      name: "Anjali Sharma",
-      location: "Nakkhu, Lalitpur",
+      name: "Lisa Chen",
+      location: "Surfers Paradise, QLD",
       rating: 5,
       testimonial:
-        "CRYSTALFRONT's service is highly professional. The cleaning agents they use are environmentally friendly and safe for health. I highly recommend their services to everyone.",
+        "WaveSolution's service is highly professional. The cleaning agents they use are environmentally friendly and safe. I highly recommend their services to everyone.",
       image: "/placeholder.svg?height=80&width=80",
-      date: "December 28, 2025",
+      date: "February 28, 2024",
       service: "Home Cleaning",
     },
   ],
   commercial: [
     {
-      name: "Rajesh Khatri",
-      location: "Ekantakuna, Lalitpur",
+      name: "David Williams",
+      location: "Robina, QLD",
       rating: 5,
       testimonial:
-        "We have entrusted CRYSTALFRONT with our office cleaning. They are doing a fantastic job. We've noticed a boost in employee morale since the office has been so clean.",
+        "Our office has never looked better since we started using WaveSolution's commercial cleaning service. Highly professional and consistent.",
       image: "/placeholder.svg?height=80&width=80",
-      date: "January 12, 2026",
+      date: "March 12, 2024",
       service: "Office Cleaning",
     },
     {
-      name: "Binita Basnet",
-      location: "Bakhundole, Lalitpur",
+      name: "Emma Roberts",
+      location: "Brisbane, QLD",
       rating: 5,
       testimonial:
-        "CRYSTALFRONT's cleaning service is very effective for our restaurant. They sanitize the kitchen and dining area thoroughly. We are extremely satisfied with their work.",
+        "WaveSolution's cleaning service is very effective for our restaurant. They sanitize the kitchen and dining area thoroughly. We are extremely satisfied with their work.",
       image: "/placeholder.svg?height=80&width=80",
-      date: "January 8, 2026",
+      date: "March 8, 2024",
       service: "Restaurant Cleaning",
     },
     {
-      name: "Dinesh K.C.",
-      location: "Kupandole, Lalitpur",
+      name: "James Parker",
+      location: "Perth, WA",
       rating: 4,
       testimonial:
-        "Cleaning a medical center requires high sensitivity. CRYSTALFRONT handles this task with great expertise. Their cleaning standards are remarkably high.",
+        "Cleaning a medical center requires high sensitivity. WaveSolution handles this task with great expertise. Their cleaning standards are remarkably high.",
       image: "/placeholder.svg?height=80&width=80",
-      date: "December 20, 2025",
+      date: "February 20, 2024",
       service: "Medical Facility Cleaning",
     },
     {
-      name: "Arjun Neupane",
-      location: "Jawalakhel, Lalitpur",
+      name: "Rebecca Taylor",
+      location: "Adelaide, SA",
       rating: 5,
       testimonial:
-        "CRYSTALFRONT is always our first choice for our corporate office. They are punctual and their work is of consistent high quality.",
+        "WaveSolution is always our first choice for our corporate office. They are punctual and their work is of consistent high quality.",
       image: "/placeholder.svg?height=80&width=80",
-      date: "December 15, 2025",
+      date: "February 15, 2024",
       service: "Office Cleaning",
     },
   ],
   specialized: [
     {
-      name: "Nirmala Sunuwar",
-      location: "Imadol, Lalitpur",
+      name: "Amanda Wilson",
+      location: "Gold Coast, QLD",
       rating: 5,
       testimonial:
-        "CRYSTALFRONT is excellent for carpet cleaning. They made my old carpet look brand new again. All the stubborn stains are completely gone.",
+        "WaveSolution is excellent for carpet cleaning. They made my old carpet look brand new again. All the stubborn stains are completely gone.",
       image: "/placeholder.svg?height=80&width=80",
-      date: "January 14, 2026",
+      date: "March 14, 2024",
       service: "Carpet Cleaning",
     },
     {
-      name: "Suman Ghimire",
-      location: "Dhobighat, Lalitpur",
+      name: "Robert Brown",
+      location: "Canberra, ACT",
       rating: 5,
       testimonial:
-        "Water tank and septic tank cleaning is a difficult job, but they did it very well. The cleaning crew was very disciplined and professional.",
+        "The end of lease cleaning was thorough and professional. We got our full bond back thanks to WaveSolution's excellent work.",
       image: "/placeholder.svg?height=80&width=80",
-      date: "January 6, 2026",
-      service: "Tank Cleaning",
+      date: "March 6, 2024",
+      service: "End of Lease Cleaning",
     },
     {
-      name: "Aman Tamang",
-      location: "Latitpur-5",
+      name: "Chris Martin",
+      location: "Nerang, QLD",
       rating: 4,
       testimonial:
-        "I called CRYSTALFRONT for post-construction cleaning. They removed all the cement and paint stains. The work quality is superb.",
+        "I called WaveSolution for post-renovation cleaning. They removed all the dust and debris perfectly. The work quality is superb.",
       image: "/placeholder.svg?height=80&width=80",
-      date: "December 30, 2025",
+      date: "February 25, 2024",
       service: "Post-Construction Cleaning",
     },
     {
-      name: "Gita Giri",
-      location: "Sanepa, Lalitpur",
+      name: "Sophie Harris",
+      location: "Burleigh Heads, QLD",
       rating: 5,
       testimonial:
-        "Their sofa cleaning technology is very modern. The color and shine of the sofa have been restored. I am very satisfied with the results.",
+        "Their upholstery cleaning is amazing. The color and freshness of my sofa have been restored. I am very satisfied with the results.",
       image: "/placeholder.svg?height=80&width=80",
-      date: "December 22, 2025",
-      service: "Sofa Cleaning",
+      date: "February 18, 2024",
+      service: "Upholstery Cleaning",
     },
   ],
 }
@@ -219,7 +219,7 @@ export default function TestimonialsPage() {
                   className="object-contain brightness-0 invert"
                 />
               </div>
-              <span className="text-[10px] font-black uppercase tracking-[0.3em] text-white">#1 Cleaning Services</span>
+              <span className="text-[10px] font-black uppercase tracking-[0.3em] text-white">Customer Stories</span>
             </div>
 
             <h1 className="text-5xl font-black tracking-tight sm:text-7xl md:text-8xl mb-8 text-white leading-[0.9] animate-fadeIn">
@@ -230,7 +230,7 @@ export default function TestimonialsPage() {
             <div className="w-24 h-2 bg-secondary mb-10 rounded-full animate-fadeIn" />
 
             <p className="text-xl sm:text-2xl text-white/80 max-w-2xl font-medium leading-relaxed mb-10 animate-fadeIn">
-              Real experiences from our customers who transformed their spaces with the CRYSTALFRONT standard of excellence.
+              Real experiences from our customers who transformed their spaces with the WaveSolution standard of excellence.
             </p>
 
             <div className="flex gap-4 animate-fadeIn">
@@ -335,7 +335,7 @@ export default function TestimonialsPage() {
           <div className="classic-card p-8 text-center">
             <h2 className="text-3xl font-serif font-bold text-primary mb-4">Ready for a Cleaner Space?</h2>
             <p className="text-muted-foreground mb-6">
-              Join our satisfied customers and experience the CRYSTALFRONT difference.
+              Join our satisfied customers and experience the WaveSolution difference.
             </p>
             <div className="flex flex-col gap-4 sm:flex-row justify-center">
               <Button asChild className="classic-button">

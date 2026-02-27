@@ -4,7 +4,7 @@ import * as React from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import Image from "next/image"
-import { Facebook, Instagram, Mail, Menu, Phone, ChevronDown, Glasses, Sparkles, Store, ShoppingBag, Building2, Sun, Layout, Square, Eraser, Monitor, Utensils, Briefcase } from "lucide-react"
+import { Facebook, Instagram, Linkedin, Mail, Menu, Phone, ChevronDown, Home, Sparkles, Building2, Truck, Twitter, Bug, CalendarClock, Repeat } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
@@ -36,18 +36,15 @@ export function MainNav() {
   ]
 
   const serviceRoutes = [
-    { href: "/services", label: "Window Cleaning", description: "Crystal clear views for homes & businesses", icon: Glasses },
-    { href: "/services", label: "Glass Cleaning", description: "Specialized streak-free glass treatment", icon: Sparkles },
-    { href: "/services", label: "Storefront Glass", description: "Welcoming entrances for your shop", icon: Store },
-    { href: "/services", label: "Shop Front", description: "Keep your commercial frontage spotless", icon: ShoppingBag },
-    { href: "/services", label: "Commercial Glass", description: "Large scale glass cleaning solutions", icon: Building2 },
-    { href: "/services", label: "Exterior Glass", description: "Safe cleaning for high-reach windows", icon: Sun },
-    { href: "/services", label: "Interior Glass", description: "Detailed cleaning for inside partitions", icon: Layout },
-    { href: "/services", label: "Frame & Sill", description: "Complete frame and track maintenance", icon: Square },
-    { href: "/services", label: "Spot & Stain Removal", description: "Expert mineral deposit & spot removal", icon: Eraser },
-    { href: "/services", label: "Showroom Glass", description: "Display-ready glass for showrooms", icon: Monitor },
-    { href: "/services", label: "Restaurant & Café", description: "Hygienic cleaning for dining spaces", icon: Utensils },
-    { href: "/services", label: "Office Windows", description: "Bright and clear workspaces", icon: Briefcase },
+    { href: "/services", label: "Home Cleaning", description: "Regular cleaning services for your home", icon: Home },
+    { href: "/services", label: "Office Cleaning", description: "Professional cleaning for offices and commercial spaces", icon: Building2 },
+    { href: "/services", label: "Deep Cleaning", description: "Thorough cleaning of all areas", icon: Sparkles },
+    { href: "/services", label: "Move In/Out", description: "Comprehensive cleaning for moving", icon: Truck },
+    { href: "/services", label: "Window Cleaning", description: "Crystal clear windows for homes and buildings", icon: Home },
+    { href: "/services", label: "Carpet Cleaning", description: "Deep cleaning for carpets", icon: Sparkles },
+    { href: "/services", label: "Regular House Cleaning", description: "Scheduled weekly or fortnightly home cleaning", icon: Repeat },
+    { href: "/services", label: "Same Day Service", description: "Fast same-day cleaning service", icon: CalendarClock },
+    { href: "/services", label: "Pest Control", description: "Safe pest control for homes & businesses", icon: Bug },
   ]
 
   return (
@@ -60,33 +57,17 @@ export function MainNav() {
               <Phone className="mr-2 h-3 w-3 text-secondary group-hover:animate-pulse" />
               0450 833 683
             </Link>
-            <Link href="mailto:info@crystalfront.com" className="flex items-center hover:text-secondary transition-all">
+            <Link href="mailto:susanttimalcena@gmail.com" className="flex items-center hover:text-secondary transition-all">
               <Mail className="mr-2 h-3 w-3 text-secondary" />
-              info@crystalfront.com
+              susanttimalcena@gmail.com
             </Link>
           </div>
           <div className="flex items-center space-x-4">
             {[
-              { Icon: Facebook, href: "https://facebook.com" },
-              { Icon: Instagram, href: "https://www.instagram.com/crystalfrontwincare?igsh=eWt5czdydGxuODF1&utm_source=qr" },
-              {
-                Icon: () => (
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="14"
-                    height="14"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
-                  </svg>
-                ),
-                href: "https://www.tiktok.com/@crystalfront2026"
-              },
+              { Icon: Facebook, href: "https://facebook.com/" },
+              { Icon: Twitter, href: "https://twitter.com/" },
+              { Icon: Instagram, href: "https://instagram.com/" },
+              { Icon: Linkedin, href: "https://linkedin.com/" },
             ].map(({ Icon, href }, i) => (
               <Link key={i} href={href} target="_blank" rel="noreferrer" className="text-white/60 hover:text-secondary transition-all hover:scale-110">
                 <Icon className="h-3.5 w-3.5" />
@@ -106,15 +87,15 @@ export function MainNav() {
         )}
       >
         <div className="classic-container relative flex items-center justify-between h-16 sm:h-20 lg:h-24">
-          <div className="flex items-center">
+          <div className="flex items-center gap-0">
             {/* Mobile Burger Menu (Left) */}
-            <div className="flex items-center lg:hidden z-10 mr-0">
+            <div className="flex items-center lg:hidden z-10 -mr-4">
               <Sheet open={isOpen} onOpenChange={setIsOpen}>
                 <SheetTrigger asChild>
                   <Button
                     variant="ghost"
                     className={cn(
-                      "h-10 w-6 flex items-center justify-center rounded-xl p-0",
+                      "h-10 w-10 flex items-center justify-center rounded-xl p-0",
                       isScrolled ? "text-primary hover:bg-primary/5" : "text-white hover:bg-white/10",
                     )}
                   >
@@ -126,7 +107,7 @@ export function MainNav() {
                     <div className="relative w-full max-w-[200px] aspect-[3/1] mb-6">
                       <Image
                         src="/logo.png"
-                        alt="CRYSTALFRONT"
+                        alt="WaveSolution"
                         fill
                         className="object-contain brightness-0 invert"
                       />
@@ -150,7 +131,7 @@ export function MainNav() {
                       ))}
                     </nav>
                     <div className="pt-6 border-t border-gray-100 italic text-xs text-gray-400 text-center">
-                      Trusted by 500+ locals in Lalitpur
+                      Trusted by thousands across Australia
                     </div>
                   </div>
                 </SheetContent>
@@ -158,15 +139,14 @@ export function MainNav() {
             </div>
 
             {/* Logo (Next to Hamburger on Mobile, Left on Desktop) */}
-            <Link href="/" className="flex items-center group shrink-0 -ml-5 sm:ml-0">
+            <Link href="/" className="flex items-center group shrink-0">
               <div className={cn(
-
                 "relative transition-all duration-500 group-hover:scale-105 origin-left",
-                "w-32 h-10 sm:w-40 sm:h-12 md:w-56 md:h-16 lg:w-64 lg:h-20"
+                "w-[120px] h-10 sm:w-44 sm:h-14 md:w-56 md:h-16 lg:w-64 lg:h-20"
               )}>
                 <Image
                   src="/logo.png"
-                  alt="CRYSTALFRONT Logo"
+                  alt="WaveSolution Logo"
                   fill
                   priority
                   className={cn(
@@ -240,7 +220,7 @@ export function MainNav() {
                       {/* Dropdown Footer */}
                       <div className="mt-6 pt-6 border-t border-blue-50 flex items-center justify-between px-2">
                         <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest flex items-center">
-                          <Sparkles className="w-3 h-3 mr-2 text-secondary" /> Crystal Clear Satisfaction Guaranteed
+                          <Sparkles className="w-3 h-3 mr-2 text-secondary" /> Satisfaction Guaranteed
                         </p>
                         <div className="flex -space-x-2">
                           {[1, 2, 3].map(i => (
@@ -261,7 +241,7 @@ export function MainNav() {
           <div className="flex items-center z-10">
             <Button
               asChild
-              className="h-8 sm:h-12 px-3 sm:px-8 rounded-full bg-secondary hover:bg-secondary/90 text-white font-black text-[10px] sm:text-xs uppercase tracking-widest transition-all hover:scale-105 active:scale-95 shadow-xl shadow-secondary/20"
+              className="h-10 sm:h-12 px-5 sm:px-8 rounded-full bg-secondary hover:bg-secondary/90 text-white font-black text-xs sm:text-xs uppercase tracking-wider sm:tracking-widest transition-all hover:scale-105 active:scale-95 shadow-xl shadow-secondary/20"
             >
               <Link href="/book">Book Now</Link>
             </Button>

@@ -1,6 +1,6 @@
 import Link from "next/link"
 import Image from "next/image"
-import { Facebook, Instagram, Mail, MapPin, Phone } from "lucide-react"
+import { Facebook, Instagram, Linkedin, Mail, MapPin, Phone, Twitter } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -16,7 +16,7 @@ export function SiteFooter() {
               <div className="relative w-32 h-12 min-[400px]:w-40 min-[400px]:h-16 sm:w-48 sm:h-20 md:w-56 md:h-24">
                 <Image
                   src="/logo.png"
-                  alt="CRYSTALFRONT"
+                  alt="WaveSolution"
                   fill
                   className="object-contain brightness-0 invert"
                 />
@@ -24,10 +24,10 @@ export function SiteFooter() {
             </Link>
 
 
-            <p className="text-white/80">Professional cleaning services for homes and businesses in Bhaisepati, Lalitpur.</p>
+            <p className="text-white/80">Professional cleaning & pest control services for homes and businesses across Australia.</p>
             <div className="flex space-x-4">
               <Link
-                href="https://facebook.com"
+                href="https://facebook.com/"
                 target="_blank"
                 rel="noreferrer"
                 className="text-white/80 hover:text-secondary"
@@ -36,7 +36,16 @@ export function SiteFooter() {
                 <span className="sr-only">Facebook</span>
               </Link>
               <Link
-                href="https://www.instagram.com/crystalfrontwincare?igsh=eWt5czdydGxuODF1&utm_source=qr"
+                href="https://twitter.com/"
+                target="_blank"
+                rel="noreferrer"
+                className="text-white/80 hover:text-secondary"
+              >
+                <Twitter className="h-5 w-5" />
+                <span className="sr-only">Twitter</span>
+              </Link>
+              <Link
+                href="https://instagram.com/"
                 target="_blank"
                 rel="noreferrer"
                 className="text-white/80 hover:text-secondary"
@@ -45,26 +54,13 @@ export function SiteFooter() {
                 <span className="sr-only">Instagram</span>
               </Link>
               <Link
-                href="https://www.tiktok.com/@crystalfront2026"
+                href="https://linkedin.com/"
                 target="_blank"
                 rel="noreferrer"
                 className="text-white/80 hover:text-secondary"
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="h-5 w-5"
-                >
-                  <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
-                </svg>
-                <span className="sr-only">TikTok</span>
+                <Linkedin className="h-5 w-5" />
+                <span className="sr-only">LinkedIn</span>
               </Link>
             </div>
           </div>
@@ -110,7 +106,7 @@ export function SiteFooter() {
             <ul className="space-y-3">
               <li className="flex items-start">
                 <MapPin className="mr-2 h-5 w-5 shrink-0 text-secondary" />
-                <span className="text-white/80">Bhaisepati, Lalitpur</span>
+                <span className="text-white/80">Gold Coast, QLD 4215, Australia</span>
               </li>
               <li className="flex items-center">
                 <Phone className="mr-2 h-5 w-5 text-secondary" />
@@ -120,8 +116,8 @@ export function SiteFooter() {
               </li>
               <li className="flex items-center">
                 <Mail className="mr-2 h-5 w-5 text-secondary" />
-                <Link href="mailto:info@crystalfront.com" className="text-white/80 hover:text-secondary">
-                  info@crystalfront.com
+                <Link href="mailto:susanttimalcena@gmail.com" className="text-white/80 hover:text-secondary">
+                  susanttimalcena@gmail.com
                 </Link>
               </li>
             </ul>
@@ -129,14 +125,14 @@ export function SiteFooter() {
           <div>
             <h3 className="mb-4 text-lg font-serif font-bold">Newsletter</h3>
             <div className="w-12 h-1 bg-secondary mb-4"></div>
-            <p className="mb-4 text-white/80">Subscribe to our newsletter for the latest updates and offers.</p>
+            <p className="mb-4 text-white/80">Subscribe for the latest updates.</p>
             <NewsletterForm />
           </div>
         </div>
         <div className="mt-12 border-t border-white/20 pt-6">
           <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
             <p className="text-center text-sm text-white/60">
-              &copy; {new Date().getFullYear()} CRYSTALFRONT. All rights reserved.
+              &copy; {new Date().getFullYear()} WaveSolution. All rights reserved.
             </p>
             <div className="flex space-x-4 text-sm text-white/60">
               <Link href="/admin" className="hover:text-secondary">

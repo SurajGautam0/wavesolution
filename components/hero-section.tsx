@@ -17,11 +17,11 @@ export function HeroSection() {
 
   return (
     <section className="relative overflow-hidden bg-primary py-12 sm:py-20 md:py-32">
-      {/* Nepali Hero Background */}
+      {/* Hero Background */}
       <div className="absolute inset-0 z-0 overflow-hidden opacity-30">
         <Image
           src="https://images.unsplash.com/photo-1544806030-22d206f9d150?auto=format&fit=crop&q=80&w=2400"
-          alt="Kathmandu Valley Landscape"
+          alt="Professional Cleaning Service"
           fill
           className="object-cover scale-110 blur-[2px]"
           priority
@@ -47,15 +47,16 @@ export function HeroSection() {
                     className="object-contain brightness-0 invert"
                   />
                 </div>
-                <span className="text-[10px] font-black uppercase tracking-[0.2em]">#1 Cleaning Services</span>
+                <span className="text-[10px] font-black uppercase tracking-[0.2em]">Gold Coast & QLD</span>
               </div>
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-serif font-black tracking-tighter leading-[1.1]">
-                Professional Cleaning Excellence in <span className="text-secondary shimmer-text">Valley</span>
+                Professional Cleaning<span className="text-secondary shimmer-text"> & Pest Control</span> Services in Gold Coast
               </h1>
 
               <div className="w-24 h-1.5 bg-secondary mx-auto lg:mx-0 rounded-full"></div>
               <p className="max-w-[600px] mx-auto lg:mx-0 text-lg sm:text-xl text-white/70 leading-relaxed font-medium">
-                Experience the Crystal Front standard. We bring a new level of shine to your commercial store front windows at your convenient time and subscription basis. We take care of your windows and brand image weekly, biweekly or of your choice, you take care of your customers and business. We take care of the planet earth and our products are eco-friendly too.
+                Experience the WaveSolution difference with our premium cleaning and pest control services. We
+                deliver spotless, pest-free results every time.
               </p>
             </div>
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4">
@@ -77,7 +78,7 @@ export function HeroSection() {
                 <div className="bg-primary p-6 sm:p-8 text-white relative overflow-hidden">
                   <div className="absolute top-0 right-0 w-32 h-32 bg-secondary/10 rounded-full blur-2xl -mr-16 -mt-16" />
                   <div className="relative z-10">
-                    <h3 className="text-2xl sm:text-3xl font-black uppercase tracking-tighter">Fast Quote</h3>
+                    <h3 className="text-2xl sm:text-3xl font-black uppercase tracking-tighter">Book Your Cleaning</h3>
                     <p className="text-white/60 text-[10px] font-black uppercase tracking-[0.2em] mt-2 flex items-center">
                       <Clock className="w-3 h-3 mr-2 text-secondary" /> Get scheduled in seconds
                     </p>
@@ -88,30 +89,31 @@ export function HeroSection() {
                   {bookingStep === 1 && (
                     <div className="space-y-6 animate-in fade-in slide-in-from-right-4 duration-500">
                       <div className="space-y-3">
-                        <Label className="text-[10px] font-black uppercase tracking-widest text-gray-400 ml-1">Service Required</Label>
+                        <Label className="text-[10px] font-black uppercase tracking-widest text-gray-400 ml-1">Service Type</Label>
                         <Select>
                           <SelectTrigger className="h-14 border-gray-100 bg-gray-50/50 rounded-2xl focus:ring-secondary/20 transition-all font-bold text-gray-700">
-                            <SelectValue placeholder="What can we clean for you?" />
+                            <SelectValue placeholder="Select service" />
                           </SelectTrigger>
                           <SelectContent className="rounded-2xl border-gray-100 shadow-2xl">
+                            <SelectItem value="home">Home Cleaning</SelectItem>
+                            <SelectItem value="office">Office Cleaning</SelectItem>
+                            <SelectItem value="deep">Deep Cleaning</SelectItem>
+                            <SelectItem value="carpet">Carpet Cleaning</SelectItem>
                             <SelectItem value="window">Window Cleaning</SelectItem>
-                            <SelectItem value="glass">Glass Cleaning</SelectItem>
-                            <SelectItem value="storefront">Storefront Cleaning</SelectItem>
-                            <SelectItem value="commercial">Commercial Cleaning</SelectItem>
-                            <SelectItem value="interior">Interior Glass Cleaning</SelectItem>
+                            <SelectItem value="endoflease">End of Lease</SelectItem>
                           </SelectContent>
 
                         </Select>
                       </div>
                       <div className="space-y-3">
-                        <Label className="text-[10px] font-black uppercase tracking-widest text-gray-400 ml-1">Service Location</Label>
+                        <Label className="text-[10px] font-black uppercase tracking-widest text-gray-400 ml-1">Location</Label>
                         <div className="relative">
                           <MapPin className="absolute left-5 top-1/2 -translate-y-1/2 h-4 w-4 text-primary/30" />
-                          <Input placeholder="e.g., Bhaisepati, Sanepa" className="h-14 pl-12 border-gray-100 bg-gray-50/50 rounded-2xl focus:ring-secondary/20 transition-all font-bold text-gray-700" />
+                          <Input placeholder="e.g., Gold Coast, Southport" className="h-14 pl-12 border-gray-100 bg-gray-50/50 rounded-2xl focus:ring-secondary/20 transition-all font-bold text-gray-700" />
                         </div>
                       </div>
                       <Button onClick={() => setBookingStep(2)} className="h-16 w-full rounded-2xl bg-primary hover:bg-primary/90 text-white font-black text-lg uppercase tracking-widest shadow-xl shadow-primary/20 transition-all hover:scale-[1.02]">
-                        Continue
+                        Next
                       </Button>
                     </div>
                   )}

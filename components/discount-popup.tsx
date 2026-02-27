@@ -43,11 +43,11 @@ export function DiscountPopup() {
               <div className="flex items-center justify-center mb-4">
                 <BadgePercent className="w-10 h-10 sm:w-12 sm:h-12 text-secondary drop-shadow-lg animate-bounce" />
                 <span className="ml-2 text-5xl sm:text-6xl font-black tracking-tight text-secondary drop-shadow-lg font-serif">
-                  60% OFF
+                  20% OFF
                 </span>
               </div>
               <div className="text-xl sm:text-2xl font-black text-white tracking-tight font-serif">
-                INTERIOR WINDOW CLEANING
+                FIRST CLEANING SERVICE
               </div>
             </div>
           </div>
