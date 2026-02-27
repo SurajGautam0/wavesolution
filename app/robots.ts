@@ -11,7 +11,7 @@ export default function robots(): MetadataRoute.Robots {
             {
                 userAgent: 'Googlebot',
                 allow: '/',
-                disallow: ['/api/', '/admin/', '/dashboard/'],
+                disallow: ['/private/', '/api/', '/admin/', '/dashboard/', '/login/', '/register/'],
             },
         ],
         sitemap: 'https://www.wavesolution.com.au/sitemap.xml',

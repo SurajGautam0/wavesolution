@@ -18,6 +18,8 @@ const openSans = Open_Sans({
   variable: "--font-sans",
 })
 
+const googleVerification = process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION?.trim()
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.wavesolution.com.au"),
   title: {
@@ -79,7 +81,7 @@ export const metadata: Metadata = {
     description: "Gold Coast's most trusted cleaning & pest control company. Professional home, office & commercial cleaning plus pest control across Gold Coast, Southport & all QLD. Free quotes. Call 0450 833 683.",
     images: [
       {
-        url: "/og-image.jpg",
+        url: "/1.jpeg",
         width: 1200,
         height: 630,
         alt: "WaveSolution Professional Cleaning Services Gold Coast",
@@ -91,7 +93,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "WaveSolution - Professional Cleaning Services Gold Coast",
     description: "Gold Coast's #1 trusted cleaning company. Home, office & commercial cleaning across Gold Coast & QLD. Book online or call 0450 833 683.",
-    images: ["/og-image.jpg"],
+    images: ["/1.jpeg"],
     creator: "@wavesolution",
     site: "@wavesolution",
   },
@@ -106,9 +108,7 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-  verification: {
-    google: "your-google-verification-code",
-  },
+  verification: googleVerification ? { google: googleVerification } : undefined,
   category: "Cleaning Services",
 }
 
@@ -121,8 +121,8 @@ const jsonLd = {
       "name": "WaveSolution",
       "alternateName": "WaveSolution Cleaning Services Gold Coast",
       "description": "Gold Coast's #1 professional cleaning company providing home cleaning, office cleaning, deep cleaning, carpet cleaning & end of lease cleaning across Gold Coast, Southport and all QLD suburbs.",
-      "image": "https://www.wavesolution.com.au/og-image.jpg",
-      "logo": "https://www.wavesolution.com.au/images/wavesolution-logo.png",
+      "image": "https://www.wavesolution.com.au/1.jpeg",
+      "logo": "https://www.wavesolution.com.au/logo.png",
       "url": "https://www.wavesolution.com.au",
       "telephone": "+61450833683",
       "email": "susanttimalcena@gmail.com",
@@ -390,7 +390,3 @@ export default function RootLayout({
     </html>
   )
 }
-
-
-
-import './globals.css'
