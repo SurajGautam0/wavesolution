@@ -15,6 +15,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { useToast } from "@/hooks/use-toast"
 import { saveContact } from "@/lib/firebase-service"
+import { businessInfo, siteLinks } from "@/lib/business-info"
 
 export default function ContactPage() {
   const { toast } = useToast()
@@ -81,10 +82,10 @@ export default function ContactPage() {
         </div>
         <div className="classic-container relative z-10">
           <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl mb-6">Contact Us</h1>
+            <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl mb-6">Contact Wave Solution Cleaning in Gold Coast</h1>
             <div className="w-20 h-1 bg-secondary mx-auto mb-6"></div>
             <p className="text-xl text-white/80 mb-8">
-              We're here to help you with all your professional cleaning needs across Australia.
+              Contact Wave Solution Cleaning for home, office, rental, and pest control quotes across Gold Coast.
             </p>
           </div>
         </div>
@@ -102,8 +103,8 @@ export default function ContactPage() {
                   </div>
                   <h3 className="text-xl font-bold mb-2">Call Us</h3>
                   <p className="text-muted-foreground mb-2">We're available during business hours</p>
-                  <Link href="tel:0450833683" className="text-primary hover:underline font-medium">
-                    0450 833 683
+                  <Link href={businessInfo.phoneHref} className="text-primary hover:underline font-medium">
+                    {businessInfo.phoneDisplay}
                   </Link>
                 </div>
               </CardContent>
@@ -117,8 +118,8 @@ export default function ContactPage() {
                   </div>
                   <h3 className="text-xl font-bold mb-2">Email Us</h3>
                   <p className="text-muted-foreground mb-2">We'll respond to your inquiry within 24 hours</p>
-                  <Link href="mailto:susanttimalcena@gmail.com" className="text-primary hover:underline font-medium">
-                    susanttimalcena@gmail.com
+                  <Link href={`mailto:${businessInfo.email}`} className="text-primary hover:underline font-medium">
+                    {businessInfo.email}
                   </Link>
                 </div>
               </CardContent>
@@ -133,11 +134,11 @@ export default function ContactPage() {
                   <h3 className="text-xl font-bold mb-2">Visit Us</h3>
                   <p className="text-muted-foreground mb-2">Our main office is located in Gold Coast, QLD</p>
                   <address className="not-italic text-primary">
-                    Gold Coast
+                    {businessInfo.address.locality}
                     <br />
-                    QLD 4215
+                    {businessInfo.address.region} {businessInfo.address.postalCode}
                     <br />
-                    Australia
+                    {businessInfo.address.countryName}
                   </address>
                 </div>
               </CardContent>
@@ -151,9 +152,9 @@ export default function ContactPage() {
                   </div>
                   <h3 className="text-xl font-bold mb-2">Business Hours</h3>
                   <ul className="text-muted-foreground space-y-1">
-                    <li>Monday - Friday: 8am - 6pm</li>
-                    <li>Saturday: 9am - 4pm</li>
-                    <li>Sunday: Closed</li>
+                    {businessInfo.businessHoursDisplay.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
                   </ul>
                 </div>
               </CardContent>
@@ -170,7 +171,7 @@ export default function ContactPage() {
               <h2 className="text-3xl font-bold text-primary mb-6">Send Us a Message</h2>
               <div className="w-16 h-1 bg-secondary mb-6"></div>
               <p className="text-muted-foreground mb-8">
-                Whether you have questions about our services, want to request a quote, or need to schedule a cleaning,
+                Whether you have questions about our services, want to request a quote, or need to schedule a cleaning in Gold Coast,
                 we're here to help. Fill out the form, and we'll get back to you as soon as possible.
               </p>
 
@@ -211,7 +212,7 @@ export default function ContactPage() {
                       Your message has been sent successfully. We'll get back to you as soon as possible.
                     </p>
                     <Button asChild className="classic-button">
-                      <Link href="/">Return to Home</Link>
+                      <Link href={siteLinks.home}>Return to Home</Link>
                     </Button>
                   </CardContent>
                 </Card>
@@ -312,10 +313,11 @@ export default function ContactPage() {
               width="100%"
               height="100%"
               style={{ border: 0 }}
+              title="Wave Solution Cleaning - Gold Coast map"
               loading="lazy"
               allowFullScreen
               referrerPolicy="no-referrer-when-downgrade"
-              src="https://maps.google.com/maps?q=-28.1038271,153.4339270&z=16&output=embed"
+              src={businessInfo.mapsEmbedUrl}
             ></iframe>
           </div>
 
@@ -332,10 +334,10 @@ export default function ContactPage() {
             </p>
             <div className="flex flex-col gap-4 sm:flex-row justify-center">
               <Button asChild className="classic-button">
-                <Link href="/book">Book Now</Link>
+                <Link href={siteLinks.book}>Book Now</Link>
               </Button>
               <Button asChild variant="outline" className="bg-white hover:bg-gray-100 text-primary border-gray-300">
-                <Link href="/services">View Services</Link>
+                <Link href={siteLinks.services}>View Services</Link>
               </Button>
             </div>
           </div>

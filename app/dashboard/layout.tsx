@@ -1,6 +1,7 @@
 import type React from "react"
 import type { Metadata } from "next"
 import { AdminHeader } from "@/components/admin-header"
+import { AuthProvider } from "@/lib/auth-context"
 
 export const metadata: Metadata = {
     robots: {
@@ -19,9 +20,11 @@ export default function DashboardLayout({
     children: React.ReactNode
 }) {
     return (
-        <div className="bg-slate-50 min-h-screen">
-            <AdminHeader />
-            {children}
-        </div>
+        <AuthProvider>
+            <div className="bg-slate-50 min-h-screen">
+                <AdminHeader />
+                {children}
+            </div>
+        </AuthProvider>
     )
 }

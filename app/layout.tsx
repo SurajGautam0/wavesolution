@@ -6,7 +6,7 @@ import "./globals.css"
 import { LayoutWrapper } from "@/components/layout-wrapper"
 import { ThemeProvider } from "@/components/theme-provider"
 import { Toaster } from "@/components/ui/sonner"
-
+import { businessInfo } from "@/lib/business-info"
 
 const lora = Lora({
   subsets: ["latin"],
@@ -21,81 +21,75 @@ const openSans = Open_Sans({
 const googleVerification = process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION?.trim()
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.wavesolution.com.au"),
+  metadataBase: new URL(businessInfo.baseUrl),
   title: {
-    default: "Professional Cleaning Services Gold Coast | #1 Cleaners in Gold Coast QLD | WaveSolution",
-    template: "%s | WaveSolution Gold Coast"
+    default: "Cleaning Services Gold Coast | Home, Office & Pest Control",
+    template: "%s | Wave Solution Cleaning",
   },
-  description: "WaveSolution is Gold Coast's #1 trusted cleaning & pest control company. Professional home cleaning, office cleaning, deep cleaning, carpet cleaning, pest control & end of lease cleaning in Gold Coast, Southport, Surfers Paradise & all QLD suburbs. Call 0450 833 683 for a free quote.",
+  description:
+    "Wave Solution Cleaning provides home cleaning, office cleaning, deep cleaning, pest control and end of lease cleaning across Gold Coast, Southport, Surfers Paradise and nearby suburbs. Call 0450 833 683 for a free quote.",
   keywords: [
-    "pest control Gold Coast",
     "cleaning services Gold Coast",
-    "house cleaning Gold Coast",
     "home cleaning Gold Coast",
     "office cleaning Gold Coast",
-    "commercial cleaning Gold Coast",
     "deep cleaning Gold Coast",
+    "pest control Gold Coast",
     "end of lease cleaning Gold Coast",
-    "bond cleaning Gold Coast",
     "carpet cleaning Gold Coast",
-    "window cleaning Gold Coast",
-    "move in cleaning Gold Coast",
-    "move out cleaning Gold Coast",
-    "spring cleaning Gold Coast",
-    "professional cleaners Gold Coast",
-    "best cleaners Gold Coast",
-    "affordable cleaning Gold Coast",
+    "house cleaners Gold Coast",
     "cleaning services Southport",
-    "cleaners Surfers Paradise",
-    "cleaning services QLD",
-    "house cleaners near me Gold Coast",
-    "commercial cleaners Robina",
-    "strata cleaning Gold Coast",
+    "cleaning services Robina",
+    "cleaning services Surfers Paradise",
+    "cleaning services Broadbeach",
+    "commercial cleaning Gold Coast",
     "regular cleaning Gold Coast",
-    "one off cleaning Gold Coast",
-    "cleaning company Gold Coast",
-    "WaveSolution cleaning",
-    "residential cleaning Gold Coast",
-    "cleaning services Australia"
+    "bond cleaning Gold Coast",
+    "local cleaners Gold Coast",
+    "Wave Solution Cleaning",
   ],
-  authors: [{ name: "WaveSolution", url: "https://www.wavesolution.com.au" }],
-  creator: "WaveSolution",
-  publisher: "WaveSolution",
+  authors: [{ name: businessInfo.businessName, url: businessInfo.baseUrl }],
+  creator: businessInfo.businessName,
+  publisher: businessInfo.businessName,
   formatDetection: {
     email: false,
     address: true,
     telephone: true,
   },
   alternates: {
-    canonical: "https://www.wavesolution.com.au",
+    canonical: businessInfo.baseUrl,
     languages: {
-      "en-AU": "https://www.wavesolution.com.au",
+      "en-AU": businessInfo.baseUrl,
     },
+  },
+  icons: {
+    icon: "/logo.png",
+    shortcut: "/logo.png",
+    apple: "/logo.png",
   },
   openGraph: {
     type: "website",
     locale: "en_AU",
-    url: "https://www.wavesolution.com.au",
-    siteName: "WaveSolution",
-    title: "WaveSolution - #1 Professional Cleaning Services in Gold Coast, Australia",
-    description: "Gold Coast's most trusted cleaning & pest control company. Professional home, office & commercial cleaning plus pest control across Gold Coast, Southport & all QLD. Free quotes. Call 0450 833 683.",
+    url: businessInfo.baseUrl,
+    siteName: businessInfo.businessNameWithLocation,
+    title: "Cleaning Services Gold Coast | Wave Solution Cleaning",
+    description:
+      "Trusted cleaning services for Gold Coast homes, offices, rental properties and pest control bookings. Call 0450 833 683 for a free quote.",
     images: [
       {
-        url: "/1.jpeg",
+        url: "/gold-coast-cleaning-services.jpeg",
         width: 1200,
         height: 630,
-        alt: "WaveSolution Professional Cleaning Services Gold Coast",
+        alt: "Wave Solution Cleaning providing cleaning services in Gold Coast",
         type: "image/jpeg",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "WaveSolution - Professional Cleaning Services Gold Coast",
-    description: "Gold Coast's #1 trusted cleaning company. Home, office & commercial cleaning across Gold Coast & QLD. Book online or call 0450 833 683.",
-    images: ["/1.jpeg"],
-    creator: "@wavesolution",
-    site: "@wavesolution",
+    title: "Cleaning Services Gold Coast | Wave Solution Cleaning",
+    description:
+      "Local cleaning services for Gold Coast homes, offices and rental properties. Book online or call 0450 833 683.",
+    images: ["/gold-coast-cleaning-services.jpeg"],
   },
   robots: {
     index: true,
@@ -117,247 +111,137 @@ const jsonLd = {
   "@graph": [
     {
       "@type": ["LocalBusiness", "CleaningService"],
-      "@id": "https://www.wavesolution.com.au/#business",
-      "name": "WaveSolution",
-      "alternateName": "WaveSolution Cleaning Services Gold Coast",
-      "description": "Gold Coast's #1 professional cleaning company providing home cleaning, office cleaning, deep cleaning, carpet cleaning & end of lease cleaning across Gold Coast, Southport and all QLD suburbs.",
-      "image": "https://www.wavesolution.com.au/1.jpeg",
-      "logo": "https://www.wavesolution.com.au/logo.png",
-      "url": "https://www.wavesolution.com.au",
-      "telephone": "+61450833683",
-      "email": "susanttimalcena@gmail.com",
-      "priceRange": "$120 - $600",
-      "currenciesAccepted": "AUD",
-      "paymentAccepted": "Cash, Credit Card, Bank Transfer",
-      "areaServed": [
-        {
-          "@type": "City",
-          "name": "Gold Coast",
-          "containedInPlace": { "@type": "State", "name": "Queensland" }
-        },
-        {
-          "@type": "City",
-          "name": "Southport",
-          "containedInPlace": { "@type": "State", "name": "Queensland" }
-        },
-        {
-          "@type": "City",
-          "name": "Surfers Paradise",
-          "containedInPlace": { "@type": "State", "name": "Queensland" }
-        },
-        {
-          "@type": "City",
-          "name": "Broadbeach",
-          "containedInPlace": { "@type": "State", "name": "Queensland" }
-        },
-        {
-          "@type": "City",
-          "name": "Robina",
-          "containedInPlace": { "@type": "State", "name": "Queensland" }
-        },
-        {
-          "@type": "City",
-          "name": "Nerang"
-        },
-        {
-          "@type": "City",
-          "name": "Burleigh Heads"
-        },
-        {
-          "@type": "City",
-          "name": "Palm Beach"
-        },
-        {
-          "@type": "City",
-          "name": "Helensvale"
-        },
-        {
-          "@type": "City",
-          "name": "Coomera"
-        },
-        {
-          "@type": "State",
-          "name": "Queensland"
-        }
-      ],
-      "address": {
+      "@id": `${businessInfo.baseUrl}/#business`,
+      name: businessInfo.businessNameWithLocation,
+      alternateName: businessInfo.brandName,
+      description:
+        "Local home cleaning, office cleaning, deep cleaning, end of lease cleaning and pest control services across Gold Coast and nearby suburbs.",
+      image: `${businessInfo.baseUrl}/gold-coast-cleaning-services.jpeg`,
+      logo: `${businessInfo.baseUrl}/logo.png`,
+      url: businessInfo.baseUrl,
+      telephone: businessInfo.phoneE164,
+      email: businessInfo.email,
+      priceRange: "$120 - $600",
+      currenciesAccepted: "AUD",
+      paymentAccepted: "Cash, Credit Card, Bank Transfer",
+      areaServed: businessInfo.serviceAreas.map((area) => ({
+        "@type": "City",
+        name: area,
+        containedInPlace: { "@type": "State", name: "Queensland" },
+      })),
+      address: {
         "@type": "PostalAddress",
-        "addressLocality": "Gold Coast",
-        "addressRegion": "QLD",
-        "postalCode": "4215",
-        "addressCountry": "AU"
+        addressLocality: businessInfo.address.locality,
+        addressRegion: businessInfo.address.region,
+        postalCode: businessInfo.address.postalCode,
+        addressCountry: businessInfo.address.countryCode,
       },
-      "geo": {
+      geo: {
         "@type": "GeoCoordinates",
-        "latitude": -28.1038,
-        "longitude": 153.4339
+        latitude: businessInfo.coordinates.latitude,
+        longitude: businessInfo.coordinates.longitude,
       },
-      "openingHoursSpecification": [
-        {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-          "opens": "08:00",
-          "closes": "18:00"
-        },
-        {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": "Saturday",
-          "opens": "09:00",
-          "closes": "16:00"
-        }
-      ],
-      "sameAs": [
-        "https://www.facebook.com/wavesolution",
-        "https://www.instagram.com/wavesolution",
-       ],
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.9",
-        "reviewCount": "250",
-        "bestRating": "5",
-        "worstRating": "1"
-      },
-      "hasOfferCatalog": {
+      openingHoursSpecification: businessInfo.openingHoursSpecification,
+      hasOfferCatalog: {
         "@type": "OfferCatalog",
-        "name": "Cleaning Services",
-        "itemListElement": [
+        name: "Cleaning Services",
+        itemListElement: [
           {
             "@type": "Offer",
-            "itemOffered": {
+            itemOffered: {
               "@type": "Service",
-              "name": "Home Cleaning Gold Coast",
-              "description": "Professional house cleaning services for homes across Gold Coast and QLD. Regular, weekly or fortnightly cleaning."
+              name: "Home Cleaning Gold Coast",
+              description:
+                "Professional house cleaning services for homes across Gold Coast. Regular, weekly or fortnightly cleaning.",
             },
-            "priceSpecification": {
+            priceSpecification: {
               "@type": "PriceSpecification",
-              "price": "120",
-              "priceCurrency": "AUD",
-              "unitText": "per session"
-            }
+              price: "120",
+              priceCurrency: "AUD",
+              unitText: "per session",
+            },
           },
           {
             "@type": "Offer",
-            "itemOffered": {
+            itemOffered: {
               "@type": "Service",
-              "name": "Office Cleaning Gold Coast",
-              "description": "Commercial office cleaning for businesses across Gold Coast. Daily, weekly or monthly cleaning schedules."
+              name: "Office Cleaning Gold Coast",
+              description:
+                "Commercial office cleaning for businesses across Gold Coast. Daily, weekly or monthly cleaning schedules.",
             },
-            "priceSpecification": {
+            priceSpecification: {
               "@type": "PriceSpecification",
-              "price": "200",
-              "priceCurrency": "AUD",
-              "unitText": "per session"
-            }
+              price: "200",
+              priceCurrency: "AUD",
+              unitText: "per session",
+            },
           },
           {
             "@type": "Offer",
-            "itemOffered": {
+            itemOffered: {
               "@type": "Service",
-              "name": "Deep Cleaning Gold Coast",
-              "description": "Thorough deep cleaning of every surface. Includes oven, fridge, inside cabinets and hard-to-reach areas."
+              name: "Deep Cleaning Gold Coast",
+              description:
+                "Thorough deep cleaning for kitchens, bathrooms, floors, high-touch surfaces and hard-to-reach areas.",
             },
-            "priceSpecification": {
+            priceSpecification: {
               "@type": "PriceSpecification",
-              "price": "250",
-              "priceCurrency": "AUD",
-              "unitText": "per session"
-            }
+              price: "250",
+              priceCurrency: "AUD",
+              unitText: "per session",
+            },
           },
           {
             "@type": "Offer",
-            "itemOffered": {
+            itemOffered: {
               "@type": "Service",
-              "name": "End of Lease Cleaning Gold Coast",
-              "description": "Bond-back guarantee end of lease cleaning. Comprehensive cleaning to get your full bond back."
+              name: "End of Lease Cleaning Gold Coast",
+              description:
+                "Detailed end of lease cleaning for tenants, landlords and property managers across Gold Coast.",
             },
-            "priceSpecification": {
+            priceSpecification: {
               "@type": "PriceSpecification",
-              "price": "250",
-              "priceCurrency": "AUD",
-              "unitText": "per session"
-            }
+              price: "250",
+              priceCurrency: "AUD",
+              unitText: "per session",
+            },
           },
           {
             "@type": "Offer",
-            "itemOffered": {
+            itemOffered: {
               "@type": "Service",
-              "name": "Carpet Cleaning Gold Coast",
-              "description": "Professional carpet steam cleaning and stain removal across Gold Coast suburbs."
+              name: "Pest Control Gold Coast",
+              description:
+                "Safe and effective pest control services for homes and businesses across Gold Coast.",
             },
-            "priceSpecification": {
+            priceSpecification: {
               "@type": "PriceSpecification",
-              "price": "150",
-              "priceCurrency": "AUD",
-              "unitText": "per room"
-            }
-          }
-        ]
-      }
+              price: "150",
+              priceCurrency: "AUD",
+              unitText: "per visit",
+            },
+          },
+        ],
+      },
     },
     {
       "@type": "WebSite",
-      "@id": "https://www.wavesolution.com.au/#website",
-      "url": "https://www.wavesolution.com.au",
-      "name": "WaveSolution",
-      "description": "Professional Cleaning Services in Gold Coast, Australia",
-      "publisher": { "@id": "https://www.wavesolution.com.au/#business" },
-      "potentialAction": {
+      "@id": `${businessInfo.baseUrl}/#website`,
+      url: businessInfo.baseUrl,
+      name: businessInfo.businessNameWithLocation,
+      description: "Professional cleaning services in Gold Coast, Queensland.",
+      publisher: { "@id": `${businessInfo.baseUrl}/#business` },
+      potentialAction: {
         "@type": "SearchAction",
-        "target": {
+        target: {
           "@type": "EntryPoint",
-          "urlTemplate": "https://www.wavesolution.com.au/services?q={search_term_string}"
+          urlTemplate: `${businessInfo.baseUrl}/services?q={search_term_string}`,
         },
-        "query-input": "required name=search_term_string"
+        "query-input": "required name=search_term_string",
       },
-      "inLanguage": "en-AU"
+      inLanguage: "en-AU",
     },
-    {
-      "@type": "FAQPage",
-      "@id": "https://www.wavesolution.com.au/#faq",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "How much does house cleaning cost in Gold Coast?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Our house cleaning services in Gold Coast start from $120 for a 1-2 bedroom home. Standard 3-bedroom homes start at $180, and larger 4+ bedroom homes from $250. We offer weekly, fortnightly and monthly plans with discounted rates."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Do you offer end of lease cleaning in Gold Coast?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes, WaveSolution provides professional end of lease cleaning (bond cleaning) across Gold Coast. Our end of lease clean meets real estate agent standards and comes with a bond-back guarantee. Prices start from $250."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What areas in Gold Coast do you service?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "We service all Gold Coast suburbs including Southport, Surfers Paradise, Broadbeach, Robina, Nerang, Burleigh Heads, Palm Beach, Helensvale, Coomera, and the entire Gold Coast region. We also serve the wider QLD area."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How do I book a cleaner in Gold Coast?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "You can book online through our website, call us at 0450 833 683, or send us a WhatsApp message. We offer same-day and next-day bookings subject to availability."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Are your cleaning products eco-friendly?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes, WaveSolution uses eco-friendly, non-toxic cleaning products that are safe for children, pets, and the environment. We can also use your preferred products on request."
-          }
-        }
-      ]
-    }
-  ]
+  ],
 }
 
 export default function RootLayout({
@@ -366,7 +250,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en-AU" suppressHydrationWarning>
       <head>
         <script
           type="application/ld+json"

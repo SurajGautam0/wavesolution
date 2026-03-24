@@ -10,16 +10,17 @@ import { Sidebar } from "@/components/sidebar"
 import { DiscountPopup } from "@/components/discount-popup"
 import { WorkerShowcase } from "@/components/worker-showcase"
 import { Metadata } from "next"
+import { siteLinks } from "@/lib/business-info"
 
 export const metadata: Metadata = {
-  title: "Professional Cleaning Services Gold Coast | Home & Office Cleaners | WaveSolution",
-  description: "Gold Coast's most trusted cleaning & pest control company. Professional home cleaning from $120, office cleaning, deep cleaning, carpet cleaning, pest control & end of lease cleaning in Gold Coast, Southport & all QLD. Book online or call 0450 833 683.",
+  title: "Cleaning Services Gold Coast | Home, Office & Pest Control",
+  description: "Local cleaning services in Gold Coast for homes, offices, rentals and pest control. Book home cleaning, deep cleaning and more with Wave Solution Cleaning.",
   alternates: {
     canonical: "https://www.wavesolution.com.au",
   },
   openGraph: {
-    title: "WaveSolution - #1 Professional Cleaning Services in Gold Coast",
-    description: "Trusted by 2,000+ Gold Coast homes & businesses. Home cleaning from $120. Pest control from $150. Free quotes. Same-day service available.",
+    title: "Cleaning Services Gold Coast | Wave Solution Cleaning",
+    description: "Trusted cleaning services across Gold Coast homes and businesses. Book online or call 0450 833 683.",
     url: "https://www.wavesolution.com.au",
     type: "website",
   },
@@ -38,16 +39,16 @@ export default function Home() {
             {/* Welcome Section */}
             <section className="classic-card p-6 sm:p-10">
               <div className="flex flex-col items-center justify-center space-y-6 text-center">
-                <h1 className="classic-heading text-3xl sm:text-5xl">Welcome to WaveSolution</h1>
+                <h2 className="classic-heading text-3xl sm:text-5xl">Trusted Cleaning Services Across Gold Coast</h2>
                 <div className="w-24 h-1.5 bg-secondary rounded-full"></div>
                 <div className="space-y-4 max-w-2xl">
                   <p className="text-muted-foreground text-lg leading-relaxed">
-                    We are Australia's premier cleaning and pest control service provider, dedicated to making your
+                    We are a Gold Coast cleaning and pest control team dedicated to making your
                     home or office spotless, fresh and pest-free. With years of experience and a team of
                     professional cleaners, we deliver exceptional results every time.
                   </p>
                   <p className="text-muted-foreground text-lg leading-relaxed">
-                    Whether you need regular home cleaning, a deep clean for your office,
+                    Whether you need regular home cleaning in Southport, a deep clean for your office in Robina,
                     specialized services like carpet cleaning, or reliable pest control, our team is equipped with the skills and
                     tools to exceed your expectations.
                   </p>
@@ -105,7 +106,7 @@ export default function Home() {
               </div>
               <div className="flex justify-center mt-8">
                 <Button asChild className="classic-button">
-                  <Link href="/services">
+                  <Link href={siteLinks.services}>
                     View All Services
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Link>
@@ -189,7 +190,7 @@ export default function Home() {
                     />
                     <TestimonialCard
                       name="Michael Thompson"
-                      location="Melbourne, VIC"
+                      location="Surfers Paradise, QLD"
                       rating={5}
                       testimonial="I was amazed at how spotless my apartment was after WaveSolution's deep cleaning service. They paid attention to every detail and exceeded my expectations."
                       image="/placeholder.svg?height=80&width=80"
@@ -207,7 +208,7 @@ export default function Home() {
                     />
                     <TestimonialCard
                       name="Emma Roberts"
-                      location="Brisbane, QLD"
+                      location="Broadbeach, QLD"
                       rating={5}
                       testimonial="WaveSolution's cleaning service is very effective for our restaurant. They sanitize the kitchen and dining area thoroughly. We are extremely satisfied with their work."
                       image="/placeholder.svg?height=80&width=80"
@@ -236,10 +237,10 @@ export default function Home() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button asChild size="lg" className="h-16 px-10 rounded-full bg-secondary hover:bg-secondary/90 text-white font-black text-lg uppercase tracking-widest shadow-2xl shadow-secondary/20 transition-all hover:scale-105">
-                  <Link href="/book">Book Now</Link>
+                  <Link href={siteLinks.book}>Book Now</Link>
                 </Button>
                 <Button asChild size="lg" variant="outline" className="h-16 px-10 rounded-full bg-white/5 hover:bg-white/10 text-white border-white/20 font-black text-lg uppercase tracking-widest transition-all hover:scale-105">
-                  <Link href="/contact">Contact Us</Link>
+                  <Link href={siteLinks.contact}>Contact Us</Link>
                 </Button>
               </div>
             </div>

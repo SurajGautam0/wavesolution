@@ -9,6 +9,7 @@ import { Facebook, Instagram, Linkedin, Mail, Menu, Phone, ChevronDown, Home, Sp
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
+import { businessInfo, siteLinks } from "@/lib/business-info"
 
 export function MainNav() {
   const pathname = usePathname()
@@ -26,13 +27,13 @@ export function MainNav() {
   }, [])
 
   const mainRoutes = [
-    { href: "/", label: "Home", active: pathname === "/" },
-    { href: "/services", label: "Services", active: pathname === "/services" || pathname.startsWith("/services/"), hasSubmenu: true },
-    { href: "/gallery", label: "Gallery", active: pathname === "/gallery" },
-    { href: "/about", label: "About", active: pathname === "/about" },
-    { href: "/testimonials", label: "Testimonials", active: pathname === "/testimonials" },
-    { href: "/contact", label: "Contact", active: pathname === "/contact" },
-    { href: "/login", label: "Client Portal", active: pathname === "/login" },
+    { href: siteLinks.home, label: "Home", active: pathname === siteLinks.home },
+    { href: siteLinks.services, label: "Services", active: pathname === siteLinks.services || pathname.startsWith("/services/"), hasSubmenu: true },
+    { href: siteLinks.gallery, label: "Gallery", active: pathname === siteLinks.gallery },
+    { href: siteLinks.about, label: "About", active: pathname === siteLinks.about },
+    { href: siteLinks.testimonials, label: "Testimonials", active: pathname === siteLinks.testimonials },
+    { href: siteLinks.contact, label: "Contact", active: pathname === siteLinks.contact },
+    { href: siteLinks.portal, label: "Client Portal", active: pathname === siteLinks.portal },
   ]
 
   const serviceRoutes = [
@@ -50,16 +51,16 @@ export function MainNav() {
   return (
     <>
       {/* Top Bar - Hidden on small mobile */}
-      <div className="hidden md:block w-full bg-primary text-white/90 py-1 border-b border-white/5 relative z-[60]">
+      <div className="hidden md:block w-full bg-primary text-white/90 py-0.5 border-b border-white/5 relative z-[60]">
         <div className="classic-container flex items-center justify-between">
-          <div className="flex items-center space-x-6 text-xs font-medium uppercase tracking-[0.15em]">
-            <Link href="tel:0450833683" className="flex items-center hover:text-secondary transition-all group">
+          <div className="flex items-center space-x-5 text-[11px] font-medium uppercase tracking-[0.12em]">
+            <Link href={businessInfo.phoneHref} className="flex items-center hover:text-secondary transition-all group">
               <Phone className="mr-2 h-3 w-3 text-secondary group-hover:animate-pulse" />
-              0450 833 683
+              {businessInfo.phoneDisplay}
             </Link>
-            <Link href="mailto:susanttimalcena@gmail.com" className="flex items-center hover:text-secondary transition-all">
+            <Link href={`mailto:${businessInfo.email}`} className="flex items-center hover:text-secondary transition-all">
               <Mail className="mr-2 h-3 w-3 text-secondary" />
-              susanttimalcena@gmail.com
+              {businessInfo.email}
             </Link>
           </div>
           <div className="flex items-center space-x-4">
@@ -82,11 +83,11 @@ export function MainNav() {
         className={cn(
           "sticky top-0 z-50 w-full transition-all duration-500",
           isScrolled
-            ? "bg-white/95 backdrop-blur-md py-0.5 shadow-md"
-            : "bg-primary py-0.5 sm:py-1 border-b border-white/5",
+            ? "bg-white/95 backdrop-blur-md py-0 shadow-md"
+            : "bg-primary py-0 sm:py-0.5 border-b border-white/5",
         )}
       >
-        <div className="classic-container relative flex items-center justify-between h-16 sm:h-20 lg:h-24">
+        <div className="classic-container relative flex items-center justify-between h-14 sm:h-16 lg:h-[4.5rem]">
           <div className="flex items-center gap-0">
             {/* Mobile Burger Menu (Left) */}
             <div className="flex items-center lg:hidden z-10 -mr-4">
@@ -131,7 +132,7 @@ export function MainNav() {
                       ))}
                     </nav>
                     <div className="pt-6 border-t border-gray-100 italic text-xs text-gray-400 text-center">
-                      Trusted by thousands across Australia
+                      Trusted by homes and businesses across the Gold Coast
                     </div>
                   </div>
                 </SheetContent>
@@ -142,7 +143,7 @@ export function MainNav() {
             <Link href="/" className="flex items-center group shrink-0">
               <div className={cn(
                 "relative transition-all duration-500 group-hover:scale-105 origin-left",
-                "w-[120px] h-10 sm:w-44 sm:h-14 md:w-56 md:h-16 lg:w-64 lg:h-20"
+                "w-[108px] h-9 sm:w-36 sm:h-12 md:w-44 md:h-14 lg:w-52 lg:h-16"
               )}>
                 <Image
                   src="/logo.png"
@@ -171,7 +172,7 @@ export function MainNav() {
                 <Link
                   href={route.href}
                   className={cn(
-                    "px-4 py-2 text-[13px] font-black uppercase tracking-widest rounded-full transition-all relative overflow-hidden",
+                    "px-3 py-1.5 text-xs font-black uppercase tracking-[0.2em] rounded-full transition-all relative overflow-hidden",
                     isScrolled
                       ? route.active ? "text-primary" : "text-primary/60 hover:text-primary"
                       : route.active ? "text-secondary" : "text-white/70 hover:text-white",
@@ -241,9 +242,9 @@ export function MainNav() {
           <div className="flex items-center z-10">
             <Button
               asChild
-              className="h-10 sm:h-12 px-5 sm:px-8 rounded-full bg-secondary hover:bg-secondary/90 text-white font-black text-xs sm:text-xs uppercase tracking-wider sm:tracking-widest transition-all hover:scale-105 active:scale-95 shadow-xl shadow-secondary/20"
+              className="h-9 sm:h-10 px-4 sm:px-6 rounded-full bg-secondary hover:bg-secondary/90 text-white font-black text-[11px] uppercase tracking-[0.15em] transition-all hover:scale-105 active:scale-95 shadow-xl shadow-secondary/20"
             >
-              <Link href="/book">Book Now</Link>
+              <Link href={siteLinks.book}>Book Now</Link>
             </Button>
           </div>
 

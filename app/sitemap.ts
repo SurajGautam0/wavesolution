@@ -1,4 +1,5 @@
 import { MetadataRoute } from 'next'
+import { locationPages } from '@/lib/location-pages'
 
 export default function sitemap(): MetadataRoute.Sitemap {
     const baseUrl = 'https://www.wavesolution.com.au'
@@ -22,6 +23,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
             lastModified,
             changeFrequency: 'weekly',
             priority: 0.9,
+        },
+        {
+            url: `${baseUrl}/locations`,
+            lastModified,
+            changeFrequency: 'weekly',
+            priority: 0.85,
         },
         {
             url: `${baseUrl}/book`,
@@ -71,5 +78,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
             changeFrequency: 'monthly',
             priority: 0.8,
         },
+        ...locationPages.map((location) => ({
+            url: `${baseUrl}/locations/${location.slug}`,
+            lastModified,
+            changeFrequency: 'weekly' as const,
+            priority: 0.82,
+        })),
     ]
 }

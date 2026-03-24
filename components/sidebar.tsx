@@ -1,8 +1,9 @@
 import Link from "next/link"
-import { CalendarDays, Clock, MapPin, Phone } from "lucide-react"
+import { Clock, MapPin, Phone } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
+import { businessInfo } from "@/lib/business-info"
 
 export function Sidebar() {
   return (
@@ -15,8 +16,8 @@ export function Sidebar() {
             <Phone className="mr-2 h-5 w-5 text-primary shrink-0 mt-0.5" />
             <div>
               <p className="font-medium">Call Us</p>
-              <Link href="tel:0450833683" className="text-primary hover:underline">
-                0450 833 683
+              <Link href={businessInfo.phoneHref} className="text-primary hover:underline">
+                {businessInfo.phoneDisplay}
               </Link>
             </div>
           </div>
@@ -24,7 +25,7 @@ export function Sidebar() {
             <MapPin className="mr-2 h-5 w-5 text-primary shrink-0 mt-0.5" />
             <div>
               <p className="font-medium">Our Location</p>
-              <p className="text-sm text-muted-foreground">Gold Coast, QLD 4215, Australia</p>
+              <p className="text-sm text-muted-foreground">{businessInfo.address.full}</p>
             </div>
           </div>
           <div className="flex items-start">
@@ -32,11 +33,11 @@ export function Sidebar() {
             <div>
               <p className="font-medium">Business Hours</p>
               <p className="text-sm text-muted-foreground">
-                Monday - Friday: 8am - 6pm
+                {businessInfo.businessHoursDisplay[0]}
                 <br />
-                Saturday: 9am - 4pm
+                {businessInfo.businessHoursDisplay[1]}
                 <br />
-                Sunday: Closed
+                {businessInfo.businessHoursDisplay[2]}
               </p>
             </div>
           </div>
@@ -60,42 +61,34 @@ export function Sidebar() {
         </div>
       </div>
 
-      {/* Upcoming Events Widget */}
+      {/* Service Areas Widget */}
       <div className="classic-widget">
-        <h3 className="classic-widget-title">Upcoming Events</h3>
+        <h3 className="classic-widget-title">Gold Coast Service Areas</h3>
         <div className="space-y-4">
           <div className="border-b pb-4">
-            <p className="font-medium">Cleaning Workshop</p>
-            <div className="flex items-center text-sm text-muted-foreground">
-              <CalendarDays className="mr-2 h-4 w-4 text-primary" />
-              <span>March 25, 2024</span>
-            </div>
+            <Link href="/locations/southport" className="font-medium hover:text-primary">
+              Cleaning Services Southport
+            </Link>
             <p className="text-sm text-muted-foreground mt-1">
-              Learn professional cleaning techniques from our experts.
+              Local cleaning for homes, apartments, offices, and rentals in Southport.
             </p>
           </div>
           <div className="border-b pb-4">
-            <p className="font-medium">Community Clean-up</p>
-            <div className="flex items-center text-sm text-muted-foreground">
-              <CalendarDays className="mr-2 h-4 w-4 text-primary" />
-              <span>April 15, 2024</span>
-            </div>
+            <Link href="/locations/robina" className="font-medium hover:text-primary">
+              Cleaning Services Robina
+            </Link>
             <p className="text-sm text-muted-foreground mt-1">
-              Join us for a community clean-up event at Gold Coast.
+              House cleaning, office cleaning, deep cleaning, and more in Robina.
             </p>
           </div>
           <div>
-            <p className="font-medium">Eco-Cleaning Seminar</p>
-            <div className="flex items-center text-sm text-muted-foreground">
-              <CalendarDays className="mr-2 h-4 w-4 text-primary" />
-              <span>May 10, 2024</span>
-            </div>
+            <Link href="/locations/surfers-paradise" className="font-medium hover:text-primary">
+              Cleaning Services Surfers Paradise
+            </Link>
             <p className="text-sm text-muted-foreground mt-1">
-              Learn about environmentally friendly cleaning solutions.
+              Apartment, holiday-let, and commercial cleaning across Surfers Paradise.
             </p>
           </div>
-
-
         </div>
       </div>
 

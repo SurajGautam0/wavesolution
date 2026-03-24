@@ -21,7 +21,7 @@ const teamMembers: TeamMember[] = [
   {
     name: "Sushant Timalcena",
     position: "Founder & CEO",
-    bio: "Sushant founded WaveSolution in 2010 with a vision to provide exceptional cleaning services across Australia. With over 20 years of experience in the industry, he leads our team with passion and dedication.",
+    bio: "Sushant founded WaveSolution in 2010 with a vision to provide exceptional cleaning services across Gold Coast and surrounding suburbs. With over 20 years of experience in the industry, he leads our team with passion and dedication.",
     image: "/placeholder.svg?height=400&width=300",
     social: {},
   },
@@ -61,7 +61,7 @@ export default function AboutPage() {
         <div className="absolute inset-0 z-0">
           <div className="relative h-full w-full overflow-hidden">
             <Image
-              src="/about.png"
+              src="/gold-coast-cleaning-team.png"
               alt="Professional Cleaning Team"
               fill
               className="object-cover scale-110"
@@ -90,7 +90,7 @@ export default function AboutPage() {
                   className="object-contain brightness-0 invert"
                 />
               </div>
-              <span className="text-[10px] font-black uppercase tracking-[0.3em]">Australia's Premier Cleaning</span>
+              <span className="text-[10px] font-black uppercase tracking-[0.3em]">Gold Coast Cleaning Specialists</span>
             </div>
 
             <h1 className="text-5xl font-black tracking-tight sm:text-7xl md:text-8xl mb-8 leading-[0.9]">
@@ -101,7 +101,7 @@ export default function AboutPage() {
             <div className="w-24 h-2 bg-secondary mb-10 rounded-full" />
 
             <p className="text-xl sm:text-2xl text-white/80 max-w-2xl font-medium leading-relaxed mb-10">
-              Australia's premier cleaning service provider, dedicated to excellence since 2010.
+              Gold Coast&apos;s trusted cleaning service provider, dedicated to excellence since 2010.
             </p>
 
             <div className="flex flex-wrap gap-6 pt-4">
@@ -154,7 +154,7 @@ export default function AboutPage() {
                 <p>
                   WaveSolution was founded in 2010 with a simple mission: to provide exceptional
                   cleaning services that exceed customer expectations. What began as a small team
-                  of dedicated professionals has grown into one of Australia's most trusted
+                  of dedicated professionals has grown into one of Gold Coast&apos;s most trusted
                   cleaning service providers.
                 </p>
                 <p>
@@ -366,8 +366,8 @@ export default function AboutPage() {
             </div>
             <div className="relative h-[400px] rounded-lg overflow-hidden shadow-xl order-1 md:order-2 border-4 border-white/50">
               <Image
-                src="/images/cleaning-service.jpg"
-                alt="Professional cleaning team in action"
+                src="/images/gold-coast-cleaning-service.jpg"
+                alt="Professional cleaning team in action across Gold Coast"
                 fill
                 className="object-cover"
               />
@@ -385,7 +385,7 @@ export default function AboutPage() {
               Ready to Experience the WaveSolution Difference?
             </h2>
             <p className="text-muted-foreground mb-6">
-              Book your cleaning service today and see why we're Australia's premier cleaning provider.
+              Book your cleaning service today and see why local Gold Coast homes and businesses trust WaveSolution.
             </p>
             <div className="flex flex-col gap-4 sm:flex-row justify-center">
               <Button asChild className="classic-button">

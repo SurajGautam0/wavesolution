@@ -1,0 +1,224 @@
+import type { Metadata } from "next"
+import Link from "next/link"
+import { notFound } from "next/navigation"
+import { ArrowRight, CheckCircle, MapPin, Phone } from "lucide-react"
+
+import { Button } from "@/components/ui/button"
+import { businessInfo, siteLinks } from "@/lib/business-info"
+import { getLocationPage, locationPages } from "@/lib/location-pages"
+
+type LocationPageProps = {
+  params: {
+    slug: string
+  }
+}
+
+export function generateStaticParams() {
+  return locationPages.map((location) => ({ slug: location.slug }))
+}
+
+export function generateMetadata({ params }: LocationPageProps): Metadata {
+  const location = getLocationPage(params.slug)
+
+  if (!location) {
+    return {}
+  }
+
+  const url = `${businessInfo.baseUrl}/locations/${location.slug}`
+
+  return {
+    title: location.metaTitle,
+    description: location.metaDescription,
+    alternates: {
+      canonical: url,
+    },
+    openGraph: {
+      title: location.metaTitle,
+      description: location.metaDescription,
+      url,
+    },
+  }
+}
+
+export default function LocationDetailPage({ params }: LocationPageProps) {
+  const location = getLocationPage(params.slug)
+
+  if (!location) {
+    notFound()
+  }
+
+  const pageUrl = `${businessInfo.baseUrl}/locations/${location.slug}`
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Home",
+            item: businessInfo.baseUrl,
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "Locations",
+            item: `${businessInfo.baseUrl}/locations`,
+          },
+          {
+            "@type": "ListItem",
+            position: 3,
+            name: location.name,
+            item: pageUrl,
+          },
+        ],
+      },
+      {
+        "@type": "Service",
+        name: location.metaTitle,
+        serviceType: location.heroTitle,
+        description: location.metaDescription,
+        areaServed: {
+          "@type": "City",
+          name: location.name,
+          containedInPlace: {
+            "@type": "State",
+            name: "Queensland",
+          },
+        },
+        provider: {
+          "@id": `${businessInfo.baseUrl}/#business`,
+        },
+        url: pageUrl,
+        telephone: businessInfo.phoneE164,
+      },
+      {
+        "@type": "FAQPage",
+        mainEntity: location.faq.map((item) => ({
+          "@type": "Question",
+          name: item.question,
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: item.answer,
+          },
+        })),
+      },
+    ],
+  }
+
+  return (
+    <div className="flex min-h-screen flex-col">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+
+      <section className="bg-primary py-16 text-white md:py-24">
+        <div className="classic-container">
+          <div className="mx-auto max-w-4xl text-center">
+            <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-[11px] font-black uppercase tracking-[0.2em]">
+              <MapPin className="h-4 w-4 text-secondary" />
+              {location.name} cleaning services
+            </div>
+            <h1 className="mt-6 text-4xl font-black tracking-tight sm:text-5xl md:text-6xl">{location.heroTitle}</h1>
+            <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-white/75">{location.intro}</p>
+            <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row">
+              <Button asChild className="h-12 rounded-full bg-secondary px-6 text-[11px] font-black uppercase tracking-[0.18em] text-slate-950 hover:bg-secondary/90">
+                <Link href={siteLinks.book}>
+                  Book a Clean
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+              </Button>
+              <Button asChild variant="outline" className="h-12 rounded-full border-white/20 bg-white/5 px-6 text-[11px] font-black uppercase tracking-[0.18em] text-white hover:bg-white/10 hover:text-white">
+                <Link href={businessInfo.phoneHref}>
+                  <Phone className="h-4 w-4" />
+                  {businessInfo.phoneDisplay}
+                </Link>
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-white py-14 md:py-20">
+        <div className="classic-container">
+          <div className="grid gap-10 lg:grid-cols-[1.4fr_0.8fr]">
+            <div className="space-y-8">
+              <div>
+                <h2 className="text-3xl font-black tracking-tight text-primary">Local Cleaning Support in {location.name}</h2>
+                <div className="mt-4 h-1 w-20 rounded-full bg-secondary" />
+                <div className="mt-6 space-y-5 text-base leading-8 text-slate-600">
+                  {location.paragraphs.map((paragraph) => (
+                    <p key={paragraph}>{paragraph}</p>
+                  ))}
+                </div>
+              </div>
+
+              <div className="rounded-[2rem] border border-slate-200 bg-slate-50 p-6">
+                <h2 className="text-2xl font-black tracking-tight text-primary">Services We Provide in {location.name}</h2>
+                <div className="mt-6 grid gap-4 sm:grid-cols-2">
+                  {location.serviceBullets.map((item) => (
+                    <div key={item} className="flex items-start gap-3 rounded-2xl bg-white p-4 shadow-sm">
+                      <CheckCircle className="mt-1 h-5 w-5 shrink-0 text-secondary" />
+                      <span className="text-sm leading-7 text-slate-600">{item}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            <aside className="space-y-6">
+              <div className="rounded-[2rem] border border-slate-200 bg-slate-50 p-6 shadow-sm">
+                <p className="text-xs font-black uppercase tracking-[0.2em] text-secondary">Nearby Reference</p>
+                <p className="mt-4 text-sm leading-7 text-slate-600">{location.nearbyReference}</p>
+              </div>
+
+              <div className="rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm">
+                <p className="text-xs font-black uppercase tracking-[0.2em] text-secondary">Consistent NAP</p>
+                <div className="mt-4 space-y-3 text-sm leading-7 text-slate-600">
+                  <p className="font-semibold text-primary">{businessInfo.businessNameWithLocation}</p>
+                  <p>{businessInfo.address.full}</p>
+                  <p>{businessInfo.phoneInternationalDisplay}</p>
+                  <p>{businessInfo.email}</p>
+                </div>
+              </div>
+
+              <div className="rounded-[2rem] border border-slate-200 bg-primary p-6 text-white shadow-xl">
+                <h2 className="text-2xl font-black tracking-tight">Need {location.name} Cleaning Services?</h2>
+                <p className="mt-4 text-sm leading-7 text-white/75">
+                  Speak with our team and we&apos;ll help you choose the right service for your property and schedule.
+                </p>
+                <div className="mt-6 flex flex-col gap-3">
+                  <Button asChild className="h-11 rounded-full bg-secondary text-[11px] font-black uppercase tracking-[0.18em] text-slate-950 hover:bg-secondary/90">
+                    <Link href={siteLinks.book}>Book Now</Link>
+                  </Button>
+                  <Button asChild variant="outline" className="h-11 rounded-full border-white/20 bg-white/5 text-[11px] font-black uppercase tracking-[0.18em] text-white hover:bg-white/10 hover:text-white">
+                    <Link href={siteLinks.contact}>Request a Quote</Link>
+                  </Button>
+                </div>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-slate-50 py-14 md:py-20">
+        <div className="classic-container">
+          <div className="mx-auto max-w-4xl">
+            <div className="text-center">
+              <h2 className="text-3xl font-black tracking-tight text-primary">Frequently Asked Questions About {location.name}</h2>
+              <div className="mx-auto mt-4 h-1 w-20 rounded-full bg-secondary" />
+            </div>
+
+            <div className="mt-10 space-y-4">
+              {location.faq.map((item) => (
+                <article key={item.question} className="rounded-[1.5rem] border border-slate-200 bg-white p-6 shadow-sm">
+                  <h3 className="text-lg font-bold text-primary">{item.question}</h3>
+                  <p className="mt-3 text-sm leading-7 text-slate-600">{item.answer}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  )
+}

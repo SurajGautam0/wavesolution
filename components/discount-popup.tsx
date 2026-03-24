@@ -4,33 +4,67 @@ import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { Sparkles, BadgePercent, X } from "lucide-react";
+import { BadgePercent } from "lucide-react";
+
+const DISCOUNT_POPUP_DISMISSED_KEY = "wavesolution-discount-popup-dismissed";
 
 export function DiscountPopup() {
   const [open, setOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
   const router = useRouter();
 
+  const markDismissed = () => {
+    window.localStorage.setItem(DISCOUNT_POPUP_DISMISSED_KEY, "true");
+  };
+
+  const closeAndDismiss = () => {
+    markDismissed();
+    setOpen(false);
+  };
+
   useEffect(() => {
     setMounted(true);
   }, []);
 
   useEffect(() => {
-    if (mounted) {
-      const timer = setTimeout(() => setOpen(true), 800);
-      return () => clearTimeout(timer);
-    }
+    if (!mounted) return;
+
+    const isDismissed =
+      window.localStorage.getItem(DISCOUNT_POPUP_DISMISSED_KEY) === "true";
+
+    if (isDismissed) return;
+
+    const timer = setTimeout(() => setOpen(true), 800);
+    return () => clearTimeout(timer);
   }, [mounted]);
 
+  useEffect(() => {
+    if (!open) return;
+
+    const autoCloseTimer = setTimeout(() => {
+      closeAndDismiss();
+    }, 3000);
+
+    return () => clearTimeout(autoCloseTimer);
+  }, [open]);
+
   const handleClaim = () => {
-    setOpen(false);
+    closeAndDismiss();
     setTimeout(() => router.push("/book"), 300);
   };
 
   if (!mounted) return null;
 
   return (
-    <Dialog open={open} onOpenChange={setOpen}>
+    <Dialog
+      open={open}
+      onOpenChange={(nextOpen) => {
+        if (!nextOpen) {
+          markDismissed();
+        }
+        setOpen(nextOpen);
+      }}
+    >
       <DialogContent className="w-[90vw] max-w-md rounded-[2rem] p-0 bg-white shadow-2xl border border-gray-200 overflow-hidden sm:w-full">
         <div className="flex flex-col items-center text-center gap-0 relative">
           {/* Header with Primary Color */}

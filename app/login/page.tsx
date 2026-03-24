@@ -15,8 +15,7 @@ import {
     CheckCircle2,
     Sparkles,
     ShieldCheck,
-    Facebook,
-    Github
+    Facebook
 } from "lucide-react"
 import { useAuth } from "@/lib/auth-context"
 import { toast } from "sonner"
@@ -31,7 +30,6 @@ import {
     FormMessage
 } from "@/components/ui/form"
 import { Card, CardContent } from "@/components/ui/card"
-import { cn } from "@/lib/utils"
 
 const loginSchema = z.object({
     email: z.string().email("Please enter a valid email address"),

@@ -3,6 +3,7 @@ import Link from "next/link"
 
 import { Button } from "@/components/ui/button"
 import { ServiceCard } from "@/components/service-card"
+import { locationPages } from "@/lib/location-pages"
 
 export const metadata: Metadata = {
   title: "Cleaning & Pest Control Services Gold Coast | Home, Office, Deep Cleaning & Pest Control",
@@ -26,12 +27,12 @@ export default function ServicesPage() {
         <div className="container">
           <div className="flex flex-col items-center justify-center space-y-4 text-center">
             <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
-              Our Professional Cleaning & Pest Control Services
+              Professional Cleaning & Pest Control Services in Gold Coast
             </h1>
             <p className="max-w-[700px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-              We offer a wide range of cleaning services to meet your needs. From residential
-              to commercial, we've got you covered with our professional and reliable cleaning
-              solutions.
+              We offer a wide range of cleaning services across Gold Coast. From residential
+              to commercial, we've got you covered with professional and reliable cleaning
+              solutions tailored to local homes and businesses.
             </p>
           </div>
         </div>
@@ -94,6 +95,35 @@ export default function ServicesPage() {
             icon="Bug"
             price="From $150"
           />
+        </div>
+      </section>
+
+      <section className="bg-white py-12 md:py-20">
+        <div className="classic-container">
+          <div className="mx-auto max-w-5xl">
+            <div className="mb-10 text-center">
+              <h2 className="text-3xl font-bold text-primary">Cleaning Services Across Key Gold Coast Suburbs</h2>
+              <div className="mx-auto mt-4 h-1 w-20 rounded-full bg-secondary" />
+              <p className="mx-auto mt-5 max-w-3xl text-muted-foreground">
+                Local landing pages help match suburb-specific searches more closely. Explore our cleaning service pages for
+                Robina, Southport, Surfers Paradise, and Broadbeach for more targeted local information.
+              </p>
+            </div>
+
+            <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+              {locationPages.map((location) => (
+                <Link
+                  key={location.slug}
+                  href={`/locations/${location.slug}`}
+                  className="rounded-3xl border border-slate-200 bg-slate-50 p-6 transition-transform hover:-translate-y-1 hover:border-primary/20 hover:shadow-xl"
+                >
+                  <p className="text-xs font-black uppercase tracking-[0.2em] text-secondary">{location.name}</p>
+                  <h3 className="mt-3 text-xl font-bold text-primary">{location.heroTitle}</h3>
+                  <p className="mt-3 text-sm leading-6 text-muted-foreground">{location.intro}</p>
+                </Link>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 

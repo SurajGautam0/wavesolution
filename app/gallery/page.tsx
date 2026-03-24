@@ -46,7 +46,7 @@ const galleryItems: GalleryItem[] = [
 		id: 1,
 		type: "image",
 		category: "photos",
-		src: "/1.jpeg",
+		src: "/gold-coast-cleaning-services.jpeg",
 		title: "Professional Home Cleaning",
 		description: "Spotless results in every corner — our team delivering top-quality residential cleaning on the Gold Coast.",
 		tag: "Residential",
@@ -56,7 +56,7 @@ const galleryItems: GalleryItem[] = [
 		type: "video",
 		category: "videos",
 		src: "/video1.mp4",
-		poster: "/1.jpeg",
+		poster: "/gold-coast-cleaning-services.jpeg",
 		title: "Deep Kitchen Clean",
 		description: "Watch our team tackle a complete kitchen deep clean — from grease removal to sparkling benchtops.",
 		tag: "Deep Clean",
@@ -65,7 +65,7 @@ const galleryItems: GalleryItem[] = [
 		id: 3,
 		type: "image",
 		category: "photos",
-		src: "/2.jpeg",
+		src: "/gold-coast-before-after-cleaning.jpeg",
 		title: "Sparkling Clean Results",
 		description: "Before and after — the WaveSolution standard. Every surface polished to perfection.",
 		tag: "Before & After",
@@ -75,7 +75,7 @@ const galleryItems: GalleryItem[] = [
 		type: "video",
 		category: "videos",
 		src: "/video2.mp4",
-		poster: "/2.jpeg",
+		poster: "/gold-coast-before-after-cleaning.jpeg",
 		title: "Bathroom Transformation",
 		description: "See a complete bathroom transformation — tiles, grout, mirrors and fixtures all gleaming.",
 		tag: "Transformation",
@@ -94,7 +94,7 @@ const galleryItems: GalleryItem[] = [
 		type: "video",
 		category: "videos",
 		src: "/video3.mp4",
-		poster: "/1.jpeg",
+		poster: "/gold-coast-cleaning-services.jpeg",
 		title: "Full House Clean Session",
 		description: "A complete walkthrough of our full house cleaning service — living room, bedrooms, and more.",
 		tag: "Full Service",
@@ -104,7 +104,7 @@ const galleryItems: GalleryItem[] = [
 		type: "video",
 		category: "videos",
 		src: "/video4.mp4",
-		poster: "/2.jpeg",
+		poster: "/gold-coast-before-after-cleaning.jpeg",
 		title: "Office Cleaning Excellence",
 		description: "Commercial-grade cleaning for workplaces — desks, floors, and common areas made spotless.",
 		tag: "Commercial",
@@ -196,8 +196,8 @@ export default function GalleryPage() {
 				<div className="absolute inset-0 z-0">
 					<div className="relative h-full w-full overflow-hidden">
 						<Image
-							src="/2.jpeg"
-							alt="Gallery Header"
+							src="/gold-coast-before-after-cleaning.jpeg"
+							alt="Before and after cleaning results in Gold Coast"
 							fill
 							className="object-cover scale-110 opacity-30"
 							style={{ animation: "ken-burns 20s ease-in-out infinite alternate" }}

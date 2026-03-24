@@ -1,5 +1,6 @@
 import type React from "react"
 import type { Metadata } from "next"
+import { AuthProvider } from "@/lib/auth-context"
 
 export const metadata: Metadata = {
   robots: {
@@ -17,5 +18,5 @@ export default function LoginLayout({
 }: {
   children: React.ReactNode
 }) {
-  return children
+  return <AuthProvider>{children}</AuthProvider>
 }

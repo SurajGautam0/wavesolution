@@ -1,154 +1,103 @@
-import Link from "next/link"
 import Image from "next/image"
-import { Facebook, Instagram, Linkedin, Mail, MapPin, Phone, Twitter } from "lucide-react"
+import Link from "next/link"
+import { Clock3, Mail, MapPin, Phone } from "lucide-react"
 
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { NewsletterForm } from "@/components/newsletter-form"
+import { businessInfo, siteLinks } from "@/lib/business-info"
+
+const primaryLinks = [
+  { href: siteLinks.services, label: "Services" },
+  { href: siteLinks.locations, label: "Locations" },
+  { href: siteLinks.about, label: "About" },
+  { href: siteLinks.gallery, label: "Gallery" },
+  { href: siteLinks.testimonials, label: "Testimonials" },
+  { href: siteLinks.contact, label: "Contact" },
+]
 
 export function SiteFooter() {
   return (
-    <footer className="classic-footer">
-      <div className="classic-container py-12 md:py-16">
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-          <div className="space-y-6">
-            <Link href="/" className="inline-block transition-transform hover:scale-105">
-              <div className="relative w-32 h-12 min-[400px]:w-40 min-[400px]:h-16 sm:w-48 sm:h-20 md:w-56 md:h-24">
+    <footer className="classic-footer border-t border-white/10">
+      <div className="classic-container py-10 md:py-12">
+        <div className="grid gap-8 border-b border-white/10 pb-8 md:grid-cols-[1.2fr_0.85fr_1fr]">
+          <div className="space-y-4">
+            <Link href={siteLinks.home} className="inline-flex">
+              <div className="relative h-14 w-36 sm:h-16 sm:w-40">
                 <Image
                   src="/logo.png"
-                  alt="WaveSolution"
+                  alt="Wave Solution Cleaning"
                   fill
                   className="object-contain brightness-0 invert"
                 />
               </div>
             </Link>
 
+            <p className="max-w-md text-sm leading-7 text-white/75">
+              Professional cleaning and pest control services for homes, offices, and rental properties across the Gold Coast.
+            </p>
 
-            <p className="text-white/80">Professional cleaning & pest control services for homes and businesses across Australia.</p>
-            <div className="flex space-x-4">
-              <Link
-                href="https://facebook.com/"
-                target="_blank"
-                rel="noreferrer"
-                className="text-white/80 hover:text-secondary"
-              >
-                <Facebook className="h-5 w-5" />
-                <span className="sr-only">Facebook</span>
-              </Link>
-              <Link
-                href="https://twitter.com/"
-                target="_blank"
-                rel="noreferrer"
-                className="text-white/80 hover:text-secondary"
-              >
-                <Twitter className="h-5 w-5" />
-                <span className="sr-only">Twitter</span>
-              </Link>
-              <Link
-                href="https://instagram.com/"
-                target="_blank"
-                rel="noreferrer"
-                className="text-white/80 hover:text-secondary"
-              >
-                <Instagram className="h-5 w-5" />
-                <span className="sr-only">Instagram</span>
-              </Link>
-              <Link
-                href="https://linkedin.com/"
-                target="_blank"
-                rel="noreferrer"
-                className="text-white/80 hover:text-secondary"
-              >
-                <Linkedin className="h-5 w-5" />
-                <span className="sr-only">LinkedIn</span>
-              </Link>
+            <div className="flex flex-wrap gap-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-white/60">
+              <span className="rounded-full border border-white/10 bg-white/10 px-3 py-1.5">Gold Coast</span>
+              <span className="rounded-full border border-white/10 bg-white/10 px-3 py-1.5">Since 2010</span>
+              <span className="rounded-full border border-white/10 bg-white/10 px-3 py-1.5">Fully Insured</span>
             </div>
           </div>
+
           <div>
-            <h3 className="mb-4 text-lg font-serif font-bold">Quick Links</h3>
-            <div className="w-12 h-1 bg-secondary mb-4"></div>
-            <ul className="space-y-2">
-              <li>
-                <Link href="/services" className="text-white/80 hover:text-secondary">
-                  Services
-                </Link>
-              </li>
-              <li>
-                <Link href="/gallery" className="text-white/80 hover:text-secondary">
-                  Gallery
-                </Link>
-              </li>
-              <li>
-                <Link href="/about" className="text-white/80 hover:text-secondary">
-                  About Us
-                </Link>
-              </li>
-              <li>
-                <Link href="/testimonials" className="text-white/80 hover:text-secondary">
-                  Testimonials
-                </Link>
-              </li>
-              <li>
-                <Link href="/contact" className="text-white/80 hover:text-secondary">
-                  Contact Us
-                </Link>
-              </li>
-              <li>
-                <Link href="/book" className="text-white/80 hover:text-secondary">
-                  Book Now
-                </Link>
-              </li>
+            <h3 className="text-sm font-black uppercase tracking-[0.2em] text-white">Quick Links</h3>
+            <div className="mb-4 mt-3 h-1 w-12 rounded-full bg-secondary" />
+            <ul className="grid gap-3 text-sm">
+              {primaryLinks.map((link) => (
+                <li key={link.label}>
+                  <Link href={link.href} className="text-white/75 transition-colors hover:text-secondary">
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
+
           <div>
-            <h3 className="mb-4 text-lg font-serif font-bold">Contact Us</h3>
-            <div className="w-12 h-1 bg-secondary mb-4"></div>
-            <ul className="space-y-3">
-              <li className="flex items-start">
-                <MapPin className="mr-2 h-5 w-5 shrink-0 text-secondary" />
-                <span className="text-white/80">Gold Coast, QLD 4215, Australia</span>
-              </li>
-              <li className="flex items-center">
-                <Phone className="mr-2 h-5 w-5 text-secondary" />
-                <Link href="tel:0450833683" className="text-white/80 hover:text-secondary">
-                  0450 833 683
-                </Link>
-              </li>
-              <li className="flex items-center">
-                <Mail className="mr-2 h-5 w-5 text-secondary" />
-                <Link href="mailto:susanttimalcena@gmail.com" className="text-white/80 hover:text-secondary">
-                  susanttimalcena@gmail.com
-                </Link>
-              </li>
-            </ul>
-          </div>
-          <div>
-            <h3 className="mb-4 text-lg font-serif font-bold">Newsletter</h3>
-            <div className="w-12 h-1 bg-secondary mb-4"></div>
-            <p className="mb-4 text-white/80">Subscribe for the latest updates.</p>
-            <NewsletterForm />
+            <h3 className="text-sm font-black uppercase tracking-[0.2em] text-white">Contact</h3>
+            <div className="mb-4 mt-3 h-1 w-12 rounded-full bg-secondary" />
+            <div className="space-y-3 text-sm text-white/75">
+              <Link href={businessInfo.phoneHref} className="flex items-start gap-3 transition-colors hover:text-secondary">
+                <Phone className="mt-0.5 h-4 w-4 shrink-0 text-secondary" />
+                <span>{businessInfo.phoneDisplay}</span>
+              </Link>
+              <Link href={`mailto:${businessInfo.email}`} className="flex items-start gap-3 transition-colors hover:text-secondary">
+                <Mail className="mt-0.5 h-4 w-4 shrink-0 text-secondary" />
+                <span className="break-all">{businessInfo.email}</span>
+              </Link>
+              <Link href={businessInfo.mapsUrl} target="_blank" rel="noreferrer" className="flex items-start gap-3 transition-colors hover:text-secondary">
+                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-secondary" />
+                <span>{businessInfo.address.full}</span>
+              </Link>
+              <div className="flex items-start gap-3">
+                <Clock3 className="mt-0.5 h-4 w-4 shrink-0 text-secondary" />
+                <div className="space-y-1">
+                  {businessInfo.businessHoursDisplay.map((item) => (
+                    <p key={item}>{item}</p>
+                  ))}
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-        <div className="mt-12 border-t border-white/20 pt-6">
-          <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
-            <p className="text-center text-sm text-white/60">
-              &copy; {new Date().getFullYear()} WaveSolution. All rights reserved.
-            </p>
-            <div className="flex space-x-4 text-sm text-white/60">
-              <Link href="/admin" className="hover:text-secondary">
-                Admin
-              </Link>
-              <Link href="/privacy" className="hover:text-secondary">
-                Privacy Policy
-              </Link>
-              <Link href="/terms" className="hover:text-secondary">
-                Terms of Service
-              </Link>
-            </div>
+
+        <div className="flex flex-col gap-3 pt-5 text-sm text-white/60 md:flex-row md:items-center md:justify-between">
+          <p>&copy; {new Date().getFullYear()} {businessInfo.businessName}. All rights reserved.</p>
+          <div className="flex flex-wrap gap-4">
+            <Link href={siteLinks.book} className="transition-colors hover:text-secondary">
+              Book Now
+            </Link>
+            <Link href={siteLinks.contact} className="transition-colors hover:text-secondary">
+              Contact
+            </Link>
+            <Link href={siteLinks.portal} className="transition-colors hover:text-secondary">
+              Client Portal
+            </Link>
           </div>
         </div>
       </div>
     </footer>
   )
 }
-

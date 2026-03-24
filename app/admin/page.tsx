@@ -21,6 +21,7 @@ import { getAllBookings, getApprovedTestimonials, getAllServices, getAllContacts
 import { cn } from "@/lib/utils"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
+import { Textarea } from "@/components/ui/textarea"
 
 export default function AdminDashboardPage() {
     const [activeTab, setActiveTab] = useState("dashboard")
@@ -31,6 +32,13 @@ export default function AdminDashboardPage() {
     const [subscriptions, setSubscriptions] = useState<any[]>([])
     const [loading, setLoading] = useState(true)
     const [searchTerm, setSearchTerm] = useState("")
+    const [aiBusinessName, setAiBusinessName] = useState("")
+    const [aiLocation, setAiLocation] = useState("Gold Coast")
+    const [aiBusinessType, setAiBusinessType] = useState("")
+    const [aiServiceFocus, setAiServiceFocus] = useState("commercial cleaning, carpet cleaning, pest control")
+    const [aiDraft, setAiDraft] = useState("")
+    const [aiLoading, setAiLoading] = useState(false)
+    const [aiError, setAiError] = useState("")
 
     useEffect(() => {
         async function fetchData() {
@@ -100,6 +108,84 @@ export default function AdminDashboardPage() {
             color: "amber"
         },
     ]
+
+    const discoverySuburbs = [
+        "Gold Coast",
+        "Southport",
+        "Surfers Paradise",
+        "Robina",
+        "Burleigh Heads",
+        "Broadbeach",
+        "Nerang",
+        "Labrador",
+    ]
+
+    const targetBusinessTypes = [
+        "Real estate agencies",
+        "Property managers",
+        "Airbnb property managers",
+        "Offices and coworking spaces",
+        "Restaurants and cafes",
+        "Gyms and fitness centers",
+        "Hotels and hostels",
+        "Medical and dental clinics",
+    ]
+
+    const leadFields = [
+        "business_name",
+        "website",
+        "email",
+        "phone",
+        "location",
+        "lead_status",
+    ]
+
+    const leadStatuses = ["new", "contacted", "replied", "interested", "not interested", "converted"]
+
+    const weeklyReportMetrics = [
+        "Number of leads collected",
+        "Messages sent",
+        "Replies received",
+        "Quotes requested",
+        "Customers converted",
+    ]
+
+    async function generateOutreachDraft() {
+        if (!aiBusinessName.trim()) {
+            setAiError("Business name is required.")
+            return
+        }
+
+        setAiLoading(true)
+        setAiError("")
+
+        try {
+            const response = await fetch("/api/admin/ai-outreach", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    businessName: aiBusinessName,
+                    location: aiLocation,
+                    businessType: aiBusinessType,
+                    serviceFocus: aiServiceFocus,
+                }),
+            })
+
+            const data = await response.json()
+
+            if (!response.ok) {
+                throw new Error(data.message || "Failed to generate outreach draft")
+            }
+
+            setAiDraft(data.message)
+        } catch (error: any) {
+            setAiError(error.message || "Failed to generate outreach draft")
+        } finally {
+            setAiLoading(false)
+        }
+    }
 
     if (loading) {
         return (
@@ -196,6 +282,193 @@ export default function AdminDashboardPage() {
                                     </div>
                                 ))}
                             </div>
+
+                            <Card className="border border-slate-100 shadow-sm bg-white rounded-2xl overflow-hidden">
+                                <CardHeader className="border-b border-slate-50 p-6 bg-white">
+                                    <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                                        <div>
+                                            <CardTitle className="text-lg font-bold text-slate-900">Wave Solution AI Automation System</CardTitle>
+                                            <p className="mt-1 text-sm text-slate-500">Business lead discovery and outreach workflow for Gold Coast, QLD.</p>
+                                        </div>
+                                        <div className="inline-flex items-center rounded-full bg-emerald-50 px-3 py-1.5 text-xs font-semibold text-emerald-700 ring-1 ring-emerald-600/20">
+                                            Monthly Goal: 20-30 New Customers
+                                        </div>
+                                    </div>
+                                </CardHeader>
+                                <CardContent className="p-6 space-y-6">
+                                    <div className="grid gap-4 lg:grid-cols-2">
+                                        <div className="rounded-xl border border-slate-100 bg-slate-50 p-4">
+                                            <p className="text-xs font-bold uppercase tracking-[0.14em] text-slate-500">Step 1: Lead Discovery</p>
+                                            <p className="mt-2 text-sm text-slate-700">Search local businesses in these locations:</p>
+                                            <div className="mt-3 flex flex-wrap gap-2">
+                                                {discoverySuburbs.map((suburb) => (
+                                                    <span key={suburb} className="rounded-full bg-white px-3 py-1 text-xs font-medium text-slate-700 ring-1 ring-slate-200">
+                                                        {suburb}
+                                                    </span>
+                                                ))}
+                                            </div>
+                                        </div>
+
+                                        <div className="rounded-xl border border-slate-100 bg-slate-50 p-4">
+                                            <p className="text-xs font-bold uppercase tracking-[0.14em] text-slate-500">Priority Business Types</p>
+                                            <ul className="mt-2 space-y-1.5 text-sm text-slate-700">
+                                                {targetBusinessTypes.map((type) => (
+                                                    <li key={type} className="flex items-start gap-2">
+                                                        <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-emerald-600" />
+                                                        <span>{type}</span>
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                    <div className="grid gap-4 lg:grid-cols-3">
+                                        <div className="rounded-xl border border-slate-100 p-4">
+                                            <p className="text-xs font-bold uppercase tracking-[0.14em] text-slate-500">Step 2-3: Data Capture</p>
+                                            <p className="mt-2 text-sm text-slate-700">Collect and store leads with:</p>
+                                            <div className="mt-3 flex flex-wrap gap-2">
+                                                {leadFields.map((field) => (
+                                                    <span key={field} className="rounded-md bg-slate-900 px-2 py-1 text-[11px] font-medium text-white">
+                                                        {field}
+                                                    </span>
+                                                ))}
+                                            </div>
+                                            <p className="mt-3 text-xs text-slate-500">Default on create: lead_status = "new"</p>
+                                        </div>
+
+                                        <div className="rounded-xl border border-slate-100 p-4">
+                                            <p className="text-xs font-bold uppercase tracking-[0.14em] text-slate-500">Step 4-5: Outreach Rules</p>
+                                            <ul className="mt-2 space-y-2 text-sm text-slate-700">
+                                                <li className="flex items-start gap-2">
+                                                    <MessageSquare className="mt-0.5 h-4 w-4 shrink-0 text-blue-600" />
+                                                    <span>Generate personalized messages under 3 sentences.</span>
+                                                </li>
+                                                <li className="flex items-start gap-2">
+                                                    <Sparkles className="mt-0.5 h-4 w-4 shrink-0 text-blue-600" />
+                                                    <span>Mention business name, Gold Coast location, and service offer.</span>
+                                                </li>
+                                                <li className="flex items-start gap-2">
+                                                    <AlertCircle className="mt-0.5 h-4 w-4 shrink-0 text-amber-600" />
+                                                    <span>Send via email, website form, or SMS. Limit to 30-50/day.</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+
+                                        <div className="rounded-xl border border-slate-100 p-4">
+                                            <p className="text-xs font-bold uppercase tracking-[0.14em] text-slate-500">Step 6-8: Follow-up Logic</p>
+                                            <p className="mt-2 text-sm text-slate-700">Track lifecycle statuses:</p>
+                                            <div className="mt-3 flex flex-wrap gap-2">
+                                                {leadStatuses.map((status) => (
+                                                    <span key={status} className="rounded-full bg-slate-100 px-2.5 py-1 text-xs font-medium text-slate-700">
+                                                        {status}
+                                                    </span>
+                                                ))}
+                                            </div>
+                                            <p className="mt-3 text-xs text-slate-500">If no response after 3 days, send a polite follow-up. If positive response, mark as interested and request property size/service details for quote.</p>
+                                        </div>
+                                    </div>
+
+                                    <div className="rounded-xl border border-slate-100 bg-slate-50 p-4">
+                                        <p className="text-xs font-bold uppercase tracking-[0.14em] text-slate-500">Step 9: Weekly Reporting</p>
+                                        <div className="mt-3 grid gap-2 sm:grid-cols-2 lg:grid-cols-5">
+                                            {weeklyReportMetrics.map((metric) => (
+                                                <div key={metric} className="rounded-lg bg-white px-3 py-2 text-xs font-medium text-slate-700 ring-1 ring-slate-200">
+                                                    {metric}
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+
+                                    <div className="grid gap-4 xl:grid-cols-[1.2fr_0.8fr]">
+                                        <div className="rounded-2xl border border-slate-100 bg-slate-50 p-5">
+                                            <div className="flex items-center justify-between gap-4">
+                                                <div>
+                                                    <p className="text-xs font-bold uppercase tracking-[0.14em] text-slate-500">Free AI API Integration</p>
+                                                    <h3 className="mt-1 text-base font-bold text-slate-900">Outreach Draft Generator</h3>
+                                                </div>
+                                                <span className="rounded-full bg-sky-100 px-3 py-1 text-[11px] font-semibold text-sky-700 ring-1 ring-sky-200">
+                                                    Groq Free Tier
+                                                </span>
+                                            </div>
+
+                                            <div className="mt-4 grid gap-3 md:grid-cols-2">
+                                                <Input
+                                                    value={aiBusinessName}
+                                                    onChange={(e) => setAiBusinessName(e.target.value)}
+                                                    placeholder="Business name"
+                                                    className="h-11 rounded-xl border-slate-200 bg-white"
+                                                />
+                                                <Input
+                                                    value={aiLocation}
+                                                    onChange={(e) => setAiLocation(e.target.value)}
+                                                    placeholder="Location"
+                                                    className="h-11 rounded-xl border-slate-200 bg-white"
+                                                />
+                                                <Input
+                                                    value={aiBusinessType}
+                                                    onChange={(e) => setAiBusinessType(e.target.value)}
+                                                    placeholder="Business type"
+                                                    className="h-11 rounded-xl border-slate-200 bg-white"
+                                                />
+                                                <Input
+                                                    value={aiServiceFocus}
+                                                    onChange={(e) => setAiServiceFocus(e.target.value)}
+                                                    placeholder="Service focus"
+                                                    className="h-11 rounded-xl border-slate-200 bg-white"
+                                                />
+                                            </div>
+
+                                            <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:items-center">
+                                                <Button
+                                                    onClick={generateOutreachDraft}
+                                                    disabled={aiLoading}
+                                                    className="h-11 rounded-xl bg-slate-900 px-5 text-white hover:bg-slate-800"
+                                                >
+                                                    {aiLoading ? "Generating..." : "Generate Outreach Draft"}
+                                                </Button>
+                                                <p className="text-xs text-slate-500">Manual review only. No automatic sending is enabled.</p>
+                                            </div>
+
+                                            {aiError && (
+                                                <div className="mt-4 rounded-xl border border-rose-200 bg-rose-50 px-4 py-3 text-sm text-rose-700">
+                                                    {aiError}
+                                                </div>
+                                            )}
+
+                                            <div className="mt-4">
+                                                <Textarea
+                                                    value={aiDraft}
+                                                    onChange={(e) => setAiDraft(e.target.value)}
+                                                    placeholder="Your AI-generated outreach draft will appear here."
+                                                    className="min-h-[140px] rounded-2xl border-slate-200 bg-white text-sm text-slate-700"
+                                                />
+                                            </div>
+                                        </div>
+
+                                        <div className="rounded-2xl border border-slate-100 bg-white p-5">
+                                            <p className="text-xs font-bold uppercase tracking-[0.14em] text-slate-500">Generator Rules</p>
+                                            <ul className="mt-4 space-y-3 text-sm text-slate-700">
+                                                <li className="flex items-start gap-2">
+                                                    <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-emerald-600" />
+                                                    <span>Message stays under 3 sentences.</span>
+                                                </li>
+                                                <li className="flex items-start gap-2">
+                                                    <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-emerald-600" />
+                                                    <span>Mentions the business name and Gold Coast location.</span>
+                                                </li>
+                                                <li className="flex items-start gap-2">
+                                                    <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-emerald-600" />
+                                                    <span>Offers cleaning or pest control services and asks for a free quote opportunity.</span>
+                                                </li>
+                                                <li className="flex items-start gap-2">
+                                                    <AlertCircle className="mt-0.5 h-4 w-4 shrink-0 text-amber-600" />
+                                                    <span>Requires a valid <span className="font-semibold">GROQ_API_KEY</span> in environment variables.</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </CardContent>
+                            </Card>
 
                             <div className="grid grid-cols-1 xl:grid-cols-3 gap-8">
                                 <Card className="xl:col-span-2 border border-slate-100 shadow-sm bg-white rounded-2xl overflow-hidden">

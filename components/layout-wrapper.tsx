@@ -3,7 +3,6 @@
 import { usePathname } from "next/navigation"
 import { MainNav } from "@/components/main-nav"
 import { SiteFooter } from "@/components/site-footer"
-import { AuthProvider } from "@/lib/auth-context"
 import { WhatsAppWidget } from "@/components/whatsapp-widget"
 
 export function LayoutWrapper({ children }: { children: React.ReactNode }) {
@@ -25,9 +24,9 @@ export function LayoutWrapper({ children }: { children: React.ReactNode }) {
     }
 
     return (
-        <AuthProvider>
+        <>
             <Content />
             <WhatsAppWidget />
-        </AuthProvider>
+        </>
     )
 }

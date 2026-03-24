@@ -29,9 +29,9 @@ export default function HomeCleaningPage() {
             <div className="inline-block rounded-lg bg-primary/10 px-3 py-1 text-sm text-primary">
               Residential Services
             </div>
-            <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">Home Cleaning Services</h1>
+            <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">Home Cleaning Services in Gold Coast</h1>
             <p className="max-w-[700px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-              Keep your home spotless and fresh with our professional home cleaning services.
+              Keep your home spotless and fresh with professional home cleaning services across Gold Coast, Southport, Robina and nearby suburbs.
             </p>
             <Button asChild size="lg">
               <Link href="/book">Book Home Cleaning</Link>

@@ -5,11 +5,11 @@ import Image from "next/image"
 import { ShieldCheck, Star, Users, Zap } from "lucide-react"
 
 export function WorkerShowcase() {
-    const [randomImage, setRandomImage] = useState("/about.png")
+    const [randomImage, setRandomImage] = useState("/gold-coast-cleaning-team.png")
 
     useEffect(() => {
-        // Use about.png as the showcase image
-        setRandomImage("/about.png")
+        // Use a local branded image with a descriptive filename for SEO.
+        setRandomImage("/gold-coast-cleaning-team.png")
     }, [])
 
     const trainingFeatures = [
@@ -87,7 +87,7 @@ export function WorkerShowcase() {
                                     className="object-contain brightness-0 invert"
                                 />
                             </div>
-                            <span className="text-[10px] font-black uppercase tracking-[0.2em] text-white">Australia Wide</span>
+                            <span className="text-[10px] font-black uppercase tracking-[0.2em] text-white">Gold Coast Specialists</span>
                         </div>
                     </div>
 

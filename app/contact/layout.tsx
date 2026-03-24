@@ -1,15 +1,16 @@
 import type { Metadata } from "next"
+import { businessInfo } from "@/lib/business-info"
 
 export const metadata: Metadata = {
-    title: "Contact Us | Get a Free Cleaning Quote in Gold Coast",
-    description: "Contact WaveSolution for a free cleaning quote in Gold Coast. Call 0450 833 683, email us or fill out our quick form. We serve all Gold Coast suburbs including Southport, Surfers Paradise, Broadbeach & Robina.",
+    title: "Contact Wave Solution Cleaning | Free Gold Coast Quote",
+    description: `Contact ${businessInfo.businessName} for a free cleaning quote in Gold Coast. Call ${businessInfo.phoneDisplay}, email ${businessInfo.email}, or fill out our contact form.`,
     keywords: ["contact cleaners Gold Coast", "cleaning quote Gold Coast", "book cleaners Gold Coast", "Southport cleaning contact", "cleaning service near me Gold Coast", "free cleaning quote Gold Coast"],
     alternates: {
         canonical: "https://www.wavesolution.com.au/contact",
     },
     openGraph: {
-        title: "Contact WaveSolution | Free Cleaning Quote Gold Coast",
-        description: "Get a free cleaning quote. Call 0450 833 683 or book online. Serving all Gold Coast & QLD suburbs.",
+        title: "Contact Wave Solution Cleaning | Free Gold Coast Quote",
+        description: "Get a free cleaning quote for Gold Coast homes and businesses. Call 0450 833 683 or book online.",
         url: "https://www.wavesolution.com.au/contact",
     },
 }

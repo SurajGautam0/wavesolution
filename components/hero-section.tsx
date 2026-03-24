@@ -10,6 +10,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { businessInfo } from "@/lib/business-info"
 import { cn } from "@/lib/utils"
 
 export function HeroSection() {
@@ -20,8 +21,8 @@ export function HeroSection() {
       {/* Hero Background */}
       <div className="absolute inset-0 z-0 overflow-hidden opacity-30">
         <Image
-          src="https://images.unsplash.com/photo-1544806030-22d206f9d150?auto=format&fit=crop&q=80&w=2400"
-          alt="Professional Cleaning Service"
+          src="/images/gold-coast-cleaning-service.jpg"
+          alt="Professional cleaning team servicing homes and offices in Gold Coast"
           fill
           className="object-cover scale-110 blur-[2px]"
           priority
@@ -55,7 +56,7 @@ export function HeroSection() {
 
               <div className="w-24 h-1.5 bg-secondary mx-auto lg:mx-0 rounded-full"></div>
               <p className="max-w-[600px] mx-auto lg:mx-0 text-lg sm:text-xl text-white/70 leading-relaxed font-medium">
-                Experience the WaveSolution difference with our premium cleaning and pest control services. We
+                Experience the {businessInfo.businessName} difference with our premium cleaning and pest control services. We
                 deliver spotless, pest-free results every time.
               </p>
             </div>
