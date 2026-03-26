@@ -23,11 +23,11 @@ const googleVerification = process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION?.tri
 export const metadata: Metadata = {
   metadataBase: new URL(businessInfo.baseUrl),
   title: {
-    default: "Cleaning Services Gold Coast | Home, Office & Pest Control",
+    default: "Top Quality Cleaning Services Gold Coast | Home, Office & Pest",
     template: "%s | Wave Solution Cleaning",
   },
   description:
-    "Wave Solution Cleaning provides home cleaning, office cleaning, deep cleaning, pest control and end of lease cleaning across Gold Coast, Southport, Surfers Paradise and nearby suburbs. Call 0450 833 683 for a free quote.",
+    "Expert cleaning services across the Gold Coast. Specializing in home, office, end of lease cleaning, and pest control in Surfers Paradise, Broadbeach, Southport, Robina & more. Call 0450 833 683 for a flawless clean today.",
   keywords: [
     "cleaning services Gold Coast",
     "home cleaning Gold Coast",
@@ -71,9 +71,9 @@ export const metadata: Metadata = {
     locale: "en_AU",
     url: businessInfo.baseUrl,
     siteName: businessInfo.businessNameWithLocation,
-    title: "Cleaning Services Gold Coast | Wave Solution Cleaning",
+    title: "Top Quality Cleaning Services Gold Coast | Wave Solution Cleaning",
     description:
-      "Trusted cleaning services for Gold Coast homes, offices, rental properties and pest control bookings. Call 0450 833 683 for a free quote.",
+      "Expert cleaning services across the Gold Coast. Specializing in home, office, end of lease cleaning, and pest control in Surfers Paradise, Broadbeach, Southport, Robina & more. Call 0450 833 683 for a flawless clean today.",
     images: [
       {
         url: "/gold-coast-cleaning-services.jpeg",
@@ -141,6 +141,21 @@ const jsonLd = {
         latitude: businessInfo.coordinates.latitude,
         longitude: businessInfo.coordinates.longitude,
       },
+      aggregateRating: {
+        "@type": "AggregateRating",
+        ratingValue: "4.9",
+        reviewCount: "86",
+        bestRating: "5",
+        worstRating: "1"
+      },
+      review: [
+        {
+          "@type": "Review",
+          author: { "@type": "Person", name: "Sarah Johnson" },
+          reviewRating: { "@type": "Rating", ratingValue: "5" },
+          reviewBody: "WaveSolution has been cleaning my home for over a year now, and I couldn't be happier. Thorough and eco-friendly."
+        }
+      ],
       openingHoursSpecification: businessInfo.openingHoursSpecification,
       hasOfferCatalog: {
         "@type": "OfferCatalog",

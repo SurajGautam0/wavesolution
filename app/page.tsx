@@ -13,8 +13,8 @@ import { Metadata } from "next"
 import { siteLinks } from "@/lib/business-info"
 
 export const metadata: Metadata = {
-  title: "Cleaning Services Gold Coast | Home, Office & Pest Control",
-  description: "Local cleaning services in Gold Coast for homes, offices, rentals and pest control. Book home cleaning, deep cleaning and more with Wave Solution Cleaning.",
+  title: "Best Cleaning Services Gold Coast | Exceptional Home & Office Cleans",
+  description: "Looking for top-quality, reliable cleaning services in the Gold Coast? Wave Solution Cleaning provides exceptional house cleaning, deep cleaning, and pest control.",
   alternates: {
     canonical: "https://www.wavesolution.com.au",
   },
@@ -36,10 +36,26 @@ export default function Home() {
       <div className="classic-container py-8 sm:py-12">
         <div className="grid grid-cols-1 gap-10 md:grid-cols-[1fr_320px]">
           <div className="space-y-8">
+            {/* Trust Badges - Local SEO */}
+            <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-8 bg-muted/50 p-4 rounded-xl border border-muted">
+              <div className="flex items-center gap-2">
+                <CheckCircle className="h-5 w-5 text-green-600" />
+                <span className="font-semibold text-sm">Locally Owned on Gold Coast</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <CheckCircle className="h-5 w-5 text-green-600" />
+                <span className="font-semibold text-sm">100% Satisfaction Guarantee</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <CheckCircle className="h-5 w-5 text-green-600" />
+                <span className="font-semibold text-sm">Eco-Friendly Products</span>
+              </div>
+            </div>
+
             {/* Welcome Section */}
             <section className="classic-card p-6 sm:p-10">
               <div className="flex flex-col items-center justify-center space-y-6 text-center">
-                <h2 className="classic-heading text-3xl sm:text-5xl">Trusted Cleaning Services Across Gold Coast</h2>
+                <h1 className="classic-heading text-3xl sm:text-5xl">Exceptional House Cleaning Services in Gold Coast</h1>
                 <div className="w-24 h-1.5 bg-secondary rounded-full"></div>
                 <div className="space-y-4 max-w-2xl">
                   <p className="text-muted-foreground text-lg leading-relaxed">
@@ -59,7 +75,7 @@ export default function Home() {
             {/* Services Section */}
             <section className="classic-card p-6 sm:p-10">
               <div className="flex flex-col items-center justify-center space-y-6 text-center mb-10">
-                <h2 className="classic-heading text-3xl sm:text-4xl">Professional Cleaning Services</h2>
+                <h2 className="classic-heading text-3xl sm:text-4xl">Our Top-Quality Cleaning Services</h2>
                 <div className="w-24 h-1.5 bg-secondary rounded-full"></div>
                 <p className="text-muted-foreground text-lg max-w-xl">
                   Our team of experienced professionals uses the latest cleaning techniques and
@@ -150,6 +166,27 @@ export default function Home() {
                   <h3 className="text-xl font-bold mb-2">3. Enjoy</h3>
                   <p className="text-muted-foreground">Relax and enjoy your clean space. Satisfaction guaranteed!</p>
                 </div>
+              </div>
+            </section>
+
+            {/* Locations Section */}
+            <section className="classic-card p-6 sm:p-10 mb-8">
+              <div className="flex flex-col items-center justify-center space-y-6 text-center mb-8">
+                <h2 className="classic-heading text-3xl sm:text-4xl">Service Areas Across Gold Coast</h2>
+                <div className="w-24 h-1.5 bg-secondary rounded-full"></div>
+                <p className="text-muted-foreground text-lg">
+                  We are a proud local business providing trusted domestic and commercial cleaning across the Gold Coast, including these key suburbs.
+                </p>
+              </div>
+              <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 text-center">
+                <div className="p-3 bg-muted rounded-lg font-medium text-sm">Surfers Paradise</div>
+                <div className="p-3 bg-muted rounded-lg font-medium text-sm">Broadbeach</div>
+                <div className="p-3 bg-muted rounded-lg font-medium text-sm">Southport</div>
+                <div className="p-3 bg-muted rounded-lg font-medium text-sm">Robina</div>
+                <div className="p-3 bg-muted rounded-lg font-medium text-sm">Burleigh Waters</div>
+                <div className="p-3 bg-muted rounded-lg font-medium text-sm">Palm Beach</div>
+                <div className="p-3 bg-muted rounded-lg font-medium text-sm">Coomera</div>
+                <div className="p-3 bg-muted rounded-lg font-medium text-sm">Miami</div>
               </div>
             </section>
 
