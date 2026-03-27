@@ -17,7 +17,13 @@ import {
     ShieldCheck,
     Zap
 } from "lucide-react"
-import { getAllBookings, getApprovedTestimonials, getAllServices, getAllContacts, getAllSubscriptions } from "@/lib/firebase-service"
+import {
+    getAllBookings,
+    getApprovedTestimonials,
+    getAllServices,
+    getAllContacts,
+    getAllSubscriptions,
+} from "@/lib/admin-firebase-service"
 import { cn } from "@/lib/utils"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
