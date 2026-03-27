@@ -1,6 +1,7 @@
 import type React from "react"
 import type { Metadata } from "next"
 import { AdminHeader } from "@/components/admin-header"
+import { AuthProvider } from "@/lib/auth-context"
 
 export const metadata: Metadata = {
     robots: {
@@ -19,9 +20,11 @@ export default function AdminLayout({
     children: React.ReactNode
 }) {
     return (
-        <div className="flex min-h-screen flex-col bg-slate-50/50">
-            <AdminHeader />
-            <main className="flex-1">{children}</main>
-        </div>
+        <AuthProvider>
+            <div className="flex min-h-screen flex-col bg-slate-50/50">
+                <AdminHeader />
+                <main className="flex-1">{children}</main>
+            </div>
+        </AuthProvider>
     )
 }

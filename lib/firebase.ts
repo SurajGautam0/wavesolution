@@ -7,13 +7,14 @@ import { getStorage } from "firebase/storage";
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyDcTR29xl_cGjRDLg0dFrdGMq8RsifKqzU",
-  authDomain: "wavesolution-59160.firebaseapp.com",
-  projectId: "wavesolution-59160",
-  storageBucket: "wavesolution-59160.firebasestorage.app",
-  messagingSenderId: "153391934944",
-  appId: "1:153391934944:web:8c8e2d9aab94c6341a4f85",
-  measurementId: "G-0QQDECZB9F"
+  apiKey: "AIzaSyDYHg-N8VpH-kexKFn6hqs3zcEtw0-kd1Q",
+  authDomain: "rockvale-889b6.firebaseapp.com",
+  databaseURL: "https://rockvale-889b6-default-rtdb.firebaseio.com",
+  projectId: "rockvale-889b6",
+  storageBucket: "rockvale-889b6.firebasestorage.app",
+  messagingSenderId: "531866177604",
+  appId: "1:531866177604:web:1b1020b9afd02c7a30ac11",
+  measurementId: "G-MD1MJ3FQ22"
 };
 
 // Initialize Firebase
@@ -22,4 +23,4 @@ const db = getFirestore(app);
 const auth = getAuth(app);
 const storage = getStorage(app);
 
-export { app, db, auth, storage }; 
+export { app, db, auth, storage, firebaseConfig }; 

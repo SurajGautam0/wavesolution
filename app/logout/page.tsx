@@ -2,10 +2,9 @@
 
 import { useEffect } from "react"
 import { useRouter } from "next/navigation"
-import { getAuth, signOut } from "firebase/auth"
+import { signOut } from "firebase/auth"
 import { Loader2 } from "lucide-react"
 
-import { adminApp } from "@/lib/admin-firebase"
 import { auth } from "@/lib/firebase"
 
 function clearClientAuthState() {
@@ -25,10 +24,7 @@ export default function LogoutPage() {
     let isMounted = true
 
     async function logout() {
-      await Promise.allSettled([
-        signOut(auth),
-        signOut(getAuth(adminApp)),
-      ])
+      await Promise.allSettled([signOut(auth)])
 
       clearClientAuthState()
 

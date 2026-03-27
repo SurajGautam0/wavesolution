@@ -39,17 +39,48 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<User>(null)
   const [loading, setLoading] = useState(true)
 
-  // Function to fetch user data from Firestore
-  const fetchUserData = async (userId: string) => {
+  const persistUserSession = (userData: Exclude<User, null>) => {
+    setUser(userData)
+    localStorage.setItem("user", JSON.stringify(userData))
+    document.cookie = `user=${JSON.stringify(userData)}; path=/; max-age=86400`
+  }
+
+  const clearUserSession = () => {
+    setUser(null)
+    localStorage.removeItem("user")
+    document.cookie = "user=; path=/; max-age=0"
+  }
+
+  const buildBasicUser = (firebaseUser: FirebaseUser): Exclude<User, null> => ({
+    id: firebaseUser.uid,
+    email: firebaseUser.email || "",
+    name: firebaseUser.displayName || "User",
+    role: "user",
+  })
+
+  const hydrateOrCreateUser = async (firebaseUser: FirebaseUser) => {
     try {
-      const userData = await getUserById(userId)
+      const userData = await getUserById(firebaseUser.uid)
+
       if (userData) {
-        setUser(userData as User)
-        localStorage.setItem("user", JSON.stringify(userData))
+        const normalizedUser = userData as Exclude<User, null>
+        persistUserSession(normalizedUser)
+        return normalizedUser
       }
     } catch (error) {
       console.error("Error fetching user data:", error)
     }
+
+    const basicUser = buildBasicUser(firebaseUser)
+
+    try {
+      await saveUser(basicUser)
+    } catch (saveError) {
+      console.error("Error saving basic user:", saveError)
+    }
+
+    persistUserSession(basicUser)
+    return basicUser
   }
 
   useEffect(() => {
@@ -66,38 +97,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
     const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
       if (firebaseUser) {
-        // Try to fetch user data from Firestore first
-        try {
-          await fetchUserData(firebaseUser.uid)
-        } catch (error) {
-          console.error("Error fetching user data:", error)
-
-          // If Firestore fetch fails or user doesn't exist, use basic info
-          if (!user) {
-            const basicUser = {
-              id: firebaseUser.uid,
-              email: firebaseUser.email || "",
-              name: firebaseUser.displayName || "User",
-              role: "user",
-            }
-
-            // Try to save this basic user to Firestore
-            try {
-              await saveUser(basicUser)
-              setUser(basicUser)
-              localStorage.setItem("user", JSON.stringify(basicUser))
-            } catch (saveError) {
-              console.error("Error saving basic user:", saveError)
-              // Still set the user in state even if saving fails
-              setUser(basicUser)
-              localStorage.setItem("user", JSON.stringify(basicUser))
-            }
-          }
-        }
+        await hydrateOrCreateUser(firebaseUser)
       } else {
-        // User is signed out
-        setUser(null)
-        localStorage.removeItem("user")
+        clearUserSession()
       }
       setLoading(false)
     })
@@ -107,8 +109,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const signIn = async (email: string, password: string) => {
     const credential = await signInWithEmailAndPassword(auth, email, password)
-    // After sign in, fetch the latest user data
-    await fetchUserData(credential.user.uid)
+    await hydrateOrCreateUser(credential.user)
     return credential
   }
 
@@ -148,8 +149,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       }
 
       // Update local state
-      setUser(newUser)
-      localStorage.setItem("user", JSON.stringify(newUser))
+      persistUserSession(newUser)
 
     } catch (error) {
       console.error("Error creating user:", error)
@@ -162,27 +162,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       const provider = new GoogleAuthProvider()
       const result = await signInWithPopup(auth, provider)
 
-      // Check if user exists in Firestore
-      const userDoc = await getUserById(result.user.uid)
-
-      if (!userDoc) {
-        // Create new user if not exists
-        const newUser = {
-          id: result.user.uid,
-          email: result.user.email || "",
-          name: result.user.displayName || "Google User",
-          role: "user",
-        }
-
-        await saveUser(newUser)
-        setUser(newUser)
-        localStorage.setItem("user", JSON.stringify(newUser))
-        document.cookie = `user=${JSON.stringify(newUser)}; path=/; max-age=86400`
-      } else {
-        setUser(userDoc as User)
-        localStorage.setItem("user", JSON.stringify(userDoc))
-        document.cookie = `user=${JSON.stringify(userDoc)}; path=/; max-age=86400`
-      }
+      await hydrateOrCreateUser(result.user)
     } catch (error) {
       console.error("Error signing in with Google:", error)
       throw error
@@ -203,10 +183,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
       await saveUser(updatedUser)
 
-      // Update local state
-      setUser(updatedUser)
-      localStorage.setItem("user", JSON.stringify(updatedUser))
-      document.cookie = `user=${JSON.stringify(updatedUser)}; path=/; max-age=86400`
+      persistUserSession(updatedUser)
 
       return updatedUser
     } catch (error) {
@@ -217,9 +194,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const logout = async () => {
     await signOut(auth)
-    setUser(null)
-    localStorage.removeItem("user")
-    document.cookie = "user=; path=/; max-age=0"
+    clearUserSession()
   }
 
   return (
