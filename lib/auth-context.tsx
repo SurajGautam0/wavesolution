@@ -20,6 +20,7 @@ type User = {
   email: string
   name: string
   role: string
+  address?: string
 } | null
 
 interface AuthContextType {

@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button"
 import { useAuth } from "@/lib/auth-context"
 import { getBookingsByUser, getAllServices } from "@/lib/firebase-service"
 import { useRouter } from "next/navigation"
+import { DashboardSupportPanel } from "@/components/dashboard-support-panel"
 import {
     CalendarDays,
     Clock,
@@ -244,6 +245,10 @@ export default function UserDashboardPage() {
                         </div>
                     )}
 
+                    {activeTab === "support" && (
+                        <DashboardSupportPanel user={user} />
+                    )}
+
                     {/* BOOKINGS TAB */}
                     {activeTab === "bookings" && (
                         <div className="space-y-6 animate-in fade-in slide-in-from-right-6 duration-500">
@@ -305,7 +310,7 @@ export default function UserDashboardPage() {
                     )}
 
                     {/* OTHER TABS PLACEHOLDER */}
-                    {activeTab !== "dashboard" && activeTab !== "bookings" && (
+                    {activeTab !== "dashboard" && activeTab !== "bookings" && activeTab !== "support" && (
                         <div className="flex flex-col items-center justify-center py-32 animate-in fade-in duration-500">
                             <div className="w-20 h-20 bg-slate-100 rounded-2xl flex items-center justify-center mb-6">
                                 <Clock className="w-10 h-10 text-slate-400" />
