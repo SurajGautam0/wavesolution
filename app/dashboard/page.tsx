@@ -18,10 +18,6 @@ import {
     CreditCard,
     MapPin,
     ArrowRight,
-    Clock,
-    CreditCard,
-    MapPin,
-    ArrowRight,
     Star,
     Shield,
     Sparkles,
@@ -485,4 +481,19 @@ export default function UserDashboardPage() {
                         <div className="flex flex-col items-center justify-center py-32 animate-in fade-in duration-500">
                             <div className="w-20 h-20 bg-slate-100 rounded-2xl flex items-center justify-center mb-6">
                                 <Clock className="w-10 h-10 text-slate-400" />
+                            </div>
+                            <h3 className="text-xl font-bold text-slate-900">Coming Soon</h3>
+                            <p className="text-slate-500 font-medium mt-2 text-center max-w-md">
+                                The <span className="text-blue-600 font-semibold capitalize">{activeTab}</span> section is currently under development.
+                            </p>
+                            <Button variant="outline" onClick={() => setActiveTab("dashboard")} className="mt-8">
+                                Return to Overview
+                            </Button>
+                        </div>
+                    )}
+
+                </main>
+            </div>
+        </div>
+    )
 }
