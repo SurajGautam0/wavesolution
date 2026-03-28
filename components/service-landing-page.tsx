@@ -14,6 +14,39 @@ export function ServiceLandingPage({ page }: ServiceLandingPageProps) {
   const relatedPages = page.relatedSlugs
     .map((slug) => getServicePage(slug))
     .filter((entry): entry is ServicePage => Boolean(entry))
+  const nearbyLocations = [
+    { href: "/locations/southport", label: "Southport" },
+    { href: "/locations/robina", label: "Robina" },
+    { href: "/locations/surfers-paradise", label: "Surfers Paradise" },
+    { href: "/locations/broadbeach", label: "Broadbeach" },
+    { href: siteLinks.locations, label: "More Gold Coast Areas" },
+  ]
+  const relatedArticles =
+    page.slug === "office-cleaning-gold-coast" || page.slug === "commercial-cleaning-gold-coast"
+      ? [
+          {
+            href: "/blog/office-cleaning",
+            label: "Office Cleaning Guide",
+            description: "Helpful advice on cleaning frequency and workplace hygiene planning.",
+          },
+          {
+            href: "/blog/eco-friendly",
+            label: "Eco-Friendly Cleaning",
+            description: "Green cleaning methods for businesses and sensitive work environments.",
+          },
+        ]
+      : [
+          {
+            href: "/blog/cleaning-tips",
+            label: "House Cleaning Tips",
+            description: "Practical advice for maintaining homes and rentals between visits.",
+          },
+          {
+            href: "/blog/eco-friendly",
+            label: "Eco-Friendly Cleaning",
+            description: "Non-toxic product ideas and green cleaning habits for Gold Coast properties.",
+          },
+        ]
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -240,6 +273,58 @@ export function ServiceLandingPage({ page }: ServiceLandingPageProps) {
                   <p className="mt-3 text-sm leading-7 text-slate-600">{faq.answer}</p>
                 </article>
               ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-white py-14 md:py-20">
+        <div className="classic-container">
+          <div className="grid gap-6 lg:grid-cols-2">
+            <div className="rounded-[2rem] border border-slate-200 bg-slate-50 p-7 shadow-sm">
+              <h2 className="text-2xl font-black tracking-tight text-primary">Nearby Gold Coast Areas</h2>
+              <p className="mt-4 text-sm leading-7 text-slate-600">
+                We regularly support homes, rentals, and businesses across nearby suburbs, and these local pages help reinforce suburb relevance without relying on duplicate templates.
+              </p>
+              <div className="mt-6 flex flex-wrap gap-3">
+                {nearbyLocations.map((location) => (
+                  <Link
+                    key={location.href}
+                    href={location.href}
+                    className="rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-primary transition-colors hover:border-primary/20 hover:text-secondary"
+                  >
+                    {location.label}
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            <div className="rounded-[2rem] border border-slate-200 bg-slate-50 p-7 shadow-sm">
+              <h2 className="text-2xl font-black tracking-tight text-primary">Helpful Reading</h2>
+              <p className="mt-4 text-sm leading-7 text-slate-600">
+                Browse our blog hub and supporting articles for practical advice that helps customers understand scope, maintenance, and the right service for their property.
+              </p>
+              <div className="mt-6 space-y-3">
+                {relatedArticles.map((article) => (
+                  <Link
+                    key={article.href}
+                    href={article.href}
+                    className="block rounded-[1.25rem] border border-slate-200 bg-white p-4 transition-colors hover:border-primary/20 hover:bg-slate-50"
+                  >
+                    <p className="text-sm font-bold text-primary">{article.label}</p>
+                    <p className="mt-2 text-sm leading-7 text-slate-600">{article.description}</p>
+                  </Link>
+                ))}
+                <Link
+                  href={siteLinks.blog}
+                  className="block rounded-[1.25rem] border border-slate-200 bg-white p-4 transition-colors hover:border-primary/20 hover:bg-slate-50"
+                >
+                  <p className="text-sm font-bold text-primary">Gold Coast Blog Hub</p>
+                  <p className="mt-2 text-sm leading-7 text-slate-600">
+                    Explore Wave Solution's growing cluster of local cleaning, rental, commercial, and pest-control guides.
+                  </p>
+                </Link>
+              </div>
             </div>
           </div>
         </div>

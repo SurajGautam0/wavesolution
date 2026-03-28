@@ -4,7 +4,7 @@ import * as React from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { Briefcase, Building2, ChevronDown, Home, Mail, Menu, Phone, Repeat, Sparkles, Truck } from "lucide-react"
+import { Briefcase, Bug, Building2, ChevronDown, Home, Mail, Menu, Phone, Repeat, Sparkles, Truck } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
@@ -19,6 +19,8 @@ const serviceRoutes = [
   { href: siteLinks.endOfLeaseCleaning, label: "End of Lease", description: "Rental exit cleaning for apartments, units, and homes", icon: Repeat },
   { href: siteLinks.commercialCleaning, label: "Commercial Cleaning", description: "Tailored business cleaning for customer-facing premises", icon: Briefcase },
   { href: siteLinks.deepCleaning, label: "Deep Cleaning", description: "One-off detailed cleaning for homes, offices, and rentals", icon: Sparkles },
+  { href: siteLinks.carpetCleaning, label: "Carpet Cleaning", description: "Carpet refresh for homes, rentals, and workplaces", icon: Sparkles },
+  { href: siteLinks.pestControl, label: "Pest Control", description: "Local treatment support for common Gold Coast pest issues", icon: Bug },
 ]
 
 export function MainNav() {
@@ -48,6 +50,7 @@ export function MainNav() {
       hasSubmenu: true,
     },
     { href: siteLinks.gallery, label: "Gallery", active: pathname === siteLinks.gallery },
+    { href: siteLinks.blog, label: "Blog", active: pathname === siteLinks.blog || pathname.startsWith("/blog/") },
     { href: siteLinks.about, label: "About", active: pathname === siteLinks.about },
     { href: siteLinks.testimonials, label: "Testimonials", active: pathname === siteLinks.testimonials },
     { href: siteLinks.contact, label: "Contact", active: pathname === siteLinks.contact },
@@ -69,7 +72,7 @@ export function MainNav() {
             </Link>
           </div>
           <p className="text-[10px] font-black uppercase tracking-[0.2em] text-white/60">
-            Gold Coast house, office, bond, and commercial cleaning
+            Gold Coast house, office, carpet cleaning, and pest control
           </p>
         </div>
       </div>

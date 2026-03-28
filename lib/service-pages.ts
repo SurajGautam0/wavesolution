@@ -30,6 +30,7 @@ export type ServicePage = {
 const sharedWhyChooseUs = [
   "Fully insured cleaners with clear communication from quote to completion.",
   "Police-checked, respectful team members for homes, offices, and rental properties.",
+  "Eco-friendly product options for family homes, workplaces, and sensitive indoor spaces.",
   "Local Gold Coast scheduling with fast response times and flexible booking options.",
   "Detailed cleaning checklists tailored to the property type, timing, and service goals.",
   "Easy follow-up support if you need to adjust scope, timing, or access details.",
@@ -671,6 +672,188 @@ export const servicePages: ServicePage[] = [
       "bond-cleaning-gold-coast",
     ],
   },
+  {
+    slug: "carpet-cleaning-gold-coast",
+    shortLabel: "Carpet Cleaning Gold Coast",
+    navLabel: "Carpet Cleaning",
+    metaTitle: "Carpet Cleaning Gold Coast | Fresh Carpets and Faster Drying",
+    metaDescription:
+      "Professional carpet cleaning across the Gold Coast for homes, rentals, offices, and commercial spaces. Refresh tired carpets and request a fast local quote.",
+    heroEyebrow: "Carpet Refresh Service",
+    heroTitle: "Carpet Cleaning Gold Coast",
+    heroDescription:
+      "Wave Solution provides carpet cleaning across the Gold Coast for family homes, rental properties, offices, and business spaces that need fresher, cleaner carpets.",
+    primaryKeyword: "carpet cleaning Gold Coast",
+    keywords: [
+      "carpet cleaning Gold Coast",
+      "carpet cleaners Gold Coast",
+      "carpet steam cleaning Gold Coast",
+      "carpet stain cleaning Gold Coast",
+    ],
+    overview: [
+      "Carpet cleaning is an important service for Gold Coast homes and businesses because carpets absorb daily wear in a way hard floors do not. Sand, dust, moisture, food spills, pet hair, and foot traffic can all leave carpets looking tired long before a room actually needs a full renovation. A dedicated carpet-cleaning page should speak directly to that problem and explain how professional treatment helps refresh the look, feel, and hygiene of the space.",
+      "In the Gold Coast market, carpet cleaning demand comes from several groups. Homeowners want a cleaner and fresher living environment. Tenants need carpets looking presentable before inspections or move-out. Office managers want entry areas, meeting rooms, and shared floors to look more professional. Property managers need reliable support between tenancies. This page should therefore frame carpet cleaning as both a hygiene service and a presentation service.",
+      "From an SEO perspective, carpet cleaning Gold Coast deserves its own page because search intent is highly specific. People looking for carpet cleaning are usually not looking for a generic house clean. They want to know whether stains, traffic marks, odours, and tired fibres can be improved, how the process works, and how quickly the carpet can be ready to use again.",
+    ],
+    includedItems: [
+      "Carpet cleaning support for homes, rentals, offices, and commercial interiors",
+      "Treatment focus on traffic lanes, general buildup, odour-prone areas, and everyday marks",
+      "Quotes based on carpet area, condition, site access, and urgency of the booking",
+      "Helpful guidance for move-out preparation, inspection presentation, and regular maintenance",
+      "Local service coverage across key Gold Coast suburbs and business areas",
+      "Clear next-step contact options for booking, quoting, and property access questions",
+    ],
+    whyChooseUs: sharedWhyChooseUs,
+    sections: [
+      {
+        title: "Carpet cleaning Gold Coast homes use to lift presentation fast",
+        paragraphs: [
+          "Carpets have a big effect on how clean a room feels. Even when benches are wiped and bathrooms are tidy, worn or stained carpet can make the whole property feel older and less hygienic. That is why carpet cleaning is such a strong conversion service. The improvement is easy for customers to understand. Fresher carpets improve presentation, reduce stale odours, and make living spaces feel better immediately.",
+          "This is especially useful in family homes, apartments, and rental properties where living areas and bedrooms absorb repeated daily traffic. A good carpet-cleaning page should help the visitor quickly understand that the service is practical, local, and suitable for real Gold Coast property types instead of reading like a generic national template.",
+        ],
+      },
+      {
+        title: "Rental and bond support for carpets that need better inspection presentation",
+        paragraphs: [
+          "Carpet condition can become a major issue during move-out and handover. Tenants are often concerned about marks, general wear, and how carpet presentation will affect the final inspection. By linking carpet cleaning naturally with bond cleaning and end of lease cleaning, Wave Solution can support a much more complete rental-preparation journey without keyword stuffing or duplicating pages.",
+          "This is also a strong cross-sell opportunity. Someone booking end-of-lease cleaning may also need carpet treatment. Someone booking carpet cleaning for a rental may need a broader move-out clean. The page should make those pathways obvious through internal links and clear service language.",
+        ],
+      },
+      {
+        title: "Office and commercial carpet cleaning for cleaner-looking workspaces",
+        paragraphs: [
+          "Carpet cleaning is not only a residential service. Offices, reception areas, meeting rooms, and customer-facing spaces all benefit from carpets that look maintained and fresh. In business settings, tired carpet can quietly undermine presentation even when the rest of the workplace is clean. A dedicated Gold Coast carpet page should therefore mention office and commercial use cases naturally and link to commercial cleaning and office cleaning pages where relevant.",
+          "For business buyers, the value proposition is simple: a cleaner-looking workspace, better presentation for staff and clients, and a maintenance approach that supports the overall image of the premises. That is especially relevant in Southport, Robina, Broadbeach, and other active commercial areas.",
+        ],
+      },
+      {
+        title: "A useful local page for carpet cleaners Gold Coast searches",
+        paragraphs: [
+          "This page should be structured around the real questions customers ask: what kinds of carpets can be treated, whether homes and offices are supported, how quotes are worked out, and what the next step is. That helps the page rank because it solves the problem clearly, and it helps conversion because it reduces uncertainty.",
+          "Combined with strong trust signals, links to bond cleaning, deep cleaning, and commercial cleaning, and a simple quote CTA, this page can become a durable local asset for carpet-cleaning searches across the Gold Coast.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "Do you offer carpet cleaning across the Gold Coast?",
+        answer:
+          "Yes. We provide carpet cleaning support across key Gold Coast suburbs for homes, rentals, offices, and commercial spaces.",
+      },
+      {
+        question: "Can carpet cleaning be added to an end of lease or bond clean?",
+        answer:
+          "Yes. Carpet cleaning can be quoted alongside bond cleaning or end of lease cleaning where the property needs a more complete move-out service.",
+      },
+      {
+        question: "Do you clean office carpets as well as residential carpets?",
+        answer:
+          "Yes. We can help with office and commercial carpet cleaning depending on the site, access requirements, and carpet condition.",
+      },
+      {
+        question: "How do you quote for carpet cleaning?",
+        answer:
+          "Quotes depend on the area to be cleaned, carpet condition, property type, site access, and whether the booking is part of a broader cleaning service.",
+      },
+    ],
+    relatedSlugs: [
+      "cleaning-gold-coast",
+      "bond-cleaning-gold-coast",
+      "end-of-lease-cleaning-gold-coast",
+      "commercial-cleaning-gold-coast",
+    ],
+  },
+  {
+    slug: "pest-control-gold-coast",
+    shortLabel: "Pest Control Gold Coast",
+    navLabel: "Pest Control",
+    metaTitle: "Pest Control Gold Coast | Local Treatments for Homes and Businesses",
+    metaDescription:
+      "Pest control across the Gold Coast for homes, rentals, and business premises dealing with common coastal pest issues. Request a fast local quote today.",
+    heroEyebrow: "Gold Coast Pest Support",
+    heroTitle: "Pest Control Gold Coast",
+    heroDescription:
+      "Wave Solution provides pest control across the Gold Coast for homes, rental properties, and workplaces needing practical treatment for common local pests.",
+    primaryKeyword: "pest control Gold Coast",
+    keywords: [
+      "pest control Gold Coast",
+      "pest treatment Gold Coast",
+      "home pest control Gold Coast",
+      "commercial pest control Gold Coast",
+    ],
+    overview: [
+      "Pest control is a natural complement to cleaning services in the Gold Coast because the local climate creates conditions that many pests thrive in. Warm temperatures, humidity, coastal weather patterns, and a mix of apartments, family homes, and commercial sites all contribute to ongoing pest pressure. A dedicated pest-control page should explain that local reality clearly rather than relying on generic Australia-wide statements.",
+      "For customers, the problem is rarely abstract. They are usually dealing with visible activity, recurring concerns, or a property they want to protect before the issue gets worse. Homeowners want a safer and more comfortable environment. Tenants want to resolve problems quickly and present the property well. Businesses want treatment that supports hygiene and customer confidence. This page should acknowledge those needs directly.",
+      "From an SEO perspective, pest control Gold Coast has strong local intent and deserves a page that stands on its own. It should connect naturally with end-of-lease, commercial, and deep-cleaning journeys where relevant, but the content still needs to be clearly about pest treatment rather than trying to force everything into a general cleaning page.",
+    ],
+    includedItems: [
+      "Pest control support for homes, apartments, rentals, offices, and business premises",
+      "Practical treatment planning for common Gold Coast pest issues and recurring concerns",
+      "Clear quoting based on property type, site conditions, access, and treatment scope",
+      "Helpful advice on preparation, property use, and follow-up support where needed",
+      "Local service coverage across major Gold Coast suburbs and surrounding areas",
+      "Easy handover between pest-control enquiries, rental cleaning, and general property support",
+    ],
+    whyChooseUs: sharedWhyChooseUs,
+    sections: [
+      {
+        title: "Pest control Gold Coast homes need in a humid coastal climate",
+        paragraphs: [
+          "Gold Coast properties deal with environmental conditions that can make pest issues more persistent. Humidity, warmth, and frequent indoor-outdoor movement all create opportunities for activity around kitchens, bathrooms, entry points, garages, storage areas, and outdoor living zones. A strong local pest-control page should reflect those practical conditions and help the customer feel understood quickly.",
+          "That local awareness matters because customers want providers who understand the property types and climate conditions they actually live with. Homes near the coast, rental units, suburban family properties, and mixed-use business sites all have different patterns of risk and access.",
+        ],
+      },
+      {
+        title: "Pest treatment for rentals, homes, and commercial premises",
+        paragraphs: [
+          "Pest-control enquiries often overlap with broader property care. Tenants may need support before handover. Property managers may need treatment between occupancies. Businesses may need a clean, professional response that supports hygiene standards and customer confidence. By linking pest control thoughtfully with commercial cleaning, deep cleaning, and end-of-lease services, Wave Solution can create a much stronger property-services ecosystem.",
+          "This page should still stay focused on pest treatment, but the internal links should help users move toward the right complementary service when their situation involves more than one issue. That improves both usability and topical depth across the site.",
+        ],
+      },
+      {
+        title: "Why local trust matters for pest control enquiries",
+        paragraphs: [
+          "Trust is especially important when someone is booking a provider into their home or workplace to deal with an issue that feels urgent or unpleasant. Customers want clear communication, practical next steps, and confidence that the provider understands the Gold Coast environment. A strong page therefore emphasises local service coverage, fast response, straightforward quoting, and clear follow-up support.",
+          "It should also avoid overclaiming. White-hat SEO and good conversion copy both work better when the page is honest about process, scope, and next steps rather than promising unrealistic outcomes simply to chase clicks.",
+        ],
+      },
+      {
+        title: "A long-term local asset for pest control Gold Coast searches",
+        paragraphs: [
+          "This page should become the main local entry point for pest-control searches and then feed users to the right supporting content over time. That includes future blogs on common Gold Coast pests, prevention tips for humid homes, treatment frequency, and pre-settlement inspections, plus relevant service links for rental and commercial properties.",
+          "When supported by real FAQs, suburb relevance, and genuine trust content, this page helps Wave Solution expand topical authority without undermining the cleaning-first structure of the rest of the site.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "Do you provide pest control across the Gold Coast?",
+        answer:
+          "Yes. We provide pest control support across key Gold Coast suburbs for homes, rentals, and business premises.",
+      },
+      {
+        question: "Can pest control be booked for rental properties?",
+        answer:
+          "Yes. Pest treatment can be arranged for rental properties, including situations where the property also needs end of lease or move-out cleaning support.",
+      },
+      {
+        question: "Do you offer pest control for commercial premises?",
+        answer:
+          "Yes. We can support commercial pest-control enquiries depending on the premises, access needs, and treatment scope.",
+      },
+      {
+        question: "How do I request a pest control quote?",
+        answer:
+          "Call us or use the booking and contact pages with your property type, suburb, issue details, and preferred timing so we can recommend the right next step.",
+      },
+    ],
+    relatedSlugs: [
+      "cleaning-gold-coast",
+      "commercial-cleaning-gold-coast",
+      "end-of-lease-cleaning-gold-coast",
+      "deep-cleaning-gold-coast",
+    ],
+  },
 ]
 
 export const servicePageMap = new Map(servicePages.map((page) => [page.slug, page]))
@@ -688,4 +871,6 @@ export const legacyServiceRedirects: Record<string, string> = {
   "bond-cleaning": "/bond-cleaning-gold-coast",
   "end-of-lease-cleaning": "/end-of-lease-cleaning-gold-coast",
   "commercial-cleaning": "/commercial-cleaning-gold-coast",
+  "carpet-cleaning": "/carpet-cleaning-gold-coast",
+  "pest-control": "/pest-control-gold-coast",
 }

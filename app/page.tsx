@@ -57,11 +57,26 @@ const serviceCards = [
     price: "Detailed reset",
     href: siteLinks.deepCleaning,
   },
+  {
+    title: "Carpet Cleaning Gold Coast",
+    description: "Carpet refresh and stain-focused cleaning for homes, rentals, offices, and commercial fit-outs.",
+    icon: "Carpet",
+    price: "Fresh carpets",
+    href: siteLinks.carpetCleaning,
+  },
+  {
+    title: "Pest Control Gold Coast",
+    description: "Targeted pest control support for homes, rentals, and businesses dealing with common Gold Coast pests.",
+    icon: "Bug",
+    price: "Local treatment",
+    href: siteLinks.pestControl,
+  },
 ]
 
 const whyChooseUs = [
   "Fully insured cleaners who communicate clearly from quote to completion.",
   "Police-checked staff for homes, offices, rental properties, and business spaces.",
+  "Eco-friendly cleaning options available for families, pets, and sensitive indoor spaces.",
   "Local Gold Coast team with practical suburb coverage and flexible scheduling.",
   "Fast booking response so you can move quickly on urgent household or rental jobs.",
   "Cleaning plans that match the property type instead of forcing every lead into the same package.",
@@ -327,7 +342,7 @@ export default function Home() {
               <Link href={siteLinks.homeCleaning} className="font-semibold text-primary underline-offset-4 hover:text-secondary hover:underline">
                 local house cleaners
               </Link>
-              , the pages below make it easier to move to the service that matches your property and timing.
+              , the pages below make it easier to move to the service, suburb, or article cluster that matches your property and timing.
             </p>
 
             <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
@@ -341,6 +356,40 @@ export default function Home() {
                   <p className="mt-3 text-sm leading-7 text-slate-600">{service.description}</p>
                 </Link>
               ))}
+            </div>
+
+            <div className="mt-8 grid gap-4 lg:grid-cols-2">
+              <div className="rounded-[1.5rem] border border-slate-200 bg-white p-6">
+                <p className="text-xs font-black uppercase tracking-[0.2em] text-secondary">Top Gold Coast Suburbs</p>
+                <div className="mt-4 flex flex-wrap gap-3 text-sm font-semibold">
+                  <Link href="/locations/southport" className="rounded-full border border-slate-200 px-4 py-2 text-primary transition-colors hover:border-primary/20 hover:text-secondary">
+                    Southport
+                  </Link>
+                  <Link href="/locations/robina" className="rounded-full border border-slate-200 px-4 py-2 text-primary transition-colors hover:border-primary/20 hover:text-secondary">
+                    Robina
+                  </Link>
+                  <Link href="/locations/surfers-paradise" className="rounded-full border border-slate-200 px-4 py-2 text-primary transition-colors hover:border-primary/20 hover:text-secondary">
+                    Surfers Paradise
+                  </Link>
+                  <Link href="/locations/broadbeach" className="rounded-full border border-slate-200 px-4 py-2 text-primary transition-colors hover:border-primary/20 hover:text-secondary">
+                    Broadbeach
+                  </Link>
+                  <Link href={siteLinks.locations} className="rounded-full border border-slate-200 px-4 py-2 text-primary transition-colors hover:border-primary/20 hover:text-secondary">
+                    View all service areas
+                  </Link>
+                </div>
+              </div>
+
+              <div className="rounded-[1.5rem] border border-slate-200 bg-white p-6">
+                <p className="text-xs font-black uppercase tracking-[0.2em] text-secondary">Helpful Resources</p>
+                <p className="mt-4 text-sm leading-7 text-slate-600">
+                  Visit our{" "}
+                  <Link href={siteLinks.blog} className="font-semibold text-primary underline-offset-4 hover:text-secondary hover:underline">
+                    blog hub
+                  </Link>{" "}
+                  for cleaning guides, eco-friendly advice, and commercial cleaning insights written for Gold Coast homes and businesses.
+                </p>
+              </div>
             </div>
           </div>
         </div>

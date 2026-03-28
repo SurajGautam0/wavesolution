@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     template: "%s | Wave Solution Cleaning",
   },
   description:
-    "Professional cleaning services across the Gold Coast including house cleaning, office cleaning, bond cleaning, end of lease cleaning, deep cleaning, and commercial cleaning.",
+    "Professional services across the Gold Coast including house cleaning, office cleaning, bond cleaning, end of lease cleaning, deep cleaning, commercial cleaning, carpet cleaning, and pest control.",
   keywords: [
     "cleaning services Gold Coast",
     "house cleaning Gold Coast",
@@ -36,6 +36,8 @@ export const metadata: Metadata = {
     "end of lease cleaning Gold Coast",
     "bond cleaning Gold Coast",
     "commercial cleaning Gold Coast",
+    "carpet cleaning Gold Coast",
+    "pest control Gold Coast",
     "house cleaners Gold Coast",
     "cleaning services Southport",
     "cleaning services Robina",
@@ -70,7 +72,7 @@ export const metadata: Metadata = {
     siteName: businessInfo.businessNameWithLocation,
     title: "Cleaning Services Gold Coast | House, Office, Bond & Commercial Cleaning",
     description:
-      "Professional cleaning services across the Gold Coast including house cleaning, office cleaning, bond cleaning, end of lease cleaning, deep cleaning, and commercial cleaning.",
+      "Professional services across the Gold Coast including house cleaning, office cleaning, bond cleaning, end of lease cleaning, deep cleaning, commercial cleaning, carpet cleaning, and pest control.",
     images: [
       {
         url: "/gold-coast-cleaning-services.jpeg",
@@ -85,7 +87,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Cleaning Services Gold Coast | House, Office, Bond & Commercial Cleaning",
     description:
-      "Professional cleaning services across the Gold Coast including house cleaning, office cleaning, bond cleaning, end of lease cleaning, deep cleaning, and commercial cleaning.",
+      "Professional services across the Gold Coast including house cleaning, office cleaning, bond cleaning, end of lease cleaning, deep cleaning, commercial cleaning, carpet cleaning, and pest control.",
     images: ["/gold-coast-cleaning-services.jpeg"],
   },
   robots: {
@@ -112,7 +114,7 @@ const jsonLd = {
       name: businessInfo.businessNameWithLocation,
       alternateName: businessInfo.brandName,
       description:
-        "Local house cleaning, office cleaning, bond cleaning, end of lease cleaning, commercial cleaning, and deep cleaning services across the Gold Coast and nearby suburbs.",
+        "Local house cleaning, office cleaning, bond cleaning, end of lease cleaning, commercial cleaning, deep cleaning, carpet cleaning, and pest control services across the Gold Coast and nearby suburbs.",
       image: `${businessInfo.baseUrl}/gold-coast-cleaning-services.jpeg`,
       logo: `${businessInfo.baseUrl}/logo.png`,
       url: businessInfo.baseUrl,
@@ -246,6 +248,36 @@ const jsonLd = {
               price: "200",
               priceCurrency: "AUD",
               unitText: "per session",
+            },
+          },
+          {
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Service",
+              name: "Carpet Cleaning Gold Coast",
+              description:
+                "Carpet cleaning for homes, rentals, offices, and commercial interiors across the Gold Coast.",
+            },
+            priceSpecification: {
+              "@type": "PriceSpecification",
+              price: "150",
+              priceCurrency: "AUD",
+              unitText: "per service",
+            },
+          },
+          {
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Service",
+              name: "Pest Control Gold Coast",
+              description:
+                "Pest control support for homes, rentals, and business premises across the Gold Coast.",
+            },
+            priceSpecification: {
+              "@type": "PriceSpecification",
+              price: "180",
+              priceCurrency: "AUD",
+              unitText: "per service",
             },
           },
         ],

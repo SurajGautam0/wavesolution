@@ -57,6 +57,7 @@ export const businessInfo = {
 
 export const siteLinks = {
   home: "/",
+  blog: "/blog",
   services: "/services",
   cleaningGoldCoast: "/cleaning-gold-coast",
   homeCleaning: "/house-cleaning-gold-coast",
@@ -65,6 +66,8 @@ export const siteLinks = {
   endOfLeaseCleaning: "/end-of-lease-cleaning-gold-coast",
   commercialCleaning: "/commercial-cleaning-gold-coast",
   deepCleaning: "/deep-cleaning-gold-coast",
+  carpetCleaning: "/carpet-cleaning-gold-coast",
+  pestControl: "/pest-control-gold-coast",
   contact: "/contact",
   book: "/book",
   about: "/about",

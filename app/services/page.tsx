@@ -7,16 +7,16 @@ import { businessInfo, siteLinks } from "@/lib/business-info"
 import { servicePages } from "@/lib/service-pages"
 
 export const metadata: Metadata = {
-  title: "Cleaning Services Gold Coast | House, Office, Bond & Commercial Cleaning",
+  title: "Cleaning Services Gold Coast | House, Office, Carpet & Pest Control",
   description:
-    "Explore Wave Solution cleaning services in the Gold Coast including house cleaning, office cleaning, bond cleaning, end of lease cleaning, commercial cleaning, and deep cleaning.",
+    "Explore Wave Solution services in the Gold Coast including house cleaning, office cleaning, bond cleaning, end of lease cleaning, commercial cleaning, deep cleaning, carpet cleaning, and pest control.",
   alternates: {
     canonical: `${businessInfo.baseUrl}/services`,
   },
   openGraph: {
-    title: "Cleaning Services Gold Coast | House, Office, Bond & Commercial Cleaning",
+    title: "Cleaning Services Gold Coast | House, Office, Carpet & Pest Control",
     description:
-      "Explore Wave Solution cleaning services in the Gold Coast including house cleaning, office cleaning, bond cleaning, end of lease cleaning, commercial cleaning, and deep cleaning.",
+      "Explore Wave Solution services in the Gold Coast including house cleaning, office cleaning, bond cleaning, end of lease cleaning, commercial cleaning, deep cleaning, carpet cleaning, and pest control.",
     url: `${businessInfo.baseUrl}/services`,
   },
 }
@@ -48,6 +48,10 @@ export default function ServicesPage() {
                     ? "Home"
                     : page.slug === "office-cleaning-gold-coast"
                       ? "Building2"
+                      : page.slug === "carpet-cleaning-gold-coast"
+                        ? "Carpet"
+                        : page.slug === "pest-control-gold-coast"
+                          ? "Bug"
                       : page.slug === "bond-cleaning-gold-coast"
                         ? "Truck"
                         : page.slug === "end-of-lease-cleaning-gold-coast"
