@@ -17,8 +17,10 @@ const serviceRoutes = [
   { href: siteLinks.officeCleaning, label: "Office Cleaning", description: "Professional workplace cleaning for offices and staff spaces", icon: Building2 },
   { href: siteLinks.bondCleaning, label: "Bond Cleaning", description: "Detailed move-out cleaning before inspection and handover", icon: Truck },
   { href: siteLinks.endOfLeaseCleaning, label: "End of Lease", description: "Rental exit cleaning for apartments, units, and homes", icon: Repeat },
+  { href: siteLinks.moveInCleaning, label: "Move-In Cleaning", description: "Fresh-start cleaning before settling into a home or rental", icon: Home },
   { href: siteLinks.commercialCleaning, label: "Commercial Cleaning", description: "Tailored business cleaning for customer-facing premises", icon: Briefcase },
   { href: siteLinks.deepCleaning, label: "Deep Cleaning", description: "One-off detailed cleaning for homes, offices, and rentals", icon: Sparkles },
+  { href: siteLinks.afterBuildersCleaning, label: "After Builders", description: "Post-renovation cleaning for homes, fit-outs, and commercial spaces", icon: Sparkles },
   { href: siteLinks.carpetCleaning, label: "Carpet Cleaning", description: "Carpet refresh for homes, rentals, and workplaces", icon: Sparkles },
   { href: siteLinks.pestControl, label: "Pest Control", description: "Local treatment support for common Gold Coast pest issues", icon: Bug },
 ]

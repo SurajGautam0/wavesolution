@@ -2,6 +2,7 @@
 
 import { usePathname } from "next/navigation"
 import { MainNav } from "@/components/main-nav"
+import { MobileStickyCta } from "@/components/mobile-sticky-cta"
 import { SiteFooter } from "@/components/site-footer"
 import { WhatsAppWidget } from "@/components/whatsapp-widget"
 
@@ -22,8 +23,9 @@ export function LayoutWrapper({ children }: { children: React.ReactNode }) {
         return (
             <>
                 <MainNav />
-                <main className="flex-1">{children}</main>
+                <main className="flex-1 pb-20 md:pb-0">{children}</main>
                 <SiteFooter />
+                <MobileStickyCta />
             </>
         )
     }

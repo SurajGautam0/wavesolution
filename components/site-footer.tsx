@@ -12,9 +12,12 @@ const primaryLinks = [
   { href: siteLinks.officeCleaning, label: "Office Cleaning" },
   { href: siteLinks.locations, label: "Locations" },
   { href: siteLinks.bondCleaning, label: "Bond Cleaning" },
+  { href: siteLinks.moveInCleaning, label: "Move-In Cleaning" },
   { href: siteLinks.commercialCleaning, label: "Commercial Cleaning" },
+  { href: siteLinks.afterBuildersCleaning, label: "After Builders" },
   { href: siteLinks.carpetCleaning, label: "Carpet Cleaning" },
   { href: siteLinks.pestControl, label: "Pest Control" },
+  { href: siteLinks.team, label: "Team" },
   { href: siteLinks.contact, label: "Contact" },
 ]
 

@@ -673,6 +673,188 @@ export const servicePages: ServicePage[] = [
     ],
   },
   {
+    slug: "move-in-cleaning-gold-coast",
+    shortLabel: "Move-In Cleaning Gold Coast",
+    navLabel: "Move-In Cleaning",
+    metaTitle: "Move-In Cleaning Gold Coast | Fresh Start Cleaning Before You Settle In",
+    metaDescription:
+      "Move-in cleaning across the Gold Coast for homes, apartments, rentals, and newly purchased properties. Start in a cleaner space with a fast local quote.",
+    heroEyebrow: "Fresh Start Cleaning",
+    heroTitle: "Move-In Cleaning Gold Coast",
+    heroDescription:
+      "Wave Solution provides move-in cleaning across the Gold Coast for households and property owners who want kitchens, bathrooms, floors, and touchpoints cleaned before settling into the space.",
+    primaryKeyword: "move-in cleaning Gold Coast",
+    keywords: [
+      "move-in cleaning Gold Coast",
+      "pre move in cleaning Gold Coast",
+      "new home cleaning Gold Coast",
+      "apartment move in cleaning Gold Coast",
+    ],
+    overview: [
+      "Move-in cleaning is a highly practical service because even a property that looks tidy at handover does not always feel genuinely ready to live in. Dust inside cupboards, residues in kitchens and bathrooms, marks on touchpoints, and the general feeling of someone else's occupancy can all affect how comfortable a new home feels. A strong move-in page should address that emotional and practical concern clearly: people want to unpack into a space that feels fresh, hygienic, and ready from day one.",
+      "On the Gold Coast, move-in cleaning can apply to newly leased apartments, recently purchased homes, renovated properties, downsizing moves, and family relocations. The service is especially helpful for people moving under time pressure who do not want to spend the first day in the property scrubbing bathrooms, wiping shelves, or dealing with leftover grime in the kitchen. By positioning the page around that real-life scenario, Wave Solution can attract high-intent users without sounding generic.",
+      "From an SEO perspective, move-in cleaning Gold Coast is a valuable support page because it captures a different part of the moving journey from bond cleaning or end of lease cleaning. One page speaks to leaving well. This page speaks to arriving well. That distinction helps topical coverage and keeps the site useful instead of repetitive.",
+    ],
+    includedItems: [
+      "Move-in cleaning for houses, apartments, townhouses, and newly purchased properties",
+      "Detailed attention to kitchens, bathrooms, shelving, cupboards, floors, and high-touch points",
+      "Helpful service before furniture delivery, family move-in, or tenant occupancy",
+      "Quotes based on property size, condition, access timing, and any extra detail required",
+      "Practical internal links to deep cleaning, house cleaning, and end-of-lease support",
+      "Local service coverage across major Gold Coast suburbs and surrounding areas",
+    ],
+    whyChooseUs: sharedWhyChooseUs,
+    sections: [
+      {
+        title: "Move-in cleaning Gold Coast households book for peace of mind",
+        paragraphs: [
+          "The value of move-in cleaning is not just visual. It is about confidence. People want to feel comfortable opening cupboards, using bathrooms, unpacking kitchenware, and letting children settle into the property without wondering what has been missed. That makes this page a strong trust and conversion asset when it explains the practical benefit of arriving to a cleaner, fresher space.",
+          "This is particularly helpful in apartment-heavy suburbs such as Southport, Broadbeach, and Surfers Paradise, where previous occupancy, tight handover timing, and limited storage spaces can make detail cleaning more noticeable. The more local and realistic the page feels, the better it will perform.",
+        ],
+      },
+      {
+        title: "Pre move-in cleaning for rentals, purchases, and newly renovated spaces",
+        paragraphs: [
+          "Move-in cleaning is useful across multiple property situations. Renters may want a reset before unpacking. New homeowners may want the property cleaned before family members arrive. Renovated spaces may need detail cleaning after trades. By speaking to these scenarios clearly, the page becomes more useful than a generic paragraph about fresh homes.",
+          "This also creates helpful internal-link opportunities. Someone needing move-in cleaning may also need after-builders cleaning, deep cleaning, or recurring house cleaning after the first reset. The site should make those next steps easy to discover.",
+        ],
+      },
+      {
+        title: "What affects the quote for move-in cleaning?",
+        paragraphs: [
+          "A pricing explanation should focus on what actually changes the scope: property size, the amount of detail needed in kitchens and bathrooms, whether the property is empty or partially occupied, and whether the booking is tied to renovation dust, move timing, or a broader reset. That kind of explanation improves trust because it helps the visitor understand why quotes vary from property to property.",
+          "Clear pricing guidance also reduces low-quality enquiries. Customers who understand what affects the quote are more likely to provide useful details up front, which means faster responses and better-fit bookings.",
+        ],
+      },
+      {
+        title: "A useful local landing page for Gold Coast move-in searches",
+        paragraphs: [
+          "This page should support move-in cleaning Gold Coast searches, but it should also help people who are searching in plain language for help before moving into a new home. Natural wording such as new home cleaning, pre move-in cleaning, and apartment move-in cleaning can be used without forcing keywords into every sentence.",
+          "Combined with strong trust signals, FAQs, nearby suburb links, and simple calls to action, this page can become a reliable support asset within the wider moving and home-cleaning silo.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "What is included in move-in cleaning?",
+        answer:
+          "Move-in cleaning usually focuses on kitchens, bathrooms, floors, touchpoints, cupboards, shelves, and other areas that need to feel clean before you unpack and settle into the property.",
+      },
+      {
+        question: "Do you clean apartments and townhouses before move-in?",
+        answer:
+          "Yes. We provide move-in cleaning for apartments, units, townhouses, and houses across the Gold Coast.",
+      },
+      {
+        question: "Can move-in cleaning be booked after renovations?",
+        answer:
+          "Yes. If the property has renovation dust or builder residue, we may recommend after-builders cleaning or a more detailed reset depending on the condition of the space.",
+      },
+      {
+        question: "How do you quote for move-in cleaning?",
+        answer:
+          "Quotes are based on property size, condition, access timing, and whether the property needs standard move-in preparation or a more detailed post-renovation or deep-cleaning scope.",
+      },
+    ],
+    relatedSlugs: [
+      "cleaning-gold-coast",
+      "house-cleaning-gold-coast",
+      "deep-cleaning-gold-coast",
+      "end-of-lease-cleaning-gold-coast",
+    ],
+  },
+  {
+    slug: "after-builders-cleaning-gold-coast",
+    shortLabel: "After Builders Cleaning Gold Coast",
+    navLabel: "After Builders Cleaning",
+    metaTitle: "After Builders Cleaning Gold Coast | Post-Renovation Dust and Detail Cleaning",
+    metaDescription:
+      "After builders cleaning across the Gold Coast for homes, renovations, fit-outs, and commercial spaces that need dust, residue, and detail cleaning before handover.",
+    heroEyebrow: "Post-Renovation Cleaning",
+    heroTitle: "After Builders Cleaning Gold Coast",
+    heroDescription:
+      "Wave Solution provides after builders cleaning across the Gold Coast for renovated homes, fit-outs, newly completed rooms, and commercial spaces needing a careful post-build reset.",
+    primaryKeyword: "after builders cleaning Gold Coast",
+    keywords: [
+      "after builders cleaning Gold Coast",
+      "post renovation cleaning Gold Coast",
+      "builders clean Gold Coast",
+      "construction cleaning Gold Coast",
+    ],
+    overview: [
+      "After-builders cleaning is one of the most detail-heavy services on the site because post-renovation spaces often look close to complete while still holding fine dust, residue, labels, smears, and debris that make the property feel unfinished. A page targeting after builders cleaning Gold Coast needs to show that Wave Solution understands this difference. It is not just a general clean. It is a post-work reset focused on making the space ready to live in, present, or hand over.",
+      "This service applies to renovated kitchens and bathrooms, home extensions, newly completed rooms, shop fit-outs, office refurbishments, and commercial upgrades. In Gold Coast properties, fine dust and residue can spread well beyond the work zone, which means the service needs to address surrounding surfaces, floors, fittings, and touchpoints with care. A practical local page should explain that clearly and avoid vague promises.",
+      "From an SEO standpoint, this page helps Wave Solution capture high-value intent from owners, tenants, project managers, and businesses searching for post-renovation or construction cleaning support. It also gives the site a more complete property-care footprint, especially when linked with move-in cleaning, deep cleaning, and commercial cleaning.",
+    ],
+    includedItems: [
+      "Post-renovation and after-builders cleaning for homes, fit-outs, and commercial spaces",
+      "Attention to dust, residue, surfaces, floors, fittings, and handover presentation",
+      "Useful for kitchens, bathrooms, new rooms, shop fit-outs, and office upgrades",
+      "Quotes based on property size, renovation stage, amount of residue, and access timing",
+      "Internal links to move-in cleaning, deep cleaning, and commercial cleaning pathways",
+      "Local service coverage across key Gold Coast suburbs and surrounding business areas",
+    ],
+    whyChooseUs: sharedWhyChooseUs,
+    sections: [
+      {
+        title: "After builders cleaning Gold Coast properties need before handover",
+        paragraphs: [
+          "Renovation work can leave behind a surprising amount of fine dust and detail residue. Even when the trades are finished, the property often still needs a careful cleaning pass before it feels complete. That is why this page should speak directly to handover readiness, final presentation, and the gap between a finished build and a finished living or working environment.",
+          "This is especially important when a homeowner wants to move in quickly, a tenant needs the property ready to occupy, or a commercial fit-out needs to look presentable for staff or customers. The service should therefore be framed as the final step that helps the project feel truly complete.",
+        ],
+      },
+      {
+        title: "Post renovation cleaning for homes, apartments, and commercial spaces",
+        paragraphs: [
+          "Gold Coast renovation projects vary widely. Some involve one room. Others involve full kitchen or bathroom upgrades, extensions, office refurbishments, or customer-facing fit-outs. A strong page should acknowledge those different scales and make it clear that scope depends on the amount of dust, residue, access, and detail work required.",
+          "That flexibility is important for conversion because visitors want a provider who understands the difference between a light post-trade tidy-up and a more involved after-builders clean. Specificity here improves trust and lead quality.",
+        ],
+      },
+      {
+        title: "What affects pricing for after-builders cleaning?",
+        paragraphs: [
+          "A clear pricing explanation should mention the real factors behind the quote: the size of the property, the number of rooms affected, the level of fine dust or builder residue, the amount of detailing needed, and whether the clean is part of a move-in or commercial handover process. This helps the user understand the service and removes some of the uncertainty that can stop enquiries.",
+          "It also aligns with a white-hat conversion approach. Clear scope explanations are better than vague pricing promises because they help match the right service to the right property.",
+        ],
+      },
+      {
+        title: "A strong support page for builders clean and renovation cleaning searches",
+        paragraphs: [
+          "This page should naturally support related search language such as post renovation cleaning, builders clean, and construction cleaning, while still staying easy to read for people who are not using industry terms. The main goal is to explain the problem clearly and give the visitor a practical next step.",
+          "With strong internal links, local relevance, and trust signals, after-builders cleaning can become a useful higher-intent page that complements the broader cleaning and move-in service cluster.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "What is after builders cleaning?",
+        answer:
+          "After builders cleaning is a post-renovation or post-construction clean that focuses on dust, residue, detail surfaces, floors, fittings, and the final presentation of the space.",
+      },
+      {
+        question: "Do you clean homes after renovation work?",
+        answer:
+          "Yes. We provide after-builders cleaning for renovated homes, apartments, fit-outs, and commercial spaces across the Gold Coast.",
+      },
+      {
+        question: "Can after-builders cleaning be combined with move-in cleaning?",
+        answer:
+          "Yes. If the property is about to be occupied after renovation work, after-builders cleaning and move-in cleaning can be planned together based on the condition of the space.",
+      },
+      {
+        question: "How do you quote for post-renovation cleaning?",
+        answer:
+          "Quotes depend on the size of the property, the renovation stage, the amount of dust and residue, access conditions, and the level of detail needed before handover or occupancy.",
+      },
+    ],
+    relatedSlugs: [
+      "cleaning-gold-coast",
+      "move-in-cleaning-gold-coast",
+      "deep-cleaning-gold-coast",
+      "commercial-cleaning-gold-coast",
+    ],
+  },
+  {
     slug: "carpet-cleaning-gold-coast",
     shortLabel: "Carpet Cleaning Gold Coast",
     navLabel: "Carpet Cleaning",
@@ -870,6 +1052,8 @@ export const legacyServiceRedirects: Record<string, string> = {
   "deep-cleaning": "/deep-cleaning-gold-coast",
   "bond-cleaning": "/bond-cleaning-gold-coast",
   "end-of-lease-cleaning": "/end-of-lease-cleaning-gold-coast",
+  "move-in-cleaning": "/move-in-cleaning-gold-coast",
+  "after-builders-cleaning": "/after-builders-cleaning-gold-coast",
   "commercial-cleaning": "/commercial-cleaning-gold-coast",
   "carpet-cleaning": "/carpet-cleaning-gold-coast",
   "pest-control": "/pest-control-gold-coast",

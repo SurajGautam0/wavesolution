@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     template: "%s | Wave Solution Cleaning",
   },
   description:
-    "Professional services across the Gold Coast including house cleaning, office cleaning, bond cleaning, end of lease cleaning, deep cleaning, commercial cleaning, carpet cleaning, and pest control.",
+    "Professional services across the Gold Coast including house cleaning, office cleaning, bond cleaning, end of lease cleaning, move-in cleaning, after builders cleaning, deep cleaning, commercial cleaning, carpet cleaning, and pest control.",
   keywords: [
     "cleaning services Gold Coast",
     "house cleaning Gold Coast",
@@ -36,6 +36,8 @@ export const metadata: Metadata = {
     "end of lease cleaning Gold Coast",
     "bond cleaning Gold Coast",
     "commercial cleaning Gold Coast",
+    "move-in cleaning Gold Coast",
+    "after builders cleaning Gold Coast",
     "carpet cleaning Gold Coast",
     "pest control Gold Coast",
     "house cleaners Gold Coast",
@@ -72,7 +74,7 @@ export const metadata: Metadata = {
     siteName: businessInfo.businessNameWithLocation,
     title: "Cleaning Services Gold Coast | House, Office, Bond & Commercial Cleaning",
     description:
-      "Professional services across the Gold Coast including house cleaning, office cleaning, bond cleaning, end of lease cleaning, deep cleaning, commercial cleaning, carpet cleaning, and pest control.",
+      "Professional services across the Gold Coast including house cleaning, office cleaning, bond cleaning, end of lease cleaning, move-in cleaning, after builders cleaning, deep cleaning, commercial cleaning, carpet cleaning, and pest control.",
     images: [
       {
         url: "/gold-coast-cleaning-services.jpeg",
@@ -87,7 +89,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Cleaning Services Gold Coast | House, Office, Bond & Commercial Cleaning",
     description:
-      "Professional services across the Gold Coast including house cleaning, office cleaning, bond cleaning, end of lease cleaning, deep cleaning, commercial cleaning, carpet cleaning, and pest control.",
+      "Professional services across the Gold Coast including house cleaning, office cleaning, bond cleaning, end of lease cleaning, move-in cleaning, after builders cleaning, deep cleaning, commercial cleaning, carpet cleaning, and pest control.",
     images: ["/gold-coast-cleaning-services.jpeg"],
   },
   robots: {
@@ -114,7 +116,7 @@ const jsonLd = {
       name: businessInfo.businessNameWithLocation,
       alternateName: businessInfo.brandName,
       description:
-        "Local house cleaning, office cleaning, bond cleaning, end of lease cleaning, commercial cleaning, deep cleaning, carpet cleaning, and pest control services across the Gold Coast and nearby suburbs.",
+        "Local house cleaning, office cleaning, bond cleaning, end of lease cleaning, move-in cleaning, after builders cleaning, commercial cleaning, deep cleaning, carpet cleaning, and pest control services across the Gold Coast and nearby suburbs.",
       image: `${businessInfo.baseUrl}/gold-coast-cleaning-services.jpeg`,
       logo: `${businessInfo.baseUrl}/logo.png`,
       url: businessInfo.baseUrl,
@@ -140,21 +142,6 @@ const jsonLd = {
         latitude: businessInfo.coordinates.latitude,
         longitude: businessInfo.coordinates.longitude,
       },
-      aggregateRating: {
-        "@type": "AggregateRating",
-        ratingValue: "4.9",
-        reviewCount: "86",
-        bestRating: "5",
-        worstRating: "1"
-      },
-      review: [
-        {
-          "@type": "Review",
-          author: { "@type": "Person", name: "Sarah Johnson" },
-          reviewRating: { "@type": "Rating", ratingValue: "5" },
-          reviewBody: "WaveSolution has been cleaning my home for over a year now, and I couldn't be happier. Thorough and eco-friendly."
-        }
-      ],
       openingHoursSpecification: businessInfo.openingHoursSpecification,
       hasOfferCatalog: {
         "@type": "OfferCatalog",
@@ -239,6 +226,21 @@ const jsonLd = {
             "@type": "Offer",
             itemOffered: {
               "@type": "Service",
+              name: "Move-In Cleaning Gold Coast",
+              description:
+                "Move-in cleaning for apartments, homes, and newly purchased properties across the Gold Coast.",
+            },
+            priceSpecification: {
+              "@type": "PriceSpecification",
+              price: "220",
+              priceCurrency: "AUD",
+              unitText: "per session",
+            },
+          },
+          {
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Service",
               name: "Commercial Cleaning Gold Coast",
               description:
                 "Tailored commercial cleaning for offices, customer-facing premises, and business spaces across the Gold Coast.",
@@ -248,6 +250,21 @@ const jsonLd = {
               price: "200",
               priceCurrency: "AUD",
               unitText: "per session",
+            },
+          },
+          {
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Service",
+              name: "After Builders Cleaning Gold Coast",
+              description:
+                "After builders and post-renovation cleaning for homes, fit-outs, and commercial spaces across the Gold Coast.",
+            },
+            priceSpecification: {
+              "@type": "PriceSpecification",
+              price: "300",
+              priceCurrency: "AUD",
+              unitText: "per service",
             },
           },
           {

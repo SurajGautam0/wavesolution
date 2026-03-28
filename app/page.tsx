@@ -44,6 +44,13 @@ const serviceCards = [
     href: siteLinks.endOfLeaseCleaning,
   },
   {
+    title: "Move-In Cleaning Gold Coast",
+    description: "Detailed move-in cleaning so homes, rentals, and newly purchased properties feel fresh from day one.",
+    icon: "Home",
+    price: "Fresh start",
+    href: siteLinks.moveInCleaning,
+  },
+  {
     title: "Commercial Cleaning Gold Coast",
     description: "Cleaning plans for businesses, retail spaces, clinics, and other commercial premises.",
     icon: "Briefcase",
@@ -70,6 +77,13 @@ const serviceCards = [
     icon: "Bug",
     price: "Local treatment",
     href: siteLinks.pestControl,
+  },
+  {
+    title: "After Builders Cleaning Gold Coast",
+    description: "Post-construction and renovation cleaning for homes, fit-outs, and business spaces that need a full reset.",
+    icon: "Sparkles",
+    price: "Post-build clean",
+    href: siteLinks.afterBuildersCleaning,
   },
 ]
 

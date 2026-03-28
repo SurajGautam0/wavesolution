@@ -1,23 +1,31 @@
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-    title: "Customer Reviews & Testimonials | Rated 4.9★ in Gold Coast",
-    description: "Read 250+ genuine reviews from Gold Coast customers. WaveSolution is rated 4.9/5 for professional home & office cleaning. See why thousands trust us across Gold Coast, Southport & QLD.",
-    keywords: ["cleaning reviews Gold Coast", "cleaning testimonials", "best rated cleaners Gold Coast", "WaveSolution reviews", "house cleaning reviews Southport"],
-    alternates: {
-        canonical: "https://www.wavesolution.com.au/testimonials",
-    },
-    openGraph: {
-        title: "WaveSolution Reviews | Rated 4.9★ by Gold Coast Customers",
-        description: "250+ five-star reviews. See why Gold Coast trusts WaveSolution for professional cleaning.",
-        url: "https://www.wavesolution.com.au/testimonials",
-    },
+  title: "Customer Testimonials | Gold Coast Cleaning and Pest Control Feedback",
+  description:
+    "Read customer feedback for WaveSolution's Gold Coast cleaning and pest-control services, including homes, rentals, offices, and commercial spaces.",
+  keywords: [
+    "cleaning reviews Gold Coast",
+    "cleaning testimonials Gold Coast",
+    "pest control reviews Gold Coast",
+    "WaveSolution testimonials",
+    "house cleaning feedback Gold Coast",
+  ],
+  alternates: {
+    canonical: "https://www.wavesolution.com.au/testimonials",
+  },
+  openGraph: {
+    title: "Customer Testimonials | Gold Coast Cleaning and Pest Control Feedback",
+    description:
+      "Read customer feedback for WaveSolution's Gold Coast cleaning and pest-control services across homes, rentals, and commercial spaces.",
+    url: "https://www.wavesolution.com.au/testimonials",
+  },
 }
 
 export default function TestimonialsLayout({
-    children,
+  children,
 }: {
-    children: React.ReactNode
+  children: React.ReactNode
 }) {
-    return <>{children}</>
+  return <>{children}</>
 }

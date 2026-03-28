@@ -47,6 +47,30 @@ export function ServiceLandingPage({ page }: ServiceLandingPageProps) {
             description: "Non-toxic product ideas and green cleaning habits for Gold Coast properties.",
           },
         ]
+  const pricingDetails =
+    page.slug === "office-cleaning-gold-coast" || page.slug === "commercial-cleaning-gold-coast"
+      ? [
+          "Quotes depend on the type of premises, floor area, layout, and the level of daily or weekly usage.",
+          "Access timing, after-hours requirements, and agreed cleaning frequency affect the service plan.",
+          "Extra hygiene priorities, customer-facing areas, and site-specific requirements can change the scope.",
+        ]
+      : page.slug === "carpet-cleaning-gold-coast"
+        ? [
+            "Carpet area, room count, and the level of wear or staining all affect the quote.",
+            "Site access, drying expectations, and whether the service is part of a move-out clean can change scope.",
+            "Heavier buildup or detail work around edges and high-traffic lanes may require more time and care.",
+          ]
+        : page.slug === "pest-control-gold-coast"
+          ? [
+              "Quotes depend on property type, issue details, treatment scope, and site access.",
+              "Homes, rentals, and commercial sites can require different treatment planning and follow-up support.",
+              "The more clearly the issue is described up front, the faster we can recommend the right next step.",
+            ]
+          : [
+              "Property size, room count, and the level of detail needed are the biggest quote drivers.",
+              "Move-out, move-in, renovation, or heavier buildup can increase the scope compared with standard maintenance cleaning.",
+              "Access timing, urgency, optional extras, and whether the service is one-off or recurring also affect pricing.",
+            ]
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -222,6 +246,20 @@ export function ServiceLandingPage({ page }: ServiceLandingPageProps) {
 
       <section className="bg-white py-14 md:py-20">
         <div className="classic-container">
+          <div className="mb-10 rounded-[2rem] border border-slate-200 bg-slate-50 p-7 shadow-sm">
+            <h2 className="text-2xl font-black tracking-tight text-primary">Pricing Guide for {page.shortLabel}</h2>
+            <p className="mt-4 text-sm leading-7 text-slate-600">
+              We use tailored quotes because cleaning and pest-control needs vary by property, condition, timing, and service scope. The most accurate pricing comes from a quick local quote, but these are the main factors that shape the estimate.
+            </p>
+            <div className="mt-6 grid gap-4 md:grid-cols-3">
+              {pricingDetails.map((detail) => (
+                <div key={detail} className="rounded-[1.5rem] border border-slate-200 bg-white p-5">
+                  <p className="text-sm leading-7 text-slate-600">{detail}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
           <div className="rounded-[2.5rem] border border-slate-200 bg-slate-50 p-8 shadow-sm sm:p-10">
             <h2 className="text-3xl font-black tracking-tight text-primary">Helpful Internal Links</h2>
             <p className="mt-4 max-w-3xl text-base leading-8 text-slate-600">

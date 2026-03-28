@@ -9,14 +9,14 @@ import { servicePages } from "@/lib/service-pages"
 export const metadata: Metadata = {
   title: "Cleaning Services Gold Coast | House, Office, Carpet & Pest Control",
   description:
-    "Explore Wave Solution services in the Gold Coast including house cleaning, office cleaning, bond cleaning, end of lease cleaning, commercial cleaning, deep cleaning, carpet cleaning, and pest control.",
+    "Explore Wave Solution services in the Gold Coast including house cleaning, office cleaning, bond cleaning, end of lease cleaning, move-in cleaning, after builders cleaning, commercial cleaning, deep cleaning, carpet cleaning, and pest control.",
   alternates: {
     canonical: `${businessInfo.baseUrl}/services`,
   },
   openGraph: {
     title: "Cleaning Services Gold Coast | House, Office, Carpet & Pest Control",
     description:
-      "Explore Wave Solution services in the Gold Coast including house cleaning, office cleaning, bond cleaning, end of lease cleaning, commercial cleaning, deep cleaning, carpet cleaning, and pest control.",
+      "Explore Wave Solution services in the Gold Coast including house cleaning, office cleaning, bond cleaning, end of lease cleaning, move-in cleaning, after builders cleaning, commercial cleaning, deep cleaning, carpet cleaning, and pest control.",
     url: `${businessInfo.baseUrl}/services`,
   },
 }
@@ -48,6 +48,8 @@ export default function ServicesPage() {
                     ? "Home"
                     : page.slug === "office-cleaning-gold-coast"
                       ? "Building2"
+                      : page.slug === "move-in-cleaning-gold-coast"
+                        ? "Home"
                       : page.slug === "carpet-cleaning-gold-coast"
                         ? "Carpet"
                         : page.slug === "pest-control-gold-coast"

@@ -21,15 +21,15 @@ const teamMembers: TeamMember[] = [
   {
     name: "Sushant Timalcena",
     position: "Founder & CEO",
-    bio: "Sushant founded WaveSolution in 2010 with a vision to provide exceptional cleaning services across Gold Coast and surrounding suburbs. With over 20 years of experience in the industry, he leads our team with passion and dedication.",
-    image: "/placeholder.svg?height=400&width=300",
+    bio: "Sushant founded WaveSolution in 2010 with a vision to provide dependable cleaning support across the Gold Coast. He leads the business with a strong focus on service standards, local accountability, and practical customer care.",
+    image: "/avatar-placeholder.svg",
     social: {},
   },
   {
     name: "Veshraj Gautam",
     position: "Operations Manager",
-    bio: "Veshraj oversees all cleaning operations, ensuring our high standards are maintained across all services. His attention to detail and commitment to excellence has been instrumental in our growth.",
-    image: "/placeholder.svg?height=400&width=300",
+    bio: "Veshraj oversees day-to-day operations, helping keep scheduling, quality, and communication consistent across residential and commercial jobs.",
+    image: "/avatar-placeholder.svg",
     social: {
       instagram: "https://instagram.com/",
     },
@@ -37,15 +37,15 @@ const teamMembers: TeamMember[] = [
   {
     name: "Michael Chen",
     position: "Customer Relations",
-    bio: "Michael is dedicated to ensuring our customers receive the best possible experience. He manages our customer service team and is always looking for ways to improve our service delivery.",
-    image: "/placeholder.svg?height=400&width=300",
+    bio: "Michael focuses on customer communication, helping new enquiries move smoothly from quote to booking while making service expectations clear.",
+    image: "/avatar-placeholder.svg",
     social: {},
   },
   {
     name: "Emma Thompson",
     position: "Training Specialist",
-    bio: "Emma is responsible for training our cleaning staff, ensuring they are equipped with the latest techniques and knowledge. Her expertise ensures our team delivers consistent, high-quality results.",
-    image: "/placeholder.svg?height=400&width=300",
+    bio: "Emma supports training and service consistency so the team follows clear standards across homes, rental properties, and workplaces.",
+    image: "/avatar-placeholder.svg",
     social: {
       instagram: "https://instagram.com/",
     },
@@ -155,7 +155,7 @@ export default function AboutPage() {
                   WaveSolution was founded in 2010 with a simple mission: to provide exceptional
                   cleaning services that exceed customer expectations. What began as a small team
                   of dedicated professionals has grown into one of Gold Coast&apos;s most trusted
-                  cleaning service providers.
+                  local property-service providers.
                 </p>
                 <p>
                   Our journey has been driven by a passion for cleanliness and a commitment to
@@ -165,7 +165,7 @@ export default function AboutPage() {
                 </p>
                 <p>
                   Over the years, we've expanded our services to meet the diverse needs of our
-                  clients, from residential homes to commercial spaces, while maintaining the
+                  clients, from residential homes to commercial spaces and related property care, while maintaining the
                   personalized approach that has become our hallmark.
                 </p>
               </div>
@@ -353,14 +353,17 @@ export default function AboutPage() {
                 <li className="flex items-start">
                   <CheckCircle className="mr-2 h-5 w-5 text-secondary shrink-0 mt-0.5" />
                   <span className="text-muted-foreground">
-                    <strong className="text-foreground">Insured and Bonded:</strong> Your property is protected when you
-                    work with us.
+                    <strong className="text-foreground">Fully Insured and Police-Checked:</strong> Your property is
+                    supported by a team that takes trust, access, and accountability seriously.
                   </span>
                 </li>
               </ul>
-              <div className="mt-8">
+              <div className="mt-8 flex flex-col gap-4 sm:flex-row">
                 <Button asChild className="classic-button">
                   <Link href="/services">Explore Our Services</Link>
+                </Button>
+                <Button asChild variant="outline" className="bg-white hover:bg-gray-100 text-primary border-gray-300">
+                  <Link href="/team">Meet the Team</Link>
                 </Button>
               </div>
             </div>
