@@ -94,7 +94,7 @@ export default function RegisterPage() {
                         <span className="text-[10px] font-black uppercase tracking-[0.2em]">New Member Registration</span>
                     </div>
                     <h1 className="text-5xl font-serif font-black tracking-tighter leading-tight">
-                        Join the Elite Circle of <span className="text-secondary">Pristine</span> Living.
+                        Create an Account | <span className="text-secondary">Wave Solution</span>
                     </h1>
                     <p className="text-white/60 text-lg font-medium leading-relaxed">
                         Create your account to unlock personalized cleaning plans, VIP scheduling, and exclusive property maintenance insights.

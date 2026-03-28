@@ -223,8 +223,8 @@ export default function TestimonialsPage() {
             </div>
 
             <h1 className="text-5xl font-black tracking-tight sm:text-7xl md:text-8xl mb-8 text-white leading-[0.9] animate-fadeIn">
-              Stories of <br />
-              <span className="text-secondary shimmer-text">Brilliance</span>
+              Customer Testimonials <br />
+              <span className="text-secondary shimmer-text">Gold Coast</span>
             </h1>
 
             <div className="w-24 h-2 bg-secondary mb-10 rounded-full animate-fadeIn" />

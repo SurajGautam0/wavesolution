@@ -223,8 +223,8 @@ export default function GalleryPage() {
 						</div>
 
 						<h1 className="text-5xl font-black tracking-tight sm:text-7xl md:text-8xl mb-8 leading-[0.9]">
-							Our <br />
-							<span className="text-secondary shimmer-text">Gallery</span>
+							Cleaning Gallery <br />
+						<span className="text-secondary shimmer-text">Gold Coast</span>
 						</h1>
 
 						<div className="w-24 h-2 bg-secondary mb-10 rounded-full" />

@@ -1,6 +1,6 @@
 import Image from "next/image"
 import Link from "next/link"
-import { Clock3, Mail, MapPin, Phone } from "lucide-react"
+import { Clock3, Mail, MapPin, Phone, Facebook, Instagram, Linkedin, Twitter, Youtube } from "lucide-react"
 
 import { businessInfo, siteLinks } from "@/lib/business-info"
 
@@ -93,6 +93,23 @@ export function SiteFooter() {
 
         <div className="flex flex-col gap-3 pt-5 text-sm text-white/60 md:flex-row md:items-center md:justify-between">
           <p>&copy; {new Date().getFullYear()} {businessInfo.businessName}. All rights reserved.</p>
+          <div className="flex gap-4">
+            <Link href="https://facebook.com" aria-label="Facebook">
+              <Facebook className="h-5 w-5 text-white/60 hover:text-white transition-colors" />
+            </Link>
+            <Link href="https://instagram.com" aria-label="Instagram">
+              <Instagram className="h-5 w-5 text-white/60 hover:text-white transition-colors" />
+            </Link>
+            <Link href="https://linkedin.com" aria-label="LinkedIn">
+              <Linkedin className="h-5 w-5 text-white/60 hover:text-white transition-colors" />
+            </Link>
+            <Link href="https://youtube.com" aria-label="YouTube">
+              <Youtube className="h-5 w-5 text-white/60 hover:text-white transition-colors" />
+            </Link>
+            <Link href="https://twitter.com" aria-label="X (Twitter)">
+              <Twitter className="h-5 w-5 text-white/60 hover:text-white transition-colors" />
+            </Link>
+          </div>
           <div className="flex flex-wrap gap-4">
             <Link href={siteLinks.book} className="transition-colors hover:text-secondary">
               Book Now

@@ -5,7 +5,7 @@ import type React from "react"
 import { useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
-import { MapPin, Phone, Mail, Clock, Send, CheckCircle } from "lucide-react"
+import { MapPin, Phone, Mail, Clock, Send, CheckCircle, Facebook, Instagram, Linkedin, Twitter, Youtube } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
@@ -82,7 +82,7 @@ export default function ContactPage() {
         </div>
         <div className="classic-container relative z-10">
           <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl mb-6">Contact Wave Solution Cleaning in Gold Coast</h1>
+            <h1 className="text-4xl font-black tracking-tight sm:text-5xl md:text-6xl mb-6">Contact Wave Solution Cleaning Gold Coast</h1>
             <div className="w-20 h-1 bg-secondary mx-auto mb-6"></div>
             <p className="text-xl text-white/80 mb-8">
               Contact Wave Solution Cleaning for house, office, bond, and rental cleaning quotes across the Gold Coast.

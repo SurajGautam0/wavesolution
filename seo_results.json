@@ -1,0 +1,312 @@
+[
+  {
+    "file": "app\\about\\layout.tsx",
+    "title": "About WaveSolution | Gold Coast Cleaning and Pest Control Since 2010",
+    "titleLen": 68,
+    "description": "Learn about WaveSolution, a Gold Coast cleaning and pest-control business focused on reliable local service, clear communication, and fully insured support since 2010.",
+    "descLen": 167,
+    "h1": null,
+    "h1Len": 0,
+    "numH1s": 0
+  },
+  {
+    "file": "app\\about\\page.tsx",
+    "title": null,
+    "titleLen": 0,
+    "description": null,
+    "descLen": 0,
+    "h1": "Driven by <br />\r <span className=\"text-secondary shimmer-text\">Quality</span>",
+    "h1Len": 78,
+    "numH1s": 1
+  },
+  {
+    "file": "app\\admin\\layout.tsx",
+    "title": null,
+    "titleLen": 0,
+    "description": null,
+    "descLen": 0,
+    "h1": null,
+    "h1Len": 0,
+    "numH1s": 0
+  },
+  {
+    "file": "app\\admin\\page.tsx",
+    "title": "Total Bookings",
+    "titleLen": 14,
+    "description": "Lifetime bookings recorded",
+    "descLen": 26,
+    "h1": "Dashboard Overview",
+    "h1Len": 18,
+    "numH1s": 5
+  },
+  {
+    "file": "app\\blog\\cleaning-tips\\page.tsx",
+    "title": "10 House Cleaning Tips for Gold Coast Homes | Expert Cleaning Guide",
+    "titleLen": 67,
+    "description": "Expert house cleaning tips from Gold Coast",
+    "descLen": 42,
+    "h1": "10 Essential Tips for a <span className=\"text-secondary\">Sparkling Home</span>",
+    "h1Len": 78,
+    "numH1s": 1
+  },
+  {
+    "file": "app\\blog\\eco-friendly\\page.tsx",
+    "title": "Eco-Friendly Cleaning Products & Methods | Green Cleaning Gold Coast",
+    "titleLen": 68,
+    "description": "Discover eco-friendly cleaning solutions for Gold Coast homes. Non-toxic, child & pet-safe natural cleaning methods. WaveSolution uses green cleaning products across all Gold Coast suburbs. Sustainable cleaning guide.",
+    "descLen": 217,
+    "h1": "Effective <span className=\"text-secondary\">Eco-Friendly</span> Cleaning Solutions",
+    "h1Len": 81,
+    "numH1s": 1
+  },
+  {
+    "file": "app\\blog\\office-cleaning\\page.tsx",
+    "title": "Office Cleaning Guide Gold Coast | How Often Should You Clean Your Office?",
+    "titleLen": 74,
+    "description": "Expert guide on office cleaning frequency & best practices for Gold Coast businesses. Daily, weekly & monthly cleaning schedules. Learn how a clean workspace boosts productivity by 15%. Tips from Gold Coast",
+    "descLen": 206,
+    "h1": "Office <span className=\"text-secondary\">Cleaning</span>: Strategic Frequency & Methods",
+    "h1Len": 86,
+    "numH1s": 1
+  },
+  {
+    "file": "app\\blog\\page.tsx",
+    "title": "House Cleaning Tips for Gold Coast Homes",
+    "titleLen": 40,
+    "description": "Practical cleaning advice for busy households that want a cleaner, easier-to-manage home between professional visits.",
+    "descLen": 117,
+    "h1": "Gold Coast Cleaning and Pest Control Guides",
+    "h1Len": 43,
+    "numH1s": 1
+  },
+  {
+    "file": "app\\book\\page.tsx",
+    "title": "Book a Cleaner Online | Instant Booking Gold Coast",
+    "titleLen": 50,
+    "description": "Book professional cleaning services in the Gold Coast online in under 2 minutes. Choose from house cleaning, office cleaning, bond cleaning, end of lease cleaning, deep cleaning, or commercial cleaning.",
+    "descLen": 202,
+    "h1": null,
+    "h1Len": 0,
+    "numH1s": 0
+  },
+  {
+    "file": "app\\contact\\layout.tsx",
+    "title": "Contact Wave Solution Cleaning | Free Gold Coast Quote",
+    "titleLen": 54,
+    "description": "Get a free cleaning quote for Gold Coast homes and businesses. Call 0450 833 683 or book online.",
+    "descLen": 96,
+    "h1": null,
+    "h1Len": 0,
+    "numH1s": 0
+  },
+  {
+    "file": "app\\contact\\page.tsx",
+    "title": "Message Sent",
+    "titleLen": 12,
+    "description": "We",
+    "descLen": 2,
+    "h1": "Contact Wave Solution Cleaning in Gold Coast",
+    "h1Len": 44,
+    "numH1s": 1
+  },
+  {
+    "file": "app\\dashboard\\layout.tsx",
+    "title": null,
+    "titleLen": 0,
+    "description": null,
+    "descLen": 0,
+    "h1": null,
+    "h1Len": 0,
+    "numH1s": 0
+  },
+  {
+    "file": "app\\dashboard\\page.tsx",
+    "title": "Profile Updated",
+    "titleLen": 15,
+    "description": "Your profile information has been successfully saved.",
+    "descLen": 53,
+    "h1": "My Dashboard",
+    "h1Len": 12,
+    "numH1s": 4
+  },
+  {
+    "file": "app\\gallery\\layout.tsx",
+    "title": "Cleaning Gallery | Before & After Results Gold Coast",
+    "titleLen": 52,
+    "description": "View our gallery of professional cleaning transformations across Gold Coast. Before & after photos from home cleaning, office cleaning, deep cleaning & end of lease cleaning projects in Gold Coast & Southport.",
+    "descLen": 209,
+    "h1": null,
+    "h1Len": 0,
+    "numH1s": 0
+  },
+  {
+    "file": "app\\gallery\\page.tsx",
+    "title": "Professional Home Cleaning",
+    "titleLen": 26,
+    "description": "Spotless results in every corner — our team delivering top-quality residential cleaning on the Gold Coast.",
+    "descLen": 106,
+    "h1": "Our <br />\r <span className=\"text-secondary shimmer-text\">Gallery</span>",
+    "h1Len": 72,
+    "numH1s": 1
+  },
+  {
+    "file": "app\\layout.tsx",
+    "title": "Cleaning Services Gold Coast | House, Office, Bond & Commercial Cleaning",
+    "titleLen": 72,
+    "description": "Professional services across the Gold Coast including house cleaning, office cleaning, bond cleaning, end of lease cleaning, move-in cleaning, after builders cleaning, deep cleaning, commercial cleaning, carpet cleaning, and pest control.",
+    "descLen": 238,
+    "h1": null,
+    "h1Len": 0,
+    "numH1s": 0
+  },
+  {
+    "file": "app\\locations\\page.tsx",
+    "title": "Gold Coast Cleaning Service Areas | Robina, Southport & More",
+    "titleLen": 60,
+    "description": "Explore Wave Solution Cleaning service areas across Gold Coast, including Robina, Southport, Surfers Paradise and Broadbeach.",
+    "descLen": 125,
+    "h1": "Local Cleaning Services Across Gold Coast Suburbs",
+    "h1Len": 49,
+    "numH1s": 1
+  },
+  {
+    "file": "app\\locations\\[slug]\\page.tsx",
+    "title": null,
+    "titleLen": 0,
+    "description": null,
+    "descLen": 0,
+    "h1": "{location.heroTitle}",
+    "h1Len": 20,
+    "numH1s": 1
+  },
+  {
+    "file": "app\\login\\layout.tsx",
+    "title": null,
+    "titleLen": 0,
+    "description": null,
+    "descLen": 0,
+    "h1": null,
+    "h1Len": 0,
+    "numH1s": 0
+  },
+  {
+    "file": "app\\login\\page.tsx",
+    "title": null,
+    "titleLen": 0,
+    "description": null,
+    "descLen": 0,
+    "h1": "Experience a New Level of <span className=\"text-secondary\">Clarity</span> and Service.",
+    "h1Len": 86,
+    "numH1s": 1
+  },
+  {
+    "file": "app\\logout\\page.tsx",
+    "title": null,
+    "titleLen": 0,
+    "description": null,
+    "descLen": 0,
+    "h1": "Signing you out",
+    "h1Len": 15,
+    "numH1s": 1
+  },
+  {
+    "file": "app\\page.tsx",
+    "title": "Cleaning Gold Coast",
+    "titleLen": 19,
+    "description": "A local landing page for homes, offices, rentals, and businesses that need reliable cleaning across the Gold Coast.",
+    "descLen": 115,
+    "h1": null,
+    "h1Len": 0,
+    "numH1s": 0
+  },
+  {
+    "file": "app\\register\\layout.tsx",
+    "title": null,
+    "titleLen": 0,
+    "description": null,
+    "descLen": 0,
+    "h1": null,
+    "h1Len": 0,
+    "numH1s": 0
+  },
+  {
+    "file": "app\\register\\page.tsx",
+    "title": null,
+    "titleLen": 0,
+    "description": null,
+    "descLen": 0,
+    "h1": "Join the Elite Circle of <span className=\"text-secondary\">Pristine</span> Living.",
+    "h1Len": 81,
+    "numH1s": 1
+  },
+  {
+    "file": "app\\services\\home-cleaning\\page.tsx",
+    "title": null,
+    "titleLen": 0,
+    "description": null,
+    "descLen": 0,
+    "h1": null,
+    "h1Len": 0,
+    "numH1s": 0
+  },
+  {
+    "file": "app\\services\\page.tsx",
+    "title": "Cleaning Services Gold Coast | House, Office, Carpet & Pest Control",
+    "titleLen": 67,
+    "description": "Explore Wave Solution services in the Gold Coast including house cleaning, office cleaning, bond cleaning, end of lease cleaning, move-in cleaning, after builders cleaning, commercial cleaning, deep cleaning, carpet cleaning, and pest control.",
+    "descLen": 243,
+    "h1": "Cleaning Services Gold Coast",
+    "h1Len": 28,
+    "numH1s": 1
+  },
+  {
+    "file": "app\\services\\[slug]\\page.tsx",
+    "title": null,
+    "titleLen": 0,
+    "description": null,
+    "descLen": 0,
+    "h1": null,
+    "h1Len": 0,
+    "numH1s": 0
+  },
+  {
+    "file": "app\\team\\page.tsx",
+    "title": "Meet the Wave Solution Team | Gold Coast Cleaning and Pest Control Experts",
+    "titleLen": 74,
+    "description": "Meet the Wave Solution team behind our Gold Coast cleaning and pest-control services. Learn how we work, what standards we follow, and why local customers trust us.",
+    "descLen": 164,
+    "h1": "Meet the Team Behind Wave Solution",
+    "h1Len": 34,
+    "numH1s": 1
+  },
+  {
+    "file": "app\\testimonials\\layout.tsx",
+    "title": "Customer Testimonials | Gold Coast Cleaning and Pest Control Feedback",
+    "titleLen": 69,
+    "description": "Read customer feedback for WaveSolution",
+    "descLen": 39,
+    "h1": null,
+    "h1Len": 0,
+    "numH1s": 0
+  },
+  {
+    "file": "app\\testimonials\\page.tsx",
+    "title": null,
+    "titleLen": 0,
+    "description": null,
+    "descLen": 0,
+    "h1": "Stories of <br />\r <span className=\"text-secondary shimmer-text\">Brilliance</span>",
+    "h1Len": 82,
+    "numH1s": 1
+  },
+  {
+    "file": "app\\[serviceSlug]\\page.tsx",
+    "title": null,
+    "titleLen": 0,
+    "description": null,
+    "descLen": 0,
+    "h1": null,
+    "h1Len": 0,
+    "numH1s": 0
+  }
+]

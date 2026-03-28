@@ -111,7 +111,7 @@ export default function LoginPage() {
                         <span className="text-[10px] font-black uppercase tracking-[0.2em]">#1 Cleaning Services</span>
                     </div>
                     <h1 className="text-5xl font-serif font-black tracking-tighter leading-tight">
-                        Experience a New Level of <span className="text-secondary">Clarity</span> and Service.
+                        Login to Wave Solution <span className="text-secondary">Gold Coast</span>
                     </h1>
                     <p className="text-white/60 text-lg font-medium leading-relaxed">
                         Access your personalized cleaning dashboard, manage bookings, and communicate with your dedicated cleaning professionals—all in one place.

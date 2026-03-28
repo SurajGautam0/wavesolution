@@ -5,7 +5,7 @@ import { Calendar, User, Clock, ChevronRight, CheckCircle2, Sparkles, ArrowLeft 
 import { Button } from "@/components/ui/button"
 
 export const metadata: Metadata = {
-    title: "10 House Cleaning Tips for Gold Coast Homes | Expert Cleaning Guide",
+    title: "10 House Cleaning Tips for Gold Coast Homes",
     description: "Expert house cleaning tips from Gold Coast's top cleaners. Learn professional cleaning techniques for kitchens, bathrooms, windows & more. Practical tips for maintaining a spotless Gold Coast home year-round.",
     keywords: ["house cleaning tips Gold Coast", "home cleaning guide", "how to clean house", "cleaning tips Australia", "kitchen cleaning tips", "bathroom cleaning hacks"],
     alternates: {
@@ -77,7 +77,7 @@ export default function CleaningTipsPage() {
                         <ArrowLeft className="w-4 h-4 mr-2" /> Back to Home
                     </Link>
                     <h1 className="text-3xl sm:text-5xl md:text-6xl font-serif font-black tracking-tighter mb-8 leading-tight max-w-4xl mx-auto">
-                        10 Essential Tips for a <span className="text-secondary">Sparkling Home</span>
+                        10 House Cleaning Tips for <span className="text-secondary">Gold Coast Homes</span>
                     </h1>
 
 

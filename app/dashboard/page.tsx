@@ -299,7 +299,7 @@ export default function UserDashboardPage() {
                     {activeTab === "bookings" && (
                         <div className="space-y-6 animate-in fade-in slide-in-from-right-6 duration-500">
                             <div>
-                                <h1 className="text-3xl font-bold text-slate-900 tracking-tight">My Bookings</h1>
+                                <h2 className="text-3xl font-bold text-slate-900 tracking-tight">My Bookings</h2>
                                 <p className="text-slate-500 font-medium text-base mt-1">Full history of your scheduled services.</p>
                             </div>
 
@@ -359,7 +359,7 @@ export default function UserDashboardPage() {
                     {activeTab === "history" && (
                         <div className="space-y-6 animate-in fade-in slide-in-from-right-6 duration-500">
                             <div>
-                                <h1 className="text-3xl font-bold text-slate-900 tracking-tight">Service History</h1>
+                                <h2 className="text-3xl font-bold text-slate-900 tracking-tight">Service History</h2>
                                 <p className="text-slate-500 font-medium text-base mt-1">Review your past completed cleanings.</p>
                             </div>
 
@@ -415,7 +415,7 @@ export default function UserDashboardPage() {
                     {activeTab === "profile" && (
                         <div className="space-y-6 animate-in fade-in slide-in-from-right-6 duration-500">
                             <div>
-                                <h1 className="text-3xl font-bold text-slate-900 tracking-tight">Profile Settings</h1>
+                                <h2 className="text-3xl font-bold text-slate-900 tracking-tight">Profile Settings</h2>
                                 <p className="text-slate-500 font-medium text-base mt-1">Update your personal information and cleaning preferences.</p>
                             </div>
 

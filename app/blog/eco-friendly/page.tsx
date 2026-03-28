@@ -5,8 +5,8 @@ import { Calendar, User, Clock, Sparkles, ArrowLeft, Leaf, Zap } from "lucide-re
 import { Button } from "@/components/ui/button"
 
 export const metadata: Metadata = {
-    title: "Eco-Friendly Cleaning Products & Methods | Green Cleaning Gold Coast",
-    description: "Discover eco-friendly cleaning solutions for Gold Coast homes. Non-toxic, child & pet-safe natural cleaning methods. WaveSolution uses green cleaning products across all Gold Coast suburbs. Sustainable cleaning guide.",
+    title: "Eco-Friendly Cleaning Methods | Gold Coast",
+    description: "Discover eco-friendly cleaning solutions for Gold Coast homes. Safe, non-toxic green cleaning methods for all suburbs.",
     keywords: ["eco-friendly cleaning Gold Coast", "green cleaning products", "natural cleaning methods", "non-toxic cleaning Gold Coast", "sustainable cleaning Australia", "pet safe cleaning"],
     alternates: {
         canonical: "https://www.wavesolution.com.au/blog/eco-friendly",
@@ -48,7 +48,7 @@ export default function EcoFriendlyCleaningPage() {
                         <ArrowLeft className="w-4 h-4 mr-2" /> Back to Home
                     </Link>
                     <h1 className="text-3xl sm:text-5xl md:text-6xl font-serif font-black tracking-tighter mb-8 leading-tight max-w-4xl mx-auto">
-                        Effective <span className="text-secondary">Eco-Friendly</span> Cleaning Solutions
+                        Eco-Friendly Cleaning Solutions <span className="text-secondary">Gold Coast</span>
                     </h1>
 
                     <div className="flex flex-wrap items-center justify-center gap-6 text-sm font-bold opacity-80 uppercase tracking-widest">

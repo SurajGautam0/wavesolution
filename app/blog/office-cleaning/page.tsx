@@ -4,7 +4,7 @@ import { Calendar, User, Building2, Briefcase, CheckCircle2, ArrowLeft } from "l
 import { Button } from "@/components/ui/button"
 
 export const metadata: Metadata = {
-    title: "Office Cleaning Guide Gold Coast | How Often Should You Clean Your Office?",
+    title: "Office Cleaning Guide Gold Coast | Wave Solution",
     description: "Expert guide on office cleaning frequency & best practices for Gold Coast businesses. Daily, weekly & monthly cleaning schedules. Learn how a clean workspace boosts productivity by 15%. Tips from Gold Coast's top commercial cleaners.",
     keywords: ["office cleaning guide Gold Coast", "commercial cleaning tips", "office cleaning schedule", "workplace cleaning best practices", "office hygiene Gold Coast", "commercial cleaning frequency"],
     alternates: {
@@ -33,7 +33,7 @@ export default function OfficeCleaningPage() {
                         <ArrowLeft className="w-4 h-4 mr-2" /> Back to Home
                     </Link>
                     <h1 className="text-3xl sm:text-5xl md:text-6xl font-serif font-black tracking-tighter mb-8 leading-tight max-w-4xl mx-auto uppercase">
-                        Office <span className="text-secondary">Cleaning</span>: Strategic Frequency & Methods
+                        Office <span className="text-secondary">Cleaning Guide</span> Gold Coast
                     </h1>
                     <div className="flex flex-wrap items-center justify-center gap-6 text-sm font-bold opacity-80 uppercase tracking-widest">
                         <div className="flex items-center"><User className="w-4 h-4 mr-2 text-secondary" /> Corporate Specialist</div>

@@ -1,7 +1,7 @@
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Customer Testimonials | Gold Coast Cleaning and Pest Control Feedback",
+  title: "Customer Testimonials | Gold Coast Cleaning",
   description:
     "Read customer feedback for WaveSolution's Gold Coast cleaning and pest-control services, including homes, rentals, offices, and commercial spaces.",
   keywords: [

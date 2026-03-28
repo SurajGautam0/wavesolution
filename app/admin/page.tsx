@@ -565,7 +565,7 @@ export default function AdminDashboardPage() {
                         <div className="space-y-8 animate-in fade-in slide-in-from-right-6 duration-700">
                             <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
                                 <div className="space-y-1">
-                                    <h1 className="text-3xl font-bold text-slate-900 tracking-tight">Bookings Management</h1>
+                                    <h2 className="text-3xl font-bold text-slate-900 tracking-tight">Bookings Management</h2>
                                     <p className="text-slate-500 font-medium text-base">Detailed overview of all client requests.</p>
                                 </div>
                                 <div className="relative w-full md:w-80">
@@ -661,7 +661,7 @@ export default function AdminDashboardPage() {
                         <div className="space-y-8 animate-in fade-in slide-in-from-right-6 duration-700">
                             <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
                                 <div className="space-y-1">
-                                    <h1 className="text-3xl font-bold text-slate-900 tracking-tight">Service Offerings</h1>
+                                    <h2 className="text-3xl font-bold text-slate-900 tracking-tight">Service Offerings</h2>
                                     <p className="text-slate-500 font-medium text-base">Manage all available services.</p>
                                 </div>
                             </div>
@@ -707,7 +707,7 @@ export default function AdminDashboardPage() {
                         <div className="space-y-8 animate-in fade-in slide-in-from-right-6 duration-700">
                             <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
                                 <div className="space-y-1">
-                                    <h1 className="text-3xl font-bold text-slate-900 tracking-tight">Inbox</h1>
+                                    <h2 className="text-3xl font-bold text-slate-900 tracking-tight">Inbox</h2>
                                     <p className="text-slate-500 font-medium text-base">Inquiries from the contact form.</p>
                                 </div>
                             </div>
@@ -761,7 +761,7 @@ export default function AdminDashboardPage() {
                         <div className="space-y-8 animate-in fade-in slide-in-from-right-6 duration-700">
                             <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
                                 <div className="space-y-1">
-                                    <h1 className="text-3xl font-bold text-slate-900 tracking-tight">Newsletter Subscribers</h1>
+                                    <h2 className="text-3xl font-bold text-slate-900 tracking-tight">Newsletter Subscribers</h2>
                                     <p className="text-slate-500 font-medium text-base">Active email list subscribers.</p>
                                 </div>
                             </div>
