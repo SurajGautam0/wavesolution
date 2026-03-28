@@ -8,17 +8,18 @@ import { businessInfo, siteLinks } from "@/lib/business-info"
 import { getLocationPage, locationPages } from "@/lib/location-pages"
 
 type LocationPageProps = {
-  params: {
+  params: Promise<{
     slug: string
-  }
+  }>
 }
 
 export function generateStaticParams() {
   return locationPages.map((location) => ({ slug: location.slug }))
 }
 
-export function generateMetadata({ params }: LocationPageProps): Metadata {
-  const location = getLocationPage(params.slug)
+export async function generateMetadata({ params }: LocationPageProps): Promise<Metadata> {
+  const { slug } = await params
+  const location = getLocationPage(slug)
 
   if (!location) {
     return {}
@@ -40,8 +41,9 @@ export function generateMetadata({ params }: LocationPageProps): Metadata {
   }
 }
 
-export default function LocationDetailPage({ params }: LocationPageProps) {
-  const location = getLocationPage(params.slug)
+export default async function LocationDetailPage({ params }: LocationPageProps) {
+  const { slug } = await params
+  const location = getLocationPage(slug)
 
   if (!location) {
     notFound()

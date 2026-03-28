@@ -23,27 +23,24 @@ const googleVerification = process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION?.tri
 export const metadata: Metadata = {
   metadataBase: new URL(businessInfo.baseUrl),
   title: {
-    default: "Top Quality Cleaning Services Gold Coast | Home, Office & Pest",
+    default: "Cleaning Services Gold Coast | House, Office, Bond & Commercial Cleaning",
     template: "%s | Wave Solution Cleaning",
   },
   description:
-    "Expert cleaning services across the Gold Coast. Specializing in home, office, end of lease cleaning, and pest control in Surfers Paradise, Broadbeach, Southport, Robina & more. Call 0450 833 683 for a flawless clean today.",
+    "Professional cleaning services across the Gold Coast including house cleaning, office cleaning, bond cleaning, end of lease cleaning, deep cleaning, and commercial cleaning.",
   keywords: [
     "cleaning services Gold Coast",
-    "home cleaning Gold Coast",
+    "house cleaning Gold Coast",
     "office cleaning Gold Coast",
     "deep cleaning Gold Coast",
-    "pest control Gold Coast",
     "end of lease cleaning Gold Coast",
-    "carpet cleaning Gold Coast",
+    "bond cleaning Gold Coast",
+    "commercial cleaning Gold Coast",
     "house cleaners Gold Coast",
     "cleaning services Southport",
     "cleaning services Robina",
     "cleaning services Surfers Paradise",
     "cleaning services Broadbeach",
-    "commercial cleaning Gold Coast",
-    "regular cleaning Gold Coast",
-    "bond cleaning Gold Coast",
     "local cleaners Gold Coast",
     "Wave Solution Cleaning",
   ],
@@ -71,9 +68,9 @@ export const metadata: Metadata = {
     locale: "en_AU",
     url: businessInfo.baseUrl,
     siteName: businessInfo.businessNameWithLocation,
-    title: "Top Quality Cleaning Services Gold Coast | Wave Solution Cleaning",
+    title: "Cleaning Services Gold Coast | House, Office, Bond & Commercial Cleaning",
     description:
-      "Expert cleaning services across the Gold Coast. Specializing in home, office, end of lease cleaning, and pest control in Surfers Paradise, Broadbeach, Southport, Robina & more. Call 0450 833 683 for a flawless clean today.",
+      "Professional cleaning services across the Gold Coast including house cleaning, office cleaning, bond cleaning, end of lease cleaning, deep cleaning, and commercial cleaning.",
     images: [
       {
         url: "/gold-coast-cleaning-services.jpeg",
@@ -86,9 +83,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Cleaning Services Gold Coast | Wave Solution Cleaning",
+    title: "Cleaning Services Gold Coast | House, Office, Bond & Commercial Cleaning",
     description:
-      "Local cleaning services for Gold Coast homes, offices and rental properties. Book online or call 0450 833 683.",
+      "Professional cleaning services across the Gold Coast including house cleaning, office cleaning, bond cleaning, end of lease cleaning, deep cleaning, and commercial cleaning.",
     images: ["/gold-coast-cleaning-services.jpeg"],
   },
   robots: {
@@ -115,7 +112,7 @@ const jsonLd = {
       name: businessInfo.businessNameWithLocation,
       alternateName: businessInfo.brandName,
       description:
-        "Local home cleaning, office cleaning, deep cleaning, end of lease cleaning and pest control services across Gold Coast and nearby suburbs.",
+        "Local house cleaning, office cleaning, bond cleaning, end of lease cleaning, commercial cleaning, and deep cleaning services across the Gold Coast and nearby suburbs.",
       image: `${businessInfo.baseUrl}/gold-coast-cleaning-services.jpeg`,
       logo: `${businessInfo.baseUrl}/logo.png`,
       url: businessInfo.baseUrl,
@@ -165,7 +162,7 @@ const jsonLd = {
             "@type": "Offer",
             itemOffered: {
               "@type": "Service",
-              name: "Home Cleaning Gold Coast",
+              name: "House Cleaning Gold Coast",
               description:
                 "Professional house cleaning services for homes across Gold Coast. Regular, weekly or fortnightly cleaning.",
             },
@@ -210,9 +207,9 @@ const jsonLd = {
             "@type": "Offer",
             itemOffered: {
               "@type": "Service",
-              name: "End of Lease Cleaning Gold Coast",
+              name: "Bond Cleaning Gold Coast",
               description:
-                "Detailed end of lease cleaning for tenants, landlords and property managers across Gold Coast.",
+                "Detailed bond cleaning for Gold Coast tenants, landlords, and property managers preparing properties for handover.",
             },
             priceSpecification: {
               "@type": "PriceSpecification",
@@ -225,15 +222,30 @@ const jsonLd = {
             "@type": "Offer",
             itemOffered: {
               "@type": "Service",
-              name: "Pest Control Gold Coast",
+              name: "End of Lease Cleaning Gold Coast",
               description:
-                "Safe and effective pest control services for homes and businesses across Gold Coast.",
+                "Detailed end of lease cleaning for apartments, units, and rental homes across the Gold Coast.",
             },
             priceSpecification: {
               "@type": "PriceSpecification",
-              price: "150",
+              price: "250",
               priceCurrency: "AUD",
-              unitText: "per visit",
+              unitText: "per session",
+            },
+          },
+          {
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Service",
+              name: "Commercial Cleaning Gold Coast",
+              description:
+                "Tailored commercial cleaning for offices, customer-facing premises, and business spaces across the Gold Coast.",
+            },
+            priceSpecification: {
+              "@type": "PriceSpecification",
+              price: "200",
+              priceCurrency: "AUD",
+              unitText: "per session",
             },
           },
         ],

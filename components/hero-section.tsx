@@ -1,151 +1,97 @@
-"use client"
-
-import { useState } from "react"
-import Link from "next/link"
 import Image from "next/image"
-import { Calendar, Clock, MapPin, Sparkles } from "lucide-react"
+import Link from "next/link"
+import { CheckCircle, MapPin, Phone } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { businessInfo } from "@/lib/business-info"
-import { cn } from "@/lib/utils"
+import { businessInfo, siteLinks } from "@/lib/business-info"
+
+const heroPoints = [
+  "House cleaning, office cleaning, bond cleaning, end of lease cleaning, deep cleaning, and commercial cleaning.",
+  "Local Gold Coast team with fully insured service and police-checked staff.",
+  "Fast quote responses for homes, offices, rental properties, and business spaces.",
+]
 
 export function HeroSection() {
-  const [bookingStep, setBookingStep] = useState(1)
-
   return (
-    <section className="relative overflow-hidden bg-primary py-12 sm:py-20 md:py-32">
-      {/* Hero Background */}
+    <section className="relative overflow-hidden bg-primary py-14 sm:py-20 lg:py-24">
       <div className="absolute inset-0 z-0 overflow-hidden opacity-30">
         <Image
           src="/images/gold-coast-cleaning-service.jpg"
-          alt="Professional cleaning team servicing homes and offices in Gold Coast"
+          alt="Professional cleaners servicing homes and offices in Gold Coast"
           fill
-          className="object-cover scale-110 blur-[2px]"
           priority
+          quality={75}
+          sizes="100vw"
+          className="object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary/80 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary/90 to-primary/65" />
       </div>
 
-      {/* Abstract Background Decoration */}
-      <div className="absolute top-0 right-0 w-[50%] h-full bg-secondary/5 -skew-x-12 transform origin-top-right hidden lg:block" />
-      <div className="absolute -top-24 -left-24 w-64 h-64 bg-secondary/10 rounded-full blur-3xl opacity-50" />
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-blue-400/5 rounded-full blur-3xl opacity-50" />
+      <div className="absolute -left-16 top-0 h-64 w-64 rounded-full bg-secondary/15 blur-3xl" />
+      <div className="absolute bottom-0 right-0 h-80 w-80 rounded-full bg-sky-400/10 blur-3xl" />
 
       <div className="classic-container relative z-10">
-        <div className="grid gap-12 lg:grid-cols-2 items-center">
-          <div className="flex flex-col justify-center space-y-8 text-white text-center lg:text-left">
-            <div className="space-y-6">
-              <div className="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 backdrop-blur-sm self-center lg:self-start">
-                <div className="relative w-4 h-4 overflow-hidden">
-                  <Image
-                    src="/logo.png"
-                    alt="Logo"
-                    fill
-                    className="object-contain brightness-0 invert"
-                  />
-                </div>
-                <span className="text-[10px] font-black uppercase tracking-[0.2em]">Gold Coast & QLD</span>
-              </div>
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-serif font-black tracking-tighter leading-[1.1]">
-                Professional Cleaning<span className="text-secondary shimmer-text"> & Pest Control</span> Services in Gold Coast
-              </h1>
-
-              <div className="w-24 h-1.5 bg-secondary mx-auto lg:mx-0 rounded-full"></div>
-              <p className="max-w-[600px] mx-auto lg:mx-0 text-lg sm:text-xl text-white/70 leading-relaxed font-medium">
-                Experience the {businessInfo.businessName} difference with our premium cleaning and pest control services. We
-                deliver spotless, pest-free results every time.
-              </p>
+        <div className="grid gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:items-center">
+          <div className="text-center text-white lg:text-left">
+            <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-[10px] font-black uppercase tracking-[0.22em] backdrop-blur-sm">
+              <MapPin className="h-4 w-4 text-secondary" />
+              Gold Coast cleaning specialists
             </div>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4">
-              <Button asChild size="lg" className="h-16 px-10 rounded-full bg-secondary hover:bg-secondary/90 text-white font-black text-lg uppercase tracking-widest shadow-2xl shadow-secondary/30 transition-all hover:scale-105 active:scale-95">
-                <Link href="/book">Book Now</Link>
+
+            <h1 className="mt-6 text-4xl font-black tracking-tight sm:text-5xl lg:text-6xl">
+              Cleaning Services Gold Coast for Homes, Offices and Rental Properties
+            </h1>
+
+            <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-white/75 lg:mx-0">
+              Wave Solution helps Gold Coast households and businesses stay clean, presentable, and easier to manage with professional house cleaning, office cleaning, bond cleaning, end of lease cleaning, deep cleaning, and commercial cleaning.
+            </p>
+
+            <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row lg:justify-start">
+              <Button asChild size="lg" className="h-14 rounded-full bg-secondary px-8 text-[11px] font-black uppercase tracking-[0.18em] text-slate-950 shadow-xl shadow-secondary/20 hover:bg-secondary/90">
+                <Link href={siteLinks.book}>Get Free Quote</Link>
               </Button>
-              <Button asChild size="lg" variant="outline" className="h-16 px-10 rounded-full border-2 border-white/20 hover:border-white text-white font-black text-lg uppercase tracking-widest transition-all hover:scale-105 active:scale-95 bg-white/5 backdrop-blur-sm">
-                <Link href="/services">Our Services</Link>
+              <Button asChild size="lg" variant="outline" className="h-14 rounded-full border-white/20 bg-white/5 px-8 text-[11px] font-black uppercase tracking-[0.18em] text-white hover:bg-white/10 hover:text-white">
+                <Link href={siteLinks.homeCleaning}>Book Local Cleaner</Link>
+              </Button>
+              <Button asChild size="lg" variant="outline" className="h-14 rounded-full border-white/20 bg-transparent px-8 text-[11px] font-black uppercase tracking-[0.18em] text-white hover:bg-white/10 hover:text-white">
+                <Link href={businessInfo.phoneHref}>
+                  <Phone className="h-4 w-4" />
+                  Call Now
+                </Link>
               </Button>
             </div>
           </div>
 
-          <div className="relative group">
-            {/* Decorative Card Shadow */}
-            <div className="absolute -inset-1 bg-gradient-to-r from-secondary to-blue-400 rounded-[2.5rem] blur opacity-25 group-hover:opacity-40 transition-opacity" />
+          <div className="rounded-[2.5rem] border border-white/10 bg-white/10 p-6 shadow-2xl backdrop-blur-md sm:p-8">
+            <div className="rounded-[2rem] border border-white/10 bg-primary/30 p-6 sm:p-8">
+              <p className="text-xs font-black uppercase tracking-[0.2em] text-secondary">Why Choose Us</p>
+              <ul className="mt-5 space-y-4">
+                {heroPoints.map((point) => (
+                  <li key={point} className="flex items-start gap-3 text-sm leading-7 text-white/80">
+                    <CheckCircle className="mt-1 h-4 w-4 shrink-0 text-secondary" />
+                    <span>{point}</span>
+                  </li>
+                ))}
+              </ul>
 
-            <Card className="relative classic-card border-none shadow-2xl mt-8 lg:mt-0 w-full max-w-[480px] mx-auto bg-white rounded-[2rem] overflow-hidden">
-              <CardContent className="p-0">
-                <div className="bg-primary p-6 sm:p-8 text-white relative overflow-hidden">
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-secondary/10 rounded-full blur-2xl -mr-16 -mt-16" />
-                  <div className="relative z-10">
-                    <h3 className="text-2xl sm:text-3xl font-black uppercase tracking-tighter">Book Your Cleaning</h3>
-                    <p className="text-white/60 text-[10px] font-black uppercase tracking-[0.2em] mt-2 flex items-center">
-                      <Clock className="w-3 h-3 mr-2 text-secondary" /> Get scheduled in seconds
-                    </p>
+              <div className="mt-8 grid gap-3 sm:grid-cols-2">
+                <div className="rounded-[1.5rem] border border-white/10 bg-white/5 p-4">
+                  <p className="text-[10px] font-black uppercase tracking-[0.18em] text-white/55">Trust Badges</p>
+                  <div className="mt-3 flex flex-wrap gap-2 text-[11px] font-bold uppercase tracking-[0.14em] text-white/80">
+                    <span className="rounded-full border border-white/10 bg-white/10 px-3 py-1.5">Fully insured</span>
+                    <span className="rounded-full border border-white/10 bg-white/10 px-3 py-1.5">Fast quote</span>
+                    <span className="rounded-full border border-white/10 bg-white/10 px-3 py-1.5">Local cleaners</span>
+                    <span className="rounded-full border border-white/10 bg-white/10 px-3 py-1.5">Guaranteed care</span>
                   </div>
                 </div>
-
-                <div className="p-8 sm:p-10 space-y-6">
-                  {bookingStep === 1 && (
-                    <div className="space-y-6 animate-in fade-in slide-in-from-right-4 duration-500">
-                      <div className="space-y-3">
-                        <Label className="text-[10px] font-black uppercase tracking-widest text-gray-400 ml-1">Service Type</Label>
-                        <Select>
-                          <SelectTrigger className="h-14 border-gray-100 bg-gray-50/50 rounded-2xl focus:ring-secondary/20 transition-all font-bold text-gray-700">
-                            <SelectValue placeholder="Select service" />
-                          </SelectTrigger>
-                          <SelectContent className="rounded-2xl border-gray-100 shadow-2xl">
-                            <SelectItem value="home">Home Cleaning</SelectItem>
-                            <SelectItem value="office">Office Cleaning</SelectItem>
-                            <SelectItem value="deep">Deep Cleaning</SelectItem>
-                            <SelectItem value="carpet">Carpet Cleaning</SelectItem>
-                            <SelectItem value="window">Window Cleaning</SelectItem>
-                            <SelectItem value="endoflease">End of Lease</SelectItem>
-                          </SelectContent>
-
-                        </Select>
-                      </div>
-                      <div className="space-y-3">
-                        <Label className="text-[10px] font-black uppercase tracking-widest text-gray-400 ml-1">Location</Label>
-                        <div className="relative">
-                          <MapPin className="absolute left-5 top-1/2 -translate-y-1/2 h-4 w-4 text-primary/30" />
-                          <Input placeholder="e.g., Gold Coast, Southport" className="h-14 pl-12 border-gray-100 bg-gray-50/50 rounded-2xl focus:ring-secondary/20 transition-all font-bold text-gray-700" />
-                        </div>
-                      </div>
-                      <Button onClick={() => setBookingStep(2)} className="h-16 w-full rounded-2xl bg-primary hover:bg-primary/90 text-white font-black text-lg uppercase tracking-widest shadow-xl shadow-primary/20 transition-all hover:scale-[1.02]">
-                        Next
-                      </Button>
-                    </div>
-                  )}
-
-                  {bookingStep === 2 && (
-                    <div className="space-y-6 animate-in fade-in slide-in-from-right-4 duration-500">
-                      <div className="space-y-3">
-                        <Label className="text-[10px] font-black uppercase tracking-widest text-gray-400 ml-1">Select Date</Label>
-                        <div className="relative">
-                          <Calendar className="absolute left-5 top-1/2 -translate-y-1/2 h-4 w-4 text-primary/30" />
-                          <Input type="date" className="h-14 pl-12 border-gray-100 bg-gray-50/50 rounded-2xl focus:ring-secondary/20 transition-all font-bold text-gray-700" />
-                        </div>
-                      </div>
-                      <div className="grid grid-cols-2 gap-4">
-                        <Button variant="outline" onClick={() => setBookingStep(1)} className="h-16 rounded-2xl border-gray-100 font-bold text-gray-400 hover:text-primary">
-                          Back
-                        </Button>
-                        <Button asChild className="h-16 rounded-2xl bg-secondary hover:bg-secondary/90 text-white font-black uppercase tracking-widest shadow-xl shadow-secondary/20">
-                          <Link href="/book">Next Step</Link>
-                        </Button>
-                      </div>
-                    </div>
-                  )}
-
-                  <div className="flex items-center justify-center space-x-2 pt-2">
-                    <div className={cn("w-2 h-2 rounded-full transition-all duration-300", bookingStep === 1 ? "bg-primary w-6" : "bg-gray-200")} />
-                    <div className={cn("w-2 h-2 rounded-full transition-all duration-300", bookingStep === 2 ? "bg-primary w-6" : "bg-gray-200")} />
-                  </div>
+                <div className="rounded-[1.5rem] border border-white/10 bg-white/5 p-4">
+                  <p className="text-[10px] font-black uppercase tracking-[0.18em] text-white/55">Service Areas</p>
+                  <p className="mt-3 text-sm leading-7 text-white/80">
+                    Southport, Robina, Surfers Paradise, Broadbeach, Burleigh Heads, Palm Beach, and nearby Gold Coast suburbs.
+                  </p>
                 </div>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
           </div>
         </div>
       </div>

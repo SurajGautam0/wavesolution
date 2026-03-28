@@ -190,7 +190,7 @@ export default function TestimonialsPage() {
         <div className="absolute inset-0 z-0">
           <div className="relative h-full w-full overflow-hidden">
             <Image
-              src="/1cleaning.jpg"
+              src="/1.jpeg"
               alt="Professional Cleaning"
               fill
               className="object-cover animate-pulse-slow scale-110"
@@ -237,7 +237,7 @@ export default function TestimonialsPage() {
               <div className="flex -space-x-3">
                 {[1, 2, 3, 4].map((i) => (
                   <div key={i} className="w-12 h-12 rounded-full border-2 border-primary bg-blue-100 flex items-center justify-center overflow-hidden">
-                    <Image src={`/placeholder-user.jpg`} alt="User" width={48} height={48} className="object-cover" />
+                    <Image src="/avatar-placeholder.svg" alt="Gold Coast customer avatar" width={48} height={48} className="object-cover" />
                   </div>
                 ))}
               </div>

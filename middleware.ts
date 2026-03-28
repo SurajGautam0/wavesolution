@@ -29,6 +29,13 @@ export function middleware(request: NextRequest) {
 
   const path = request.nextUrl.pathname
 
+  if (path === "/locations/sydney") {
+    const redirectUrl = request.nextUrl.clone()
+    redirectUrl.pathname = "/locations"
+    redirectUrl.search = ""
+    return NextResponse.redirect(redirectUrl, 308)
+  }
+
   const isProtectedPath = path.startsWith("/admin") || path.startsWith("/dashboard")
 
   if (isProtectedPath) {

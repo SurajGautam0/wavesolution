@@ -21,20 +21,20 @@ export const locationPages: LocationPage[] = [
     heroTitle: "Cleaning Services in Robina",
     metaTitle: "Cleaning Services Robina | House & Office Cleaning",
     metaDescription:
-      "Need reliable cleaning services in Robina? Wave Solution Cleaning provides home cleaning, office cleaning, deep cleaning and pest control near Robina Town Centre. Call 0450 833 683.",
+      "Need reliable cleaning services in Robina? Wave Solution Cleaning provides home cleaning, office cleaning, deep cleaning and end of lease cleaning near Robina Town Centre. Call 0450 833 683.",
     intro:
       "Professional cleaning services for Robina homes, offices, rentals, and commercial spaces.",
     nearbyReference: "Robina Town Centre, Cbus Super Stadium, Easy T Centre, and nearby Varsity Lakes",
     paragraphs: [
       "Wave Solution Cleaning helps busy households and businesses in Robina keep their spaces clean, healthy, and presentation-ready. Whether you need a regular house clean, a detailed deep clean before guests arrive, or consistent office cleaning, our team provides reliable service with flexible scheduling across Robina and surrounding suburbs.",
       "We regularly work in and around Robina Town Centre, Cbus Super Stadium, Easy T Centre, and nearby Varsity Lakes, so we understand the pace of the area and the importance of showing up on time. Our cleaners focus on practical results: cleaner kitchens, fresher bathrooms, dust-free surfaces, polished floors, and a home or workplace that feels ready to use straight away.",
-      "If you are searching for cleaning services in Robina, you want a local team that communicates clearly and gets the details right. We offer one-off cleaning, regular weekly or fortnightly visits, end of lease support, and pest control options. Call us for a tailored quote and we will recommend the right service based on your property, timing, and budget.",
+      "If you are searching for cleaning services in Robina, you want a local team that communicates clearly and gets the details right. We offer one-off cleaning, regular weekly or fortnightly visits, end of lease support, and tailored cleaning plans for homes and businesses. Call us for a tailored quote and we will recommend the right service based on your property, timing, and budget.",
     ],
     serviceBullets: [
       "Home cleaning for apartments, townhouses, and family homes",
       "Office and commercial cleaning for Robina businesses",
       "Deep cleaning and move-in or move-out cleaning",
-      "Pest control and same-day cleaning support when available",
+      "Detailed bond and move-out cleaning support when needed",
     ],
     faq: [
       {

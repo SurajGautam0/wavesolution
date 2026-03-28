@@ -1,34 +1,52 @@
 "use client"
 
 import * as React from "react"
+import Image from "next/image"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import Image from "next/image"
-import { Facebook, Instagram, Linkedin, Mail, Menu, Phone, ChevronDown, Home, Sparkles, Building2, Truck, Twitter, Bug, CalendarClock, Repeat } from "lucide-react"
+import { Briefcase, Building2, ChevronDown, Home, Mail, Menu, Phone, Repeat, Sparkles, Truck } from "lucide-react"
 
-import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
+import { cn } from "@/lib/utils"
 import { businessInfo, siteLinks } from "@/lib/business-info"
+
+const serviceRoutes = [
+  { href: siteLinks.cleaningGoldCoast, label: "Cleaning Gold Coast", description: "Broad local overview for homes, offices, rentals, and businesses", icon: Sparkles },
+  { href: siteLinks.homeCleaning, label: "House Cleaning", description: "Weekly, fortnightly, and one-off cleaning for homes", icon: Home },
+  { href: siteLinks.officeCleaning, label: "Office Cleaning", description: "Professional workplace cleaning for offices and staff spaces", icon: Building2 },
+  { href: siteLinks.bondCleaning, label: "Bond Cleaning", description: "Detailed move-out cleaning before inspection and handover", icon: Truck },
+  { href: siteLinks.endOfLeaseCleaning, label: "End of Lease", description: "Rental exit cleaning for apartments, units, and homes", icon: Repeat },
+  { href: siteLinks.commercialCleaning, label: "Commercial Cleaning", description: "Tailored business cleaning for customer-facing premises", icon: Briefcase },
+  { href: siteLinks.deepCleaning, label: "Deep Cleaning", description: "One-off detailed cleaning for homes, offices, and rentals", icon: Sparkles },
+]
 
 export function MainNav() {
   const pathname = usePathname()
   const [isOpen, setIsOpen] = React.useState(false)
   const [isScrolled, setIsScrolled] = React.useState(false)
   const [isServicesHovered, setIsServicesHovered] = React.useState(false)
-  const servicesRef = React.useRef<HTMLDivElement>(null)
 
   React.useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50)
     }
+
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
   const mainRoutes = [
     { href: siteLinks.home, label: "Home", active: pathname === siteLinks.home },
-    { href: siteLinks.services, label: "Services", active: pathname === siteLinks.services || pathname.startsWith("/services/"), hasSubmenu: true },
+    {
+      href: siteLinks.services,
+      label: "Services",
+      active:
+        pathname === siteLinks.services ||
+        pathname.startsWith("/services/") ||
+        serviceRoutes.some((route) => pathname === route.href),
+      hasSubmenu: true,
+    },
     { href: siteLinks.gallery, label: "Gallery", active: pathname === siteLinks.gallery },
     { href: siteLinks.about, label: "About", active: pathname === siteLinks.about },
     { href: siteLinks.testimonials, label: "Testimonials", active: pathname === siteLinks.testimonials },
@@ -36,86 +54,58 @@ export function MainNav() {
     { href: siteLinks.portal, label: "Client Portal", active: pathname === siteLinks.portal },
   ]
 
-  const serviceRoutes = [
-    { href: "/services", label: "Home Cleaning", description: "Regular cleaning services for your home", icon: Home },
-    { href: "/services", label: "Office Cleaning", description: "Professional cleaning for offices and commercial spaces", icon: Building2 },
-    { href: "/services", label: "Deep Cleaning", description: "Thorough cleaning of all areas", icon: Sparkles },
-    { href: "/services", label: "Move In/Out", description: "Comprehensive cleaning for moving", icon: Truck },
-    { href: "/services", label: "Window Cleaning", description: "Crystal clear windows for homes and buildings", icon: Home },
-    { href: "/services", label: "Carpet Cleaning", description: "Deep cleaning for carpets", icon: Sparkles },
-    { href: "/services", label: "Regular House Cleaning", description: "Scheduled weekly or fortnightly home cleaning", icon: Repeat },
-    { href: "/services", label: "Same Day Service", description: "Fast same-day cleaning service", icon: CalendarClock },
-    { href: "/services", label: "Pest Control", description: "Safe pest control for homes & businesses", icon: Bug },
-  ]
-
   return (
     <>
-      {/* Top Bar - Hidden on small mobile */}
-      <div className="hidden md:block w-full bg-primary text-white/90 py-0.5 border-b border-white/5 relative z-[60]">
+      <div className="relative z-[60] hidden w-full border-b border-white/5 bg-primary py-0.5 text-white/90 md:block">
         <div className="classic-container flex items-center justify-between">
           <div className="flex items-center space-x-5 text-[11px] font-medium uppercase tracking-[0.12em]">
-            <Link href={businessInfo.phoneHref} className="flex items-center hover:text-secondary transition-all group">
+            <Link href={businessInfo.phoneHref} className="group flex items-center transition-all hover:text-secondary">
               <Phone className="mr-2 h-3 w-3 text-secondary group-hover:animate-pulse" />
               {businessInfo.phoneDisplay}
             </Link>
-            <Link href={`mailto:${businessInfo.email}`} className="flex items-center hover:text-secondary transition-all">
+            <Link href={`mailto:${businessInfo.email}`} className="flex items-center transition-all hover:text-secondary">
               <Mail className="mr-2 h-3 w-3 text-secondary" />
               {businessInfo.email}
             </Link>
           </div>
-          <div className="flex items-center space-x-4">
-            {[
-              { Icon: Facebook, href: "https://facebook.com/" },
-              { Icon: Twitter, href: "https://twitter.com/" },
-              { Icon: Instagram, href: "https://instagram.com/" },
-              { Icon: Linkedin, href: "https://linkedin.com/" },
-            ].map(({ Icon, href }, i) => (
-              <Link key={i} href={href} target="_blank" rel="noreferrer" className="text-white/60 hover:text-secondary transition-all hover:scale-110">
-                <Icon className="h-3.5 w-3.5" />
-              </Link>
-            ))}
-          </div>
+          <p className="text-[10px] font-black uppercase tracking-[0.2em] text-white/60">
+            Gold Coast house, office, bond, and commercial cleaning
+          </p>
         </div>
       </div>
 
-      {/* Main Header */}
       <header
         className={cn(
           "sticky top-0 z-50 w-full transition-all duration-500",
-          isScrolled
-            ? "bg-white/95 backdrop-blur-md py-0 shadow-md"
-            : "bg-primary py-0 sm:py-0.5 border-b border-white/5",
+          isScrolled ? "bg-white/95 py-0 shadow-md backdrop-blur-md" : "border-b border-white/5 bg-primary py-0 sm:py-0.5",
         )}
       >
-        <div className="classic-container relative flex items-center justify-between h-14 sm:h-16 lg:h-[4.5rem]">
+        <div className="classic-container relative flex h-14 items-center justify-between sm:h-16 lg:h-[4.5rem]">
           <div className="flex items-center gap-0">
-            {/* Mobile Burger Menu (Left) */}
-            <div className="flex items-center lg:hidden z-10 -mr-4">
+            <div className="z-10 -mr-4 flex items-center lg:hidden">
               <Sheet open={isOpen} onOpenChange={setIsOpen}>
                 <SheetTrigger asChild>
                   <Button
                     variant="ghost"
                     className={cn(
-                      "h-10 w-10 flex items-center justify-center rounded-xl p-0",
+                      "flex h-10 w-10 items-center justify-center rounded-xl p-0",
                       isScrolled ? "text-primary hover:bg-primary/5" : "text-white hover:bg-white/10",
                     )}
                   >
                     <Menu className="h-6 w-6" />
+                    <span className="sr-only">Open navigation menu</span>
                   </Button>
                 </SheetTrigger>
-                <SheetContent side="left" className="w-[300px] p-0 border-none bg-white">
-                  <div className="bg-primary p-8 sm:p-12 text-white flex flex-col items-center">
-                    <div className="relative w-full max-w-[200px] aspect-[3/1] mb-6">
-                      <Image
-                        src="/logo.png"
-                        alt="WaveSolution"
-                        fill
-                        className="object-contain brightness-0 invert"
-                      />
+                <SheetContent side="left" className="w-[300px] border-none bg-white p-0">
+                  <div className="flex flex-col items-center bg-primary p-8 text-white sm:p-12">
+                    <div className="relative mb-6 aspect-[3/1] w-full max-w-[200px]">
+                      <Image src="/logo.png" alt="Wave Solution Cleaning" fill className="object-contain brightness-0 invert" />
                     </div>
-                    <p className="text-white/60 text-[10px] sm:text-xs uppercase tracking-[0.3em] font-black underline underline-offset-8 decoration-secondary/30 text-center">Premium Cleaning Service</p>
+                    <p className="text-center text-[10px] font-black uppercase tracking-[0.3em] text-white/60">
+                      Gold Coast cleaning specialists
+                    </p>
                   </div>
-                  <div className="p-6 space-y-6">
+                  <div className="space-y-6 p-6">
                     <nav className="space-y-1">
                       {mainRoutes.map((route) => (
                         <Link
@@ -123,15 +113,15 @@ export function MainNav() {
                           href={route.href}
                           onClick={() => setIsOpen(false)}
                           className={cn(
-                            "flex items-center px-4 py-3 rounded-xl text-sm font-bold transition-all",
-                            route.active ? "bg-primary text-white shadow-lg shadow-primary/20" : "text-gray-600 hover:bg-gray-50"
+                            "flex items-center rounded-xl px-4 py-3 text-sm font-bold transition-all",
+                            route.active ? "bg-primary text-white shadow-lg shadow-primary/20" : "text-gray-600 hover:bg-gray-50",
                           )}
                         >
                           {route.label}
                         </Link>
                       ))}
                     </nav>
-                    <div className="pt-6 border-t border-gray-100 italic text-xs text-gray-400 text-center">
+                    <div className="border-t border-gray-100 pt-6 text-center text-xs italic text-gray-400">
                       Trusted by homes and businesses across the Gold Coast
                     </div>
                   </div>
@@ -139,64 +129,60 @@ export function MainNav() {
               </Sheet>
             </div>
 
-            {/* Logo (Next to Hamburger on Mobile, Left on Desktop) */}
-            <Link href="/" className="flex items-center group shrink-0">
-              <div className={cn(
-                "relative transition-all duration-500 group-hover:scale-105 origin-left",
-                "w-[108px] h-9 sm:w-36 sm:h-12 md:w-44 md:h-14 lg:w-52 lg:h-16"
-              )}>
+            <Link href={siteLinks.home} className="group flex shrink-0 items-center">
+              <div
+                className={cn(
+                  "relative origin-left transition-all duration-500 group-hover:scale-105",
+                  "h-9 w-[108px] sm:h-12 sm:w-36 md:h-14 md:w-44 lg:h-16 lg:w-52",
+                )}
+              >
                 <Image
                   src="/logo.png"
-                  alt="WaveSolution Logo"
+                  alt="Wave Solution Cleaning logo"
                   fill
                   priority
-                  className={cn(
-                    "object-contain transition-all duration-500",
-                    isScrolled ? "brightness-100" : "brightness-0 invert"
-                  )}
+                  className={cn("object-contain transition-all duration-500", isScrolled ? "brightness-100" : "brightness-0 invert")}
                 />
               </div>
             </Link>
           </div>
 
-
-          {/* Nav Items (Desktop only) */}
-          <nav className="hidden lg:flex items-center space-x-1 ml-10">
+          <nav className="ml-10 hidden items-center space-x-1 lg:flex">
             {mainRoutes.map((route) => (
               <div
                 key={route.href}
-                className="relative group"
+                className="group relative"
                 onMouseEnter={() => route.hasSubmenu && setIsServicesHovered(true)}
                 onMouseLeave={() => route.hasSubmenu && setIsServicesHovered(false)}
               >
                 <Link
                   href={route.href}
                   className={cn(
-                    "px-3 py-1.5 text-xs font-black uppercase tracking-[0.2em] rounded-full transition-all relative overflow-hidden",
-                    isScrolled
-                      ? route.active ? "text-primary" : "text-primary/60 hover:text-primary"
-                      : route.active ? "text-secondary" : "text-white/70 hover:text-white",
+                    "relative overflow-hidden rounded-full px-3 py-1.5 text-xs font-black uppercase tracking-[0.2em] transition-all",
+                    isScrolled ? (route.active ? "text-primary" : "text-primary/60 hover:text-primary") : route.active ? "text-secondary" : "text-white/70 hover:text-white",
                   )}
                 >
                   {route.label}
-                  {route.hasSubmenu && <ChevronDown className="ml-1 h-3.5 w-3.5 inline transition-transform group-hover:rotate-180" />}
-                  <span className={cn(
-                    "absolute bottom-0 left-4 right-4 h-0.5 transform scale-x-0 transition-transform origin-left group-hover:scale-x-100",
-                    isScrolled ? "bg-primary" : "bg-secondary"
-                  )} />
+                  {route.hasSubmenu && <ChevronDown className="ml-1 inline h-3.5 w-3.5 transition-transform group-hover:rotate-180" />}
+                  <span
+                    className={cn(
+                      "absolute bottom-0 left-4 right-4 h-0.5 origin-left scale-x-0 transform transition-transform group-hover:scale-x-100",
+                      isScrolled ? "bg-primary" : "bg-secondary",
+                    )}
+                  />
                 </Link>
 
-                {/* Mega Dropdown */}
                 {route.hasSubmenu && isServicesHovered && (
-                  <div className="absolute left-0 top-full pt-4 w-[600px] z-[100] animate-in fade-in slide-in-from-top-2 duration-300">
-                    <div className="bg-white rounded-[2.5rem] shadow-2xl border border-primary/5 p-6 overflow-hidden relative">
-                      {/* Decorative Background */}
-                      <div className="absolute top-0 right-0 w-32 h-32 bg-secondary/5 rounded-full blur-3xl -mr-16 -mt-16" />
+                  <div className="absolute left-0 top-full z-[100] w-[620px] animate-in fade-in slide-in-from-top-2 pt-4 duration-300">
+                    <div className="relative overflow-hidden rounded-[2.5rem] border border-primary/5 bg-white p-6 shadow-2xl">
+                      <div className="absolute right-0 top-0 -mr-16 -mt-16 h-32 w-32 rounded-full bg-secondary/5 blur-3xl" />
 
                       <div className="relative z-10">
-                        <div className="flex items-center justify-between mb-6 px-2">
+                        <div className="mb-6 flex items-center justify-between px-2">
                           <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-blue-900/40">Our Specialized Services</h4>
-                          <Link href="/services" className="text-[10px] font-black uppercase tracking-widest text-secondary hover:underline transition-all">View All →</Link>
+                          <Link href={siteLinks.services} className="text-[10px] font-black uppercase tracking-widest text-secondary transition-all hover:underline">
+                            View All
+                          </Link>
                         </div>
 
                         <div className="grid grid-cols-2 gap-2">
@@ -204,29 +190,30 @@ export function MainNav() {
                             <Link
                               key={service.label}
                               href={service.href}
-                              className="flex items-start p-3 rounded-2xl hover:bg-blue-50/50 group/item transition-all duration-300 border border-transparent hover:border-blue-100"
+                              className="group/item flex items-start rounded-2xl border border-transparent p-3 transition-all duration-300 hover:border-blue-100 hover:bg-blue-50/50"
                             >
-                              <div className="mr-4 p-2.5 rounded-xl bg-blue-50 text-primary group-hover/item:bg-primary group-hover/item:text-white transition-all duration-300 shrink-0">
-                                <service.icon className="w-5 h-5" />
+                              <div className="mr-4 shrink-0 rounded-xl bg-blue-50 p-2.5 text-primary transition-all duration-300 group-hover/item:bg-primary group-hover/item:text-white">
+                                <service.icon className="h-5 w-5" />
                               </div>
                               <div className="flex flex-col">
-                                <span className="text-[13px] font-black text-blue-950 group-hover/item:text-primary transition-colors leading-none mb-1.5">{service.label}</span>
-                                <span className="text-[11px] font-medium text-muted-foreground leading-tight line-clamp-1">{service.description}</span>
+                                <span className="mb-1.5 text-[13px] font-black leading-none text-blue-950 transition-colors group-hover/item:text-primary">
+                                  {service.label}
+                                </span>
+                                <span className="line-clamp-2 text-[11px] font-medium leading-tight text-muted-foreground">{service.description}</span>
                               </div>
                             </Link>
                           ))}
                         </div>
                       </div>
 
-                      {/* Dropdown Footer */}
-                      <div className="mt-6 pt-6 border-t border-blue-50 flex items-center justify-between px-2">
-                        <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest flex items-center">
-                          <Sparkles className="w-3 h-3 mr-2 text-secondary" /> Satisfaction Guaranteed
+                      <div className="mt-6 flex items-center justify-between border-t border-blue-50 px-2 pt-6">
+                        <p className="flex items-center text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
+                          <Sparkles className="mr-2 h-3 w-3 text-secondary" /> Satisfaction Guaranteed
                         </p>
                         <div className="flex -space-x-2">
-                          {[1, 2, 3].map(i => (
-                            <div key={i} className="w-6 h-6 rounded-full border-2 border-white bg-blue-100 flex items-center justify-center text-[10px] font-black text-primary overflow-hidden">
-                              <Image src={`/placeholder.svg?height=30&width=30`} alt="User" width={24} height={24} />
+                          {[1, 2, 3].map((value) => (
+                            <div key={value} className="flex h-6 w-6 items-center justify-center rounded-full border-2 border-white bg-blue-100 text-[10px] font-black text-primary">
+                              {value}
                             </div>
                           ))}
                         </div>
@@ -238,18 +225,15 @@ export function MainNav() {
             ))}
           </nav>
 
-          {/* Right Section (Book Now) */}
-          <div className="flex items-center z-10">
+          <div className="z-10 flex items-center">
             <Button
               asChild
-              className="h-9 sm:h-10 px-4 sm:px-6 rounded-full bg-secondary hover:bg-secondary/90 text-white font-black text-[11px] uppercase tracking-[0.15em] transition-all hover:scale-105 active:scale-95 shadow-xl shadow-secondary/20"
+              className="h-9 rounded-full bg-secondary px-4 text-[11px] font-black uppercase tracking-[0.15em] text-white shadow-xl shadow-secondary/20 transition-all hover:scale-105 hover:bg-secondary/90 active:scale-95 sm:h-10 sm:px-6"
             >
               <Link href={siteLinks.book}>Book Now</Link>
             </Button>
           </div>
-
         </div>
-
       </header>
     </>
   )

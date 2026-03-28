@@ -1,285 +1,387 @@
+import type { Metadata } from "next"
 import Link from "next/link"
-import { ArrowRight, CheckCircle, Clock, MapPin } from "lucide-react"
+import { ArrowRight, CheckCircle, ShieldCheck, Sparkles, Star, TimerReset, Users } from "lucide-react"
 
-import { Button } from "@/components/ui/button"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { TestimonialCard } from "@/components/testimonial-card"
-import { ServiceCard } from "@/components/service-card"
 import { HeroSection } from "@/components/hero-section"
-import { Sidebar } from "@/components/sidebar"
-import { DiscountPopup } from "@/components/discount-popup"
-import { WorkerShowcase } from "@/components/worker-showcase"
-import { Metadata } from "next"
-import { siteLinks } from "@/lib/business-info"
+import { ServiceCard } from "@/components/service-card"
+import { Button } from "@/components/ui/button"
+import { businessInfo, siteLinks } from "@/lib/business-info"
+
+const serviceCards = [
+  {
+    title: "Cleaning Gold Coast",
+    description: "A local landing page for homes, offices, rentals, and businesses that need reliable cleaning across the Gold Coast.",
+    icon: "Sparkles",
+    price: "Local quote",
+    href: siteLinks.cleaningGoldCoast,
+  },
+  {
+    title: "House Cleaning Gold Coast",
+    description: "Weekly, fortnightly, and one-off house cleaning for apartments, family homes, and holiday properties.",
+    icon: "Home",
+    price: "From $120",
+    href: siteLinks.homeCleaning,
+  },
+  {
+    title: "Office Cleaning Gold Coast",
+    description: "Flexible workplace cleaning for professional suites, shared offices, and staff spaces.",
+    icon: "Building2",
+    price: "Tailored quote",
+    href: siteLinks.officeCleaning,
+  },
+  {
+    title: "Bond Cleaning Gold Coast",
+    description: "Detailed move-out cleaning for tenants, landlords, and property managers before inspection and handover.",
+    icon: "Truck",
+    price: "Inspection-ready",
+    href: siteLinks.bondCleaning,
+  },
+  {
+    title: "End of Lease Cleaning Gold Coast",
+    description: "Rental exit cleaning for apartments, units, townhouses, and homes across key Gold Coast suburbs.",
+    icon: "Repeat",
+    price: "Move-out support",
+    href: siteLinks.endOfLeaseCleaning,
+  },
+  {
+    title: "Commercial Cleaning Gold Coast",
+    description: "Cleaning plans for businesses, retail spaces, clinics, and other commercial premises.",
+    icon: "Briefcase",
+    price: "Custom schedule",
+    href: siteLinks.commercialCleaning,
+  },
+  {
+    title: "Deep Cleaning Gold Coast",
+    description: "One-off detailed cleaning for properties that need more than a standard maintenance visit.",
+    icon: "Sparkles",
+    price: "Detailed reset",
+    href: siteLinks.deepCleaning,
+  },
+]
+
+const whyChooseUs = [
+  "Fully insured cleaners who communicate clearly from quote to completion.",
+  "Police-checked staff for homes, offices, rental properties, and business spaces.",
+  "Local Gold Coast team with practical suburb coverage and flexible scheduling.",
+  "Fast booking response so you can move quickly on urgent household or rental jobs.",
+  "Cleaning plans that match the property type instead of forcing every lead into the same package.",
+]
+
+const reviewHighlights = [
+  {
+    name: "Sarah Johnson",
+    suburb: "Southport",
+    service: "House cleaning",
+    quote:
+      "Wave Solution has been cleaning my home regularly and the team is always punctual, friendly, and careful with the bathrooms and kitchen.",
+  },
+  {
+    name: "David Williams",
+    suburb: "Robina",
+    service: "Office cleaning",
+    quote:
+      "Our office feels much more consistent and professional since starting a regular clean. Communication has been easy and the quality has stayed strong.",
+  },
+  {
+    name: "Emma Roberts",
+    suburb: "Broadbeach",
+    service: "Commercial cleaning",
+    quote:
+      "We needed a cleaner who understood presentation and hygiene for a busy customer-facing site, and Wave Solution has been dependable from the start.",
+  },
+]
+
+const homepageFaqs = [
+  {
+    question: "Do you provide house cleaning across the Gold Coast?",
+    answer:
+      "Yes. We provide house cleaning across key Gold Coast suburbs including Southport, Robina, Surfers Paradise, Broadbeach, Burleigh Heads, Palm Beach, Helensvale, Coomera, and nearby areas.",
+  },
+  {
+    question: "Can I book office or commercial cleaning?",
+    answer:
+      "Yes. We provide office cleaning and broader commercial cleaning for workplaces, customer-facing spaces, and business premises that need recurring or one-off support.",
+  },
+  {
+    question: "Do you offer bond cleaning and end of lease cleaning?",
+    answer:
+      "Yes. We provide detailed move-out and rental handover cleaning for tenants, landlords, and property managers across the Gold Coast.",
+  },
+  {
+    question: "How do I get a cleaning quote?",
+    answer:
+      "Use the booking page, call 0450 833 683, or contact us online. We can quote based on your suburb, service type, property size, timing, and any extra detail required.",
+  },
+]
 
 export const metadata: Metadata = {
-  title: "Best Cleaning Services Gold Coast | Exceptional Home & Office Cleans",
-  description: "Looking for top-quality, reliable cleaning services in the Gold Coast? Wave Solution Cleaning provides exceptional house cleaning, deep cleaning, and pest control.",
+  title: "House Cleaning Gold Coast | Office, Bond & End of Lease Cleaning",
+  description:
+    "Wave Solution provides house cleaning, office cleaning, bond cleaning, end of lease cleaning, deep cleaning and commercial cleaning across the Gold Coast.",
+  keywords: [
+    "house cleaning Gold Coast",
+    "office cleaning Gold Coast",
+    "bond cleaning Gold Coast",
+    "end of lease cleaning Gold Coast",
+    "commercial cleaning Gold Coast",
+    "deep cleaning Gold Coast",
+    "cleaning Gold Coast",
+  ],
   alternates: {
-    canonical: "https://www.wavesolution.com.au",
+    canonical: businessInfo.baseUrl,
   },
   openGraph: {
-    title: "Cleaning Services Gold Coast | Wave Solution Cleaning",
-    description: "Trusted cleaning services across Gold Coast homes and businesses. Book online or call 0450 833 683.",
-    url: "https://www.wavesolution.com.au",
+    title: "House Cleaning Gold Coast | Office, Bond & End of Lease Cleaning",
+    description:
+      "Wave Solution provides house cleaning, office cleaning, bond cleaning, end of lease cleaning, deep cleaning and commercial cleaning across the Gold Coast.",
+    url: businessInfo.baseUrl,
     type: "website",
   },
 }
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen flex-col">
-      <DiscountPopup />
+    <div className="flex min-h-screen flex-col bg-slate-50">
       <HeroSection />
 
-      {/* Main Content with Sidebar */}
-      <div className="classic-container py-8 sm:py-12">
-        <div className="grid grid-cols-1 gap-10 md:grid-cols-[1fr_320px]">
-          <div className="space-y-8">
-            {/* Trust Badges - Local SEO */}
-            <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-8 bg-muted/50 p-4 rounded-xl border border-muted">
-              <div className="flex items-center gap-2">
-                <CheckCircle className="h-5 w-5 text-green-600" />
-                <span className="font-semibold text-sm">Locally Owned on Gold Coast</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <CheckCircle className="h-5 w-5 text-green-600" />
-                <span className="font-semibold text-sm">100% Satisfaction Guarantee</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <CheckCircle className="h-5 w-5 text-green-600" />
-                <span className="font-semibold text-sm">Eco-Friendly Products</span>
-              </div>
-            </div>
+      <section className="border-y border-slate-200 bg-white py-5">
+        <div className="classic-container flex flex-wrap items-center justify-center gap-3 text-center text-[11px] font-black uppercase tracking-[0.16em] text-slate-600">
+          <span className="rounded-full border border-slate-200 bg-slate-50 px-4 py-2">Fully insured</span>
+          <span className="rounded-full border border-slate-200 bg-slate-50 px-4 py-2">Satisfaction guarantee</span>
+          <span className="rounded-full border border-slate-200 bg-slate-50 px-4 py-2">Local cleaners</span>
+          <span className="rounded-full border border-slate-200 bg-slate-50 px-4 py-2">Fast quote</span>
+        </div>
+      </section>
 
-            {/* Welcome Section */}
-            <section className="classic-card p-6 sm:p-10">
-              <div className="flex flex-col items-center justify-center space-y-6 text-center">
-                <h1 className="classic-heading text-3xl sm:text-5xl">Exceptional House Cleaning Services in Gold Coast</h1>
-                <div className="w-24 h-1.5 bg-secondary rounded-full"></div>
-                <div className="space-y-4 max-w-2xl">
-                  <p className="text-muted-foreground text-lg leading-relaxed">
-                    We are a Gold Coast cleaning and pest control team dedicated to making your
-                    home or office spotless, fresh and pest-free. With years of experience and a team of
-                    professional cleaners, we deliver exceptional results every time.
-                  </p>
-                  <p className="text-muted-foreground text-lg leading-relaxed">
-                    Whether you need regular home cleaning in Southport, a deep clean for your office in Robina,
-                    specialized services like carpet cleaning, or reliable pest control, our team is equipped with the skills and
-                    tools to exceed your expectations.
-                  </p>
-                </div>
-              </div>
-            </section>
-
-            {/* Services Section */}
-            <section className="classic-card p-6 sm:p-10">
-              <div className="flex flex-col items-center justify-center space-y-6 text-center mb-10">
-                <h2 className="classic-heading text-3xl sm:text-4xl">Our Top-Quality Cleaning Services</h2>
-                <div className="w-24 h-1.5 bg-secondary rounded-full"></div>
-                <p className="text-muted-foreground text-lg max-w-xl">
-                  Our team of experienced professionals uses the latest cleaning techniques and
-                  eco-friendly products to ensure your space is not just clean, but healthy too.
-                </p>
-              </div>
-              <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                <ServiceCard
-                  title="Home Cleaning"
-                  description="Regular cleaning services for your home, keeping it spotless and fresh."
-                  icon="Home"
-                  price="From $120"
-                />
-                <ServiceCard
-                  title="Office Cleaning"
-                  description="Professional cleaning for offices and commercial spaces."
-                  icon="Building2"
-                  price="From $200"
-                />
-                <ServiceCard
-                  title="Deep Cleaning"
-                  description="Thorough cleaning of all areas, including hard-to-reach spots."
-                  icon="Sparkles"
-                  price="From $250"
-                />
-                <ServiceCard
-                  title="Regular House Cleaning"
-                  description="Scheduled weekly or fortnightly cleaning to keep your home consistently spotless."
-                  icon="Repeat"
-                  price="From $120/visit"
-                />
-                <ServiceCard
-                  title="Same Day Service"
-                  description="Need it cleaned today? Fast same-day cleaning with no compromise on quality."
-                  icon="CalendarClock"
-                  price="From $120"
-                />
-                <ServiceCard
-                  title="Pest Control"
-                  description="Safe and effective pest control for homes and businesses."
-                  icon="Bug"
-                  price="From $150"
-                />
-              </div>
-              <div className="flex justify-center mt-8">
-                <Button asChild className="classic-button">
-                  <Link href={siteLinks.services}>
-                    View All Services
-                    <ArrowRight className="ml-2 h-4 w-4" />
-                  </Link>
-                </Button>
-              </div>
-            </section>
-
-            {/* Worker Cleaning Class Section */}
-            <WorkerShowcase />
-
-            {/* How It Works */}
-            <section className="classic-card p-6 sm:p-10">
-              <div className="flex flex-col items-center justify-center space-y-6 text-center mb-12">
-                <h2 className="classic-heading text-3xl sm:text-4xl">How It Works</h2>
-                <div className="w-24 h-1.5 bg-secondary rounded-full"></div>
-                <p className="text-muted-foreground text-lg">Three simple steps to a pristine space.</p>
-              </div>
-              <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3">
-                <div className="flex flex-col items-center text-center">
-                  <div className="flex h-16 w-16 items-center justify-center rounded-full bg-primary text-white mb-4">
-                    <Clock className="h-8 w-8" />
-                  </div>
-                  <h3 className="text-xl font-bold mb-2">1. Book Online</h3>
-                  <p className="text-muted-foreground">
-                    Select your service, date, and time through our easy booking system.
-                  </p>
-                </div>
-                <div className="flex flex-col items-center text-center">
-                  <div className="flex h-16 w-16 items-center justify-center rounded-full bg-primary text-white mb-4">
-                    <MapPin className="h-8 w-8" />
-                  </div>
-                  <h3 className="text-xl font-bold mb-2">2. We Clean</h3>
-                  <p className="text-muted-foreground">
-                    Our professional team arrives and provides exceptional cleaning service.
-                  </p>
-                </div>
-                <div className="flex flex-col items-center text-center">
-                  <div className="flex h-16 w-16 items-center justify-center rounded-full bg-primary text-white mb-4">
-                    <CheckCircle className="h-8 w-8" />
-                  </div>
-                  <h3 className="text-xl font-bold mb-2">3. Enjoy</h3>
-                  <p className="text-muted-foreground">Relax and enjoy your clean space. Satisfaction guaranteed!</p>
-                </div>
-              </div>
-            </section>
-
-            {/* Locations Section */}
-            <section className="classic-card p-6 sm:p-10 mb-8">
-              <div className="flex flex-col items-center justify-center space-y-6 text-center mb-8">
-                <h2 className="classic-heading text-3xl sm:text-4xl">Service Areas Across Gold Coast</h2>
-                <div className="w-24 h-1.5 bg-secondary rounded-full"></div>
-                <p className="text-muted-foreground text-lg">
-                  We are a proud local business providing trusted domestic and commercial cleaning across the Gold Coast, including these key suburbs.
-                </p>
-              </div>
-              <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 text-center">
-                <div className="p-3 bg-muted rounded-lg font-medium text-sm">Surfers Paradise</div>
-                <div className="p-3 bg-muted rounded-lg font-medium text-sm">Broadbeach</div>
-                <div className="p-3 bg-muted rounded-lg font-medium text-sm">Southport</div>
-                <div className="p-3 bg-muted rounded-lg font-medium text-sm">Robina</div>
-                <div className="p-3 bg-muted rounded-lg font-medium text-sm">Burleigh Waters</div>
-                <div className="p-3 bg-muted rounded-lg font-medium text-sm">Palm Beach</div>
-                <div className="p-3 bg-muted rounded-lg font-medium text-sm">Coomera</div>
-                <div className="p-3 bg-muted rounded-lg font-medium text-sm">Miami</div>
-              </div>
-            </section>
-
-            {/* Testimonials */}
-            <section className="classic-card p-6 sm:p-10">
-              <div className="flex flex-col items-center justify-center space-y-6 text-center mb-10">
-                <h2 className="classic-heading text-3xl sm:text-4xl">What Our Customers Say</h2>
-                <div className="w-24 h-1.5 bg-secondary rounded-full"></div>
-                <p className="text-muted-foreground text-lg">
-                  Don't just take our word for it. Here's what our satisfied customers have to say.
-                </p>
-              </div>
-              <Tabs defaultValue="residential">
-                <div className="flex justify-center mb-6">
-                  <TabsList className="bg-muted">
-                    <TabsTrigger
-                      value="residential"
-                      className="data-[state=active]:bg-secondary data-[state=active]:text-white"
-                    >
-                      Residential
-                    </TabsTrigger>
-                    <TabsTrigger
-                      value="commercial"
-                      className="data-[state=active]:bg-secondary data-[state=active]:text-white"
-                    >
-                      Commercial
-                    </TabsTrigger>
-                  </TabsList>
-                </div>
-                <TabsContent value="residential">
-                  <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-                    <TestimonialCard
-                      name="Sarah Johnson"
-                      location="Southport, QLD"
-                      rating={5}
-                      testimonial="WaveSolution has been cleaning my home for over a year now, and I couldn't be happier with their service. The team is always punctual, thorough, and friendly."
-                      image="/placeholder.svg?height=80&width=80"
-                    />
-                    <TestimonialCard
-                      name="Michael Thompson"
-                      location="Surfers Paradise, QLD"
-                      rating={5}
-                      testimonial="I was amazed at how spotless my apartment was after WaveSolution's deep cleaning service. They paid attention to every detail and exceeded my expectations."
-                      image="/placeholder.svg?height=80&width=80"
-                    />
-                  </div>
-                </TabsContent>
-                <TabsContent value="commercial">
-                  <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-                    <TestimonialCard
-                      name="David Williams"
-                      location="Robina, QLD"
-                      rating={5}
-                      testimonial="Our office has never looked better since we started using WaveSolution's commercial cleaning service. Highly professional and consistent."
-                      image="/placeholder.svg?height=80&width=80"
-                    />
-                    <TestimonialCard
-                      name="Emma Roberts"
-                      location="Broadbeach, QLD"
-                      rating={5}
-                      testimonial="WaveSolution's cleaning service is very effective for our restaurant. They sanitize the kitchen and dining area thoroughly. We are extremely satisfied with their work."
-                      image="/placeholder.svg?height=80&width=80"
-                    />
-                  </div>
-                </TabsContent>
-              </Tabs>
-            </section>
+      <section className="bg-white py-14 md:py-20">
+        <div className="classic-container">
+          <div className="mx-auto max-w-4xl text-center">
+            <h2 className="text-3xl font-black tracking-tight text-primary sm:text-4xl">Cleaning Services Gold Coast</h2>
+            <p className="mx-auto mt-5 max-w-3xl text-base leading-8 text-slate-600">
+              Wave Solution is focused on cleaning first. We help Gold Coast households, tenants, landlords, office teams, and business owners book the right service quickly, compare the right level of detail, and move from search to quote without bouncing between thin pages or generic booking prompts.
+            </p>
+            <p className="mx-auto mt-4 max-w-3xl text-base leading-8 text-slate-600">
+              This homepage now acts as the main local service hub. It supports broad queries such as cleaning Gold Coast while also sending visitors directly to dedicated pages for house cleaning Gold Coast, office cleaning Gold Coast, bond cleaning Gold Coast, end of lease cleaning Gold Coast, commercial cleaning Gold Coast, and deep cleaning Gold Coast. That structure is better for Google, better for internal links, and much better for real users comparing local cleaners.
+            </p>
           </div>
 
-          {/* Sidebar */}
-          <div className="hidden md:block">
-            <Sidebar />
+          <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+            {serviceCards.map((service) => (
+              <ServiceCard
+                key={service.href}
+                title={service.title}
+                description={service.description}
+                icon={service.icon}
+                price={service.price}
+                href={service.href}
+                ctaLabel="Learn More"
+              />
+            ))}
           </div>
         </div>
-      </div>
+      </section>
 
-      <section className="bg-primary text-white py-12 sm:py-20 mt-12">
-        <div className="classic-container">
-          <div className="relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-[3rem] p-8 sm:p-16 text-center overflow-hidden">
-            <div className="absolute top-0 right-0 w-64 h-64 bg-secondary/10 rounded-full blur-3xl -mr-32 -mt-32" />
-            <div className="relative z-10">
-              <h2 className="text-3xl sm:text-5xl font-serif font-black mb-6">Ready for a Cleaner Space?</h2>
-              <p className="text-white/70 text-lg sm:text-xl mb-10 max-w-2xl mx-auto">
-                Book your cleaning service today and experience the WaveSolution difference.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button asChild size="lg" className="h-16 px-10 rounded-full bg-secondary hover:bg-secondary/90 text-white font-black text-lg uppercase tracking-widest shadow-2xl shadow-secondary/20 transition-all hover:scale-105">
-                  <Link href={siteLinks.book}>Book Now</Link>
-                </Button>
-                <Button asChild size="lg" variant="outline" className="h-16 px-10 rounded-full bg-white/5 hover:bg-white/10 text-white border-white/20 font-black text-lg uppercase tracking-widest transition-all hover:scale-105">
-                  <Link href={siteLinks.contact}>Contact Us</Link>
-                </Button>
+      <section className="bg-slate-50 py-14 md:py-20">
+        <div className="classic-container grid gap-8">
+          <article className="rounded-[2rem] border border-slate-200 bg-white p-7 shadow-sm sm:p-8">
+            <h2 className="text-2xl font-black tracking-tight text-primary">House Cleaning Gold Coast</h2>
+            <p className="mt-5 text-base leading-8 text-slate-600">
+              House cleaning remains one of the most searched and most commercially useful services for a Gold Coast cleaning business because the demand is consistent year-round. Busy households need help staying on top of bathrooms, kitchens, floors, dust, and the day-to-day mess that builds up when work, school, and family routines take priority. A strong house-cleaning offer should therefore feel flexible and practical, with weekly, fortnightly, and one-off options that match the way people actually live.
+            </p>
+            <p className="mt-4 text-base leading-8 text-slate-600">
+              The goal is not just a neater property. It is a home that feels easier to manage and more enjoyable to be in. That is especially important in apartment-heavy and high-lifestyle areas such as Surfers Paradise and Broadbeach, but it matters just as much for family homes in Robina, Southport, Burleigh Heads, and surrounding suburbs. If a visitor wants local house cleaners, the page should help them recognise the service quickly and move straight to a tailored quote.
+            </p>
+          </article>
+
+          <article className="rounded-[2rem] border border-slate-200 bg-white p-7 shadow-sm sm:p-8">
+            <h2 className="text-2xl font-black tracking-tight text-primary">Office Cleaning Gold Coast</h2>
+            <p className="mt-5 text-base leading-8 text-slate-600">
+              Office cleaning needs different messaging from domestic cleaning because the buyer is usually thinking about presentation, hygiene, and consistency rather than lifestyle convenience. Gold Coast businesses want an office cleaner who shows up on time, works around access needs, maintains shared kitchens and bathrooms properly, and helps the workplace feel more professional every day. A page built around office cleaning Gold Coast should speak to that business reality clearly.
+            </p>
+            <p className="mt-4 text-base leading-8 text-slate-600">
+              Local relevance matters here too. Business precincts in Southport, Robina, Broadbeach, and Surfers Paradise all create demand for recurring workplace cleaning. By separating office cleaning from general household messaging, Wave Solution can rank more strongly for business search terms while giving office managers a page that feels built for their exact problem instead of squeezed into a generic services list.
+            </p>
+          </article>
+
+          <article className="rounded-[2rem] border border-slate-200 bg-white p-7 shadow-sm sm:p-8">
+            <h2 className="text-2xl font-black tracking-tight text-primary">Bond Cleaning Gold Coast</h2>
+            <p className="mt-5 text-base leading-8 text-slate-600">
+              Bond cleaning is one of the strongest conversion opportunities for any Gold Coast cleaning business because users searching this term are usually close to booking. They are moving, coordinating inspections, or working toward key-return deadlines. That means the page and the CTA need to reduce uncertainty quickly. Explain what is included, explain how quotes work, and show that the service is designed for move-out pressure, not just normal house maintenance.
+            </p>
+            <p className="mt-4 text-base leading-8 text-slate-600">
+              This is where a more structured site beats weaker competitors. Instead of forcing the renter to guess which service applies, the site can send them directly to a focused bond-cleaning page with FAQs, related links, and a simple quote path based on suburb, property size, and preferred timing. The easier you make that decision, the more bookings you recover from high-intent traffic.
+            </p>
+          </article>
+
+          <article className="rounded-[2rem] border border-slate-200 bg-white p-7 shadow-sm sm:p-8">
+            <h2 className="text-2xl font-black tracking-tight text-primary">End of Lease Cleaning Gold Coast</h2>
+            <p className="mt-5 text-base leading-8 text-slate-600">
+              End of lease cleaning Gold Coast searches are closely related to bond cleaning, but the user intent is often framed around the rental handover itself rather than just the bond return. This distinction matters because it lets Wave Solution create another strong rental page without duplicating the exact same pitch. The end-of-lease page can speak more directly to handover readiness, inspection timing, and move-out organisation, which helps reduce keyword cannibalisation while still addressing a major local booking category.
+            </p>
+            <p className="mt-4 text-base leading-8 text-slate-600">
+              For tenants, landlords, and property managers, the most useful site is the one that makes the process feel manageable. That means clear inclusions, local suburb coverage, and related links to bond cleaning, deep cleaning, and contact pathways that actually help the visitor decide what to do next.
+            </p>
+          </article>
+
+          <article className="rounded-[2rem] border border-slate-200 bg-white p-7 shadow-sm sm:p-8">
+            <h2 className="text-2xl font-black tracking-tight text-primary">Deep Cleaning Gold Coast</h2>
+            <p className="mt-5 text-base leading-8 text-slate-600">
+              Deep cleaning is important because not every property needs recurring maintenance. Some homes and workplaces simply need a much more detailed one-off reset. Kitchens, bathrooms, buildup zones, edges, touchpoints, and neglected detail areas all benefit from a service that goes beyond the usual routine. A dedicated deep-cleaning page helps Wave Solution capture that one-off high-value demand instead of losing it to competitors with stronger service segmentation.
+            </p>
+            <p className="mt-4 text-base leading-8 text-slate-600">
+              Deep cleaning is also a smart conversion bridge. Many customers who book a deep clean eventually move to recurring house or office cleaning once the property has been reset properly. By linking these services together clearly, the site supports immediate conversions and longer-term value from the same visitor journey.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section className="bg-white py-14 md:py-20">
+        <div className="classic-container grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
+          <div className="rounded-[2.5rem] border border-slate-200 bg-slate-50 p-8 shadow-sm">
+            <h2 className="text-3xl font-black tracking-tight text-primary">Why Choose Us</h2>
+            <div className="mt-6 space-y-4">
+              {whyChooseUs.map((item) => (
+                <div key={item} className="flex items-start gap-3 rounded-[1.5rem] bg-white p-4 shadow-sm">
+                  <ShieldCheck className="mt-1 h-5 w-5 shrink-0 text-secondary" />
+                  <p className="text-sm leading-7 text-slate-600">{item}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="rounded-[2.5rem] border border-slate-200 bg-primary p-8 text-white shadow-xl">
+            <h2 className="text-3xl font-black tracking-tight">Gold Coast Trust Signals</h2>
+            <p className="mt-5 text-base leading-8 text-white/75">
+              Trust matters before any booking happens. Visitors want to know they are dealing with a local Gold Coast business that is easy to contact, easy to book, and clear about what is included. That is why the strongest conversion messaging sits close to the primary CTAs: fully insured cleaners, police-checked staff, flexible scheduling, and fast response times for home, office, rental, and commercial enquiries.
+            </p>
+            <div className="mt-8 grid gap-4 sm:grid-cols-2">
+              <div className="rounded-[1.5rem] border border-white/10 bg-white/5 p-5">
+                <Users className="h-6 w-6 text-secondary" />
+                <p className="mt-3 text-sm font-bold uppercase tracking-[0.16em] text-white/70">Local team</p>
+                <p className="mt-2 text-sm leading-7 text-white/75">Homes, rental properties, offices, and businesses across the Gold Coast.</p>
               </div>
+              <div className="rounded-[1.5rem] border border-white/10 bg-white/5 p-5">
+                <TimerReset className="h-6 w-6 text-secondary" />
+                <p className="mt-3 text-sm font-bold uppercase tracking-[0.16em] text-white/70">Fast response</p>
+                <p className="mt-2 text-sm leading-7 text-white/75">Clear quotes and straightforward next steps so enquiries do not stall.</p>
+              </div>
+              <div className="rounded-[1.5rem] border border-white/10 bg-white/5 p-5">
+                <CheckCircle className="h-6 w-6 text-secondary" />
+                <p className="mt-3 text-sm font-bold uppercase tracking-[0.16em] text-white/70">Flexible schedule</p>
+                <p className="mt-2 text-sm leading-7 text-white/75">Weekly, fortnightly, one-off, and move-out scheduling depending on the job.</p>
+              </div>
+              <div className="rounded-[1.5rem] border border-white/10 bg-white/5 p-5">
+                <Sparkles className="h-6 w-6 text-secondary" />
+                <p className="mt-3 text-sm font-bold uppercase tracking-[0.16em] text-white/70">Service clarity</p>
+                <p className="mt-2 text-sm leading-7 text-white/75">Dedicated pages for the main cleaning services Gold Coast clients actually search for.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-slate-50 py-14 md:py-20">
+        <div className="classic-container">
+          <div className="mx-auto max-w-4xl text-center">
+            <h2 className="text-3xl font-black tracking-tight text-primary sm:text-4xl">Recent Gold Coast Client Feedback</h2>
+            <p className="mx-auto mt-5 max-w-3xl text-base leading-8 text-slate-600">
+              Trust grows faster when visitors can see how local homes and businesses describe the service in their own words. These review highlights keep the focus on the Gold Coast suburbs and service types that matter most to new enquiries.
+            </p>
+          </div>
+
+          <div className="mt-10 grid gap-6 lg:grid-cols-3">
+            {reviewHighlights.map((review) => (
+              <article key={`${review.name}-${review.suburb}`} className="rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm">
+                <div className="flex items-center gap-1 text-secondary">
+                  {Array.from({ length: 5 }).map((_, index) => (
+                    <Star key={index} className="h-4 w-4 fill-secondary text-secondary" />
+                  ))}
+                </div>
+                <p className="mt-5 text-base italic leading-8 text-slate-600">"{review.quote}"</p>
+                <div className="mt-6 border-t border-slate-200 pt-4">
+                  <p className="font-bold text-primary">{review.name}</p>
+                  <p className="text-sm text-slate-500">
+                    {review.suburb}, QLD - {review.service}
+                  </p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-white py-14 md:py-20">
+        <div className="classic-container">
+          <div className="rounded-[2.5rem] border border-slate-200 bg-slate-50 p-8 shadow-sm sm:p-10">
+            <h2 className="text-3xl font-black tracking-tight text-primary">Helpful Internal Links</h2>
+            <p className="mt-5 max-w-4xl text-base leading-8 text-slate-600">
+              If you are still comparing{" "}
+              <Link href={siteLinks.cleaningGoldCoast} className="font-semibold text-primary underline-offset-4 hover:text-secondary hover:underline">
+                cleaning Gold Coast
+              </Link>{" "}
+              providers, want to speak with{" "}
+              <Link href={siteLinks.contact} className="font-semibold text-primary underline-offset-4 hover:text-secondary hover:underline">
+                professional cleaners Gold Coast
+              </Link>{" "}
+              homes and businesses can contact directly, or are looking for{" "}
+              <Link href={siteLinks.homeCleaning} className="font-semibold text-primary underline-offset-4 hover:text-secondary hover:underline">
+                local house cleaners
+              </Link>
+              , the pages below make it easier to move to the service that matches your property and timing.
+            </p>
+
+            <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+              {serviceCards.map((service) => (
+                <Link
+                  key={`link-${service.href}`}
+                  href={service.href}
+                  className="rounded-[1.5rem] border border-slate-200 bg-white p-5 transition-transform hover:-translate-y-1 hover:border-primary/20 hover:shadow-lg"
+                >
+                  <p className="text-xs font-black uppercase tracking-[0.2em] text-secondary">{service.title}</p>
+                  <p className="mt-3 text-sm leading-7 text-slate-600">{service.description}</p>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-slate-50 py-14 md:py-20">
+        <div className="classic-container">
+          <div className="mx-auto max-w-4xl">
+            <div className="text-center">
+              <h2 className="text-3xl font-black tracking-tight text-primary sm:text-4xl">Frequently Asked Questions</h2>
+            </div>
+
+            <div className="mt-10 space-y-4">
+              {homepageFaqs.map((faq) => (
+                <article key={faq.question} className="rounded-[1.5rem] border border-slate-200 bg-white p-6 shadow-sm">
+                  <h3 className="text-lg font-bold text-primary">{faq.question}</h3>
+                  <p className="mt-3 text-sm leading-7 text-slate-600">{faq.answer}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-primary py-14 text-white md:py-20">
+        <div className="classic-container">
+          <div className="rounded-[2.5rem] border border-white/10 bg-white/5 p-8 text-center backdrop-blur-sm sm:p-12">
+            <h2 className="text-3xl font-black tracking-tight sm:text-4xl">Ready to Book a Local Cleaner?</h2>
+            <p className="mx-auto mt-5 max-w-3xl text-base leading-8 text-white/75">
+              Tell us which Gold Coast service you need, where the property is located, and when you want the clean. We will help you choose the right service and send back a fast local quote.
+            </p>
+            <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row">
+              <Button asChild className="h-12 rounded-full bg-secondary px-6 text-[11px] font-black uppercase tracking-[0.18em] text-slate-950 hover:bg-secondary/90">
+                <Link href={siteLinks.book}>Get Free Quote</Link>
+              </Button>
+              <Button asChild variant="outline" className="h-12 rounded-full border-white/20 bg-white/5 px-6 text-[11px] font-black uppercase tracking-[0.18em] text-white hover:bg-white/10 hover:text-white">
+                <Link href={siteLinks.homeCleaning}>Book Local Cleaner</Link>
+              </Button>
+              <Button asChild variant="outline" className="h-12 rounded-full border-white/20 bg-transparent px-6 text-[11px] font-black uppercase tracking-[0.18em] text-white hover:bg-white/10 hover:text-white">
+                <Link href={businessInfo.phoneHref}>Call Now</Link>
+              </Button>
             </div>
           </div>
         </div>
@@ -287,4 +389,3 @@ export default function Home() {
     </div>
   )
 }
-

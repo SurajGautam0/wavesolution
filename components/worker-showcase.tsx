@@ -118,7 +118,7 @@ export function WorkerShowcase() {
                                             <div className="flex -space-x-2">
                                                 {[1, 2, 3].map((i) => (
                                                     <div key={i} className="w-6 h-6 rounded-full border border-white/20 bg-blue-100 overflow-hidden">
-                                                        <Image src={`/placeholder-user.jpg`} alt="Worker" width={24} height={24} className="object-cover" />
+                                                        <Image src="/avatar-placeholder.svg" alt="Wave Solution crew member" width={24} height={24} className="object-cover" />
                                                     </div>
                                                 ))}
                                             </div>

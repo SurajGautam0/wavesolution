@@ -85,7 +85,7 @@ export default function ContactPage() {
             <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl mb-6">Contact Wave Solution Cleaning in Gold Coast</h1>
             <div className="w-20 h-1 bg-secondary mx-auto mb-6"></div>
             <p className="text-xl text-white/80 mb-8">
-              Contact Wave Solution Cleaning for home, office, rental, and pest control quotes across Gold Coast.
+              Contact Wave Solution Cleaning for house, office, bond, and rental cleaning quotes across the Gold Coast.
             </p>
           </div>
         </div>

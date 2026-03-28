@@ -172,7 +172,7 @@ export default function AboutPage() {
             </div>
             <div className="relative h-[400px] rounded-lg overflow-hidden shadow-xl border-4 border-white/50">
               <Image
-                src="/about.jpg"
+                src="/about.png"
                 alt="WaveSolution Professional Standards"
                 fill
                 className="object-cover"

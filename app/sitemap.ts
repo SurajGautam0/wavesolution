@@ -1,5 +1,6 @@
 import { MetadataRoute } from 'next'
 import { locationPages } from '@/lib/location-pages'
+import { servicePageSlugs } from '@/lib/service-pages'
 
 export default function sitemap(): MetadataRoute.Sitemap {
     const baseUrl = 'https://www.wavesolution.com.au'
@@ -18,12 +19,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
             changeFrequency: 'weekly',
             priority: 0.95,
         },
-        {
-            url: `${baseUrl}/services/home-cleaning`,
+        ...servicePageSlugs.map((slug) => ({
+            url: `${baseUrl}/${slug}`,
             lastModified,
-            changeFrequency: 'weekly',
-            priority: 0.9,
-        },
+            changeFrequency: 'weekly' as const,
+            priority: slug === 'cleaning-gold-coast' ? 0.96 : 0.92,
+        })),
         {
             url: `${baseUrl}/locations`,
             lastModified,

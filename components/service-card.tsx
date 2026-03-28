@@ -8,9 +8,11 @@ interface ServiceCardProps {
   description: string
   icon: string
   price: string
+  href?: string
+  ctaLabel?: string
 }
 
-export function ServiceCard({ title, description, icon, price }: ServiceCardProps) {
+export function ServiceCard({ title, description, icon, price, href = "/book", ctaLabel = "Learn More" }: ServiceCardProps) {
   const getIcon = () => {
     switch (icon) {
       case "Home":
@@ -64,7 +66,7 @@ export function ServiceCard({ title, description, icon, price }: ServiceCardProp
           <p className="text-muted-foreground mb-4">{description}</p>
           <div className="font-semibold text-primary mb-4">{price}</div>
           <Button asChild className="classic-button w-full">
-            <Link href="/book">Book Now</Link>
+            <Link href={href}>{ctaLabel}</Link>
           </Button>
         </div>
       </div>
