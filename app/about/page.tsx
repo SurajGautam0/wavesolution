@@ -1,8 +1,57 @@
-"use client"
-
+import type { Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
 import { CheckCircle, Instagram, Sparkles, Target } from "lucide-react"
+
+export const metadata: Metadata = {
+  title: "About Wave Solution | Gold Coast Cleaning Experts Since 2010",
+  description:
+    "Meet the Wave Solution team — Gold Coast's trusted local cleaners since 2010. Fully insured, police-checked staff delivering house, office, bond and commercial cleaning services.",
+  alternates: {
+    canonical: "https://www.wavesolution.com.au/about",
+  },
+  openGraph: {
+    title: "About Wave Solution | Gold Coast Cleaning Experts Since 2010",
+    description:
+      "Meet the Wave Solution team — Gold Coast's trusted local cleaners since 2010. Fully insured, police-checked staff delivering house, office, bond and commercial cleaning services.",
+    url: "https://www.wavesolution.com.au/about",
+    type: "website",
+  },
+}
+
+const aboutJsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: "https://www.wavesolution.com.au" },
+        { "@type": "ListItem", position: 2, name: "About", item: "https://www.wavesolution.com.au/about" },
+      ],
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://www.wavesolution.com.au/#business",
+      name: "Wave Solution Cleaning Gold Coast",
+      url: "https://www.wavesolution.com.au",
+      foundingDate: "2010",
+      description:
+        "Wave Solution is Gold Coast's trusted local cleaning company founded in 2010, providing house cleaning, bond cleaning, office cleaning, and commercial cleaning across the Gold Coast.",
+      employee: [
+        {
+          "@type": "Person",
+          name: "Sushant Timalcena",
+          jobTitle: "Founder & CEO",
+        },
+        {
+          "@type": "Person",
+          name: "Veshraj Gautam",
+          jobTitle: "Operations Manager",
+        },
+      ],
+    },
+  ],
+}
 
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
@@ -55,6 +104,7 @@ const teamMembers: TeamMember[] = [
 export default function AboutPage() {
   return (
     <div className="flex min-h-screen flex-col">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutJsonLd) }} />
       {/* Premium Page Header */}
       <div className="page-header relative min-h-[50vh] flex items-center overflow-hidden bg-primary py-0">
         {/* Animated Background Container */}
@@ -127,20 +177,6 @@ export default function AboutPage() {
           </div>
         </div>
 
-        {/* Custom Keyframes in-line */}
-        <style jsx>{`
-          @keyframes ken-burns {
-            0% { transform: scale(1); }
-            100% { transform: scale(1.15) translate(1%, 1%); }
-          }
-           @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-          }
-          .animate-fadeIn {
-            animation: fadeIn 1s ease-out forwards;
-          }
-        `}</style>
       </div>
 
       {/* Our Story Section */}

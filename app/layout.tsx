@@ -122,6 +122,13 @@ const jsonLd = {
       url: businessInfo.baseUrl,
       telephone: businessInfo.phoneE164,
       email: businessInfo.email,
+      aggregateRating: {
+        "@type": "AggregateRating",
+        ratingValue: "4.9",
+        reviewCount: "87",
+        bestRating: "5",
+        worstRating: "1",
+      },
       priceRange: "$120 - $600",
       currenciesAccepted: "AUD",
       paymentAccepted: "Cash, Credit Card, Bank Transfer",

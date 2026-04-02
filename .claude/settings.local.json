@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "WebFetch(domain:www.goldcoastcleans.com.au)",
+      "WebFetch(domain:jtscleaningco.com.au)",
+      "WebFetch(domain:www.maid2match.com.au)",
+      "WebFetch(domain:www.paulsclean.com.au)",
+      "WebFetch(domain:www.bondcleaningingoldcoast.com.au)",
+      "WebFetch(domain:www.goldcoastcleanandsheen.com.au)",
+      "WebFetch(domain:clean4you.com.au)",
+      "WebFetch(domain:cleaner-space.com.au)"
+    ]
+  }
+}

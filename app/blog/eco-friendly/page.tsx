@@ -18,6 +18,16 @@ export const metadata: Metadata = {
     },
 }
 
+const breadcrumbJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://www.wavesolution.com.au" },
+    { "@type": "ListItem", position: 2, name: "Blog", item: "https://www.wavesolution.com.au/blog" },
+    { "@type": "ListItem", position: 3, name: "Eco-Friendly Cleaning", item: "https://www.wavesolution.com.au/blog/eco-friendly" },
+  ],
+}
+
 export default function EcoFriendlyCleaningPage() {
     const ecoTips = [
         {
@@ -40,6 +50,7 @@ export default function EcoFriendlyCleaningPage() {
 
     return (
         <div className="min-h-screen bg-slate-50">
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
             <section className="bg-primary text-white py-16 sm:py-24 relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-96 h-96 bg-green-400/10 rounded-full blur-3xl -mr-48 -mt-48" />
 

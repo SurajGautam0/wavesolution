@@ -90,9 +90,19 @@ export const metadata: Metadata = {
   },
 }
 
+const breadcrumbJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://www.wavesolution.com.au" },
+    { "@type": "ListItem", position: 2, name: "Blog", item: "https://www.wavesolution.com.au/blog" },
+  ],
+}
+
 export default function BlogHubPage() {
   return (
     <div className="flex min-h-screen flex-col bg-slate-50">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
       <section className="bg-primary py-16 text-white md:py-24">
         <div className="classic-container">
           <div className="mx-auto max-w-4xl text-center">

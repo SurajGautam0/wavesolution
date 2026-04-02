@@ -103,7 +103,7 @@ export const servicePages: ServicePage[] = [
       {
         question: "What cleaning services do you offer across the Gold Coast?",
         answer:
-          "We offer house cleaning, office cleaning, bond cleaning, end of lease cleaning, commercial cleaning, and deep cleaning across key Gold Coast suburbs.",
+          "We offer house cleaning, office cleaning, bond cleaning, end of lease cleaning, commercial cleaning, deep cleaning, carpet cleaning, after builders cleaning, move-in cleaning, and pest control across key Gold Coast suburbs.",
       },
       {
         question: "Do you clean homes, offices, and rental properties?",
@@ -119,6 +119,36 @@ export const servicePages: ServicePage[] = [
         question: "How do I get a cleaning quote?",
         answer:
           "Use the booking page or contact form, or call 0450 833 683. We can quote based on service type, suburb, property size, and preferred timing.",
+      },
+      {
+        question: "Are your cleaners insured and police checked?",
+        answer:
+          "Yes. All Wave Solution cleaners are fully insured and police checked for your peace of mind when inviting our team into your home, office, or rental property.",
+      },
+      {
+        question: "Do you offer eco-friendly cleaning options?",
+        answer:
+          "Yes. We offer eco-friendly product options for households with children, pets, or sensitivity concerns. Just mention this preference when booking.",
+      },
+      {
+        question: "Can I book a one-off clean or do I need a regular schedule?",
+        answer:
+          "Both options are available. We support one-off cleans, weekly, fortnightly, and monthly recurring schedules depending on the property type and your needs.",
+      },
+      {
+        question: "How much does cleaning cost in the Gold Coast?",
+        answer:
+          "Pricing depends on the service type, property size, condition, and frequency. House cleaning starts from $120, bond cleaning from $250, and office cleaning from $200. Contact us for a tailored local quote.",
+      },
+      {
+        question: "Do I need to be home during the clean?",
+        answer:
+          "Not necessarily. Many clients arrange access and aren't present during the clean. We discuss access details during the booking process to make sure the job runs smoothly.",
+      },
+      {
+        question: "How far in advance should I book?",
+        answer:
+          "We recommend booking as early as possible, especially for bond and end of lease cleaning where you may have a fixed inspection date. For regular house cleaning, a few days' notice is usually sufficient.",
       },
     ],
     relatedSlugs: [
@@ -213,6 +243,36 @@ export const servicePages: ServicePage[] = [
         answer:
           "Yes. Extras such as internal windows, oven cleaning, fridge cleaning, and deeper first-visit detailing can be quoted separately.",
       },
+      {
+        question: "How much does house cleaning cost in the Gold Coast?",
+        answer:
+          "House cleaning starts from $120 per session. The final price depends on the size of your home, number of rooms, frequency, and any add-ons. Contact us for a fast tailored quote.",
+      },
+      {
+        question: "Do your house cleaners work on weekends?",
+        answer:
+          "Yes. We offer flexible scheduling including weekends to fit around your routine. Mention your preferred day when booking and we'll confirm availability.",
+      },
+      {
+        question: "What areas of the home are included in a standard house clean?",
+        answer:
+          "A standard house clean covers kitchens, bathrooms, bedrooms, living areas, vacuuming, mopping, and general surface dusting. Scope is confirmed at quoting based on your home.",
+      },
+      {
+        question: "Is your cleaning service suitable for homes with pets or children?",
+        answer:
+          "Yes. We offer eco-friendly and non-toxic product options for families with children or pets. Let us know when booking and we'll use the right products for your household.",
+      },
+      {
+        question: "Can I get the same cleaner each visit?",
+        answer:
+          "We aim for consistency where possible, especially for recurring cleans. This helps our team understand your home and deliver a better result each visit.",
+      },
+      {
+        question: "What if I'm not happy with the clean?",
+        answer:
+          "We offer a satisfaction guarantee. If something has been missed or falls short of expectations, contact us promptly and we'll make it right.",
+      },
     ],
     relatedSlugs: [
       "cleaning-gold-coast",
@@ -292,7 +352,7 @@ export const servicePages: ServicePage[] = [
       {
         question: "How is bond cleaning priced?",
         answer:
-          "Pricing depends on the size of the property, the condition, the number of rooms, access timing, and any optional extras requested.",
+          "Pricing depends on the size of the property, the condition, the number of rooms, access timing, and any optional extras requested. Bond cleaning starts from $250.",
       },
       {
         question: "Can I add carpet cleaning or extra detailing to my bond clean?",
@@ -303,6 +363,36 @@ export const servicePages: ServicePage[] = [
         question: "How early should I book before my final inspection?",
         answer:
           "As early as possible. Bond-cleaning demand can rise around move dates, so booking early gives you a better chance of securing the timing you need.",
+      },
+      {
+        question: "Do you guarantee bond back with your cleaning?",
+        answer:
+          "We deliver a thorough, inspection-ready clean. While bond return decisions are made by the property manager or landlord, our detailed approach is designed to meet standard rental inspection requirements.",
+      },
+      {
+        question: "How long does bond cleaning take?",
+        answer:
+          "A typical bond clean takes 4–8 hours depending on property size and condition. Larger homes or properties with heavier buildup may require more time.",
+      },
+      {
+        question: "Do I need to be present during the bond clean?",
+        answer:
+          "No. Most tenants arrange key access and are not present during the clean. We discuss access arrangements during the booking process.",
+      },
+      {
+        question: "Is bond cleaning the same as end of lease cleaning?",
+        answer:
+          "They refer to the same type of service. Bond cleaning focuses on the bond return outcome, while end of lease cleaning focuses on the rental handover. We provide both under one service.",
+      },
+      {
+        question: "Do you clean all types of rental properties?",
+        answer:
+          "Yes. We cover apartments, units, townhouses, and houses across the Gold Coast for bond and move-out cleaning.",
+      },
+      {
+        question: "What if the property manager finds something after the clean?",
+        answer:
+          "Contact us promptly with the details. We will review the scope and arrange a follow-up visit if a missed item falls within the original agreed service.",
       },
     ],
     relatedSlugs: [
@@ -394,6 +484,36 @@ export const servicePages: ServicePage[] = [
         answer:
           "Yes. Extra detailing can be added to the quote depending on the property and what is needed before handover.",
       },
+      {
+        question: "How much does end of lease cleaning cost in the Gold Coast?",
+        answer:
+          "End of lease cleaning starts from $250 depending on the property size, condition, and any add-ons such as carpet cleaning or oven cleaning.",
+      },
+      {
+        question: "How far in advance should I book end of lease cleaning?",
+        answer:
+          "We recommend booking as soon as you know your vacate date. Popular times around end of month can fill quickly, especially for apartments and family homes.",
+      },
+      {
+        question: "Do I need to supply any cleaning products?",
+        answer:
+          "No. We bring all required products and equipment. If you have a preference for eco-friendly or specific products, let us know when booking.",
+      },
+      {
+        question: "Can the clean be scheduled the day before my final inspection?",
+        answer:
+          "Yes, subject to availability. Cleaning the day before your inspection is ideal as it ensures the property is presented in the best condition.",
+      },
+      {
+        question: "What happens if I need to reschedule?",
+        answer:
+          "Contact us as early as possible if your move date or inspection time changes. We will do our best to accommodate your new schedule.",
+      },
+      {
+        question: "Do you service all Gold Coast suburbs for end of lease cleaning?",
+        answer:
+          "Yes. We cover Southport, Robina, Surfers Paradise, Broadbeach, Burleigh Heads, Palm Beach, Helensvale, Coomera, Nerang, and surrounding suburbs.",
+      },
     ],
     relatedSlugs: [
       "cleaning-gold-coast",
@@ -483,6 +603,36 @@ export const servicePages: ServicePage[] = [
         question: "Do you clean shared kitchens and office bathrooms?",
         answer:
           "Yes. Shared staff areas, bathrooms, and common use spaces are included within the agreed service scope.",
+      },
+      {
+        question: "How much does office cleaning cost in the Gold Coast?",
+        answer:
+          "Office cleaning is quoted based on workplace size, frequency, and scope. Pricing starts from $200 per session. Contact us for a tailored business quote.",
+      },
+      {
+        question: "Do you sign confidentiality or access agreements for office cleaning?",
+        answer:
+          "Yes. We can work within your business's access and confidentiality requirements. Discuss your needs when getting a quote.",
+      },
+      {
+        question: "Are your office cleaners police checked?",
+        answer:
+          "Yes. All our cleaners are police checked, which is especially important for businesses requiring secure or after-hours access.",
+      },
+      {
+        question: "Can I set up a regular recurring office clean?",
+        answer:
+          "Yes. We recommend setting up a recurring schedule to keep your workplace consistently clean. We can accommodate daily, weekly, or custom frequency arrangements.",
+      },
+      {
+        question: "Do you clean reception areas and client-facing spaces?",
+        answer:
+          "Yes. Reception areas, meeting rooms, and customer-facing spaces are included in office cleaning scopes where agreed.",
+      },
+      {
+        question: "What Gold Coast business areas do you service?",
+        answer:
+          "We service offices in Southport, Robina, Broadbeach, Surfers Paradise, Burleigh Heads, Nerang, and surrounding Gold Coast business precincts.",
       },
     ],
     relatedSlugs: [
@@ -574,6 +724,36 @@ export const servicePages: ServicePage[] = [
         answer:
           "Yes. We can recommend a recurring plan based on site usage, foot traffic, hygiene needs, and your preferred service days.",
       },
+      {
+        question: "Do you clean strata and body corporate common areas?",
+        answer:
+          "Yes. We can provide commercial cleaning for body corporate lobbies, stairwells, car parks, and shared common areas across Gold Coast buildings.",
+      },
+      {
+        question: "Are your commercial cleaners insured?",
+        answer:
+          "Yes. All our commercial cleaning staff are fully insured, giving businesses peace of mind when we're on-site.",
+      },
+      {
+        question: "Can you service retail shops and customer-facing premises?",
+        answer:
+          "Yes. We work with retail businesses to keep shopfronts, floors, and customer-facing spaces clean and presentable.",
+      },
+      {
+        question: "How do I get a commercial cleaning quote in the Gold Coast?",
+        answer:
+          "Call us on 0450 833 683 or use our contact page. Share your premises type, suburb, size, and preferred schedule for a fast tailored quote.",
+      },
+      {
+        question: "Can commercial cleaning be scaled as our business grows?",
+        answer:
+          "Yes. We can adjust your cleaning plan as your business expands or if your premises or usage patterns change over time.",
+      },
+      {
+        question: "Do you offer one-off commercial cleaning as well as ongoing contracts?",
+        answer:
+          "Yes. We support both one-off commercial cleans and recurring arrangements depending on what best suits your business.",
+      },
     ],
     relatedSlugs: [
       "cleaning-gold-coast",
@@ -652,7 +832,7 @@ export const servicePages: ServicePage[] = [
       {
         question: "How long does a deep clean usually take?",
         answer:
-          "It depends on the size and condition of the property. A deeper service usually takes longer than regular maintenance cleaning because of the extra detail involved.",
+          "It depends on the size and condition of the property. A deep clean typically takes 4–8 hours for an average home. Larger or more neglected properties may require more time.",
       },
       {
         question: "Can I book a deep clean before guests or an inspection?",
@@ -663,6 +843,36 @@ export const servicePages: ServicePage[] = [
         question: "Do you bring your own products and equipment for deep cleaning?",
         answer:
           "Yes. We can bring the products and equipment needed for the agreed scope unless a site-specific arrangement is discussed in advance.",
+      },
+      {
+        question: "How much does deep cleaning cost in the Gold Coast?",
+        answer:
+          "Deep cleaning starts from $250 depending on the property size, condition, and scope. Contact us for a tailored quote based on your specific requirements.",
+      },
+      {
+        question: "Is deep cleaning suitable for homes that haven't been professionally cleaned before?",
+        answer:
+          "Yes. Deep cleaning is ideal for properties that have not had professional cleaning in a while, new properties, or homes that need a thorough reset before regular maintenance begins.",
+      },
+      {
+        question: "What areas are covered in a deep clean?",
+        answer:
+          "A deep clean covers all standard areas plus extra detail work in kitchens (including inside oven, range hood, cupboards), bathrooms (grout, tiles, fixtures), skirting boards, window sills, and hard-to-reach zones.",
+      },
+      {
+        question: "Can I book deep cleaning for my office or commercial space?",
+        answer:
+          "Yes. Deep cleaning is available for offices, commercial spaces, and rental properties across the Gold Coast, not just residential homes.",
+      },
+      {
+        question: "Should I deep clean before starting a regular cleaning schedule?",
+        answer:
+          "Yes, a deep clean is often the best starting point. It brings the property to a high baseline, making it easier and more cost-effective to maintain with regular cleaning visits.",
+      },
+      {
+        question: "Do you offer deep cleaning for short-term rental properties?",
+        answer:
+          "Yes. We provide deep cleaning for Airbnb and holiday rental properties across the Gold Coast, including between-guest resets and seasonal thorough cleans.",
       },
     ],
     relatedSlugs: [
@@ -755,6 +965,36 @@ export const servicePages: ServicePage[] = [
         answer:
           "Quotes are based on property size, condition, access timing, and whether the property needs standard move-in preparation or a more detailed post-renovation or deep-cleaning scope.",
       },
+      {
+        question: "How much does move-in cleaning cost in the Gold Coast?",
+        answer:
+          "Move-in cleaning starts from $220 depending on the property size, condition, and any extras. Contact us for a fast local quote.",
+      },
+      {
+        question: "Does the property need to be empty before move-in cleaning?",
+        answer:
+          "For the best results, move-in cleaning is easiest to complete before furniture arrives. However, we can work around existing items where needed.",
+      },
+      {
+        question: "Can move-in cleaning include inside ovens and cupboards?",
+        answer:
+          "Yes. Interior oven cleaning, cupboard wipe-outs, and similar detail work can be added to the quote depending on what the property needs.",
+      },
+      {
+        question: "How soon can you book move-in cleaning?",
+        answer:
+          "We aim to accommodate your move-in timeline. Contact us as soon as you have a confirmed move date for the best chance of securing your preferred time.",
+      },
+      {
+        question: "Is move-in cleaning different from a standard house clean?",
+        answer:
+          "Yes. Move-in cleaning goes deeper than a standard maintenance clean. It covers areas that may have been overlooked by previous occupants and ensures the space is genuinely fresh.",
+      },
+      {
+        question: "Do you offer move-in cleaning for newly built homes?",
+        answer:
+          "Yes. For brand new properties, we can provide a move-in clean or an after-builders clean depending on how much construction dust and residue is present.",
+      },
     ],
     relatedSlugs: [
       "cleaning-gold-coast",
@@ -845,6 +1085,36 @@ export const servicePages: ServicePage[] = [
         question: "How do you quote for post-renovation cleaning?",
         answer:
           "Quotes depend on the size of the property, the renovation stage, the amount of dust and residue, access conditions, and the level of detail needed before handover or occupancy.",
+      },
+      {
+        question: "How much does after builders cleaning cost in the Gold Coast?",
+        answer:
+          "After builders cleaning starts from $300 depending on property size, scope, and the level of construction dust and residue present. Contact us for a tailored quote.",
+      },
+      {
+        question: "How long does a post-renovation clean take?",
+        answer:
+          "It depends on the scale of the renovation and the size of the property. A typical after-builders clean takes longer than standard maintenance cleaning due to the level of dust and detail work involved.",
+      },
+      {
+        question: "Do you clean commercial fit-outs after construction?",
+        answer:
+          "Yes. We provide after-builders cleaning for commercial fit-outs, office renovations, and retail spaces across the Gold Coast.",
+      },
+      {
+        question: "What does after builders cleaning include?",
+        answer:
+          "It includes removal of construction dust from all surfaces, cleaning of floors, windows, fittings, cupboards, and any remaining residue or labels left by trades.",
+      },
+      {
+        question: "When should after builders cleaning be done?",
+        answer:
+          "After builders cleaning should be done once all trades have finished and the property is ready for final inspection, handover, or occupation.",
+      },
+      {
+        question: "Can you clean around furniture or fittings that have already been installed?",
+        answer:
+          "Yes. We can work carefully around installed fittings, cabinetry, and any furniture already in place, ensuring a thorough clean without causing damage.",
       },
     ],
     relatedSlugs: [
@@ -937,6 +1207,36 @@ export const servicePages: ServicePage[] = [
         answer:
           "Quotes depend on the area to be cleaned, carpet condition, property type, site access, and whether the booking is part of a broader cleaning service.",
       },
+      {
+        question: "How much does carpet cleaning cost in the Gold Coast?",
+        answer:
+          "Carpet cleaning starts from $150 depending on the size of the area, the number of rooms, and the condition of the carpets. Contact us for a fast local quote.",
+      },
+      {
+        question: "How long does it take for carpets to dry after cleaning?",
+        answer:
+          "Drying times typically range from 2–6 hours depending on the cleaning method used, carpet thickness, airflow, and weather conditions.",
+      },
+      {
+        question: "Can carpet cleaning remove pet stains and odours?",
+        answer:
+          "Yes. We can treat pet stains and odours as part of the carpet cleaning service. Heavily affected areas may require a more intensive treatment.",
+      },
+      {
+        question: "Do you use steam cleaning for carpets?",
+        answer:
+          "We use appropriate methods depending on the carpet type and condition. Steam cleaning is available for suitable carpet types. We confirm the best approach when quoting.",
+      },
+      {
+        question: "How often should carpets be professionally cleaned?",
+        answer:
+          "For most households, once or twice a year is recommended. High-traffic areas, pet owners, or rental properties may benefit from more frequent cleaning.",
+      },
+      {
+        question: "Do you clean carpets in rental properties before the final inspection?",
+        answer:
+          "Yes. Carpet cleaning for rental inspections and move-outs is one of our most common requests. We can combine it with bond or end of lease cleaning for a complete service.",
+      },
     ],
     relatedSlugs: [
       "cleaning-gold-coast",
@@ -1027,6 +1327,36 @@ export const servicePages: ServicePage[] = [
         question: "How do I request a pest control quote?",
         answer:
           "Call us or use the booking and contact pages with your property type, suburb, issue details, and preferred timing so we can recommend the right next step.",
+      },
+      {
+        question: "What pests do you treat in the Gold Coast?",
+        answer:
+          "We support treatment for common Gold Coast pests including cockroaches, ants, spiders, rodents, and other household pests. Contact us with details of your specific issue.",
+      },
+      {
+        question: "Is pest control treatment safe for children and pets?",
+        answer:
+          "We use treatments appropriate for the property and situation. Let us know during booking if you have children, pets, or specific health considerations so we can plan accordingly.",
+      },
+      {
+        question: "How long does pest control treatment take?",
+        answer:
+          "Treatment time depends on the property size and the type of pest issue. Most residential treatments can be completed within 1–2 hours.",
+      },
+      {
+        question: "How soon after pest treatment can I return to my home?",
+        answer:
+          "This depends on the treatment type used. We advise on the recommended re-entry time based on the specific treatment applied at your property.",
+      },
+      {
+        question: "Can pest control be combined with a bond or end of lease clean?",
+        answer:
+          "Yes. Pest treatment for rental properties can be planned alongside bond or end of lease cleaning for a more complete move-out service.",
+      },
+      {
+        question: "How often should pest control be done?",
+        answer:
+          "For most Gold Coast properties, an annual or bi-annual treatment is recommended. Properties in humid or bush-adjacent areas may benefit from more frequent treatment.",
       },
     ],
     relatedSlugs: [
