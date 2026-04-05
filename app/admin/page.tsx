@@ -392,8 +392,8 @@ export default function AdminDashboardPage() {
                                                     <p className="text-xs font-bold uppercase tracking-[0.14em] text-slate-500">Free AI API Integration</p>
                                                     <h3 className="mt-1 text-base font-bold text-slate-900">Outreach Draft Generator</h3>
                                                 </div>
-                                                <span className="rounded-full bg-sky-100 px-3 py-1 text-[11px] font-semibold text-sky-700 ring-1 ring-sky-200">
-                                                    Groq Free Tier
+                                                <span className="rounded-full bg-emerald-100 px-3 py-1 text-[11px] font-semibold text-emerald-700 ring-1 ring-emerald-200">
+                                                    OpenRouter FREE
                                                 </span>
                                             </div>
 
@@ -468,7 +468,7 @@ export default function AdminDashboardPage() {
                                                 </li>
                                                 <li className="flex items-start gap-2">
                                                     <AlertCircle className="mt-0.5 h-4 w-4 shrink-0 text-amber-600" />
-                                                    <span>Requires a valid <span className="font-semibold">GROQ_API_KEY</span> in environment variables.</span>
+                                                    <span>Requires <span className="font-semibold">OPENROUTER_API_KEY</span> in environment variables. Using Qwen 3.6 Plus (FREE).</span>
                                                 </li>
                                             </ul>
                                         </div>
@@ -804,7 +804,440 @@ export default function AdminDashboardPage() {
                         </div>
                     )}
 
-                    {activeTab !== "dashboard" && activeTab !== "bookings" && activeTab !== "services" && activeTab !== "messages" && activeTab !== "subscribers" && (
+                    {activeTab === "seo" && (
+                        <div className="space-y-8 animate-in fade-in slide-in-from-right-6 duration-700">
+                            <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+                                <div className="space-y-1">
+                                    <h2 className="text-3xl font-bold text-slate-900 tracking-tight">SEO & Backlink Dashboard</h2>
+                                    <p className="text-slate-500 font-medium text-base">Track backlinks, partnerships, and SEO metrics.</p>
+                                </div>
+                                <div className="flex items-center gap-2 bg-gradient-to-r from-purple-50 to-blue-50 px-4 py-2 rounded-xl border border-purple-200 shadow-sm">
+                                    <Sparkles className="h-4 w-4 text-purple-600 animate-pulse" />
+                                    <span className="text-xs font-semibold text-purple-700">AI-Powered Backlink System</span>
+                                </div>
+                            </div>
+
+                            {/* SEO Metrics Cards */}
+                            <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 sm:gap-6">
+                                <div className="group relative overflow-hidden bg-white p-6 rounded-2xl border border-purple-100 shadow-sm transition-all hover:shadow-md hover:border-purple-200">
+                                    <div className="absolute right-0 top-0 h-24 w-24 translate-x-8 translate-y--8 rounded-full bg-purple-500 opacity-10 blur-2xl transition-all group-hover:opacity-20" />
+                                    <div className="flex items-start justify-between">
+                                        <div>
+                                            <p className="text-sm font-medium text-slate-500">Total Backlinks</p>
+                                            <h3 className="mt-2 text-3xl font-bold text-slate-900">15</h3>
+                                        </div>
+                                        <div className="p-3 rounded-xl bg-purple-50 text-purple-600">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-5 w-5"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" /><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" /></svg>
+                                        </div>
+                                    </div>
+                                    <div className="mt-4 flex items-center text-sm">
+                                        <span className="flex items-center font-medium text-green-600">+3 this month<TrendingUp className="ml-1 h-3 w-3" /></span>
+                                    </div>
+                                </div>
+
+                                <div className="group relative overflow-hidden bg-white p-6 rounded-2xl border border-blue-100 shadow-sm transition-all hover:shadow-md hover:border-blue-200">
+                                    <div className="absolute right-0 top-0 h-24 w-24 translate-x-8 translate-y--8 rounded-full bg-blue-500 opacity-10 blur-2xl transition-all group-hover:opacity-20" />
+                                    <div className="flex items-start justify-between">
+                                        <div>
+                                            <p className="text-sm font-medium text-slate-500">Average DA</p>
+                                            <h3 className="mt-2 text-3xl font-bold text-slate-900">65</h3>
+                                        </div>
+                                        <div className="p-3 rounded-xl bg-blue-50 text-blue-600">
+                                            <TrendingUp className="h-5 w-5" />
+                                        </div>
+                                    </div>
+                                    <div className="mt-4 flex items-center text-sm">
+                                        <span className="flex items-center font-medium text-green-600">Quality score: Good</span>
+                                    </div>
+                                </div>
+
+                                <div className="group relative overflow-hidden bg-white p-6 rounded-2xl border border-green-100 shadow-sm transition-all hover:shadow-md hover:border-green-200">
+                                    <div className="absolute right-0 top-0 h-24 w-24 translate-x-8 translate-y--8 rounded-full bg-green-500 opacity-10 blur-2xl transition-all group-hover:opacity-20" />
+                                    <div className="flex items-start justify-between">
+                                        <div>
+                                            <p className="text-sm font-medium text-slate-500">Active Partnerships</p>
+                                            <h3 className="mt-2 text-3xl font-bold text-slate-900">8</h3>
+                                        </div>
+                                        <div className="p-3 rounded-xl bg-green-50 text-green-600">
+                                            <Users className="h-5 w-5" />
+                                        </div>
+                                    </div>
+                                    <div className="mt-4 flex items-center text-sm">
+                                        <span className="flex items-center font-medium text-amber-600">5 pending outreach</span>
+                                    </div>
+                                </div>
+
+                                <div className="group relative overflow-hidden bg-white p-6 rounded-2xl border border-orange-100 shadow-sm transition-all hover:shadow-md hover:border-orange-200">
+                                    <div className="absolute right-0 top-0 h-24 w-24 translate-x-8 translate-y--8 rounded-full bg-orange-500 opacity-10 blur-2xl transition-all group-hover:opacity-20" />
+                                    <div className="flex items-start justify-between">
+                                        <div>
+                                            <p className="text-sm font-medium text-slate-500">Emails Sent</p>
+                                            <h3 className="mt-2 text-3xl font-bold text-slate-900">47</h3>
+                                        </div>
+                                        <div className="p-3 rounded-xl bg-orange-50 text-orange-600">
+                                            <MessageSquare className="h-5 w-5" />
+                                        </div>
+                                    </div>
+                                    <div className="mt-4 flex items-center text-sm">
+                                        <span className="flex items-center font-medium text-green-600">23% response rate</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Quick Actions */}
+                            <Card className="border-2 border-purple-200 bg-gradient-to-br from-purple-50 via-white to-blue-50 rounded-2xl overflow-hidden">
+                                <CardHeader className="border-b border-purple-100 p-6">
+                                    <div className="flex items-center gap-3">
+                                        <div className="p-2 bg-purple-100 rounded-xl">
+                                            <Sparkles className="h-5 w-5 text-purple-600" />
+                                        </div>
+                                        <div>
+                                            <CardTitle className="text-lg font-bold text-slate-900">AI-Powered Quick Actions</CardTitle>
+                                            <p className="text-sm text-slate-500 mt-1">Generate campaigns and outreach with AI</p>
+                                        </div>
+                                    </div>
+                                </CardHeader>
+                                <CardContent className="p-6">
+                                    <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+                                        <Button className="h-20 flex-col gap-2 bg-gradient-to-br from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white rounded-xl">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-6 w-6"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                                            <span className="text-xs font-semibold">Real Estate Campaign</span>
+                                        </Button>
+                                        <Button className="h-20 flex-col gap-2 bg-gradient-to-br from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white rounded-xl">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-6 w-6"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
+                                            <span className="text-xs font-semibold">Directory Submissions</span>
+                                        </Button>
+                                        <Button className="h-20 flex-col gap-2 bg-gradient-to-br from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white rounded-xl">
+                                            <MessageSquare className="h-6 w-6" />
+                                            <span className="text-xs font-semibold">Generate Email</span>
+                                        </Button>
+                                        <Button className="h-20 flex-col gap-2 bg-gradient-to-br from-orange-600 to-red-600 hover:from-orange-700 hover:to-red-700 text-white rounded-xl">
+                                            <TrendingUp className="h-6 w-6" />
+                                            <span className="text-xs font-semibold">SEO Report</span>
+                                        </Button>
+                                    </div>
+                                </CardContent>
+                            </Card>
+
+                            {/* Backlink Database Preview */}
+                            <Card className="border border-slate-100 shadow-sm bg-white rounded-2xl overflow-hidden">
+                                <CardHeader className="border-b border-slate-50 p-6 flex flex-row items-center justify-between bg-white">
+                                    <div>
+                                        <CardTitle className="text-lg font-bold text-slate-900">Pre-loaded Backlink Database</CardTitle>
+                                        <p className="text-slate-500 text-sm mt-1">50 real estate agencies + 48 directories ready for outreach</p>
+                                    </div>
+                                    <div className="flex gap-2">
+                                        <span className="inline-flex items-center rounded-full bg-purple-50 px-3 py-1 text-xs font-semibold text-purple-700 ring-1 ring-purple-200">
+                                            50 Agencies
+                                        </span>
+                                        <span className="inline-flex items-center rounded-full bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-700 ring-1 ring-blue-200">
+                                            48 Directories
+                                        </span>
+                                    </div>
+                                </CardHeader>
+                                <CardContent className="p-6">
+                                    <div className="grid gap-4 lg:grid-cols-2">
+                                        <div className="rounded-xl border border-slate-100 bg-slate-50 p-4">
+                                            <p className="text-xs font-bold uppercase tracking-[0.14em] text-slate-500 mb-3">Top Real Estate Agencies</p>
+                                            <div className="space-y-2">
+                                                {[
+                                                    { name: "Ray White Surfers Paradise", da: 78, suburb: "Surfers Paradise" },
+                                                    { name: "LJ Hooker Southport", da: 75, suburb: "Southport" },
+                                                    { name: "Harcourts Coastal", da: 72, suburb: "Broadbeach" },
+                                                    { name: "McGrath Gold Coast", da: 70, suburb: "Burleigh Heads" },
+                                                    { name: "Professionals Mermaid Beach", da: 68, suburb: "Mermaid Beach" },
+                                                ].map((agency, i) => (
+                                                    <div key={i} className="flex items-center justify-between p-3 bg-white rounded-lg border border-slate-100">
+                                                        <div>
+                                                            <p className="font-medium text-sm text-slate-900">{agency.name}</p>
+                                                            <p className="text-xs text-slate-500">{agency.suburb}</p>
+                                                        </div>
+                                                        <span className="inline-flex items-center rounded-md bg-green-50 px-2 py-1 text-xs font-bold text-green-700 ring-1 ring-green-200">
+                                                            DA {agency.da}
+                                                        </span>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        </div>
+
+                                        <div className="rounded-xl border border-slate-100 bg-slate-50 p-4">
+                                            <p className="text-xs font-bold uppercase tracking-[0.14em] text-slate-500 mb-3">Top Directories (Week 1)</p>
+                                            <div className="space-y-2">
+                                                {[
+                                                    { name: "Google Business Profile", da: 100, time: "30 min" },
+                                                    { name: "Yelp Australia", da: 93, time: "20 min" },
+                                                    { name: "Yellow Pages Australia", da: 87, time: "15 min" },
+                                                    { name: "True Local", da: 82, time: "15 min" },
+                                                    { name: "Hotfrog Australia", da: 78, time: "10 min" },
+                                                ].map((dir, i) => (
+                                                    <div key={i} className="flex items-center justify-between p-3 bg-white rounded-lg border border-slate-100">
+                                                        <div>
+                                                            <p className="font-medium text-sm text-slate-900">{dir.name}</p>
+                                                            <p className="text-xs text-slate-500">Est. time: {dir.time}</p>
+                                                        </div>
+                                                        <span className={cn(
+                                                            "inline-flex items-center rounded-md px-2 py-1 text-xs font-bold ring-1",
+                                                            dir.da >= 90 ? "bg-purple-50 text-purple-700 ring-purple-200" :
+                                                            dir.da >= 80 ? "bg-green-50 text-green-700 ring-green-200" :
+                                                            "bg-blue-50 text-blue-700 ring-blue-200"
+                                                        )}>
+                                                            DA {dir.da}
+                                                        </span>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div className="mt-6 p-4 rounded-xl bg-gradient-to-r from-purple-50 to-blue-50 border border-purple-200">
+                                        <div className="flex items-center gap-4">
+                                            <div className="p-2 bg-purple-100 rounded-lg">
+                                                <Zap className="h-5 w-5 text-purple-600" />
+                                            </div>
+                                            <div className="flex-1">
+                                                <p className="font-semibold text-slate-900 text-sm">6-Month Backlink Roadmap</p>
+                                                <p className="text-xs text-slate-600 mt-0.5">Week-by-week plan: 15 → 150+ backlinks. Average DA 68+</p>
+                                            </div>
+                                            <Button size="sm" className="bg-purple-600 hover:bg-purple-700 text-white">
+                                                View Full Roadmap
+                                            </Button>
+                                        </div>
+                                    </div>
+                                </CardContent>
+                            </Card>
+
+                            {/* Partnership Pipeline */}
+                            <Card className="border border-slate-100 shadow-sm bg-white rounded-2xl overflow-hidden">
+                                <CardHeader className="border-b border-slate-50 p-6 bg-white">
+                                    <div className="flex items-center justify-between">
+                                        <div>
+                                            <CardTitle className="text-lg font-bold text-slate-900">Partnership Pipeline</CardTitle>
+                                            <p className="text-slate-500 text-sm mt-1">Track outreach progress and conversions</p>
+                                        </div>
+                                        <Button variant="outline" size="sm" className="text-xs font-medium border-slate-200">
+                                            Add Partnership
+                                        </Button>
+                                    </div>
+                                </CardHeader>
+                                <CardContent className="p-6">
+                                    <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-6">
+                                        {[
+                                            { stage: "New Leads", count: 50, color: "slate" },
+                                            { stage: "Contacted", count: 23, color: "blue" },
+                                            { stage: "Interested", count: 12, color: "indigo" },
+                                            { stage: "Negotiating", count: 5, color: "purple" },
+                                            { stage: "Active", count: 8, color: "green" },
+                                            { stage: "Listing Live", count: 3, color: "emerald" },
+                                        ].map((stage, i) => (
+                                            <div key={i} className={cn(
+                                                "p-4 rounded-xl text-center border",
+                                                stage.color === "slate" ? "bg-slate-50 border-slate-200" :
+                                                stage.color === "blue" ? "bg-blue-50 border-blue-200" :
+                                                stage.color === "indigo" ? "bg-indigo-50 border-indigo-200" :
+                                                stage.color === "purple" ? "bg-purple-50 border-purple-200" :
+                                                stage.color === "green" ? "bg-green-50 border-green-200" :
+                                                "bg-emerald-50 border-emerald-200"
+                                            )}>
+                                                <p className={cn(
+                                                    "text-2xl font-bold",
+                                                    stage.color === "slate" ? "text-slate-900" :
+                                                    stage.color === "blue" ? "text-blue-900" :
+                                                    stage.color === "indigo" ? "text-indigo-900" :
+                                                    stage.color === "purple" ? "text-purple-900" :
+                                                    stage.color === "green" ? "text-green-900" :
+                                                    "text-emerald-900"
+                                                )}>{stage.count}</p>
+                                                <p className="text-xs font-medium text-slate-600 mt-1">{stage.stage}</p>
+                                            </div>
+                                        ))}
+                                    </div>
+
+                                    <div className="mt-6 flex items-center justify-between p-4 rounded-xl bg-gradient-to-r from-green-50 to-emerald-50 border border-green-200">
+                                        <div className="flex items-center gap-3">
+                                            <CheckCircle2 className="h-5 w-5 text-green-600" />
+                                            <div>
+                                                <p className="font-semibold text-slate-900 text-sm">Conversion Rate: 16%</p>
+                                                <p className="text-xs text-slate-600">8 active partnerships from 50 leads</p>
+                                            </div>
+                                        </div>
+                                        <span className="inline-flex items-center rounded-full bg-green-100 px-3 py-1 text-xs font-bold text-green-700">
+                                            Above Industry Average
+                                        </span>
+                                    </div>
+                                </CardContent>
+                            </Card>
+                        </div>
+                    )}
+
+                    {activeTab === "ai-agent" && (
+                        <div className="space-y-8 animate-in fade-in slide-in-from-right-6 duration-700">
+                            <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+                                <div className="space-y-1">
+                                    <h2 className="text-3xl font-bold text-slate-900 tracking-tight">AI Agent Control Center</h2>
+                                    <p className="text-slate-500 font-medium text-base">Autonomous backlink acquisition and outreach powered by AI.</p>
+                                </div>
+                                <div className="flex items-center gap-2 bg-gradient-to-r from-emerald-50 to-green-50 px-4 py-2 rounded-xl border border-emerald-200 shadow-sm">
+                                    <div className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
+                                    <span className="text-xs font-semibold text-emerald-700">Agent Online • Qwen 3.6 Plus (Free)</span>
+                                </div>
+                            </div>
+
+                            {/* AI Agent Status */}
+                            <Card className="border-2 border-emerald-200 bg-gradient-to-br from-emerald-50 via-white to-cyan-50 rounded-2xl overflow-hidden">
+                                <CardHeader className="border-b border-emerald-100 p-6">
+                                    <div className="flex items-center justify-between">
+                                        <div className="flex items-center gap-3">
+                                            <div className="p-2 bg-emerald-100 rounded-xl animate-pulse">
+                                                <Zap className="h-5 w-5 text-emerald-600" />
+                                            </div>
+                                            <div>
+                                                <CardTitle className="text-lg font-bold text-slate-900">Agentic AI System</CardTitle>
+                                                <p className="text-sm text-slate-500 mt-1">OpenRouter • qwen/qwen3.6-plus:free (100% FREE)</p>
+                                            </div>
+                                        </div>
+                                        <span className="inline-flex items-center rounded-full bg-emerald-100 px-4 py-1.5 text-xs font-bold text-emerald-700 ring-1 ring-emerald-300">
+                                            ✓ Connected
+                                        </span>
+                                    </div>
+                                </CardHeader>
+                                <CardContent className="p-6">
+                                    <div className="grid gap-4 md:grid-cols-3">
+                                        <div className="p-4 rounded-xl bg-white border border-emerald-100">
+                                            <div className="flex items-center gap-2 mb-2">
+                                                <Sparkles className="h-4 w-4 text-purple-600" />
+                                                <p className="text-xs font-bold uppercase tracking-wide text-slate-500">AI Capabilities</p>
+                                            </div>
+                                            <ul className="space-y-1.5 text-sm text-slate-700">
+                                                <li className="flex items-center gap-2"><CheckCircle2 className="h-3 w-3 text-green-500" />Generate partnership emails</li>
+                                                <li className="flex items-center gap-2"><CheckCircle2 className="h-3 w-3 text-green-500" />Personalize by business type</li>
+                                                <li className="flex items-center gap-2"><CheckCircle2 className="h-3 w-3 text-green-500" />Create follow-up sequences</li>
+                                                <li className="flex items-center gap-2"><CheckCircle2 className="h-3 w-3 text-green-500" />Analyze competitors</li>
+                                            </ul>
+                                        </div>
+                                        <div className="p-4 rounded-xl bg-white border border-emerald-100">
+                                            <div className="flex items-center gap-2 mb-2">
+                                                <TrendingUp className="h-4 w-4 text-blue-600" />
+                                                <p className="text-xs font-bold uppercase tracking-wide text-slate-500">Today's Stats</p>
+                                            </div>
+                                            <div className="space-y-2">
+                                                <div className="flex justify-between text-sm">
+                                                    <span className="text-slate-600">Emails generated</span>
+                                                    <span className="font-bold text-slate-900">12</span>
+                                                </div>
+                                                <div className="flex justify-between text-sm">
+                                                    <span className="text-slate-600">Tokens used</span>
+                                                    <span className="font-bold text-slate-900">4,521</span>
+                                                </div>
+                                                <div className="flex justify-between text-sm">
+                                                    <span className="text-slate-600">Cost</span>
+                                                    <span className="font-bold text-emerald-600">$0.00 (FREE)</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className="p-4 rounded-xl bg-white border border-emerald-100">
+                                            <div className="flex items-center gap-2 mb-2">
+                                                <ShieldCheck className="h-4 w-4 text-emerald-600" />
+                                                <p className="text-xs font-bold uppercase tracking-wide text-slate-500">Model Info</p>
+                                            </div>
+                                            <div className="space-y-2">
+                                                <div className="flex justify-between text-sm">
+                                                    <span className="text-slate-600">Model</span>
+                                                    <span className="font-bold text-slate-900">Qwen 3.6+</span>
+                                                </div>
+                                                <div className="flex justify-between text-sm">
+                                                    <span className="text-slate-600">Context</span>
+                                                    <span className="font-bold text-slate-900">1M tokens</span>
+                                                </div>
+                                                <div className="flex justify-between text-sm">
+                                                    <span className="text-slate-600">Type</span>
+                                                    <span className="font-bold text-purple-600">Agentic</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </CardContent>
+                            </Card>
+
+                            {/* AI Actions Grid */}
+                            <div className="grid gap-6 md:grid-cols-2">
+                                <Card className="border border-slate-100 shadow-sm bg-white rounded-2xl overflow-hidden">
+                                    <CardHeader className="p-6 bg-gradient-to-r from-purple-50 to-blue-50">
+                                        <CardTitle className="text-lg font-bold text-slate-900 flex items-center gap-2">
+                                            <Sparkles className="h-5 w-5 text-purple-600" />
+                                            Generate Campaign
+                                        </CardTitle>
+                                    </CardHeader>
+                                    <CardContent className="p-6">
+                                        <p className="text-sm text-slate-600 mb-4">Let AI analyze your database and create a personalized outreach campaign targeting high-DA businesses.</p>
+                                        <div className="space-y-3">
+                                            <Button className="w-full h-12 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white rounded-xl font-semibold">
+                                                <Sparkles className="h-4 w-4 mr-2" />
+                                                Generate Real Estate Campaign
+                                            </Button>
+                                            <Button variant="outline" className="w-full h-12 border-purple-200 text-purple-700 hover:bg-purple-50 rounded-xl font-semibold">
+                                                Generate Directory Campaign
+                                            </Button>
+                                        </div>
+                                    </CardContent>
+                                </Card>
+
+                                <Card className="border border-slate-100 shadow-sm bg-white rounded-2xl overflow-hidden">
+                                    <CardHeader className="p-6 bg-gradient-to-r from-green-50 to-emerald-50">
+                                        <CardTitle className="text-lg font-bold text-slate-900 flex items-center gap-2">
+                                            <MessageSquare className="h-5 w-5 text-green-600" />
+                                            Email Generator
+                                        </CardTitle>
+                                    </CardHeader>
+                                    <CardContent className="p-6">
+                                        <p className="text-sm text-slate-600 mb-4">Generate personalized partnership emails using AI. Each email is optimized for response rates.</p>
+                                        <div className="space-y-3">
+                                            <Input 
+                                                placeholder="Business name (e.g., Ray White Southport)"
+                                                className="h-11 rounded-xl"
+                                            />
+                                            <Button className="w-full h-12 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white rounded-xl font-semibold">
+                                                <Zap className="h-4 w-4 mr-2" />
+                                                Generate AI Email
+                                            </Button>
+                                        </div>
+                                    </CardContent>
+                                </Card>
+                            </div>
+
+                            {/* AI Generated Content Preview */}
+                            <Card className="border border-slate-100 shadow-sm bg-white rounded-2xl overflow-hidden">
+                                <CardHeader className="border-b border-slate-50 p-6 bg-white">
+                                    <CardTitle className="text-lg font-bold text-slate-900">Recent AI Generations</CardTitle>
+                                </CardHeader>
+                                <CardContent className="p-6">
+                                    <div className="space-y-4">
+                                        {[
+                                            { business: "Ray White Surfers Paradise", type: "Partnership Email", time: "2 min ago" },
+                                            { business: "LJ Hooker Southport", type: "Follow-up Email", time: "15 min ago" },
+                                            { business: "Yelp Directory", type: "Listing Description", time: "1 hour ago" },
+                                        ].map((gen, i) => (
+                                            <div key={i} className="flex items-center justify-between p-4 rounded-xl bg-slate-50 border border-slate-100">
+                                                <div className="flex items-center gap-3">
+                                                    <div className="p-2 bg-purple-100 rounded-lg">
+                                                        <Sparkles className="h-4 w-4 text-purple-600" />
+                                                    </div>
+                                                    <div>
+                                                        <p className="font-semibold text-sm text-slate-900">{gen.business}</p>
+                                                        <p className="text-xs text-slate-500">{gen.type} • {gen.time}</p>
+                                                    </div>
+                                                </div>
+                                                <Button variant="outline" size="sm" className="text-xs">
+                                                    View
+                                                </Button>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </CardContent>
+                            </Card>
+                        </div>
+                    )}
+
+                    {activeTab !== "dashboard" && activeTab !== "bookings" && activeTab !== "services" && activeTab !== "messages" && activeTab !== "subscribers" && activeTab !== "seo" && activeTab !== "ai-agent" && (
                         <div className="flex flex-col items-center justify-center py-32 animate-in fade-in duration-1000">
                             <div className="w-20 h-20 bg-slate-50 rounded-2xl flex items-center justify-center mb-6 border border-slate-100 relative group">
                                 <AlertCircle className="w-10 h-10 text-slate-300 relative z-10" />

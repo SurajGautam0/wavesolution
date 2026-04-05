@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server"
 
 // OpenRouter API Configuration (Free Agentic Models)
 const OPENROUTER_API_URL = "https://openrouter.ai/api/v1/chat/completions"
-const OPENROUTER_MODEL = process.env.OPENROUTER_MODEL || "google/gemini-flash-1.5-8b-exp"
+const OPENROUTER_MODEL = process.env.OPENROUTER_MODEL || "qwen/qwen3.6-plus:free"
 
 export async function POST(request: NextRequest) {
   try {

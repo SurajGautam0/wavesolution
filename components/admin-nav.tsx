@@ -1,6 +1,6 @@
 "use client"
 
-import { BarChart3, CalendarDays, DollarSign, FileText, Home, Percent, Search, Settings, Users, MessageSquare, Mail } from "lucide-react"
+import { BarChart3, CalendarDays, DollarSign, FileText, Home, Percent, Search, Settings, Users, MessageSquare, Mail, Link2, Sparkles } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
@@ -50,9 +50,15 @@ export function AdminNav({ activeTab = "dashboard", setActiveTab = () => { } }: 
     },
     {
       id: "seo",
-      label: "SEO",
-      icon: Search,
+      label: "SEO & Backlinks",
+      icon: Link2,
       active: activeTab === "seo",
+    },
+    {
+      id: "ai-agent",
+      label: "AI Agent",
+      icon: Sparkles,
+      active: activeTab === "ai-agent",
     },
     {
       id: "reports",
