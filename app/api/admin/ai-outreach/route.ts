@@ -1,16 +1,17 @@
 import { NextRequest, NextResponse } from "next/server"
 
-const GROQ_API_URL = "https://api.groq.com/openai/v1/chat/completions"
-const GROQ_MODEL = "llama-3.1-8b-instant"
+// OpenRouter API Configuration (Free Agentic Models)
+const OPENROUTER_API_URL = "https://openrouter.ai/api/v1/chat/completions"
+const OPENROUTER_MODEL = process.env.OPENROUTER_MODEL || "google/gemini-flash-1.5-8b-exp"
 
 export async function POST(request: NextRequest) {
   try {
-    const apiKey = process.env.GROQ_API_KEY?.trim()
+    const apiKey = process.env.OPENROUTER_API_KEY?.trim()
 
     if (!apiKey) {
       return NextResponse.json(
         {
-          message: "GROQ_API_KEY is not configured. Add it to your environment variables to enable AI draft generation.",
+          message: "OPENROUTER_API_KEY is not configured. Get a free key at https://openrouter.ai/keys",
         },
         { status: 500 }
       )
@@ -28,27 +29,28 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ message: "Business name is required." }, { status: 400 })
     }
 
-    const completionResponse = await fetch(GROQ_API_URL, {
+    const completionResponse = await fetch(OPENROUTER_API_URL, {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${apiKey}`,
+        "Authorization": `Bearer ${apiKey}`,
+        "HTTP-Referer": "https://www.wavesolution.com.au",
+        "X-Title": "Wave Solution Admin",
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        model: GROQ_MODEL,
-        temperature: 0.7,
-        max_tokens: 120,
+        model: OPENROUTER_MODEL,
         messages: [
           {
             role: "system",
-            content:
-              "You write short, professional outreach messages for a cleaning and pest control business. Keep replies under 3 sentences, mention the business name and Gold Coast location, mention relevant services, and end with a light free-quote invitation. Return only the final message text.",
+            content: "You write short, professional outreach messages for a cleaning and pest control business. Keep replies under 3 sentences, mention the business name and Gold Coast location, mention relevant services, and end with a light free-quote invitation. Return only the final message text."
           },
           {
             role: "user",
-            content: `Business name: ${businessName}\nLocation: ${location}\nBusiness type: ${businessType}\nService focus: ${serviceFocus}\nCompany: Wave Solution, Gold Coast, QLD, Australia.`,
-          },
+            content: `Business name: ${businessName}\nLocation: ${location}\nBusiness type: ${businessType}\nService focus: ${serviceFocus}\nCompany: Wave Solution, Gold Coast, QLD, Australia.`
+          }
         ],
+        temperature: 0.7,
+        max_tokens: 150,
       }),
     })
 
@@ -56,7 +58,7 @@ export async function POST(request: NextRequest) {
 
     if (!completionResponse.ok) {
       const message =
-        completionData?.error?.message || "Groq request failed while generating outreach draft."
+        completionData?.error?.message || "OpenRouter request failed. Check your API key and model availability."
 
       return NextResponse.json({ message }, { status: completionResponse.status })
     }
@@ -65,15 +67,15 @@ export async function POST(request: NextRequest) {
 
     if (!message) {
       return NextResponse.json(
-        { message: "The AI provider returned an empty response." },
+        { message: "OpenRouter returned an empty response." },
         { status: 502 }
       )
     }
 
     return NextResponse.json({
       message,
-      provider: "Groq",
-      model: GROQ_MODEL,
+      provider: "OpenRouter",
+      model: OPENROUTER_MODEL,
     })
   } catch (error: any) {
     console.error("AI outreach generation error:", error)
