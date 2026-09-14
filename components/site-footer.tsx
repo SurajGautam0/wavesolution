@@ -29,6 +29,7 @@ const companyLinks = [
 ]
 
 const socialLinks = [
+  { href: businessInfo.googleBusinessProfile, label: "Google Maps", Icon: MapPin },
   { href: "https://facebook.com", label: "Facebook", Icon: Facebook },
   { href: "https://instagram.com", label: "Instagram", Icon: Instagram },
   { href: "https://linkedin.com", label: "LinkedIn", Icon: Linkedin },

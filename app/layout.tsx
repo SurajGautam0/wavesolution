@@ -155,6 +155,7 @@ const jsonLd = {
       },
       openingHoursSpecification: businessInfo.openingHoursSpecification,
       sameAs: [
+        businessInfo.googleBusinessProfile,
         "https://www.facebook.com/wavesolutioncleaning",
         "https://www.instagram.com/wavesolutioncleaning",
         "https://www.linkedin.com/company/wavesolutioncleaning",

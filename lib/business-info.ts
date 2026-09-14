@@ -20,8 +20,9 @@ export const businessInfo = {
     latitude: -28.1038271,
     longitude: 153.433927,
   },
-  mapsUrl: "https://maps.google.com/?q=-28.1038271,153.4339270",
+  mapsUrl: "https://maps.app.goo.gl/gabLdzZ7v3VRzgk87",
   mapsEmbedUrl: "https://maps.google.com/maps?q=-28.1038271,153.4339270&z=16&output=embed",
+  googleBusinessProfile: "https://maps.app.goo.gl/gabLdzZ7v3VRzgk87",
   serviceAreas: [
     "Gold Coast",
     "Southport",
