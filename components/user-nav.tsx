@@ -1,7 +1,8 @@
 "use client"
 
-import { CalendarDays, Home, Settings, MessageSquare, Clock, User } from "lucide-react"
-
+import { CalendarDays, Home, Clock, MessageSquare, User, LogOut } from "lucide-react"
+import { useRouter } from "next/navigation"
+import { useAuth } from "@/lib/auth-context"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 
@@ -11,57 +12,80 @@ interface UserNavProps {
 }
 
 export function UserNav({ activeTab = "dashboard", setActiveTab = () => { } }: UserNavProps) {
+    const { logout } = useAuth()
+    const router = useRouter()
+
     const routes = [
         {
             id: "dashboard",
             label: "Overview",
             icon: Home,
-            active: activeTab === "dashboard",
         },
         {
             id: "bookings",
             label: "My Bookings",
             icon: CalendarDays,
-            active: activeTab === "bookings",
         },
         {
             id: "history",
             label: "Service History",
             icon: Clock,
-            active: activeTab === "history",
         },
         {
             id: "support",
             label: "Support",
             icon: MessageSquare,
-            active: activeTab === "support",
         },
         {
             id: "profile",
             label: "Profile Settings",
             icon: User,
-            active: activeTab === "profile",
         },
     ]
 
+    const handleLogout = async () => {
+        await logout()
+        router.push("/")
+    }
+
     return (
-        <nav className="grid items-start gap-1 p-2">
-            {routes.map((route) => (
-                <Button
-                    key={route.id}
-                    variant="ghost"
-                    className={cn(
-                        "w-full justify-start h-10 rounded-lg transition-all duration-200 px-3",
-                        route.active
-                            ? "bg-blue-50 text-blue-700 font-semibold"
-                            : "text-slate-600 hover:bg-slate-50 hover:text-slate-900"
-                    )}
-                    onClick={() => setActiveTab(route.id)}
-                >
-                    <route.icon className={cn("mr-2.5 h-4 w-4 transition-colors", route.active ? "text-blue-600" : "text-slate-500")} />
-                    <span className="text-sm">{route.label}</span>
-                </Button>
-            ))}
+        <nav className="flex flex-col gap-1 p-2">
+            {routes.map((route) => {
+                const isActive = activeTab === route.id
+                return (
+                    <button
+                        key={route.id}
+                        onClick={() => setActiveTab(route.id)}
+                        className={cn(
+                            "flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition-all duration-200",
+                            isActive
+                                ? "bg-[#39BDE4]/10 text-secondary shadow-sm"
+                                : "text-slate-500 hover:bg-slate-100 hover:text-slate-700"
+                        )}
+                    >
+                        <route.icon
+                            className={cn(
+                                "h-5 w-5 shrink-0 transition-colors",
+                                isActive ? "text-[#39BDE4]" : "text-slate-400"
+                            )}
+                        />
+                        <span>{route.label}</span>
+                        {isActive && (
+                            <div className="ml-auto h-1.5 w-1.5 rounded-full bg-[#39BDE4]" />
+                        )}
+                    </button>
+                )
+            })}
+
+            <div className="my-3 border-t border-slate-200" />
+
+            <button
+                onClick={handleLogout}
+                className="flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold text-slate-400 hover:bg-red-50 hover:text-red-600 transition-all duration-200"
+            >
+                <LogOut className="h-5 w-5 shrink-0" />
+                <span>Sign Out</span>
+            </button>
         </nav>
     )
 }

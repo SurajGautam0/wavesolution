@@ -22,6 +22,7 @@ export const metadata: Metadata = {
     description:
       "Book in under 2 minutes with free personalised quotes for house, office, bond, end of lease, deep, and commercial cleaning across the Gold Coast.",
     url: "https://www.wavesolution.com.au/book",
+    images: [{ url: "/gold-coast-cleaning-services.jpeg", width: 1200, height: 630, alt: "Book cleaning online Gold Coast" }],
   },
 }
 

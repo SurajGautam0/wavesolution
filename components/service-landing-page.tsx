@@ -1,3 +1,4 @@
+import Image from "next/image"
 import Link from "next/link"
 import { ArrowRight, CheckCircle, ChevronRight, MapPin, Phone } from "lucide-react"
 
@@ -19,6 +20,12 @@ export function ServiceLandingPage({ page }: ServiceLandingPageProps) {
     { href: "/locations/robina", label: "Robina" },
     { href: "/locations/surfers-paradise", label: "Surfers Paradise" },
     { href: "/locations/broadbeach", label: "Broadbeach" },
+    { href: "/locations/nerang", label: "Nerang" },
+    { href: "/locations/burleigh-heads", label: "Burleigh Heads" },
+    { href: "/locations/palm-beach", label: "Palm Beach" },
+    { href: "/locations/helensvale", label: "Helensvale" },
+    { href: "/locations/coomera", label: "Coomera" },
+    { href: "/locations/varsity-lakes", label: "Varsity Lakes" },
     { href: siteLinks.locations, label: "More Gold Coast Areas" },
   ]
   const relatedArticles =
@@ -126,60 +133,66 @@ export function ServiceLandingPage({ page }: ServiceLandingPageProps) {
   }
 
   return (
-    <div className="flex min-h-screen flex-col bg-slate-50">
+    <div className="flex min-h-screen flex-col bg-white">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
-      <section className="bg-primary py-16 text-white md:py-24">
-        <div className="classic-container">
+      <section className="page-hero">
+        <div className="absolute inset-0">
+          <Image
+            src="/images/cleaning-service.jpg"
+            alt={`${page.heroTitle} by Wave Solution Gold Coast`}
+            fill
+            priority
+            quality={80}
+            sizes="100vw"
+            className="object-cover"
+          />
+          <div className="page-hero-overlay" />
+        </div>
+        <div className="classic-container relative z-10 py-16 md:py-24">
           <div className="mx-auto max-w-5xl">
-            <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-[11px] font-black uppercase tracking-[0.2em]">
-              <MapPin className="h-4 w-4 text-secondary" />
-              {page.heroEyebrow}
-            </div>
-
-            <div className="mt-6 flex flex-wrap items-center gap-2 text-xs font-bold uppercase tracking-[0.18em] text-white/60">
-              <Link href={siteLinks.home} className="transition-colors hover:text-secondary">
+            <div className="flex flex-wrap items-center gap-2 text-xs font-bold uppercase tracking-[0.18em] text-white/60">
+              <Link href={siteLinks.home} className="transition-colors hover:text-white">
                 Home
               </Link>
               <ChevronRight className="h-3.5 w-3.5" />
-              <span>{page.shortLabel}</span>
+              <Link href={siteLinks.services} className="transition-colors hover:text-white">
+                Services
+              </Link>
+              <ChevronRight className="h-3.5 w-3.5" />
+              <span className="text-[#39BDE4]">{page.shortLabel}</span>
             </div>
 
-            <div className="mt-8 grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
-              <div>
-                <h1 className="text-4xl font-black tracking-tight sm:text-5xl md:text-6xl">{page.heroTitle}</h1>
-                <p className="mt-6 max-w-3xl text-lg leading-8 text-white/75">{page.heroDescription}</p>
+            <div className="mt-6 inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-2 text-[11px] font-black uppercase tracking-[0.2em] text-white backdrop-blur-md">
+              <MapPin className="h-4 w-4 text-[#39BDE4]" />
+              {page.heroEyebrow}
+            </div>
 
-                <div className="mt-8 flex flex-col gap-4 sm:flex-row">
-                  <Button asChild className="h-12 rounded-full bg-secondary px-6 text-[11px] font-black uppercase tracking-[0.18em] text-slate-950 hover:bg-secondary/90">
-                    <Link href={siteLinks.book}>
-                      Get Free Quote
-                      <ArrowRight className="h-4 w-4" />
-                    </Link>
-                  </Button>
-                  <Button asChild variant="outline" className="h-12 rounded-full border-white/20 bg-white/5 px-6 text-[11px] font-black uppercase tracking-[0.18em] text-white hover:bg-white/10 hover:text-white">
-                    <Link href={businessInfo.phoneHref}>
-                      <Phone className="h-4 w-4" />
-                      Call Now
-                    </Link>
-                  </Button>
-                </div>
-              </div>
+            <h1 className="mt-6 max-w-3xl text-4xl font-black tracking-tight text-white sm:text-5xl md:text-6xl">{page.heroTitle}</h1>
+            <p className="mt-6 max-w-3xl text-lg leading-8 text-white/80">{page.heroDescription}</p>
 
-              <div className="rounded-[2rem] border border-white/10 bg-white/5 p-6 backdrop-blur-sm">
-                <p className="text-xs font-black uppercase tracking-[0.2em] text-secondary">Why This Page Matters</p>
-                <ul className="mt-4 space-y-3 text-sm leading-7 text-white/75">
-                  {page.keywords.slice(0, 3).map((keyword) => (
-                    <li key={keyword} className="flex items-start gap-3">
-                      <CheckCircle className="mt-1 h-4 w-4 shrink-0 text-secondary" />
-                      <span>{keyword}</span>
-                    </li>
-                  ))}
-                </ul>
-                <p className="mt-5 text-sm leading-7 text-white/70">
-                  We service homes and businesses across {businessInfo.serviceAreas.slice(0, 4).join(", ")} and surrounding Gold Coast suburbs.
-                </p>
-              </div>
+            <div className="mt-8 flex flex-col gap-4 sm:flex-row">
+              <Button asChild className="h-12 rounded-full bg-[#39BDE4] px-6 text-[11px] font-black uppercase tracking-[0.18em] text-white shadow-xl shadow-black/25 transition-transform hover:scale-105 hover:bg-[#249FC5]">
+                <Link href={siteLinks.book}>
+                  Get Free Quote
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+              </Button>
+              <Button asChild variant="outline" className="h-12 rounded-full border-white/25 bg-white/10 px-6 text-[11px] font-black uppercase tracking-[0.18em] text-white backdrop-blur-sm hover:bg-white/20 hover:text-white">
+                <Link href={businessInfo.phoneHref}>
+                  <Phone className="h-4 w-4" />
+                  Call {businessInfo.phoneDisplay}
+                </Link>
+              </Button>
+            </div>
+
+            <div className="mt-8 flex flex-wrap items-center gap-2.5">
+              {["Fully insured", "Police-checked", "4.9★ Google rating"].map((badge) => (
+                <span key={badge} className="inline-flex items-center gap-1.5 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-[11px] font-bold uppercase tracking-[0.14em] text-white backdrop-blur-sm">
+                  <CheckCircle className="h-3.5 w-3.5 text-[#39BDE4]" />
+                  {badge}
+                </span>
+              ))}
             </div>
           </div>
         </div>
@@ -197,7 +210,7 @@ export function ServiceLandingPage({ page }: ServiceLandingPageProps) {
             </div>
 
             <aside className="space-y-6">
-              <div className="rounded-[2rem] border border-slate-200 bg-slate-50 p-6 shadow-sm">
+              <div className="rounded-[2rem] border border-slate-200 bg-[#F3F3F3] p-6 shadow-sm">
                 <p className="text-xs font-black uppercase tracking-[0.2em] text-secondary">Included Support</p>
                 <ul className="mt-4 space-y-3">
                   {page.includedItems.map((item) => (
@@ -225,7 +238,7 @@ export function ServiceLandingPage({ page }: ServiceLandingPageProps) {
         </div>
       </section>
 
-      <section className="bg-slate-50 py-14 md:py-20">
+      <section className="bg-[#F3F3F3] py-14 md:py-20">
         <div className="classic-container">
           <div className="grid gap-8">
             {page.sections.map((section) => (
@@ -246,7 +259,7 @@ export function ServiceLandingPage({ page }: ServiceLandingPageProps) {
 
       <section className="bg-white py-14 md:py-20">
         <div className="classic-container">
-          <div className="mb-10 rounded-[2rem] border border-slate-200 bg-slate-50 p-7 shadow-sm">
+          <div className="mb-10 rounded-[2rem] border border-slate-200 bg-[#F3F3F3] p-7 shadow-sm">
             <h2 className="text-2xl font-black tracking-tight text-primary">Pricing Guide for {page.shortLabel}</h2>
             <p className="mt-4 text-sm leading-7 text-slate-600">
               We use tailored quotes because cleaning and pest-control needs vary by property, condition, timing, and service scope. The most accurate pricing comes from a quick local quote, but these are the main factors that shape the estimate.
@@ -260,7 +273,7 @@ export function ServiceLandingPage({ page }: ServiceLandingPageProps) {
             </div>
           </div>
 
-          <div className="rounded-[2.5rem] border border-slate-200 bg-slate-50 p-8 shadow-sm sm:p-10">
+          <div className="rounded-[2.5rem] border border-slate-200 bg-[#F3F3F3] p-8 shadow-sm sm:p-10">
             <h2 className="text-3xl font-black tracking-tight text-primary">Helpful Internal Links</h2>
             <p className="mt-4 max-w-3xl text-base leading-8 text-slate-600">
               If you are comparing{" "}
@@ -294,7 +307,7 @@ export function ServiceLandingPage({ page }: ServiceLandingPageProps) {
         </div>
       </section>
 
-      <section className="bg-slate-50 py-14 md:py-20">
+      <section className="bg-[#F3F3F3] py-14 md:py-20">
         <div className="classic-container">
           <div className="mx-auto max-w-4xl">
             <div className="text-center">
@@ -319,7 +332,7 @@ export function ServiceLandingPage({ page }: ServiceLandingPageProps) {
       <section className="bg-white py-14 md:py-20">
         <div className="classic-container">
           <div className="grid gap-6 lg:grid-cols-2">
-            <div className="rounded-[2rem] border border-slate-200 bg-slate-50 p-7 shadow-sm">
+            <div className="rounded-[2rem] border border-slate-200 bg-[#F3F3F3] p-7 shadow-sm">
               <h2 className="text-2xl font-black tracking-tight text-primary">Nearby Gold Coast Areas</h2>
               <p className="mt-4 text-sm leading-7 text-slate-600">
                 We regularly support homes, rentals, and businesses across nearby suburbs, and these local pages help reinforce suburb relevance without relying on duplicate templates.
@@ -337,7 +350,7 @@ export function ServiceLandingPage({ page }: ServiceLandingPageProps) {
               </div>
             </div>
 
-            <div className="rounded-[2rem] border border-slate-200 bg-slate-50 p-7 shadow-sm">
+            <div className="rounded-[2rem] border border-slate-200 bg-[#F3F3F3] p-7 shadow-sm">
               <h2 className="text-2xl font-black tracking-tight text-primary">Helpful Reading</h2>
               <p className="mt-4 text-sm leading-7 text-slate-600">
                 Browse our blog hub and supporting articles for practical advice that helps customers understand scope, maintenance, and the right service for their property.
@@ -347,7 +360,7 @@ export function ServiceLandingPage({ page }: ServiceLandingPageProps) {
                   <Link
                     key={article.href}
                     href={article.href}
-                    className="block rounded-[1.25rem] border border-slate-200 bg-white p-4 transition-colors hover:border-primary/20 hover:bg-slate-50"
+                    className="block rounded-[1.25rem] border border-slate-200 bg-white p-4 transition-colors hover:border-primary/20 hover:bg-[#F3F3F3]"
                   >
                     <p className="text-sm font-bold text-primary">{article.label}</p>
                     <p className="mt-2 text-sm leading-7 text-slate-600">{article.description}</p>
@@ -355,7 +368,7 @@ export function ServiceLandingPage({ page }: ServiceLandingPageProps) {
                 ))}
                 <Link
                   href={siteLinks.blog}
-                  className="block rounded-[1.25rem] border border-slate-200 bg-white p-4 transition-colors hover:border-primary/20 hover:bg-slate-50"
+                  className="block rounded-[1.25rem] border border-slate-200 bg-white p-4 transition-colors hover:border-primary/20 hover:bg-[#F3F3F3]"
                 >
                   <p className="text-sm font-bold text-primary">Gold Coast Blog Hub</p>
                   <p className="mt-2 text-sm leading-7 text-slate-600">
@@ -376,7 +389,7 @@ export function ServiceLandingPage({ page }: ServiceLandingPageProps) {
               Tell us what needs cleaning, where the property is located, and when you would like the service. We will help you choose the right scope and provide a fast local quote.
             </p>
             <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row">
-              <Button asChild className="h-12 rounded-full bg-secondary px-6 text-[11px] font-black uppercase tracking-[0.18em] text-slate-950 hover:bg-secondary/90">
+              <Button asChild className="h-12 rounded-full bg-secondary px-6 text-[11px] font-black uppercase tracking-[0.18em] text-white hover:bg-secondary/90">
                 <Link href={siteLinks.book}>Get Free Quote</Link>
               </Button>
               <Button asChild variant="outline" className="h-12 rounded-full border-white/20 bg-white/5 px-6 text-[11px] font-black uppercase tracking-[0.18em] text-white hover:bg-white/10 hover:text-white">

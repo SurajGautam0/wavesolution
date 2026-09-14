@@ -1,6 +1,6 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Lora, Open_Sans } from "next/font/google"
+import { Plus_Jakarta_Sans, Inter } from "next/font/google"
 import "./globals.css"
 
 import { LayoutWrapper } from "@/components/layout-wrapper"
@@ -8,14 +8,18 @@ import { ThemeProvider } from "@/components/theme-provider"
 import { Toaster } from "@/components/ui/sonner"
 import { businessInfo } from "@/lib/business-info"
 
-const lora = Lora({
+const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  variable: "--font-serif",
+  variable: "--font-heading",
+  weight: ["400", "500", "600", "700", "800"],
+  display: "swap",
 })
 
-const openSans = Open_Sans({
+const inter = Inter({
   subsets: ["latin"],
   variable: "--font-sans",
+  weight: ["300", "400", "500", "600", "700"],
+  display: "swap",
 })
 
 const googleVerification = process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION?.trim()
@@ -116,7 +120,7 @@ const jsonLd = {
       name: businessInfo.businessNameWithLocation,
       alternateName: businessInfo.brandName,
       description:
-        "Local house cleaning, office cleaning, bond cleaning, end of lease cleaning, move-in cleaning, after builders cleaning, commercial cleaning, deep cleaning, carpet cleaning, and pest control services across the Gold Coast and nearby suburbs.",
+        "Professional house cleaning, office cleaning, bond cleaning, end of lease cleaning, move-in cleaning, after builders cleaning, commercial cleaning, deep cleaning, carpet cleaning, and pest control services across the Gold Coast and nearby suburbs.",
       image: `${businessInfo.baseUrl}/gold-coast-cleaning-services.jpeg`,
       logo: `${businessInfo.baseUrl}/logo.png`,
       url: businessInfo.baseUrl,
@@ -125,7 +129,7 @@ const jsonLd = {
       aggregateRating: {
         "@type": "AggregateRating",
         ratingValue: "4.9",
-        reviewCount: "87",
+        reviewCount: "430",
         bestRating: "5",
         worstRating: "1",
       },
@@ -150,6 +154,11 @@ const jsonLd = {
         longitude: businessInfo.coordinates.longitude,
       },
       openingHoursSpecification: businessInfo.openingHoursSpecification,
+      sameAs: [
+        "https://www.facebook.com/wavesolutioncleaning",
+        "https://www.instagram.com/wavesolutioncleaning",
+        "https://www.linkedin.com/company/wavesolutioncleaning",
+      ],
       hasOfferCatalog: {
         "@type": "OfferCatalog",
         name: "Cleaning Services",
@@ -340,7 +349,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className={`${openSans.variable} ${lora.variable} font-sans antialiased`} suppressHydrationWarning>
+      <body className={`${inter.variable} ${plusJakartaSans.variable} font-sans antialiased selection:bg-secondary/20 selection:text-primary`} suppressHydrationWarning>
         <ThemeProvider
           attribute="class"
           defaultTheme="light"

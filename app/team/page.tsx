@@ -55,12 +55,13 @@ export const metadata: Metadata = {
     description:
       "Meet the Wave Solution team behind our Gold Coast cleaning and pest-control services. Learn how we work, what standards we follow, and why local customers trust us.",
     url: `${businessInfo.baseUrl}/team`,
+    images: [{ url: "/gold-coast-cleaning-services.jpeg", width: 1200, height: 630, alt: "Wave Solution cleaning team Gold Coast" }],
   },
 }
 
 export default function TeamPage() {
   return (
-    <div className="flex min-h-screen flex-col bg-slate-50">
+    <div className="flex min-h-screen flex-col bg-white">
       <section className="bg-primary py-16 text-white md:py-24">
         <div className="classic-container">
           <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[1fr_0.95fr] lg:items-center">
@@ -73,7 +74,7 @@ export default function TeamPage() {
                 Wave Solution supports Gold Coast homes, rentals, offices, and business premises with a local team focused on clear communication, reliable service, and practical results.
               </p>
               <div className="mt-8 flex flex-col gap-4 sm:flex-row">
-                <Button asChild className="h-12 rounded-full bg-secondary px-6 text-[11px] font-black uppercase tracking-[0.18em] text-slate-950 hover:bg-secondary/90">
+                <Button asChild className="h-12 rounded-full bg-secondary px-6 text-[11px] font-black uppercase tracking-[0.18em] text-white hover:bg-secondary/90">
                   <Link href={siteLinks.book}>Get Free Quote</Link>
                 </Button>
                 <Button asChild variant="outline" className="h-12 rounded-full border-white/20 bg-white/5 px-6 text-[11px] font-black uppercase tracking-[0.18em] text-white hover:bg-white/10 hover:text-white">
@@ -88,7 +89,7 @@ export default function TeamPage() {
             <div className="relative overflow-hidden rounded-[2.5rem] border border-white/10 shadow-2xl">
               <div className="relative h-[360px]">
                 <Image
-                  src="/gold-coast-cleaning-team.png"
+                  src="/gold-coast-cleaning-team.jpg"
                   alt="Wave Solution team in Gold Coast"
                   fill
                   className="object-cover"
@@ -113,27 +114,30 @@ export default function TeamPage() {
         </div>
       </section>
 
-      <section className="bg-white py-14 md:py-20">
-        <div className="classic-container">
-          <div className="mx-auto max-w-3xl text-center">
-            <h2 className="text-3xl font-black tracking-tight text-primary">How Our Team Works</h2>
-            <p className="mt-5 text-base leading-8 text-slate-600">
-              Strong local SEO is supported by strong real-world operations. Customers trust businesses that explain their process clearly and make service expectations easy to understand.
-            </p>
-          </div>
+       <section className="bg-white py-14 md:py-20">
+         <div className="classic-container">
+           <div className="mx-auto max-w-3xl text-center">
+             <h2 className="text-3xl font-black tracking-tight text-primary">How Our Team Works</h2>
+             <p className="mt-5 text-base leading-8 text-slate-600">
+               Strong local SEO is supported by strong real-world operations. Customers trust businesses that explain their process clearly and make service expectations easy to understand.
+             </p>
+           </div>
 
-          <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-            {processSteps.map((step, index) => (
-              <article key={step} className="rounded-[2rem] border border-slate-200 bg-slate-50 p-6 shadow-sm">
-                <p className="text-xs font-black uppercase tracking-[0.2em] text-secondary">Step {index + 1}</p>
-                <p className="mt-4 text-sm leading-7 text-slate-600">{step}</p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
+           <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+             {processSteps.map((step, index) => (
+               <article key={step} className="rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm hover:shadow-lg hover:border-primary/20 transition-all duration-300">
+                 <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-primary text-lg font-black">
+                   {index + 1}
+                 </div>
+                 <p className="mt-4 text-xs font-black uppercase tracking-[0.2em] text-secondary">Step {index + 1}</p>
+                 <p className="mt-2 text-sm leading-7 text-slate-600">{step}</p>
+               </article>
+             ))}
+           </div>
+         </div>
+       </section>
 
-      <section className="bg-slate-50 py-14 md:py-20">
+      <section className="bg-[#F3F3F3] py-14 md:py-20">
         <div className="classic-container">
           <div className="mx-auto max-w-3xl text-center">
             <h2 className="text-3xl font-black tracking-tight text-primary">Team Profiles</h2>
@@ -160,7 +164,7 @@ export default function TeamPage() {
       <section className="bg-white py-14 md:py-20">
         <div className="classic-container">
           <div className="grid gap-6 lg:grid-cols-2">
-            <article className="rounded-[2rem] border border-slate-200 bg-slate-50 p-7 shadow-sm">
+            <article className="rounded-[2rem] border border-slate-200 bg-[#F3F3F3] p-7 shadow-sm">
               <ShieldCheck className="h-8 w-8 text-secondary" />
               <h2 className="mt-4 text-2xl font-black tracking-tight text-primary">Insurance and Service Standards</h2>
               <p className="mt-4 text-sm leading-7 text-slate-600">
@@ -168,7 +172,7 @@ export default function TeamPage() {
               </p>
             </article>
 
-            <article className="rounded-[2rem] border border-slate-200 bg-slate-50 p-7 shadow-sm">
+            <article className="rounded-[2rem] border border-slate-200 bg-[#F3F3F3] p-7 shadow-sm">
               <Sparkles className="h-8 w-8 text-secondary" />
               <h2 className="mt-4 text-2xl font-black tracking-tight text-primary">Gold Coast Local Knowledge</h2>
               <p className="mt-4 text-sm leading-7 text-slate-600">
@@ -187,7 +191,7 @@ export default function TeamPage() {
               Explore our service pages or speak with the team directly and we will help match the right cleaning or pest-control scope to your property, suburb, and timing.
             </p>
             <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row">
-              <Button asChild className="h-12 rounded-full bg-secondary px-6 text-[11px] font-black uppercase tracking-[0.18em] text-slate-950 hover:bg-secondary/90">
+              <Button asChild className="h-12 rounded-full bg-secondary px-6 text-[11px] font-black uppercase tracking-[0.18em] text-white hover:bg-secondary/90">
                 <Link href={siteLinks.services}>View Services</Link>
               </Button>
               <Button asChild variant="outline" className="h-12 rounded-full border-white/20 bg-white/5 px-6 text-[11px] font-black uppercase tracking-[0.18em] text-white hover:bg-white/10 hover:text-white">

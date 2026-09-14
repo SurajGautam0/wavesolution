@@ -87,6 +87,7 @@ export const metadata: Metadata = {
     description:
       "Explore Wave Solution's Gold Coast blog for helpful cleaning, rental, commercial, and pest-control advice written for local homes and businesses.",
     url: `${businessInfo.baseUrl}/blog`,
+    images: [{ url: "/gold-coast-cleaning-services.jpeg", width: 1200, height: 630, alt: "Wave Solution cleaning blog Gold Coast" }],
   },
 }
 
@@ -180,7 +181,7 @@ export default function BlogHubPage() {
               If you already know what you need, move straight to the right service page or request a fast local quote for your home, rental property, office, or business.
             </p>
             <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row">
-              <Button asChild className="h-12 rounded-full bg-secondary px-6 text-[11px] font-black uppercase tracking-[0.18em] text-slate-950 hover:bg-secondary/90">
+              <Button asChild className="h-12 rounded-full bg-secondary px-6 text-[11px] font-black uppercase tracking-[0.18em] text-white hover:bg-secondary/90">
                 <Link href={siteLinks.services}>View Services</Link>
               </Button>
               <Button asChild variant="outline" className="h-12 rounded-full border-white/20 bg-white/5 px-6 text-[11px] font-black uppercase tracking-[0.18em] text-white hover:bg-white/10 hover:text-white">

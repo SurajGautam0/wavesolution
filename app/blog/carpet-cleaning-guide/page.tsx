@@ -24,7 +24,7 @@ const jsonLd = {
       { "@type": "ListItem", position: 2, name: "Blog", item: "https://www.wavesolution.com.au/blog" },
       { "@type": "ListItem", position: 3, name: "Carpet Cleaning Guide", item: "https://www.wavesolution.com.au/blog/carpet-cleaning-guide" },
     ]},
-    { "@type": "Article", headline: "Carpet Cleaning Guide Gold Coast", author: { "@type": "Organization", name: "Wave Solution Cleaning Gold Coast" }, publisher: { "@type": "Organization", name: "Wave Solution Cleaning Gold Coast", url: "https://www.wavesolution.com.au" }, datePublished: "2025-03-01", url: "https://www.wavesolution.com.au/blog/carpet-cleaning-guide" },
+    { "@type": "Article", headline: "Carpet Cleaning Guide Gold Coast", author: { "@type": "Organization", name: "Wave Solution Cleaning", url: "https://www.wavesolution.com.au" }, publisher: { "@type": "Organization", name: "Wave Solution Cleaning Gold Coast", url: "https://www.wavesolution.com.au" }, datePublished: "2025-03-01", dateModified: "2025-03-01", image: "https://www.wavesolution.com.au/gold-coast-cleaning-services.jpeg", url: "https://www.wavesolution.com.au/blog/carpet-cleaning-guide" },
     { "@type": "FAQPage", mainEntity: [
       { "@type": "Question", name: "How often should carpets be professionally cleaned?", acceptedAnswer: { "@type": "Answer", text: "Most households should have carpets professionally cleaned once or twice a year. Homes with pets, children, or high foot traffic benefit from more frequent cleaning — every 6 months. Rental properties are often required to have carpets cleaned at the end of every tenancy." }},
       { "@type": "Question", name: "How long does carpet cleaning take to dry?", acceptedAnswer: { "@type": "Answer", text: "Carpet drying times typically range from 2 to 6 hours depending on the cleaning method, carpet thickness, airflow, and weather. Using fans and opening windows speeds drying significantly." }},
@@ -141,7 +141,7 @@ export default function CarpetCleaningGuidePage() {
               <div className="rounded-[2rem] border border-slate-200 bg-primary p-6 text-white shadow-xl">
                 <p className="text-xs font-black uppercase tracking-[0.2em] text-secondary">Book Carpet Cleaning</p>
                 <p className="mt-4 text-sm leading-7 text-white/75">Wave Solution provides carpet cleaning across the Gold Coast for homes, rentals, and offices.</p>
-                <Button asChild className="mt-5 w-full h-11 rounded-full bg-secondary text-[11px] font-black uppercase tracking-[0.18em] text-slate-950 hover:bg-secondary/90"><Link href="/carpet-cleaning-gold-coast">Get a Quote</Link></Button>
+                <Button asChild className="mt-5 w-full h-11 rounded-full bg-secondary text-[11px] font-black uppercase tracking-[0.18em] text-white hover:bg-secondary/90"><Link href="/carpet-cleaning-gold-coast">Get a Quote</Link></Button>
               </div>
               <div className="rounded-[2rem] border border-slate-200 bg-slate-50 p-6">
                 <p className="text-xs font-black uppercase tracking-[0.2em] text-secondary">Related Guides</p>
@@ -160,7 +160,7 @@ export default function CarpetCleaningGuidePage() {
           <h2 className="text-3xl font-black tracking-tight">Book Carpet Cleaning in the Gold Coast</h2>
           <p className="mt-4 text-base leading-8 text-white/75 max-w-2xl mx-auto">Tell us your suburb, property type, and the number of rooms and we'll provide a fast local quote.</p>
           <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
-            <Button asChild className="h-12 rounded-full bg-secondary px-6 text-[11px] font-black uppercase tracking-[0.18em] text-slate-950 hover:bg-secondary/90"><Link href="/carpet-cleaning-gold-coast">Book Carpet Cleaning</Link></Button>
+            <Button asChild className="h-12 rounded-full bg-secondary px-6 text-[11px] font-black uppercase tracking-[0.18em] text-white hover:bg-secondary/90"><Link href="/carpet-cleaning-gold-coast">Book Carpet Cleaning</Link></Button>
             <Button asChild variant="outline" className="h-12 rounded-full border-white/20 bg-white/5 px-6 text-[11px] font-black uppercase tracking-[0.18em] text-white hover:bg-white/10"><Link href="/contact">Get a Quote</Link></Button>
           </div>
         </div>

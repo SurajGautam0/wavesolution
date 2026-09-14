@@ -1,0 +1,13 @@
+# Wave Solution Cleaning - Gold Coast
+User-agent: *
+Allow: /
+
+Sitemap: https://www.wavesolution.com.au/sitemap.xml
+
+# Disallow admin and private pages
+Disallow: /admin/
+Disallow: /dashboard/
+Disallow: /login/
+Disallow: /register/
+Disallow: /api/
+Disallow: /private/

@@ -132,11 +132,11 @@ export default function RegisterPage() {
                         <div className="lg:hidden mb-8">
                             <img src="/logo.png" alt="WaveSolution" className="h-10 object-contain mx-auto" />
                         </div>
-                        <h2 className="text-4xl font-black text-blue-950 tracking-tighter">Create Account</h2>
-                        <p className="text-muted-foreground font-medium text-lg">Your journey to a cleaner lifestyle starts here.</p>
+                        <h2 className="text-4xl font-black text-secondary tracking-tighter">Create Account</h2>
+                        <p className="text-slate-600 font-medium text-lg">Your journey to a cleaner lifestyle starts here.</p>
                     </div>
 
-                    <Card className="border-none shadow-2xl shadow-blue-900/5 bg-white rounded-[2.5rem] overflow-hidden">
+                    <Card className="border-none shadow-2xl shadow-secondary/5 bg-white rounded-[2.5rem] overflow-hidden">
                         <CardContent className="p-8 sm:p-10">
                             <Form {...form}>
                                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
@@ -146,7 +146,7 @@ export default function RegisterPage() {
                                             name="name"
                                             render={({ field }) => (
                                                 <FormItem className="space-y-3">
-                                                    <FormLabel className="flex items-center text-blue-950 font-black text-[10px] uppercase tracking-[0.2em] ml-1">
+                                                    <FormLabel className="flex items-center text-secondary font-black text-[10px] uppercase tracking-[0.2em] ml-1">
                                                         <User className="w-4 h-4 mr-2 text-primary" /> Full Name
                                                     </FormLabel>
                                                     <FormControl>
@@ -165,7 +165,7 @@ export default function RegisterPage() {
                                             name="email"
                                             render={({ field }) => (
                                                 <FormItem className="space-y-3">
-                                                    <FormLabel className="flex items-center text-blue-950 font-black text-[10px] uppercase tracking-[0.2em] ml-1">
+                                                    <FormLabel className="flex items-center text-secondary font-black text-[10px] uppercase tracking-[0.2em] ml-1">
                                                         <Mail className="w-4 h-4 mr-2 text-primary" /> Email Address
                                                     </FormLabel>
                                                     <FormControl>
@@ -184,7 +184,7 @@ export default function RegisterPage() {
                                             name="password"
                                             render={({ field }) => (
                                                 <FormItem className="space-y-3">
-                                                    <FormLabel className="flex items-center text-blue-950 font-black text-[10px] uppercase tracking-[0.2em] ml-1">
+                                                    <FormLabel className="flex items-center text-secondary font-black text-[10px] uppercase tracking-[0.2em] ml-1">
                                                         <Lock className="w-4 h-4 mr-2 text-primary" /> Create Password
                                                     </FormLabel>
                                                     <FormControl>

@@ -38,9 +38,11 @@ const jsonLd = {
     {
       "@type": "Article",
       headline: "How Often Should You Get Your House Professionally Cleaned?",
-      author: { "@type": "Organization", name: "Wave Solution Cleaning Gold Coast" },
+      author: { "@type": "Organization", name: "Wave Solution Cleaning", url: "https://www.wavesolution.com.au" },
       publisher: { "@type": "Organization", name: "Wave Solution Cleaning Gold Coast", url: "https://www.wavesolution.com.au" },
       datePublished: "2025-02-10",
+      dateModified: "2025-02-10",
+      image: "https://www.wavesolution.com.au/gold-coast-cleaning-services.jpeg",
       url: "https://www.wavesolution.com.au/blog/how-often-house-cleaning",
     },
     {
@@ -237,7 +239,7 @@ export default function HowOftenHouseCleaningPage() {
                 <p className="mt-4 text-sm leading-7 text-white/75">
                   Wave Solution provides weekly, fortnightly, and one-off house cleaning across the Gold Coast.
                 </p>
-                <Button asChild className="mt-5 w-full h-11 rounded-full bg-secondary text-[11px] font-black uppercase tracking-[0.18em] text-slate-950 hover:bg-secondary/90">
+                <Button asChild className="mt-5 w-full h-11 rounded-full bg-secondary text-[11px] font-black uppercase tracking-[0.18em] text-white hover:bg-secondary/90">
                   <Link href="/house-cleaning-gold-coast">View House Cleaning</Link>
                 </Button>
               </div>
@@ -261,7 +263,7 @@ export default function HowOftenHouseCleaningPage() {
             Tell us your suburb, property type, and preferred frequency and we'll get back to you with a tailored local quote.
           </p>
           <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
-            <Button asChild className="h-12 rounded-full bg-secondary px-6 text-[11px] font-black uppercase tracking-[0.18em] text-slate-950 hover:bg-secondary/90">
+            <Button asChild className="h-12 rounded-full bg-secondary px-6 text-[11px] font-black uppercase tracking-[0.18em] text-white hover:bg-secondary/90">
               <Link href="/house-cleaning-gold-coast">Book House Cleaning</Link>
             </Button>
             <Button asChild variant="outline" className="h-12 rounded-full border-white/20 bg-white/5 px-6 text-[11px] font-black uppercase tracking-[0.18em] text-white hover:bg-white/10">

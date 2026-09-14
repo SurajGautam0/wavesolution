@@ -71,12 +71,13 @@ export default function ContactPage() {
         {/* Background Overlay */}
         <div className="absolute inset-0 z-0 opacity-40">
           <Image
-            src="/Untitled video - Made with Clipchamp (1).gif"
-            alt="Background Animation"
+            src="/images/cleaning-service.jpg"
+            alt="Wave Solution cleaning team at work on the Gold Coast"
             fill
             className="object-cover"
             priority
-            unoptimized
+            quality={75}
+            sizes="100vw"
           />
           <div className="absolute inset-0 bg-primary/40 backdrop-blur-[2px]" />
         </div>
@@ -102,7 +103,7 @@ export default function ContactPage() {
                     <Phone className="h-6 w-6 text-primary" />
                   </div>
                   <h3 className="text-xl font-bold mb-2">Call Us</h3>
-                  <p className="text-muted-foreground mb-2">We're available during business hours</p>
+                  <p className="text-sm text-slate-500 mb-2">We're available during business hours</p>
                   <Link href={businessInfo.phoneHref} className="text-primary hover:underline font-medium">
                     {businessInfo.phoneDisplay}
                   </Link>
@@ -117,7 +118,7 @@ export default function ContactPage() {
                     <Mail className="h-6 w-6 text-primary" />
                   </div>
                   <h3 className="text-xl font-bold mb-2">Email Us</h3>
-                  <p className="text-muted-foreground mb-2">We'll respond to your inquiry within 24 hours</p>
+                  <p className="text-sm text-slate-500 mb-2">We'll respond to your inquiry within 24 hours</p>
                   <Link href={`mailto:${businessInfo.email}`} className="text-primary hover:underline font-medium">
                     {businessInfo.email}
                   </Link>
@@ -132,7 +133,7 @@ export default function ContactPage() {
                     <MapPin className="h-6 w-6 text-primary" />
                   </div>
                   <h3 className="text-xl font-bold mb-2">Visit Us</h3>
-                  <p className="text-muted-foreground mb-2">Our main office is located in Gold Coast, QLD</p>
+                  <p className="text-sm text-slate-500 mb-2">Our main office is located in Gold Coast, QLD</p>
                   <address className="not-italic text-primary">
                     {businessInfo.address.locality}
                     <br />
@@ -151,7 +152,7 @@ export default function ContactPage() {
                     <Clock className="h-6 w-6 text-primary" />
                   </div>
                   <h3 className="text-xl font-bold mb-2">Business Hours</h3>
-                  <ul className="text-muted-foreground space-y-1">
+                  <ul className="text-slate-600 space-y-1">
                     {businessInfo.businessHoursDisplay.map((item) => (
                       <li key={item}>{item}</li>
                     ))}
@@ -164,13 +165,13 @@ export default function ContactPage() {
       </section>
 
       {/* Contact Form Section */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-[#F3F3F3]">
         <div className="classic-container">
           <div className="grid grid-cols-1 gap-12 md:grid-cols-2">
             <div>
               <h2 className="text-3xl font-bold text-primary mb-6">Send Us a Message</h2>
               <div className="w-16 h-1 bg-secondary mb-6"></div>
-              <p className="text-muted-foreground mb-8">
+              <p className="text-slate-600 mb-8">
                 Whether you have questions about our services, want to request a quote, or need to schedule a cleaning in Gold Coast,
                 we're here to help. Fill out the form, and we'll get back to you as soon as possible.
               </p>
@@ -178,22 +179,22 @@ export default function ContactPage() {
               <div className="space-y-4">
                 <div className="flex items-start">
                   <CheckCircle className="mr-2 h-5 w-5 text-secondary shrink-0 mt-0.5" />
-                  <span className="text-muted-foreground">
-                    <strong className="text-foreground">Quick Response:</strong> We aim to respond to all inquiries
+                  <span className="text-slate-600">
+                    <strong className="text-[#212429]">Quick Response:</strong> We aim to respond to all inquiries
                     within 24 hours.
                   </span>
                 </div>
                 <div className="flex items-start">
                   <CheckCircle className="mr-2 h-5 w-5 text-secondary shrink-0 mt-0.5" />
-                  <span className="text-muted-foreground">
-                    <strong className="text-foreground">Free Quotes:</strong> Request a no-obligation quote for any of
+                  <span className="text-slate-600">
+                    <strong className="text-[#212429]">Free Quotes:</strong> Request a no-obligation quote for any of
                     our services.
                   </span>
                 </div>
                 <div className="flex items-start">
                   <CheckCircle className="mr-2 h-5 w-5 text-secondary shrink-0 mt-0.5" />
-                  <span className="text-muted-foreground">
-                    <strong className="text-foreground">Personalized Service:</strong> We tailor our services to meet
+                  <span className="text-slate-600">
+                    <strong className="text-[#212429]">Personalized Service:</strong> We tailor our services to meet
                     your specific needs and preferences.
                   </span>
                 </div>
@@ -208,7 +209,7 @@ export default function ContactPage() {
                       <CheckCircle className="h-12 w-12 text-green-600" />
                     </div>
                     <h3 className="text-2xl font-bold text-primary mb-4 text-center">Thank You!</h3>
-                    <p className="text-center text-muted-foreground mb-6">
+                    <p className="text-center text-slate-600 mb-6">
                       Your message has been sent successfully. We'll get back to you as soon as possible.
                     </p>
                     <Button asChild className="classic-button">
@@ -303,7 +304,7 @@ export default function ContactPage() {
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-primary mb-4">Find Us</h2>
             <div className="w-16 h-1 bg-secondary mx-auto mb-6"></div>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto">
               We serve clients across the Gold Coast region, with our main office located in Gold Coast.
             </p>
           </div>
@@ -329,14 +330,14 @@ export default function ContactPage() {
         <div className="classic-container">
           <div className="classic-card p-8 text-center">
             <h2 className="text-3xl font-serif font-bold text-primary mb-4">Ready for a Cleaner Space?</h2>
-            <p className="text-muted-foreground mb-6">
+            <p className="text-slate-600 mb-6">
               Book your cleaning service today and experience the WaveSolution difference.
             </p>
             <div className="flex flex-col gap-4 sm:flex-row justify-center">
               <Button asChild className="classic-button">
                 <Link href={siteLinks.book}>Book Now</Link>
               </Button>
-              <Button asChild variant="outline" className="bg-white hover:bg-gray-100 text-primary border-gray-300">
+              <Button asChild variant="outline" className="bg-white hover:bg-slate-100 text-primary border-slate-200">
                 <Link href={siteLinks.services}>View Services</Link>
               </Button>
             </div>
@@ -346,4 +347,5 @@ export default function ContactPage() {
     </div>
   )
 }
+
 

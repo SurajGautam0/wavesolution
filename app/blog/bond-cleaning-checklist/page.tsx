@@ -40,9 +40,11 @@ const jsonLd = {
       "@type": "Article",
       headline: "Bond Cleaning Checklist Queensland: Complete Move-Out Guide",
       description: "Complete bond cleaning checklist for Queensland rental properties covering every room inspectors check.",
-      author: { "@type": "Organization", name: "Wave Solution Cleaning Gold Coast" },
+      author: { "@type": "Organization", name: "Wave Solution Cleaning", url: "https://www.wavesolution.com.au" },
       publisher: { "@type": "Organization", name: "Wave Solution Cleaning Gold Coast", url: "https://www.wavesolution.com.au" },
       datePublished: "2025-01-15",
+      dateModified: "2025-01-15",
+      image: "https://www.wavesolution.com.au/gold-coast-cleaning-services.jpeg",
       url: "https://www.wavesolution.com.au/blog/bond-cleaning-checklist",
     },
     {
@@ -294,7 +296,7 @@ export default function BondCleaningChecklistPage() {
                 <p className="mt-4 text-sm leading-7 text-white/75">
                   Wave Solution provides detailed bond cleaning across the Gold Coast for tenants, landlords, and property managers.
                 </p>
-                <Button asChild className="mt-5 w-full h-11 rounded-full bg-secondary text-[11px] font-black uppercase tracking-[0.18em] text-slate-950 hover:bg-secondary/90">
+                <Button asChild className="mt-5 w-full h-11 rounded-full bg-secondary text-[11px] font-black uppercase tracking-[0.18em] text-white hover:bg-secondary/90">
                   <Link href="/bond-cleaning-gold-coast">Get a Quote</Link>
                 </Button>
               </div>
@@ -328,7 +330,7 @@ export default function BondCleaningChecklistPage() {
             Wave Solution provides detailed bond cleaning across the Gold Coast. Tell us your suburb, property size, and inspection date and we'll get back to you quickly.
           </p>
           <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
-            <Button asChild className="h-12 rounded-full bg-secondary px-6 text-[11px] font-black uppercase tracking-[0.18em] text-slate-950 hover:bg-secondary/90">
+            <Button asChild className="h-12 rounded-full bg-secondary px-6 text-[11px] font-black uppercase tracking-[0.18em] text-white hover:bg-secondary/90">
               <Link href="/bond-cleaning-gold-coast">Book Bond Cleaning</Link>
             </Button>
             <Button asChild variant="outline" className="h-12 rounded-full border-white/20 bg-white/5 px-6 text-[11px] font-black uppercase tracking-[0.18em] text-white hover:bg-white/10">

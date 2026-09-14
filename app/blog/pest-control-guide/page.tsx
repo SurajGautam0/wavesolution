@@ -19,7 +19,7 @@ const jsonLd = {
       { "@type": "ListItem", position: 2, name: "Blog", item: "https://www.wavesolution.com.au/blog" },
       { "@type": "ListItem", position: 3, name: "Pest Control Guide", item: "https://www.wavesolution.com.au/blog/pest-control-guide" },
     ]},
-    { "@type": "Article", headline: "Common Pests in Gold Coast Homes and How to Deal With Them", author: { "@type": "Organization", name: "Wave Solution Cleaning Gold Coast" }, publisher: { "@type": "Organization", name: "Wave Solution Cleaning Gold Coast", url: "https://www.wavesolution.com.au" }, datePublished: "2025-03-20", url: "https://www.wavesolution.com.au/blog/pest-control-guide" },
+    { "@type": "Article", headline: "Common Pests in Gold Coast Homes and How to Deal With Them", author: { "@type": "Organization", name: "Wave Solution Cleaning", url: "https://www.wavesolution.com.au" }, publisher: { "@type": "Organization", name: "Wave Solution Cleaning Gold Coast", url: "https://www.wavesolution.com.au" }, datePublished: "2025-03-20", dateModified: "2025-03-20", image: "https://www.wavesolution.com.au/gold-coast-cleaning-services.jpeg", url: "https://www.wavesolution.com.au/blog/pest-control-guide" },
     { "@type": "FAQPage", mainEntity: [
       { "@type": "Question", name: "What pests are most common in Gold Coast homes?", acceptedAnswer: { "@type": "Answer", text: "The most common pests in Gold Coast homes include cockroaches (German and American), ants (including fire ants), spiders, rodents (mice and rats), termites, mosquitoes, and silverfish. Warm, humid conditions make the Gold Coast particularly susceptible year-round." }},
       { "@type": "Question", name: "How often should I get pest control done in Gold Coast?", acceptedAnswer: { "@type": "Answer", text: "Most Gold Coast properties benefit from a general pest treatment once or twice a year. Termite inspections should be conducted annually. Properties in bush-adjacent areas or with past pest issues may require more frequent treatment." }},
@@ -93,7 +93,7 @@ export default function PestControlGuidePage() {
               <div className="rounded-[2rem] border border-slate-200 bg-primary p-6 text-white shadow-xl">
                 <p className="text-xs font-black uppercase tracking-[0.2em] text-secondary">Book Pest Control</p>
                 <p className="mt-4 text-sm leading-7 text-white/75">Wave Solution provides pest control support across the Gold Coast for homes, rentals, and businesses.</p>
-                <Button asChild className="mt-5 w-full h-11 rounded-full bg-secondary text-[11px] font-black uppercase tracking-[0.18em] text-slate-950 hover:bg-secondary/90"><Link href="/pest-control-gold-coast">View Pest Control</Link></Button>
+                <Button asChild className="mt-5 w-full h-11 rounded-full bg-secondary text-[11px] font-black uppercase tracking-[0.18em] text-white hover:bg-secondary/90"><Link href="/pest-control-gold-coast">View Pest Control</Link></Button>
               </div>
               <div className="rounded-[2rem] border border-slate-200 bg-slate-50 p-6">
                 <p className="text-xs font-black uppercase tracking-[0.2em] text-secondary">Related Services</p>
@@ -112,7 +112,7 @@ export default function PestControlGuidePage() {
           <h2 className="text-3xl font-black tracking-tight">Book Pest Control in the Gold Coast</h2>
           <p className="mt-4 text-base leading-8 text-white/75 max-w-2xl mx-auto">Wave Solution provides pest treatment across Gold Coast for homes, rental properties, and businesses. Get a fast local quote.</p>
           <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
-            <Button asChild className="h-12 rounded-full bg-secondary px-6 text-[11px] font-black uppercase tracking-[0.18em] text-slate-950 hover:bg-secondary/90"><Link href="/pest-control-gold-coast">Book Pest Control</Link></Button>
+            <Button asChild className="h-12 rounded-full bg-secondary px-6 text-[11px] font-black uppercase tracking-[0.18em] text-white hover:bg-secondary/90"><Link href="/pest-control-gold-coast">Book Pest Control</Link></Button>
             <Button asChild variant="outline" className="h-12 rounded-full border-white/20 bg-white/5 px-6 text-[11px] font-black uppercase tracking-[0.18em] text-white hover:bg-white/10"><Link href="/contact">Get a Quote</Link></Button>
           </div>
         </div>

@@ -36,9 +36,11 @@ const jsonLd = {
     {
       "@type": "Article",
       headline: "Mould Prevention Guide for Gold Coast Homes",
-      author: { "@type": "Organization", name: "Wave Solution Cleaning Gold Coast" },
+      author: { "@type": "Organization", name: "Wave Solution Cleaning", url: "https://www.wavesolution.com.au" },
       publisher: { "@type": "Organization", name: "Wave Solution Cleaning Gold Coast", url: "https://www.wavesolution.com.au" },
       datePublished: "2025-02-15",
+      dateModified: "2025-02-15",
+      image: "https://www.wavesolution.com.au/gold-coast-cleaning-services.jpeg",
       url: "https://www.wavesolution.com.au/blog/mould-prevention-gold-coast",
     },
     {
@@ -161,7 +163,7 @@ export default function MouldPreventionPage() {
               <div className="rounded-[2rem] border border-slate-200 bg-primary p-6 text-white shadow-xl">
                 <p className="text-xs font-black uppercase tracking-[0.2em] text-secondary">Book a Deep Clean</p>
                 <p className="mt-4 text-sm leading-7 text-white/75">Persistent mould in bathrooms and kitchens? A professional deep clean addresses the buildup properly.</p>
-                <Button asChild className="mt-5 w-full h-11 rounded-full bg-secondary text-[11px] font-black uppercase tracking-[0.18em] text-slate-950 hover:bg-secondary/90">
+                <Button asChild className="mt-5 w-full h-11 rounded-full bg-secondary text-[11px] font-black uppercase tracking-[0.18em] text-white hover:bg-secondary/90">
                   <Link href="/deep-cleaning-gold-coast">Book Deep Cleaning</Link>
                 </Button>
               </div>
@@ -183,7 +185,7 @@ export default function MouldPreventionPage() {
           <h2 className="text-3xl font-black tracking-tight">Need Help With Deep Cleaning in the Gold Coast?</h2>
           <p className="mt-4 text-base leading-8 text-white/75 max-w-2xl mx-auto">Wave Solution provides house cleaning, deep cleaning, and bathroom detail cleaning across the Gold Coast.</p>
           <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
-            <Button asChild className="h-12 rounded-full bg-secondary px-6 text-[11px] font-black uppercase tracking-[0.18em] text-slate-950 hover:bg-secondary/90"><Link href="/deep-cleaning-gold-coast">Book Deep Cleaning</Link></Button>
+            <Button asChild className="h-12 rounded-full bg-secondary px-6 text-[11px] font-black uppercase tracking-[0.18em] text-white hover:bg-secondary/90"><Link href="/deep-cleaning-gold-coast">Book Deep Cleaning</Link></Button>
             <Button asChild variant="outline" className="h-12 rounded-full border-white/20 bg-white/5 px-6 text-[11px] font-black uppercase tracking-[0.18em] text-white hover:bg-white/10"><Link href="/contact">Get a Quote</Link></Button>
           </div>
         </div>

@@ -19,7 +19,7 @@ const jsonLd = {
       { "@type": "ListItem", position: 2, name: "Blog", item: "https://www.wavesolution.com.au/blog" },
       { "@type": "ListItem", position: 3, name: "Deep Cleaning Guide", item: "https://www.wavesolution.com.au/blog/deep-cleaning-guide" },
     ]},
-    { "@type": "Article", headline: "Deep Cleaning vs Regular Cleaning: When to Book a Deep Clean", author: { "@type": "Organization", name: "Wave Solution Cleaning Gold Coast" }, publisher: { "@type": "Organization", name: "Wave Solution Cleaning Gold Coast", url: "https://www.wavesolution.com.au" }, datePublished: "2025-03-10", url: "https://www.wavesolution.com.au/blog/deep-cleaning-guide" },
+    { "@type": "Article", headline: "Deep Cleaning vs Regular Cleaning: When to Book a Deep Clean", author: { "@type": "Organization", name: "Wave Solution Cleaning", url: "https://www.wavesolution.com.au" }, publisher: { "@type": "Organization", name: "Wave Solution Cleaning Gold Coast", url: "https://www.wavesolution.com.au" }, datePublished: "2025-03-10", dateModified: "2025-03-10", image: "https://www.wavesolution.com.au/gold-coast-cleaning-services.jpeg", url: "https://www.wavesolution.com.au/blog/deep-cleaning-guide" },
     { "@type": "FAQPage", mainEntity: [
       { "@type": "Question", name: "What is the difference between a regular clean and a deep clean?", acceptedAnswer: { "@type": "Answer", text: "A regular clean maintains a property's cleanliness with routine tasks like vacuuming, mopping, surface wiping, and bathroom cleaning. A deep clean goes further — cleaning inside ovens, cupboards, behind appliances, grout, window tracks, skirting boards, and other areas that accumulate buildup over time." }},
       { "@type": "Question", name: "How much does deep cleaning cost in the Gold Coast?", acceptedAnswer: { "@type": "Answer", text: "Deep cleaning in the Gold Coast typically starts from $250 and varies based on the size and condition of the property. Contact Wave Solution for a tailored local quote." }},
@@ -100,7 +100,7 @@ export default function DeepCleaningGuidePage() {
               <div className="rounded-[2rem] border border-slate-200 bg-primary p-6 text-white shadow-xl">
                 <p className="text-xs font-black uppercase tracking-[0.2em] text-secondary">Book a Deep Clean</p>
                 <p className="mt-4 text-sm leading-7 text-white/75">Wave Solution provides one-off deep cleaning for homes and offices across the Gold Coast.</p>
-                <Button asChild className="mt-5 w-full h-11 rounded-full bg-secondary text-[11px] font-black uppercase tracking-[0.18em] text-slate-950 hover:bg-secondary/90"><Link href="/deep-cleaning-gold-coast">View Deep Cleaning</Link></Button>
+                <Button asChild className="mt-5 w-full h-11 rounded-full bg-secondary text-[11px] font-black uppercase tracking-[0.18em] text-white hover:bg-secondary/90"><Link href="/deep-cleaning-gold-coast">View Deep Cleaning</Link></Button>
               </div>
               <div className="rounded-[2rem] border border-slate-200 bg-slate-50 p-6">
                 <p className="text-xs font-black uppercase tracking-[0.2em] text-secondary">Related Articles</p>
@@ -120,7 +120,7 @@ export default function DeepCleaningGuidePage() {
           <h2 className="text-3xl font-black tracking-tight">Book a Deep Clean in the Gold Coast</h2>
           <p className="mt-4 text-base leading-8 text-white/75 max-w-2xl mx-auto">One-off deep cleaning for Gold Coast homes, offices, and rental properties. Tell us your property and we'll send a fast quote.</p>
           <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
-            <Button asChild className="h-12 rounded-full bg-secondary px-6 text-[11px] font-black uppercase tracking-[0.18em] text-slate-950 hover:bg-secondary/90"><Link href="/deep-cleaning-gold-coast">Book Deep Cleaning</Link></Button>
+            <Button asChild className="h-12 rounded-full bg-secondary px-6 text-[11px] font-black uppercase tracking-[0.18em] text-white hover:bg-secondary/90"><Link href="/deep-cleaning-gold-coast">Book Deep Cleaning</Link></Button>
             <Button asChild variant="outline" className="h-12 rounded-full border-white/20 bg-white/5 px-6 text-[11px] font-black uppercase tracking-[0.18em] text-white hover:bg-white/10"><Link href="/contact">Get a Quote</Link></Button>
           </div>
         </div>

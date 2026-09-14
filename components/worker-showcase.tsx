@@ -5,11 +5,11 @@ import Image from "next/image"
 import { ShieldCheck, Star, Users, Zap } from "lucide-react"
 
 export function WorkerShowcase() {
-    const [randomImage, setRandomImage] = useState("/gold-coast-cleaning-team.png")
+    const [randomImage, setRandomImage] = useState("/gold-coast-cleaning-team.jpg")
 
     useEffect(() => {
         // Use a local branded image with a descriptive filename for SEO.
-        setRandomImage("/gold-coast-cleaning-team.png")
+        setRandomImage("/gold-coast-cleaning-team.jpg")
     }, [])
 
     const trainingFeatures = [
@@ -35,14 +35,14 @@ export function WorkerShowcase() {
             <div className="grid grid-cols-1 lg:grid-cols-2">
                 <div className="p-8 sm:p-12 lg:p-16 flex flex-col justify-center space-y-8">
                     <div className="space-y-4">
-                        <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-100">
+                        <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20">
                             <Zap className="w-3.5 h-3.5 text-primary" />
                             <span className="text-[10px] font-black uppercase tracking-[0.2em] text-primary">Academy of Excellence</span>
                         </div>
-                        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-black text-blue-950 tracking-tighter leading-tight">
+                        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-black text-secondary tracking-tighter leading-tight">
                             Professional <span className="text-secondary">Cleaning Services</span>
                         </h2>
-                        <p className="text-muted-foreground text-lg font-medium leading-relaxed max-w-md">
+                        <p className="text-slate-600 text-lg font-medium leading-relaxed max-w-md">
                             Our team of experienced professionals uses the latest cleaning techniques and eco-friendly products to ensure your space is not just clean, but healthy too.
                         </p>
                     </div>
@@ -50,12 +50,12 @@ export function WorkerShowcase() {
                     <div className="space-y-6">
                         {trainingFeatures.map((feature, i) => (
                             <div key={i} className="flex items-start space-x-4">
-                                <div className="mt-1 p-2 bg-blue-50 rounded-xl">
+                                <div className="mt-1 p-2 bg-primary/10 rounded-xl">
                                     <feature.icon className="w-5 h-5 text-primary" />
                                 </div>
                                 <div>
-                                    <h4 className="font-black text-blue-950 uppercase text-xs tracking-widest">{feature.title}</h4>
-                                    <p className="text-sm text-muted-foreground mt-1 font-medium">{feature.description}</p>
+                                    <h4 className="font-black text-secondary uppercase text-xs tracking-widest">{feature.title}</h4>
+                                    <p className="text-sm text-slate-600 mt-1 font-medium">{feature.description}</p>
                                 </div>
                             </div>
                         ))}

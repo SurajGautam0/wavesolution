@@ -82,9 +82,9 @@ const galleryItems: GalleryItem[] = [
 	},
 	{
 		id: 5,
-		type: "gif",
-		category: "videos",
-		src: "/Untitled video - Made with Clipchamp (1).gif",
+		type: "image",
+		category: "photos",
+		src: "/gold-coast-cleaning-team.jpg",
 		title: "Our Team in Action",
 		description: "A glimpse into how our professional cleaners work — efficient, thorough, and detail-oriented.",
 		tag: "Behind the Scenes",
@@ -136,6 +136,7 @@ function VideoCard({ item, onClick }: { item: GalleryItem; onClick: () => void }
 				muted
 				loop
 				playsInline
+				preload="none"
 				className="w-full h-full object-cover"
 				onPlay={() => setIsPlaying(true)}
 				onPause={() => setIsPlaying(false)}
@@ -239,7 +240,7 @@ export default function GalleryPage() {
 			</div>
 
 			{/* ── Filter Bar ──────────────────────────── */}
-			<section className="py-8 bg-white border-b border-gray-100 sticky top-[72px] sm:top-[80px] lg:top-[96px] z-30">
+			<section className="py-8 bg-white border-b border-slate-100 sticky top-[72px] sm:top-[80px] lg:top-[96px] z-30">
 				<div className="classic-container">
 					<div className="flex flex-col sm:flex-row items-center justify-between gap-4">
 						<div className="flex items-center space-x-2 text-primary/40 text-[10px] font-black uppercase tracking-[0.2em]">
@@ -256,7 +257,7 @@ export default function GalleryPage() {
 										"flex items-center gap-2 px-6 py-2.5 rounded-full text-[10px] font-black uppercase tracking-widest transition-all duration-300",
 										filter === cat.id
 											? "bg-secondary text-white shadow-lg shadow-secondary/20"
-											: "bg-gray-100 text-gray-500 hover:bg-gray-200"
+											: "bg-slate-100 text-slate-500 hover:bg-slate-200"
 									)}
 								>
 									<cat.icon className="w-3.5 h-3.5" />
@@ -269,7 +270,7 @@ export default function GalleryPage() {
 			</section>
 
 			{/* ── Gallery Grid ─────────────────────────── */}
-			<section className="py-16 sm:py-20 bg-gray-50">
+			<section className="py-16 sm:py-20 bg-[#F3F3F3]">
 				<div className="classic-container">
 					<motion.div
 						layout
@@ -334,7 +335,7 @@ export default function GalleryPage() {
 											<h3 className="text-lg font-black text-primary mb-2 leading-tight tracking-tight">
 												{item.title}
 											</h3>
-											<p className="text-xs text-muted-foreground leading-relaxed line-clamp-2">
+											<p className="text-xs text-slate-600 leading-relaxed line-clamp-2">
 												{item.description}
 											</p>
 										</div>
@@ -423,14 +424,14 @@ export default function GalleryPage() {
 									{selectedItem.title}
 								</h2>
 								<div className="w-12 h-1 bg-secondary mb-6 rounded-full" />
-								<p className="text-sm text-muted-foreground font-medium leading-relaxed mb-8">
+								<p className="text-sm text-slate-600 font-medium leading-relaxed mb-8">
 									{selectedItem.description}
 								</p>
 
-								<div className="flex items-center gap-3 p-4 rounded-2xl bg-gray-50 border border-gray-100 mb-8">
+								<div className="flex items-center gap-3 p-4 rounded-2xl bg-[#F3F3F3] border border-slate-100 mb-8">
 									<ShieldCheck className="w-5 h-5 text-secondary flex-shrink-0" />
 									<div>
-										<div className="text-[8px] font-black uppercase tracking-widest text-muted-foreground">Quality Assured</div>
+										<div className="text-[8px] font-black uppercase tracking-widest text-slate-600">Quality Assured</div>
 										<div className="text-xs font-bold text-primary">100% Satisfaction Guaranteed</div>
 									</div>
 								</div>

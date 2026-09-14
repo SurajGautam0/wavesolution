@@ -1,9 +1,10 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { AdminHeader } from "@/components/admin-header"
 import { AuthProvider } from "@/lib/auth-context"
 
 export const metadata: Metadata = {
+    title: "Dashboard | Wave Solution Cleaning",
+    description: "Manage your cleaning bookings, profile, and support requests.",
     robots: {
         index: false,
         follow: false,
@@ -21,8 +22,7 @@ export default function DashboardLayout({
 }) {
     return (
         <AuthProvider>
-            <div className="bg-slate-50 min-h-screen">
-                <AdminHeader />
+            <div className="min-h-screen bg-[#F3F3F3]">
                 {children}
             </div>
         </AuthProvider>

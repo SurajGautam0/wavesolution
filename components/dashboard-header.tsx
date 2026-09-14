@@ -1,93 +1,125 @@
 "use client"
 
 import Link from "next/link"
-import Image from "next/image"
-import { Bell, Menu, User } from "lucide-react"
-
+import { useState } from "react"
+import { useRouter } from "next/navigation"
+import { useAuth } from "@/lib/auth-context"
+import { businessInfo, siteLinks } from "@/lib/business-info"
+import {
+    Menu,
+    X,
+    Bell,
+    LogOut,
+    User,
+    Settings,
+    Home,
+    ChevronDown
+} from "lucide-react"
 import { Button } from "@/components/ui/button"
 import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
+    DropdownMenu,
+    DropdownMenuContent,
+    DropdownMenuItem,
+    DropdownMenuLabel,
+    DropdownMenuSeparator,
+    DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
-import { DashboardNav } from "@/components/dashboard-nav"
 
 export function DashboardHeader() {
-  return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-14 items-center gap-2">
-        <div className="mr-8 hidden md:flex">
-          <Link href="/" className="flex items-center">
-            <div className="relative w-32 h-10 lg:w-44 lg:h-14">
-              <Image src="/logo.png" alt="WaveSolution" fill className="object-contain" priority />
-            </div>
-          </Link>
-        </div>
-        <Sheet>
-          <SheetTrigger asChild>
-            <Button
-              variant="ghost"
-              className="px-0 text-base hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 md:hidden mr-2"
-            >
-              <Menu className="h-5 w-5" />
-              <span className="sr-only">Toggle Menu</span>
-            </Button>
-          </SheetTrigger>
-          <SheetContent side="left" className="pr-0">
-            <Link href="/" className="flex items-center p-6">
-              <div className="relative w-full max-w-[160px] aspect-[3/1]">
-                <Image src="/logo.png" alt="WaveSolution" fill className="object-contain" />
-              </div>
-            </Link>
-            <div className="my-4">
-              <DashboardNav />
-            </div>
-          </SheetContent>
-        </Sheet>
-        <Link href="/" className="flex items-center md:hidden">
-          <div className="relative w-24 h-7 min-[400px]:w-32 min-[400px]:h-9">
-            <Image src="/logo.png" alt="WaveSolution" fill className="object-contain" priority />
-          </div>
-        </Link>
-        <div className="flex flex-1 items-center justify-end space-x-4">
-          <nav className="flex items-center space-x-2">
-            <Button variant="ghost" size="icon">
-              <Bell className="h-5 w-5" />
-              <span className="sr-only">Notifications</span>
-            </Button>
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button variant="ghost" size="icon">
-                  <User className="h-5 w-5" />
-                  <span className="sr-only">User menu</span>
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="end">
-                <DropdownMenuLabel>My Account</DropdownMenuLabel>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem asChild>
-                  <Link href="/dashboard/profile">Profile</Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link href="/dashboard/settings">Settings</Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link href="/dashboard/billing">Billing</Link>
-                </DropdownMenuItem>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem asChild>
-                  <Link href="/logout">Logout</Link>
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
-          </nav>
-        </div>
-      </div>
-    </header>
-  )
-}
+    const { user, logout } = useAuth()
+    const router = useRouter()
+    const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
+    const handleLogout = async () => {
+        await logout()
+        router.push("/")
+    }
+
+    return (
+        <header className="sticky top-0 z-50 w-full border-b border-slate-200 bg-white/80 backdrop-blur-xl">
+            <div className="classic-container flex h-16 items-center justify-between gap-4">
+                {/* Logo */}
+                <Link href={siteLinks.home} className="flex items-center gap-3 shrink-0">
+                    <div className="relative h-9 w-36 lg:h-10 lg:w-40">
+                        <img
+                            src="/logo.png"
+                            alt="Wave Solution"
+                            className="h-full w-full object-contain"
+                        />
+                    </div>
+                    <span className="hidden sm:inline-flex items-center rounded-full bg-primary/10 px-2.5 py-0.5 text-[10px] font-black uppercase tracking-widest text-primary">
+                        Portal
+                    </span>
+                </Link>
+
+                {/* Desktop Right Actions */}
+                <div className="flex items-center gap-3">
+                    {/* Quick Book Button */}
+                    <Button
+                        asChild
+                        className="hidden sm:inline-flex h-10 rounded-full bg-[#39BDE4] px-5 text-xs font-black uppercase tracking-widest text-white hover:bg-[#249FC5] transition-colors"
+                    >
+                        <Link href={siteLinks.book}>Book Now</Link>
+                    </Button>
+
+                    {/* Notifications */}
+                    <Button
+                        variant="ghost"
+                        size="icon"
+                        className="relative h-10 w-10 rounded-full text-slate-500 hover:text-secondary hover:bg-secondary/5"
+                    >
+                        <Bell className="h-5 w-5" />
+                        <span className="absolute right-2 top-2 h-2 w-2 rounded-full bg-[#39BDE4]" />
+                    </Button>
+
+                    {/* User Menu */}
+                    <DropdownMenu>
+                        <DropdownMenuTrigger asChild>
+                            <Button
+                                variant="ghost"
+                                className="flex items-center gap-2 h-10 rounded-full pl-1 pr-3 hover:bg-secondary/5"
+                            >
+                                <div className="h-8 w-8 rounded-full bg-gradient-to-br from-[#39BDE4] to-secondary flex items-center justify-center text-white text-sm font-bold">
+                                    {user?.name?.charAt(0)?.toUpperCase() || "U"}
+                                </div>
+                                <span className="hidden md:inline text-sm font-semibold text-slate-700 max-w-[120px] truncate">
+                                    {user?.name || "Account"}
+                                </span>
+                                <ChevronDown className="h-4 w-4 text-slate-400" />
+                            </Button>
+                        </DropdownMenuTrigger>
+                        <DropdownMenuContent align="end" className="w-56 rounded-2xl border-slate-200 shadow-xl shadow-slate-900/5">
+                            <DropdownMenuLabel className="p-4">
+                                <p className="text-sm font-bold text-slate-900">{user?.name || "User"}</p>
+                                <p className="text-xs font-medium text-slate-500 mt-0.5">{user?.email || ""}</p>
+                            </DropdownMenuLabel>
+                            <DropdownMenuSeparator />
+                            <DropdownMenuItem
+                                className="cursor-pointer rounded-lg px-3 py-2.5 text-sm font-medium text-slate-600 focus:bg-secondary/5 focus:text-secondary"
+                                onClick={() => router.push("/dashboard")}
+                            >
+                                <Home className="mr-2.5 h-4 w-4" />
+                                Dashboard
+                            </DropdownMenuItem>
+                            <DropdownMenuItem
+                                className="cursor-pointer rounded-lg px-3 py-2.5 text-sm font-medium text-slate-600 focus:bg-secondary/5 focus:text-secondary"
+                                onClick={() => router.push("/dashboard")}
+                            >
+                                <User className="mr-2.5 h-4 w-4" />
+                                Profile
+                            </DropdownMenuItem>
+                            <DropdownMenuSeparator />
+                            <DropdownMenuItem
+                                className="cursor-pointer rounded-lg px-3 py-2.5 text-sm font-medium text-red-600 focus:bg-red-50 focus:text-red-600"
+                                onClick={handleLogout}
+                            >
+                                <LogOut className="mr-2.5 h-4 w-4" />
+                                Sign Out
+                            </DropdownMenuItem>
+                        </DropdownMenuContent>
+                    </DropdownMenu>
+                </div>
+            </div>
+        </header>
+    )
+}

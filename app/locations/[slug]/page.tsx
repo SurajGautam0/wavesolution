@@ -30,6 +30,12 @@ export async function generateMetadata({ params }: LocationPageProps): Promise<M
   return {
     title: location.metaTitle,
     description: location.metaDescription,
+    keywords: [
+      `cleaning services ${location.name}`,
+      `house cleaning ${location.name}`,
+      `office cleaning ${location.name}`,
+      `cleaners ${location.name} Gold Coast`,
+    ],
     alternates: {
       canonical: url,
     },
@@ -37,6 +43,14 @@ export async function generateMetadata({ params }: LocationPageProps): Promise<M
       title: location.metaTitle,
       description: location.metaDescription,
       url,
+      type: "website",
+      images: [{ url: "/gold-coast-cleaning-services.jpeg", width: 1200, height: 630, alt: location.metaTitle }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: location.metaTitle,
+      description: location.metaDescription,
+      images: ["/gold-coast-cleaning-services.jpeg"],
     },
   }
 }
@@ -123,7 +137,7 @@ export default async function LocationDetailPage({ params }: LocationPageProps) 
             <h1 className="mt-6 text-4xl font-black tracking-tight sm:text-5xl md:text-6xl">{location.heroTitle}</h1>
             <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-white/75">{location.intro}</p>
             <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row">
-              <Button asChild className="h-12 rounded-full bg-secondary px-6 text-[11px] font-black uppercase tracking-[0.18em] text-slate-950 hover:bg-secondary/90">
+              <Button asChild className="h-12 rounded-full bg-secondary px-6 text-[11px] font-black uppercase tracking-[0.18em] text-white hover:bg-secondary/90">
                 <Link href={siteLinks.book}>
                   Book a Clean
                   <ArrowRight className="h-4 w-4" />
@@ -189,7 +203,7 @@ export default async function LocationDetailPage({ params }: LocationPageProps) 
                   Speak with our team and we&apos;ll help you choose the right service for your property and schedule.
                 </p>
                 <div className="mt-6 flex flex-col gap-3">
-                  <Button asChild className="h-11 rounded-full bg-secondary text-[11px] font-black uppercase tracking-[0.18em] text-slate-950 hover:bg-secondary/90">
+                  <Button asChild className="h-11 rounded-full bg-secondary text-[11px] font-black uppercase tracking-[0.18em] text-white hover:bg-secondary/90">
                     <Link href={siteLinks.book}>Book Now</Link>
                   </Button>
                   <Button asChild variant="outline" className="h-11 rounded-full border-white/20 bg-white/5 text-[11px] font-black uppercase tracking-[0.18em] text-white hover:bg-white/10 hover:text-white">

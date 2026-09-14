@@ -19,7 +19,7 @@ const jsonLd = {
       { "@type": "ListItem", position: 2, name: "Blog", item: "https://www.wavesolution.com.au/blog" },
       { "@type": "ListItem", position: 3, name: "Rental Inspection Tips", item: "https://www.wavesolution.com.au/blog/rental-inspection-tips" },
     ]},
-    { "@type": "Article", headline: "Rental Inspection Tips for Gold Coast Tenants", author: { "@type": "Organization", name: "Wave Solution Cleaning Gold Coast" }, publisher: { "@type": "Organization", name: "Wave Solution Cleaning Gold Coast", url: "https://www.wavesolution.com.au" }, datePublished: "2025-04-15", url: "https://www.wavesolution.com.au/blog/rental-inspection-tips" },
+    { "@type": "Article", headline: "Rental Inspection Tips for Gold Coast Tenants", author: { "@type": "Organization", name: "Wave Solution Cleaning", url: "https://www.wavesolution.com.au" }, publisher: { "@type": "Organization", name: "Wave Solution Cleaning Gold Coast", url: "https://www.wavesolution.com.au" }, datePublished: "2025-04-15", dateModified: "2025-04-15", image: "https://www.wavesolution.com.au/gold-coast-cleaning-services.jpeg", url: "https://www.wavesolution.com.au/blog/rental-inspection-tips" },
     { "@type": "FAQPage", mainEntity: [
       { "@type": "Question", name: "How often can a landlord inspect a rental property in Queensland?", acceptedAnswer: { "@type": "Answer", text: "Under Queensland tenancy law, a landlord can conduct routine inspections once every 3 months after the first inspection, which cannot occur within the first 3 weeks of a tenancy. Entry inspections require at least 7 days notice." }},
       { "@type": "Question", name: "What do property managers look for at a routine inspection?", acceptedAnswer: { "@type": "Answer", text: "Property managers typically check for overall cleanliness, damage beyond fair wear and tear, maintenance issues, appropriate use of the property, and compliance with tenancy conditions like no unauthorised pets or subletting." }},
@@ -116,7 +116,7 @@ export default function RentalInspectionTipsPage() {
               <div className="rounded-[2rem] border border-slate-200 bg-primary p-6 text-white shadow-xl">
                 <p className="text-xs font-black uppercase tracking-[0.2em] text-secondary">Bond Cleaning Gold Coast</p>
                 <p className="mt-4 text-sm leading-7 text-white/75">Prepare your Gold Coast rental for final inspection with Wave Solution's detailed bond cleaning service.</p>
-                <Button asChild className="mt-5 w-full h-11 rounded-full bg-secondary text-[11px] font-black uppercase tracking-[0.18em] text-slate-950 hover:bg-secondary/90"><Link href="/bond-cleaning-gold-coast">Get a Quote</Link></Button>
+                <Button asChild className="mt-5 w-full h-11 rounded-full bg-secondary text-[11px] font-black uppercase tracking-[0.18em] text-white hover:bg-secondary/90"><Link href="/bond-cleaning-gold-coast">Get a Quote</Link></Button>
               </div>
               <div className="rounded-[2rem] border border-slate-200 bg-slate-50 p-6">
                 <p className="text-xs font-black uppercase tracking-[0.2em] text-secondary">Related Guides</p>
@@ -136,7 +136,7 @@ export default function RentalInspectionTipsPage() {
           <h2 className="text-3xl font-black tracking-tight">Need Help Preparing for a Rental Inspection?</h2>
           <p className="mt-4 text-base leading-8 text-white/75 max-w-2xl mx-auto">Wave Solution provides bond cleaning and house cleaning across the Gold Coast. Tell us your property and timing.</p>
           <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
-            <Button asChild className="h-12 rounded-full bg-secondary px-6 text-[11px] font-black uppercase tracking-[0.18em] text-slate-950 hover:bg-secondary/90"><Link href="/bond-cleaning-gold-coast">Book Bond Cleaning</Link></Button>
+            <Button asChild className="h-12 rounded-full bg-secondary px-6 text-[11px] font-black uppercase tracking-[0.18em] text-white hover:bg-secondary/90"><Link href="/bond-cleaning-gold-coast">Book Bond Cleaning</Link></Button>
             <Button asChild variant="outline" className="h-12 rounded-full border-white/20 bg-white/5 px-6 text-[11px] font-black uppercase tracking-[0.18em] text-white hover:bg-white/10"><Link href="/contact">Contact Us</Link></Button>
           </div>
         </div>

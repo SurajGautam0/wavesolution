@@ -11,6 +11,7 @@ export const metadata: Metadata = {
         title: "WaveSolution Cleaning Gallery | See Our Results in Gold Coast",
         description: "Before & after cleaning transformations from Gold Coast homes & offices.",
         url: "https://www.wavesolution.com.au/gallery",
+        images: [{ url: "/gold-coast-cleaning-services.jpeg", width: 1200, height: 630, alt: "Wave Solution cleaning gallery Gold Coast" }],
     },
 }
 

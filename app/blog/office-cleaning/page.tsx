@@ -14,16 +14,32 @@ export const metadata: Metadata = {
         title: "Office Cleaning Guide | Best Practices for Gold Coast Businesses",
         description: "How often should you clean your office? Expert guide from Gold Coast's commercial cleaning professionals.",
         url: "https://www.wavesolution.com.au/blog/office-cleaning",
+        images: [{ url: "/gold-coast-cleaning-services.jpeg", width: 1200, height: 630, alt: "Office cleaning guide Gold Coast" }],
     },
 }
 
 const breadcrumbJsonLd = {
   "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Home", item: "https://www.wavesolution.com.au" },
-    { "@type": "ListItem", position: 2, name: "Blog", item: "https://www.wavesolution.com.au/blog" },
-    { "@type": "ListItem", position: 3, name: "Office Cleaning Guide", item: "https://www.wavesolution.com.au/blog/office-cleaning" },
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: "https://www.wavesolution.com.au" },
+        { "@type": "ListItem", position: 2, name: "Blog", item: "https://www.wavesolution.com.au/blog" },
+        { "@type": "ListItem", position: 3, name: "Office Cleaning Guide", item: "https://www.wavesolution.com.au/blog/office-cleaning" },
+      ],
+    },
+    {
+      "@type": "Article",
+      headline: "Office Cleaning Guide Gold Coast | Wave Solution",
+      description: "Expert guide on office cleaning frequency and best practices for Gold Coast businesses.",
+      author: { "@type": "Organization", name: "Wave Solution Cleaning", url: "https://www.wavesolution.com.au" },
+      publisher: { "@type": "Organization", name: "Wave Solution Cleaning" },
+      datePublished: "2026-01-20",
+      dateModified: "2026-01-20",
+      image: "https://www.wavesolution.com.au/gold-coast-cleaning-services.jpeg",
+      url: "https://www.wavesolution.com.au/blog/office-cleaning",
+    },
   ],
 }
 
@@ -61,7 +77,7 @@ export default function OfficeCleaningPage() {
                             <h2 className="text-xl sm:text-2xl font-black text-blue-950 uppercase tracking-tight">Pristine Workspace, Peak Productivity</h2>
                         </div>
 
-                        <p className="text-lg text-muted-foreground mb-12">
+                        <p className="text-lg text-slate-600 mb-12">
                             With professionals spending a significant portion of their day in the office, maintaining a sterile and organized environment is paramount. A systematic cleaning strategy not only safeguards employee health but also cultivates a professional and motivating workplace.
                         </p>
 
@@ -73,7 +89,7 @@ export default function OfficeCleaningPage() {
                                     </div>
                                     <div>
                                         <h4 className="text-xl font-black text-blue-950 uppercase tracking-tight mb-2">{p.title}</h4>
-                                        <p className="text-muted-foreground font-medium">{p.content}</p>
+                                        <p className="text-slate-600 font-medium">{p.content}</p>
                                     </div>
                                 </div>
                             ))}
@@ -82,7 +98,7 @@ export default function OfficeCleaningPage() {
                         <div className="bg-primary/5 rounded-[2.5rem] p-8 sm:p-12 border border-primary/10">
                             <Building2 className="w-12 h-12 text-primary mb-6" />
                             <h3 className="text-2xl font-black text-blue-950 mb-4 uppercase tracking-tight">Our Corporate Solutions</h3>
-                            <p className="text-muted-foreground mb-8">
+                            <p className="text-slate-600 mb-8">
                                 WaveSolution provides bespoke cleaning solutions ranging from boutique offices to sprawling corporate complexes. We specialize in exterior glass maintenance and comprehensive facility hygiene.
                             </p>
                             <Button asChild className="rounded-full bg-primary hover:bg-blue-900 text-white font-black uppercase tracking-widest px-10 h-14">

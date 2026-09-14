@@ -1,9 +1,12 @@
 import type { Metadata } from "next"
 import Link from "next/link"
-import { ArrowRight, CheckCircle, ShieldCheck, Sparkles, Star, TimerReset, Users } from "lucide-react"
+import { ArrowRight, CheckCircle, ShieldCheck, Sparkles, Star, TimerReset, Users, MapPin, Phone, Clock } from "lucide-react"
 
 import { HeroSection } from "@/components/hero-section"
 import { ServiceCard } from "@/components/service-card"
+import { InteractivePricingCalculator } from "@/components/interactive-pricing-calculator"
+import { ServicesShowcaseTabs } from "@/components/services-showcase-tabs"
+import { FaqAccordion } from "@/components/faq-accordion"
 import { Button } from "@/components/ui/button"
 import { businessInfo, siteLinks } from "@/lib/business-info"
 
@@ -165,6 +168,7 @@ export const metadata: Metadata = {
       "Wave Solution provides house cleaning, office cleaning, bond cleaning, end of lease cleaning, deep cleaning and commercial cleaning across the Gold Coast.",
     url: businessInfo.baseUrl,
     type: "website",
+    images: [{ url: "/gold-coast-cleaning-services.jpeg", width: 1200, height: 630, alt: "Wave Solution Cleaning services Gold Coast" }],
   },
 }
 
@@ -183,32 +187,52 @@ export default function Home() {
   }
 
   return (
-    <div className="flex min-h-screen flex-col bg-slate-50">
+    <div className="flex min-h-screen flex-col bg-white">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       <HeroSection />
 
-      <section className="border-y border-slate-200 bg-white py-5">
-        <div className="classic-container flex flex-wrap items-center justify-center gap-3 text-center text-[11px] font-black uppercase tracking-[0.16em] text-slate-600">
-          <span className="rounded-full border border-slate-200 bg-slate-50 px-4 py-2">Fully insured</span>
-          <span className="rounded-full border border-slate-200 bg-slate-50 px-4 py-2">Satisfaction guarantee</span>
-          <span className="rounded-full border border-slate-200 bg-slate-50 px-4 py-2">Local cleaners</span>
-          <span className="rounded-full border border-slate-200 bg-slate-50 px-4 py-2">Fast quote</span>
+      {/* Stats Bar */}
+      <section className="bg-white border-y border-slate-200 py-6">
+        <div className="classic-container grid grid-cols-2 md:grid-cols-4 gap-6">
+          {[
+            { icon: Clock, label: "Years Experience", value: "10+" },
+            { icon: CheckCircle, label: "Jobs Completed", value: "1,500+" },
+            { icon: Star, label: "Google Rating", value: "4.9 / 5" },
+            { icon: MapPin, label: "Suburbs Covered", value: "50+" },
+          ].map((stat) => (
+            <div key={stat.label} className="flex items-center gap-3">
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary">
+                <stat.icon className="h-5 w-5" />
+              </div>
+              <div>
+                <p className="text-xl font-black tracking-tight text-primary">{stat.value}</p>
+                <p className="text-[11px] font-bold uppercase tracking-wider text-slate-500">{stat.label}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="bg-secondary py-5">
+        <div className="classic-container flex flex-wrap items-center justify-center gap-3 text-center text-[11px] font-black uppercase tracking-[0.16em] text-white">
+          <span className="rounded-full border border-white/20 bg-white/10 px-4 py-2">Fully insured</span>
+          <span className="rounded-full border border-white/20 bg-white/10 px-4 py-2">Satisfaction guarantee</span>
+          <span className="rounded-full border border-white/20 bg-white/10 px-4 py-2">Local cleaners</span>
+          <span className="rounded-full border border-white/20 bg-white/10 px-4 py-2">Fast quote</span>
         </div>
       </section>
 
       <section className="bg-white py-14 md:py-20">
         <div className="classic-container">
           <div className="mx-auto max-w-4xl text-center">
-            <h2 className="text-3xl font-black tracking-tight text-primary sm:text-4xl">Cleaning Services Gold Coast</h2>
-            <p className="mx-auto mt-5 max-w-3xl text-base leading-8 text-slate-600">
-              Wave Solution is focused on cleaning first. We help Gold Coast households, tenants, landlords, office teams, and business owners book the right service quickly, compare the right level of detail, and move from search to quote without bouncing between thin pages or generic booking prompts.
-            </p>
-            <p className="mx-auto mt-4 max-w-3xl text-base leading-8 text-slate-600">
-              This homepage now acts as the main local service hub. It supports broad queries such as cleaning Gold Coast while also sending visitors directly to dedicated pages for house cleaning Gold Coast, office cleaning Gold Coast, bond cleaning Gold Coast, end of lease cleaning Gold Coast, commercial cleaning Gold Coast, and deep cleaning Gold Coast. That structure is better for Google, better for internal links, and much better for real users comparing local cleaners.
-            </p>
+            <span className="eyebrow">What We Clean</span>
+            <h2 className="mt-4 text-3xl font-black tracking-tight text-primary sm:text-4xl">Our Cleaning Services</h2>
+             <p className="mx-auto mt-5 max-w-3xl text-base leading-8 text-slate-600">
+               Professional cleaning across the Gold Coast — from regular house maintenance to deep commercial resets. Fully insured, police-checked, and locally owned.
+             </p>
           </div>
 
           <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
@@ -227,63 +251,48 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-slate-50 py-14 md:py-20">
-        <div className="classic-container grid gap-8">
-          <article className="rounded-[2rem] border border-slate-200 bg-white p-7 shadow-sm sm:p-8">
-            <h2 className="text-2xl font-black tracking-tight text-primary">House Cleaning Gold Coast</h2>
-            <p className="mt-5 text-base leading-8 text-slate-600">
-              House cleaning remains one of the most searched and most commercially useful services for a Gold Coast cleaning business because the demand is consistent year-round. Busy households need help staying on top of bathrooms, kitchens, floors, dust, and the day-to-day mess that builds up when work, school, and family routines take priority. A strong house-cleaning offer should therefore feel flexible and practical, with weekly, fortnightly, and one-off options that match the way people actually live.
-            </p>
-            <p className="mt-4 text-base leading-8 text-slate-600">
-              The goal is not just a neater property. It is a home that feels easier to manage and more enjoyable to be in. That is especially important in apartment-heavy and high-lifestyle areas such as Surfers Paradise and Broadbeach, but it matters just as much for family homes in Robina, Southport, Burleigh Heads, and surrounding suburbs. If a visitor wants local house cleaners, the page should help them recognise the service quickly and move straight to a tailored quote.
-            </p>
-          </article>
+       <section className="bg-[#F3F3F3] py-14 md:py-20">
+         <div className="classic-container">
+           <ServicesShowcaseTabs />
+         </div>
+       </section>
 
-          <article className="rounded-[2rem] border border-slate-200 bg-white p-7 shadow-sm sm:p-8">
-            <h2 className="text-2xl font-black tracking-tight text-primary">Office Cleaning Gold Coast</h2>
-            <p className="mt-5 text-base leading-8 text-slate-600">
-              Office cleaning needs different messaging from domestic cleaning because the buyer is usually thinking about presentation, hygiene, and consistency rather than lifestyle convenience. Gold Coast businesses want an office cleaner who shows up on time, works around access needs, maintains shared kitchens and bathrooms properly, and helps the workplace feel more professional every day. A page built around office cleaning Gold Coast should speak to that business reality clearly.
-            </p>
-            <p className="mt-4 text-base leading-8 text-slate-600">
-              Local relevance matters here too. Business precincts in Southport, Robina, Broadbeach, and Surfers Paradise all create demand for recurring workplace cleaning. By separating office cleaning from general household messaging, Wave Solution can rank more strongly for business search terms while giving office managers a page that feels built for their exact problem instead of squeezed into a generic services list.
-            </p>
-          </article>
+       {/* How It Works */}
+       <section className="bg-white py-14 md:py-20">
+         <div className="classic-container">
+           <div className="mx-auto max-w-2xl text-center">
+             <h2 className="text-3xl font-black tracking-tight text-primary sm:text-4xl">How It Works</h2>
+             <p className="mx-auto mt-3 text-sm leading-relaxed text-slate-600 sm:text-base">
+               Book in minutes, get a fast quote, and enjoy a spotless space — no surprises, no hassle.
+             </p>
+           </div>
+           <div className="mt-12 grid gap-8 md:grid-cols-3">
+             {[
+               { step: "1", title: "Tell Us What You Need", desc: "Choose your service, property type, and preferred date. Our quick booking form takes under 60 seconds." },
+               { step: "2", title: "We Send a Fast Quote", desc: "Get a clear, upfront price with no hidden fees. Review and confirm when you're ready." },
+               { step: "3", title: "We Do the Rest", desc: "Our trained team arrives on time, cleans to your standards, and leaves your space sparkling." },
+             ].map((item) => (
+               <div key={item.step} className="relative rounded-2xl border border-slate-200 bg-white p-6 shadow-sm hover:shadow-lg hover:border-primary/20 transition-all duration-300">
+                 <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-primary to-secondary text-white text-lg font-black">
+                   {item.step}
+                 </div>
+                 <h3 className="mt-4 text-lg font-black tracking-tight text-slate-900">{item.title}</h3>
+                 <p className="mt-2 text-sm leading-relaxed text-slate-600">{item.desc}</p>
+               </div>
+             ))}
+           </div>
+         </div>
+       </section>
 
-          <article className="rounded-[2rem] border border-slate-200 bg-white p-7 shadow-sm sm:p-8">
-            <h2 className="text-2xl font-black tracking-tight text-primary">Bond Cleaning Gold Coast</h2>
-            <p className="mt-5 text-base leading-8 text-slate-600">
-              Bond cleaning is one of the strongest conversion opportunities for any Gold Coast cleaning business because users searching this term are usually close to booking. They are moving, coordinating inspections, or working toward key-return deadlines. That means the page and the CTA need to reduce uncertainty quickly. Explain what is included, explain how quotes work, and show that the service is designed for move-out pressure, not just normal house maintenance.
-            </p>
-            <p className="mt-4 text-base leading-8 text-slate-600">
-              This is where a more structured site beats weaker competitors. Instead of forcing the renter to guess which service applies, the site can send them directly to a focused bond-cleaning page with FAQs, related links, and a simple quote path based on suburb, property size, and preferred timing. The easier you make that decision, the more bookings you recover from high-intent traffic.
-            </p>
-          </article>
-
-          <article className="rounded-[2rem] border border-slate-200 bg-white p-7 shadow-sm sm:p-8">
-            <h2 className="text-2xl font-black tracking-tight text-primary">End of Lease Cleaning Gold Coast</h2>
-            <p className="mt-5 text-base leading-8 text-slate-600">
-              End of lease cleaning Gold Coast searches are closely related to bond cleaning, but the user intent is often framed around the rental handover itself rather than just the bond return. This distinction matters because it lets Wave Solution create another strong rental page without duplicating the exact same pitch. The end-of-lease page can speak more directly to handover readiness, inspection timing, and move-out organisation, which helps reduce keyword cannibalisation while still addressing a major local booking category.
-            </p>
-            <p className="mt-4 text-base leading-8 text-slate-600">
-              For tenants, landlords, and property managers, the most useful site is the one that makes the process feel manageable. That means clear inclusions, local suburb coverage, and related links to bond cleaning, deep cleaning, and contact pathways that actually help the visitor decide what to do next.
-            </p>
-          </article>
-
-          <article className="rounded-[2rem] border border-slate-200 bg-white p-7 shadow-sm sm:p-8">
-            <h2 className="text-2xl font-black tracking-tight text-primary">Deep Cleaning Gold Coast</h2>
-            <p className="mt-5 text-base leading-8 text-slate-600">
-              Deep cleaning is important because not every property needs recurring maintenance. Some homes and workplaces simply need a much more detailed one-off reset. Kitchens, bathrooms, buildup zones, edges, touchpoints, and neglected detail areas all benefit from a service that goes beyond the usual routine. A dedicated deep-cleaning page helps Wave Solution capture that one-off high-value demand instead of losing it to competitors with stronger service segmentation.
-            </p>
-            <p className="mt-4 text-base leading-8 text-slate-600">
-              Deep cleaning is also a smart conversion bridge. Many customers who book a deep clean eventually move to recurring house or office cleaning once the property has been reset properly. By linking these services together clearly, the site supports immediate conversions and longer-term value from the same visitor journey.
-            </p>
-          </article>
-        </div>
-      </section>
+       <section className="bg-white py-14 md:py-20">
+         <div className="classic-container">
+           <InteractivePricingCalculator />
+         </div>
+       </section>
 
       <section className="bg-white py-14 md:py-20">
         <div className="classic-container grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
-          <div className="rounded-[2.5rem] border border-slate-200 bg-slate-50 p-8 shadow-sm">
+          <div className="rounded-[2.5rem] border border-slate-200 bg-[#F3F3F3] p-8 shadow-sm">
             <h2 className="text-3xl font-black tracking-tight text-primary">Why Choose Us</h2>
             <div className="mt-6 space-y-4">
               {whyChooseUs.map((item) => (
@@ -295,29 +304,29 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="rounded-[2.5rem] border border-slate-200 bg-primary p-8 text-white shadow-xl">
+          <div className="rounded-[2.5rem] border border-white/10 bg-secondary p-8 text-white shadow-xl">
             <h2 className="text-3xl font-black tracking-tight">Gold Coast Trust Signals</h2>
             <p className="mt-5 text-base leading-8 text-white/75">
               Trust matters before any booking happens. Visitors want to know they are dealing with a local Gold Coast business that is easy to contact, easy to book, and clear about what is included. That is why the strongest conversion messaging sits close to the primary CTAs: fully insured cleaners, police-checked staff, flexible scheduling, and fast response times for home, office, rental, and commercial enquiries.
             </p>
             <div className="mt-8 grid gap-4 sm:grid-cols-2">
               <div className="rounded-[1.5rem] border border-white/10 bg-white/5 p-5">
-                <Users className="h-6 w-6 text-secondary" />
+                <Users className="h-6 w-6 text-primary" />
                 <p className="mt-3 text-sm font-bold uppercase tracking-[0.16em] text-white/70">Local team</p>
                 <p className="mt-2 text-sm leading-7 text-white/75">Homes, rental properties, offices, and businesses across the Gold Coast.</p>
               </div>
               <div className="rounded-[1.5rem] border border-white/10 bg-white/5 p-5">
-                <TimerReset className="h-6 w-6 text-secondary" />
+                <TimerReset className="h-6 w-6 text-primary" />
                 <p className="mt-3 text-sm font-bold uppercase tracking-[0.16em] text-white/70">Fast response</p>
                 <p className="mt-2 text-sm leading-7 text-white/75">Clear quotes and straightforward next steps so enquiries do not stall.</p>
               </div>
               <div className="rounded-[1.5rem] border border-white/10 bg-white/5 p-5">
-                <CheckCircle className="h-6 w-6 text-secondary" />
+                <CheckCircle className="h-6 w-6 text-primary" />
                 <p className="mt-3 text-sm font-bold uppercase tracking-[0.16em] text-white/70">Flexible schedule</p>
                 <p className="mt-2 text-sm leading-7 text-white/75">Weekly, fortnightly, one-off, and move-out scheduling depending on the job.</p>
               </div>
               <div className="rounded-[1.5rem] border border-white/10 bg-white/5 p-5">
-                <Sparkles className="h-6 w-6 text-secondary" />
+                <Sparkles className="h-6 w-6 text-primary" />
                 <p className="mt-3 text-sm font-bold uppercase tracking-[0.16em] text-white/70">Service clarity</p>
                 <p className="mt-2 text-sm leading-7 text-white/75">Dedicated pages for the main cleaning services Gold Coast clients actually search for.</p>
               </div>
@@ -326,29 +335,57 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-slate-50 py-14 md:py-20">
-        <div className="classic-container">
-          <div className="mx-auto max-w-4xl text-center">
-            <h2 className="text-3xl font-black tracking-tight text-primary sm:text-4xl">Recent Gold Coast Client Feedback</h2>
-            <p className="mx-auto mt-5 max-w-3xl text-base leading-8 text-slate-600">
-              Trust grows faster when visitors can see how local homes and businesses describe the service in their own words. These review highlights keep the focus on the Gold Coast suburbs and service types that matter most to new enquiries.
-            </p>
-          </div>
+       <section className="bg-[#F3F3F3] py-16 md:py-24">
+         <div className="classic-container">
+           <div className="mx-auto max-w-4xl text-center">
+             <div className="inline-flex items-center gap-2 rounded-full border border-secondary/30 bg-secondary/10 px-3.5 py-1 text-xs font-bold text-primary">
+               <Star className="h-3.5 w-3.5 fill-secondary text-secondary" />
+               Verified Gold Coast Reviews
+             </div>
+             <h2 className="mt-3 text-3xl font-black tracking-tight text-primary sm:text-4xl">Recent Gold Coast Client Feedback</h2>
+             <p className="mx-auto mt-3 max-w-2xl text-base leading-relaxed text-slate-600">
+               Trust grows faster when visitors can see how local homes and businesses describe the service in their own words. Real reviews from Southport, Robina, and Broadbeach.
+             </p>
+             <div className="mt-4 inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-xs font-bold text-slate-700 shadow-sm">
+               <Star className="h-3.5 w-3.5 fill-amber-500 text-amber-500" />
+               <span>4.9 / 5</span>
+               <span className="text-slate-400">based on 430+ reviews</span>
+             </div>
+           </div>
 
-          <div className="mt-10 grid gap-6 lg:grid-cols-3">
+          <div className="mt-12 grid gap-6 lg:grid-cols-3">
             {reviewHighlights.map((review) => (
-              <article key={`${review.name}-${review.suburb}`} className="rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm">
-                <div className="flex items-center gap-1 text-secondary">
-                  {Array.from({ length: 5 }).map((_, index) => (
-                    <Star key={index} className="h-4 w-4 fill-secondary text-secondary" />
-                  ))}
-                </div>
-                <p className="mt-5 text-base italic leading-8 text-slate-600">"{review.quote}"</p>
-                <div className="mt-6 border-t border-slate-200 pt-4">
-                  <p className="font-bold text-primary">{review.name}</p>
-                  <p className="text-sm text-slate-500">
-                    {review.suburb}, QLD - {review.service}
+              <article
+                key={`${review.name}-${review.suburb}`}
+                className="group relative flex flex-col justify-between rounded-3xl border border-slate-200/90 bg-white p-7 shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:border-secondary/30 hover:shadow-xl"
+              >
+                <div>
+                  <div className="flex items-center justify-between">
+<div className="flex items-center gap-1 text-secondary">
+                        {Array.from({ length: 5 }).map((_, index) => (
+                          <Star key={index} className="h-4 w-4 fill-secondary text-secondary" />
+                        ))}
+                      </div>
+                      <span className="rounded-full bg-secondary/10 px-2.5 py-0.5 text-[10px] font-bold text-primary">
+                        Verified Client
+                      </span>
+                  </div>
+                  <p className="mt-4 text-base italic leading-relaxed text-slate-700">
+                    "{review.quote}"
                   </p>
+                </div>
+                <div className="mt-6 border-t border-slate-100 pt-4">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <p className="font-extrabold text-[#212429]">{review.name}</p>
+                      <p className="text-xs font-medium text-slate-500">
+                        {review.suburb}, QLD • <span className="text-primary font-semibold">{review.service}</span>
+                      </p>
+                    </div>
+                    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-slate-100 text-xs font-black text-slate-600">
+                      {review.name.charAt(0)}
+                    </div>
+                  </div>
                 </div>
               </article>
             ))}
@@ -358,7 +395,7 @@ export default function Home() {
 
       <section className="bg-white py-14 md:py-20">
         <div className="classic-container">
-          <div className="rounded-[2.5rem] border border-slate-200 bg-slate-50 p-8 shadow-sm sm:p-10">
+          <div className="rounded-[2.5rem] border border-slate-200 bg-[#F3F3F3] p-8 shadow-sm sm:p-10">
             <h2 className="text-3xl font-black tracking-tight text-primary">Helpful Internal Links</h2>
             <p className="mt-5 max-w-4xl text-base leading-8 text-slate-600">
               If you are still comparing{" "}
@@ -405,6 +442,18 @@ export default function Home() {
                   <Link href="/locations/broadbeach" className="rounded-full border border-slate-200 px-4 py-2 text-primary transition-colors hover:border-primary/20 hover:text-secondary">
                     Broadbeach
                   </Link>
+                  <Link href="/locations/nerang" className="rounded-full border border-slate-200 px-4 py-2 text-primary transition-colors hover:border-primary/20 hover:text-secondary">
+                    Nerang
+                  </Link>
+                  <Link href="/locations/burleigh-heads" className="rounded-full border border-slate-200 px-4 py-2 text-primary transition-colors hover:border-primary/20 hover:text-secondary">
+                    Burleigh Heads
+                  </Link>
+                  <Link href="/locations/helensvale" className="rounded-full border border-slate-200 px-4 py-2 text-primary transition-colors hover:border-primary/20 hover:text-secondary">
+                    Helensvale
+                  </Link>
+                  <Link href="/locations/coomera" className="rounded-full border border-slate-200 px-4 py-2 text-primary transition-colors hover:border-primary/20 hover:text-secondary">
+                    Coomera
+                  </Link>
                   <Link href={siteLinks.locations} className="rounded-full border border-slate-200 px-4 py-2 text-primary transition-colors hover:border-primary/20 hover:text-secondary">
                     View all service areas
                   </Link>
@@ -424,48 +473,79 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </section>
+       </section>
 
-      <section className="bg-slate-50 py-14 md:py-20">
-        <div className="classic-container">
-          <div className="mx-auto max-w-4xl">
-            <div className="text-center">
-              <h2 className="text-3xl font-black tracking-tight text-primary sm:text-4xl">Frequently Asked Questions</h2>
-            </div>
+       {/* Newsletter */}
+       <section className="bg-gradient-to-br from-primary to-secondary py-16 md:py-20 text-white">
+         <div className="classic-container text-center">
+           <h2 className="text-3xl font-black tracking-tight sm:text-4xl">Stay Clean, Stay Updated</h2>
+           <p className="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-white/80">
+             Get cleaning tips, exclusive offers, and seasonal deals delivered to your inbox.
+           </p>
+           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:max-w-lg sm:mx-auto">
+             <input
+               type="email"
+               placeholder="Your email address"
+               className="flex-1 rounded-full px-5 py-3 text-sm text-slate-900 placeholder:text-slate-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50"
+             />
+             <Button className="h-12 rounded-full bg-slate-950 px-6 text-xs font-black uppercase tracking-[0.18em] text-white shadow-lg hover:bg-slate-900">
+               Subscribe
+             </Button>
+           </div>
+           <p className="mt-3 text-[11px] text-white/60">No spam. Unsubscribe anytime.</p>
+         </div>
+       </section>
 
-            <div className="mt-10 space-y-4">
-              {homepageFaqs.map((faq) => (
-                <article key={faq.question} className="rounded-[1.5rem] border border-slate-200 bg-white p-6 shadow-sm">
-                  <h3 className="text-lg font-bold text-primary">{faq.question}</h3>
-                  <p className="mt-3 text-sm leading-7 text-slate-600">{faq.answer}</p>
-                </article>
-              ))}
-            </div>
+       <section className="bg-[#F3F3F3] py-16 md:py-24">
+         <div className="classic-container">
+           <div className="mx-auto max-w-3xl text-center">
+             <div className="inline-flex items-center gap-2 rounded-full border border-secondary/30 bg-secondary/10 px-3.5 py-1 text-xs font-bold text-primary">
+               <Sparkles className="h-3.5 w-3.5 text-primary" />
+               Everything You Need To Know
+             </div>
+             <h2 className="mt-3 text-3xl font-black tracking-tight text-primary sm:text-4xl">Frequently Asked Questions</h2>
+             <p className="mx-auto mt-3 text-sm leading-relaxed text-slate-600 sm:text-base">
+               Got questions about our cleaning service, pricing, or Gold Coast suburb coverage? Find instant answers below.
+             </p>
+          </div>
+
+          <div className="mx-auto mt-10 max-w-3xl">
+            <FaqAccordion faqs={homepageFaqs} />
           </div>
         </div>
       </section>
 
-      <section className="bg-primary py-14 text-white md:py-20">
-        <div className="classic-container">
-          <div className="rounded-[2.5rem] border border-white/10 bg-white/5 p-8 text-center backdrop-blur-sm sm:p-12">
-            <h2 className="text-3xl font-black tracking-tight sm:text-4xl">Ready to Book a Local Cleaner?</h2>
-            <p className="mx-auto mt-5 max-w-3xl text-base leading-8 text-white/75">
-              Tell us which Gold Coast service you need, where the property is located, and when you want the clean. We will help you choose the right service and send back a fast local quote.
-            </p>
-            <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row">
-              <Button asChild className="h-12 rounded-full bg-secondary px-6 text-[11px] font-black uppercase tracking-[0.18em] text-slate-950 hover:bg-secondary/90">
-                <Link href={siteLinks.book}>Get Free Quote</Link>
-              </Button>
-              <Button asChild variant="outline" className="h-12 rounded-full border-white/20 bg-white/5 px-6 text-[11px] font-black uppercase tracking-[0.18em] text-white hover:bg-white/10 hover:text-white">
-                <Link href={siteLinks.homeCleaning}>Book Local Cleaner</Link>
-              </Button>
-              <Button asChild variant="outline" className="h-12 rounded-full border-white/20 bg-transparent px-6 text-[11px] font-black uppercase tracking-[0.18em] text-white hover:bg-white/10 hover:text-white">
-                <Link href={businessInfo.phoneHref}>Call Now</Link>
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
+<section className="relative overflow-hidden bg-secondary py-16 text-white md:py-24">
+         <div className="pointer-events-none absolute -right-24 top-0 h-96 w-96 rounded-full bg-white/5 blur-3xl" />
+         <div className="pointer-events-none absolute -left-24 bottom-0 h-96 w-96 rounded-full bg-white/5 blur-3xl" />
+
+         <div className="classic-container relative z-10">
+           <div className="mx-auto max-w-3xl text-center">
+             <span className="inline-flex items-center gap-1.5 rounded-full border border-white/20 bg-white/10 px-3.5 py-1 text-xs font-bold text-white">
+               <ShieldCheck className="h-4 w-4 text-[#39BDE4]" />
+               100% Satisfaction Guaranteed
+             </span>
+             <h2 className="mt-5 text-3xl font-black tracking-tight text-white sm:text-4xl lg:text-5xl">
+               Ready to Book Your Local Cleaner?
+             </h2>
+             <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-white/70 sm:text-lg">
+               Tell us which Gold Coast service you need, where the property is located, and when you want the clean. We will help you choose the right service and send back a fast local quote.
+             </p>
+             <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row">
+               <Button asChild className="h-14 rounded-full bg-[#39BDE4] px-8 text-xs font-black uppercase tracking-[0.18em] text-white shadow-xl shadow-black/25 transition-transform hover:scale-105 hover:bg-[#249FC5]">
+                 <Link href={siteLinks.book}>Get Free Quote</Link>
+               </Button>
+               <Button asChild variant="outline" className="h-14 rounded-full border-white/25 bg-transparent px-8 text-xs font-black uppercase tracking-[0.18em] text-white hover:bg-white/10 hover:text-white">
+                 <Link href={siteLinks.homeCleaning}>Browse Services</Link>
+               </Button>
+               <Button asChild variant="outline" className="h-14 rounded-full border-white/25 bg-transparent px-6 text-xs font-black uppercase tracking-[0.18em] text-white hover:bg-white/10 hover:text-white">
+                 <Link href={businessInfo.phoneHref}>Call {businessInfo.phoneDisplay}</Link>
+               </Button>
+             </div>
+             <p className="mt-5 text-xs font-semibold text-white/50">Free quotes • Fast response • Fully insured</p>
+           </div>
+         </div>
+       </section>
     </div>
   )
 }

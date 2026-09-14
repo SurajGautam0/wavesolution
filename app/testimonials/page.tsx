@@ -157,12 +157,12 @@ function TestimonialCard({ testimonial }: { testimonial: TestimonialProps }) {
           </div>
           <div>
             <h4 className="font-serif font-bold text-primary">{testimonial.name}</h4>
-            <p className="text-sm text-muted-foreground">{testimonial.location}</p>
+            <p className="text-sm text-slate-600">{testimonial.location}</p>
             <div className="flex mt-1">
               {Array.from({ length: 5 }).map((_, i) => (
                 <Star
                   key={i}
-                  className={`h-4 w-4 ${i < testimonial.rating ? "fill-secondary text-secondary" : "text-muted-foreground"}`}
+                  className={`h-4 w-4 ${i < testimonial.rating ? "fill-secondary text-secondary" : "text-slate-600"}`}
                 />
               ))}
             </div>
@@ -170,9 +170,9 @@ function TestimonialCard({ testimonial }: { testimonial: TestimonialProps }) {
         </div>
         <div className="relative">
           <Quote className="absolute -left-2 -top-2 h-8 w-8 text-secondary/20 rotate-180" />
-          <p className="text-muted-foreground italic pl-3 py-1 break-words text-sm sm:text-base">{testimonial.testimonial}</p>
+          <p className="text-slate-600 italic pl-3 py-1 break-words text-sm sm:text-base">{testimonial.testimonial}</p>
         </div>
-        <div className="mt-4 flex justify-between items-center text-xs text-muted-foreground">
+        <div className="mt-4 flex justify-between items-center text-xs text-slate-600">
           <span>{testimonial.service}</span>
           <span>{testimonial.date}</span>
         </div>
@@ -261,7 +261,7 @@ export default function TestimonialsPage() {
       </div>
 
       {/* Testimonials Section */}
-      <section className="py-10 sm:py-16 bg-gray-50">
+      <section className="py-10 sm:py-16 bg-[#F3F3F3]">
         <div className="classic-container">
           <Tabs defaultValue="residential" className="w-full">
             <div className="flex justify-center mb-6 sm:mb-10">
@@ -319,7 +319,7 @@ export default function TestimonialsPage() {
         <div className="classic-container">
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-3xl font-bold tracking-tight mb-6 text-primary">Share Your Experience</h2>
-            <p className="text-lg text-muted-foreground mb-8">
+            <p className="text-lg text-slate-600 mb-8">
               We value your feedback! If you have used our services, please share your experience with us.
             </p>
             <Button asChild size="lg" className="classic-button">
@@ -334,14 +334,14 @@ export default function TestimonialsPage() {
         <div className="classic-container">
           <div className="classic-card p-8 text-center">
             <h2 className="text-3xl font-serif font-bold text-primary mb-4">Ready for a Cleaner Space?</h2>
-            <p className="text-muted-foreground mb-6">
+            <p className="text-slate-600 mb-6">
               Join our satisfied customers and experience the WaveSolution difference.
             </p>
             <div className="flex flex-col gap-4 sm:flex-row justify-center">
               <Button asChild className="classic-button">
                 <Link href="/book">Book Now</Link>
               </Button>
-              <Button asChild variant="outline" className="bg-white hover:bg-gray-100 text-primary border-gray-300">
+              <Button asChild variant="outline" className="bg-white hover:bg-slate-100 text-primary border-slate-200">
                 <Link href="/contact">Contact Us</Link>
               </Button>
             </div>

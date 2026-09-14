@@ -19,7 +19,7 @@ const jsonLd = {
       { "@type": "ListItem", position: 2, name: "Blog", item: "https://www.wavesolution.com.au/blog" },
       { "@type": "ListItem", position: 3, name: "After Builders Cleaning Guide", item: "https://www.wavesolution.com.au/blog/after-builders-cleaning-guide" },
     ]},
-    { "@type": "Article", headline: "After Builders Cleaning Guide: What to Expect After Renovation", author: { "@type": "Organization", name: "Wave Solution Cleaning Gold Coast" }, publisher: { "@type": "Organization", name: "Wave Solution Cleaning Gold Coast", url: "https://www.wavesolution.com.au" }, datePublished: "2025-04-01", url: "https://www.wavesolution.com.au/blog/after-builders-cleaning-guide" },
+    { "@type": "Article", headline: "After Builders Cleaning Guide: What to Expect After Renovation", author: { "@type": "Organization", name: "Wave Solution Cleaning", url: "https://www.wavesolution.com.au" }, publisher: { "@type": "Organization", name: "Wave Solution Cleaning Gold Coast", url: "https://www.wavesolution.com.au" }, datePublished: "2025-04-01", dateModified: "2025-04-01", image: "https://www.wavesolution.com.au/gold-coast-cleaning-services.jpeg", url: "https://www.wavesolution.com.au/blog/after-builders-cleaning-guide" },
   ],
 }
 
@@ -99,7 +99,7 @@ export default function AfterBuildersCleaningGuidePage() {
               <div className="rounded-[2rem] border border-slate-200 bg-primary p-6 text-white shadow-xl">
                 <p className="text-xs font-black uppercase tracking-[0.2em] text-secondary">Book After Builders Clean</p>
                 <p className="mt-4 text-sm leading-7 text-white/75">Wave Solution provides after builders cleaning for renovations and fit-outs across the Gold Coast.</p>
-                <Button asChild className="mt-5 w-full h-11 rounded-full bg-secondary text-[11px] font-black uppercase tracking-[0.18em] text-slate-950 hover:bg-secondary/90"><Link href="/after-builders-cleaning-gold-coast">Get a Quote</Link></Button>
+                <Button asChild className="mt-5 w-full h-11 rounded-full bg-secondary text-[11px] font-black uppercase tracking-[0.18em] text-white hover:bg-secondary/90"><Link href="/after-builders-cleaning-gold-coast">Get a Quote</Link></Button>
               </div>
               <div className="rounded-[2rem] border border-slate-200 bg-slate-50 p-6">
                 <p className="text-xs font-black uppercase tracking-[0.2em] text-secondary">Related Guides</p>
@@ -118,7 +118,7 @@ export default function AfterBuildersCleaningGuidePage() {
           <h2 className="text-3xl font-black tracking-tight">Book After Builders Cleaning in the Gold Coast</h2>
           <p className="mt-4 text-base leading-8 text-white/75 max-w-2xl mx-auto">Tell us about your renovation, property size, and preferred timing and we'll get back to you with a tailored quote.</p>
           <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
-            <Button asChild className="h-12 rounded-full bg-secondary px-6 text-[11px] font-black uppercase tracking-[0.18em] text-slate-950 hover:bg-secondary/90"><Link href="/after-builders-cleaning-gold-coast">Book Now</Link></Button>
+            <Button asChild className="h-12 rounded-full bg-secondary px-6 text-[11px] font-black uppercase tracking-[0.18em] text-white hover:bg-secondary/90"><Link href="/after-builders-cleaning-gold-coast">Book Now</Link></Button>
             <Button asChild variant="outline" className="h-12 rounded-full border-white/20 bg-white/5 px-6 text-[11px] font-black uppercase tracking-[0.18em] text-white hover:bg-white/10"><Link href="/contact">Get a Quote</Link></Button>
           </div>
         </div>

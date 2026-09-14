@@ -65,7 +65,7 @@ export function DiscountPopup() {
         setOpen(nextOpen);
       }}
     >
-      <DialogContent className="w-[90vw] max-w-md rounded-[2rem] p-0 bg-white shadow-2xl border border-gray-200 overflow-hidden sm:w-full">
+      <DialogContent className="w-[90vw] max-w-md rounded-[2rem] p-0 bg-white shadow-2xl border border-slate-200 overflow-hidden sm:w-full">
         <div className="flex flex-col items-center text-center gap-0 relative">
           {/* Header with Primary Color */}
           <div className="w-full bg-primary py-8 px-6 sm:py-10 sm:px-10 relative overflow-hidden">

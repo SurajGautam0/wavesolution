@@ -1,5 +1,7 @@
 import type { Metadata } from "next"
+import Image from "next/image"
 import Link from "next/link"
+import { ShieldCheck, BadgeCheck, MapPin, ArrowRight } from "lucide-react"
 
 import { ServiceCard } from "@/components/service-card"
 import { Button } from "@/components/ui/button"
@@ -18,25 +20,88 @@ export const metadata: Metadata = {
     description:
       "Explore Wave Solution services in the Gold Coast including house cleaning, office cleaning, bond cleaning, end of lease cleaning, move-in cleaning, after builders cleaning, commercial cleaning, deep cleaning, carpet cleaning, and pest control.",
     url: `${businessInfo.baseUrl}/services`,
+    images: [{ url: "/gold-coast-cleaning-services.jpeg", width: 1200, height: 630, alt: "Wave Solution cleaning services Gold Coast" }],
   },
 }
 
+const trustPoints = [
+  { icon: ShieldCheck, label: "Fully Insured" },
+  { icon: BadgeCheck, label: "Police-Checked Team" },
+  { icon: MapPin, label: "Locally Owned" },
+]
+
 export default function ServicesPage() {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: "https://www.wavesolution.com.au" },
+          { "@type": "ListItem", position: 2, name: "Services", item: "https://www.wavesolution.com.au/services" },
+        ],
+      },
+    ],
+  }
+
   return (
-    <div className="flex min-h-screen flex-col bg-slate-50">
-      <section className="bg-primary py-16 text-white md:py-24">
-        <div className="classic-container">
+    <div className="flex min-h-screen flex-col bg-white">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      {/* ── Hero ── */}
+      <section className="page-hero">
+        <div className="absolute inset-0">
+          <Image
+            src="/images/cleaning-service.jpg"
+            alt="Wave Solution cleaning services across the Gold Coast"
+            fill
+            priority
+            quality={80}
+            sizes="100vw"
+            className="object-cover"
+          />
+          <div className="page-hero-overlay" />
+        </div>
+        <div className="classic-container relative z-10 py-16 md:py-24">
           <div className="mx-auto max-w-4xl text-center">
-            <h1 className="text-4xl font-black tracking-tight sm:text-5xl md:text-6xl">Cleaning Services Gold Coast</h1>
-            <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-white/75">
-              Choose the right Wave Solution service for your Gold Coast home, office, rental property, or business. Each service page is built to answer the most common local questions and make quoting easier.
+            <span className="eyebrow eyebrow-on-dark">What We Clean</span>
+            <h1 className="mt-4 text-4xl font-black tracking-tight text-white sm:text-5xl md:text-6xl">
+              Our Cleaning Services
+            </h1>
+            <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-white/80">
+              Professional cleaning across the Gold Coast — from regular house maintenance to deep commercial resets. Fully insured, police-checked, and locally owned.
             </p>
+            <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row">
+              <Button asChild className="h-12 rounded-full bg-[#39BDE4] px-6 text-[11px] font-black uppercase tracking-[0.18em] text-white shadow-xl shadow-black/25 transition-transform hover:scale-105 hover:bg-[#249FC5]">
+                <Link href={siteLinks.book}>Get Free Quote</Link>
+              </Button>
+              <Button asChild variant="outline" className="h-12 rounded-full border-white/25 bg-white/10 px-6 text-[11px] font-black uppercase tracking-[0.18em] text-white backdrop-blur-sm hover:bg-white/20 hover:text-white">
+                <Link href={businessInfo.phoneHref}>Call {businessInfo.phoneDisplay}</Link>
+              </Button>
+            </div>
+            <div className="mt-8 flex flex-wrap items-center justify-center gap-x-8 gap-y-3">
+              {trustPoints.map((point) => (
+                <span key={point.label} className="inline-flex items-center gap-2 text-sm font-semibold text-white/80">
+                  <point.icon className="h-4 w-4 text-[#39BDE4]" />
+                  {point.label}
+                </span>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
-      <section className="bg-white py-14 md:py-20">
+      {/* ── Services Grid ── */}
+      <section className="bg-[#F3F3F3] py-14 md:py-20">
         <div className="classic-container">
+          <div className="mx-auto mb-10 max-w-2xl text-center">
+            <span className="eyebrow">All Services</span>
+            <h2 className="mt-3 text-3xl font-black tracking-tight text-slate-900 sm:text-4xl">
+              Choose the Right Clean
+            </h2>
+            <p className="mt-3 text-base leading-relaxed text-slate-600">
+              Every service includes our satisfaction guarantee. Select a card to see what is included and request a fast local quote.
+            </p>
+          </div>
           <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
             {servicePages.map((page) => (
               <ServiceCard
@@ -65,34 +130,47 @@ export default function ServicesPage() {
                 price="Learn more"
                 href={`/${page.slug}`}
                 ctaLabel="View Service Page"
+                featured={page.slug === "house-cleaning-gold-coast"}
               />
             ))}
           </div>
         </div>
       </section>
 
-      <section className="bg-slate-50 py-14 md:py-20">
+      {/* ── Help CTA ── */}
+      <section className="bg-white py-14 md:py-20">
         <div className="classic-container">
-          <div className="rounded-[2.5rem] border border-slate-200 bg-white p-8 shadow-sm sm:p-10">
-            <h2 className="text-3xl font-black tracking-tight text-primary">Need Help Choosing the Right Service?</h2>
-            <p className="mt-5 max-w-3xl text-base leading-8 text-slate-600">
-              Start with the page that best matches your property and timing. If you are still unsure, our broad{" "}
-              <Link href={siteLinks.cleaningGoldCoast} className="font-semibold text-primary underline-offset-4 hover:text-secondary hover:underline">
-                cleaning Gold Coast
-              </Link>{" "}
-              page gives you the full local overview, while our booking and contact pages let you request help directly from{" "}
-              <Link href={siteLinks.contact} className="font-semibold text-primary underline-offset-4 hover:text-secondary hover:underline">
-                professional cleaners Gold Coast
-              </Link>{" "}
-              homes and businesses can speak with quickly.
-            </p>
-            <div className="mt-8 flex flex-col gap-4 sm:flex-row">
-              <Button asChild className="h-12 rounded-full bg-secondary px-6 text-[11px] font-black uppercase tracking-[0.18em] text-slate-950 hover:bg-secondary/90">
-                <Link href={siteLinks.book}>Get Free Quote</Link>
-              </Button>
-              <Button asChild variant="outline" className="h-12 rounded-full border-slate-200 px-6 text-[11px] font-black uppercase tracking-[0.18em] text-primary hover:bg-slate-100">
-                <Link href={siteLinks.contact}>Contact Us</Link>
-              </Button>
+          <div className="relative overflow-hidden rounded-[2.5rem] bg-secondary p-8 sm:p-12 lg:p-16">
+            <div className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-[#39BDE4]/15 blur-3xl" />
+            <div className="pointer-events-none absolute -bottom-20 -left-20 h-64 w-64 rounded-full bg-white/5 blur-3xl" />
+            <div className="relative z-10 grid items-center gap-10 lg:grid-cols-[1.4fr_1fr]">
+              <div>
+                <span className="inline-flex items-center gap-1.5 rounded-full border border-white/20 bg-white/10 px-3.5 py-1 text-[10px] font-black uppercase tracking-[0.2em] text-white">
+                  <span className="h-1.5 w-1.5 rounded-full bg-[#39BDE4]" />
+                  Not Sure Which Service?
+                </span>
+                <h2 className="mt-4 text-3xl font-black tracking-tight text-white sm:text-4xl">
+                  We Will Help You Choose the Right Clean
+                </h2>
+                <p className="mt-4 max-w-2xl text-base leading-8 text-white/70">
+                  Start with the page that best matches your property and timing. If you are still unsure, our broad{" "}
+                  <Link href={siteLinks.cleaningGoldCoast} className="font-semibold text-[#39BDE4] underline-offset-4 hover:underline">
+                    cleaning Gold Coast
+                  </Link>{" "}
+                  page gives you the full local overview — or ask us directly and we will point you to the right service.
+                </p>
+              </div>
+              <div className="flex flex-col gap-4">
+                <Button asChild className="h-14 rounded-full bg-[#39BDE4] px-8 text-xs font-black uppercase tracking-[0.18em] text-white shadow-xl shadow-black/25 transition-transform hover:scale-105 hover:bg-[#249FC5]">
+                  <Link href={siteLinks.book} className="inline-flex items-center justify-center gap-2">
+                    Get Free Quote <ArrowRight className="h-4 w-4" />
+                  </Link>
+                </Button>
+                <Button asChild variant="outline" className="h-14 rounded-full border-white/25 bg-transparent px-8 text-xs font-black uppercase tracking-[0.18em] text-white hover:bg-white/10 hover:text-white">
+                  <Link href={siteLinks.contact}>Contact Us</Link>
+                </Button>
+                <p className="text-center text-xs font-semibold text-white/50">Free quotes • Fast response • Fully insured</p>
+              </div>
             </div>
           </div>
         </div>

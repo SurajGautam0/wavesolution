@@ -12,6 +12,7 @@ export const metadata: Metadata = {
         title: "Contact Wave Solution Cleaning | Free Gold Coast Quote",
         description: "Get a free cleaning quote for Gold Coast homes and businesses. Call 0450 833 683 or book online.",
         url: "https://www.wavesolution.com.au/contact",
+        images: [{ url: "/gold-coast-cleaning-services.jpeg", width: 1200, height: 630, alt: "Contact Wave Solution Cleaning Gold Coast" }],
     },
 }
 

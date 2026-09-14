@@ -15,16 +15,32 @@ export const metadata: Metadata = {
         title: "Eco-Friendly Cleaning Solutions | Green Cleaning Gold Coast",
         description: "Non-toxic, sustainable cleaning methods for Gold Coast homes. Safe for kids & pets.",
         url: "https://www.wavesolution.com.au/blog/eco-friendly",
+        images: [{ url: "/gold-coast-cleaning-services.jpeg", width: 1200, height: 630, alt: "Eco-friendly cleaning Gold Coast" }],
     },
 }
 
 const breadcrumbJsonLd = {
   "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Home", item: "https://www.wavesolution.com.au" },
-    { "@type": "ListItem", position: 2, name: "Blog", item: "https://www.wavesolution.com.au/blog" },
-    { "@type": "ListItem", position: 3, name: "Eco-Friendly Cleaning", item: "https://www.wavesolution.com.au/blog/eco-friendly" },
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: "https://www.wavesolution.com.au" },
+        { "@type": "ListItem", position: 2, name: "Blog", item: "https://www.wavesolution.com.au/blog" },
+        { "@type": "ListItem", position: 3, name: "Eco-Friendly Cleaning", item: "https://www.wavesolution.com.au/blog/eco-friendly" },
+      ],
+    },
+    {
+      "@type": "Article",
+      headline: "Eco-Friendly Cleaning Methods | Gold Coast",
+      description: "Discover eco-friendly cleaning solutions for Gold Coast homes. Safe, non-toxic green cleaning methods for all suburbs.",
+      author: { "@type": "Organization", name: "Wave Solution Cleaning", url: "https://www.wavesolution.com.au" },
+      publisher: { "@type": "Organization", name: "Wave Solution Cleaning" },
+      datePublished: "2026-02-02",
+      dateModified: "2026-02-02",
+      image: "https://www.wavesolution.com.au/gold-coast-cleaning-services.jpeg",
+      url: "https://www.wavesolution.com.au/blog/eco-friendly",
+    },
   ],
 }
 
@@ -77,7 +93,7 @@ export default function EcoFriendlyCleaningPage() {
                                 <Leaf className="w-16 h-16 animate-pulse" />
                             </div>
 
-                            <p className="text-lg text-muted-foreground mb-12">
+                            <p className="text-lg text-slate-600 mb-12">
                                 Many conventional cleaning products contain harsh chemicals that can impact both indoor air quality and the environment. Adopting eco-friendly practices ensures your home remains a safe, healthy sanctuary for your family.
                             </p>
 
@@ -88,14 +104,14 @@ export default function EcoFriendlyCleaningPage() {
                                             <Zap className="w-5 h-5 text-secondary" />
                                             <h3 className="text-xl font-black text-blue-950 uppercase tracking-tight">{tip.title}</h3>
                                         </div>
-                                        <p className="text-muted-foreground font-medium">{tip.description}</p>
+                                        <p className="text-slate-600 font-medium">{tip.description}</p>
                                     </div>
                                 ))}
                             </div>
 
                             <div className="mt-16 pt-10 border-t border-blue-50">
                                 <h3 className="text-2xl font-black text-blue-950 mb-6 uppercase tracking-tight">WaveSolution Commitment</h3>
-                                <p className="text-muted-foreground mb-8">
+                                <p className="text-slate-600 mb-8">
                                     Our team is dedicated to environmental stewardship. We prioritize biodegradable and non-toxic products in all our services, ensuring a pristine clean that respects the planet.
                                 </p>
                                 <Button asChild className="rounded-full bg-secondary text-white font-black uppercase tracking-widest px-10 h-14">

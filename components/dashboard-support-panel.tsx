@@ -1,7 +1,7 @@
 "use client"
 
 import { ChangeEvent, FormEvent, useEffect, useMemo, useState } from "react"
-import { Loader2, Mail, MessageCircle, PhoneCall, Send, ShieldCheck } from "lucide-react"
+import { Loader2, Mail, MessageCircle, PhoneCall, Send, ShieldCheck, Clock } from "lucide-react"
 import { toast } from "sonner"
 
 import { Button } from "@/components/ui/button"
@@ -92,85 +92,88 @@ export function DashboardSupportPanel({ user }: DashboardSupportPanelProps) {
   }
 
   return (
-    <div className="space-y-8 animate-in fade-in slide-in-from-right-6 duration-500">
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
-        <div className="space-y-1">
-          <h1 className="text-3xl font-bold text-slate-900 tracking-tight">Support Center</h1>
-          <p className="text-slate-500 font-medium text-base">
-            Reach us on WhatsApp, call directly, or send a support request to our company email.
+    <div className="space-y-6 animate-in fade-in slide-in-from-right-4 duration-300">
+      <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+        <div>
+          <h2 className="text-2xl font-black text-slate-900 tracking-tight">Support Center</h2>
+          <p className="text-slate-500 text-sm mt-1">
+            Reach us on WhatsApp, call directly, or send a support request.
           </p>
         </div>
-        <div className="inline-flex items-center rounded-full bg-emerald-50 px-3 py-1.5 text-xs font-semibold text-emerald-700 ring-1 ring-emerald-600/20">
-          Average response: within 24 hours
+        <div className="inline-flex items-center rounded-full bg-[#39BDE4]/10 px-3 py-1.5 text-xs font-bold text-[#39BDE4]">
+          <Clock className="h-3.5 w-3.5 mr-1.5" />
+          Response within 24 hours
         </div>
       </div>
 
-      <div className="grid gap-6 md:grid-cols-3">
-        <Card className="border border-slate-100 shadow-sm bg-white rounded-2xl overflow-hidden">
-          <CardContent className="p-6 space-y-4">
+      {/* Contact Cards */}
+      <div className="grid gap-4 sm:grid-cols-3">
+        <Card className="border border-slate-200 shadow-sm bg-white rounded-2xl overflow-hidden hover:border-green-400/30 transition-colors">
+          <CardContent className="p-5 space-y-4">
             <div className="h-12 w-12 rounded-2xl bg-green-50 flex items-center justify-center">
-              <MessageCircle className="h-6 w-6 text-green-600" />
+              <MessageCircle className="h-6 w-6 text-green-500" />
             </div>
             <div>
-              <h2 className="text-lg font-bold text-slate-900">WhatsApp Support</h2>
-              <p className="mt-2 text-sm text-slate-500">
-                Start a chat with our team for quick questions and live assistance.
+              <h3 className="text-base font-bold text-slate-900">WhatsApp</h3>
+              <p className="mt-1.5 text-xs text-slate-500 leading-relaxed">
+                Quick questions and live assistance.
               </p>
             </div>
-            <Button asChild className="w-full bg-green-600 hover:bg-green-700 text-white rounded-xl">
+            <Button asChild className="w-full h-11 rounded-full bg-green-500 hover:bg-green-600 text-white text-xs font-black uppercase tracking-widest">
               <a href={whatsappHref} target="_blank" rel="noreferrer">
-                Chat on WhatsApp
+                Chat Now
               </a>
             </Button>
           </CardContent>
         </Card>
 
-        <Card className="border border-slate-100 shadow-sm bg-white rounded-2xl overflow-hidden">
-          <CardContent className="p-6 space-y-4">
-            <div className="h-12 w-12 rounded-2xl bg-blue-50 flex items-center justify-center">
-              <PhoneCall className="h-6 w-6 text-blue-600" />
+        <Card className="border border-slate-200 shadow-sm bg-white rounded-2xl overflow-hidden hover:border-[#39BDE4]/30 transition-colors">
+          <CardContent className="p-5 space-y-4">
+            <div className="h-12 w-12 rounded-2xl bg-[#39BDE4]/10 flex items-center justify-center">
+              <PhoneCall className="h-6 w-6 text-[#39BDE4]" />
             </div>
             <div>
-              <h2 className="text-lg font-bold text-slate-900">Call the Team</h2>
-              <p className="mt-2 text-sm text-slate-500">
-                Prefer to talk? Call us directly during business hours.
+              <h3 className="text-base font-bold text-slate-900">Call Us</h3>
+              <p className="mt-1.5 text-xs text-slate-500 leading-relaxed">
+                Best for urgent issues during business hours.
               </p>
             </div>
-            <Button asChild variant="outline" className="w-full rounded-xl border-slate-200">
+            <Button asChild variant="outline" className="w-full h-11 rounded-full border-slate-200 text-xs font-black uppercase tracking-widest text-slate-700 hover:border-[#39BDE4]/30 hover:text-[#39BDE4]">
               <a href={businessInfo.phoneHref}>{businessInfo.phoneDisplay}</a>
             </Button>
           </CardContent>
         </Card>
 
-        <Card className="border border-slate-100 shadow-sm bg-white rounded-2xl overflow-hidden">
-          <CardContent className="p-6 space-y-4">
-            <div className="h-12 w-12 rounded-2xl bg-amber-50 flex items-center justify-center">
-              <Mail className="h-6 w-6 text-amber-600" />
+        <Card className="border border-slate-200 shadow-sm bg-white rounded-2xl overflow-hidden hover:border-secondary/30 transition-colors">
+          <CardContent className="p-5 space-y-4">
+            <div className="h-12 w-12 rounded-2xl bg-secondary/10 flex items-center justify-center">
+              <Mail className="h-6 w-6 text-secondary" />
             </div>
             <div>
-              <h2 className="text-lg font-bold text-slate-900">Company Email</h2>
-              <p className="mt-2 text-sm text-slate-500">
-                Need a written follow-up? Your dashboard form below goes straight to our company inbox.
+              <h3 className="text-base font-bold text-slate-900">Email</h3>
+              <p className="mt-1.5 text-xs text-slate-500 leading-relaxed">
+                Written follow-up via our company inbox.
               </p>
             </div>
-            <div className="rounded-xl bg-slate-50 px-4 py-3 text-sm font-medium text-slate-700">
+            <div className="rounded-full bg-[#F3F3F3] px-4 py-3 text-xs font-bold text-slate-600 text-center">
               {businessInfo.email}
             </div>
           </CardContent>
         </Card>
       </div>
 
+      {/* Form + Promise */}
       <div className="grid gap-6 xl:grid-cols-[1.2fr_0.8fr]">
-        <Card className="border border-slate-100 shadow-sm bg-white rounded-2xl overflow-hidden">
-          <CardHeader className="border-b border-slate-100 bg-slate-50/50">
-            <CardTitle className="text-xl font-bold text-slate-900">Write to Support</CardTitle>
+        <Card className="border border-slate-200 shadow-sm bg-white rounded-2xl overflow-hidden">
+          <CardHeader className="border-b border-slate-100 p-5">
+            <CardTitle className="text-base font-bold text-slate-900">Write to Support</CardTitle>
           </CardHeader>
           <CardContent className="p-6">
             <form onSubmit={handleSubmit} className="space-y-5">
-              <div className="grid gap-5 sm:grid-cols-2">
+              <div className="grid gap-4 sm:grid-cols-2">
                 <div className="space-y-2">
-                  <label htmlFor="name" className="text-sm font-semibold text-slate-700">
-                    Full name
+                  <label htmlFor="name" className="text-xs font-bold uppercase tracking-wider text-slate-500">
+                    Full Name
                   </label>
                   <Input
                     id="name"
@@ -178,12 +181,12 @@ export function DashboardSupportPanel({ user }: DashboardSupportPanelProps) {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="rounded-xl border-slate-200"
+                    className="h-12 rounded-xl border-slate-200 bg-[#F3F3F3]/50 focus:bg-white focus:border-[#39BDE4]"
                   />
                 </div>
                 <div className="space-y-2">
-                  <label htmlFor="email" className="text-sm font-semibold text-slate-700">
-                    Email address
+                  <label htmlFor="email" className="text-xs font-bold uppercase tracking-wider text-slate-500">
+                    Email Address
                   </label>
                   <Input
                     id="email"
@@ -192,26 +195,26 @@ export function DashboardSupportPanel({ user }: DashboardSupportPanelProps) {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="rounded-xl border-slate-200"
+                    className="h-12 rounded-xl border-slate-200 bg-[#F3F3F3]/50 focus:bg-white focus:border-[#39BDE4]"
                   />
                 </div>
               </div>
 
-              <div className="grid gap-5 sm:grid-cols-2">
+              <div className="grid gap-4 sm:grid-cols-2">
                 <div className="space-y-2">
-                  <label htmlFor="phone" className="text-sm font-semibold text-slate-700">
-                    Phone number
+                  <label htmlFor="phone" className="text-xs font-bold uppercase tracking-wider text-slate-500">
+                    Phone Number
                   </label>
                   <Input
                     id="phone"
-                    placeholder="Optional phone number"
+                    placeholder="Optional"
                     value={formData.phone}
                     onChange={handleChange}
-                    className="rounded-xl border-slate-200"
+                    className="h-12 rounded-xl border-slate-200 bg-[#F3F3F3]/50 focus:bg-white focus:border-[#39BDE4]"
                   />
                 </div>
                 <div className="space-y-2">
-                  <label htmlFor="subject" className="text-sm font-semibold text-slate-700">
+                  <label htmlFor="subject" className="text-xs font-bold uppercase tracking-wider text-slate-500">
                     Subject
                   </label>
                   <Input
@@ -220,40 +223,40 @@ export function DashboardSupportPanel({ user }: DashboardSupportPanelProps) {
                     value={formData.subject}
                     onChange={handleChange}
                     required
-                    className="rounded-xl border-slate-200"
+                    className="h-12 rounded-xl border-slate-200 bg-[#F3F3F3]/50 focus:bg-white focus:border-[#39BDE4]"
                   />
                 </div>
               </div>
 
               <div className="space-y-2">
-                <label htmlFor="message" className="text-sm font-semibold text-slate-700">
+                <label htmlFor="message" className="text-xs font-bold uppercase tracking-wider text-slate-500">
                   Message
                 </label>
                 <Textarea
                   id="message"
-                  rows={6}
+                  rows={5}
                   placeholder="Tell us what happened and how we can help."
                   value={formData.message}
                   onChange={handleChange}
                   required
-                  className="rounded-xl border-slate-200"
+                  className="rounded-xl border-slate-200 bg-[#F3F3F3]/50 focus:bg-white focus:border-[#39BDE4] resize-none"
                 />
               </div>
 
               <Button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full rounded-xl bg-slate-900 hover:bg-slate-800 text-white"
+                className="w-full h-12 rounded-full bg-[#333365] hover:bg-[#333365]/90 text-white text-xs font-black uppercase tracking-widest"
               >
                 {isSubmitting ? (
                   <span className="flex items-center gap-2">
                     <Loader2 className="h-4 w-4 animate-spin" />
-                    Sending support request...
+                    Sending...
                   </span>
                 ) : (
                   <span className="flex items-center gap-2">
                     <Send className="h-4 w-4" />
-                    Send to Company Email
+                    Send Support Request
                   </span>
                 )}
               </Button>
@@ -261,33 +264,33 @@ export function DashboardSupportPanel({ user }: DashboardSupportPanelProps) {
           </CardContent>
         </Card>
 
-        <Card className="border border-slate-100 shadow-sm bg-slate-900 text-white rounded-2xl overflow-hidden">
+        <Card className="border border-slate-200 shadow-sm bg-[#333365] text-white rounded-2xl overflow-hidden">
           <CardContent className="p-6 space-y-6">
             <div className="space-y-3">
               <div className="h-12 w-12 rounded-2xl bg-white/10 flex items-center justify-center">
-                <ShieldCheck className="h-6 w-6 text-blue-200" />
+                <ShieldCheck className="h-6 w-6 text-[#39BDE4]" />
               </div>
               <div>
-                <h2 className="text-xl font-bold">Support Promise</h2>
-                <p className="mt-2 text-sm leading-6 text-slate-300">
+                <h3 className="text-lg font-bold">Our Support Promise</h3>
+                <p className="mt-2 text-sm leading-relaxed text-white/70">
                   Use whichever channel feels easiest. WhatsApp is fastest, calling is best for urgent issues,
-                  and the form is ideal when you need a written response sent to our company email.
+                  and the form is ideal when you need a written response.
                 </p>
               </div>
             </div>
 
             <div className="space-y-4 rounded-2xl bg-white/5 p-5 ring-1 ring-white/10">
               <div>
-                <p className="text-xs uppercase tracking-[0.22em] text-slate-400">Phone</p>
-                <p className="mt-1 text-base font-semibold">{businessInfo.phoneInternationalDisplay}</p>
+                <p className="text-[10px] font-black uppercase tracking-widest text-white/40">Phone</p>
+                <p className="mt-1 text-sm font-bold">{businessInfo.phoneInternationalDisplay}</p>
               </div>
               <div>
-                <p className="text-xs uppercase tracking-[0.22em] text-slate-400">Email</p>
-                <p className="mt-1 text-base font-semibold break-all">{businessInfo.email}</p>
+                <p className="text-[10px] font-black uppercase tracking-widest text-white/40">Email</p>
+                <p className="mt-1 text-sm font-bold break-all">{businessInfo.email}</p>
               </div>
               <div>
-                <p className="text-xs uppercase tracking-[0.22em] text-slate-400">Coverage</p>
-                <p className="mt-1 text-sm text-slate-300">Gold Coast support for bookings, billing, service updates, and general questions.</p>
+                <p className="text-[10px] font-black uppercase tracking-widest text-white/40">Coverage</p>
+                <p className="mt-1 text-sm text-white/70">Gold Coast support for bookings, billing, service updates, and general questions.</p>
               </div>
             </div>
           </CardContent>

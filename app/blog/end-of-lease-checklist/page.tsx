@@ -38,9 +38,11 @@ const jsonLd = {
     {
       "@type": "Article",
       headline: "End of Lease Cleaning Checklist Gold Coast",
-      author: { "@type": "Organization", name: "Wave Solution Cleaning Gold Coast" },
+      author: { "@type": "Organization", name: "Wave Solution Cleaning", url: "https://www.wavesolution.com.au" },
       publisher: { "@type": "Organization", name: "Wave Solution Cleaning Gold Coast", url: "https://www.wavesolution.com.au" },
       datePublished: "2025-01-20",
+      dateModified: "2025-01-20",
+      image: "https://www.wavesolution.com.au/gold-coast-cleaning-services.jpeg",
       url: "https://www.wavesolution.com.au/blog/end-of-lease-checklist",
     },
     {
@@ -240,7 +242,7 @@ export default function EndOfLeaseChecklistPage() {
                 <p className="mt-4 text-sm leading-7 text-white/75">
                   Wave Solution handles end of lease cleaning across the Gold Coast. Tell us your property, suburb, and inspection date.
                 </p>
-                <Button asChild className="mt-5 w-full h-11 rounded-full bg-secondary text-[11px] font-black uppercase tracking-[0.18em] text-slate-950 hover:bg-secondary/90">
+                <Button asChild className="mt-5 w-full h-11 rounded-full bg-secondary text-[11px] font-black uppercase tracking-[0.18em] text-white hover:bg-secondary/90">
                   <Link href="/end-of-lease-cleaning-gold-coast">Get a Quote</Link>
                 </Button>
               </div>
@@ -265,7 +267,7 @@ export default function EndOfLeaseChecklistPage() {
             Wave Solution provides detailed end of lease cleaning across the Gold Coast. Tell us your property type, suburb, and vacate date.
           </p>
           <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
-            <Button asChild className="h-12 rounded-full bg-secondary px-6 text-[11px] font-black uppercase tracking-[0.18em] text-slate-950 hover:bg-secondary/90">
+            <Button asChild className="h-12 rounded-full bg-secondary px-6 text-[11px] font-black uppercase tracking-[0.18em] text-white hover:bg-secondary/90">
               <Link href="/end-of-lease-cleaning-gold-coast">Book End of Lease Clean</Link>
             </Button>
             <Button asChild variant="outline" className="h-12 rounded-full border-white/20 bg-white/5 px-6 text-[11px] font-black uppercase tracking-[0.18em] text-white hover:bg-white/10">

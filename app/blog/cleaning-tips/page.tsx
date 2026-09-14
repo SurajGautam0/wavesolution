@@ -15,16 +15,32 @@ export const metadata: Metadata = {
         title: "10 Expert House Cleaning Tips for Gold Coast Homes",
         description: "Professional cleaning tips from Gold Coast's trusted cleaners. Keep your home spotless year-round.",
         url: "https://www.wavesolution.com.au/blog/cleaning-tips",
+        images: [{ url: "/gold-coast-cleaning-services.jpeg", width: 1200, height: 630, alt: "House cleaning tips Gold Coast" }],
     },
 }
 
 const breadcrumbJsonLd = {
   "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Home", item: "https://www.wavesolution.com.au" },
-    { "@type": "ListItem", position: 2, name: "Blog", item: "https://www.wavesolution.com.au/blog" },
-    { "@type": "ListItem", position: 3, name: "House Cleaning Tips", item: "https://www.wavesolution.com.au/blog/cleaning-tips" },
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: "https://www.wavesolution.com.au" },
+        { "@type": "ListItem", position: 2, name: "Blog", item: "https://www.wavesolution.com.au/blog" },
+        { "@type": "ListItem", position: 3, name: "House Cleaning Tips", item: "https://www.wavesolution.com.au/blog/cleaning-tips" },
+      ],
+    },
+    {
+      "@type": "Article",
+      headline: "10 House Cleaning Tips for Gold Coast Homes",
+      description: "Expert house cleaning tips from Gold Coast's top cleaners. Learn professional cleaning techniques for kitchens, bathrooms, windows and more.",
+      author: { "@type": "Organization", name: "Wave Solution Cleaning", url: "https://www.wavesolution.com.au" },
+      publisher: { "@type": "Organization", name: "Wave Solution Cleaning" },
+      datePublished: "2026-02-15",
+      dateModified: "2026-02-15",
+      image: "https://www.wavesolution.com.au/gold-coast-cleaning-services.jpeg",
+      url: "https://www.wavesolution.com.au/blog/cleaning-tips",
+    },
   ],
 }
 
@@ -111,7 +127,7 @@ export default function CleaningTipsPage() {
                 <div className="classic-container">
                     <div className="mx-auto max-w-4xl">
                         <div className="bg-white rounded-[3rem] shadow-2xl shadow-blue-900/5 p-8 sm:p-16 border border-blue-50">
-                            <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed mb-12 italic border-l-4 border-secondary pl-6">
+                            <p className="text-lg sm:text-xl text-slate-600 leading-relaxed mb-12 italic border-l-4 border-secondary pl-6">
                                 Maintaining a clean and hygienic home is more than just about aesthetics—it&apos;s a commitment to a healthier, more vibrant lifestyle. We&apos;ve curated these professional tips to help you keep your living space pristine in any environment.
                             </p>
 
@@ -121,7 +137,7 @@ export default function CleaningTipsPage() {
                                         <h2 className="text-2xl sm:text-3xl font-black text-blue-950 mb-4 group-hover:text-primary transition-colors">
                                             {tip.title}
                                         </h2>
-                                        <p className="text-muted-foreground text-lg leading-relaxed">
+                                        <p className="text-slate-600 text-lg leading-relaxed">
                                             {tip.content}
                                         </p>
                                     </div>
@@ -135,7 +151,7 @@ export default function CleaningTipsPage() {
                                 </div>
                                 <div>
                                     <h3 className="text-2xl font-black text-blue-950 mb-3">Conclusion</h3>
-                                    <p className="text-muted-foreground font-medium mb-6">
+                                    <p className="text-slate-600 font-medium mb-6">
                                         Following these simple yet effective tips will keep your home always fresh and vibrant. If you need deep cleaning or specialized window cleaning, WaveSolution is always ready to serve you.
                                     </p>
                                     <Button asChild className="rounded-full h-12 px-8 bg-primary hover:bg-blue-900 text-white font-black uppercase tracking-widest transition-all">

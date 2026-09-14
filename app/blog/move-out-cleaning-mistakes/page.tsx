@@ -38,9 +38,11 @@ const jsonLd = {
     {
       "@type": "Article",
       headline: "Move-Out Cleaning Mistakes That Cost You Your Bond",
-      author: { "@type": "Organization", name: "Wave Solution Cleaning Gold Coast" },
+      author: { "@type": "Organization", name: "Wave Solution Cleaning", url: "https://www.wavesolution.com.au" },
       publisher: { "@type": "Organization", name: "Wave Solution Cleaning Gold Coast", url: "https://www.wavesolution.com.au" },
       datePublished: "2025-02-01",
+      dateModified: "2025-02-01",
+      image: "https://www.wavesolution.com.au/gold-coast-cleaning-services.jpeg",
       url: "https://www.wavesolution.com.au/blog/move-out-cleaning-mistakes",
     },
   ],
@@ -185,7 +187,7 @@ export default function MoveOutMistakesPage() {
                 <p className="mt-4 text-sm leading-7 text-white/75">
                   Let Wave Solution handle the hard work. We provide detailed bond and end of lease cleaning across the Gold Coast.
                 </p>
-                <Button asChild className="mt-5 w-full h-11 rounded-full bg-secondary text-[11px] font-black uppercase tracking-[0.18em] text-slate-950 hover:bg-secondary/90">
+                <Button asChild className="mt-5 w-full h-11 rounded-full bg-secondary text-[11px] font-black uppercase tracking-[0.18em] text-white hover:bg-secondary/90">
                   <Link href="/bond-cleaning-gold-coast">Get a Quote</Link>
                 </Button>
               </div>
@@ -210,7 +212,7 @@ export default function MoveOutMistakesPage() {
             Wave Solution covers the Gold Coast for bond and end of lease cleaning. Tell us your property details and we'll get back to you quickly with a quote.
           </p>
           <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
-            <Button asChild className="h-12 rounded-full bg-secondary px-6 text-[11px] font-black uppercase tracking-[0.18em] text-slate-950 hover:bg-secondary/90">
+            <Button asChild className="h-12 rounded-full bg-secondary px-6 text-[11px] font-black uppercase tracking-[0.18em] text-white hover:bg-secondary/90">
               <Link href="/bond-cleaning-gold-coast">Book Bond Cleaning</Link>
             </Button>
             <Button asChild variant="outline" className="h-12 rounded-full border-white/20 bg-white/5 px-6 text-[11px] font-black uppercase tracking-[0.18em] text-white hover:bg-white/10">

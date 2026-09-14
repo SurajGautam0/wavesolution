@@ -171,6 +171,270 @@ export const locationPages: LocationPage[] = [
       },
     ],
   },
+  {
+    slug: "nerang",
+    name: "Nerang",
+    heroTitle: "Cleaning Services in Nerang",
+    metaTitle: "Cleaning Services Nerang | House, Office & Bond Cleaning",
+    metaDescription:
+      "Professional cleaning services in Nerang for homes, offices and rental properties. Wave Solution Cleaning provides house cleaning, deep cleaning, end of lease cleaning and office cleaning near Nerang and surrounding areas. Call 0450 833 683.",
+    intro:
+      "Reliable cleaning services for Nerang homes, offices, rental properties and local businesses.",
+    nearbyReference: "Nerang Town Centre, Nerang State High School, the M1 interchange, and nearby Highland Park",
+    paragraphs: [
+      "Wave Solution Cleaning provides dependable cleaning services in Nerang for homeowners, tenants, offices, and commercial properties that need consistent results. Whether you need a regular house clean, a detailed deep clean before inspection, or professional office cleaning, our team delivers reliable service with clear communication from quote to completion.",
+      "We regularly service homes and businesses near Nerang Town Centre, Nerang State High School, the M1 interchange, and nearby Highland Park. Our cleaners understand the area well and are familiar with the mix of family homes, townhouses, units, and commercial spaces throughout Nerang. That local knowledge helps us provide a more practical and responsive service.",
+      "If you need cleaning services in Nerang, we make the process simple. Tell us your property type, how many rooms, and when you need the clean. We will provide a tailored quote and recommend the right service based on your timing and budget. Call 0450 833 683 or book online for a fast response.",
+    ],
+    serviceBullets: [
+      "Regular house cleaning for Nerang homes and townhouses",
+      "Office and commercial cleaning for local businesses",
+      "Deep cleaning and one-off detailed cleans",
+      "End of lease and bond cleaning for tenants and property managers",
+    ],
+    faq: [
+      {
+        question: "Do you offer regular house cleaning in Nerang?",
+        answer:
+          "Yes. We provide weekly, fortnightly, and one-off house cleaning throughout Nerang and nearby suburbs.",
+      },
+      {
+        question: "Can you help with end of lease cleaning in Nerang?",
+        answer:
+          "Yes. We provide detailed end of lease and bond cleaning for Nerang tenants, landlords, and property managers.",
+      },
+      {
+        question: "Do you service offices in Nerang?",
+        answer:
+          "Yes. We clean offices and commercial spaces across Nerang with flexible scheduling to suit your business.",
+      },
+      {
+        question: "How do I get a quote for cleaning in Nerang?",
+        answer:
+          "Call 0450 833 683 or use our online booking page. We will provide a personalised quote based on your property and service needs.",
+      },
+    ],
+  },
+  {
+    slug: "burleigh-heads",
+    name: "Burleigh Heads",
+    heroTitle: "Cleaning Services in Burleigh Heads",
+    metaTitle: "Cleaning Services Burleigh Heads | Home & Office Cleaning",
+    metaDescription:
+      "Trusted cleaning services in Burleigh Heads for homes, apartments and businesses. Wave Solution Cleaning provides house cleaning, deep cleaning, end of lease cleaning and commercial cleaning near James Street and the beach. Call 0450 833 683.",
+    intro:
+      "Professional cleaning services for Burleigh Heads homes, apartments, offices and local businesses.",
+    nearbyReference: "James Street, Burleigh Heads Beach, Justin Lane, and the coastal precinct",
+    paragraphs: [
+      "Wave Solution Cleaning provides high-quality cleaning services in Burleigh Heads for households, property managers, and local businesses that need dependable support. From regular house cleaning and apartment maintenance to deep cleans and end of lease work, we tailor every service to the property type and the standard required.",
+      "We work near James Street, Burleigh Heads Beach, Justin Lane, and the wider coastal precinct, so we understand the mix of beachfront apartments, family homes, retail spaces, and hospitality venues in the area. Our team focuses on practical results: fresh bathrooms, clean kitchens, well-maintained floors, and spaces that feel ready to enjoy or present to guests.",
+      "If you are looking for cleaning services in Burleigh Heads, we offer flexible scheduling, fast quotes, and a straightforward booking process. Let us know what you need cleaned and when, and we will recommend the best service for your property and routine.",
+    ],
+    serviceBullets: [
+      "House and apartment cleaning in Burleigh Heads",
+      "Office and commercial cleaning for local businesses",
+      "Deep cleaning for kitchens, bathrooms, and high-touch areas",
+      "End of lease and move-out cleaning for tenants and landlords",
+    ],
+    faq: [
+      {
+        question: "Do you clean beachfront apartments in Burleigh Heads?",
+        answer:
+          "Yes. We clean apartments, units, and townhouses throughout Burleigh Heads, including properties near the beach.",
+      },
+      {
+        question: "Can you clean offices near James Street?",
+        answer:
+          "Yes. We provide office and commercial cleaning for businesses near James Street, the Burleigh Heads dining precinct, and surrounding areas.",
+      },
+      {
+        question: "Do you offer one-off deep cleans in Burleigh Heads?",
+        answer:
+          "Yes. We offer one-off deep cleaning as well as regular weekly and fortnightly cleaning services.",
+      },
+      {
+        question: "How do I book cleaning in Burleigh Heads?",
+        answer:
+          "Call 0450 833 683 or book online. We will provide a tailored quote based on your property, service type, and preferred schedule.",
+      },
+    ],
+  },
+  {
+    slug: "palm-beach",
+    name: "Palm Beach",
+    heroTitle: "Cleaning Services in Palm Beach",
+    metaTitle: "Cleaning Services Palm Beach | House, Office & Rental Cleaning",
+    metaDescription:
+      "Reliable cleaning services in Palm Beach for homes, rentals and businesses. Wave Solution Cleaning provides house cleaning, deep cleaning, bond cleaning and commercial cleaning near the Gold Coast Highway and the beach. Call 0450 833 683.",
+    intro:
+      "Local cleaning services for Palm Beach homes, apartments, offices and rental properties.",
+    nearbyReference: "Palm Beach, Currumbin Alley, the Gold Coast Highway corridor, and nearby Elanora",
+    paragraphs: [
+      "Wave Solution Cleaning delivers dependable cleaning services in Palm Beach for homeowners, tenants, and local businesses that need consistent, high-quality results. Our team handles regular house cleaning, one-off deep cleans, end of lease work, and commercial cleaning with a focus on reliability, clear communication, and attention to detail.",
+      "We service properties near Palm Beach, Currumbin Alley, the Gold Coast Highway corridor, and nearby Elanora. The area features a mix of beachside apartments, family homes, and local businesses, and we tailor our cleaning approach to suit the specific needs of each property type. That local experience helps us deliver a more practical and responsive service.",
+      "If you need cleaning services in Palm Beach, we offer fast quotes, flexible scheduling, and a straightforward booking process. Tell us what you need, where the property is, and when you want the clean. We will recommend the best option and provide a clear, tailored quote.",
+    ],
+    serviceBullets: [
+      "House and apartment cleaning for Palm Beach residents",
+      "Office and commercial cleaning for local businesses",
+      "Deep cleaning and detailed property resets",
+      "Bond and end of lease cleaning for rental handovers",
+    ],
+    faq: [
+      {
+        question: "Do you clean apartments near the beach in Palm Beach?",
+        answer:
+          "Yes. We clean beachside apartments, units, townhouses, and family homes throughout Palm Beach.",
+      },
+      {
+        question: "Can you help with end of lease cleaning in Palm Beach?",
+        answer:
+          "Yes. We provide detailed end of lease and bond cleaning for Palm Beach tenants, landlords, and property managers.",
+      },
+      {
+        question: "Do you clean offices and commercial spaces in Palm Beach?",
+        answer:
+          "Yes. We offer office and commercial cleaning with flexible scheduling for businesses throughout the area.",
+      },
+      {
+        question: "How do I get a cleaning quote for Palm Beach?",
+        answer:
+          "Call 0450 833 683 or use the booking page. We will respond with a tailored quote based on your property and service needs.",
+      },
+    ],
+  },
+  {
+    slug: "helensvale",
+    name: "Helensvale",
+    heroTitle: "Cleaning Services in Helensvale",
+    metaTitle: "Cleaning Services Helensvale | Home, Office & Bond Cleaning",
+    metaDescription:
+      "Trusted cleaning services in Helensvale for homes, offices and rental properties. Wave Solution Cleaning provides house cleaning, deep cleaning, end of lease cleaning and commercial cleaning near Westfield Helensvale. Call 0450 833 683.",
+    intro:
+      "Professional cleaning services for Helensvale homes, offices, and local businesses.",
+    nearbyReference: "Westfield Helensvale, Helensvale Plaza, the M1 corridor, and nearby Coomera",
+    paragraphs: [
+      "Wave Solution Cleaning provides reliable cleaning services in Helensvale for homeowners, tenants, offices, and businesses that need dependable support. Whether you require a regular house clean, a one-off deep clean, or consistent office cleaning, our team delivers quality results with flexible scheduling and clear communication.",
+      "We regularly service homes and businesses near Westfield Helensvale, Helensvale Plaza, the M1 corridor, and nearby Coomera. The area includes a wide range of family homes, townhouses, commercial offices, and retail spaces, and we tailor our cleaning plans to suit each property type and client requirement.",
+      "If you are looking for cleaning services in Helensvale, we make the process simple. Tell us your suburb, property type, and preferred schedule. We will provide a clear quote and help you choose the right service. Call 0450 833 683 or book online for a fast, local response.",
+    ],
+    serviceBullets: [
+      "House cleaning for Helensvale homes and townhouses",
+      "Office and commercial cleaning for local businesses",
+      "Deep cleaning for detailed property maintenance",
+      "End of lease and bond cleaning for rental handovers",
+    ],
+    faq: [
+      {
+        question: "Do you clean homes in Helensvale?",
+        answer:
+          "Yes. We clean houses, townhouses, apartments, and units throughout Helensvale with one-off and recurring options.",
+      },
+      {
+        question: "Can you clean offices near Westfield Helensvale?",
+        answer:
+          "Yes. We provide office and commercial cleaning for businesses near Westfield Helensvale, Helensvale Plaza, and surrounding areas.",
+      },
+      {
+        question: "Do you offer end of lease cleaning in Helensvale?",
+        answer:
+          "Yes. We provide detailed end of lease and bond cleaning for Helensvale tenants, landlords, and property managers.",
+      },
+      {
+        question: "How do I get a quote for cleaning in Helensvale?",
+        answer:
+          "Call 0450 833 683 or use the booking page. We will provide a personalised quote based on your property and service requirements.",
+      },
+    ],
+  },
+  {
+    slug: "coomera",
+    name: "Coomera",
+    heroTitle: "Cleaning Services in Coomera",
+    metaTitle: "Cleaning Services Coomera | House, Office & Rental Cleaning",
+    metaDescription:
+      "Professional cleaning services in Coomera for homes, offices and commercial spaces. Wave Solution Cleaning provides house cleaning, deep cleaning, end of lease cleaning and office cleaning near Coomera Town Centre. Call 0450 833 683.",
+    intro:
+      "Local cleaning services for Coomera homes, businesses, offices and new-build properties.",
+    nearbyReference: "Coomera Town Centre, Westfield Coomera, the northern Gold Coast growth corridor, and nearby Pimpama",
+    paragraphs: [
+      "Wave Solution Cleaning delivers reliable cleaning services in Coomera for homeowners, tenants, businesses, and new-build properties that need a thorough clean. The northern Gold Coast is growing fast, and our team provides practical support for families, property managers, and businesses that want dependable cleaning without the hassle of managing multiple providers.",
+      "We service homes and businesses near Coomera Town Centre, Westfield Coomera, and the northern Gold Coast growth corridor, including nearby Pimpama. Whether you are moving into a new-build home, preparing a rental for handover, or need regular house or office cleaning, we tailor our service to the property type, condition, and timing.",
+      "If you need cleaning services in Coomera, we offer fast quotes, flexible scheduling, and a straightforward booking process. Tell us what you need cleaned, where the property is, and when you would like the service. We will recommend the best option and provide a clear, tailored quote.",
+    ],
+    serviceBullets: [
+      "House cleaning for Coomera homes, new builds and townhouses",
+      "Office and commercial cleaning for local businesses",
+      "Deep cleaning for properties that need extra detail",
+      "End of lease and move-out cleaning for rental handovers",
+    ],
+    faq: [
+      {
+        question: "Do you clean new-build homes in Coomera?",
+        answer:
+          "Yes. We provide post-construction and builders cleaning as well as move-in cleaning for new-build homes throughout Coomera.",
+      },
+      {
+        question: "Can you clean offices near Westfield Coomera?",
+        answer:
+          "Yes. We clean offices, commercial spaces, and retail sites near Westfield Coomera and the surrounding business areas.",
+      },
+      {
+        question: "Do you offer end of lease cleaning in Coomera?",
+        answer:
+          "Yes. We provide detailed end of lease and bond cleaning for Coomera tenants, landlords, and property managers.",
+      },
+      {
+        question: "How do I get a cleaning quote for Coomera?",
+        answer:
+          "Call 0450 833 683 or use the online booking page. We will provide a tailored quote based on your property, service type, and preferred schedule.",
+      },
+    ],
+  },
+  {
+    slug: "varsity-lakes",
+    name: "Varsity Lakes",
+    heroTitle: "Cleaning Services in Varsity Lakes",
+    metaTitle: "Cleaning Services Varsity Lakes | House & Office Cleaning",
+    metaDescription:
+      "Reliable cleaning services in Varsity Lakes for homes, apartments and businesses. Wave Solution Cleaning provides house cleaning, deep cleaning, end of lease cleaning and commercial cleaning near Varsity Lakes and Robina. Call 0450 833 683.",
+    intro:
+      "Trusted cleaning services for Varsity Lakes homes, apartments, offices and local businesses.",
+    nearbyReference: "Varsity Lakes Town Centre, Lake Varsity, the M1 connection, and nearby Robina",
+    paragraphs: [
+      "Wave Solution Cleaning provides dependable cleaning services in Varsity Lakes for homeowners, tenants, and local businesses that need consistent, quality results. From regular house cleaning and apartment maintenance to deep cleans and end of lease work, we tailor every service to the property type and the standard required.",
+      "We work near Varsity Lakes Town Centre, Lake Varsity, the M1 connection, and nearby Robina, so we are familiar with the mix of family homes, townhouses, apartments, and local businesses throughout the area. Our team focuses on practical, reliable cleaning that keeps your home or workplace fresh, presentable, and easy to maintain.",
+      "If you need cleaning services in Varsity Lakes, we offer fast quotes and flexible scheduling. Tell us your property type, how many rooms, and when you need the service. We will recommend the right cleaning plan and provide a clear, tailored quote. Call 0450 833 683 or book online for a quick response.",
+    ],
+    serviceBullets: [
+      "House and apartment cleaning for Varsity Lakes residents",
+      "Office and commercial cleaning for local businesses",
+      "Deep cleaning and detailed property maintenance",
+      "End of lease and bond cleaning for rental handovers",
+    ],
+    faq: [
+      {
+        question: "Do you clean homes and apartments in Varsity Lakes?",
+        answer:
+          "Yes. We clean houses, townhouses, and apartments throughout Varsity Lakes with one-off and recurring options available.",
+      },
+      {
+        question: "Can you clean offices in Varsity Lakes?",
+        answer:
+          "Yes. We provide office and commercial cleaning for businesses in Varsity Lakes and the surrounding area.",
+      },
+      {
+        question: "Do you offer end of lease cleaning in Varsity Lakes?",
+        answer:
+          "Yes. We provide detailed end of lease and bond cleaning for tenants, landlords, and property managers in Varsity Lakes.",
+      },
+      {
+        question: "How do I get a cleaning quote for Varsity Lakes?",
+        answer:
+          "Call 0450 833 683 or use the booking page. We will respond with a tailored quote based on your property and service needs.",
+      },
+    ],
+  },
 ]
 
 export function getLocationPage(slug: string) {

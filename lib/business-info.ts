@@ -33,6 +33,11 @@ export const businessInfo = {
     "Palm Beach",
     "Helensvale",
     "Coomera",
+    "Varsity Lakes",
+    "Main Beach",
+    "Benowa",
+    "Merrimac",
+    "Highland Park",
   ],
   businessHoursDisplay: [
     "Monday - Friday: 8am - 6pm",

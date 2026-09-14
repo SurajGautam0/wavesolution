@@ -20,6 +20,7 @@ export const metadata: Metadata = {
     description:
       "Learn how WaveSolution supports Gold Coast homes, rentals, and businesses with local cleaning and pest-control services.",
     url: "https://www.wavesolution.com.au/about",
+    images: [{ url: "/gold-coast-cleaning-services.jpeg", width: 1200, height: 630, alt: "About Wave Solution cleaning Gold Coast" }],
   },
 }
 

@@ -38,7 +38,14 @@ export async function generateMetadata({ params }: ServicePageProps): Promise<Me
       title: page.metaTitle,
       description: page.metaDescription,
       url,
-      type: "article",
+      type: "website",
+      images: [{ url: "/gold-coast-cleaning-services.jpeg", width: 1200, height: 630, alt: page.metaTitle }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: page.metaTitle,
+      description: page.metaDescription,
+      images: ["/gold-coast-cleaning-services.jpeg"],
     },
   }
 }
