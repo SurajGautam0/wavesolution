@@ -1,12 +1,13 @@
 import type { Metadata } from "next"
 import Link from "next/link"
-import { ArrowRight, CheckCircle, ShieldCheck, Sparkles, Star, TimerReset, Users, MapPin, Phone, Clock } from "lucide-react"
+import { CheckCircle, ShieldCheck, Sparkles, Star, TimerReset, Users, MapPin, Clock, Quote } from "lucide-react"
 
 import { HeroSection } from "@/components/hero-section"
 import { ServiceCard } from "@/components/service-card"
 import { InteractivePricingCalculator } from "@/components/interactive-pricing-calculator"
 import { ServicesShowcaseTabs } from "@/components/services-showcase-tabs"
 import { FaqAccordion } from "@/components/faq-accordion"
+import { NewsletterForm } from "@/components/newsletter-form"
 import { Button } from "@/components/ui/button"
 import { businessInfo, siteLinks } from "@/lib/business-info"
 
@@ -194,34 +195,26 @@ export default function Home() {
       />
       <HeroSection />
 
-      {/* Stats Bar */}
-      <section className="bg-white border-y border-slate-200 py-6">
-        <div className="classic-container grid grid-cols-2 md:grid-cols-4 gap-6">
-          {[
-            { icon: Clock, label: "Years Experience", value: "10+" },
-            { icon: CheckCircle, label: "Jobs Completed", value: "1,500+" },
-            { icon: Star, label: "Google Rating", value: "4.9 / 5" },
-            { icon: MapPin, label: "Suburbs Covered", value: "50+" },
-          ].map((stat) => (
-            <div key={stat.label} className="flex items-center gap-3">
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary">
-                <stat.icon className="h-5 w-5" />
+      <section className="relative z-10 -mt-6 bg-white pb-4">
+        <div className="classic-container">
+          <div className="grid grid-cols-2 gap-3 rounded-[1.75rem] border border-slate-200 bg-white p-4 shadow-xl shadow-slate-900/8 md:grid-cols-4 md:gap-0 md:divide-x md:divide-slate-100 md:p-6">
+            {[
+              { icon: Clock, label: "Years Experience", value: "10+" },
+              { icon: CheckCircle, label: "Jobs Completed", value: "1,500+" },
+              { icon: Star, label: "Google Rating", value: "4.9 / 5" },
+              { icon: MapPin, label: "Suburbs Covered", value: "50+" },
+            ].map((stat) => (
+              <div key={stat.label} className="flex items-center gap-3 px-2 py-2 md:justify-center md:px-4">
+                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-primary/10 text-primary">
+                  <stat.icon className="h-5 w-5" />
+                </div>
+                <div>
+                  <p className="text-xl font-black tracking-tight text-secondary">{stat.value}</p>
+                  <p className="text-[11px] font-bold uppercase tracking-wider text-slate-500">{stat.label}</p>
+                </div>
               </div>
-              <div>
-                <p className="text-xl font-black tracking-tight text-primary">{stat.value}</p>
-                <p className="text-[11px] font-bold uppercase tracking-wider text-slate-500">{stat.label}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section className="bg-secondary py-5">
-        <div className="classic-container flex flex-wrap items-center justify-center gap-3 text-center text-[11px] font-black uppercase tracking-[0.16em] text-white">
-          <span className="rounded-full border border-white/20 bg-white/10 px-4 py-2">Fully insured</span>
-          <span className="rounded-full border border-white/20 bg-white/10 px-4 py-2">Satisfaction guarantee</span>
-          <span className="rounded-full border border-white/20 bg-white/10 px-4 py-2">Local cleaners</span>
-          <span className="rounded-full border border-white/20 bg-white/10 px-4 py-2">Fast quote</span>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -229,14 +222,14 @@ export default function Home() {
         <div className="classic-container">
           <div className="mx-auto max-w-4xl text-center">
             <span className="eyebrow">What We Clean</span>
-            <h2 className="mt-4 text-3xl font-black tracking-tight text-primary sm:text-4xl">Our Cleaning Services</h2>
-             <p className="mx-auto mt-5 max-w-3xl text-base leading-8 text-slate-600">
-               Professional cleaning across the Gold Coast — from regular house maintenance to deep commercial resets. Fully insured, police-checked, and locally owned.
-             </p>
+            <h2 className="mt-4 text-3xl font-black tracking-tight text-secondary sm:text-4xl">Our Cleaning Services</h2>
+            <p className="mx-auto mt-5 max-w-3xl text-base leading-8 text-slate-600">
+              Professional cleaning across the Gold Coast — from regular house maintenance to deep commercial resets. Fully insured, police-checked, and locally owned.
+            </p>
           </div>
 
           <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-            {serviceCards.map((service) => (
+            {serviceCards.map((service, index) => (
               <ServiceCard
                 key={service.href}
                 title={service.title}
@@ -245,6 +238,7 @@ export default function Home() {
                 price={service.price}
                 href={service.href}
                 ctaLabel="Learn More"
+                featured={index < 3}
               />
             ))}
           </div>
@@ -261,22 +255,24 @@ export default function Home() {
        <section className="bg-white py-14 md:py-20">
          <div className="classic-container">
            <div className="mx-auto max-w-2xl text-center">
-             <h2 className="text-3xl font-black tracking-tight text-primary sm:text-4xl">How It Works</h2>
+             <span className="eyebrow">Simple process</span>
+             <h2 className="mt-4 text-3xl font-black tracking-tight text-secondary sm:text-4xl">How It Works</h2>
              <p className="mx-auto mt-3 text-sm leading-relaxed text-slate-600 sm:text-base">
                Book in minutes, get a fast quote, and enjoy a spotless space — no surprises, no hassle.
              </p>
            </div>
-           <div className="mt-12 grid gap-8 md:grid-cols-3">
+           <div className="relative mt-12 grid gap-8 md:grid-cols-3">
+             <div className="pointer-events-none absolute left-[16%] right-[16%] top-8 hidden h-px bg-gradient-to-r from-primary/0 via-primary/40 to-primary/0 md:block" />
              {[
                { step: "1", title: "Tell Us What You Need", desc: "Choose your service, property type, and preferred date. Our quick booking form takes under 60 seconds." },
                { step: "2", title: "We Send a Fast Quote", desc: "Get a clear, upfront price with no hidden fees. Review and confirm when you're ready." },
                { step: "3", title: "We Do the Rest", desc: "Our trained team arrives on time, cleans to your standards, and leaves your space sparkling." },
              ].map((item) => (
-               <div key={item.step} className="relative rounded-2xl border border-slate-200 bg-white p-6 shadow-sm hover:shadow-lg hover:border-primary/20 transition-all duration-300">
-                 <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-primary to-secondary text-white text-lg font-black">
+               <div key={item.step} className="relative rounded-3xl border border-slate-200 bg-[#F8FAFC] p-7 transition-all duration-300 hover:-translate-y-1 hover:border-primary/25 hover:bg-white hover:shadow-xl">
+                 <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-primary to-secondary text-lg font-black text-white shadow-lg shadow-primary/20">
                    {item.step}
                  </div>
-                 <h3 className="mt-4 text-lg font-black tracking-tight text-slate-900">{item.title}</h3>
+                 <h3 className="mt-5 text-lg font-black tracking-tight text-slate-900">{item.title}</h3>
                  <p className="mt-2 text-sm leading-relaxed text-slate-600">{item.desc}</p>
                </div>
              ))}
@@ -284,48 +280,49 @@ export default function Home() {
          </div>
        </section>
 
-       <section className="bg-white py-14 md:py-20">
+       <section className="bg-[#F3F3F3] py-14 md:py-20">
          <div className="classic-container">
            <InteractivePricingCalculator />
          </div>
        </section>
 
       <section className="bg-white py-14 md:py-20">
-        <div className="classic-container grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
-          <div className="rounded-[2.5rem] border border-slate-200 bg-[#F3F3F3] p-8 shadow-sm">
-            <h2 className="text-3xl font-black tracking-tight text-primary">Why Choose Us</h2>
-            <div className="mt-6 space-y-4">
+        <div className="classic-container grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-stretch">
+          <div className="rounded-[2rem] border border-slate-200 bg-[#F8FAFC] p-8">
+            <span className="eyebrow">Why Wave Solution</span>
+            <h2 className="mt-4 text-3xl font-black tracking-tight text-secondary">Why Choose Us</h2>
+            <div className="mt-6 space-y-3">
               {whyChooseUs.map((item) => (
-                <div key={item} className="flex items-start gap-3 rounded-[1.5rem] bg-white p-4 shadow-sm">
-                  <ShieldCheck className="mt-1 h-5 w-5 shrink-0 text-secondary" />
+                <div key={item} className="flex items-start gap-3 rounded-2xl bg-white p-4 ring-1 ring-slate-100">
+                  <ShieldCheck className="mt-0.5 h-5 w-5 shrink-0 text-primary" />
                   <p className="text-sm leading-7 text-slate-600">{item}</p>
                 </div>
               ))}
             </div>
           </div>
 
-          <div className="rounded-[2.5rem] border border-white/10 bg-secondary p-8 text-white shadow-xl">
+          <div className="flex flex-col rounded-[2rem] bg-secondary p-8 text-white shadow-xl">
             <h2 className="text-3xl font-black tracking-tight">Gold Coast Trust Signals</h2>
-            <p className="mt-5 text-base leading-8 text-white/75">
-              Trust matters before any booking happens. Visitors want to know they are dealing with a local Gold Coast business that is easy to contact, easy to book, and clear about what is included. That is why the strongest conversion messaging sits close to the primary CTAs: fully insured cleaners, police-checked staff, flexible scheduling, and fast response times for home, office, rental, and commercial enquiries.
+            <p className="mt-4 text-base leading-8 text-white/75">
+              A local Gold Coast team that is easy to contact, easy to book, and clear about what is included — fully insured cleaners, police-checked staff, and fast quotes for home, office, rental, and commercial jobs.
             </p>
-            <div className="mt-8 grid gap-4 sm:grid-cols-2">
-              <div className="rounded-[1.5rem] border border-white/10 bg-white/5 p-5">
+            <div className="mt-8 grid flex-1 gap-4 sm:grid-cols-2">
+              <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
                 <Users className="h-6 w-6 text-primary" />
                 <p className="mt-3 text-sm font-bold uppercase tracking-[0.16em] text-white/70">Local team</p>
                 <p className="mt-2 text-sm leading-7 text-white/75">Homes, rental properties, offices, and businesses across the Gold Coast.</p>
               </div>
-              <div className="rounded-[1.5rem] border border-white/10 bg-white/5 p-5">
+              <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
                 <TimerReset className="h-6 w-6 text-primary" />
                 <p className="mt-3 text-sm font-bold uppercase tracking-[0.16em] text-white/70">Fast response</p>
                 <p className="mt-2 text-sm leading-7 text-white/75">Clear quotes and straightforward next steps so enquiries do not stall.</p>
               </div>
-              <div className="rounded-[1.5rem] border border-white/10 bg-white/5 p-5">
+              <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
                 <CheckCircle className="h-6 w-6 text-primary" />
                 <p className="mt-3 text-sm font-bold uppercase tracking-[0.16em] text-white/70">Flexible schedule</p>
                 <p className="mt-2 text-sm leading-7 text-white/75">Weekly, fortnightly, one-off, and move-out scheduling depending on the job.</p>
               </div>
-              <div className="rounded-[1.5rem] border border-white/10 bg-white/5 p-5">
+              <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
                 <Sparkles className="h-6 w-6 text-primary" />
                 <p className="mt-3 text-sm font-bold uppercase tracking-[0.16em] text-white/70">Service clarity</p>
                 <p className="mt-2 text-sm leading-7 text-white/75">Dedicated pages for the main cleaning services Gold Coast clients actually search for.</p>
@@ -359,16 +356,17 @@ export default function Home() {
                 key={`${review.name}-${review.suburb}`}
                 className="group relative flex flex-col justify-between rounded-3xl border border-slate-200/90 bg-white p-7 shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:border-secondary/30 hover:shadow-xl"
               >
+                <Quote className="absolute right-6 top-6 h-8 w-8 text-primary/15" />
                 <div>
                   <div className="flex items-center justify-between">
-<div className="flex items-center gap-1 text-secondary">
-                        {Array.from({ length: 5 }).map((_, index) => (
-                          <Star key={index} className="h-4 w-4 fill-secondary text-secondary" />
-                        ))}
-                      </div>
-                      <span className="rounded-full bg-secondary/10 px-2.5 py-0.5 text-[10px] font-bold text-primary">
-                        Verified Client
-                      </span>
+                    <div className="flex items-center gap-1 text-secondary">
+                      {Array.from({ length: 5 }).map((_, index) => (
+                        <Star key={index} className="h-4 w-4 fill-secondary text-secondary" />
+                      ))}
+                    </div>
+                    <span className="rounded-full bg-secondary/10 px-2.5 py-0.5 text-[10px] font-bold text-primary">
+                      Verified Client
+                    </span>
                   </div>
                   <p className="mt-4 text-base italic leading-relaxed text-slate-700">
                     "{review.quote}"
@@ -379,11 +377,11 @@ export default function Home() {
                     <div>
                       <p className="font-extrabold text-[#212429]">{review.name}</p>
                       <p className="text-xs font-medium text-slate-500">
-                        {review.suburb}, QLD • <span className="text-primary font-semibold">{review.service}</span>
+                        {review.suburb}, QLD • <span className="font-semibold text-primary">{review.service}</span>
                       </p>
                     </div>
-                    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-slate-100 text-xs font-black text-slate-600">
-                      {review.name.charAt(0)}
+                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-primary to-secondary text-xs font-black text-white">
+                      {review.name.split(" ").map((part) => part.charAt(0)).join("")}
                     </div>
                   </div>
                 </div>
@@ -395,8 +393,8 @@ export default function Home() {
 
       <section className="bg-white py-14 md:py-20">
         <div className="classic-container">
-          <div className="rounded-[2.5rem] border border-slate-200 bg-[#F3F3F3] p-8 shadow-sm sm:p-10">
-            <h2 className="text-3xl font-black tracking-tight text-primary">Helpful Internal Links</h2>
+          <div className="rounded-[2rem] border border-slate-200 bg-[#F8FAFC] p-8 sm:p-10">
+            <h2 className="text-3xl font-black tracking-tight text-secondary">Helpful Internal Links</h2>
             <p className="mt-5 max-w-4xl text-base leading-8 text-slate-600">
               If you are still comparing{" "}
               <Link href={siteLinks.cleaningGoldCoast} className="font-semibold text-primary underline-offset-4 hover:text-secondary hover:underline">
@@ -413,55 +411,48 @@ export default function Home() {
               , the pages below make it easier to move to the service, suburb, or article cluster that matches your property and timing.
             </p>
 
-            <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+            <div className="mt-8 flex flex-wrap gap-3">
               {serviceCards.map((service) => (
                 <Link
                   key={`link-${service.href}`}
                   href={service.href}
-                  className="rounded-[1.5rem] border border-slate-200 bg-white p-5 transition-transform hover:-translate-y-1 hover:border-primary/20 hover:shadow-lg"
+                  className="rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-secondary transition-all hover:-translate-y-0.5 hover:border-primary/40 hover:text-primary hover:shadow-md"
                 >
-                  <p className="text-xs font-black uppercase tracking-[0.2em] text-secondary">{service.title}</p>
-                  <p className="mt-3 text-sm leading-7 text-slate-600">{service.description}</p>
+                  {service.title}
                 </Link>
               ))}
             </div>
 
             <div className="mt-8 grid gap-4 lg:grid-cols-2">
-              <div className="rounded-[1.5rem] border border-slate-200 bg-white p-6">
-                <p className="text-xs font-black uppercase tracking-[0.2em] text-secondary">Top Gold Coast Suburbs</p>
+              <div className="rounded-2xl border border-slate-200 bg-white p-6">
+                <p className="text-xs font-black uppercase tracking-[0.2em] text-primary">Top Gold Coast Suburbs</p>
                 <div className="mt-4 flex flex-wrap gap-3 text-sm font-semibold">
-                  <Link href="/locations/southport" className="rounded-full border border-slate-200 px-4 py-2 text-primary transition-colors hover:border-primary/20 hover:text-secondary">
-                    Southport
-                  </Link>
-                  <Link href="/locations/robina" className="rounded-full border border-slate-200 px-4 py-2 text-primary transition-colors hover:border-primary/20 hover:text-secondary">
-                    Robina
-                  </Link>
-                  <Link href="/locations/surfers-paradise" className="rounded-full border border-slate-200 px-4 py-2 text-primary transition-colors hover:border-primary/20 hover:text-secondary">
-                    Surfers Paradise
-                  </Link>
-                  <Link href="/locations/broadbeach" className="rounded-full border border-slate-200 px-4 py-2 text-primary transition-colors hover:border-primary/20 hover:text-secondary">
-                    Broadbeach
-                  </Link>
-                  <Link href="/locations/nerang" className="rounded-full border border-slate-200 px-4 py-2 text-primary transition-colors hover:border-primary/20 hover:text-secondary">
-                    Nerang
-                  </Link>
-                  <Link href="/locations/burleigh-heads" className="rounded-full border border-slate-200 px-4 py-2 text-primary transition-colors hover:border-primary/20 hover:text-secondary">
-                    Burleigh Heads
-                  </Link>
-                  <Link href="/locations/helensvale" className="rounded-full border border-slate-200 px-4 py-2 text-primary transition-colors hover:border-primary/20 hover:text-secondary">
-                    Helensvale
-                  </Link>
-                  <Link href="/locations/coomera" className="rounded-full border border-slate-200 px-4 py-2 text-primary transition-colors hover:border-primary/20 hover:text-secondary">
-                    Coomera
-                  </Link>
-                  <Link href={siteLinks.locations} className="rounded-full border border-slate-200 px-4 py-2 text-primary transition-colors hover:border-primary/20 hover:text-secondary">
+                  {[
+                    ["/locations/southport", "Southport"],
+                    ["/locations/robina", "Robina"],
+                    ["/locations/surfers-paradise", "Surfers Paradise"],
+                    ["/locations/broadbeach", "Broadbeach"],
+                    ["/locations/nerang", "Nerang"],
+                    ["/locations/burleigh-heads", "Burleigh Heads"],
+                    ["/locations/helensvale", "Helensvale"],
+                    ["/locations/coomera", "Coomera"],
+                  ].map(([href, label]) => (
+                    <Link
+                      key={href}
+                      href={href}
+                      className="rounded-full border border-slate-200 px-4 py-2 text-primary transition-colors hover:border-primary/20 hover:bg-primary/5 hover:text-secondary"
+                    >
+                      {label}
+                    </Link>
+                  ))}
+                  <Link href={siteLinks.locations} className="rounded-full border border-primary/30 bg-primary/5 px-4 py-2 text-primary transition-colors hover:bg-primary hover:text-white">
                     View all service areas
                   </Link>
                 </div>
               </div>
 
-              <div className="rounded-[1.5rem] border border-slate-200 bg-white p-6">
-                <p className="text-xs font-black uppercase tracking-[0.2em] text-secondary">Helpful Resources</p>
+              <div className="rounded-2xl border border-slate-200 bg-white p-6">
+                <p className="text-xs font-black uppercase tracking-[0.2em] text-primary">Helpful Resources</p>
                 <p className="mt-4 text-sm leading-7 text-slate-600">
                   Visit our{" "}
                   <Link href={siteLinks.blog} className="font-semibold text-primary underline-offset-4 hover:text-secondary hover:underline">
@@ -475,24 +466,15 @@ export default function Home() {
         </div>
        </section>
 
-       {/* Newsletter */}
        <section className="bg-gradient-to-br from-primary to-secondary py-16 md:py-20 text-white">
-         <div className="classic-container text-center">
+         <div className="classic-container max-w-2xl text-center">
            <h2 className="text-3xl font-black tracking-tight sm:text-4xl">Stay Clean, Stay Updated</h2>
            <p className="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-white/80">
              Get cleaning tips, exclusive offers, and seasonal deals delivered to your inbox.
            </p>
-           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:max-w-lg sm:mx-auto">
-             <input
-               type="email"
-               placeholder="Your email address"
-               className="flex-1 rounded-full px-5 py-3 text-sm text-slate-900 placeholder:text-slate-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50"
-             />
-             <Button className="h-12 rounded-full bg-slate-950 px-6 text-xs font-black uppercase tracking-[0.18em] text-white shadow-lg hover:bg-slate-900">
-               Subscribe
-             </Button>
+           <div className="mt-8">
+             <NewsletterForm variant="hero" />
            </div>
-           <p className="mt-3 text-[11px] text-white/60">No spam. Unsubscribe anytime.</p>
          </div>
        </section>
 

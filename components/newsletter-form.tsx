@@ -8,7 +8,7 @@ import { Input } from "@/components/ui/input"
 import { useToast } from "@/hooks/use-toast"
 import { saveSubscription } from "@/lib/firebase-service"
 
-export function NewsletterForm() {
+export function NewsletterForm({ variant = "default" }: { variant?: "default" | "hero" }) {
   const [email, setEmail] = useState("")
   const [loading, setLoading] = useState(false)
   const { toast } = useToast()
@@ -47,6 +47,35 @@ export function NewsletterForm() {
     } finally {
       setLoading(false)
     }
+  }
+
+  if (variant === "hero") {
+    return (
+      <div className="space-y-3">
+        <div className="flex flex-col gap-3 sm:flex-row">
+          <div className="relative flex-1">
+            <Input
+              placeholder="Your email address"
+              type="email"
+              value={email}
+              onChange={(event) => setEmail(event.target.value)}
+              className="h-12 rounded-full border-0 bg-white px-5 pr-12 text-sm text-slate-900 placeholder:text-slate-400 focus-visible:ring-2 focus-visible:ring-white/50"
+              onKeyDown={(event) => event.key === "Enter" && handleSubscribe()}
+            />
+            <Mail className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
+          </div>
+          <Button
+            onClick={handleSubscribe}
+            disabled={loading}
+            className="h-12 rounded-full bg-slate-950 px-6 text-xs font-black uppercase tracking-[0.18em] text-white shadow-lg hover:bg-slate-900"
+          >
+            {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : null}
+            {loading ? "Subscribing..." : "Subscribe"}
+          </Button>
+        </div>
+        <p className="text-[11px] text-white/60">No spam. Unsubscribe anytime.</p>
+      </div>
+    )
   }
 
   return (
