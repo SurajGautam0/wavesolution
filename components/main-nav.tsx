@@ -197,6 +197,7 @@ export function MainNav() {
                 fill
                 priority
                 className="object-contain"
+                sizes="192px"
               />
             </div>
           </Link>
@@ -401,6 +402,7 @@ export function MainNav() {
                           alt="Wave Solution Cleaning"
                           fill
                           className="object-contain"
+                          sizes="144px"
                         />
                       </div>
                     </div>

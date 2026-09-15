@@ -85,6 +85,7 @@ export function SiteFooter() {
                     alt="Wave Solution Cleaning"
                     fill
                     className="object-contain brightness-0 invert"
+                    sizes="160px"
                   />
                 </div>
               </Link>

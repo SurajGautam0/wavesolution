@@ -70,6 +70,7 @@ export function WorkerShowcase() {
                         className="object-cover transition-transform duration-1000 group-hover:scale-110"
                         key={randomImage}
                         priority
+                        sizes="(max-width: 1024px) 100vw, 50vw"
                     />
 
                     {/* Premium Overlays */}
@@ -85,6 +86,7 @@ export function WorkerShowcase() {
                                     alt="Logo"
                                     fill
                                     className="object-contain brightness-0 invert"
+                                    sizes="16px"
                                 />
                             </div>
                             <span className="text-[10px] font-black uppercase tracking-[0.2em] text-white">Gold Coast Specialists</span>

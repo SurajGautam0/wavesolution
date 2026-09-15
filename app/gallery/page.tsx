@@ -203,6 +203,7 @@ export default function GalleryPage() {
 							className="object-cover scale-110 opacity-30"
 							style={{ animation: "ken-burns 20s ease-in-out infinite alternate" }}
 							priority
+							sizes="100vw"
 						/>
 					</div>
 					<div className="absolute inset-0 bg-gradient-to-r from-primary/90 via-primary/50 to-transparent z-10" />
@@ -218,6 +219,7 @@ export default function GalleryPage() {
 									alt="Logo"
 									fill
 									className="object-contain brightness-0 invert"
+									sizes="16px"
 								/>
 							</div>
 							<span className="text-[10px] font-black uppercase tracking-[0.3em]">#1 Cleaning Services</span>

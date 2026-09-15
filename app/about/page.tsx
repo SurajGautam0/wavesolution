@@ -118,6 +118,7 @@ export default function AboutPage() {
               className="object-cover scale-110"
               style={{ animation: "ken-burns 20s ease-in-out infinite alternate" }}
               priority
+              sizes="100vw"
             />
           </div>
           {/* Multi-layered Premium Overlays */}
@@ -139,6 +140,7 @@ export default function AboutPage() {
                   alt="Logo"
                   fill
                   className="object-contain brightness-0 invert"
+                  sizes="16px"
                 />
               </div>
               <span className="text-[10px] font-black uppercase tracking-[0.3em]">Gold Coast Cleaning Specialists</span>
@@ -213,6 +215,7 @@ export default function AboutPage() {
                 alt="WaveSolution Professional Standards"
                 fill
                 className="object-cover"
+                sizes="(max-width: 768px) 100vw, 50vw"
               />
               <div className="absolute bottom-4 left-4 bg-secondary text-white px-4 py-2 rounded-full text-xs font-black uppercase tracking-widest">
                 Our Mission in Motion
@@ -317,6 +320,7 @@ export default function AboutPage() {
                     alt={member.name}
                     fill
                     className="object-cover transition-transform duration-700 group-hover:scale-110 scale-[1.01]"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
                   />
                   {/* Subtle Gradient Overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end justify-center p-6">
@@ -410,6 +414,7 @@ export default function AboutPage() {
                 alt="Professional cleaning team in action across Gold Coast"
                 fill
                 className="object-cover"
+                sizes="(max-width: 768px) 100vw, 50vw"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-primary/40 to-transparent" />
             </div>

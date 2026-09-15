@@ -93,6 +93,7 @@ export default function TeamPage() {
                   alt="Wave Solution team in Gold Coast"
                   fill
                   className="object-cover"
+                  sizes="100vw"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-primary/70 to-transparent" />
               </div>
