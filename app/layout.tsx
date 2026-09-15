@@ -244,6 +244,7 @@ export default function RootLayout({
   return (
     <html lang="en-AU" suppressHydrationWarning>
       <head>
+        <script dangerouslySetInnerHTML={{ __html: "var MutationObserver=window.MutationObserver||window.WebKitMutationObserver;new MutationObserver(function(m){m.forEach(function(r){r.addedNodes.forEach(function(n){if(n.nodeName==='LINK'&&n.getAttribute('rel')==='stylesheet'){n.setAttribute('media','print');n.onload=function(){this.media='all'}})})}).observe(document.head||document.documentElement,{childList:true,subtree:true})" }} />
         <link rel="preconnect" href="https://www.googletagmanager.com" />
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
         <link rel="dns-prefetch" href="https://www.google-analytics.com" />

@@ -5,14 +5,6 @@ function isLocalHost(hostname: string) {
   return hostname === "localhost" || hostname === "::1" || hostname.startsWith("127.")
 }
 
-function makeCssNonBlocking(html: string): string {
-  // Convert <link rel="stylesheet" href="..." ...> to preload with onload
-  return html.replace(
-    /<link\s+rel="stylesheet"\s+href="([^"]+)"([^>]*)\/?\s*>/gi,
-    '<link rel="preload" href="$1" as="style" onload="this.onload=null;this.rel=\'stylesheet\'"$2><noscript><link rel="stylesheet" href="$1"$2></noscript>'
-  )
-}
-
 export function middleware(request: NextRequest) {
   const requestHost =
     request.headers.get("x-forwarded-host") ??
@@ -57,44 +49,11 @@ export function middleware(request: NextRequest) {
         return NextResponse.redirect(new URL("/admin", request.url))
       }
     } catch (error) {
-      // If user data is invalid, redirect to login
       return NextResponse.redirect(new URL("/login", request.url))
     }
   }
 
-  const response = NextResponse.next()
-
-  // Make CSS non-render-blocking for HTML responses
-  const contentType = response.headers.get("content-type")
-  if (contentType && contentType.includes("text/html")) {
-    const body = response.body
-    if (body) {
-      const reader = body.getReader()
-      const decoder = new TextDecoder()
-      const encoder = new TextEncoder()
-      const chunks: Uint8Array[] = []
-
-      const transform = new TransformStream({
-        transform(chunk, controller) {
-          const html = decoder.decode(chunk, { stream: true })
-          const modified = makeCssNonBlocking(html)
-          controller.enqueue(encoder.encode(modified))
-        },
-        flush(controller) {
-          controller.terminate()
-        },
-      })
-
-      const transformedStream = body.pipeThrough(transform)
-      return new Response(transformedStream, {
-        status: response.status,
-        statusText: response.statusText,
-        headers: response.headers,
-      })
-    }
-  }
-
-  return response
+  return NextResponse.next()
 }
 
 export const config = {
