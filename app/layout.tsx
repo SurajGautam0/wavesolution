@@ -11,14 +11,14 @@ import { businessInfo } from "@/lib/business-info"
 const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ["latin"],
   variable: "--font-heading",
-  weight: ["400", "500", "600", "700", "800"],
+  weight: ["600", "700", "800"],
   display: "swap",
 })
 
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-sans",
-  weight: ["300", "400", "500", "600", "700"],
+  weight: ["400", "500", "600"],
   display: "swap",
 })
 
@@ -36,41 +36,18 @@ export const metadata: Metadata = {
     "cleaning services Gold Coast",
     "house cleaning Gold Coast",
     "office cleaning Gold Coast",
-    "deep cleaning Gold Coast",
-    "end of lease cleaning Gold Coast",
     "bond cleaning Gold Coast",
-    "commercial cleaning Gold Coast",
-    "move-in cleaning Gold Coast",
-    "after builders cleaning Gold Coast",
-    "builders cleans Gold Coast",
+    "end of lease cleaning Gold Coast",
     "carpet cleaning Gold Coast",
-    "carpet steam cleaning Gold Coast",
+    "commercial cleaning Gold Coast",
+    "deep cleaning Gold Coast",
+    "after builders cleaning Gold Coast",
     "pest control Gold Coast",
-    "house cleaners Gold Coast",
     "spring cleaning Gold Coast",
-    "spring clean Gold Coast",
     "airbnb cleaning Gold Coast",
-    "airbnb turnover cleaning Gold Coast",
     "pressure cleaning Gold Coast",
-    "pressure washing Gold Coast",
     "window cleaning Gold Coast",
-    "oven cleaning Gold Coast",
-    "upholstery cleaning Gold Coast",
-    "couch cleaning Gold Coast",
-    "mattress cleaning Gold Coast",
-    "tile and grout cleaning Gold Coast",
-    "mould removal Gold Coast",
-    "curtain cleaning Gold Coast",
-    "leather cleaning Gold Coast",
-    "rangehood cleaning Gold Coast",
-    "fridge cleaning Gold Coast",
-    "one off cleaning Gold Coast",
-    "fortnightly cleaning Gold Coast",
-    "weekly cleaning Gold Coast",
-    "regular cleaning Gold Coast",
-    "move out cleaning Gold Coast",
-    "vacate cleaning Gold Coast",
-    "exit cleaning Gold Coast",
+    "move in cleaning Gold Coast",
     "cleaning services Southport",
     "cleaning services Robina",
     "cleaning services Surfers Paradise",
@@ -81,50 +58,11 @@ export const metadata: Metadata = {
     "cleaning services Coomera",
     "cleaning services Palm Beach",
     "cleaning services Varsity Lakes",
-    "cleaning services Merrimac",
-    "carpet cleaners Southport",
-    "carpet cleaners Robina",
-    "bond cleaners Gold Coast",
-    "end of lease cleaners Gold Coast",
-    "home cleaners Gold Coast",
     "local cleaners Gold Coast",
     "professional cleaners Gold Coast",
-    "affordable cleaning Gold Coast",
-    "best cleaning service Gold Coast",
-    "trusted cleaners Gold Coast",
-    "eco friendly cleaning Gold Coast",
-    "green cleaning Gold Coast",
-    "NDIS cleaning Gold Coast",
-    "aged care cleaning Gold Coast",
-    "medical centre cleaning Gold Coast",
-    "restaurant cleaning Gold Coast",
-    "gym cleaning Gold Coast",
-    "school cleaning Gold Coast",
-    "childcare cleaning Gold Coast",
-    "warehouse cleaning Gold Coast",
-    "strata cleaning Gold Coast",
-    "real estate cleaning Gold Coast",
-    "post construction cleaning Gold Coast",
-    "renovation cleaning Gold Coast",
-    "floor polishing Gold Coast",
-    "driveway cleaning Gold Coast",
-    "gutter cleaning Gold Coast",
-    "solar panel cleaning Gold Coast",
-    "high pressure cleaning Gold Coast",
-    "window washing Gold Coast",
-    "cleaning company Gold Coast",
-    "cleaning contractor Gold Coast",
-    "bond back guarantee cleaning Gold Coast",
-    "REIQ cleaning Gold Coast",
-    "rental inspection cleaning Gold Coast",
-    "final inspection cleaning Gold Coast",
-    "move in deep clean Gold Coast",
-    "post storm cleaning Gold Coast",
-    "flood restoration cleaning Gold Coast",
-    "emergency cleaning Gold Coast",
-    "same day cleaning Gold Coast",
-    "last minute cleaning Gold Coast",
-    "Wave Solution Cleaning",
+    "bond cleaners Gold Coast",
+    "carpet cleaners Southport",
+    "carpet cleaners Robina",
   ],
   authors: [{ name: businessInfo.businessName, url: businessInfo.baseUrl }],
   creator: businessInfo.businessName,
@@ -244,7 +182,6 @@ export default function RootLayout({
   return (
     <html lang="en-AU" suppressHydrationWarning>
       <head>
-        <script dangerouslySetInnerHTML={{ __html: "/*CSS_DEFER*/var MutationObserver=window.MutationObserver||window.WebKitMutationObserver;new MutationObserver(function(m){m.forEach(function(r){r.addedNodes.forEach(function(n){if(n.nodeName==='LINK'&&n.getAttribute('rel')==='stylesheet'){n.setAttribute('media','print');n.onload=function(){this.media='all'}})})}).observe(document.head||document.documentElement,{childList:true,subtree:true})" }} />
         <link rel="preconnect" href="https://www.googletagmanager.com" />
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
         <link rel="dns-prefetch" href="https://www.google-analytics.com" />
@@ -267,31 +204,7 @@ export default function RootLayout({
           </div>
           <Toaster position="top-center" richColors />
         </ThemeProvider>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer=window.dataLayer||[];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js',new Date());
-              gtag('config','G-Q2D4JFK9R6',{send_page_view:false});
-              if('requestIdleCallback' in window){
-                requestIdleCallback(function(){
-                  var s=document.createElement('script');
-                  s.async=true;
-                  s.src='https://www.googletagmanager.com/gtag/js?id=G-Q2D4JFK9R6';
-                  document.head.appendChild(s);
-                });
-              } else {
-                setTimeout(function(){
-                  var s=document.createElement('script');
-                  s.async=true;
-                  s.src='https://www.googletagmanager.com/gtag/js?id=G-Q2D4JFK9R6';
-                  document.head.appendChild(s);
-                },2000);
-              }
-            `,
-          }}
-        />
+        <script dangerouslySetInnerHTML={{ __html: "!function(){var t=document.createElement('script');t.async=!0;t.src='https://www.googletagmanager.com/gtag/js?id=G-Q2D4JFK9R6';var e=function(){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-Q2D4JFK9R6',{send_page_view:!1})};'requestIdleCallback'in window?requestIdleCallback(function(){document.head.appendChild(t);e()}):setTimeout(function(){document.head.appendChild(t);e()},3000)}();" }} />
       </body>
     </html>
   )
