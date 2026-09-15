@@ -244,19 +244,6 @@ export default function RootLayout({
   return (
     <html lang="en-AU" suppressHydrationWarning>
       <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function(){
-                var sheets=document.querySelectorAll('link[rel="stylesheet"]');
-                for(var i=0;i<sheets.length;i++){
-                  sheets[i].setAttribute('media','print');
-                  sheets[i].onload=function(){this.media='all';};
-                }
-              })();
-            `,
-          }}
-        />
         <link rel="preconnect" href="https://www.googletagmanager.com" />
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
         <link rel="dns-prefetch" href="https://www.google-analytics.com" />
