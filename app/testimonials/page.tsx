@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link"
-import { Star, Quote, ChevronRight, Shield, Award, Users } from "lucide-react"
+import { Star, Quote, ShieldCheck, CheckCircle, Clock } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
@@ -36,7 +36,7 @@ const testimonials: Record<string, TestimonialProps[]> = {
       location: "Broadbeach, QLD",
       rating: 5,
       testimonial:
-        "I was amazed at how spotless my apartment was after their deep cleaning service. They paid attention to every detail and exceeded my expectations.",
+        "I was amazed at how spotless my apartment was after WaveSolution's deep cleaning service. They paid attention to every detail and exceeded my expectations.",
       date: "March 10, 2024",
       service: "Deep Cleaning",
       initials: "MT",
@@ -224,19 +224,17 @@ export default function TestimonialsPage() {
   return (
     <div className="flex min-h-screen flex-col">
       {/* Hero */}
-      <section className="relative overflow-hidden bg-[#333365]">
+      <section className="relative overflow-hidden bg-primary">
         <div className="absolute inset-0">
-          <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-[#39BDE4]/10 rounded-full blur-[120px]" />
-          <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-[#249FC5]/10 rounded-full blur-[100px]" />
+          <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-secondary/10 rounded-full blur-[120px]" />
+          <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-secondary/10 rounded-full blur-[100px]" />
         </div>
 
         <div className="classic-container relative z-10 py-20 sm:py-28">
-          <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 mb-6 backdrop-blur-sm border border-white/10">
+          <div className="max-w-3xl text-center">
+            <div className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 mb-8 backdrop-blur-sm border border-white/10">
               <div className="h-2 w-2 rounded-full bg-secondary animate-pulse" />
-              <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-white/80">
-                Trusted by 430+ Customers
-              </span>
+              <span className="text-[10px] font-black uppercase tracking-[0.2em] text-white">Customer Stories</span>
             </div>
 
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight text-white leading-[1.05]">
@@ -245,18 +243,11 @@ export default function TestimonialsPage() {
               <span className="text-secondary">Say About Us</span>
             </h1>
 
-            <div className="w-16 h-1 bg-secondary mt-6 mb-8 rounded-full" />
+            <div className="w-24 h-1 bg-secondary mt-6 mb-8 rounded-full" />
 
-            <p className="text-lg sm:text-xl text-white/60 max-w-xl leading-relaxed">
+            <p className="text-lg sm:text-xl text-white/80 max-w-xl leading-relaxed">
               Real feedback from Gold Coast homes and businesses we proudly clean every week.
             </p>
-          </div>
-
-          {/* Stats row */}
-          <div className="mt-14 grid grid-cols-3 gap-8 max-w-lg">
-            <StatCard icon={Star} value="4.9" label="Google Rating" />
-            <StatCard icon={Users} value="430+" label="Happy Clients" />
-            <StatCard icon={Award} value="10+" label="Years Experience" />
           </div>
         </div>
       </section>
@@ -269,19 +260,19 @@ export default function TestimonialsPage() {
               <TabsList className="bg-white shadow-md rounded-xl p-1">
                 <TabsTrigger
                   value="residential"
-                  className="px-6 py-2.5 rounded-lg text-sm font-semibold data-[state=active]:bg-[#39BDE4] data-[state=active]:text-white transition-all"
+                  className="px-6 py-2.5 rounded-lg text-sm font-semibold data-[state=active]:bg-secondary data-[state=active]:text-white transition-all"
                 >
                   Residential
                 </TabsTrigger>
                 <TabsTrigger
                   value="commercial"
-                  className="px-6 py-2.5 rounded-lg text-sm font-semibold data-[state=active]:bg-[#39BDE4] data-[state=active]:text-white transition-all"
+                  className="px-6 py-2.5 rounded-lg text-sm font-semibold data-[state=active]:bg-secondary data-[state=active]:text-white transition-all"
                 >
                   Commercial
                 </TabsTrigger>
                 <TabsTrigger
                   value="specialized"
-                  className="px-6 py-2.5 rounded-lg text-sm font-semibold data-[state=active]:bg-[#39BDE4] data-[state=active]:text-white transition-all"
+                  className="px-6 py-2.5 rounded-lg text-sm font-semibold data-[state=active]:bg-secondary data-[state=active]:text-white transition-all"
                 >
                   Specialized
                 </TabsTrigger>
@@ -315,7 +306,7 @@ export default function TestimonialsPage() {
         </div>
       </section>
 
-      {/* CTA */}
+      {/* Trust CTA */}
       <section className="bg-white py-16 sm:py-20">
         <div className="classic-container">
           <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#333365] to-[#39BDE4] p-10 sm:p-14 text-center">
@@ -366,6 +357,31 @@ export default function TestimonialsPage() {
             </Button>
           </div>
         </div>
+        </section>
+
+        {/* Social proof stats */}
+        <section className="bg-primary text-white py-10 sm:py-14">
+          <div className="classic-container">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 max-w-2xl mx-auto">
+              <div className="text-center">
+                <p className="text-3xl sm:text-4xl font-black text-white tracking-tight">4.9</p>
+                <p className="text-sm text-white/60">Google Rating</p>
+              </div>
+              <div className="text-center">
+                <p className="text-3xl sm:text-4xl font-black text-white tracking-tight">430+</p>
+                <p className="text-sm text-white/60">Happy Clients</p>
+              </div>
+              <div className="text-center">
+                <p className="text-3xl sm:text-4xl font-black text-white tracking-tight">10+</p>
+                <p className="text-sm text-white/60">Years Experience</p>
+              </div>
+              <div className="text-center">
+                <p className="text-3xl sm:text-4xl font-black text-white tracking-tight">15</p>
+                <p className="text-sm text-white/60">Gold Coast Suburbs</p>
+              </div>
+            </div>
+          </div>
+        </section>
       </section>
     </div>
   )
