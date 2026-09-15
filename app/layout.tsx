@@ -174,12 +174,6 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q2D4JFK9R6" />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-Q2D4JFK9R6', { page_title: document.title });`,
-          }}
-        />
       </head>
       <body className={`${inter.variable} ${plusJakartaSans.variable} font-sans antialiased selection:bg-secondary/20 selection:text-primary`} suppressHydrationWarning>
         <ThemeProvider
@@ -194,6 +188,12 @@ export default function RootLayout({
           </div>
           <Toaster position="top-center" richColors />
         </ThemeProvider>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q2D4JFK9R6" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-Q2D4JFK9R6');`,
+          }}
+        />
       </body>
     </html>
   )

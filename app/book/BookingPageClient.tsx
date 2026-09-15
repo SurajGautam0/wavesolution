@@ -681,9 +681,10 @@ export default function BookingPageClient() {
 												<span className="font-semibold">{businessInfo.phoneDisplay}</span>
 											</Link>
 											<Link
-												href={`https://wa.me/${businessInfo.phoneE164.replace(/\D/g, "")}`}
-												target="_blank"
-												className="group flex items-center gap-3 text-sm text-slate-600 transition-colors hover:text-green-600"
+											href={`https://wa.me/${businessInfo.phoneE164.replace(/\D/g, "")}`}
+											target="_blank"
+											rel="noopener noreferrer"
+											className="group flex items-center gap-3 text-sm text-slate-600 transition-colors hover:text-green-600"
 											>
 												<div className="flex h-9 w-9 items-center justify-center rounded-xl bg-green-50 transition-colors group-hover:bg-green-100">
 													<MessageCircle className="h-4 w-4 text-green-600" />

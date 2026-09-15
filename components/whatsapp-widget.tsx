@@ -13,6 +13,7 @@ export function WhatsAppWidget() {
       <Link
         href={`https://wa.me/${whatsappNumber}?text=${message}`}
         target="_blank"
+        rel="noopener noreferrer"
         aria-label="Chat with Wave Solution on WhatsApp"
         className="group flex items-center gap-3 rounded-full bg-[#25D366] px-4 py-3 text-white shadow-lg shadow-green-500/30 transition-all hover:scale-105 hover:bg-[#20bd5a]"
       >

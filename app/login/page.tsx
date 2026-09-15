@@ -102,7 +102,7 @@ export default function LoginPage() {
                 <div className="relative z-10">
                     <Link href={siteLinks.home} className="inline-block">
                         <div className="relative w-48 h-12">
-                            <img src="/logo.png" alt="WaveSolution" className="object-contain brightness-0 invert" />
+                            <img src="/logo.png" alt="WaveSolution" width={192} height={48} className="object-contain brightness-0 invert" />
                         </div>
                     </Link>
                 </div>
@@ -152,7 +152,7 @@ export default function LoginPage() {
                 <div className="w-full max-w-md space-y-8 relative z-10">
                     <div className="space-y-3">
                         <div className="lg:hidden mb-6">
-                            <img src="/logo.png" alt="WaveSolution" className="h-10 object-contain mx-auto" />
+                            <img src="/logo.png" alt="WaveSolution" width={160} height={40} className="h-10 object-contain mx-auto" />
                         </div>
                         <span className="eyebrow">Client Login</span>
                         <h2 className="pt-1 text-4xl font-black text-secondary tracking-tight">Welcome Back</h2>

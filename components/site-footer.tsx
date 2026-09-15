@@ -116,7 +116,7 @@ export function SiteFooter() {
                 <Link
                   href={businessInfo.mapsUrl}
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noopener noreferrer"
                   className="flex items-center gap-3 text-white/75 transition-colors hover:text-[#39BDE4]"
                 >
                   <span className="flex h-9 w-9 items-center justify-center rounded-full bg-white/10">

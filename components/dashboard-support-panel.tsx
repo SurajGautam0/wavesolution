@@ -120,7 +120,7 @@ export function DashboardSupportPanel({ user }: DashboardSupportPanelProps) {
               </p>
             </div>
             <Button asChild className="w-full h-11 rounded-full bg-green-500 hover:bg-green-600 text-white text-xs font-black uppercase tracking-widest">
-              <a href={whatsappHref} target="_blank" rel="noreferrer">
+              <a href={whatsappHref} target="_blank" rel="noopener noreferrer">
                 Chat Now
               </a>
             </Button>

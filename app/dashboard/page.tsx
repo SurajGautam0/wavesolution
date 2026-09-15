@@ -173,7 +173,7 @@ export default function UserDashboardPage() {
                                         <a
                                             href={`https://wa.me/${businessInfo.phoneE164.replace(/\D/g, "")}`}
                                             target="_blank"
-                                            rel="noreferrer"
+                                            rel="noopener noreferrer"
                                             className="flex items-center gap-3 rounded-xl bg-[#F3F3F3] p-3 text-sm font-semibold text-slate-700 hover:bg-green-50 hover:text-green-700 transition-colors"
                                         >
                                             <MessageCircle className="h-4 w-4 text-green-500" />
