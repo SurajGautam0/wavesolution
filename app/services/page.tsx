@@ -9,16 +9,16 @@ import { businessInfo, siteLinks } from "@/lib/business-info"
 import { servicePages } from "@/lib/service-pages"
 
 export const metadata: Metadata = {
-  title: "Cleaning Services Gold Coast | House, Office, Carpet & Pest Control",
+  title: "Cleaning Services Gold Coast | House, Office, Bond & Carpet Cleaning",
   description:
-    "Explore Wave Solution services in the Gold Coast including house cleaning, office cleaning, bond cleaning, end of lease cleaning, move-in cleaning, after builders cleaning, commercial cleaning, deep cleaning, carpet cleaning, and pest control.",
+    "Professional cleaning services across the Gold Coast including house cleaning, office cleaning, bond cleaning, end of lease cleaning, carpet steam cleaning, airbnb turnover, pressure washing, window cleaning, after builders cleaning, deep cleaning, and pest control. Free quotes for Southport, Robina, Surfers Paradise, Broadbeach, Burleigh Heads, Nerang, Helensvale, Coomera, Palm Beach and Varsity Lakes.",
   alternates: {
     canonical: `${businessInfo.baseUrl}/services`,
   },
   openGraph: {
-    title: "Cleaning Services Gold Coast | House, Office, Carpet & Pest Control",
+    title: "Cleaning Services Gold Coast | House, Office, Bond & Carpet Cleaning",
     description:
-      "Explore Wave Solution services in the Gold Coast including house cleaning, office cleaning, bond cleaning, end of lease cleaning, move-in cleaning, after builders cleaning, commercial cleaning, deep cleaning, carpet cleaning, and pest control.",
+      "Professional cleaning services across the Gold Coast including house cleaning, office cleaning, bond cleaning, end of lease cleaning, carpet steam cleaning, airbnb turnover, pressure washing, window cleaning, after builders cleaning, deep cleaning, and pest control.",
     url: `${businessInfo.baseUrl}/services`,
     images: [{ url: "/gold-coast-cleaning-services.jpeg", width: 1200, height: 630, alt: "Wave Solution cleaning services Gold Coast" }],
   },
