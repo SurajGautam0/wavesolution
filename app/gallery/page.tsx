@@ -472,26 +472,6 @@ export default function GalleryPage() {
 			</section>
 
 			<style jsx>{`
-				.shimmer-text {
-					background: linear-gradient(90deg, #ffffff 0%, #ffaa00 50%, #ffffff 100%);
-					background-size: 200% auto;
-					color: transparent;
-					-webkit-background-clip: text;
-					background-clip: text;
-					animation: shimmer 5s linear infinite;
-				}
-				@keyframes shimmer {
-					0% { background-position: -200% 0; }
-					100% { background-position: 200% 0; }
-				}
-				@keyframes ken-burns {
-					0% { transform: scale(1); }
-					100% { transform: scale(1.15) translate(1%, 1%); }
-				}
-				@keyframes fadeIn {
-					from { opacity: 0; transform: translateY(20px); }
-					to { opacity: 1; transform: translateY(0); }
-				}
 				.animate-fadeIn {
 					animation: fadeIn 1s ease-out forwards;
 				}

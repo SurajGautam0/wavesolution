@@ -44,6 +44,8 @@ export function DashboardHeader() {
                         <img
                             src="/logo.png"
                             alt="Wave Solution"
+                            width={160}
+                            height={40}
                             className="h-full w-full object-contain"
                         />
                     </div>

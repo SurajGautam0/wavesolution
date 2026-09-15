@@ -251,13 +251,6 @@ export default function TestimonialsPage() {
           </div>
         </div>
 
-        {/* Custom Keyframes in-line */}
-        <style jsx>{`
-          @keyframes ken-burns {
-            0% { transform: scale(1); }
-            100% { transform: scale(1.15) translate(1%, 1%); }
-          }
-        `}</style>
       </div>
 
       {/* Testimonials Section */}
