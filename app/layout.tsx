@@ -141,7 +141,7 @@ const jsonLd = {
       priceRange: "$120 - $600",
       currenciesAccepted: "AUD",
       paymentAccepted: "Cash, Credit Card, Bank Transfer",
-      areaServed: [{ "@type": "State", name: "Queensland" }],
+      areaServed: businessInfo.serviceAreas.map((s) => ({ "@type": "City", name: s, containedInPlace: { "@type": "State", name: "Queensland" } })),
       address: { "@type": "PostalAddress", addressLocality: businessInfo.address.locality, addressRegion: businessInfo.address.region, postalCode: businessInfo.address.postalCode, addressCountry: businessInfo.address.countryCode },
       geo: { "@type": "GeoCoordinates", latitude: businessInfo.coordinates.latitude, longitude: businessInfo.coordinates.longitude },
       openingHoursSpecification: businessInfo.openingHoursSpecification,
