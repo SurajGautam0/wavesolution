@@ -244,6 +244,10 @@ export default function RootLayout({
   return (
     <html lang="en-AU" suppressHydrationWarning>
       <head>
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
+        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+        <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+        <link rel="dns-prefetch" href="https://stats.g.doubleclick.net" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -262,10 +266,29 @@ export default function RootLayout({
           </div>
           <Toaster position="top-center" richColors />
         </ThemeProvider>
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q2D4JFK9R6" />
         <script
           dangerouslySetInnerHTML={{
-            __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-Q2D4JFK9R6');`,
+            __html: `
+              window.dataLayer=window.dataLayer||[];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js',new Date());
+              gtag('config','G-Q2D4JFK9R6',{send_page_view:false});
+              if('requestIdleCallback' in window){
+                requestIdleCallback(function(){
+                  var s=document.createElement('script');
+                  s.async=true;
+                  s.src='https://www.googletagmanager.com/gtag/js?id=G-Q2D4JFK9R6';
+                  document.head.appendChild(s);
+                });
+              } else {
+                setTimeout(function(){
+                  var s=document.createElement('script');
+                  s.async=true;
+                  s.src='https://www.googletagmanager.com/gtag/js?id=G-Q2D4JFK9R6';
+                  document.head.appendChild(s);
+                },2000);
+              }
+            `,
           }}
         />
       </body>
