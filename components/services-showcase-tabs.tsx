@@ -123,9 +123,9 @@ export function ServicesShowcaseTabs() {
            <Sparkles className="h-3.5 w-3.5 text-primary" />
            Service Deep Dive & Coverage
          </div>
-        <h2 className="mt-3 text-2xl font-black tracking-tight text-primary sm:text-3xl lg:text-4xl">
+        <h3 className="mt-3 text-2xl font-black tracking-tight text-primary sm:text-3xl lg:text-4xl">
           Explore Tailored Cleaning Solutions
-        </h2>
+        </h3>
         <p className="mt-2 text-sm text-slate-600 sm:text-base">
           Every Gold Coast property has distinct requirements. Switch between our specialized services below to compare inclusions, scopes, and local suburb coverage.
         </p>

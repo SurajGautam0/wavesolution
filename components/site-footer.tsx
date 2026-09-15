@@ -47,9 +47,9 @@ export function SiteFooter() {
             <p className="text-[11px] font-black uppercase tracking-[0.2em] text-[#39BDE4]">
               Fast Response · No Hidden Fees
             </p>
-            <h2 className="mx-auto mt-3 max-w-2xl text-3xl font-black tracking-tight text-white sm:text-4xl">
+            <h3 className="mx-auto mt-3 max-w-2xl text-3xl font-black tracking-tight text-white sm:text-4xl">
               Need a Cleaner Today?
-            </h2>
+            </h3>
             <p className="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-white/75 sm:text-base">
               Request a free quote online or call us now — our Gold Coast team replies within
               15 minutes during business hours.
