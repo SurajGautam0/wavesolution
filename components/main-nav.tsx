@@ -4,6 +4,7 @@ import * as React from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
+import { ObfuscatedEmail } from "@/components/obfuscated-email"
 import {
   Briefcase,
   Bug,
@@ -146,13 +147,9 @@ export function MainNav() {
               <Phone className="h-3.5 w-3.5 text-primary" />
               <span>{businessInfo.phoneDisplay}</span>
             </a>
-            <a
-              href={`mailto:${businessInfo.email}`}
+            <ObfuscatedEmail
               className="hidden items-center gap-2 font-medium text-white/70 transition-colors hover:text-white lg:inline-flex"
-            >
-              <Mail className="h-3.5 w-3.5 text-primary" />
-              <span>{businessInfo.email}</span>
-            </a>
+            />
             <div className="hidden items-center gap-2 text-white/60 xl:flex">
               <MapPin className="h-3.5 w-3.5 text-primary" />
               <span>Servicing Gold Coast & Surrounds, QLD</span>

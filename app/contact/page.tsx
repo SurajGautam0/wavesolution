@@ -13,6 +13,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { ObfuscatedEmail } from "@/components/obfuscated-email"
 import { useToast } from "@/hooks/use-toast"
 import { saveContact } from "@/lib/firebase-service"
 import { businessInfo, siteLinks } from "@/lib/business-info"
@@ -119,9 +120,7 @@ export default function ContactPage() {
                   </div>
                   <h3 className="text-xl font-bold mb-2">Email Us</h3>
                   <p className="text-sm text-slate-500 mb-2">We'll respond to your inquiry within 24 hours</p>
-                  <Link href={`mailto:${businessInfo.email}`} className="text-primary hover:underline font-medium">
-                    {businessInfo.email}
-                  </Link>
+                  <ObfuscatedEmail className="text-primary hover:underline font-medium" />
                 </div>
               </CardContent>
             </Card>

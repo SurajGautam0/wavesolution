@@ -4,6 +4,7 @@ import { Facebook, Instagram, Linkedin, Mail, MapPin, Phone, Twitter, Youtube } 
 
 import { businessInfo, siteLinks } from "@/lib/business-info"
 import { NewsletterForm } from "@/components/newsletter-form"
+import { ObfuscatedEmail } from "@/components/obfuscated-email"
 
 const serviceLinks = [
   { href: siteLinks.homeCleaning, label: "House Cleaning" },
@@ -105,15 +106,9 @@ export function SiteFooter() {
                   </span>
                   {businessInfo.phoneDisplay}
                 </Link>
-                <Link
-                  href={`mailto:${businessInfo.email}`}
+                <ObfuscatedEmail
                   className="flex items-center gap-3 text-white/75 transition-colors hover:text-[#39BDE4]"
-                >
-                  <span className="flex h-9 w-9 items-center justify-center rounded-full bg-white/10">
-                    <Mail className="h-4 w-4 text-[#39BDE4]" />
-                  </span>
-                  <span className="break-all">{businessInfo.email}</span>
-                </Link>
+                />
                 <Link
                   href={businessInfo.mapsUrl}
                   target="_blank"
