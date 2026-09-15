@@ -119,201 +119,33 @@ const jsonLd = {
       "@id": `${businessInfo.baseUrl}/#business`,
       name: businessInfo.businessNameWithLocation,
       alternateName: businessInfo.brandName,
-      description:
-        "Professional house cleaning, office cleaning, bond cleaning, end of lease cleaning, move-in cleaning, after builders cleaning, commercial cleaning, deep cleaning, carpet cleaning, and pest control services across the Gold Coast and nearby suburbs.",
+      description: "Professional house cleaning, office cleaning, bond cleaning, end of lease cleaning, deep cleaning, commercial cleaning, carpet cleaning, and pest control across the Gold Coast.",
       image: `${businessInfo.baseUrl}/gold-coast-cleaning-services.jpeg`,
       logo: `${businessInfo.baseUrl}/logo.png`,
       url: businessInfo.baseUrl,
       telephone: businessInfo.phoneE164,
       email: businessInfo.email,
-      aggregateRating: {
-        "@type": "AggregateRating",
-        ratingValue: "4.9",
-        reviewCount: "430",
-        bestRating: "5",
-        worstRating: "1",
-      },
+      aggregateRating: { "@type": "AggregateRating", ratingValue: "4.9", reviewCount: "430", bestRating: "5", worstRating: "1" },
       priceRange: "$120 - $600",
       currenciesAccepted: "AUD",
       paymentAccepted: "Cash, Credit Card, Bank Transfer",
-      areaServed: businessInfo.serviceAreas.map((area) => ({
-        "@type": "City",
-        name: area,
-        containedInPlace: { "@type": "State", name: "Queensland" },
-      })),
-      address: {
-        "@type": "PostalAddress",
-        addressLocality: businessInfo.address.locality,
-        addressRegion: businessInfo.address.region,
-        postalCode: businessInfo.address.postalCode,
-        addressCountry: businessInfo.address.countryCode,
-      },
-      geo: {
-        "@type": "GeoCoordinates",
-        latitude: businessInfo.coordinates.latitude,
-        longitude: businessInfo.coordinates.longitude,
-      },
+      areaServed: [{ "@type": "State", name: "Queensland" }],
+      address: { "@type": "PostalAddress", addressLocality: businessInfo.address.locality, addressRegion: businessInfo.address.region, postalCode: businessInfo.address.postalCode, addressCountry: businessInfo.address.countryCode },
+      geo: { "@type": "GeoCoordinates", latitude: businessInfo.coordinates.latitude, longitude: businessInfo.coordinates.longitude },
       openingHoursSpecification: businessInfo.openingHoursSpecification,
-      sameAs: [
-        businessInfo.googleBusinessProfile,
-        "https://www.facebook.com/wavesolutioncleaning",
-        "https://www.instagram.com/wavesolutioncleaning",
-        "https://www.linkedin.com/company/wavesolutioncleaning",
-      ],
+      sameAs: [businessInfo.googleBusinessProfile, "https://www.facebook.com/wavesolutioncleaning", "https://www.instagram.com/wavesolutioncleaning"],
       hasOfferCatalog: {
         "@type": "OfferCatalog",
         name: "Cleaning Services",
         itemListElement: [
-          {
-            "@type": "Offer",
-            itemOffered: {
-              "@type": "Service",
-              name: "House Cleaning Gold Coast",
-              description:
-                "Professional house cleaning services for homes across Gold Coast. Regular, weekly or fortnightly cleaning.",
-            },
-            priceSpecification: {
-              "@type": "PriceSpecification",
-              price: "120",
-              priceCurrency: "AUD",
-              unitText: "per session",
-            },
-          },
-          {
-            "@type": "Offer",
-            itemOffered: {
-              "@type": "Service",
-              name: "Office Cleaning Gold Coast",
-              description:
-                "Commercial office cleaning for businesses across Gold Coast. Daily, weekly or monthly cleaning schedules.",
-            },
-            priceSpecification: {
-              "@type": "PriceSpecification",
-              price: "200",
-              priceCurrency: "AUD",
-              unitText: "per session",
-            },
-          },
-          {
-            "@type": "Offer",
-            itemOffered: {
-              "@type": "Service",
-              name: "Deep Cleaning Gold Coast",
-              description:
-                "Thorough deep cleaning for kitchens, bathrooms, floors, high-touch surfaces and hard-to-reach areas.",
-            },
-            priceSpecification: {
-              "@type": "PriceSpecification",
-              price: "250",
-              priceCurrency: "AUD",
-              unitText: "per session",
-            },
-          },
-          {
-            "@type": "Offer",
-            itemOffered: {
-              "@type": "Service",
-              name: "Bond Cleaning Gold Coast",
-              description:
-                "Detailed bond cleaning for Gold Coast tenants, landlords, and property managers preparing properties for handover.",
-            },
-            priceSpecification: {
-              "@type": "PriceSpecification",
-              price: "250",
-              priceCurrency: "AUD",
-              unitText: "per session",
-            },
-          },
-          {
-            "@type": "Offer",
-            itemOffered: {
-              "@type": "Service",
-              name: "End of Lease Cleaning Gold Coast",
-              description:
-                "Detailed end of lease cleaning for apartments, units, and rental homes across the Gold Coast.",
-            },
-            priceSpecification: {
-              "@type": "PriceSpecification",
-              price: "250",
-              priceCurrency: "AUD",
-              unitText: "per session",
-            },
-          },
-          {
-            "@type": "Offer",
-            itemOffered: {
-              "@type": "Service",
-              name: "Move-In Cleaning Gold Coast",
-              description:
-                "Move-in cleaning for apartments, homes, and newly purchased properties across the Gold Coast.",
-            },
-            priceSpecification: {
-              "@type": "PriceSpecification",
-              price: "220",
-              priceCurrency: "AUD",
-              unitText: "per session",
-            },
-          },
-          {
-            "@type": "Offer",
-            itemOffered: {
-              "@type": "Service",
-              name: "Commercial Cleaning Gold Coast",
-              description:
-                "Tailored commercial cleaning for offices, customer-facing premises, and business spaces across the Gold Coast.",
-            },
-            priceSpecification: {
-              "@type": "PriceSpecification",
-              price: "200",
-              priceCurrency: "AUD",
-              unitText: "per session",
-            },
-          },
-          {
-            "@type": "Offer",
-            itemOffered: {
-              "@type": "Service",
-              name: "After Builders Cleaning Gold Coast",
-              description:
-                "After builders and post-renovation cleaning for homes, fit-outs, and commercial spaces across the Gold Coast.",
-            },
-            priceSpecification: {
-              "@type": "PriceSpecification",
-              price: "300",
-              priceCurrency: "AUD",
-              unitText: "per service",
-            },
-          },
-          {
-            "@type": "Offer",
-            itemOffered: {
-              "@type": "Service",
-              name: "Carpet Cleaning Gold Coast",
-              description:
-                "Carpet cleaning for homes, rentals, offices, and commercial interiors across the Gold Coast.",
-            },
-            priceSpecification: {
-              "@type": "PriceSpecification",
-              price: "150",
-              priceCurrency: "AUD",
-              unitText: "per service",
-            },
-          },
-          {
-            "@type": "Offer",
-            itemOffered: {
-              "@type": "Service",
-              name: "Pest Control Gold Coast",
-              description:
-                "Pest control support for homes, rentals, and business premises across the Gold Coast.",
-            },
-            priceSpecification: {
-              "@type": "PriceSpecification",
-              price: "180",
-              priceCurrency: "AUD",
-              unitText: "per service",
-            },
-          },
+          { "@type": "Offer", itemOffered: { "@type": "Service", name: "House Cleaning Gold Coast" }, priceSpecification: { "@type": "PriceSpecification", price: "120", priceCurrency: "AUD", unitText: "per session" } },
+          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Office Cleaning Gold Coast" }, priceSpecification: { "@type": "PriceSpecification", price: "200", priceCurrency: "AUD", unitText: "per session" } },
+          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Deep Cleaning Gold Coast" }, priceSpecification: { "@type": "PriceSpecification", price: "250", priceCurrency: "AUD", unitText: "per session" } },
+          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Bond Cleaning Gold Coast" }, priceSpecification: { "@type": "PriceSpecification", price: "250", priceCurrency: "AUD", unitText: "per session" } },
+          { "@type": "Offer", itemOffered: { "@type": "Service", name: "End of Lease Cleaning Gold Coast" }, priceSpecification: { "@type": "PriceSpecification", price: "250", priceCurrency: "AUD", unitText: "per session" } },
+          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Commercial Cleaning Gold Coast" }, priceSpecification: { "@type": "PriceSpecification", price: "200", priceCurrency: "AUD", unitText: "per session" } },
+          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Carpet Cleaning Gold Coast" }, priceSpecification: { "@type": "PriceSpecification", price: "150", priceCurrency: "AUD", unitText: "per service" } },
+          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Pest Control Gold Coast" }, priceSpecification: { "@type": "PriceSpecification", price: "180", priceCurrency: "AUD", unitText: "per service" } },
         ],
       },
     },
@@ -324,14 +156,7 @@ const jsonLd = {
       name: businessInfo.businessNameWithLocation,
       description: "Professional cleaning services in Gold Coast, Queensland.",
       publisher: { "@id": `${businessInfo.baseUrl}/#business` },
-      potentialAction: {
-        "@type": "SearchAction",
-        target: {
-          "@type": "EntryPoint",
-          urlTemplate: `${businessInfo.baseUrl}/services?q={search_term_string}`,
-        },
-        "query-input": "required name=search_term_string",
-      },
+      potentialAction: { "@type": "SearchAction", target: { "@type": "EntryPoint", urlTemplate: `${businessInfo.baseUrl}/services?q={search_term_string}` }, "query-input": "required name=search_term_string" },
       inLanguage: "en-AU",
     },
   ],
