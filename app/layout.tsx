@@ -27,7 +27,7 @@ const googleVerification = process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION?.tri
 export const metadata: Metadata = {
   metadataBase: new URL(businessInfo.baseUrl),
   title: {
-    default: "Cleaning Services Gold Coast | WaveSolution",
+    default: "Cleaning Gold Coast | House & Office Cleaners",
     template: "%s | Wave Solution Cleaning",
   },
   description:
@@ -150,7 +150,7 @@ export const metadata: Metadata = {
     locale: "en_AU",
     url: businessInfo.baseUrl,
     siteName: businessInfo.businessNameWithLocation,
-    title: "Cleaning Services Gold Coast | House & Office Cleaning",
+    title: "Cleaning Gold Coast | House & Office Cleaners",
     description:
       "Professional services across the Gold Coast including house cleaning, office cleaning, bond cleaning, end of lease cleaning, move-in cleaning, after builders cleaning, deep cleaning, commercial cleaning, carpet cleaning, and pest control.",
     images: [
@@ -165,7 +165,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Cleaning Services Gold Coast | House & Office Cleaning",
+    title: "Cleaning Gold Coast | House & Office Cleaners",
     description:
       "Professional services across the Gold Coast including house cleaning, office cleaning, bond cleaning, end of lease cleaning, move-in cleaning, after builders cleaning, deep cleaning, commercial cleaning, carpet cleaning, and pest control.",
     images: ["/gold-coast-cleaning-services.jpeg"],
