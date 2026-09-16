@@ -211,7 +211,7 @@ export function ServiceLandingPage({ page }: ServiceLandingPageProps) {
 
             <aside className="space-y-6">
               <div className="rounded-[2rem] border border-slate-200 bg-[#F3F3F3] p-6 shadow-sm">
-                <p className="text-xs font-black uppercase tracking-[0.2em] text-secondary">Included Support</p>
+                <p className="text-xs font-black uppercase tracking-[0.2em] text-secondary">What's Included in Your Clean</p>
                 <ul className="mt-4 space-y-3">
                   {page.includedItems.map((item) => (
                     <li key={item} className="flex items-start gap-3 text-sm leading-7 text-slate-600">
@@ -223,7 +223,7 @@ export function ServiceLandingPage({ page }: ServiceLandingPageProps) {
               </div>
 
               <div className="rounded-[2rem] border border-slate-200 bg-primary p-6 text-white shadow-xl">
-                <p className="text-xs font-black uppercase tracking-[0.2em] text-secondary">Local Trust Signals</p>
+                <p className="text-xs font-black uppercase tracking-[0.2em] text-secondary">Why Choose Wave Solution</p>
                 <ul className="mt-4 space-y-3 text-sm leading-7 text-white/75">
                   {page.whyChooseUs.map((item) => (
                     <li key={item} className="flex items-start gap-3">

@@ -27,11 +27,11 @@ const googleVerification = process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION?.tri
 export const metadata: Metadata = {
   metadataBase: new URL(businessInfo.baseUrl),
   title: {
-    default: "Cleaning Gold Coast | House & Office Cleaners",
+    default: "Gold Coast Cleaning & Pest Control Services | Wave Solution",
     template: "%s | Wave Solution Cleaning",
   },
-description:
-    "Professional cleaning services across the Gold Coast including house, office, bond, and end of lease cleaning. Fast quote today.",
+  description:
+    "Professional cleaning and pest control services across the Gold Coast. Fully insured, police-checked team providing residential, commercial, bond, carpet, and move-out cleans.",
   authors: [{ name: businessInfo.businessName, url: businessInfo.baseUrl }],
   creator: businessInfo.businessName,
   publisher: businessInfo.businessName,
@@ -56,9 +56,9 @@ description:
     locale: "en_AU",
     url: businessInfo.baseUrl,
     siteName: businessInfo.businessNameWithLocation,
-    title: "Cleaning Gold Coast | House & Office Cleaners",
+    title: "Gold Coast Cleaning & Pest Control Services | Wave Solution",
     description:
-      "Professional services across the Gold Coast including house cleaning, office cleaning, bond cleaning, end of lease cleaning, move-in cleaning, after builders cleaning, deep cleaning, commercial cleaning, carpet cleaning, and pest control.",
+      "Professional cleaning and pest control services across the Gold Coast. Fully insured, police-checked team providing residential, commercial, bond, carpet, and move-out cleans.",
     images: [
       {
         url: "/gold-coast-cleaning-services.jpeg",
@@ -71,9 +71,9 @@ description:
   },
   twitter: {
     card: "summary_large_image",
-    title: "Cleaning Gold Coast | House & Office Cleaners",
+    title: "Gold Coast Cleaning & Pest Control Services | Wave Solution",
     description:
-      "Professional services across the Gold Coast including house cleaning, office cleaning, bond cleaning, end of lease cleaning, move-in cleaning, after builders cleaning, deep cleaning, commercial cleaning, carpet cleaning, and pest control.",
+      "Professional cleaning and pest control services across the Gold Coast. Fully insured, police-checked team providing residential, commercial, bond, carpet, and move-out cleans.",
     images: ["/gold-coast-cleaning-services.jpeg"],
   },
   robots: {

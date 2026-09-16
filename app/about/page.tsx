@@ -7,16 +7,16 @@ import { Button } from "@/components/ui/button"
 import { businessInfo } from "@/lib/business-info"
 
 export const metadata: Metadata = {
-  title: "About Wave Solution | Gold Coast Cleaning Since 2010",
+  title: "About Wave Solution | Gold Coast Cleaning & Pest Control",
   description:
-    "Wave Solution is a Gold Coast cleaning company founded in 2010. Fully insured, police-checked team serving homes, offices, and rentals across Southport, Robina, Broadbeach and surrounding suburbs.",
+    "Wave Solution is a locally owned Gold Coast cleaning company. Fully insured, police-checked team serving homes, offices, and rentals across Southport, Robina, Broadbeach and surrounding suburbs.",
   alternates: {
     canonical: `${businessInfo.baseUrl}/about`,
   },
   openGraph: {
-    title: "About Wave Solution | Gold Coast Cleaning Since 2010",
+    title: "About Wave Solution | Gold Coast Cleaning & Pest Control",
     description:
-      "Wave Solution is a Gold Coast cleaning company founded in 2010. Fully insured, police-checked team serving homes, offices, and rentals across the Gold Coast.",
+      "Wave Solution is a locally owned Gold Coast cleaning company. Fully insured, police-checked team serving homes, offices, and rentals across the Gold Coast.",
     url: `${businessInfo.baseUrl}/about`,
     type: "website",
     images: [{ url: "/gold-coast-cleaning-services.jpeg", width: 1200, height: 630, alt: "Wave Solution cleaning team Gold Coast" }],
@@ -38,9 +38,8 @@ const aboutJsonLd = {
       "@id": `${businessInfo.baseUrl}/#business`,
       name: businessInfo.businessNameWithLocation,
       url: businessInfo.baseUrl,
-      foundingDate: "2010",
       description:
-        "Wave Solution is Gold Coast's trusted local cleaning company founded in 2010, providing house cleaning, bond cleaning, office cleaning, and commercial cleaning across the Gold Coast.",
+        "Wave Solution is a trusted local Gold Coast cleaning company providing house cleaning, bond cleaning, office cleaning, and commercial cleaning across the Gold Coast.",
       employee: [
         {
           "@type": "Person",
@@ -74,7 +73,7 @@ export default function AboutPage() {
             <div className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 mb-6 backdrop-blur-sm border border-white/10">
               <div className="h-2 w-2 rounded-full bg-secondary animate-pulse" />
               <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-white/80">
-                Gold Coast Local Since 2010
+                Gold Coast Owned & Operated
               </span>
             </div>
 
@@ -87,14 +86,14 @@ export default function AboutPage() {
             <div className="w-16 h-1 bg-secondary mt-6 mb-8 rounded-full" />
 
             <p className="text-lg sm:text-xl text-white/60 max-w-xl leading-relaxed">
-              A family-built cleaning company serving Gold Coast homes and businesses for over 15 years.
+              A dedicated cleaning and pest control team serving Gold Coast homes, offices, and rental properties.
             </p>
           </div>
 
           {/* Trust badges */}
           <div className="mt-14 grid grid-cols-2 sm:grid-cols-4 gap-6 max-w-2xl">
             {[
-              { icon: Award, value: "15+", label: "Years Local" },
+              { icon: Award, value: "100%", label: "Satisfaction" },
               { icon: ShieldCheck, value: "100%", label: "Insured" },
               { icon: MapPin, value: "15+", label: "Suburbs" },
               { icon: CheckCircle, value: "4.9", label: "Google Rating" },
@@ -123,28 +122,25 @@ export default function AboutPage() {
 
               <div className="space-y-5 text-slate-600 leading-relaxed">
                 <p>
-                  WaveSolution started in 2010 when Sushant Timalcena saw a gap on the Gold Coast.
-                  Most cleaning companies were either too expensive, unreliable, or used contract
-                  cleaners with no real accountability. He wanted to build something different — a
-                  local company where the people doing the work actually cared about the result.
+                  Wave Solution was established when Sushant Timalcena recognized an ongoing issue across the Gold Coast:
+                  many cleaning providers were either overcharging, cutting corners, or relying on unvetted subcontractors
+                  with zero direct accountability. He set out to build a genuine local alternative where the cleaners
+                  take personal pride in the standard of their work.
                 </p>
                 <p>
-                  The first jobs were residential cleans in Southport and Broadbeach. Sushant
-                  would quote the job, do the clean himself, and follow up with the client directly.
-                  That direct approach — where you actually talk to the person running the business —
-                  is still how we operate today.
+                  Starting with residential cleaning across Southport, Broadbeach, and surrounding areas, Sushant
+                  quoted each job transparently, performed the cleans with meticulous care, and built relationships directly
+                  with homeowners and tenants. That direct, accountable approach remains at the heart of our operations today.
                 </p>
                 <p>
-                  By 2014, demand had grown enough to bring on Veshraj Gautam as Operations
-                  Manager. Veshraj built the scheduling systems, quality checks, and training
-                  processes that let us scale without losing the personal touch. Today, our team
-                  handles residential, commercial, bond, and end of lease cleaning across more than
-                  15 Gold Coast suburbs.
+                  As word of mouth grew, Veshraj Gautam joined as Operations Manager to develop systematic quality checklists,
+                  equipment maintenance standards, and staff screening procedures. Today, our team handles residential,
+                  commercial, bond, and end of lease cleaning across more than 15 Gold Coast suburbs.
                 </p>
                 <p>
-                  We&apos;re not a franchise. We&apos;re not a platform that connects you to random
-                  contractors. We&apos;re a local Gold Coast business with a real address, a real phone
-                  number, and a team that shows up on time.
+                  We&apos;re not an impersonal franchise or a faceless booking app that outsources to unknown contractors.
+                  We&apos;re a local Gold Coast business with a real address, a direct phone number, and a fully insured,
+                  police-checked team that arrives on time.
                 </p>
               </div>
             </div>
@@ -166,8 +162,8 @@ export default function AboutPage() {
               {/* Quick facts */}
               <div className="grid grid-cols-2 gap-4">
                 <div className="rounded-2xl bg-[#F3F3F3] p-5">
-                  <p className="text-3xl font-black text-[#333365]">2010</p>
-                  <p className="text-sm text-slate-600 mt-1">Founded on the Gold Coast</p>
+                  <p className="text-3xl font-black text-[#333365]">Local</p>
+                  <p className="text-sm text-slate-600 mt-1">Gold Coast Owned</p>
                 </div>
                 <div className="rounded-2xl bg-[#F3F3F3] p-5">
                   <p className="text-3xl font-black text-[#333365]">15+</p>

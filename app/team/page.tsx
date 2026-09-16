@@ -120,7 +120,7 @@ export default function TeamPage() {
            <div className="mx-auto max-w-3xl text-center">
              <h2 className="text-3xl font-black tracking-tight text-primary">How Our Team Works</h2>
              <p className="mt-5 text-base leading-8 text-slate-600">
-               Strong local SEO is supported by strong real-world operations. Customers trust businesses that explain their process clearly and make service expectations easy to understand.
+               From your initial quote to final inspection, our team follows strict operational checklists to ensure every property receives consistent, high-standard cleaning and pest control.
              </p>
            </div>
 
@@ -141,9 +141,9 @@ export default function TeamPage() {
       <section className="bg-[#F3F3F3] py-14 md:py-20">
         <div className="classic-container">
           <div className="mx-auto max-w-3xl text-center">
-            <h2 className="text-3xl font-black tracking-tight text-primary">Team Profiles</h2>
+            <h2 className="text-3xl font-black tracking-tight text-primary">Our Core Leadership Team</h2>
             <p className="mt-5 text-base leading-8 text-slate-600">
-              These profiles help customers understand who is behind the service and why Wave Solution feels accountable, local, and easier to trust.
+              Meet the dedicated supervisors and field specialists managing your cleans, quality control, and customer care across the Gold Coast.
             </p>
           </div>
 
@@ -169,7 +169,7 @@ export default function TeamPage() {
               <ShieldCheck className="h-8 w-8 text-secondary" />
               <h2 className="mt-4 text-2xl font-black tracking-tight text-primary">Insurance and Service Standards</h2>
               <p className="mt-4 text-sm leading-7 text-slate-600">
-                Wave Solution positions trust clearly: fully insured service, police-checked staff, clear communication, and practical support before and after the job. This matters for homes, rental properties, offices, and customer-facing businesses.
+                We maintain full $10M public liability coverage, require verified national police checks for all team members, and follow systematic room-by-room checklists to ensure complete peace of mind for every home and business owner.
               </p>
             </article>
 
@@ -177,7 +177,7 @@ export default function TeamPage() {
               <Sparkles className="h-8 w-8 text-secondary" />
               <h2 className="mt-4 text-2xl font-black tracking-tight text-primary">Gold Coast Local Knowledge</h2>
               <p className="mt-4 text-sm leading-7 text-slate-600">
-                Local experience matters because property types and cleaning needs vary across suburbs like Southport, Robina, Broadbeach, Surfers Paradise, Burleigh Heads, Palm Beach, Helensvale, and Coomera. The team and the site should both reflect that local understanding.
+                We understand the distinct requirements of Gold Coast properties, from coastal high-rise salt spray and sliding door tracks in Surfers Paradise to busy family homes in Robina and commercial offices in Southport.
               </p>
             </article>
           </div>
