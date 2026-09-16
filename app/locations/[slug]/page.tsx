@@ -137,17 +137,17 @@ export default async function LocationDetailPage({ params }: LocationPageProps) 
             <h1 className="mt-6 text-4xl font-black tracking-tight sm:text-5xl md:text-6xl">{location.heroTitle}</h1>
             <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-white/75">{location.intro}</p>
             <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row">
-              <Button asChild className="h-12 rounded-full bg-secondary px-6 text-[11px] font-black uppercase tracking-[0.18em] text-white hover:bg-secondary/90">
-                <Link href={siteLinks.book}>
-                  Book a Clean
+              <Button asChild className="h-12 rounded-full bg-secondary px-6 text-[11px] font-black uppercase tracking-[0.18em] text-white hover:bg-secondary/90 shadow-lg shadow-black/20">
+                <Link href={siteLinks.book} className="inline-flex items-center gap-2">
+                  <span>Get a Free Quote</span>
                   <ArrowRight className="h-4 w-4" />
                 </Link>
               </Button>
               <Button asChild variant="outline" className="h-12 rounded-full border-white/20 bg-white/5 px-6 text-[11px] font-black uppercase tracking-[0.18em] text-white hover:bg-white/10 hover:text-white">
-                <Link href={businessInfo.phoneHref}>
-                  <Phone className="h-4 w-4" />
-                  {businessInfo.phoneDisplay}
-                </Link>
+                <a href={businessInfo.phoneHref} className="inline-flex items-center gap-2">
+                  <Phone className="h-4 w-4 text-secondary" />
+                  <span>Call {businessInfo.phoneDisplay}</span>
+                </a>
               </Button>
             </div>
           </div>
@@ -178,37 +178,90 @@ export default async function LocationDetailPage({ params }: LocationPageProps) 
                     </div>
                   ))}
                 </div>
+
+                <div className="mt-8 border-t border-slate-200/80 pt-6">
+                  <p className="text-xs font-black uppercase tracking-[0.16em] text-secondary">Explore Dedicated Service Pages</p>
+                  <p className="mt-2 text-sm text-slate-600">Need specific details, scope checklists, or pricing for your property?</p>
+                  <div className="mt-4 flex flex-wrap gap-2.5">
+                    {[
+                      { href: siteLinks.homeCleaning, label: "House Cleaning" },
+                      { href: siteLinks.bondCleaning, label: "Bond Cleaning" },
+                      { href: siteLinks.endOfLeaseCleaning, label: "End of Lease Cleaning" },
+                      { href: siteLinks.officeCleaning, label: "Office Cleaning" },
+                      { href: siteLinks.commercialCleaning, label: "Commercial Cleaning" },
+                      { href: siteLinks.deepCleaning, label: "Deep Cleaning" },
+                      { href: siteLinks.carpetCleaning, label: "Carpet Cleaning" },
+                      { href: siteLinks.pestControl, label: "Pest Control" },
+                    ].map((service) => (
+                      <Link
+                        key={service.href}
+                        href={service.href}
+                        className="rounded-full border border-slate-200 bg-white px-3.5 py-1.5 text-xs font-semibold text-primary transition-colors hover:border-secondary hover:bg-secondary/5 hover:text-secondary"
+                      >
+                        {service.label} {location.name} →
+                      </Link>
+                    ))}
+                  </div>
+                </div>
               </div>
             </div>
 
             <aside className="space-y-6">
               <div className="rounded-[2rem] border border-slate-200 bg-slate-50 p-6 shadow-sm">
-                <p className="text-xs font-black uppercase tracking-[0.2em] text-secondary">Nearby Reference</p>
+                <p className="text-xs font-black uppercase tracking-[0.2em] text-secondary">Local Landmarks & Coverage</p>
                 <p className="mt-4 text-sm leading-7 text-slate-600">{location.nearbyReference}</p>
               </div>
 
               <div className="rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm">
-                <p className="text-xs font-black uppercase tracking-[0.2em] text-secondary">Consistent NAP</p>
+                <p className="text-xs font-black uppercase tracking-[0.2em] text-secondary">Gold Coast Service Office</p>
                 <div className="mt-4 space-y-3 text-sm leading-7 text-slate-600">
                   <p className="font-semibold text-primary">{businessInfo.businessNameWithLocation}</p>
                   <p>{businessInfo.address.full}</p>
-                  <p>{businessInfo.phoneInternationalDisplay}</p>
+                  <a href={businessInfo.phoneHref} className="block font-bold text-primary hover:text-secondary">
+                    {businessInfo.phoneDisplay}
+                  </a>
                   <p>{businessInfo.email}</p>
                 </div>
               </div>
 
               <div className="rounded-[2rem] border border-slate-200 bg-primary p-6 text-white shadow-xl">
-                <h2 className="text-2xl font-black tracking-tight">Need {location.name} Cleaning Services?</h2>
+                <h2 className="text-2xl font-black tracking-tight">Need {location.name} Cleaning?</h2>
                 <p className="mt-4 text-sm leading-7 text-white/75">
-                  Speak with our team and we&apos;ll help you choose the right service for your property and schedule.
+                  Speak with our Gold Coast team for a fast, free local quote tailored to your {location.name} property.
                 </p>
                 <div className="mt-6 flex flex-col gap-3">
-                  <Button asChild className="h-11 rounded-full bg-secondary text-[11px] font-black uppercase tracking-[0.18em] text-white hover:bg-secondary/90">
-                    <Link href={siteLinks.book}>Book Now</Link>
+                  <Button asChild className="h-11 rounded-full bg-secondary text-[11px] font-black uppercase tracking-[0.18em] text-white hover:bg-secondary/90 shadow-md">
+                    <Link href={siteLinks.book}>Get a Free Quote</Link>
                   </Button>
-                  <Button asChild variant="outline" className="h-11 rounded-full border-white/20 bg-white/5 text-[11px] font-black uppercase tracking-[0.18em] text-white hover:bg-white/10 hover:text-white">
-                    <Link href={siteLinks.contact}>Request a Quote</Link>
+                  <Button asChild variant="outline" className="h-11 rounded-full border-white/20 bg-white/5 text-[11px] font-black uppercase tracking-[0.18em] text-white hover:bg-white/20 hover:text-white">
+                    <a href={businessInfo.phoneHref} className="flex items-center justify-center gap-2">
+                      <Phone className="h-3.5 w-3.5 text-secondary" />
+                      <span>Call {businessInfo.phoneDisplay}</span>
+                    </a>
                   </Button>
+                </div>
+              </div>
+
+              <div className="rounded-[2rem] border border-slate-200 bg-slate-50 p-6 shadow-sm">
+                <p className="text-xs font-black uppercase tracking-[0.2em] text-secondary">Nearby Service Areas</p>
+                <div className="mt-4 flex flex-wrap gap-2">
+                  {locationPages
+                    .filter((l) => l.slug !== location.slug)
+                    .map((other) => (
+                      <Link
+                        key={other.slug}
+                        href={`/locations/${other.slug}`}
+                        className="rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-medium text-slate-700 hover:border-secondary hover:text-secondary"
+                      >
+                        {other.name}
+                      </Link>
+                    ))}
+                  <Link
+                    href={siteLinks.locations}
+                    className="rounded-full border border-primary/20 bg-primary/5 px-3 py-1 text-xs font-bold text-primary hover:bg-primary hover:text-white"
+                  >
+                    All Suburbs →
+                  </Link>
                 </div>
               </div>
             </aside>

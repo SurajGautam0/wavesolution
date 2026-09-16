@@ -30,12 +30,9 @@ const companyLinks = [
 ]
 
 const socialLinks = [
-  { href: businessInfo.googleBusinessProfile, label: "Google Maps", Icon: MapPin },
-  { href: "https://facebook.com", label: "Facebook", Icon: Facebook },
-  { href: "https://instagram.com", label: "Instagram", Icon: Instagram },
-  { href: "https://linkedin.com", label: "LinkedIn", Icon: Linkedin },
-  { href: "https://youtube.com", label: "YouTube", Icon: Youtube },
-  { href: "https://twitter.com", label: "X (Twitter)", Icon: Twitter },
+  { href: businessInfo.socialProfiles.google, label: "Google Business Profile & Reviews", Icon: MapPin },
+  { href: businessInfo.socialProfiles.facebook, label: "Facebook Page", Icon: Facebook },
+  { href: businessInfo.socialProfiles.instagram, label: "Instagram Profile", Icon: Instagram },
 ]
 
 export function SiteFooter() {
@@ -176,7 +173,7 @@ export function SiteFooter() {
               <NewsletterForm />
               <div className="mt-5 flex flex-wrap gap-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-white/60">
                 <span className="rounded-full border border-white/10 bg-white/10 px-3 py-1.5">Gold Coast</span>
-                <span className="rounded-full border border-white/10 bg-white/10 px-3 py-1.5">Since 2010</span>
+                <span className="rounded-full border border-white/10 bg-white/10 px-3 py-1.5">Police-Checked</span>
                 <span className="rounded-full border border-white/10 bg-white/10 px-3 py-1.5">Fully Insured</span>
               </div>
             </div>

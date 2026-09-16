@@ -1,8 +1,9 @@
 export const businessInfo = {
   baseUrl: "https://www.wavesolution.com.au",
-  brandName: "WaveSolution",
-  businessName: "Wave Solution Cleaning",
-  businessNameWithLocation: "Wave Solution Cleaning - Gold Coast",
+  brandName: "Wave Solution",
+  businessName: "Wave Solution Cleaning & Pest Control",
+  businessNameWithLocation: "Wave Solution Cleaning & Pest Control - Gold Coast",
+  tradingName: "Wave Solution Cleaning",
   phoneDisplay: "0450 833 683",
   phoneInternationalDisplay: "+61 450 833 683",
   phoneE164: "+61450833683",
@@ -23,6 +24,16 @@ export const businessInfo = {
   mapsUrl: "https://maps.app.goo.gl/gabLdzZ7v3VRzgk87",
   mapsEmbedUrl: "https://maps.google.com/maps?q=-28.1038271,153.4339270&z=16&output=embed",
   googleBusinessProfile: "https://maps.app.goo.gl/gabLdzZ7v3VRzgk87",
+  socialProfiles: {
+    google: "https://maps.app.goo.gl/gabLdzZ7v3VRzgk87",
+    facebook: "https://www.facebook.com/wavesolutioncleaning",
+    instagram: "https://www.instagram.com/wavesolutioncleaning",
+  },
+  sameAs: [
+    "https://maps.app.goo.gl/gabLdzZ7v3VRzgk87",
+    "https://www.facebook.com/wavesolutioncleaning",
+    "https://www.instagram.com/wavesolutioncleaning",
+  ],
   serviceAreas: [
     "Gold Coast",
     "Southport",

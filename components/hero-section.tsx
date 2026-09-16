@@ -42,7 +42,7 @@ export function HeroSection() {
           </div>
 
           <h1 className="mt-6 text-4xl font-black leading-[1.08] tracking-tight text-white sm:text-5xl lg:text-[3.4rem]">
-            The Best Cleaning Services in Gold Coast for{" "}
+            Professional Cleaning Services in Gold Coast for{" "}
             <span className="text-[#39BDE4]">Homes, Offices & Rentals</span>
           </h1>
 

@@ -1,4 +1,4 @@
-# Wave Solution Cleaning - Gold Coast
+# Wave Solution Cleaning & Pest Control - Gold Coast
 User-agent: *
 Allow: /
 

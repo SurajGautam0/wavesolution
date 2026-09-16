@@ -389,11 +389,14 @@ export function ServiceLandingPage({ page }: ServiceLandingPageProps) {
               Tell us what needs cleaning, where the property is located, and when you would like the service. We will help you choose the right scope and provide a fast local quote.
             </p>
             <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row">
-              <Button asChild className="h-12 rounded-full bg-secondary px-6 text-[11px] font-black uppercase tracking-[0.18em] text-white hover:bg-secondary/90">
-                <Link href={siteLinks.book}>Get Free Quote</Link>
+              <Button asChild className="h-12 rounded-full bg-secondary px-6 text-[11px] font-black uppercase tracking-[0.18em] text-white hover:bg-secondary/90 shadow-lg shadow-black/20">
+                <Link href={siteLinks.book}>Get a Free Quote</Link>
               </Button>
-              <Button asChild variant="outline" className="h-12 rounded-full border-white/20 bg-white/5 px-6 text-[11px] font-black uppercase tracking-[0.18em] text-white hover:bg-white/10 hover:text-white">
-                <Link href={siteLinks.contact}>Book Local Cleaner</Link>
+              <Button asChild variant="outline" className="h-12 rounded-full border-white/20 bg-white/10 px-6 text-[11px] font-black uppercase tracking-[0.18em] text-white hover:bg-white/20 hover:text-white">
+                <a href={businessInfo.phoneHref} className="inline-flex items-center gap-2">
+                  <Phone className="h-4 w-4 text-secondary" />
+                  <span>Call {businessInfo.phoneDisplay}</span>
+                </a>
               </Button>
             </div>
           </div>
