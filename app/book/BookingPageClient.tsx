@@ -164,7 +164,7 @@ export default function BookingPageClient() {
 			const bookings = JSON.parse(localStorage.getItem("bookings") || "[]")
 			bookings.push({
 				...bookingPayload,
-				id: Date.now().toString(),
+				id: crypto.randomUUID(),
 				status: "pending",
 				createdAt: new Date().toISOString(),
 			})
