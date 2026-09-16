@@ -189,11 +189,6 @@ export function generateEnhancedLocalBusinessSchema() {
 
     // Enhanced properties for better local SEO
     slogan: 'Professional Cleaning Services Across Gold Coast',
-    foundingDate: '2010',
-    numberOfEmployees: {
-      '@type': 'QuantitativeValue',
-      value: '15',
-    },
 
     // Service area with more detail
     areaServed: [
@@ -329,11 +324,11 @@ export function generateEnhancedLocalBusinessSchema() {
       ],
     },
 
-    // Same as
+    // Same as - verified social profiles
     sameAs: [
+      'https://maps.app.goo.gl/gabLdzZ7v3VRzgk87',
       'https://www.facebook.com/wavesolutioncleaning',
-      'https://www.instagram.com/wavesolutiongc',
-      // Add real social media URLs
+      'https://www.instagram.com/wavesolutioncleaning',
     ],
   }
 }
