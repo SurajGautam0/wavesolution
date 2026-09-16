@@ -11,7 +11,7 @@ import { servicePages } from "@/lib/service-pages"
 export const metadata: Metadata = {
   title: "Cleaning Services Gold Coast | House, Office, Bond & Carpet Cleaning",
   description:
-    "Professional cleaning services across the Gold Coast including house cleaning, office cleaning, bond cleaning, end of lease cleaning, carpet steam cleaning, airbnb turnover, pressure washing, window cleaning, after builders cleaning, deep cleaning, and pest control. Free quotes for Southport, Robina, Surfers Paradise, Broadbeach, Burleigh Heads, Nerang, Helensvale, Coomera, Palm Beach and Varsity Lakes.",
+    "Professional Gold Coast cleaning services including house, office, bond & carpet cleaning. Free quotes for Southport, Robina & Surfers Paradise.",
   alternates: {
     canonical: `${businessInfo.baseUrl}/services`,
   },

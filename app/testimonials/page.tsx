@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link"
-import { Star, Quote, ShieldCheck, CheckCircle, Clock } from "lucide-react"
+import { Star, Quote, ShieldCheck, CheckCircle, Clock, ChevronRight } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
@@ -382,7 +382,6 @@ export default function TestimonialsPage() {
             </div>
           </div>
         </section>
-      </section>
     </div>
   )
 }
