@@ -17,7 +17,7 @@ export function HeroSection() {
     <section className="page-hero">
       <div className="absolute inset-0">
         <Image
-          src="/images/gold-coast-cleaning-service.jpg"
+          src="/hero-cleaning.jpg"
           alt="Professional cleaners servicing homes and offices in Gold Coast"
           fill
           priority
