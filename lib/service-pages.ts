@@ -1431,6 +1431,347 @@ export const servicePages: ServicePage[] = [
       "deep-cleaning-gold-coast",
     ],
   },
+  {
+    slug: "weekly-cleaning-gold-coast",
+    shortLabel: "Weekly Cleaning Gold Coast",
+    navLabel: "Weekly Cleaning",
+    metaTitle: "Weekly Cleaning Gold Coast | Reliable Regular Home Cleaners",
+    metaDescription:
+      "Keep your Gold Coast home effortlessly spotless with Wave Solution's weekly house cleaning. Consistent, police-checked cleaners, tailored checklists & fast quotes.",
+    heroEyebrow: "Recurring Domestic Cleaning",
+    heroTitle: "Weekly House Cleaning Services in Gold Coast",
+    heroDescription:
+      "Wave Solution provides dependable weekly cleaning for busy households, active families, and professionals across the Gold Coast. Enjoy a pristine, sanitized living space every single week without the weekend chores.",
+    primaryKeyword: "weekly cleaning Gold Coast",
+    keywords: [
+      "weekly cleaning Gold Coast",
+      "regular house cleaning Gold Coast",
+      "weekly cleaners Gold Coast",
+      "recurring home cleaning Gold Coast",
+      "domestic cleaning Gold Coast",
+      "scheduled cleaners Gold Coast",
+    ],
+    overview: [
+      "Balancing work commitments, family life, and active Gold Coast weekends leaves little time for demanding household chores. Weekly house cleaning is the most effective way to keep your home continuously fresh, hygienic, and organized without letting grime, dust, and soap scum accumulate to overwhelming levels.",
+      "With a dedicated weekly cleaning schedule, our team takes ownership of the recurring heavy lifting. We focus on high-traffic areas, kitchen sanitization, bathroom hygiene, and thorough floor care so you always return to an immaculate environment. Having the same reliable, police-checked cleaners assigned to your home ensures familiarity with your property layout and personal preferences.",
+      "Wave Solution delivers weekly cleaning services across key Gold Coast suburbs including Robina, Southport, Burleigh Heads, Broadbeach, Surfers Paradise, Nerang, and Coomera. We supply our own commercial-grade equipment and eco-friendly cleaning solutions, offering total peace of mind for families with children and pets.",
+    ],
+    includedItems: [
+      "Complete kitchen degreasing, benchtop sanitisation, stovetop scrub, and exterior appliance wipe-down",
+      "Full bathroom and ensuite disinfection, including showers, screens, bath tubs, basins, and mirrors",
+      "Thorough dusting across furniture, skirting boards, accessible window sills, and decorative surfaces",
+      "High-efficiency HEPA vacuuming of all carpets, rugs, stairs, and upholstered lounge suites",
+      "Hard surface floor washing and damp mopping tailored to tiles, hardwood, and vinyl planking",
+      "Rubbish bins emptied, relined, and sanitized with spot cleaning of high-touch door handles and switches",
+    ],
+    whyChooseUs: sharedWhyChooseUs,
+    sections: [
+      {
+        title: "Why regular weekly cleaning delivers superior home hygiene",
+        paragraphs: [
+          "In the Gold Coast's warm coastal climate, indoor humidity and airborne sea salt accelerate the buildup of dust, mould spores, and bathroom mildew. When cleaning is delayed to fortnightly or monthly intervals, dirt binds with humidity, requiring aggressive scrubbing that wears down finishes. A weekly maintenance cadence eliminates residues before they establish.",
+          "Weekly cleaning also provides continuous relief for allergy and asthma sufferers. Regular HEPA vacuuming extracts microscopic coastal pollen, pet dander, and fine dust from soft furnishings before they circulate through air conditioning systems. Your indoor air remains noticeably fresher and healthier throughout the year.",
+        ],
+      },
+      {
+        title: "Same trusted local cleaner for complete consistency",
+        paragraphs: [
+          "We understand that welcoming someone into your private residence requires total confidence and trust. That is why Wave Solution prioritizes assigned cleaner consistency for weekly clients. Having the same vetted cleaner each week means you never have to repeat your instructions or point out sensitive areas.",
+          "Our cleaners are police-vetted, insured, and thoroughly trained in residential etiquette. Whether you prefer to be home during your clean or leave a key in a secure lockbox while at work, our team works discreetly and reliably, treating your property with utmost respect.",
+        ],
+      },
+      {
+        title: "Flexible scheduling and tailored priority checklists",
+        paragraphs: [
+          "Every household functions differently. A family with young toddlers in Robina may require heavy emphasis on floor sanitisation and toy room organisation, while a professional couple in Southport may focus on kitchen presentation and crisp bathroom detailing. We build a personalized cleaning plan around your exact lifestyle.",
+          "If your needs change from one week to the next—such as extra bed linen changes before visiting guests or interior fridge cleaning after a weekend barbecue—you can easily update your priorities with a quick message to our coordination team.",
+        ],
+      },
+      {
+        title: "Affordable and transparent recurring rates",
+        paragraphs: [
+          "Investing in weekly cleaning delivers exceptional value compared to ad-hoc deep cleans. Because your home is maintained at a consistently high standard, each visit is streamlined and cost-effective. We provide transparent fixed-rate or hourly billing with no hidden booking fees or locked-in long-term contracts.",
+          "Request a straightforward, obligation-free weekly cleaning estimate today. Tell us about your property size, preferred service day, and specific focus areas, and we will tailor a reliable schedule that fits your routine seamlessly.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "How much does weekly house cleaning cost in the Gold Coast?",
+        answer:
+          "Weekly cleaning costs depend on the number of bedrooms, bathrooms, and overall property size. Typical 2-bedroom units start from $90-$120 per visit, while 3-4 bedroom family homes usually range from $130-$190. Recurring weekly clients benefit from our most competitive hourly rates.",
+      },
+      {
+        question: "Will I have the same cleaner every week?",
+        answer:
+          "Yes. We prioritize assigning the same dedicated, police-checked cleaner to your home each week to ensure consistent quality and complete familiarity with your household preferences.",
+      },
+      {
+        question: "Do I need to be home during the weekly clean?",
+        answer:
+          "No, you do not need to be home. Many of our Gold Coast clients provide secure access via a key lockbox, garage code, or building intercom, returning home to a freshly cleaned property after work.",
+      },
+      {
+        question: "Do you bring your own cleaning supplies and equipment?",
+        answer:
+          "Yes. Wave Solution supplies all professional cleaning chemicals, microfiber cloths, and commercial HEPA vacuum equipment. If you prefer us to use specific products of your own, we are happy to accommodate.",
+      },
+      {
+        question: "What happens if I need to skip or reschedule a week?",
+        answer:
+          "We offer flexible scheduling. If you are going on holiday or need to adjust your cleaning day, simply notify us with 24 hours' notice and we will pause or reschedule without penalty fees.",
+      },
+      {
+        question: "Are your weekly cleaners insured and background-checked?",
+        answer:
+          "Yes. Every member of our team is fully covered by comprehensive public liability insurance and has undergone verified national police background checks.",
+      },
+      {
+        question: "Can I customize the cleaning checklist each week?",
+        answer:
+          "Absolutely. You can request rotational tasks such as interior oven cleaning, bed linen changes, or balcony wipe-downs simply by letting your cleaner or our support team know in advance.",
+      },
+      {
+        question: "Which Gold Coast suburbs do you service for weekly cleaning?",
+        answer:
+          "We provide weekly cleaning across the entire Gold Coast corridor, including Southport, Surfers Paradise, Broadbeach, Robina, Burleigh Heads, Palm Beach, Nerang, Coomera, Helensvale, and Varsity Lakes.",
+      },
+    ],
+    relatedSlugs: [
+      "house-cleaning-gold-coast",
+      "apartment-cleaning-gold-coast",
+      "deep-cleaning-gold-coast",
+      "cleaning-gold-coast",
+    ],
+  },
+  {
+    slug: "apartment-cleaning-gold-coast",
+    shortLabel: "Apartment Cleaning Gold Coast",
+    navLabel: "Apartment Cleaning",
+    metaTitle: "Apartment Cleaning Gold Coast | High-Rise & Unit Cleaners",
+    metaDescription:
+      "Expert apartment and high-rise unit cleaning across Surfers Paradise, Broadbeach, and Southport. Balcony salt-spray removal, glass cleaning, and lift-access coordination.",
+    heroEyebrow: "Coastal High-Rise & Unit Specialists",
+    heroTitle: "Apartment Cleaning Services in Gold Coast",
+    heroDescription:
+      "Wave Solution delivers specialised apartment and high-rise unit cleaning across the Gold Coast. From coastal balcony salt removal and glass detailing to compact kitchen care and secure security-fob coordination, we keep your unit pristine.",
+    primaryKeyword: "apartment cleaning Gold Coast",
+    keywords: [
+      "apartment cleaning Gold Coast",
+      "high rise cleaning Gold Coast",
+      "unit cleaning Gold Coast",
+      "flat cleaners Gold Coast",
+      "coastal apartment cleaning",
+      "apartment cleaners Surfers Paradise",
+      "Broadbeach apartment cleaning",
+    ],
+    overview: [
+      "Gold Coast apartment living offers breathtaking coastal views and a vibrant lifestyle, but coastal high-rises and residential complexes present distinct cleaning challenges. Sea air carries fine salt spray that quickly coats balcony glass and sliding door tracks, while wind-borne dust and high humidity create rapid grime accumulation.",
+      "Wave Solution understands the logistical and practical requirements of modern unit and apartment cleaning. We handle building access protocols, underground visitor parking guidelines, and lift bookings with complete professionalism, ensuring a frictionless service for owners, tenants, and body corporate managers.",
+      "Whether you reside in a luxury beachfront tower in Surfers Paradise or Broadbeach, a modern waterside complex in Southport, or a tranquil townhouse in Varsity Lakes, our apartment cleaning service delivers meticulous attention to detail tailored to compact layouts and architectural finishes.",
+    ],
+    includedItems: [
+      "Balcony glass panel, balustrade, and outdoor tiled flooring wipe-down and salt residue removal",
+      "Deep vacuuming and track scrubbing for heavy sliding patio doors and flyscreens",
+      "Compact kitchen and European laundry sanitisation, degreasing, and splashback polishing",
+      "Shower recess, glass screen, and bathroom ventilation detailing to eliminate humidity buildup",
+      "Streak-free interior window cleaning with salt-film and coastal mist breakdown",
+      "High-suction vacuuming of carpets and damp mopping of tiled or engineered timber living areas",
+    ],
+    whyChooseUs: sharedWhyChooseUs,
+    sections: [
+      {
+        title: "Tackling coastal salt spray, windblown dust, and balcony glass",
+        paragraphs: [
+          "Apartments positioned along the Gold Coast coastline face constant exposure to salt-laden marine air. Over time, salt deposits etch into glass balustrades and corrode aluminium sliding door mechanisms if not regularly treated. Our apartment cleaning protocol specifically targets salt breakdown using non-abrasive, marine-safe solutions.",
+          "We carefully clean sliding glass tracks that trap sand and debris, restoring smooth door glide and preventing air leaks. Balcony tiles and outdoor furnishings are washed down to remove coastal grime, allowing you to enjoy your outdoor living spaces without carrying grit into your living room.",
+        ],
+      },
+      {
+        title: "Seamless building access, concierge coordination, and parking protocols",
+        paragraphs: [
+          "Cleaning an apartment is very different from cleaning a detached suburban house. It requires navigating security gates, key fobs, service lifts, and tight visitor parking allocations. Wave Solution has extensive experience working across Gold Coast residential towers and strata complexes.",
+          "We coordinate seamlessly with on-site building managers and concierges. If you work during the day, we can collect keys from your building reception or lockbox and return them securely once the clean is finished, ensuring zero disruption to your daily schedule.",
+        ],
+      },
+      {
+        title: "Efficient, space-smart cleaning for compact and luxury floor plans",
+        paragraphs: [
+          "Modern Gold Coast units often feature integrated cabinetry, European concealed laundries, stone benchtops, and floor-to-ceiling glazing. Our team uses specialized microfibre techniques and pH-neutral surface protectors that safeguard premium architectural finishes.",
+          "We optimize our workflow for apartment layouts, ensuring that every square metre—from concealed storage nooks and wardrobe runners to high bathroom exhaust vents—receives comprehensive attention without cluttering your living areas.",
+        ],
+      },
+      {
+        title: "Routine maintenance or pre-guest presentation cleans",
+        paragraphs: [
+          "We cater to both long-term apartment residents seeking weekly or fortnightly upkeep and property owners preparing their units for visiting family or corporate letting. Our flexible booking options make it effortless to maintain five-star presentation year-round.",
+          "Get in touch with Wave Solution today for an upfront, transparent apartment cleaning quote. Let our experienced local team restore clarity to your views and sparkle to your coastal residence.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "How do you handle security fob and lift access for apartments?",
+        answer:
+          "We coordinate with building management or follow your exact instructions for key fobs, intercoms, or concierge key pickup. Our team is fully accustomed to high-rise security protocols across the Gold Coast.",
+      },
+      {
+        question: "Do you clean apartment balconies and exterior balcony glass?",
+        answer:
+          "Yes. Balcony floor sweeping/mopping and interior balcony glass cleaning are standard inclusions. Accessible exterior balcony glass is also carefully cleaned within safe reaching limits.",
+      },
+      {
+        question: "How often should a Gold Coast apartment be cleaned?",
+        answer:
+          "Due to coastal humidity and salt spray, most apartment residents choose a fortnightly or weekly cleaning schedule. This prevents salt etching on glass and stops bathroom mould from developing.",
+      },
+      {
+        question: "What if there is no visitor parking in my building?",
+        answer:
+          "Please inform us when booking. Our team brings compact, portable equipment and can utilize designated loading zones or nearby street parking to ensure punctual arrival.",
+      },
+      {
+        question: "Can I book apartment cleaning for a holiday home or rental unit?",
+        answer:
+          "Yes. We support holiday home owners, executive rentals, and private unit owners who need regular turnover cleans or pre-arrival detailing.",
+      },
+      {
+        question: "Do you clean sliding door tracks?",
+        answer:
+          "Yes. Heavy sliding glass door tracks collect significant sand and salt buildup in coastal units. We thoroughly vacuum and brush out these tracks during every apartment clean.",
+      },
+      {
+        question: "Are your cleaning products safe for stone benchtops and delicate surfaces?",
+        answer:
+          "Yes. We strictly use pH-neutral, non-abrasive professional cleaners that protect engineered stone, marble, chrome tapware, and tempered glass surfaces.",
+      },
+      {
+        question: "Which high-rise suburbs do you service most frequently?",
+        answer:
+          "We clean apartments daily throughout Surfers Paradise, Broadbeach, Main Beach, Southport, Robina, Burleigh Heads, and Palm Beach.",
+      },
+    ],
+    relatedSlugs: [
+      "house-cleaning-gold-coast",
+      "weekly-cleaning-gold-coast",
+      "deep-cleaning-gold-coast",
+      "bond-cleaning-gold-coast",
+    ],
+  },
+  {
+    slug: "end-of-lease-pest-control-gold-coast",
+    shortLabel: "End of Lease Pest Control Gold Coast",
+    navLabel: "End of Lease Pest Control",
+    metaTitle: "End of Lease Pest Control Gold Coast | Bond Handover Receipt",
+    metaDescription:
+      "Guaranteed end of lease pest control in Gold Coast for rental tenants and pet handovers. Licensed treatment, approved chemicals & immediate real estate compliance receipt.",
+    heroEyebrow: "QLD Rental Tenancy Compliance",
+    heroTitle: "End of Lease Pest Control in Gold Coast",
+    heroDescription:
+      "Wave Solution delivers certified end of lease pest control for tenants moving out of Gold Coast rental properties. Flea treatments for pet clauses, cockroach eradication, and immediate compliance certificates for your property manager to ensure full bond return.",
+    primaryKeyword: "end of lease pest control Gold Coast",
+    keywords: [
+      "end of lease pest control Gold Coast",
+      "bond pest control Gold Coast",
+      "flea treatment end of lease Gold Coast",
+      "move out pest control Gold Coast",
+      "rental pest spray Gold Coast",
+      "pet lease pest control Gold Coast",
+      "bond return pest certificate",
+    ],
+    overview: [
+      "Moving out of a rental property in Queensland is demanding, and lease agreements frequently require professional pest control before your rental bond can be legally released. Under Queensland Residential Tenancies Authority (RTA) regulations, tenants who have kept domestic pets are almost universally obligated to provide a certified end of lease flea treatment receipt.",
+      "Even properties without pets frequently specify an end of lease pest spray for common pests like cockroaches, silverfish, and spiders as part of the vacate condition standards. Failing to provide an authorized pest control receipt from an insured, licensed technician can cause bond disputes, delayed refunds, or costly agent re-cleans.",
+      "Wave Solution provides hassle-free, fully compliant end of lease pest management across the Gold Coast. We coordinate seamlessly with your bond cleaning and carpet steam cleaning schedule, issuing an immediate digital receipt and treatment certificate that property managers accept without question.",
+    ],
+    includedItems: [
+      "Licensed internal pest spray covering skirting boards, cornices, cupboards, and entryways",
+      "Specialized flea eradication treatment for rental properties with domestic pet clauses",
+      "Targeted cockroach, spider, and silverfish preventative treatment in kitchens and wet areas",
+      "Immediate digital Pest Treatment Certificate and tax invoice issued for your real estate agent",
+      "Australian-standard approved, low-odour formulations safe for families and future occupants once dry",
+      "Full warranty and free re-spray guarantee if your property manager flags any pest issue on inspection",
+    ],
+    whyChooseUs: sharedWhyChooseUs,
+    sections: [
+      {
+        title: "Meeting Queensland RTA tenancy obligations and pet clauses",
+        paragraphs: [
+          "Standard Queensland General Tenancy Agreements (Form 18a) include specific special terms regarding domestic pets. If a dog, cat, or other animal resided on the property, tenants are contractually bound to have the premises fumigated or treated for fleas and parasites upon vacating.",
+          "Property managers conduct thorough exit condition inspections and mandate a legitimate receipt from a registered pest management company. Wave Solution provides the exact documentation required, ensuring your file is stamped compliant without back-and-forth communication.",
+        ],
+      },
+      {
+        title: "Coordinating pest control with your bond cleaning and carpet clean",
+        paragraphs: [
+          "Timing is critical during a vacate clean. Performing pest control before carpets are steam cleaned or before bond cleaners mop the floors can wash away the active residual barrier. The correct, industry-standard sequence is: bond cleaning first, carpet steam cleaning second, and end of lease pest treatment last as the technician locks up.",
+          "Because Wave Solution offers comprehensive bond cleaning, carpet cleaning, and pest control under one roof, we eliminate coordination headaches. Our integrated vacate packages save you money, prevent contractor scheduling conflicts, and guarantee that each step is performed in the ideal sequence.",
+        ],
+      },
+      {
+        title: "Safe, approved treatments that dry quickly and protect properties",
+        paragraphs: [
+          "We utilize premium, low-toxicity synthetic pyrethroid treatments approved under Australian health standards. These formulations target pests aggressively while remaining odourless and completely safe for human and animal contact once dry (typically 1–2 hours).",
+          "Our technicians apply residual barrier treatments along interior skirting boards, window tracks, dark cabinet recesses, and exterior perimeters. This creates an invisible protective barrier that prevents pest migration and satisfies even the strictest real estate checklist.",
+        ],
+      },
+      {
+        title: "Instant digital receipt and full bond back guarantee",
+        paragraphs: [
+          "As soon as our technician completes the vacate treatment, a formal Pest Treatment Certificate specifying the chemical active ingredients, target pests, licence number, and property address is emailed directly to you and your property manager.",
+          "We stand firmly behind our service with a 100% agent satisfaction guarantee. In the rare event that your property manager raises any concern during their exit inspection, we will return to re-inspect and re-treat the area promptly at no additional cost to you.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "Is end of lease pest control mandatory for all QLD rental properties?",
+        answer:
+          "If you have kept pets at the property, end of lease flea treatment is almost always mandatory under your tenancy agreement. For properties without pets, many leases still require general pest control (cockroaches and spiders) upon moving out. Check your lease agreement special terms.",
+      },
+      {
+        question: "Do you provide a formal receipt for my real estate agent?",
+        answer:
+          "Yes. Immediately upon completion, we issue an official digital Pest Treatment Certificate and tax invoice detailing the licence number, chemicals applied, and property details for your property manager.",
+      },
+      {
+        question: "Should pest control be done before or after the bond clean?",
+        answer:
+          "Pest control should always be done LAST, after bond cleaning and carpet steam cleaning are completed. This prevents cleaning products or steam from washing away the protective pest barrier.",
+      },
+      {
+        question: "Can I bundle end of lease pest control with bond and carpet cleaning?",
+        answer:
+          "Yes! Bundling bond cleaning, carpet steam cleaning, and pest control with Wave Solution is our most popular package. It saves you money and ensures seamless coordination on handover day.",
+      },
+      {
+        question: "How long does the pest spray take to dry?",
+        answer:
+          "Interior treatments typically take 1 to 2 hours to dry completely depending on airflow and humidity. Once dry, it is completely odourless and safe.",
+      },
+      {
+        question: "What pests are covered in the end of lease treatment?",
+        answer:
+          "Our standard move-out service covers fleas (essential for pet clauses), German and American cockroaches, spiders, and silverfish across all interior zones.",
+      },
+      {
+        question: "What happens if my property manager fails the pest inspection?",
+        answer:
+          "We offer a 100% bond-back guarantee on our treatments. If your property manager reports any pest issues within the warranty period, we return and re-treat the property free of charge.",
+      },
+      {
+        question: "Which Gold Coast suburbs do you cover for bond pest control?",
+        answer:
+          "We cover all Gold Coast suburbs from Coolangatta to Coomera, including Southport, Robina, Surfers Paradise, Broadbeach, Burleigh Heads, Palm Beach, Nerang, and Helensvale.",
+      },
+    ],
+    relatedSlugs: [
+      "pest-control-gold-coast",
+      "bond-cleaning-gold-coast",
+      "end-of-lease-cleaning-gold-coast",
+      "carpet-cleaning-gold-coast",
+    ],
+  },
 ]
 
 export const servicePageMap = new Map(servicePages.map((page) => [page.slug, page]))

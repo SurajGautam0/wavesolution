@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import Link from "next/link"
 import { CheckCircle2, ChevronRight, AlertCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { AuthorBio } from "@/components/author-bio"
 
 export const metadata: Metadata = {
   title: "Bond Cleaning Checklist Queensland | Complete Move-Out Guide",
@@ -40,7 +41,17 @@ const jsonLd = {
       "@type": "Article",
       headline: "Bond Cleaning Checklist Queensland: Complete Move-Out Guide",
       description: "Complete bond cleaning checklist for Queensland rental properties covering every room inspectors check.",
-      author: { "@type": "Organization", name: "Wave Solution Cleaning", url: "https://www.wavesolution.com.au" },
+      author: {
+        "@type": "Person",
+        name: "Suraj Gautam",
+        jobTitle: "Operations Director & Quality Assurance Lead",
+        worksFor: {
+          "@type": "Organization",
+          name: "Wave Solution Cleaning & Pest Control",
+          url: "https://www.wavesolution.com.au",
+        },
+        url: "https://www.wavesolution.com.au/team",
+      },
       publisher: { "@type": "Organization", name: "Wave Solution Cleaning Gold Coast", url: "https://www.wavesolution.com.au" },
       datePublished: "2025-01-15",
       dateModified: "2025-01-15",
@@ -165,12 +176,14 @@ export default function BondCleaningChecklistPage() {
             <p className="text-lg text-white/75 leading-8 mb-8">
               A complete room-by-room guide covering everything property managers and agents inspect before releasing your bond in Queensland.
             </p>
-            <div className="flex flex-wrap gap-4 text-xs text-white/60">
+            <div className="flex flex-wrap items-center gap-3 text-xs text-white/75">
               <span>Updated January 2025</span>
               <span>•</span>
               <span>10 min read</span>
               <span>•</span>
-              <span>Wave Solution Cleaning</span>
+              <span className="font-semibold text-white">Written by Suraj Gautam</span>
+              <span>•</span>
+              <span className="text-secondary font-bold">QLD Tenancy Reviewed</span>
             </div>
           </div>
         </div>
@@ -287,6 +300,8 @@ export default function BondCleaningChecklistPage() {
                   Professional bond cleaners know exactly what property managers look for. They bring the right products for oven grease, tile grout, carpet stains, and limescale — items that are genuinely difficult to handle with standard household products. For a Gold Coast property, expect to pay $250–$450 depending on size and condition.
                 </p>
               </div>
+
+              <AuthorBio />
 
             </div>
 

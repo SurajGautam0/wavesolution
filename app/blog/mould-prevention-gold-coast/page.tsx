@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import Link from "next/link"
 import { ChevronRight, CheckCircle2, AlertCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { AuthorBio } from "@/components/author-bio"
 
 export const metadata: Metadata = {
   title: "Mould Prevention Guide for Gold Coast Homes | Humidity & Cleaning Tips",
@@ -36,7 +37,17 @@ const jsonLd = {
     {
       "@type": "Article",
       headline: "Mould Prevention Guide for Gold Coast Homes",
-      author: { "@type": "Organization", name: "Wave Solution Cleaning", url: "https://www.wavesolution.com.au" },
+      author: {
+        "@type": "Person",
+        name: "Suraj Gautam",
+        jobTitle: "Operations Director & Quality Assurance Lead",
+        worksFor: {
+          "@type": "Organization",
+          name: "Wave Solution Cleaning & Pest Control",
+          url: "https://www.wavesolution.com.au",
+        },
+        url: "https://www.wavesolution.com.au/team",
+      },
       publisher: { "@type": "Organization", name: "Wave Solution Cleaning Gold Coast", url: "https://www.wavesolution.com.au" },
       datePublished: "2025-02-15",
       dateModified: "2025-02-15",
@@ -82,7 +93,15 @@ export default function MouldPreventionPage() {
             <p className="text-[11px] font-black uppercase tracking-[0.2em] text-secondary mb-4">Home Health Guide</p>
             <h1 className="text-4xl sm:text-5xl font-black tracking-tight leading-tight mb-6">Mould and Moisture Prevention Guide for Gold Coast Homes</h1>
             <p className="text-lg text-white/75 leading-8 mb-8">Gold Coast's humidity makes mould a real challenge. Here's how to prevent it, treat it, and keep your home healthier year-round.</p>
-            <div className="flex flex-wrap gap-4 text-xs text-white/60"><span>Updated February 2025</span><span>•</span><span>8 min read</span></div>
+            <div className="flex flex-wrap items-center gap-3 text-xs text-white/75">
+              <span>Updated February 2025</span>
+              <span>•</span>
+              <span>8 min read</span>
+              <span>•</span>
+              <span className="font-semibold text-white">Written by Suraj Gautam</span>
+              <span>•</span>
+              <span className="text-secondary font-bold">Gold Coast Climate Specialist</span>
+            </div>
           </div>
         </div>
       </section>
@@ -157,6 +176,8 @@ export default function MouldPreventionPage() {
                 <h2 className="text-2xl font-black tracking-tight text-primary mb-4">Professional Cleaning and Mould Control</h2>
                 <p className="text-base leading-8 text-slate-600">Regular professional cleaning helps control the surface conditions that allow mould to take hold. A thorough bathroom and kitchen clean every two weeks keeps grout, tiles, tapware, and surfaces free of the soap residue and moisture buildup that mould thrives on. If mould has established itself in grout, a professional deep clean can address it more effectively than routine maintenance cleaning alone.</p>
               </div>
+
+              <AuthorBio />
             </div>
 
             <aside className="space-y-6 lg:sticky lg:top-24">

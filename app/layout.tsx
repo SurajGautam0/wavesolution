@@ -231,6 +231,33 @@ const jsonLd = {
               description: "Complete Gold Coast cleaning service overview and local bookings.",
             },
           },
+          {
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Service",
+              name: "Weekly Cleaning Gold Coast",
+              url: `${businessInfo.baseUrl}/weekly-cleaning-gold-coast`,
+              description: "Regular weekly domestic and house cleaning for busy Gold Coast households.",
+            },
+          },
+          {
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Service",
+              name: "Apartment Cleaning Gold Coast",
+              url: `${businessInfo.baseUrl}/apartment-cleaning-gold-coast`,
+              description: "Specialist apartment and high-rise unit cleaning with balcony and salt-spray care.",
+            },
+          },
+          {
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Service",
+              name: "End of Lease Pest Control Gold Coast",
+              url: `${businessInfo.baseUrl}/end-of-lease-pest-control-gold-coast`,
+              description: "Certified end of lease pest spray and flea treatments for rental bond compliance.",
+            },
+          },
         ],
       },
     },

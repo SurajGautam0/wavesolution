@@ -138,6 +138,7 @@ export function generateArticleSchema(article: {
   datePublished: string
   dateModified: string
   author?: string
+  jobTitle?: string
   image: string
   url: string
 }) {
@@ -151,7 +152,14 @@ export function generateArticleSchema(article: {
     dateModified: article.dateModified,
     author: {
       '@type': 'Person',
-      name: article.author || 'Wave Solution Team',
+      name: article.author || 'Suraj Gautam',
+      jobTitle: article.jobTitle || 'Operations Director & Quality Assurance Lead',
+      worksFor: {
+        '@type': 'Organization',
+        name: businessInfo.businessName,
+        url: businessInfo.baseUrl,
+      },
+      url: `${businessInfo.baseUrl}/team`,
     },
     publisher: {
       '@type': 'Organization',
