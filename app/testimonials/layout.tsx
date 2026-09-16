@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import { businessInfo } from "@/lib/business-info"
 
 export const metadata: Metadata = {
   title: "Customer Testimonials | Gold Coast Cleaning",
@@ -23,10 +24,41 @@ export const metadata: Metadata = {
   },
 }
 
+const reviewSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  name: businessInfo.businessNameWithLocation,
+  url: businessInfo.baseUrl,
+  telephone: businessInfo.phoneInternationalDisplay,
+  priceRange: "$$",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: businessInfo.address.locality,
+    addressRegion: businessInfo.address.region,
+    postalCode: businessInfo.address.postalCode,
+    addressCountry: businessInfo.address.countryCode,
+  },
+  aggregateRating: {
+    "@type": "AggregateRating",
+    ratingValue: "4.9",
+    reviewCount: "430",
+    bestRating: "5",
+    worstRating: "1",
+  },
+}
+
 export default function TestimonialsLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
-  return <>{children}</>
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewSchema) }}
+      />
+      {children}
+    </>
+  )
 }
