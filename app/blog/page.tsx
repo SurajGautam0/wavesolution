@@ -49,6 +49,20 @@ interface Article {
 
 const ALL_ARTICLES: Article[] = [
   {
+    slug: "/blog/end-of-lease-cleaning-cost-gold-coast",
+    title: "End of Lease Cleaning Cost Gold Coast 2025 — Full Price Guide",
+    description:
+      "How much does end of lease cleaning cost in Gold Coast? Real 2025 prices by bedroom count, what is included, common add-ons, and how to avoid being overcharged.",
+    category: "bond",
+    categoryLabel: "Bond & Move-Out",
+    readTime: "9 min read",
+    date: "September 2025",
+    featured: true,
+    popular: true,
+    icon: DollarSign,
+    tags: ["End of Lease", "Pricing Guide", "Gold Coast", "Bond Cleaning"],
+  },
+  {
     slug: "/blog/bond-cleaning-checklist",
     title: "The Ultimate Bond Cleaning Checklist for Queensland Rentals",
     description:
