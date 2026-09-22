@@ -68,48 +68,96 @@
 @layer base {
   * {
     border-color: hsl(var(--border));
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
   }
 
   body {
     background-color: #FFFFFF;
     color: hsl(var(--foreground));
-    font-size: 16px;
+    /* Fluid font: 15px on mobile → 16px on desktop */
+    font-size: clamp(0.9375rem, 0.9rem + 0.2vw, 1rem);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
   }
 
+  /* WCAG touch target minimum */
   button,
   a[href],
   input,
   select,
-  textarea {
+  textarea,
+  [role="button"] {
     min-height: 44px;
-    min-width: 44px;
   }
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
+  /* Fluid headings using clamp() — no JS needed */
+  h1 {
+    font-size: clamp(1.875rem, 4vw + 0.5rem, 3.5rem);
+    line-height: 1.08;
+  }
+  h2 {
+    font-size: clamp(1.5rem, 2.5vw + 0.5rem, 2.25rem);
+    line-height: 1.15;
+  }
+  h3 {
+    font-size: clamp(1.125rem, 1.5vw + 0.25rem, 1.5rem);
+    line-height: 1.25;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-heading, var(--font-sans));
     letter-spacing: -0.02em;
+  }
+
+  /* Premium keyboard focus ring */
+  :focus-visible {
+    outline: 2px solid hsl(var(--primary));
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  img, video {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
   }
 }
 
 @layer components {
+  /* Fluid container padding — no hard breakpoint jumps */
   .classic-container {
     max-width: 1440px;
     margin-left: auto;
     margin-right: auto;
-    padding-left: 1.25rem;
-    padding-right: 1.25rem;
+    padding-left: clamp(1rem, 4vw, 2rem);
+    padding-right: clamp(1rem, 4vw, 2rem);
+    width: 100%;
   }
 
-  @media (min-width: 640px) {
+  @media (min-width: 1280px) {
     .classic-container {
-      padding-left: 2rem;
-      padding-right: 2rem;
+      padding-left: 3rem;
+      padding-right: 3rem;
     }
+  }
+
+  /* Fluid section vertical padding */
+  .section-py {
+    padding-top: clamp(3rem, 6vw, 5rem);
+    padding-bottom: clamp(3rem, 6vw, 5rem);
   }
 
   .classic-header {
@@ -124,7 +172,19 @@
     border-radius: 1.25rem;
     box-shadow: 0 4px 20px -2px rgba(51, 51, 101, 0.06);
     overflow: hidden;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                border-color 0.3s ease;
+    /* Prevent text overflow on narrow screens */
+    word-break: break-word;
+  }
+
+  /* Disable hover lift on touch devices — prevents stuck states on mobile */
+  @media (hover: none) {
+    .classic-card:hover {
+      transform: none;
+      box-shadow: 0 4px 20px -2px rgba(51, 51, 101, 0.06);
+    }
   }
 
   .classic-card:hover {
@@ -259,6 +319,14 @@
     overflow: hidden;
     background-color: hsl(var(--secondary));
     color: white;
+    /* Ensure hero content is never clipped on very small screens */
+    min-height: 100svh;
+  }
+
+  @media (min-width: 1024px) {
+    .page-hero {
+      min-height: auto;
+    }
   }
 
   .page-hero-overlay {
@@ -289,7 +357,7 @@
 
   .page-header {
     position: relative;
-    padding: 6rem 0;
+    padding: clamp(3rem, 8vw, 6rem) 0;
     background-color: hsl(var(--primary));
     color: white;
     overflow: hidden;
@@ -342,31 +410,39 @@
 
   /* Custom Premium Animations */
   @keyframes pulse-slow {
-
-    0%,
-    100% {
-      opacity: 1;
-      transform: scale(1);
-    }
-
-    50% {
-      opacity: 0.9;
-      transform: scale(1.02);
-    }
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50%       { opacity: 0.9; transform: scale(1.02); }
   }
 
-  .animate-pulse-slow {
-    animation: pulse-slow 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  /* Extra premium animations */
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(32px); }
+    to   { opacity: 1; transform: translateY(0); }
   }
+  @keyframes slideInLeft {
+    from { opacity: 0; transform: translateX(-24px); }
+    to   { opacity: 1; transform: translateX(0); }
+  }
+  @keyframes scaleIn {
+    from { opacity: 0; transform: scale(0.94); }
+    to   { opacity: 1; transform: scale(1); }
+  }
+
+  .animate-pulse-slow  { animation: pulse-slow 3s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+  .animate-fadeInUp    { animation: fadeInUp 0.7s ease-out both; }
+  .animate-slideInLeft { animation: slideInLeft 0.6s ease-out both; }
+  .animate-scaleIn     { animation: scaleIn 0.5s ease-out both; }
+
+  /* Animation delay helpers */
+  .delay-100 { animation-delay: 100ms; }
+  .delay-200 { animation-delay: 200ms; }
+  .delay-300 { animation-delay: 300ms; }
+  .delay-400 { animation-delay: 400ms; }
+  .delay-500 { animation-delay: 500ms; }
 
   @keyframes shimmer {
-    0% {
-      background-position: -200% 0;
-    }
-
-    100% {
-      background-position: 200% 0;
-    }
+    0%   { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
   }
 
   .shimmer-text {
@@ -376,6 +452,53 @@
     -webkit-background-clip: text;
     background-clip: text;
     animation: shimmer 5s linear infinite;
+  }
+
+  /* Gradient text utility */
+  .gradient-text {
+    background: linear-gradient(135deg, #39BDE4, #249FC5);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Responsive table wrapper with scroll shadow hint */
+  .table-responsive {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border-radius: 1rem;
+  }
+
+  /* Mobile bottom padding for sticky CTA bar */
+  .has-sticky-cta { padding-bottom: 72px; }
+  @media (min-width: 768px) { .has-sticky-cta { padding-bottom: 0; } }
+
+  /* Prose content sizing */
+  .prose-custom {
+    font-size: clamp(0.9375rem, 1.5vw + 0.4rem, 1.0625rem);
+    line-height: 1.85;
+    color: #475569;
+  }
+  .prose-custom p + p { margin-top: 1.25em; }
+}
+
+/* Print styles */
+@media print {
+  .page-hero, nav, footer, .sticky { position: static !important; }
+  * { box-shadow: none !important; }
+  body { font-size: 12pt; }
+  h1 { font-size: 22pt; }
+  h2 { font-size: 16pt; }
+}
+
+/* Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
 

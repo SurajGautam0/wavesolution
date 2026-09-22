@@ -14,7 +14,7 @@ const heroTrustItems = [
 
 export function HeroSection() {
   return (
-    <section className="page-hero">
+    <section className="page-hero has-sticky-cta">
       <div className="absolute inset-0">
         <Image
           src="/hero-cleaning.jpg"
@@ -29,8 +29,9 @@ export function HeroSection() {
         <div className="absolute inset-0 bg-gradient-to-t from-[#1c1c3a]/80 via-transparent to-black/20" />
       </div>
 
-      <div className="classic-container relative z-10 grid min-h-[86vh] items-center gap-10 py-20 lg:grid-cols-[1.15fr_0.85fr] lg:py-24">
-        <div className="max-w-3xl text-center lg:text-left">
+      <div className="classic-container relative z-10 flex min-h-[100svh] flex-col justify-center gap-8 py-20 lg:grid lg:min-h-0 lg:grid-cols-[1.15fr_0.85fr] lg:items-center lg:gap-10 lg:py-24">
+        {/* Text content */}
+        <div className="text-center lg:text-left">
           <div className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-2 text-xs font-bold text-white backdrop-blur-md">
             <span className="flex items-center gap-0.5">
               {[...Array(5)].map((_, i) => (
@@ -41,23 +42,23 @@ export function HeroSection() {
             <span className="font-medium text-white/70">· 430+ Google Reviews</span>
           </div>
 
-          <h1 className="mt-6 text-4xl font-black leading-[1.08] tracking-tight text-white sm:text-5xl lg:text-[3.4rem]">
+          <h1 className="mt-6 font-black leading-[1.08] tracking-tight text-white">
             Professional Cleaning Services in Gold Coast for{" "}
-            <span className="text-[#39BDE4]">Homes, Offices & Rentals</span>
+            <span className="text-[#39BDE4]">Homes, Offices &amp; Rentals</span>
           </h1>
 
-          <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-white/80 sm:text-lg lg:mx-0">
+          <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-white/80 sm:text-lg lg:mx-0">
             House cleaning, office cleaning, bond cleaning, end of lease cleaning, deep cleaning
             and commercial cleaning — done by a local, fully insured Gold Coast team.
           </p>
 
-          <div className="mt-9 flex flex-col items-center gap-3 sm:flex-row lg:justify-start">
+          <div className="mt-8 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center sm:justify-center lg:justify-start">
             <Button
               asChild
               size="lg"
-              className="h-14 min-w-56 rounded-full bg-[#39BDE4] px-8 text-xs font-black uppercase tracking-[0.18em] text-white shadow-xl shadow-black/25 transition-all duration-300 hover:scale-[1.03] hover:bg-[#249FC5]"
+              className="h-14 w-full rounded-full bg-[#39BDE4] px-8 text-xs font-black uppercase tracking-[0.18em] text-white shadow-xl shadow-black/25 transition-all duration-300 hover:scale-[1.03] hover:bg-[#249FC5] sm:w-auto sm:min-w-56"
             >
-              <Link href={siteLinks.book} className="flex items-center gap-2">
+              <Link href={siteLinks.book} className="flex items-center justify-center gap-2">
                 <span>Get a Free Quote</span>
                 <ArrowRight className="h-4 w-4" />
               </Link>
@@ -66,16 +67,16 @@ export function HeroSection() {
               asChild
               size="lg"
               variant="outline"
-              className="h-14 min-w-56 rounded-full border-white/30 bg-white/10 px-8 text-xs font-black uppercase tracking-[0.18em] text-white backdrop-blur-md hover:bg-white hover:text-secondary"
+              className="h-14 w-full rounded-full border-white/30 bg-white/10 px-8 text-xs font-black uppercase tracking-[0.18em] text-white backdrop-blur-md hover:bg-white hover:text-secondary sm:w-auto sm:min-w-56"
             >
-              <Link href={businessInfo.phoneHref} className="flex items-center gap-2">
+              <Link href={businessInfo.phoneHref} className="flex items-center justify-center gap-2">
                 <Phone className="h-4 w-4" />
                 <span>{businessInfo.phoneDisplay}</span>
               </Link>
             </Button>
           </div>
 
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-2.5 lg:justify-start">
+          <div className="mt-7 flex flex-wrap items-center justify-center gap-2.5 lg:justify-start">
             {heroTrustItems.map((item) => (
               <span
                 key={item}
@@ -88,7 +89,8 @@ export function HeroSection() {
           </div>
         </div>
 
-        <aside className="mx-auto w-full max-w-md rounded-[2rem] border border-white/20 bg-white/10 p-6 text-white shadow-2xl backdrop-blur-xl lg:mx-0">
+        {/* Booking card — hidden on very small screens, shown from sm upwards */}
+        <aside className="mx-auto hidden w-full max-w-md rounded-[2rem] border border-white/20 bg-white/10 p-6 text-white shadow-2xl backdrop-blur-xl sm:block lg:mx-0">
           <p className="text-[11px] font-black uppercase tracking-[0.2em] text-[#39BDE4]">Same-day quote</p>
           <h2 className="mt-2 text-2xl font-black tracking-tight">Book a local Gold Coast cleaner in minutes</h2>
           <p className="mt-3 text-sm leading-6 text-white/75">
