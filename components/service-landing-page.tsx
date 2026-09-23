@@ -28,32 +28,76 @@ export function ServiceLandingPage({ page }: ServiceLandingPageProps) {
     { href: "/locations/varsity-lakes", label: "Varsity Lakes" },
     { href: siteLinks.locations, label: "More Gold Coast Areas" },
   ]
-  const relatedArticles =
-    page.slug === "office-cleaning-gold-coast" || page.slug === "commercial-cleaning-gold-coast"
-      ? [
-          {
-            href: "/blog/office-cleaning",
-            label: "Office Cleaning Guide",
-            description: "Helpful advice on cleaning frequency and workplace hygiene planning.",
-          },
-          {
-            href: "/blog/eco-friendly",
-            label: "Eco-Friendly Cleaning",
-            description: "Green cleaning methods for businesses and sensitive work environments.",
-          },
-        ]
-      : [
-          {
-            href: "/blog/cleaning-tips",
-            label: "House Cleaning Tips",
-            description: "Practical advice for maintaining homes and rentals between visits.",
-          },
-          {
-            href: "/blog/eco-friendly",
-            label: "Eco-Friendly Cleaning",
-            description: "Non-toxic product ideas and green cleaning habits for Gold Coast properties.",
-          },
-        ]
+  const relatedArticles = (() => {
+    if (page.slug === "office-cleaning-gold-coast" || page.slug === "commercial-cleaning-gold-coast") {
+      return [
+        {
+          href: "/blog/office-cleaning",
+          label: "Office Cleaning Guide",
+          description: "Helpful advice on cleaning frequency and workplace hygiene planning.",
+        },
+        {
+          href: "/blog/commercial-cleaning-benefits",
+          label: "Commercial Cleaning Benefits",
+          description: "Why regular commercial cleaning pays off for Gold Coast businesses.",
+        },
+      ]
+    }
+    if (page.slug === "bond-cleaning-gold-coast" || page.slug === "end-of-lease-cleaning-gold-coast" || page.slug === "end-of-lease-pest-control-gold-coast") {
+      return [
+        {
+          href: "/blog/bond-cleaning-checklist",
+          label: "Ultimate Bond Cleaning Checklist",
+          description: "Room-by-room Queensland rental inspection checklist to guarantee your full deposit refund.",
+        },
+        {
+          href: "/blog/end-of-lease-cleaning-cost-gold-coast",
+          label: "End of Lease Cleaning Price Guide",
+          description: "Real prices by room count, what is included, add-ons, and how to avoid extra charges.",
+        },
+      ]
+    }
+    if (page.slug === "carpet-cleaning-gold-coast") {
+      return [
+        {
+          href: "/blog/carpet-cleaning-guide",
+          label: "Gold Coast Carpet Cleaning Guide",
+          description: "Steam extraction methods, drying times, and stain removal advice for coastal homes.",
+        },
+        {
+          href: "/blog/cleaning-tips",
+          label: "House Cleaning Tips",
+          description: "Practical advice for maintaining homes and carpets between deep visits.",
+        },
+      ]
+    }
+    if (page.slug === "pest-control-gold-coast") {
+      return [
+        {
+          href: "/blog/pest-control-guide",
+          label: "Gold Coast Pest Prevention Guide",
+          description: "Effective prevention and treatment for cockroaches, spiders, fleas, and coastal pests.",
+        },
+        {
+          href: "/blog/eco-friendly",
+          label: "Eco-Friendly Cleaning & Treatments",
+          description: "Safe, family-friendly methods for keeping properties healthy and pest-free.",
+        },
+      ]
+    }
+    return [
+      {
+        href: "/blog/cleaning-tips",
+        label: "House Cleaning Tips",
+        description: "Practical advice for maintaining homes and rentals between visits.",
+      },
+      {
+        href: "/blog/mould-prevention-gold-coast",
+        label: "Mould Prevention & Removal",
+        description: "How to prevent and eradicate mould in humid subtropical Gold Coast homes.",
+      },
+    ]
+  })()
   const pricingDetails =
     page.slug === "office-cleaning-gold-coast" || page.slug === "commercial-cleaning-gold-coast"
       ? [

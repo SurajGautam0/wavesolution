@@ -412,6 +412,24 @@ export default function Home() {
                   {service.title}
                 </Link>
               ))}
+              <Link
+                href="/weekly-cleaning-gold-coast"
+                className="rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-secondary transition-all hover:-translate-y-0.5 hover:border-primary/40 hover:text-primary hover:shadow-md"
+              >
+                Weekly Cleaning Gold Coast
+              </Link>
+              <Link
+                href="/apartment-cleaning-gold-coast"
+                className="rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-secondary transition-all hover:-translate-y-0.5 hover:border-primary/40 hover:text-primary hover:shadow-md"
+              >
+                Apartment Cleaning Gold Coast
+              </Link>
+              <Link
+                href="/end-of-lease-pest-control-gold-coast"
+                className="rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-secondary transition-all hover:-translate-y-0.5 hover:border-primary/40 hover:text-primary hover:shadow-md"
+              >
+                End of Lease Pest Control Gold Coast
+              </Link>
             </div>
 
             <div className="mt-8 grid gap-4 lg:grid-cols-2">

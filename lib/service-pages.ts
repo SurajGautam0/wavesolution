@@ -412,6 +412,8 @@ export const servicePages: ServicePage[] = [
     relatedSlugs: [
       "cleaning-gold-coast",
       "end-of-lease-cleaning-gold-coast",
+      "end-of-lease-pest-control-gold-coast",
+      "carpet-cleaning-gold-coast",
       "deep-cleaning-gold-coast",
     ],
   },
@@ -538,6 +540,8 @@ export const servicePages: ServicePage[] = [
     relatedSlugs: [
       "cleaning-gold-coast",
       "bond-cleaning-gold-coast",
+      "end-of-lease-pest-control-gold-coast",
+      "carpet-cleaning-gold-coast",
       "deep-cleaning-gold-coast",
     ],
   },

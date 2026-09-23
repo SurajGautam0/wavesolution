@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     template: "%s | Wave Solution Cleaning",
   },
   description:
-    "Professional cleaning and pest control services across the Gold Coast. Fully insured, police-checked team providing residential, commercial, bond, carpet, and move-out cleans.",
+    "House, office, bond & commercial cleaning across the Gold Coast. Fully insured, police-checked cleaners. Book your free quote today.",
   authors: [{ name: businessInfo.businessName, url: businessInfo.baseUrl }],
   creator: businessInfo.businessName,
   publisher: businessInfo.businessName,
@@ -58,7 +58,7 @@ export const metadata: Metadata = {
     siteName: businessInfo.businessNameWithLocation,
     title: "Gold Coast Cleaning & Pest Control Services | Wave Solution",
     description:
-      "Professional cleaning and pest control services across the Gold Coast. Fully insured, police-checked team providing residential, commercial, bond, carpet, and move-out cleans.",
+      "House, office, bond & commercial cleaning across the Gold Coast. Fully insured, police-checked cleaners. Book your free quote today.",
     images: [
       {
         url: "/gold-coast-cleaning-services.jpeg",
@@ -73,7 +73,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Gold Coast Cleaning & Pest Control Services | Wave Solution",
     description:
-      "Professional cleaning and pest control services across the Gold Coast. Fully insured, police-checked team providing residential, commercial, bond, carpet, and move-out cleans.",
+      "House, office, bond & commercial cleaning across the Gold Coast. Fully insured, police-checked cleaners. Book your free quote today.",
     images: ["/gold-coast-cleaning-services.jpeg"],
   },
   robots: {

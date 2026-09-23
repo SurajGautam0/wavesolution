@@ -30,12 +30,6 @@ export async function generateMetadata({ params }: LocationPageProps): Promise<M
   return {
     title: location.metaTitle,
     description: location.metaDescription,
-    keywords: [
-      `cleaning services ${location.name}`,
-      `house cleaning ${location.name}`,
-      `office cleaning ${location.name}`,
-      `cleaners ${location.name} Gold Coast`,
-    ],
     alternates: {
       canonical: url,
     },

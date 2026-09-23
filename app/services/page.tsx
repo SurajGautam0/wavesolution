@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Cleaning Services Gold Coast | House, Office, Bond & Carpet Cleaning",
     description:
-      "Professional cleaning services across the Gold Coast including house cleaning, office cleaning, bond cleaning, end of lease cleaning, carpet steam cleaning, airbnb turnover, pressure washing, window cleaning, after builders cleaning, deep cleaning, and pest control.",
+      "House, office, bond & commercial cleaning across the Gold Coast. Fully insured, police-checked cleaners. Book your free quote today.",
     url: `${businessInfo.baseUrl}/services`,
     images: [{ url: "/gold-coast-cleaning-services.jpeg", width: 1200, height: 630, alt: "Wave Solution cleaning services Gold Coast" }],
   },

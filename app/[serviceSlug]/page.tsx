@@ -30,7 +30,6 @@ export async function generateMetadata({ params }: ServicePageProps): Promise<Me
   return {
     title: page.metaTitle,
     description: page.metaDescription,
-    keywords: page.keywords,
     alternates: {
       canonical: url,
     },

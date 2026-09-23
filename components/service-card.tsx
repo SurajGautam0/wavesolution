@@ -85,7 +85,9 @@ export function ServiceCard({ title, description, icon, price, href = "/book", c
             </span>
           </div>
           <h3 className="mt-5 text-xl font-extrabold tracking-tight">
-            {title}
+            <Link href={href} className="hover:text-[#39BDE4] transition-colors focus:outline-none focus:underline">
+              {title}
+            </Link>
           </h3>
           <p className="mt-2.5 text-sm leading-relaxed text-white/70">
             {description}
@@ -121,7 +123,9 @@ export function ServiceCard({ title, description, icon, price, href = "/book", c
           </span>
         </div>
         <h3 className="mt-5 text-xl font-extrabold tracking-tight text-slate-900">
-          {title}
+          <Link href={href} className="hover:text-secondary transition-colors focus:outline-none focus:underline">
+            {title}
+          </Link>
         </h3>
         <p className="mt-2.5 text-sm leading-relaxed text-slate-600">
           {description}
