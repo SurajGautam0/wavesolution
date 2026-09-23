@@ -29,6 +29,13 @@ export function middleware(request: NextRequest) {
     return NextResponse.redirect(redirectUrl, 308)
   }
 
+  if (path === "/bond-cleaning-checklist.html") {
+    const redirectUrl = request.nextUrl.clone()
+    redirectUrl.pathname = "/blog/bond-cleaning-checklist"
+    redirectUrl.search = ""
+    return NextResponse.redirect(redirectUrl, 301)
+  }
+
   const isProtectedPath = path.startsWith("/admin") || path.startsWith("/dashboard")
 
   if (isProtectedPath) {
@@ -57,5 +64,5 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/((?!api|_next/static|_next/image|favicon.ico|.*\\..*).*)"],
+  matcher: ["/bond-cleaning-checklist.html", "/((?!api|_next/static|_next/image|favicon.ico|.*\\..*).*)"],
 }

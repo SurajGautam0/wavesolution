@@ -137,13 +137,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
             changeFrequency: 'monthly' as const,
             priority: 0.82,
         })),
-
-        // Linkable asset
-        {
-            url: `${baseUrl}/bond-cleaning-checklist.html`,
-            lastModified: checklistLastModified,
-            changeFrequency: 'monthly',
-            priority: 0.85,
-        },
     ]
 }

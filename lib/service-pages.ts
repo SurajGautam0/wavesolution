@@ -350,6 +350,13 @@ export const servicePages: ServicePage[] = [
         ],
       },
       {
+        title: "Official Queensland bond cleaning checklist & inspection guide",
+        paragraphs: [
+          "Want to know exactly what property managers inspect room by room before releasing your bond? Read our full bond cleaning checklist for Queensland rentals to see our complete vacate protocol, kitchen oven detailing standards, and bathroom sanitisation requirements.",
+          "Whether you plan to clean yourself or hire our fully guaranteed vacate cleaners, having the exact checklist used by Gold Coast real estate agents ensures no critical areas are missed.",
+        ],
+      },
+      {
         title: "Our 100% bond-back guarantee commitment",
         paragraphs: [
           "Your rental bond is a significant financial deposit, and we believe you should get every dollar back without disputes. That is why every bond clean we complete is backed by our full re-clean warranty.",

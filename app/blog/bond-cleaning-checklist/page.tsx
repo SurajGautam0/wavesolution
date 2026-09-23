@@ -202,6 +202,12 @@ export default function BondCleaningChecklistPage() {
                     <p className="mt-2 text-sm leading-7 text-amber-700">
                       Under Queensland tenancy law, landlords cannot legally require you to use a professional cleaner — but the property must be returned in the same condition as when you moved in (fair wear and tear excepted). This checklist helps you meet that standard whether you clean yourself or use a professional service.
                     </p>
+                    <p className="mt-3 text-sm font-semibold text-primary">
+                      Need a professional bond clean?{" "}
+                      <Link href="/bond-cleaning-gold-coast" className="text-secondary underline underline-offset-4 hover:text-primary font-bold">
+                        Book your Gold Coast bond clean here →
+                      </Link>
+                    </p>
                   </div>
                 </div>
               </div>

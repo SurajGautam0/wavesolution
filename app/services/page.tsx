@@ -9,9 +9,9 @@ import { businessInfo, siteLinks } from "@/lib/business-info"
 import { servicePages } from "@/lib/service-pages"
 
 export const metadata: Metadata = {
-  title: "Cleaning Services Gold Coast | House, Office, Bond & Carpet Cleaning",
+  title: "Cleaning Services Directory | Full Range of Commercial & Residential Services",
   description:
-    "Professional Gold Coast cleaning services including house, office, bond & carpet cleaning. Free quotes for Southport, Robina & Surfers Paradise.",
+    "Explore Wave Solution's full catalogue of cleaning services: house, office, bond, carpet, after-builders, and pest control across Queensland. Book online.",
   alternates: {
     canonical: `${businessInfo.baseUrl}/services`,
   },
@@ -63,12 +63,15 @@ export default function ServicesPage() {
         </div>
         <div className="classic-container relative z-10 py-16 md:py-24">
           <div className="mx-auto max-w-4xl text-center">
-            <span className="eyebrow eyebrow-on-dark">What We Clean</span>
+            <span className="eyebrow eyebrow-on-dark">Full Service Directory</span>
             <h1 className="mt-4 text-4xl font-black tracking-tight text-white sm:text-5xl md:text-6xl">
-              Our Cleaning Services
+              All Cleaning Services & Capabilities
             </h1>
             <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-white/80">
-              Professional cleaning across the Gold Coast — from regular house maintenance to deep commercial resets. Fully insured, police-checked, and locally owned.
+              Browse our complete catalogue of professional residential, commercial, move-out, and specialist cleaning solutions. Looking specifically for our local Gold Coast coverage overview? Visit our{" "}
+              <Link href={siteLinks.cleaningGoldCoast} className="font-bold text-[#39BDE4] underline underline-offset-4 hover:text-white">
+                Cleaning Gold Coast hub
+              </Link>.
             </p>
             <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row">
               <Button asChild className="h-12 rounded-full bg-[#39BDE4] px-6 text-[11px] font-black uppercase tracking-[0.18em] text-white shadow-xl shadow-black/25 transition-transform hover:scale-105 hover:bg-[#249FC5]">
