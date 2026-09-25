@@ -51,6 +51,20 @@ interface Article {
 
 const ALL_ARTICLES: Article[] = [
   {
+    slug: "/blog/end-of-lease-cleaning-requirements-qld",
+    title: "End of Lease Cleaning Requirements QLD: Tenant's 2026 Legal & Checklist Guide",
+    description:
+      "What are the official end of lease cleaning requirements in Queensland? Section 188 RTRA Act standards, fair wear and tear rules, Form 14a exit checklist, and tips for 100% bond back.",
+    category: "bond",
+    categoryLabel: "Bond & Move-Out",
+    readTime: "11 min read",
+    date: "March 2026",
+    featured: true,
+    popular: true,
+    icon: ShieldCheck,
+    tags: ["RTA Queensland", "Bond Cleaning", "Legal Requirements", "100% Bond Back"],
+  },
+  {
     slug: "/blog/end-of-lease-cleaning-cost-gold-coast",
     title: "End of Lease Cleaning Cost Gold Coast 2025 — Full Price Guide",
     description:
