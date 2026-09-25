@@ -15,24 +15,21 @@ export function LayoutWrapper({ children }: { children: React.ReactNode }) {
         pathname?.startsWith("/logout") ||
         pathname?.startsWith("/dashboard")
 
-    const Content = () => {
-        if (isAdminPage) {
-            return <>{children}</>
-        }
-
+    if (isAdminPage) {
         return (
             <>
-                <MainNav />
-                <main className="flex-1 pb-20 md:pb-0">{children}</main>
-                <SiteFooter />
-                <MobileStickyCta />
+                {children}
+                <WhatsAppWidget />
             </>
         )
     }
 
     return (
         <>
-            <Content />
+            <MainNav />
+            <main className="flex-1 pb-20 md:pb-0">{children}</main>
+            <SiteFooter />
+            <MobileStickyCta />
             <WhatsAppWidget />
         </>
     )

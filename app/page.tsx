@@ -148,19 +148,26 @@ const homepageFaqs = [
 ]
 
 export const metadata: Metadata = {
-  title: "House Cleaning Gold Coast | Bond & End of Lease Cleaning",
+  title: "Gold Coast Cleaning & Pest Control | House, Bond & Office",
   description:
-    "Professional house, office, and bond cleaning across the Gold Coast. 100% bond-back guarantee, police-checked cleaners. Get your free fixed quote today!",
+    "Professional house, bond, and office cleaning plus licensed pest control across the Gold Coast. 100% bond-back guarantee. Get your free quote today!",
   alternates: {
     canonical: businessInfo.baseUrl,
   },
   openGraph: {
-    title: "House Cleaning Gold Coast | Bond & End of Lease Cleaning",
+    title: "Gold Coast Cleaning & Pest Control | House, Bond & Office",
     description:
-      "Professional house, office, and bond cleaning across the Gold Coast. 100% bond-back guarantee, police-checked cleaners. Get your free fixed quote today!",
+      "Professional house, bond, and office cleaning plus licensed pest control across the Gold Coast. 100% bond-back guarantee. Get your free quote today!",
     url: businessInfo.baseUrl,
     type: "website",
-    images: [{ url: `${businessInfo.baseUrl}/gold-coast-cleaning-services.jpeg`, width: 1200, height: 630, alt: "Wave Solution Cleaning services Gold Coast" }],
+    images: [{ url: `${businessInfo.baseUrl}/gold-coast-cleaning-services.jpeg`, width: 1200, height: 630, alt: "Wave Solution Cleaning & Pest Control Gold Coast" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Gold Coast Cleaning & Pest Control | House, Bond & Office",
+    description:
+      "Professional house, bond, and office cleaning plus licensed pest control across the Gold Coast. 100% bond-back guarantee. Get your free quote today!",
+    images: [`${businessInfo.baseUrl}/gold-coast-cleaning-services.jpeg`],
   },
 }
 
