@@ -46,9 +46,10 @@ export const businessInfo = {
     "Helensvale",
     "Coomera",
     "Varsity Lakes",
+    "Carrara",
+    "Merrimac",
     "Main Beach",
     "Benowa",
-    "Merrimac",
     "Highland Park",
   ],
   businessHoursDisplay: [

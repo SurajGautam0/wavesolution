@@ -437,6 +437,12 @@ export default function Home() {
               >
                 End of Lease Pest Control Gold Coast
               </Link>
+              <Link
+                href="/cleaning-carrara"
+                className="rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-secondary transition-all hover:-translate-y-0.5 hover:border-primary/40 hover:text-primary hover:shadow-md"
+              >
+                Cleaning Services Carrara
+              </Link>
             </div>
 
             <div className="mt-8 grid gap-4 lg:grid-cols-2">
@@ -452,6 +458,8 @@ export default function Home() {
                     ["/locations/burleigh-heads", "Burleigh Heads"],
                     ["/locations/helensvale", "Helensvale"],
                     ["/locations/coomera", "Coomera"],
+                    ["/locations/carrara", "Carrara"],
+                    ["/locations/varsity-lakes", "Varsity Lakes"],
                   ].map(([href, label]) => (
                     <Link
                       key={href}

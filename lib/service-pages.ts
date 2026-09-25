@@ -1777,6 +1777,100 @@ export const servicePages: ServicePage[] = [
       "carpet-cleaning-gold-coast",
     ],
   },
+  {
+    slug: "cleaning-carrara",
+    shortLabel: "Cleaning Services Carrara",
+    navLabel: "Cleaning Carrara",
+    metaTitle: "Cleaning Services Carrara | Bond, House & Office Cleaners Gold Coast",
+    metaDescription:
+      "Professional cleaning services in Carrara for houses, units, rental properties, and offices. Fully insured local team covering bond cleaning, deep cleaning, and commercial cleaning near Carrara Markets. Call 0450 833 683.",
+    heroEyebrow: "Carrara Cleaning Services",
+    heroTitle: "Cleaning Services Carrara",
+    heroDescription:
+      "Wave Solution provides dependable house cleaning, bond cleaning, and commercial cleaning in Carrara and the surrounding Gold Coast suburbs. Fully insured, police-checked local team with flexible scheduling.",
+    primaryKeyword: "cleaning services Carrara",
+    keywords: [
+      "cleaning services Carrara",
+      "cleaners Carrara",
+      "house cleaning Carrara",
+      "bond cleaning Carrara",
+      "end of lease cleaning Carrara",
+      "office cleaning Carrara",
+      "deep cleaning Carrara Gold Coast",
+    ],
+    overview: [
+      "Carrara is a growing Gold Coast suburb with a mix of residential homes, newer townhouses, and local businesses. Wave Solution provides practical, professional cleaning across all property types in Carrara — from regular house maintenance and once-off deep cleans to detailed bond and end of lease cleaning ahead of rental inspections.",
+      "Our local team services Carrara and the surrounding inner-Gold Coast area, including Merrimac, Nerang, Robina, and Broadbeach. We work with homeowners, tenants, landlords, and business owners who need a reliable cleaning team that shows up on time, communicates clearly, and delivers consistent results without lock-in contracts.",
+      "Every clean is performed by vetted, police-checked, and fully insured cleaners using commercial equipment and eco-safe products. Whether you need a one-off spring clean, a weekly maintenance visit, or an inspection-ready bond clean, we tailor our service to your property, timeline, and budget.",
+    ],
+    includedItems: [
+      "House cleaning: Weekly, fortnightly, and one-off cleans for Carrara homes and apartments",
+      "Bond cleaning: Comprehensive rental exit cleans aligned with Queensland tenancy requirements",
+      "Office and commercial cleaning: Flexible, after-hours cleaning for Carrara businesses",
+      "Deep cleaning: Intensive kitchen, bathroom, and whole-property resets",
+      "Carpet cleaning: Hot water extraction steam cleaning for carpets and upholstery",
+      "Pest control: Targeted residential and commercial pest management",
+    ],
+    whyChooseUs: sharedWhyChooseUs,
+    sections: [
+      {
+        title: "House and apartment cleaning in Carrara",
+        paragraphs: [
+          "Keeping a home clean in Carrara should not consume your evenings and weekends. Our residential cleaning covers kitchens, bathrooms, bedrooms, living areas, and floors with a consistent checklist every visit. Choose from weekly, fortnightly, or one-off options based on your household size and schedule.",
+          "Carrara properties range from compact townhouses near Carrara Markets to larger family homes along the Nerang River corridor. Our cleaners adapt their approach to each property, spending more time in high-use zones like bathrooms and kitchens and ensuring surfaces, skirting boards, and fixtures are left noticeably cleaner after every visit.",
+        ],
+      },
+      {
+        title: "Bond and end of lease cleaning in Carrara",
+        paragraphs: [
+          "Moving out of a Carrara rental? Our bond cleaning service is designed specifically for Queensland rental inspections. We follow a comprehensive exit checklist covering oven interiors, rangehood filters, bathroom tile grout, window tracks, skirting boards, light switches, and all other areas property managers scrutinise during final walkthroughs.",
+          "Getting your bond back in full starts with a clean that meets the standard required under Queensland tenancy law. Our team has completed hundreds of bond cleans across Carrara and surrounding suburbs, and we understand what Gold Coast property managers expect to see. If there is a re-inspection issue covered by our service, we return to fix it.",
+        ],
+      },
+      {
+        title: "Office and commercial cleaning in Carrara",
+        paragraphs: [
+          "Carrara has a growing number of small offices, trade businesses, and light commercial premises. We provide tailored cleaning plans for Carrara businesses that need regular, professional upkeep — scheduled before business hours, after close, or on weekends to minimise operational disruption.",
+          "Our commercial service covers workstations, communal kitchens, bathrooms, reception areas, and high-touch surfaces. We can accommodate businesses of different sizes and frequencies, from small offices needing a weekly clean to larger premises requiring more frequent visits.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "Do you offer bond cleaning in Carrara?",
+        answer:
+          "Yes. We provide thorough bond cleaning in Carrara designed to meet Queensland tenancy inspection requirements. Our checklist covers all areas that property managers assess, including ovens, rangehoods, bathrooms, windows, and skirting boards.",
+      },
+      {
+        question: "How much does house cleaning cost in Carrara?",
+        answer:
+          "House cleaning in Carrara typically starts from $120 for a standard one-off clean. The exact price depends on property size, number of rooms, current condition, and whether extras like oven, windows, or carpet cleaning are included. Contact us for a tailored quote.",
+      },
+      {
+        question: "Do you cover suburbs near Carrara?",
+        answer:
+          "Yes. We service Carrara and all surrounding Gold Coast suburbs including Merrimac, Nerang, Robina, Broadbeach, Southport, and Surfers Paradise.",
+      },
+      {
+        question: "Are your Carrara cleaners insured and police-checked?",
+        answer:
+          "Yes. All Wave Solution cleaners are fully insured with $10M public liability coverage and undergo police checks before working in homes, rental properties, or business premises.",
+      },
+      {
+        question: "Can I book a one-off clean in Carrara?",
+        answer:
+          "Yes. We offer one-off cleaning as well as regular weekly, fortnightly, and monthly schedules. Call 0450 833 683 or book online to arrange a visit.",
+      },
+    ],
+    relatedSlugs: [
+      "cleaning-gold-coast",
+      "house-cleaning-gold-coast",
+      "bond-cleaning-gold-coast",
+      "end-of-lease-cleaning-gold-coast",
+      "deep-cleaning-gold-coast",
+      "carpet-cleaning-gold-coast",
+    ],
+  },
 ]
 
 export const servicePageMap = new Map(servicePages.map((page) => [page.slug, page]))

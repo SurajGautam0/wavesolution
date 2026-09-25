@@ -31,6 +31,8 @@ const LOCATIONS = [
   { name: "Broadbeach", slug: "broadbeach" },
   { name: "Burleigh Heads", slug: "burleigh-heads" },
   { name: "Robina", slug: "robina" },
+  { name: "Nerang", slug: "nerang" },
+  { name: "Carrara", slug: "carrara" },
   { name: "Coomera", slug: "coomera" },
 ]
 

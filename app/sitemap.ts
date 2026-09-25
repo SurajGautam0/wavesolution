@@ -61,7 +61,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
             url: `${baseUrl}/${slug}`,
             lastModified: servicesLastModified,
             changeFrequency: 'weekly' as const,
-            priority: slug === 'cleaning-gold-coast' ? 0.96 : 0.92,
+            priority: slug === 'cleaning-gold-coast' ? 0.96 : slug === 'cleaning-carrara' ? 0.93 : 0.92,
         })),
 
         // Locations hub

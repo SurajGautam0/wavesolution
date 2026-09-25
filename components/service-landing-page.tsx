@@ -26,6 +26,7 @@ export function ServiceLandingPage({ page }: ServiceLandingPageProps) {
     { href: "/locations/helensvale", label: "Helensvale" },
     { href: "/locations/coomera", label: "Coomera" },
     { href: "/locations/varsity-lakes", label: "Varsity Lakes" },
+    { href: "/locations/carrara", label: "Carrara" },
     { href: siteLinks.locations, label: "More Gold Coast Areas" },
   ]
   const relatedArticles = (() => {
@@ -43,8 +44,13 @@ export function ServiceLandingPage({ page }: ServiceLandingPageProps) {
         },
       ]
     }
-    if (page.slug === "bond-cleaning-gold-coast" || page.slug === "end-of-lease-cleaning-gold-coast" || page.slug === "end-of-lease-pest-control-gold-coast") {
+    if (page.slug === "bond-cleaning-gold-coast" || page.slug === "end-of-lease-cleaning-gold-coast" || page.slug === "end-of-lease-pest-control-gold-coast" || page.slug === "cleaning-carrara") {
       return [
+        {
+          href: "/blog/end-of-lease-cleaning-requirements-qld",
+          label: "End of Lease Requirements QLD 2026",
+          description: "Legal checklist and RTRA Act breakdown every Queensland tenant needs before handing back their keys.",
+        },
         {
           href: "/blog/bond-cleaning-checklist",
           label: "Ultimate Bond Cleaning Checklist",

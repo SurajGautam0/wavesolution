@@ -435,6 +435,50 @@ export const locationPages: LocationPage[] = [
       },
     ],
   },
+  {
+    slug: "carrara",
+    name: "Carrara",
+    heroTitle: "Cleaning Services in Carrara",
+    metaTitle: "Cleaning Services Carrara | House, Office & Bond Cleaning",
+    metaDescription:
+      "Professional cleaning services in Carrara for homes, rental properties, offices and businesses. Wave Solution Cleaning provides house cleaning, bond cleaning, deep cleaning and end of lease cleaning near Carrara Markets and surrounding areas. Call 0450 833 683.",
+    intro:
+      "Trusted cleaning services for Carrara homes, rental properties, offices, and local businesses.",
+    nearbyReference: "Carrara Markets, Carrara Indoor Sports Centre, the Nerang River corridor, and nearby Merrimac",
+    paragraphs: [
+      "Wave Solution Cleaning provides reliable, professional cleaning services in Carrara for homeowners, tenants, property managers, and local businesses. Whether you need a regular house clean, an inspection-ready bond clean, or a once-off deep clean, our team delivers consistent results tailored to the property type and your preferred schedule.",
+      "Carrara is a mixed-use suburb with a blend of residential homes, newer townhouses, sporting facilities, and light commercial properties. We service homes and businesses near Carrara Markets, Carrara Indoor Sports Centre, the Nerang River corridor, and nearby Merrimac. Our cleaners understand the practical demands of maintaining properties in this part of the Gold Coast, from family homes on quiet streets to rental units needing prompt turnarounds.",
+      "If you are searching for cleaning services in Carrara, we make it easy. Tell us your property type, the number of rooms, and your preferred date. We will provide a tailored quote and recommend the right service — whether that is a one-off deep clean, a recurring home maintenance visit, or a comprehensive bond clean ahead of your final inspection. Call 0450 833 683 or book online for a fast, friendly response.",
+    ],
+    serviceBullets: [
+      "House and apartment cleaning for Carrara residents",
+      "Bond cleaning and end of lease cleaning for tenants and landlords",
+      "Office and commercial cleaning for Carrara businesses",
+      "Deep cleaning, move-in cleaning, and carpet cleaning add-ons",
+    ],
+    faq: [
+      {
+        question: "Do you offer bond cleaning in Carrara?",
+        answer:
+          "Yes. We provide thorough bond and end of lease cleaning for Carrara tenants, landlords, and property managers, designed to meet Queensland rental inspection standards.",
+      },
+      {
+        question: "Can you clean homes and apartments in Carrara?",
+        answer:
+          "Yes. We clean houses, townhouses, and apartments throughout Carrara with weekly, fortnightly, and one-off cleaning options available.",
+      },
+      {
+        question: "Do you provide office cleaning in Carrara?",
+        answer:
+          "Yes. We offer flexible office and commercial cleaning for Carrara businesses with scheduling designed around your operational hours.",
+      },
+      {
+        question: "How do I get a cleaning quote for Carrara?",
+        answer:
+          "Call 0450 833 683 or use the online booking form. We will provide a tailored, no-obligation quote based on your property size, service type, and preferred timing.",
+      },
+    ],
+  },
 ]
 
 export function getLocationPage(slug: string) {
