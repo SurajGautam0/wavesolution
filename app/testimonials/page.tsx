@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useMemo } from "react"
+import Image from "next/image"
 import Link from "next/link"
 import {
   Star,
@@ -338,8 +339,19 @@ export default function TestimonialsPage() {
     <div className="flex min-h-screen flex-col bg-slate-50 text-slate-900">
         {/* Hero Section */}
         <section className="relative overflow-hidden bg-gradient-to-b from-[#1b1b3a] via-[#23234d] to-[#333365] text-white pt-24 pb-20 sm:pt-28 sm:pb-28">
+          {/* Hero Background Image */}
+          <div className="absolute inset-0 z-0">
+            <Image
+              src="/pexels-karola-g-4239146.jpg"
+              alt="Professional cleaning team Gold Coast"
+              fill
+              className="object-cover opacity-15"
+              priority
+              sizes="100vw"
+            />
+          </div>
           {/* Ambient Glows */}
-          <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute inset-0 pointer-events-none z-[1]">
             <div className="absolute -top-24 left-1/4 h-[550px] w-[550px] rounded-full bg-[#39BDE4]/20 blur-[130px]" />
             <div className="absolute bottom-0 right-1/4 h-[450px] w-[450px] rounded-full bg-[#39BDE4]/15 blur-[120px]" />
             <div className="absolute inset-0 bg-[radial-gradient(#39BDE4_1px,transparent_1px)] [background-size:24px_24px] opacity-10" />

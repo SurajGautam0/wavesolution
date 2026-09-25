@@ -43,7 +43,7 @@ export default function LocationsPage() {
       <section className="page-hero">
         <div className="absolute inset-0">
           <Image
-            src="/images/gold-coast-cleaning-service.jpg"
+            src="/pexels-tima-miroshnichenko-6195274.jpg"
             alt="Wave Solution service areas across the Gold Coast"
             fill
             priority

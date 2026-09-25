@@ -118,9 +118,9 @@ export default function AboutPage() {
             <div className="relative">
               <div className="absolute -top-4 -left-4 w-20 h-20 border-2 border-[#39BDE4]/20 rounded-2xl" />
               <div className="absolute -bottom-4 -right-4 w-20 h-20 border-2 border-[#249FC5]/20 rounded-2xl" />
-              <div className="rounded-2xl overflow-hidden shadow-2xl">
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[4/3]">
                 <Image
-                  src="/about.jpg"
+                  src="/pexels-helenalopes-27176670.jpg"
                   alt="Wave Solution cleaning team at work on the Gold Coast"
                   fill
                   className="object-cover"
