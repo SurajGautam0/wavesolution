@@ -150,17 +150,17 @@ const homepageFaqs = [
 export const metadata: Metadata = {
   title: "House Cleaning Gold Coast | Bond & End of Lease Cleaning",
   description:
-    "Wave Solution provides house cleaning, office cleaning, bond cleaning, end of lease cleaning, deep cleaning and commercial cleaning across the Gold Coast. Book your free quote today.",
+    "Professional house, office, and bond cleaning across the Gold Coast. 100% bond-back guarantee, police-checked cleaners. Get your free fixed quote today!",
   alternates: {
     canonical: businessInfo.baseUrl,
   },
   openGraph: {
     title: "House Cleaning Gold Coast | Bond & End of Lease Cleaning",
     description:
-      "Wave Solution provides house cleaning, office cleaning, bond cleaning, end of lease cleaning, deep cleaning and commercial cleaning across the Gold Coast. Book your free quote today.",
+      "Professional house, office, and bond cleaning across the Gold Coast. 100% bond-back guarantee, police-checked cleaners. Get your free fixed quote today!",
     url: businessInfo.baseUrl,
     type: "website",
-    images: [{ url: "/gold-coast-cleaning-services.jpeg", width: 1200, height: 630, alt: "Wave Solution Cleaning services Gold Coast" }],
+    images: [{ url: `${businessInfo.baseUrl}/gold-coast-cleaning-services.jpeg`, width: 1200, height: 630, alt: "Wave Solution Cleaning services Gold Coast" }],
   },
 }
 
