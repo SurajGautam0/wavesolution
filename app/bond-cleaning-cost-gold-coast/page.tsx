@@ -62,7 +62,8 @@ const jsonLd = {
           name: "How much does bond cleaning cost on the Gold Coast?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "Bond cleaning is quoted per property rather than sold at a fixed menu price, because the size, condition and extras differ on every job. Indicative pricing: [OWNER: insert current price range by property size, AUD]. Our bond cleaning page publishes the current starting price.",
+            // OWNER_PRICES: insert the confirmed AUD range here when the owner supplies one — keep copy quote-led until then
+            text: "Bond cleaning is quoted per property rather than sold at a fixed menu price, because the size, condition and extras differ on every job. We will confirm an itemised price for your property size and suburb before you book, in writing.",
           },
         },
         {
@@ -182,7 +183,7 @@ const steps = [
 const faqs = [
   {
     q: "How much does bond cleaning cost on the Gold Coast?",
-    a: "Bond cleaning is quoted per property rather than sold at a fixed menu price, because size, condition and extras differ on every job. Indicative pricing: [OWNER: insert current price range by property size, AUD]. Check our bond cleaning page for the current starting price.",
+    a: "Bond cleaning is quoted per property rather than sold at a fixed menu price, because size, condition and extras differ on every job. Ask for a written figure and we will confirm an itemised price for your property size and suburb before you book.",
   },
   {
     q: "What makes a bond clean cost more?",
@@ -326,8 +327,8 @@ export default function BondCleaningCostPage() {
                 <p className="text-xs font-black uppercase tracking-[0.2em] text-secondary">Direct Answer</p>
                 <p className="mt-3 text-base leading-8 text-slate-700">
                   Bond cleaning on the Gold Coast is priced for the individual property, not sold from a fixed menu, because
-                  size, condition and extras change on every job. Indicative pricing is [OWNER: insert current price range by
-                  property size, AUD], and the final figure is confirmed with you before the booking is locked in.
+                  size, condition and extras change on every job. We will confirm an itemised price for your property size
+                  and suburb in writing before the booking is locked in.
                 </p>
               </div>
 

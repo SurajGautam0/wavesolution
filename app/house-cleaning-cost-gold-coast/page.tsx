@@ -62,7 +62,8 @@ const jsonLd = {
           name: "How much does house cleaning cost on the Gold Coast?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "House cleaning is quoted per home rather than sold at a fixed menu price, because size, condition and the extras you want all change the work. Indicative pricing: [OWNER: insert current price range by property size, or hourly rate, AUD]. Regular weekly or fortnightly visits are priced lower per visit than a one-off clean.",
+            // OWNER_PRICES: insert the confirmed AUD range here when the owner supplies one — keep copy quote-led until then
+            text: "House cleaning is quoted per home rather than sold at a fixed menu price, because size, condition and the extras you want all change the work. We will confirm an itemised price for your home and suburb before you book. Regular weekly or fortnightly visits are priced lower per visit than a one-off clean.",
           },
         },
         {
@@ -175,7 +176,7 @@ const steps = [
 const faqs = [
   {
     q: "How much does house cleaning cost on the Gold Coast?",
-    a: "House cleaning is quoted per home rather than sold at a fixed menu price, because size, condition and extras change the work. Indicative pricing: [OWNER: insert current price range by property size, or hourly rate, AUD]. Regular visits are priced lower per visit than a one-off clean.",
+    a: "House cleaning is quoted per home rather than sold at a fixed menu price, because size, condition and extras change the work. Ask for a written figure and we will confirm an itemised price for your home and suburb before you book. Regular visits are priced lower per visit than a one-off clean.",
   },
   {
     q: "What makes a house clean cost more?",
@@ -315,9 +316,9 @@ export default function HouseCleaningCostPage() {
                 <p className="text-xs font-black uppercase tracking-[0.2em] text-secondary">Direct Answer</p>
                 <p className="mt-3 text-base leading-8 text-slate-700">
                   House cleaning on the Gold Coast is quoted per home rather than sold from a fixed menu, because size,
-                  condition, frequency and extras all change the work. Indicative pricing is [OWNER: insert current price
-                  range by property size, or hourly rate, AUD], and regular weekly or fortnightly visits work out cheaper
-                  per visit than a one-off clean.
+                  condition, frequency and extras all change the work. We will confirm an itemised price for your home and
+                  suburb before you book, and regular weekly or fortnightly visits work out cheaper per visit than a
+                  one-off clean.
                 </p>
               </div>
 

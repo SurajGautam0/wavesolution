@@ -62,7 +62,8 @@ const jsonLd = {
           name: "How much does pest control cost on the Gold Coast?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "Pest treatment is quoted for the individual property rather than sold at a fixed menu price, because the pest, the extent of the activity and the treatment scope change the job. Indicative pricing: [OWNER: insert current price range for a standard residential treatment, AUD].",
+            // OWNER_PRICES: insert the confirmed AUD range here when the owner supplies one — keep copy quote-led until then
+            text: "Pest treatment is quoted for the individual property rather than sold at a fixed menu price, because the pest, the extent of the activity and the treatment scope change the job. We will confirm an itemised price for your property before the treatment is booked.",
           },
         },
         {
@@ -174,7 +175,7 @@ const steps = [
 const faqs = [
   {
     q: "How much does pest control cost on the Gold Coast?",
-    a: "Pest treatment is quoted for the individual property, because the pest, the extent of the activity and the treatment scope change the job. Indicative pricing: [OWNER: insert current price range for a standard residential treatment, AUD].",
+    a: "Pest treatment is quoted for the individual property, because the pest, the extent of the activity and the treatment scope change the job. Ask for a written figure and we will confirm an itemised price before the treatment is booked.",
   },
   {
     q: "What makes a treatment cost more?",
@@ -314,9 +315,8 @@ export default function PestControlCostPage() {
                 <p className="text-xs font-black uppercase tracking-[0.2em] text-secondary">Direct Answer</p>
                 <p className="mt-3 text-base leading-8 text-slate-700">
                   Pest control on the Gold Coast is quoted per property, not sold from a fixed menu, because the pest, the
-                  extent of the activity and how much of the site needs treating all change the job. Indicative pricing is
-                  [OWNER: insert current price range for a standard residential treatment, AUD], confirmed with you before
-                  the treatment is booked.
+                  extent of the activity and how much of the site needs treating all change the job. We will confirm an
+                  itemised price for your property before the treatment is booked.
                 </p>
               </div>
 

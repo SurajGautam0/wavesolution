@@ -77,7 +77,8 @@ const jsonLd = {
           name: "How much does cleaning cost on the Gold Coast?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "Wave Solution quotes every job for the individual property rather than selling from a fixed menu, because size, condition and extras change the work involved. Indicative pricing: [OWNER: insert current starting prices or ranges by service, AUD]. Each guide below explains what moves the price for that specific service.",
+            // OWNER_PRICES: insert confirmed AUD starting prices or ranges by service here when the owner supplies them — keep copy quote-led until then
+            text: "Wave Solution quotes every job for the individual property rather than selling from a fixed menu, because size, condition and extras change the work involved. We will confirm an itemised figure for your property size and suburb before you book. Each guide below explains what moves the price for that specific service.",
           },
         },
         {
@@ -222,7 +223,7 @@ const steps = [
 const faqs = [
   {
     q: "How much does cleaning cost on the Gold Coast?",
-    a: "Every job is quoted for the property itself, because size, condition and extras change the work involved. Indicative pricing: [OWNER: insert current starting prices or ranges by service, AUD]. Pick the guide for your service below for the factors specific to that job.",
+    a: "Every job is quoted for the property itself, because size, condition and extras change the work involved. Ask for a written figure and we will confirm an itemised price for your property size and suburb before you book. Pick the guide for your service below for the factors specific to that job.",
   },
   {
     q: "Why is there no fixed price list?",
@@ -336,8 +337,8 @@ export default function CleaningPricesPage() {
                 <p className="text-xs font-black uppercase tracking-[0.2em] text-secondary">Direct Answer</p>
                 <p className="mt-3 text-base leading-8 text-slate-700">
                   Cleaning on the Gold Coast is quoted per property, not sold from a fixed menu, because size, condition and
-                  extras change the work on every job. Indicative pricing is [OWNER: insert current starting prices or
-                  ranges by service, AUD]. Choose your service below to see the specific drivers, inclusions and common
+                  extras change the work on every job. We will confirm an itemised figure for your property size and suburb
+                  before you book. Choose your service below to see the specific drivers, inclusions and common
                   extras for that job.
                 </p>
               </div>
