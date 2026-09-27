@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
 import Link from "next/link"
 
@@ -47,6 +47,8 @@ import {
 } from "@/components/ui/dialog"
 import { cn } from "@/lib/utils"
 import { businessInfo } from "@/lib/business-info"
+import { servicePages } from "@/lib/service-pages"
+import { trackEvent } from "@/lib/analytics"
 
 // ── Data ──────────────────────────────────────────────
 const serviceTypes = [
@@ -54,6 +56,19 @@ const serviceTypes = [
 	{ id: "office", label: "Office Cleaning", icon: Building2, desc: "Commercial and workplace cleaning" },
 	{ id: "deep", label: "Deep Cleaning", icon: Sparkles, desc: "Thorough top-to-bottom clean" },
 ]
+
+const allServices = servicePages
+	.map((page) => ({ value: page.slug, label: page.shortLabel }))
+	.sort((a, b) => a.label.localeCompare(b.label))
+
+const bathroomOptions = [
+	{ id: "1", label: "1 Bathroom" },
+	{ id: "2", label: "2 Bathrooms" },
+	{ id: "3", label: "3 Bathrooms" },
+	{ id: "4+", label: "4+ Bathrooms" },
+	{ id: "not-sure", label: "Not sure" },
+]
+
 
 const propertySizes = [
 	{ id: "1-2bed", label: "1–2 Bedrooms", description: "Apartments, studios, small units" },
@@ -75,6 +90,7 @@ const formSchema = z.object({
 	name: z.string().min(2, "Name must be at least 2 characters"),
 	phone: z.string().min(10, "Phone number must be at least 10 digits"),
 	email: z.string().email("Invalid email address"),
+	suburb: z.string().min(2, "Suburb must be at least 2 characters"),
 	address: z.string().min(5, "Address must be at least 5 characters"),
 	preferredDate: z.string().optional(),
 	notes: z.string().optional(),
@@ -99,10 +115,17 @@ export default function BookingPageClient() {
 	const [selectedService, setSelectedService] = useState("home")
 	const [selectedSize, setSelectedSize] = useState("3bed")
 	const [selectedFrequency, setSelectedFrequency] = useState<Frequency>("fortnightly")
+	const [selectedBathrooms, setSelectedBathrooms] = useState("2")
 	const [includeDeepClean, setIncludeDeepClean] = useState(false)
 
 	const sizeLabel = propertySizes.find((s) => s.id === selectedSize)?.label || selectedSize
-	const serviceLabel = serviceTypes.find((s) => s.id === selectedService)?.label || selectedService
+	const quickPick = serviceTypes.find((s) => s.id === selectedService)
+	const specificService = allServices.find((s) => s.value === selectedService)
+	const serviceLabel = quickPick?.label || specificService?.label || selectedService
+
+	useEffect(() => {
+		trackEvent("booking_step_view", { step: 1, service: "home" })
+	}, [])
 
 	const form = useForm<FormValues>({
 		resolver: zodResolver(formSchema),
@@ -110,15 +133,20 @@ export default function BookingPageClient() {
 			name: "",
 			phone: "",
 			email: "",
+			suburb: "",
 			address: "",
 			preferredDate: "",
 			notes: "",
 		},
 	})
 
+	const suburbValue = form.watch("suburb")
+
 	function goNext() {
 		if (currentStep < 3) {
-			setCurrentStep((s) => s + 1)
+			const next = currentStep + 1
+			setCurrentStep(next)
+			trackEvent("booking_step_view", { step: next, service: selectedService })
 			window.scrollTo({ top: 0, behavior: "smooth" })
 		}
 	}
@@ -135,9 +163,11 @@ export default function BookingPageClient() {
 		try {
 			const bookingPayload = {
 				...values,
-				service: selectedService,
+				service: serviceLabel,
+				serviceSlug: specificService?.value || selectedService,
 				packageSize: sizeLabel,
 				frequency: selectedFrequency,
+				bathrooms: selectedBathrooms,
 				includeDeepClean,
 			}
 
@@ -169,6 +199,13 @@ export default function BookingPageClient() {
 				createdAt: new Date().toISOString(),
 			})
 			localStorage.setItem("bookings", JSON.stringify(bookings))
+
+			trackEvent("quote_submit", {
+				service: serviceLabel,
+				suburb: values.suburb,
+				frequency: selectedFrequency,
+				flow: "booking_form",
+			})
 
 			toast.success("Booking request sent successfully!")
 			setShowSuccessDialog(true)
@@ -306,6 +343,39 @@ export default function BookingPageClient() {
 								})}
 							</div>
 
+							{/* Specific service picker */}
+							<div className="mb-10 rounded-2xl border border-slate-200 bg-[#F3F3F3]/60 p-5">
+								<label
+									htmlFor="specific-service"
+									className="mb-2 block text-xs font-black uppercase tracking-[0.15em] text-slate-500"
+								>
+									Or choose a specific service
+								</label>
+								<select
+									id="specific-service"
+									value={specificService ? selectedService : ""}
+									onChange={(event) => {
+										const value = event.target.value
+										if (value) {
+											setSelectedService(value)
+											trackEvent("select_service", { service: value })
+										}
+									}}
+									className="h-12 w-full rounded-xl border border-slate-200 bg-white px-4 text-sm font-semibold text-slate-700 outline-none transition-all hover:border-slate-300 focus:border-[#39BDE4] focus:ring-2 focus:ring-[#39BDE4]/10"
+								>
+									<option value="">Show all 15 services…</option>
+									{allServices.map((service) => (
+										<option key={service.value} value={service.value}>
+											{service.label}
+										</option>
+									))}
+								</select>
+								<p className="mt-3 text-xs leading-6 text-slate-500">
+									Bond cleaning, pest control, end of lease, carpet cleaning, after-builders and more are all available —
+									pick yours and we will quote it properly.
+								</p>
+							</div>
+
 							{/* Trust strip */}
 							<div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 border-t border-slate-100 py-6">
 								{[
@@ -403,6 +473,26 @@ export default function BookingPageClient() {
 										)}
 									>
 										{freq.label}
+									</button>
+								))}
+							</div>
+
+							{/* Bathrooms */}
+							<h3 className="mb-4 text-xs font-black uppercase tracking-[0.15em] text-slate-500">Bathrooms</h3>
+							<div className="mx-auto mb-8 flex max-w-lg flex-wrap items-center justify-center gap-1 rounded-2xl bg-[#F3F3F3] p-1.5">
+								{bathroomOptions.map((option) => (
+									<button
+										key={option.id}
+										type="button"
+										onClick={() => setSelectedBathrooms(option.id)}
+										className={cn(
+											"flex-1 rounded-xl px-3 py-2.5 text-sm font-bold transition-all duration-300",
+											selectedBathrooms === option.id
+												? "bg-white text-secondary shadow-sm"
+												: "text-slate-500 hover:text-slate-700"
+										)}
+									>
+										{option.label}
 									</button>
 								))}
 							</div>
@@ -538,9 +628,35 @@ export default function BookingPageClient() {
 														</FormItem>
 													)}
 												/>
-												<FormField
-													control={form.control}
-													name="address"
+											<FormField
+												control={form.control}
+												name="suburb"
+												render={({ field }) => (
+													<FormItem>
+														<FormLabel className="text-sm font-semibold text-slate-700">Suburb</FormLabel>
+														<FormControl>
+															<div className="relative">
+																<MapPin className="absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
+																<Input
+																	placeholder="e.g. Robina"
+																	list="gold-coast-suburbs"
+																	{...field}
+																	className="h-12 rounded-xl border-slate-200 bg-[#F3F3F3]/60 pl-10 transition-all hover:border-slate-300 focus:border-[#39BDE4] focus:bg-white focus:ring-2 focus:ring-[#39BDE4]/10"
+																/>
+																<datalist id="gold-coast-suburbs">
+																	{businessInfo.serviceAreas.map((area) => (
+																		<option key={area} value={area} />
+																	))}
+																</datalist>
+															</div>
+														</FormControl>
+														<FormMessage className="text-xs" />
+													</FormItem>
+												)}
+											/>
+											<FormField
+												control={form.control}
+												name="address"
 													render={({ field }) => (
 														<FormItem>
 															<FormLabel className="text-sm font-semibold text-slate-700">Property Address</FormLabel>
@@ -646,6 +762,16 @@ export default function BookingPageClient() {
 												<span className="font-bold text-slate-900">{serviceLabel}</span>
 											</div>
 											<div className="flex items-center justify-between border-b border-slate-200 pb-3">
+												<span className="text-slate-500">Suburb</span>
+												<span className="font-bold text-slate-900">{suburbValue.trim() || "—"}</span>
+											</div>
+											<div className="flex items-center justify-between border-b border-slate-200 pb-3">
+												<span className="text-slate-500">Bathrooms</span>
+												<span className="font-bold text-slate-900">
+													{bathroomOptions.find((b) => b.id === selectedBathrooms)?.label || selectedBathrooms}
+												</span>
+											</div>
+											<div className="flex items-center justify-between border-b border-slate-200 pb-3">
 												<span className="text-slate-500">Property Size</span>
 												<span className="font-bold text-slate-900">{sizeLabel}</span>
 											</div>
@@ -744,6 +870,16 @@ export default function BookingPageClient() {
 							<div className="flex items-center justify-between text-sm">
 								<span className="text-slate-500">Service</span>
 								<span className="font-bold text-slate-900">{serviceLabel}</span>
+							</div>
+							<div className="flex items-center justify-between border-t border-slate-200 pt-3 text-sm">
+								<span className="text-slate-500">Suburb</span>
+								<span className="font-bold text-slate-900">{suburbValue.trim() || "—"}</span>
+							</div>
+							<div className="flex items-center justify-between border-t border-slate-200 pt-3 text-sm">
+								<span className="text-slate-500">Bathrooms</span>
+								<span className="font-bold text-slate-900">
+									{bathroomOptions.find((b) => b.id === selectedBathrooms)?.label || selectedBathrooms}
+								</span>
 							</div>
 							<div className="flex items-center justify-between border-t border-slate-200 pt-3 text-sm">
 								<span className="text-slate-500">Property</span>

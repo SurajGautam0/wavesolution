@@ -3,6 +3,7 @@ import type { Metadata } from "next"
 import { Plus_Jakarta_Sans, Inter } from "next/font/google"
 import "./globals.css"
 
+import Analytics from "@/components/analytics"
 import { LayoutWrapper } from "@/components/layout-wrapper"
 import { ThemeProvider } from "@/components/theme-provider"
 import { Toaster } from "@/components/ui/sonner"
@@ -351,8 +352,15 @@ export default function RootLayout({
             <LayoutWrapper>{children}</LayoutWrapper>
           </div>
           <Toaster position="top-center" richColors />
+          <Analytics />
         </ThemeProvider>
-        <script dangerouslySetInnerHTML={{ __html: "!function(){var t=document.createElement('script');t.async=!0;t.src='https://www.googletagmanager.com/gtag/js?id=G-Q2D4JFK9R6';var e=function(){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-Q2D4JFK9R6',{send_page_view:!1})};'requestIdleCallback'in window?requestIdleCallback(function(){document.head.appendChild(t);e()}):setTimeout(function(){document.head.appendChild(t);e()},3000)}();" }} />
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "!function(){window.dataLayer=window.dataLayer||[];window.gtag=function(){window.dataLayer.push(arguments)};window.gtag('js',new Date());window.gtag('config','G-Q2D4JFK9R6',{send_page_view:!1});var t=document.createElement('script');t.async=!0;t.src='https://www.googletagmanager.com/gtag/js?id=G-Q2D4JFK9R6';var load=function(){document.head.appendChild(t)};'requestIdleCallback'in window?requestIdleCallback(load):setTimeout(load,3000)}();",
+          }}
+          data-analytics="ga4"
+        />
       </body>
     </html>
   )

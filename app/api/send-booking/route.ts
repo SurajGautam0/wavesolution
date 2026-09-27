@@ -4,7 +4,7 @@ import nodemailer from "nodemailer"
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json()
-    const { name, phone, email, address, preferredDate, notes, service, packageSize, frequency, includeDeepClean } = body
+    const { name, phone, email, address, suburb, bathrooms, preferredDate, notes, service, packageSize, frequency, includeDeepClean } = body
 
     // Create a transporter using Gmail SMTP
     const transporter = nodemailer.createTransport({
@@ -36,11 +36,15 @@ export async function POST(request: NextRequest) {
           <table style="width: 100%; border-collapse: collapse;">
             <tr>
               <td style="padding: 10px 0; color: #64748b; font-size: 14px; width: 140px;">Service Type</td>
-              <td style="padding: 10px 0; color: #333366; font-size: 14px; font-weight: 600; text-transform: capitalize;">${service} Cleaning</td>
+              <td style="padding: 10px 0; color: #333366; font-size: 14px; font-weight: 600; text-transform: capitalize;">${service}</td>
             </tr>
             <tr>
               <td style="padding: 10px 0; color: #64748b; font-size: 14px;">Property Size</td>
               <td style="padding: 10px 0; color: #333366; font-size: 14px; font-weight: 600;">${packageSize}</td>
+            </tr>
+            <tr>
+              <td style="padding: 10px 0; color: #64748b; font-size: 14px;">Bathrooms</td>
+              <td style="padding: 10px 0; color: #333366; font-size: 14px; font-weight: 600;">${bathrooms || "Not specified"}</td>
             </tr>
             <tr>
               <td style="padding: 10px 0; color: #64748b; font-size: 14px;">Frequency</td>
@@ -65,6 +69,10 @@ export async function POST(request: NextRequest) {
             <tr>
               <td style="padding: 10px 0; color: #64748b; font-size: 14px;">Email</td>
               <td style="padding: 10px 0; color: #333366; font-size: 14px; font-weight: 600;"><a href="mailto:${email}" style="color: #4dd0e2; text-decoration: none;">${email}</a></td>
+            </tr>
+            <tr>
+              <td style="padding: 10px 0; color: #64748b; font-size: 14px; width: 140px;">Suburb</td>
+              <td style="padding: 10px 0; color: #333366; font-size: 14px; font-weight: 600;">${suburb || "Not specified"}</td>
             </tr>
             <tr>
               <td style="padding: 10px 0; color: #64748b; font-size: 14px;">Address</td>
@@ -93,8 +101,9 @@ export async function POST(request: NextRequest) {
 New Booking Request — WaveSolution
 
 SERVICE DETAILS
-- Service: ${service} Cleaning
+- Service: ${service}
 - Property Size: ${packageSize}
+- Bathrooms: ${bathrooms || "Not specified"}
 - Frequency: ${frequency}
 - Deep Clean: ${includeDeepClean ? "Yes" : "No"}
 
@@ -102,6 +111,7 @@ CUSTOMER DETAILS
 - Name: ${name}
 - Phone: ${phone}
 - Email: ${email}
+- Suburb: ${suburb || "Not specified"}
 - Address: ${address}
 - Preferred Date: ${formattedDate}
 ${notes ? `- Notes: ${notes}` : ""}
@@ -112,7 +122,7 @@ ${notes ? `- Notes: ${notes}` : ""}
       from: `"WaveSolution Booking" <${process.env.SMTP_EMAIL || "qsurajgautam@gmail.com"}>`,
       to: "susanttimalcena@gmail.com",
       replyTo: email,
-      subject: `New Booking: ${service} cleaning — ${name}`,
+      subject: `New Booking: ${service} — ${name}`,
       text: textContent,
       html: htmlContent,
     })
@@ -134,7 +144,7 @@ ${notes ? `- Notes: ${notes}` : ""}
             <table style="width: 100%; border-collapse: collapse;">
               <tr>
                 <td style="padding: 8px 0; color: #64748b; font-size: 14px;">Service</td>
-                <td style="padding: 8px 0; color: #333366; font-size: 14px; font-weight: 600; text-transform: capitalize;">${service} Cleaning</td>
+                <td style="padding: 8px 0; color: #333366; font-size: 14px; font-weight: 600; text-transform: capitalize;">${service}</td>
               </tr>
               <tr>
                 <td style="padding: 8px 0; color: #64748b; font-size: 14px;">Property Size</td>

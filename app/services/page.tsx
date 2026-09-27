@@ -105,6 +105,15 @@ export default function ServicesPage() {
               Every service includes our satisfaction guarantee. Select a card to see what is included and request a fast local quote.
             </p>
           </div>
+          <div className="mx-auto mb-10 max-w-3xl rounded-[2rem] border border-primary/15 bg-white p-6 shadow-sm">
+            <p className="text-xs font-black uppercase tracking-[0.2em] text-secondary">Direct Answer</p>
+            <p className="mt-3 text-base leading-8 text-slate-700">
+              Not sure which service you need? Regular house cleaning suits weekly or fortnightly upkeep, deep cleaning
+              resets an entire property, bond and end of lease cleaning prepares a rental for final inspection, office and
+              commercial cleaning covers workplaces, carpet cleaning lifts stains and allergens, and pest control covers
+              Gold Coast insects year-round. Call {businessInfo.phoneDisplay} and we will point you to the right service.
+            </p>
+          </div>
           <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
             {servicePages.map((page) => (
               <ServiceCard

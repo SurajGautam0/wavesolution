@@ -281,8 +281,21 @@ export default function Home() {
        <section className="bg-[#F3F3F3] py-14 md:py-20">
          <div className="classic-container">
            <InteractivePricingCalculator />
-         </div>
-       </section>
+        </div>
+      </section>
+
+      <section className="bg-white pb-4 pt-6">
+        <div className="classic-container">
+          <div className="rounded-[2rem] border border-primary/15 bg-[#F3F3F3] p-6 sm:p-7">
+            <p className="text-xs font-black uppercase tracking-[0.2em] text-secondary">Direct Answer</p>
+            <p className="mt-3 text-base leading-8 text-slate-700">
+              Wave Solution Cleaning &amp; Pest Control provides house cleaning, office and commercial cleaning, bond and
+              end of lease cleaning, carpet cleaning and pest control across the Gold Coast. The team is fully insured,
+              police-checked and locally owned, with free quotes by phone or online booking.
+            </p>
+          </div>
+        </div>
+      </section>
 
       <section className="bg-white py-14 md:py-20">
         <div className="classic-container grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-stretch">

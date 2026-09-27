@@ -35,6 +35,7 @@ import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { useToast } from "@/hooks/use-toast"
 import { saveContact } from "@/lib/firebase-service"
+import { trackEvent } from "@/lib/analytics"
 import { businessInfo, siteLinks } from "@/lib/business-info"
 
 const POPULAR_SERVICES = [
@@ -105,6 +106,7 @@ export default function ContactPage() {
       })
 
       setIsSubmitted(true)
+      trackEvent("contact_form_submit", { service: formData.service || "general" })
     } catch (error) {
       toast({
         title: "Submission Error",
