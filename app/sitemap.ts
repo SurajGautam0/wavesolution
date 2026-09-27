@@ -1,5 +1,6 @@
 import { locationPages } from '@/lib/location-pages'
 import { servicePageSlugs } from '@/lib/service-pages'
+import { serviceLocationPages } from '@/lib/service-location-pages'
 import { MetadataRoute } from 'next'
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -66,7 +67,31 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
         // High-intent guide pages
         {
+            url: `${baseUrl}/cleaning-prices-gold-coast`,
+            lastModified: new Date('2026-09-27'),
+            changeFrequency: 'monthly',
+            priority: 0.9,
+        },
+        {
             url: `${baseUrl}/bond-cleaning-cost-gold-coast`,
+            lastModified: new Date('2026-09-27'),
+            changeFrequency: 'monthly',
+            priority: 0.88,
+        },
+        {
+            url: `${baseUrl}/house-cleaning-cost-gold-coast`,
+            lastModified: new Date('2026-09-27'),
+            changeFrequency: 'monthly',
+            priority: 0.88,
+        },
+        {
+            url: `${baseUrl}/pest-control-cost-gold-coast`,
+            lastModified: new Date('2026-09-27'),
+            changeFrequency: 'monthly',
+            priority: 0.88,
+        },
+        {
+            url: `${baseUrl}/bond-pest-carpet-end-of-lease`,
             lastModified: new Date('2026-09-27'),
             changeFrequency: 'monthly',
             priority: 0.88,
@@ -85,6 +110,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
             changeFrequency: 'weekly',
             priority: 0.85,
         },
+
+        // Service x suburb landing pages
+        ...serviceLocationPages.map((page) => ({
+            url: `${baseUrl}/${page.serviceSlug}/${page.suburbSlug}`,
+            lastModified: new Date('2026-09-27'),
+            changeFrequency: 'weekly' as const,
+            priority: 0.86,
+        })),
 
         // Individual location pages
         ...locationPages.map((location) => ({

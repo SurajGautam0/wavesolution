@@ -6,6 +6,7 @@ import { ArrowRight, CheckCircle, ChevronRight, MapPin, Phone } from "lucide-rea
 import { Button } from "@/components/ui/button"
 import { businessInfo, siteLinks } from "@/lib/business-info"
 import { getLocationPage, locationPages } from "@/lib/location-pages"
+import { serviceLocationPages, serviceProfiles } from "@/lib/service-location-pages"
 
 type LocationPageProps = {
   params: Promise<{
@@ -58,6 +59,7 @@ export default async function LocationDetailPage({ params }: LocationPageProps) 
   }
 
   const pageUrl = `${businessInfo.baseUrl}/locations/${location.slug}`
+  const suburbServicePages = serviceLocationPages.filter((entry) => entry.suburbSlug === location.slug)
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -217,6 +219,28 @@ export default async function LocationDetailPage({ params }: LocationPageProps) 
                     ))}
                   </div>
                 </div>
+
+                {suburbServicePages.length > 0 && (
+                  <div className="mt-6 border-t border-slate-200/80 pt-6">
+                    <p className="text-xs font-black uppercase tracking-[0.16em] text-secondary">
+                      Dedicated {location.name} Service Pages
+                    </p>
+                    <p className="mt-2 text-sm text-slate-600">
+                      In-depth pages for the services most requested in {location.name}.
+                    </p>
+                    <div className="mt-4 flex flex-wrap gap-2.5">
+                      {suburbServicePages.map((entry) => (
+                        <Link
+                          key={entry.serviceSlug}
+                          href={`/${entry.serviceSlug}/${entry.suburbSlug}`}
+                          className="rounded-full border border-secondary/30 bg-secondary/5 px-3.5 py-1.5 text-xs font-semibold text-primary transition-colors hover:border-secondary hover:bg-secondary hover:text-white"
+                        >
+                          {serviceProfiles[entry.serviceSlug].label} in {location.name} →
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
 

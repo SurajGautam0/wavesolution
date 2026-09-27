@@ -456,6 +456,18 @@ export default function Home() {
               >
                 Cleaning Services Carrara
               </Link>
+              <Link
+                href="/cleaning-prices-gold-coast"
+                className="rounded-full border border-primary/40 bg-primary/5 px-4 py-2 text-sm font-semibold text-primary transition-all hover:-translate-y-0.5 hover:border-primary hover:bg-primary hover:text-white hover:shadow-md"
+              >
+                Cleaning Prices Gold Coast
+              </Link>
+              <Link
+                href="/bond-pest-carpet-end-of-lease"
+                className="rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-secondary transition-all hover:-translate-y-0.5 hover:border-primary/40 hover:text-primary hover:shadow-md"
+              >
+                Bond, Pest &amp; Carpet Bundle
+              </Link>
             </div>
 
             <div className="mt-8 grid gap-4 lg:grid-cols-2">

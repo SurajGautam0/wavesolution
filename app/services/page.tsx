@@ -113,6 +113,23 @@ export default function ServicesPage() {
               commercial cleaning covers workplaces, carpet cleaning lifts stains and allergens, and pest control covers
               Gold Coast insects year-round. Call {businessInfo.phoneDisplay} and we will point you to the right service.
             </p>
+            <div className="mt-5 flex flex-wrap gap-2.5">
+              {[
+                { href: "/cleaning-prices-gold-coast", label: "All price guides" },
+                { href: "/bond-cleaning-cost-gold-coast", label: "Bond cleaning cost" },
+                { href: "/house-cleaning-cost-gold-coast", label: "House cleaning cost" },
+                { href: "/pest-control-cost-gold-coast", label: "Pest control cost" },
+                { href: "/bond-pest-carpet-end-of-lease", label: "Bond + pest + carpet bundle" },
+              ].map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="rounded-full border border-primary/20 bg-primary/5 px-3.5 py-1.5 text-xs font-semibold text-primary transition-colors hover:border-secondary hover:bg-secondary/5 hover:text-secondary"
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </div>
           </div>
           <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
             {servicePages.map((page) => (

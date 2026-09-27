@@ -404,7 +404,14 @@ export default function EndOfLeaseCleaningCostGoldCoastPage() {
 
               <div className="rounded-[2rem] border border-slate-200 bg-slate-50 p-6">
                 <p className="text-xs font-black uppercase tracking-[0.2em] text-secondary mb-4">Related Guides</p>
+                <p className="mb-4 text-sm leading-7 text-slate-600">
+                  This article looks at end of lease costs by bedroom count. For what actually drives a bond clean quote,
+                  see the <Link href="/bond-cleaning-cost-gold-coast" className="font-semibold text-primary hover:text-secondary">Bond Cleaning Cost Guide</Link>, or
+                  <Link href="/cleaning-prices-gold-coast" className="font-semibold text-primary hover:text-secondary"> every price guide in one place</Link>.
+                </p>
                 <ul className="space-y-3">
+                  <li><Link href="/bond-cleaning-cost-gold-coast" className="text-sm font-semibold text-primary hover:text-secondary">Bond Cleaning Cost Guide Gold Coast</Link></li>
+                  <li><Link href="/bond-pest-carpet-end-of-lease" className="text-sm font-semibold text-primary hover:text-secondary">Bond, Pest &amp; Carpet Bundle</Link></li>
                   <li><Link href="/blog/bond-cleaning-checklist" className="text-sm font-semibold text-primary hover:text-secondary">Bond Cleaning Checklist QLD</Link></li>
                   <li><Link href="/blog/end-of-lease-checklist" className="text-sm font-semibold text-primary hover:text-secondary">End of Lease Cleaning Checklist</Link></li>
                   <li><Link href="/blog/move-out-cleaning-mistakes" className="text-sm font-semibold text-primary hover:text-secondary">Move-Out Mistakes That Cost You</Link></li>

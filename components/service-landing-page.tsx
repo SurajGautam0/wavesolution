@@ -5,6 +5,7 @@ import { ArrowRight, CheckCircle, ChevronRight, MapPin, Phone } from "lucide-rea
 import { Button } from "@/components/ui/button"
 import { businessInfo, siteLinks } from "@/lib/business-info"
 import { getServicePage, type ServicePage } from "@/lib/service-pages"
+import { serviceLocationPages } from "@/lib/service-location-pages"
 
 type ServiceLandingPageProps = {
   page: ServicePage
@@ -29,7 +30,13 @@ export function ServiceLandingPage({ page }: ServiceLandingPageProps) {
     { href: "/locations/carrara", label: "Carrara" },
     { href: siteLinks.locations, label: "More Gold Coast Areas" },
   ]
+  const serviceAreaPages = serviceLocationPages.filter((entry) => entry.serviceSlug === page.slug)
   const relatedArticles = (() => {
+    const priceHub = {
+      href: "/cleaning-prices-gold-coast",
+      label: "Cleaning Prices Gold Coast",
+      description: "Cost guides for every service — house, bond, pest and end of lease bundles.",
+    }
     if (page.slug === "office-cleaning-gold-coast" || page.slug === "commercial-cleaning-gold-coast") {
       return [
         {
@@ -42,6 +49,7 @@ export function ServiceLandingPage({ page }: ServiceLandingPageProps) {
           label: "Commercial Cleaning Benefits",
           description: "Why regular commercial cleaning pays off for Gold Coast businesses.",
         },
+        priceHub,
       ]
     }
     if (page.slug === "bond-cleaning-gold-coast" || page.slug === "end-of-lease-cleaning-gold-coast" || page.slug === "end-of-lease-pest-control-gold-coast" || page.slug === "cleaning-carrara") {
@@ -62,15 +70,21 @@ export function ServiceLandingPage({ page }: ServiceLandingPageProps) {
           description: "Real prices by room count, what is included, add-ons, and how to avoid extra charges.",
         },
         {
-          href: "/end-of-lease-cleaning-checklist",
-          label: "End of Lease Cleaning Checklist",
-          description: "Room-by-room exit checklist with RTA guidance for Queensland rentals.",
-        },
-        {
           href: "/bond-cleaning-cost-gold-coast",
           label: "Bond Cleaning Cost Guide",
           description: "What drives a bond clean price on the Gold Coast and how quotes are built.",
         },
+        {
+          href: "/bond-pest-carpet-end-of-lease",
+          label: "Bond + Pest + Carpet Bundle",
+          description: "Cleaning, carpet and treatment in one booking, in the right order before inspection.",
+        },
+        {
+          href: "/end-of-lease-cleaning-checklist",
+          label: "End of Lease Cleaning Checklist",
+          description: "Room-by-room exit checklist with RTA guidance for Queensland rentals.",
+        },
+        priceHub,
       ]
     }
     if (page.slug === "carpet-cleaning-gold-coast") {
@@ -85,10 +99,21 @@ export function ServiceLandingPage({ page }: ServiceLandingPageProps) {
           label: "House Cleaning Tips",
           description: "Practical advice for maintaining homes and carpets between deep visits.",
         },
+        {
+          href: "/bond-pest-carpet-end-of-lease",
+          label: "Bond + Pest + Carpet Bundle",
+          description: "Carpet steam cleaning alongside the bond clean and pest treatment, in one booking.",
+        },
+        priceHub,
       ]
     }
     if (page.slug === "pest-control-gold-coast") {
       return [
+        {
+          href: "/pest-control-cost-gold-coast",
+          label: "Pest Control Cost Guide",
+          description: "What determines a treatment price — property size, pest type and treatment scope.",
+        },
         {
           href: "/blog/pest-control-guide",
           label: "Gold Coast Pest Prevention Guide",
@@ -99,9 +124,20 @@ export function ServiceLandingPage({ page }: ServiceLandingPageProps) {
           label: "Eco-Friendly Cleaning & Treatments",
           description: "Safe, family-friendly methods for keeping properties healthy and pest-free.",
         },
+        {
+          href: "/bond-pest-carpet-end-of-lease",
+          label: "Bond + Pest + Carpet Bundle",
+          description: "Pest treatment sequenced with the bond clean and carpet steam cleaning.",
+        },
+        priceHub,
       ]
     }
     return [
+      {
+        href: "/house-cleaning-cost-gold-coast",
+        label: "House Cleaning Cost Guide",
+        description: "What drives a house clean price — size, condition, frequency and the extras you add.",
+      },
       {
         href: "/blog/cleaning-tips",
         label: "House Cleaning Tips",
@@ -112,6 +148,7 @@ export function ServiceLandingPage({ page }: ServiceLandingPageProps) {
         label: "Mould Prevention & Removal",
         description: "How to prevent and eradicate mould in humid subtropical Gold Coast homes.",
       },
+      priceHub,
     ]
   })()
   const pricingDetails =
@@ -430,10 +467,28 @@ export function ServiceLandingPage({ page }: ServiceLandingPageProps) {
         <div className="classic-container">
           <div className="grid gap-6 lg:grid-cols-2">
             <div className="rounded-[2rem] border border-slate-200 bg-[#F3F3F3] p-7 shadow-sm">
-              <h2 className="text-2xl font-black tracking-tight text-primary">Nearby Gold Coast Areas</h2>
+              <h2 className="text-2xl font-black tracking-tight text-primary">Areas We Cover</h2>
               <p className="mt-4 text-sm leading-7 text-slate-600">
                 We regularly support homes, rentals, and businesses across nearby suburbs, and these local pages help reinforce suburb relevance without relying on duplicate templates.
               </p>
+              {serviceAreaPages.length > 0 && (
+                <div className="mt-6">
+                  <p className="text-xs font-black uppercase tracking-[0.2em] text-secondary">
+                    {page.shortLabel} by suburb
+                  </p>
+                  <div className="mt-4 flex flex-wrap gap-3">
+                    {serviceAreaPages.map((area) => (
+                      <Link
+                        key={area.suburbSlug}
+                        href={`/${page.slug}/${area.suburbSlug}`}
+                        className="rounded-full border border-secondary/30 bg-secondary/5 px-4 py-2 text-sm font-semibold text-primary transition-colors hover:border-secondary hover:bg-secondary hover:text-white"
+                      >
+                        {area.suburbName}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              )}
               <div className="mt-6 flex flex-wrap gap-3">
                 {nearbyLocations.map((location) => (
                   <Link

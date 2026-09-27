@@ -40,6 +40,7 @@ const COMPANY = [
   { href: siteLinks.about, label: "About Us" },
   { href: siteLinks.testimonials, label: "Client Reviews" },
   { href: siteLinks.blog, label: "Cleaning & RTA Guides" },
+  { href: "/cleaning-prices-gold-coast", label: "Cost & Price Guides" },
   { href: "/blog/end-of-lease-cleaning-requirements-qld", label: "QLD Bond Requirements" },
   { href: siteLinks.contact, label: "Contact & Support" },
   { href: siteLinks.portal, label: "Client Portal" },
