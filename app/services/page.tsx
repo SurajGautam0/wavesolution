@@ -120,6 +120,9 @@ export default function ServicesPage() {
                 { href: "/house-cleaning-cost-gold-coast", label: "House cleaning cost" },
                 { href: "/pest-control-cost-gold-coast", label: "Pest control cost" },
                 { href: "/bond-pest-carpet-end-of-lease", label: "Bond + pest + carpet bundle" },
+                { href: "/airbnb-cleaning-gold-coast", label: "Short-stay turnover" },
+                { href: "/strata-cleaning-gold-coast", label: "Strata & body corporate" },
+                { href: "/medical-cleaning-gold-coast", label: "Medical & dental" },
               ].map((link) => (
                 <Link
                   key={link.href}

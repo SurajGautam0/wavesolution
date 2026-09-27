@@ -103,6 +103,26 @@ export default function sitemap(): MetadataRoute.Sitemap {
             priority: 0.88,
         },
 
+        // Niche commercial pages
+        {
+            url: `${baseUrl}/airbnb-cleaning-gold-coast`,
+            lastModified: new Date('2026-09-27'),
+            changeFrequency: 'monthly',
+            priority: 0.87,
+        },
+        {
+            url: `${baseUrl}/strata-cleaning-gold-coast`,
+            lastModified: new Date('2026-09-27'),
+            changeFrequency: 'monthly',
+            priority: 0.87,
+        },
+        {
+            url: `${baseUrl}/medical-cleaning-gold-coast`,
+            lastModified: new Date('2026-09-27'),
+            changeFrequency: 'monthly',
+            priority: 0.87,
+        },
+
         // Locations hub
         {
             url: `${baseUrl}/locations`,

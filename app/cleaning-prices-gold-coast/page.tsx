@@ -154,6 +154,24 @@ const guides = [
     body: "Not sure what you are paying for? Work through the room-by-room list Queensland inspectors actually use.",
     tag: "Checklist",
   },
+  {
+    href: "/airbnb-cleaning-gold-coast",
+    label: "Short-stay turnover cleaning",
+    body: "How turnover cleaning between guests is scoped — the checklist, restocking and back-to-back changeover timing.",
+    tag: "Hosts",
+  },
+  {
+    href: "/strata-cleaning-gold-coast",
+    label: "Strata & body corporate cleaning",
+    body: "Common-area cleaning for buildings: lobbies, stairwells, bins rooms and shared facilities on an agreed schedule.",
+    tag: "Buildings",
+  },
+  {
+    href: "/medical-cleaning-gold-coast",
+    label: "Medical & dental practice cleaning",
+    body: "Cleaning for clinics and practices, scheduled outside appointment hours against your own protocol.",
+    tag: "Practices",
+  },
 ]
 
 const priceFactors = [

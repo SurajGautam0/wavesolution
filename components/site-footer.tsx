@@ -23,6 +23,9 @@ const SERVICES = [
   { href: siteLinks.officeCleaning, label: "Office & Workplace Cleaning" },
   { href: siteLinks.pestControl, label: "End of Lease Pest Control" },
   { href: siteLinks.deepCleaning, label: "Deep Spring Cleaning" },
+  { href: "/airbnb-cleaning-gold-coast", label: "Short-Stay Turnover" },
+  { href: "/strata-cleaning-gold-coast", label: "Strata & Body Corporate" },
+  { href: "/medical-cleaning-gold-coast", label: "Medical & Dental Cleaning" },
 ]
 
 const LOCATIONS = [
