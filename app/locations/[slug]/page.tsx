@@ -1,7 +1,7 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 import { notFound } from "next/navigation"
-import { ArrowRight, CheckCircle, MapPin, Phone } from "lucide-react"
+import { ArrowRight, CheckCircle, ChevronRight, MapPin, Phone } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import { businessInfo, siteLinks } from "@/lib/business-info"
@@ -124,7 +124,18 @@ export default async function LocationDetailPage({ params }: LocationPageProps) 
       <section className="bg-primary py-16 text-white md:py-24">
         <div className="classic-container">
           <div className="mx-auto max-w-4xl text-center">
-            <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-[11px] font-black uppercase tracking-[0.2em]">
+            <nav aria-label="Breadcrumb" className="flex flex-wrap items-center justify-center gap-2 text-xs font-bold uppercase tracking-[0.18em] text-white/60">
+              <Link href={siteLinks.home} className="transition-colors hover:text-white">
+                Home
+              </Link>
+              <ChevronRight className="h-3.5 w-3.5" aria-hidden="true" />
+              <Link href={siteLinks.locations} className="transition-colors hover:text-white">
+                Locations
+              </Link>
+              <ChevronRight className="h-3.5 w-3.5" aria-hidden="true" />
+              <span className="text-secondary">{location.name}</span>
+            </nav>
+            <div className="mt-6 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-[11px] font-black uppercase tracking-[0.2em]">
               <MapPin className="h-4 w-4 text-secondary" />
               {location.name} cleaning services
             </div>

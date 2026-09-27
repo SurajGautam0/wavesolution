@@ -61,6 +61,16 @@ export function ServiceLandingPage({ page }: ServiceLandingPageProps) {
           label: "End of Lease Cleaning Price Guide",
           description: "Real prices by room count, what is included, add-ons, and how to avoid extra charges.",
         },
+        {
+          href: "/end-of-lease-cleaning-checklist",
+          label: "End of Lease Cleaning Checklist",
+          description: "Room-by-room exit checklist with RTA guidance for Queensland rentals.",
+        },
+        {
+          href: "/bond-cleaning-cost-gold-coast",
+          label: "Bond Cleaning Cost Guide",
+          description: "What drives a bond clean price on the Gold Coast and how quotes are built.",
+        },
       ]
     }
     if (page.slug === "carpet-cleaning-gold-coast") {
@@ -252,6 +262,12 @@ export function ServiceLandingPage({ page }: ServiceLandingPageProps) {
         <div className="classic-container">
           <div className="grid gap-10 lg:grid-cols-[1.35fr_0.85fr]">
             <div className="space-y-6">
+              {page.quickAnswer ? (
+                <div className="rounded-[2rem] border border-primary/15 bg-[#F3F3F3] p-6">
+                  <p className="text-xs font-black uppercase tracking-[0.2em] text-secondary">Direct Answer</p>
+                  <p className="mt-3 text-base leading-8 text-slate-700">{page.quickAnswer}</p>
+                </div>
+              ) : null}
               {page.overview.map((paragraph) => (
                 <p key={paragraph} className="text-base leading-8 text-slate-600">
                   {paragraph}
@@ -294,6 +310,11 @@ export function ServiceLandingPage({ page }: ServiceLandingPageProps) {
             {page.sections.map((section) => (
               <article key={section.title} className="rounded-[2rem] border border-slate-200 bg-white p-7 shadow-sm sm:p-8">
                 <h2 className="text-2xl font-black tracking-tight text-primary">{section.title}</h2>
+                {section.directAnswer ? (
+                  <p className="mt-4 border-l-4 border-secondary pl-4 text-base font-semibold leading-8 text-slate-700">
+                    {section.directAnswer}
+                  </p>
+                ) : null}
                 <div className="mt-5 space-y-4">
                   {section.paragraphs.map((paragraph) => (
                     <p key={paragraph} className="text-base leading-8 text-slate-600">
@@ -309,6 +330,32 @@ export function ServiceLandingPage({ page }: ServiceLandingPageProps) {
 
       <section className="bg-white py-14 md:py-20">
         <div className="classic-container">
+          <div className="mb-10 flex flex-col items-start justify-between gap-5 rounded-[2rem] border border-primary/15 bg-[#F3F3F3] p-7 sm:flex-row sm:items-center sm:p-8">
+            <div>
+              <p className="text-lg font-black tracking-tight text-primary">
+                Ready for a price on {page.shortLabel.toLowerCase()}?
+              </p>
+              <p className="mt-2 max-w-2xl text-sm leading-7 text-slate-600">
+                Send your suburb, property size and preferred date. We come back with a clear, itemised quote — no callout
+                fee surprises and no obligation to book.
+              </p>
+            </div>
+            <div className="flex shrink-0 flex-col gap-3 sm:flex-row">
+              <Button asChild className="h-11 rounded-full bg-primary px-5 text-[11px] font-black uppercase tracking-[0.18em] text-white hover:bg-primary/90">
+                <Link href={siteLinks.book}>
+                  Get Free Quote
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+              </Button>
+              <Button asChild variant="outline" className="h-11 rounded-full border-slate-200 bg-white px-5 text-[11px] font-black uppercase tracking-[0.18em] text-primary hover:border-primary/25 hover:text-secondary">
+                <a href={businessInfo.phoneHref} className="inline-flex items-center gap-2">
+                  <Phone className="h-4 w-4" />
+                  {businessInfo.phoneDisplay}
+                </a>
+              </Button>
+            </div>
+          </div>
+
           <div className="mb-10 rounded-[2rem] border border-slate-200 bg-[#F3F3F3] p-7 shadow-sm">
             <h2 className="text-2xl font-black tracking-tight text-primary">Pricing Guide for {page.shortLabel}</h2>
             <p className="mt-4 text-sm leading-7 text-slate-600">

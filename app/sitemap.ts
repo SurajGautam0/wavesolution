@@ -64,6 +64,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
             priority: slug === 'cleaning-gold-coast' ? 0.96 : slug === 'cleaning-carrara' ? 0.93 : 0.92,
         })),
 
+        // High-intent guide pages
+        {
+            url: `${baseUrl}/bond-cleaning-cost-gold-coast`,
+            lastModified: new Date('2026-09-27'),
+            changeFrequency: 'monthly',
+            priority: 0.88,
+        },
+        {
+            url: `${baseUrl}/end-of-lease-cleaning-checklist`,
+            lastModified: new Date('2026-09-27'),
+            changeFrequency: 'monthly',
+            priority: 0.88,
+        },
+
         // Locations hub
         {
             url: `${baseUrl}/locations`,

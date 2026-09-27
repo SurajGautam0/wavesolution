@@ -9,7 +9,7 @@ import { businessInfo, siteLinks } from "@/lib/business-info"
 import { servicePages } from "@/lib/service-pages"
 
 export const metadata: Metadata = {
-  title: "Cleaning Services Directory | Full Range of Commercial & Residential Services",
+  title: "Cleaning Services Gold Coast | House, Office & Bond",
   description:
     "Explore Wave Solution's full catalogue of cleaning services: house, office, bond, carpet, after-builders, and pest control across Queensland. Book online.",
   alternates: {

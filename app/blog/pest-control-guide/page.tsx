@@ -4,7 +4,7 @@ import { ChevronRight, CheckCircle2, AlertCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 export const metadata: Metadata = {
-  title: "Common Pests in Gold Coast Homes and How to Deal With Them | Guide 2025",
+  title: "Common Pests in Gold Coast Homes | Identification & Control Guide",
   description: "Gold Coast's warm climate attracts many common household pests. Learn to identify cockroaches, ants, spiders, rodents and termites — and when to call a professional.",
   keywords: ["pests Gold Coast homes", "pest control guide Gold Coast", "cockroach prevention Gold Coast", "termite inspection Gold Coast", "common pests Queensland"],
   alternates: { canonical: "https://www.wavesolution.com.au/blog/pest-control-guide" },

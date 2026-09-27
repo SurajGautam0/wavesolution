@@ -5,13 +5,13 @@ import { Button } from "@/components/ui/button"
 import { AuthorBio } from "@/components/author-bio"
 
 export const metadata: Metadata = {
-  title: "End of Lease Cleaning Cost Gold Coast 2025 | Full Price Guide",
+  title: "End of Lease Cleaning Cost Gold Coast | Full Price Guide",
   description:
-    "How much does end of lease cleaning cost in Gold Coast? Full 2025 price guide by property size, bedroom count, add-ons, and what is included. Quotes from $249.",
+    "How much does end of lease cleaning cost on the Gold Coast? Price guide by property size, bedroom count, add-ons, and what is included. Quotes from $249.",
   alternates: { canonical: "https://www.wavesolution.com.au/blog/end-of-lease-cleaning-cost-gold-coast" },
   openGraph: {
-    title: "End of Lease Cleaning Cost Gold Coast 2025 | Full Price Guide",
-    description: "Real 2025 prices for end of lease cleaning in Gold Coast by bedroom count. What is included and what costs extra.",
+    title: "End of Lease Cleaning Cost Gold Coast | Full Price Guide",
+    description: "Price guide for end of lease cleaning on the Gold Coast by bedroom count. What is included and what costs extra.",
     url: "https://www.wavesolution.com.au/blog/end-of-lease-cleaning-cost-gold-coast",
     images: [{ url: "/gold-coast-cleaning-services.jpeg", width: 1200, height: 630, alt: "End of lease cleaning cost Gold Coast" }],
   },
@@ -30,8 +30,8 @@ const jsonLd = {
     },
     {
       "@type": "Article",
-      headline: "End of Lease Cleaning Cost Gold Coast 2025 — Full Price Guide",
-      description: "Complete 2025 price guide for end of lease cleaning in Gold Coast. Prices by bedroom count, inclusions, add-ons, and tips to avoid overcharging.",
+      headline: "End of Lease Cleaning Cost Gold Coast — Full Price Guide",
+      description: "Price guide for end of lease cleaning on the Gold Coast. Prices by bedroom count, inclusions, add-ons, and tips to avoid overcharging.",
       author: {
         "@type": "Person",
         name: "Suraj Gautam",

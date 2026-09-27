@@ -21,7 +21,7 @@ export const locationPages: LocationPage[] = [
     heroTitle: "Cleaning Services in Robina",
     metaTitle: "Cleaning Services Robina | House & Office Cleaning",
     metaDescription:
-      "Need reliable cleaning services in Robina? Wave Solution Cleaning provides home cleaning, office cleaning, deep cleaning and end of lease cleaning near Robina Town Centre. Call 0450 833 683.",
+      "Cleaning services in Robina for homes, offices and end of lease cleans near Robina Town Centre. Insured, police-checked team. Call 0450 833 683.",
     intro:
       "Professional cleaning services for Robina homes, offices, rentals, and commercial spaces.",
     nearbyReference: "Robina Town Centre, Cbus Super Stadium, Easy T Centre, and nearby Varsity Lakes",
@@ -60,7 +60,7 @@ export const locationPages: LocationPage[] = [
     heroTitle: "Cleaning Services in Southport",
     metaTitle: "Cleaning Services Southport | Home, Office & Bond Cleaning",
     metaDescription:
-      "Looking for cleaning services in Southport? Wave Solution Cleaning provides house cleaning, office cleaning, deep cleaning and end of lease cleaning near Southport CBD and Broadwater. Call 0450 833 683.",
+      "Cleaning services in Southport for homes, offices and bond cleans near the CBD and Broadwater. Local insured team. Call 0450 833 683.",
     intro:
       "Trusted cleaning services for Southport homes, rental properties, offices, and commercial buildings.",
     nearbyReference: "Southport CBD, Australia Fair, the Broadwater, and nearby Main Beach",
@@ -99,7 +99,7 @@ export const locationPages: LocationPage[] = [
     heroTitle: "Cleaning Services in Surfers Paradise",
     metaTitle: "Cleaning Services Surfers Paradise | Holiday Let & Home Cleaning",
     metaDescription:
-      "Need cleaning services in Surfers Paradise? Wave Solution Cleaning supports homes, apartments, holiday lets, offices and deep cleans near Cavill Avenue and the beachfront. Call 0450 833 683.",
+      "Cleaning services in Surfers Paradise for homes, holiday lets and offices near Cavill Avenue and the beachfront. Call 0450 833 683.",
     intro:
       "Flexible cleaning services for Surfers Paradise apartments, homes, offices, and short-stay properties.",
     nearbyReference: "Cavill Avenue, Surfers Paradise Boulevard, Chevron Island, and the beachfront precinct",
@@ -138,7 +138,7 @@ export const locationPages: LocationPage[] = [
     heroTitle: "Cleaning Services in Broadbeach",
     metaTitle: "Cleaning Services Broadbeach | Local House & Office Cleaners",
     metaDescription:
-      "Book trusted cleaning services in Broadbeach with Wave Solution Cleaning. We provide home cleaning, office cleaning, deep cleaning and rental cleaning near Pacific Fair and Broadbeach Waters. Call 0450 833 683.",
+      "Cleaning services in Broadbeach for homes, offices and rental cleans near Pacific Fair and Broadbeach Waters. Call 0450 833 683.",
     intro:
       "Local cleaning services for Broadbeach homes, businesses, apartments, and rental properties.",
     nearbyReference: "Pacific Fair, Broadbeach Waters, The Star, and the wider coastal precinct",
@@ -177,7 +177,7 @@ export const locationPages: LocationPage[] = [
     heroTitle: "Cleaning Services in Nerang",
     metaTitle: "Cleaning Services Nerang | House, Office & Bond Cleaning",
     metaDescription:
-      "Professional cleaning services in Nerang for homes, offices and rental properties. Wave Solution Cleaning provides house cleaning, deep cleaning, end of lease cleaning and office cleaning near Nerang and surrounding areas. Call 0450 833 683.",
+      "Cleaning services in Nerang for homes, rentals and offices, including deep and end of lease cleans. Police-checked team. Call 0450 833 683.",
     intro:
       "Reliable cleaning services for Nerang homes, offices, rental properties and local businesses.",
     nearbyReference: "Nerang Town Centre, Nerang State High School, the M1 interchange, and nearby Highland Park",
@@ -221,7 +221,7 @@ export const locationPages: LocationPage[] = [
     heroTitle: "Cleaning Services in Burleigh Heads",
     metaTitle: "Cleaning Services Burleigh Heads | Home & Office Cleaning",
     metaDescription:
-      "Trusted cleaning services in Burleigh Heads for homes, apartments and businesses. Wave Solution Cleaning provides house cleaning, deep cleaning, end of lease cleaning and commercial cleaning near James Street and the beach. Call 0450 833 683.",
+      "Cleaning services in Burleigh Heads for homes, apartments and businesses near James Street. Deep, end of lease and commercial cleans. Call 0450 833 683.",
     intro:
       "Professional cleaning services for Burleigh Heads homes, apartments, offices and local businesses.",
     nearbyReference: "James Street, Burleigh Heads Beach, Justin Lane, and the coastal precinct",
@@ -265,7 +265,7 @@ export const locationPages: LocationPage[] = [
     heroTitle: "Cleaning Services in Palm Beach",
     metaTitle: "Cleaning Services Palm Beach | House, Office & Rental Cleaning",
     metaDescription:
-      "Reliable cleaning services in Palm Beach for homes, rentals and businesses. Wave Solution Cleaning provides house cleaning, deep cleaning, bond cleaning and commercial cleaning near the Gold Coast Highway and the beach. Call 0450 833 683.",
+      "Cleaning services in Palm Beach for homes, rentals and businesses near the Gold Coast Highway. Bond, deep and commercial cleans. Call 0450 833 683.",
     intro:
       "Local cleaning services for Palm Beach homes, apartments, offices and rental properties.",
     nearbyReference: "Palm Beach, Currumbin Alley, the Gold Coast Highway corridor, and nearby Elanora",
@@ -309,7 +309,7 @@ export const locationPages: LocationPage[] = [
     heroTitle: "Cleaning Services in Helensvale",
     metaTitle: "Cleaning Services Helensvale | Home, Office & Bond Cleaning",
     metaDescription:
-      "Trusted cleaning services in Helensvale for homes, offices and rental properties. Wave Solution Cleaning provides house cleaning, deep cleaning, end of lease cleaning and commercial cleaning near Westfield Helensvale. Call 0450 833 683.",
+      "Cleaning services in Helensvale for homes, offices and rentals near Westfield Helensvale. Deep, end of lease and commercial cleans. Call 0450 833 683.",
     intro:
       "Professional cleaning services for Helensvale homes, offices, and local businesses.",
     nearbyReference: "Westfield Helensvale, Helensvale Plaza, the M1 corridor, and nearby Coomera",
@@ -353,7 +353,7 @@ export const locationPages: LocationPage[] = [
     heroTitle: "Cleaning Services in Coomera",
     metaTitle: "Cleaning Services Coomera | House, Office & Rental Cleaning",
     metaDescription:
-      "Professional cleaning services in Coomera for homes, offices and commercial spaces. Wave Solution Cleaning provides house cleaning, deep cleaning, end of lease cleaning and office cleaning near Coomera Town Centre. Call 0450 833 683.",
+      "Cleaning services in Coomera for homes, offices and rentals near Coomera Town Centre. House, deep and end of lease cleans. Call 0450 833 683.",
     intro:
       "Local cleaning services for Coomera homes, businesses, offices and new-build properties.",
     nearbyReference: "Coomera Town Centre, Westfield Coomera, the northern Gold Coast growth corridor, and nearby Pimpama",
@@ -397,7 +397,7 @@ export const locationPages: LocationPage[] = [
     heroTitle: "Cleaning Services in Varsity Lakes",
     metaTitle: "Cleaning Services Varsity Lakes | House & Office Cleaning",
     metaDescription:
-      "Reliable cleaning services in Varsity Lakes for homes, apartments and businesses. Wave Solution Cleaning provides house cleaning, deep cleaning, end of lease cleaning and commercial cleaning near Varsity Lakes and Robina. Call 0450 833 683.",
+      "Cleaning services in Varsity Lakes for homes, apartments and businesses near Robina. House, deep and commercial cleans. Call 0450 833 683.",
     intro:
       "Trusted cleaning services for Varsity Lakes homes, apartments, offices and local businesses.",
     nearbyReference: "Varsity Lakes Town Centre, Lake Varsity, the M1 connection, and nearby Robina",
@@ -441,7 +441,7 @@ export const locationPages: LocationPage[] = [
     heroTitle: "Cleaning Services in Carrara",
     metaTitle: "Cleaning Services Carrara | House, Office & Bond Cleaning",
     metaDescription:
-      "Professional cleaning services in Carrara for homes, rental properties, offices and businesses. Wave Solution Cleaning provides house cleaning, bond cleaning, deep cleaning and end of lease cleaning near Carrara Markets and surrounding areas. Call 0450 833 683.",
+      "Cleaning services in Carrara for homes, rentals and offices near Carrara Markets. House, bond and deep cleans by an insured local team. Call 0450 833 683.",
     intro:
       "Trusted cleaning services for Carrara homes, rental properties, offices, and local businesses.",
     nearbyReference: "Carrara Markets, Carrara Indoor Sports Centre, the Nerang River corridor, and nearby Merrimac",

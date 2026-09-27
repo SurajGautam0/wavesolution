@@ -58,8 +58,8 @@ const POPULAR_SUBURBS = [
   { name: "Helensvale", slug: "/locations/helensvale" },
   { name: "Varsity Lakes", slug: "/locations/varsity-lakes" },
   { name: "Nerang", slug: "/locations/nerang" },
-  { name: "Merrimac", slug: "/locations/merrimac" },
-  { name: "Benowa", slug: "/locations/benowa" },
+  { name: "Carrara", slug: "/locations/carrara" },
+  { name: "All Gold Coast Areas", slug: "/locations" },
 ]
 
 export default function ContactPage() {

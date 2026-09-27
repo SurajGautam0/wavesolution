@@ -4,7 +4,7 @@ import { CheckCircle2, ChevronRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 export const metadata: Metadata = {
-  title: "End of Lease Cleaning Checklist Gold Coast | Move-Out Guide 2025",
+  title: "End of Lease Cleaning Checklist Gold Coast | Move-Out Guide",
   description:
     "End of lease cleaning checklist for Gold Coast renters. A complete room-by-room guide to help you prepare your rental property for final inspection and get your bond back.",
   keywords: [
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     canonical: "https://www.wavesolution.com.au/blog/end-of-lease-checklist",
   },
   openGraph: {
-    title: "End of Lease Cleaning Checklist Gold Coast | Move-Out Guide 2025",
+    title: "End of Lease Cleaning Checklist Gold Coast | Move-Out Guide",
     description: "Complete move-out cleaning checklist for Gold Coast rentals. Know exactly what to clean before handing back the keys.",
     url: "https://www.wavesolution.com.au/blog/end-of-lease-checklist",
   },

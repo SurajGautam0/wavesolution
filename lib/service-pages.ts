@@ -6,6 +6,7 @@ export type ServiceFaq = {
 export type ServiceSection = {
   title: string
   paragraphs: string[]
+  directAnswer?: string
 }
 
 export type ServicePage = {
@@ -19,6 +20,7 @@ export type ServicePage = {
   heroDescription: string
   primaryKeyword: string
   keywords: string[]
+  quickAnswer?: string
   overview: string[]
   includedItems: string[]
   whyChooseUs: string[]
@@ -41,9 +43,9 @@ export const servicePages: ServicePage[] = [
     slug: "cleaning-gold-coast",
     shortLabel: "Cleaning Services",
     navLabel: "Cleaning Services",
-    metaTitle: "Cleaning Services Gold Coast | Home, Office & Bond Cleaners",
+    metaTitle: "Cleaning Services Gold Coast | Home, Office & Bond",
     metaDescription:
-      "Professional cleaning services across the Gold Coast for homes, rental vacates, offices, and commercial spaces. Fully insured, police-checked local team. Get a quote today.",
+      "Professional cleaning services across the Gold Coast for homes, rentals, offices and commercial spaces. Fully insured, police-checked local team. Get a quote.",
     heroEyebrow: "Gold Coast Cleaning Services Hub",
     heroTitle: "Cleaning Services on the Gold Coast",
     heroDescription:
@@ -56,6 +58,7 @@ export const servicePages: ServicePage[] = [
       "commercial cleaning Gold Coast",
       "bond cleaning Gold Coast",
     ],
+    quickAnswer: "Wave Solution covers cleaning and pest control across the Gold Coast, from Coomera and Helensvale down to Burleigh Heads and Palm Beach. One insured, police-checked team handles recurring house cleans, bond and end of lease work, office and commercial programs, carpet steam cleaning and pest treatment. Every job is quoted up front by property size, condition and timing, so the scope is agreed before work starts.",
     overview: [
       "Finding the right cleaning team should be simple. You want reliable cleaners who arrive on schedule, communicate clearly, and leave your property noticeably cleaner, fresher, and properly sanitized. At Wave Solution, we provide dependable domestic, commercial, and move-out cleaning across the Gold Coast without lock-in contracts or hidden fees.",
       "Different properties require different levels of care. A family home in Robina needs practical routine upkeep; a coastal apartment in Surfers Paradise requires attention to salt spray and sliding tracks; while a rental bond clean in Southport demands strict adherence to Queensland tenancy inspection checklists. This guide helps you identify the right service for your situation.",
@@ -72,6 +75,7 @@ export const servicePages: ServicePage[] = [
     whyChooseUs: sharedWhyChooseUs,
     sections: [
       {
+        directAnswer: "If you are not sure which clean you need, match it to the situation: routine upkeep is house cleaning, a move-out is bond or end of lease cleaning, a workplace is office or commercial cleaning, and a home that has not been detailed in months is a deep clean. Carpets, post-build dust and pests are booked as specialist add-ons alongside whichever core service you choose.",
         title: "Find the right service for your property",
         paragraphs: [
           "To make booking straightforward, our services are organized into four core categories: Residential, Rental Handover, Commercial, and Specialist care. If you need regular maintenance to keep up with daily life, our recurring house cleaning keeps kitchens, bathrooms, and floors continuously clean. If your home hasn't had deep attention in months, our one-off deep clean provides an intensive reset.",
@@ -165,7 +169,7 @@ export const servicePages: ServicePage[] = [
     slug: "house-cleaning-gold-coast",
     shortLabel: "House Cleaning Gold Coast",
     navLabel: "House Cleaning",
-    metaTitle: "House Cleaning Gold Coast | Weekly, Fortnightly & One-Off Cleans",
+    metaTitle: "House Cleaning Gold Coast | Weekly & One-Off Cleans",
     metaDescription:
       "Professional house cleaning in the Gold Coast for apartments, family homes and holiday properties. Weekly, fortnightly and one-off cleans available.",
     heroEyebrow: "Local House Cleaners",
@@ -186,6 +190,7 @@ export const servicePages: ServicePage[] = [
       "housekeeper Gold Coast",
       "maid service Gold Coast",
     ],
+    quickAnswer: "House cleaning on the Gold Coast covers kitchens, bathrooms, floors, dusting and surface wiping, booked weekly, fortnightly, monthly or as a single visit. Quotes depend mainly on bedroom and bathroom count, the home's current condition and how often the clean runs. Wave Solution sends police-checked, fully insured cleaners who bring their own equipment, with eco-friendly products available for homes with children and pets.",
     overview: [
       "Keeping a Gold Coast home clean shouldn't take over your weekends. Routine chores like scrubbing showers, wiping down kitchen benches, dusting sills, and vacuuming floors repeat endlessly. Our professional house cleaning service takes care of those ongoing tasks so you can enjoy a fresh, hygienic home without the stress.",
       "We offer completely flexible service options tailored to your lifestyle. Many of our clients choose weekly or fortnightly visits to keep their home consistently spotless and orderly. Others prefer a thorough one-off reset before hosting guests, after a busy month, or during seasonal transitions. We adapt our checklists to your property size, family priorities, and preferred schedule.",
@@ -202,6 +207,7 @@ export const servicePages: ServicePage[] = [
     whyChooseUs: sharedWhyChooseUs,
     sections: [
       {
+        directAnswer: "For most Gold Coast homes a weekly or fortnightly clean keeps kitchens and bathrooms at a maintainable standard, while a monthly schedule suits tidier households with fewer occupants. If it has been longer than a month since the last detailed clean, start with a one-off deep clean and then move onto a routine slot.",
         title: "Reliable weekly and fortnightly home cleaning",
         paragraphs: [
           "A regular house cleaning service should give you time back, not create more administration. We emphasize punctuality, clear communication, and consistent quality. By assigning the same trusted cleaner whenever possible, you benefit from someone who understands your household preferences and takes care of high-traffic zones naturally.",
@@ -313,6 +319,7 @@ export const servicePages: ServicePage[] = [
       "REIQ bond cleaning Gold Coast",
       "rental inspection cleaning Gold Coast",
     ],
+    quickAnswer: "A bond clean is a professional end of lease clean measured against the entry condition report your agent issued at the start of the tenancy. Queensland law does not require you to hire a professional cleaner, but the property must be left reasonably clean and in substantially the same condition as when you moved in, allowing for fair wear and tear, and that is exactly what inspectors check at the final exit inspection. Wave Solution quotes each bond clean up front by property size, condition and any add-ons such as carpet steam cleaning or pest treatment.",
     overview: [
       "Moving out of a rental property is stressful enough without worrying about whether you will get your full bond back. Property managers and real estate agents conduct rigorous exit inspections, comparing every room against your entry condition report. Standard household cleaning is rarely enough to meet their exacting standards.",
       "Wave Solution specializes in inspection-ready bond cleaning designed to satisfy real estate property managers across the Gold Coast. We systematically tackle the toughest areas—baked-on oven grease, exhaust fan filters, bathroom soap scum, window tracks, and skirting boards—ensuring your rental is handed over in pristine condition.",
@@ -329,6 +336,7 @@ export const servicePages: ServicePage[] = [
     whyChooseUs: sharedWhyChooseUs,
     sections: [
       {
+        directAnswer: "Your bond clean is judged against the entry condition report rather than a generic checklist, so the priority areas are the oven, rangehood, window tracks, shower screens, skirting boards and any marks on walls or floors. Queensland tenants must leave the property reasonably clean and in substantially the same condition as at the start of the tenancy, allowing for fair wear and tear, and hiring a professional cleaner is a practical way to prove that standard rather than a legal requirement.",
         title: "Built specifically for Queensland rental exit inspections",
         paragraphs: [
           "In Queensland, tenancy legislation requires properties to be returned in the same condition as noted on the initial Entry Condition Report (fair wear and tear excepted). Real estate agents inspect rental properties methodically, checking high and low for dust, grease, and grime that daily living leaves behind.",
@@ -343,6 +351,7 @@ export const servicePages: ServicePage[] = [
         ],
       },
       {
+        directAnswer: "Coastal apartments add lift bookings, balcony salt residue and body corporate access rules, while houses and townhouses add yards, garages and exterior windows. Tell us the property type when you quote so the checklist and the time allowed on site match the actual site.",
         title: "How to book your Gold Coast bond clean for handover day",
         paragraphs: [
           "Timing your clean properly is essential for a stress-free move. We strongly recommend scheduling your bond clean for the day after all furniture, boxes, and personal belongings have been removed by removalists. This ensures our cleaners can access all corners, cupboards, and wall surfaces without obstruction.",
@@ -428,7 +437,7 @@ export const servicePages: ServicePage[] = [
     slug: "end-of-lease-cleaning-gold-coast",
     shortLabel: "End of Lease Cleaning Gold Coast",
     navLabel: "End of Lease",
-    metaTitle: "End of Lease Cleaning Gold Coast | Detailed Rental Exit Cleaning",
+    metaTitle: "End of Lease Cleaning Gold Coast | Rental Exit Clean",
     metaDescription:
       "End of lease cleaning across the Gold Coast for apartments, houses and rental properties. Detailed cleaning designed to help present the property at handover.",
     heroEyebrow: "Rental Exit Cleaning",
@@ -448,6 +457,7 @@ export const servicePages: ServicePage[] = [
       "move out clean Gold Coast",
       "end of tenancy cleaning Gold Coast",
     ],
+    quickAnswer: "End of lease cleaning on the Gold Coast is the final clean before you hand back keys, covering ovens, rangehoods, skirting boards, window tracks, bathrooms and floors. It is priced by property size and condition, with carpet cleaning and pest treatment bookable in the same visit if your agency asks for them. Wave Solution schedules the work around your handover date and walks the property through the checklist with you before finishing.",
     overview: [
       "Vacating a rental property involves an overwhelming list of tasks—packing boxes, booking removalists, redirecting mail, and finalizing utility accounts. The last thing you need during this transition is the exhausting burden of spending entire days on hands-and-knees scrubbing before returning your keys.",
       "Wave Solution's end-of-lease cleaning service is designed to take complete ownership of your final property handover. We understand what real estate agents look for during vacating inspections and methodically clean your rental from top to bottom so you can complete your handover with confidence.",
@@ -464,6 +474,7 @@ export const servicePages: ServicePage[] = [
     whyChooseUs: sharedWhyChooseUs,
     sections: [
       {
+        directAnswer: "Give yourself a buffer between the clean and your handover date so anything your agent flags can be corrected before the keys go back. The scope is taken from the entry condition report plus the property size and condition, which is what drives the quote.",
         title: "Comprehensive rental exit cleaning before key handover",
         paragraphs: [
           "Moving out requires a far more intensive clean than routine household maintenance. Real estate property managers expect light fixtures dusted, exhaust fans cleared of lint, oven racks and glass degreased, internal cabinetry washed, and tile grout scrubbed clean.",
@@ -478,6 +489,7 @@ export const servicePages: ServicePage[] = [
         ],
       },
       {
+        directAnswer: "Apartments and units usually need lift and access coordination and extra attention to balconies and tracks, while freestanding houses add windows, garages and outdoor areas. Both are quoted the same way, from the property details you give us.",
         title: "Fast communication and flexible move-out scheduling",
         paragraphs: [
           "Tenancy move-outs operate on strict deadlines. Whether your lease ends on a specific weekday or you have a tight 24-hour window between removalists departing and key handover at the agency, we work closely with your timeline to deliver reliable results.",
@@ -556,7 +568,7 @@ export const servicePages: ServicePage[] = [
     slug: "office-cleaning-gold-coast",
     shortLabel: "Office Cleaning Gold Coast",
     navLabel: "Office Cleaning",
-    metaTitle: "Office Cleaning Gold Coast | Reliable Workplace Cleaning Services",
+    metaTitle: "Office Cleaning Gold Coast | Workplace Cleaning Services",
     metaDescription:
       "Office cleaning in the Gold Coast for professional suites, shared offices and business spaces. Flexible schedules, detailed checklists and local support.",
     heroEyebrow: "Workplace Cleaning",
@@ -576,6 +588,7 @@ export const servicePages: ServicePage[] = [
       "medical centre cleaning Gold Coast",
       "dental clinic cleaning Gold Coast",
     ],
+    quickAnswer: "Office cleaning covers workplace kitchens, bathrooms, floors, desks and common areas, usually scheduled after hours or around your trading hours. Pricing depends on floor area, occupancy, cleaning frequency and any hygiene requirements specific to your site. Wave Solution provides an agreed task list and a consistent local team for offices across Southport, Robina, Broadbeach and surrounding Gold Coast suburbs.",
     overview: [
       "A clean office affects more than appearances. It shapes how staff feel at work, how clients experience the business, and how the workplace functions each day. Dusty desks, neglected kitchens, and tired bathrooms make a business feel disorganised — fast. Consistent, professional office cleaning prevents that from happening.",
       "Wave Solution cleans professional suites, reception areas, shared workplaces, allied-health offices, and business spaces across the Gold Coast. Our approach focuses on reliability, clear communication, and a schedule that works around your operations — not around ours.",
@@ -591,6 +604,7 @@ export const servicePages: ServicePage[] = [
     whyChooseUs: sharedWhyChooseUs,
     sections: [
       {
+        directAnswer: "Most Gold Coast offices are cleaned after hours or early in the morning, at a daily, several-times-a-week or weekly frequency depending on staff numbers and client traffic. The tasks and frequency are agreed before the first clean so everyone knows what a standard visit includes.",
         title: "Cleaning schedules that work around your business",
         paragraphs: [
           "Some businesses need the clean done after hours so staff arrive to a fresh workspace each morning. Others prefer early-start or low-traffic windows. We work with your access requirements and schedule — not the other way around.",
@@ -681,7 +695,7 @@ export const servicePages: ServicePage[] = [
     slug: "commercial-cleaning-gold-coast",
     shortLabel: "Commercial Cleaning Gold Coast",
     navLabel: "Commercial Cleaning",
-    metaTitle: "Commercial Cleaning Gold Coast | Professional Business Cleaning",
+    metaTitle: "Commercial Cleaning Gold Coast | Business Cleaners",
     metaDescription:
       "Commercial cleaning in the Gold Coast for offices, retail, clinics, body corporate sites and more. Tailored schedules and dependable local cleaners.",
     heroEyebrow: "Business Cleaning",
@@ -702,6 +716,7 @@ export const servicePages: ServicePage[] = [
       "warehouse cleaning Gold Coast",
       "body corporate cleaning Gold Coast",
     ],
+    quickAnswer: "Commercial cleaning is an ongoing program built around your premises, hours and foot traffic rather than a fixed package. Quotes are based on floor area, layout, frequency and any compliance needs of the site, such as customer-facing areas or shared facilities. Wave Solution services retail, clinics, body corporate and other commercial sites across the Gold Coast with scheduled, documented cleans.",
     overview: [
       "Commercial premises have different cleaning demands than homes. A retail shopfront, medical clinic, gym, warehouse, or body-corporate lobby each needs a cleaning plan shaped around how the space is actually used — not a standard residential template.",
       "Wave Solution works with Gold Coast businesses to build a plan that fits the site. That means understanding access, customer hours, hygiene expectations, and the areas that matter most for your kind of operation. We aim to be a provider you can rely on consistently, not just on the first clean.",
@@ -717,6 +732,7 @@ export const servicePages: ServicePage[] = [
     whyChooseUs: sharedWhyChooseUs,
     sections: [
       {
+        directAnswer: "A commercial quote starts with the site itself: floor area, layout, trading hours, surface types and any compliance requirements. From there the frequency is set, and each visit works from an agreed task list so the standard does not drift between cleans.",
         title: "A cleaning plan built around your site, not a standard template",
         paragraphs: [
           "A gym has different requirements from a medical clinic. A retail shop has different demands from a warehouse. We ask the right questions before quoting so the plan reflects the actual environment — traffic levels, access windows, hygiene priorities, and areas that need regular attention versus periodic deep treatment.",
@@ -807,7 +823,7 @@ export const servicePages: ServicePage[] = [
     slug: "deep-cleaning-gold-coast",
     shortLabel: "Deep Cleaning Gold Coast",
     navLabel: "Deep Cleaning",
-    metaTitle: "Deep Cleaning Gold Coast | One-Off Intensive Cleaning Service",
+    metaTitle: "Deep Cleaning Gold Coast | One-Off Intensive Clean",
     metaDescription:
       "Deep cleaning across the Gold Coast for homes, offices and rentals that need a detailed top-to-bottom reset. Book a thorough local clean today.",
     heroEyebrow: "Detailed Cleaning Reset",
@@ -827,6 +843,7 @@ export const servicePages: ServicePage[] = [
       "kitchen deep clean Gold Coast",
       "bathroom deep clean Gold Coast",
     ],
+    quickAnswer: "A deep clean is a one-off top to bottom reset that goes past routine upkeep into oven interiors, shower screens, skirting, inside cupboards and built-up grease and soap scum. It is quoted by property size and condition, and is often booked before a bond clean, after building work or when a home has not had detailed attention for months. Wave Solution assigns a checklist matched to the rooms and priorities you nominate.",
     overview: [
       "Standard cleaning keeps a property maintained. Deep cleaning brings it back. Over time, kitchens build up grease and residue, bathrooms accumulate scale and grime, and the areas that get skipped during regular maintenance start to show. A deep clean addresses those areas specifically and thoroughly.",
       "It is a one-off intensive service, not just a longer version of a regular clean. We focus on what actually needs attention — inside ovens, range hoods, grout lines, cupboard interiors, skirting boards, window sills, and other surfaces that standard maintenance doesn't reach.",
@@ -842,6 +859,7 @@ export const servicePages: ServicePage[] = [
     whyChooseUs: sharedWhyChooseUs,
     sections: [
       {
+        directAnswer: "A standard clean maintains a home that is already in reasonable condition, while a deep clean resets it by tackling grease, soap scum, limescale, oven interiors, cupboard fronts and the edges routine visits skip. If it has been more than a few months since a detailed clean, or you are preparing for an inspection or new tenants, book the deep clean first.",
         title: "Deep cleaning versus a standard clean — what's actually different",
         paragraphs: [
           "Standard cleaning maintains what is already in reasonable condition. Deep cleaning is appropriate when buildup has been allowed to develop, when a property hasn't had professional attention in a while, or when you simply want a thorough reset rather than a maintenance pass.",
@@ -933,7 +951,7 @@ export const servicePages: ServicePage[] = [
     slug: "move-in-cleaning-gold-coast",
     shortLabel: "Move-In Cleaning Gold Coast",
     navLabel: "Move-In Cleaning",
-    metaTitle: "Move-In Cleaning Gold Coast | Fresh Start Cleaning Before You Settle In",
+    metaTitle: "Move-In Cleaning Gold Coast | Fresh Start Clean",
     metaDescription:
       "Move-in cleaning across the Gold Coast for homes, apartments, rentals, and newly purchased properties. Start in a cleaner space with a fast local quote.",
     heroEyebrow: "Fresh Start Cleaning",
@@ -952,6 +970,7 @@ export const servicePages: ServicePage[] = [
       "incoming tenant cleaning Gold Coast",
       "pre occupancy cleaning Gold Coast",
     ],
+    quickAnswer: "A move-in clean is done before your furniture and boxes arrive so you unpack into a sanitised kitchen, bathrooms and bedrooms. It is priced by property size and condition, with carpet and window extras available. Wave Solution can schedule the clean ahead of your delivery date so the property is ready the moment you walk in.",
     overview: [
       "A property that looks clean at handover often isn't quite ready to live in. Dust inside cupboards, residue in the kitchen, marks on light switches and door handles, and the general sense of someone else's occupancy can make a new home feel less than fresh.",
       "Move-in cleaning is about starting well. Before you unpack, before furniture arrives, or before the family settles in — a thorough clean of the key areas gives you a genuinely fresh starting point. We work through kitchens, bathrooms, floors, cupboards, and high-touch surfaces so the property feels like yours from day one.",
@@ -967,6 +986,7 @@ export const servicePages: ServicePage[] = [
     whyChooseUs: sharedWhyChooseUs,
     sections: [
       {
+        directAnswer: "Book the move-in clean before the removalists arrive so the kitchen, bathrooms and bedrooms are sanitised and ready for furniture. It also gives you a clear picture of the property's condition before you start unpacking.",
         title: "Why a move-in clean makes a real difference",
         paragraphs: [
           "Even when a property has been vacated tidily, it doesn't always feel genuinely clean. Previous occupants have different standards, and areas like inside cupboards, exhaust fans, oven interiors, and shower grout are often the last to be cleaned — if at all.",
@@ -1058,9 +1078,9 @@ export const servicePages: ServicePage[] = [
     slug: "after-builders-cleaning-gold-coast",
     shortLabel: "After Builders Cleaning Gold Coast",
     navLabel: "After Builders Cleaning",
-    metaTitle: "After Builders Cleaning Gold Coast | Post-Renovation Dust and Detail Cleaning",
+    metaTitle: "After Builders Cleaning Gold Coast | Post-Reno Clean",
     metaDescription:
-      "After builders cleaning across the Gold Coast for homes, renovations, fit-outs, and commercial spaces that need dust, residue, and detail cleaning before handover.",
+      "After builders cleaning across the Gold Coast for homes, renovations and fit-outs needing dust and residue removal before handover. Get a quote.",
     heroEyebrow: "Post-Renovation Cleaning",
     heroTitle: "After Builders Cleaning Gold Coast",
     heroDescription:
@@ -1078,6 +1098,7 @@ export const servicePages: ServicePage[] = [
       "new build cleaning Gold Coast",
       "construction dust removal Gold Coast",
     ],
+    quickAnswer: "An after builders clean removes construction dust, residue and fingerprints once renovation or building work finishes, in two passes where needed: a coarse dust-down followed by a detailed final clean. Pricing depends on the size of the project, the surface types and how much fine dust remains. Wave Solution works with owners, builders and fit-out contractors across the Gold Coast to hand over a space that is ready to use.",
     overview: [
       "Post-renovation spaces often look almost finished while still holding fine construction dust, silicone smears, paint flecks, adhesive residue, and debris that prevent the property from feeling genuinely complete. After-builders cleaning addresses that final gap between a finished build and a space that is actually ready to live in, hand over, or present.",
       "We work through all surfaces, floors, fittings, windows, cupboards, and touchpoints with the care that post-construction sites need — particularly where fine dust has settled in areas beyond the main work zone.",
@@ -1093,6 +1114,7 @@ export const servicePages: ServicePage[] = [
     whyChooseUs: sharedWhyChooseUs,
     sections: [
       {
+        directAnswer: "Construction dust is fine enough to settle inside cupboards, drawers and air vents, so a builder's clean is done in two passes: a coarse removal of debris and dust, then a detailed clean of surfaces, glass and fittings. Book it once trades have finished and before furniture or stock arrives.",
         title: "The gap between finished and ready",
         paragraphs: [
           "When the last tradesperson leaves, a renovation is rarely truly clean. Fine plaster and timber dust settles on everything — including surfaces nowhere near the work area. Glass panels have smear marks. New cupboards have sawdust inside. Tiles have grout haze. Floors need a thorough mop rather than a quick sweep.",
@@ -1184,7 +1206,7 @@ export const servicePages: ServicePage[] = [
     slug: "carpet-cleaning-gold-coast",
     shortLabel: "Carpet Cleaning Gold Coast",
     navLabel: "Carpet Cleaning",
-    metaTitle: "Carpet Cleaning Gold Coast | Fresh Carpets and Faster Drying",
+    metaTitle: "Carpet Cleaning Gold Coast | Steam & Stain Removal",
     metaDescription:
       "Professional carpet cleaning across the Gold Coast for homes, rentals, offices, and commercial spaces. Refresh tired carpets and request a fast local quote.",
     heroEyebrow: "Carpet Refresh Service",
@@ -1206,6 +1228,7 @@ export const servicePages: ServicePage[] = [
       "tile and grout cleaning Gold Coast",
       "floor cleaning Gold Coast",
     ],
+    quickAnswer: "Carpet cleaning on the Gold Coast is mostly hot water extraction, also called steam cleaning, which lifts ground-in dirt, stains and odours from the pile instead of only refreshing the surface. Quotes depend on carpet area, room count and the level of staining, and drying time varies with airflow and humidity. Coastal homes often book it alongside a bond clean or a seasonal refresh.",
     overview: [
       "Carpets absorb daily life in ways hard floors don't. Sand tracked in from the beach, food and drink spills, pet hair, moisture, and repeated foot traffic through main areas all leave carpets looking flat and tired — often long before a room needs any other attention.",
       "Professional carpet cleaning lifts what vacuuming can't reach: embedded grit, traffic-lane discolouration, odour-causing residues, and surface marks that have been set into the fibres. The result is a fresher, cleaner feel throughout the home or workplace.",
@@ -1221,6 +1244,7 @@ export const servicePages: ServicePage[] = [
     whyChooseUs: sharedWhyChooseUs,
     sections: [
       {
+        directAnswer: "Hot water extraction injects hot water and cleaning solution into the pile and extracts it back out with the dirt, which is why it outperforms surface-level cleaning on stains and ground-in soil. Carpets stay damp for a few hours afterwards, so plan the job for a day with airflow through the rooms.",
         title: "What carpet cleaning actually achieves",
         paragraphs: [
           "Even in a generally tidy home, worn or discoloured carpet changes how the whole room looks and feels. Clean carpets affect how hygienic a space seems, how fresh it smells, and how comfortable it is underfoot — particularly in living areas, bedrooms, and high-traffic hallways.",
@@ -1312,7 +1336,7 @@ export const servicePages: ServicePage[] = [
     slug: "pest-control-gold-coast",
     shortLabel: "Pest Control Gold Coast",
     navLabel: "Pest Control",
-    metaTitle: "Pest Control Gold Coast | Local Treatments for Homes and Businesses",
+    metaTitle: "Pest Control Gold Coast | Homes & Businesses",
     metaDescription:
       "Pest control across the Gold Coast for homes, rentals, and business premises dealing with common coastal pest issues. Request a fast local quote today.",
     heroEyebrow: "Gold Coast Pest Support",
@@ -1334,6 +1358,7 @@ export const servicePages: ServicePage[] = [
       "rodent control Gold Coast",
       "rental pest control Gold Coast",
     ],
+    quickAnswer: "Pest control on the Gold Coast covers common local issues such as cockroaches, spiders, ants, fleas and rodents, with treatment tailored to the property and the pest actually identified. Quotes depend on property type, the extent of the problem and site access, and treatments use approved products with safety guidance for homes, rentals and businesses. Because the climate is warm and humid, many local properties arrange treatment periodically rather than waiting for an infestation.",
     overview: [
       "The Gold Coast's warm, humid climate creates favourable conditions for many common household and commercial pests year-round. Cockroaches, spiders, ants, rodents, and occasional flea activity are persistent realities for homes, rental properties, and business premises — particularly in areas close to bushland, waterways, or older building stock.",
       "Wave Solution provides pest control treatment for homes, apartments, rental properties, offices, and commercial sites across the Gold Coast. We use registered products applied by trained staff, with clear advice on preparation, re-entry times, and pet safety before we begin.",
@@ -1349,6 +1374,7 @@ export const servicePages: ServicePage[] = [
     whyChooseUs: sharedWhyChooseUs,
     sections: [
       {
+        directAnswer: "Warm, humid weather and plenty of nearby vegetation mean Gold Coast properties regularly deal with cockroaches, spiders, ants and fleas, with rodents more common around garages, sheds and food storage. Because the right treatment depends on what is actually present, identification comes before any recommendation.",
         title: "Pest conditions on the Gold Coast",
         paragraphs: [
           "Warmth and humidity throughout the year support consistent cockroach, spider, and ant activity. Properties near creeks, bushland corridors, or older drainage infrastructure often experience more pressure than those in open suburban streets. Units and townhouses with shared wall cavities can be more difficult to treat effectively because of how pests move between dwellings.",
@@ -1440,9 +1466,9 @@ export const servicePages: ServicePage[] = [
     slug: "weekly-cleaning-gold-coast",
     shortLabel: "Weekly Cleaning Gold Coast",
     navLabel: "Weekly Cleaning",
-    metaTitle: "Weekly Cleaning Gold Coast | Reliable Regular Home Cleaners",
+    metaTitle: "Weekly Cleaning Gold Coast | Regular Home Cleaners",
     metaDescription:
-      "Keep your Gold Coast home effortlessly spotless with Wave Solution's weekly house cleaning. Consistent, police-checked cleaners, tailored checklists & fast quotes.",
+      "Weekly house cleaning on the Gold Coast with consistent, police-checked cleaners and tailored checklists. Get a fast quote today.",
     heroEyebrow: "Recurring Domestic Cleaning",
     heroTitle: "Weekly House Cleaning Services in Gold Coast",
     heroDescription:
@@ -1456,6 +1482,7 @@ export const servicePages: ServicePage[] = [
       "domestic cleaning Gold Coast",
       "scheduled cleaners Gold Coast",
     ],
+    quickAnswer: "Weekly cleaning is a recurring home clean on the same day each week, covering kitchens, bathrooms, floors and living areas against an agreed task list. Pricing is set by home size and the tasks included, so the quote matches the work actually done each visit. Wave Solution aims to keep the same local cleaner regularly so the job becomes faster and more consistent over time.",
     overview: [
       "Balancing work commitments, family life, and active Gold Coast weekends leaves little time for demanding household chores. Weekly house cleaning is the most effective way to keep your home continuously fresh, hygienic, and organized without letting grime, dust, and soap scum accumulate to overwhelming levels.",
       "With a dedicated weekly cleaning schedule, our team takes ownership of the recurring heavy lifting. We focus on high-traffic areas, kitchen sanitization, bathroom hygiene, and thorough floor care so you always return to an immaculate environment. Having the same reliable, police-checked cleaners assigned to your home ensures familiarity with your property layout and personal preferences.",
@@ -1472,6 +1499,7 @@ export const servicePages: ServicePage[] = [
     whyChooseUs: sharedWhyChooseUs,
     sections: [
       {
+        directAnswer: "A weekly clean stops grease, soap scum and dust from building up, which is why the same tasks take less time each visit than a fortnightly catch-up. Households with pets, children or allergies usually benefit most from the shorter interval.",
         title: "Why regular weekly cleaning delivers superior home hygiene",
         paragraphs: [
           "In the Gold Coast's warm coastal climate, indoor humidity and airborne sea salt accelerate the buildup of dust, mould spores, and bathroom mildew. When cleaning is delayed to fortnightly or monthly intervals, dirt binds with humidity, requiring aggressive scrubbing that wears down finishes. A weekly maintenance cadence eliminates residues before they establish.",
@@ -1555,7 +1583,7 @@ export const servicePages: ServicePage[] = [
     navLabel: "Apartment Cleaning",
     metaTitle: "Apartment Cleaning Gold Coast | High-Rise & Unit Cleaners",
     metaDescription:
-      "Expert apartment and high-rise unit cleaning across Surfers Paradise, Broadbeach, and Southport. Balcony salt-spray removal, glass cleaning, and lift-access coordination.",
+      "Apartment and high-rise cleaning in Surfers Paradise, Broadbeach and Southport, including balcony salt-spray care. Request a quote.",
     heroEyebrow: "Coastal High-Rise & Unit Specialists",
     heroTitle: "Apartment Cleaning Services in Gold Coast",
     heroDescription:
@@ -1570,6 +1598,7 @@ export const servicePages: ServicePage[] = [
       "apartment cleaners Surfers Paradise",
       "Broadbeach apartment cleaning",
     ],
+    quickAnswer: "Apartment cleaning on the Gold Coast covers high-rise and low-rise units, including balcony salt spray, sliding door tracks, glass and compact kitchens and bathrooms. Quotes depend on floor plan size, balcony exposure and building access requirements such as lift bookings or concierge hours. Wave Solution coordinates access with building management and works within body corporate rules where they apply.",
     overview: [
       "Gold Coast apartment living offers breathtaking coastal views and a vibrant lifestyle, but coastal high-rises and residential complexes present distinct cleaning challenges. Sea air carries fine salt spray that quickly coats balcony glass and sliding door tracks, while wind-borne dust and high humidity create rapid grime accumulation.",
       "Wave Solution understands the logistical and practical requirements of modern unit and apartment cleaning. We handle building access protocols, underground visitor parking guidelines, and lift bookings with complete professionalism, ensuring a frictionless service for owners, tenants, and body corporate managers.",
@@ -1586,6 +1615,7 @@ export const servicePages: ServicePage[] = [
     whyChooseUs: sharedWhyChooseUs,
     sections: [
       {
+        directAnswer: "Living close to the ocean means salt film settles on glass, balcony tracks and metal fittings, and windblown dust reaches higher floors faster than ground-level homes. Regular attention to tracks, screens and exterior glass prevents the staining and corrosion a standard indoor clean misses.",
         title: "Tackling coastal salt spray, windblown dust, and balcony glass",
         paragraphs: [
           "Apartments positioned along the Gold Coast coastline face constant exposure to salt-laden marine air. Over time, salt deposits etch into glass balustrades and corrode aluminium sliding door mechanisms if not regularly treated. Our apartment cleaning protocol specifically targets salt breakdown using non-abrasive, marine-safe solutions.",
@@ -1667,9 +1697,9 @@ export const servicePages: ServicePage[] = [
     slug: "end-of-lease-pest-control-gold-coast",
     shortLabel: "End of Lease Pest Control Gold Coast",
     navLabel: "End of Lease Pest Control",
-    metaTitle: "End of Lease Pest Control Gold Coast | Bond Handover Receipt",
+    metaTitle: "End of Lease Pest Control Gold Coast | Bond Receipt",
     metaDescription:
-      "Guaranteed end of lease pest control in Gold Coast for rental tenants and pet handovers. Licensed treatment, approved chemicals & immediate real estate compliance receipt.",
+      "End of lease pest control on the Gold Coast for rental handovers, with a treatment receipt for your agent. Request a quote today.",
     heroEyebrow: "QLD Rental Tenancy Compliance",
     heroTitle: "End of Lease Pest Control in Gold Coast",
     heroDescription:
@@ -1684,6 +1714,7 @@ export const servicePages: ServicePage[] = [
       "pet lease pest control Gold Coast",
       "bond return pest certificate",
     ],
+    quickAnswer: "End of lease pest control is a treatment booked before or alongside your bond clean so you can hand your agent a treatment receipt at the final inspection. Pricing depends on the property size, the pests being treated and whether fleas, cockroaches or spiders are the focus. Wave Solution can sequence pest treatment, carpet cleaning and bond cleaning in one booking so nothing clashes with your handover date.",
     overview: [
       "Moving out of a rental property in Queensland is demanding, and lease agreements frequently require professional pest control before your rental bond can be legally released. Under Queensland Residential Tenancies Authority (RTA) regulations, tenants who have kept domestic pets are almost universally obligated to provide a certified end of lease flea treatment receipt.",
       "Even properties without pets frequently specify an end of lease pest spray for common pests like cockroaches, silverfish, and spiders as part of the vacate condition standards. Failing to provide an authorized pest control receipt from an insured, licensed technician can cause bond disputes, delayed refunds, or costly agent re-cleans.",
@@ -1700,6 +1731,7 @@ export const servicePages: ServicePage[] = [
     whyChooseUs: sharedWhyChooseUs,
     sections: [
       {
+        directAnswer: "Some tenancy agreements and pet clauses ask for a pest treatment when the lease ends, and your agent will usually want the treatment receipt for the file. Check your entry condition report and lease terms first, then book the treatment with enough time for the receipt to be ready before your final inspection.",
         title: "Meeting Queensland RTA tenancy obligations and pet clauses",
         paragraphs: [
           "Standard Queensland General Tenancy Agreements (Form 18a) include specific special terms regarding domestic pets. If a dog, cat, or other animal resided on the property, tenants are contractually bound to have the premises fumigated or treated for fleas and parasites upon vacating.",
@@ -1781,9 +1813,9 @@ export const servicePages: ServicePage[] = [
     slug: "cleaning-carrara",
     shortLabel: "Cleaning Services Carrara",
     navLabel: "Cleaning Carrara",
-    metaTitle: "Cleaning Services Carrara | Bond, House & Office Cleaners Gold Coast",
+    metaTitle: "Cleaning Services Carrara | Bond & House Cleaners",
     metaDescription:
-      "Professional cleaning services in Carrara for houses, units, rental properties, and offices. Fully insured local team covering bond cleaning, deep cleaning, and commercial cleaning near Carrara Markets. Call 0450 833 683.",
+      "Cleaning services in Carrara for houses, units, rentals and offices near Carrara Markets. Bond, deep and commercial cleans. Call 0450 833 683.",
     heroEyebrow: "Carrara Cleaning Services",
     heroTitle: "Cleaning Services Carrara",
     heroDescription:
@@ -1798,6 +1830,7 @@ export const servicePages: ServicePage[] = [
       "office cleaning Carrara",
       "deep cleaning Carrara Gold Coast",
     ],
+    quickAnswer: "Carrara cleaning covers houses, townhouses and apartments around Carrara Markets and the surrounding residential estates, with bond, house, office and deep cleans booked locally. Quotes are based on property size, condition and which services are combined, and the same insured, police-checked team services the wider Gold Coast. Local scheduling means shorter travel and easier appointments in the same week.",
     overview: [
       "Carrara is a growing Gold Coast suburb with a mix of residential homes, newer townhouses, and local businesses. Wave Solution provides practical, professional cleaning across all property types in Carrara — from regular house maintenance and once-off deep cleans to detailed bond and end of lease cleaning ahead of rental inspections.",
       "Our local team services Carrara and the surrounding inner-Gold Coast area, including Merrimac, Nerang, Robina, and Broadbeach. We work with homeowners, tenants, landlords, and business owners who need a reliable cleaning team that shows up on time, communicates clearly, and delivers consistent results without lock-in contracts.",
@@ -1814,6 +1847,7 @@ export const servicePages: ServicePage[] = [
     whyChooseUs: sharedWhyChooseUs,
     sections: [
       {
+        directAnswer: "Carrara homes and apartments are covered by the same service list as the rest of the Gold Coast: house cleaning, bond and end of lease, deep cleans and office or commercial work, all quoted by property size and condition. Because crews start nearby, same-week appointments are usually easier to arrange.",
         title: "House and apartment cleaning in Carrara",
         paragraphs: [
           "Keeping a home clean in Carrara should not consume your evenings and weekends. Our residential cleaning covers kitchens, bathrooms, bedrooms, living areas, and floors with a consistent checklist every visit. Choose from weekly, fortnightly, or one-off options based on your household size and schedule.",

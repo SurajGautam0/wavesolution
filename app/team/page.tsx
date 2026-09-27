@@ -44,14 +44,14 @@ const processSteps = [
 ]
 
 export const metadata: Metadata = {
-  title: "Meet the Wave Solution Team | Gold Coast Cleaning and Pest Control Experts",
+  title: "Meet the Wave Solution Team | Gold Coast Cleaners",
   description:
     "Meet the Wave Solution team behind our Gold Coast cleaning and pest-control services. Learn how we work, what standards we follow, and why local customers trust us.",
   alternates: {
     canonical: `${businessInfo.baseUrl}/team`,
   },
   openGraph: {
-    title: "Meet the Wave Solution Team | Gold Coast Cleaning and Pest Control Experts",
+    title: "Meet the Wave Solution Team | Gold Coast Cleaners",
     description:
       "Meet the Wave Solution team behind our Gold Coast cleaning and pest-control services. Learn how we work, what standards we follow, and why local customers trust us.",
     url: `${businessInfo.baseUrl}/team`,
