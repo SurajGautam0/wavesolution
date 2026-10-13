@@ -1,15 +1,16 @@
 import type { Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
-import { ShieldCheck, Award, MapPin, Clock, Phone, CheckCircle, ArrowRight, Briefcase, Home, Truck, BadgeCheck, Globe, Heart, ClipboardList, Users, Star } from "lucide-react"
+import { Phone, ArrowRight, BadgeCheck, Heart, ClipboardList, Users, Sparkles } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import { businessInfo } from "@/lib/business-info"
+import { serviceAreaCount } from "@/lib/claims"
 
 export const metadata: Metadata = {
   title: "About Wave Solution | Gold Coast Cleaning & Pest Control",
   description:
-    "Wave Solution is a locally owned Gold Coast cleaning company. Fully insured, police-checked team serving homes, offices, and rentals across Southport, Robina, Broadbeach and surrounding suburbs.",
+    "Wave Solution is a locally owned Gold Coast cleaning company. Fully insured, police-checked team serving homes, offices and rentals across the Gold Coast.",
   alternates: {
     canonical: `${businessInfo.baseUrl}/about`,
   },
@@ -56,6 +57,62 @@ const aboutJsonLd = {
   ],
 }
 
+/** What customers get on every single job — shown in the hero. */
+const heroStats = [
+  { emoji: "🛡️", value: "Insured", label: "Public liability" },
+  { emoji: "👮", value: "Vetted", label: "Police-checked" },
+  { emoji: "⏱️", value: "15 min", label: "Quote response" },
+  { emoji: "✅", value: "Free", label: "Re-clean guarantee" },
+]
+
+/** Credentials — deliberately different from the hero stats above. */
+const credentials = [
+  { emoji: "🇦🇺", label: "Locally owned", value: "Gold Coast" },
+  { emoji: "📍", label: "Suburbs serviced", value: String(serviceAreaCount) },
+  { emoji: "🛡️", label: "Insured & police-checked", value: "Fully" },
+  { emoji: "🔁", label: "Re-clean guarantee", value: "Free" },
+]
+
+const differentiators = [
+  {
+    emoji: "📞",
+    title: "You Talk to the Business Owner",
+    desc: "When you call 0450 833 683, you reach Sushant or Veshraj directly — not a call centre or answering machine. Decisions get made fast.",
+  },
+  {
+    emoji: "👮",
+    title: "Police-Checked, Insured Staff",
+    desc: "Every team member holds a current national police check and we carry full public liability insurance. You can verify this before we start.",
+  },
+  {
+    emoji: "📋",
+    title: "We Clean to a Checklist",
+    desc: "Every job follows a documented checklist specific to the property type — residential, bond, office, or commercial. Nothing gets missed.",
+  },
+  {
+    emoji: "📄",
+    title: "Real Insurance, Not Just a Claim",
+    desc: "We carry public liability insurance and can provide a certificate of currency on request. Your property is actually protected.",
+  },
+  {
+    emoji: "🗺️",
+    title: "Local Gold Coast Coverage",
+    desc: "We service Southport, Robina, Broadbeach, Surfers Paradise, Burleigh Heads, Nerang, Helensvale, Coomera, Palm Beach, Varsity Lakes and more.",
+  },
+  {
+    emoji: "🤝",
+    title: "Same Team, Consistent Results",
+    desc: "We don't send random contractors. You get the same trained team members who know your property and your preferences.",
+  },
+]
+
+/** Simple, honest three-step explanation of how a job runs. */
+const process = [
+  { emoji: "💬", step: "01", title: "Tell us the job", desc: "Call, WhatsApp, or send the online form. We ask the handful of questions that actually change the price." },
+  { emoji: "📝", step: "02", title: "Get a clear quote", desc: "A fixed price with the scope written down — what's included, what costs extra, and how long it takes." },
+  { emoji: "✨", step: "03", title: "We clean it", desc: "The agreed team arrives on time and works to the checklist. If something isn't right, we come back and fix it." },
+]
+
 export default function AboutPage() {
   return (
     <div className="flex min-h-screen flex-col">
@@ -70,16 +127,25 @@ export default function AboutPage() {
         </div>
         <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: `radial-gradient(circle, #fff 1px, transparent 1px)`, backgroundSize: '40px 40px' }} />
 
+        {/* Decorative emoji — hidden from assistive tech */}
+        <div className="pointer-events-none absolute inset-0 hidden select-none md:block" aria-hidden="true">
+          <span className="absolute left-[6%] top-[26%] text-4xl opacity-15">🫧</span>
+          <span className="absolute right-[8%] top-[20%] text-3xl opacity-20">✨</span>
+          <span className="absolute left-[13%] bottom-[18%] text-3xl opacity-15">🧽</span>
+          <span className="absolute right-[12%] bottom-[24%] text-4xl opacity-10">🧴</span>
+        </div>
+
         <div className="classic-container relative z-10 py-20 sm:py-28 md:py-32">
           <div className="max-w-3xl mx-auto text-center">
             <div className="inline-flex items-center gap-2 rounded-full bg-white/5 backdrop-blur-md border border-white/10 px-5 py-2.5 mb-8">
               <div className="h-2 w-2 rounded-full bg-[#39BDE4] animate-pulse" />
               <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#39BDE4]">
-                Gold Coast Owned & Operated
+                Gold Coast Owned &amp; Operated
               </span>
             </div>
 
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight text-white leading-[1.05] mb-6">
+              <span className="mr-3 inline-block" aria-hidden="true">🌊</span>
               The People Behind
               <br />
               <span className="bg-gradient-to-r from-[#39BDE4] to-[#249FC5] bg-clip-text text-transparent">Wave Solution</span>
@@ -91,16 +157,11 @@ export default function AboutPage() {
               A dedicated cleaning and pest control team serving Gold Coast homes, offices, and rental properties.
             </p>
 
-            <div className="mt-10 flex flex-wrap justify-center gap-6">
-              {[
-                { icon: Award, value: "100%", label: "Satisfaction" },
-                { icon: ShieldCheck, value: "100%", label: "Insured" },
-                { icon: MapPin, value: "15+", label: "Suburbs" },
-                { icon: CheckCircle, value: "4.9", label: "Google Rating" },
-              ].map((stat) => (
-                <div key={stat.label} className="flex flex-col items-center text-center bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 px-6 py-5 min-w-[110px]">
-                  <div className="mb-3 flex h-12 w-12 items-center justify-center rounded-xl bg-[#39BDE4]/15">
-                    <stat.icon className="h-6 w-6 text-[#39BDE4]" />
+            <div className="mt-10 flex flex-wrap justify-center gap-5">
+              {heroStats.map((stat) => (
+                <div key={stat.label} className="flex flex-col items-center text-center bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 px-6 py-5 min-w-[118px]">
+                  <div className="mb-3 flex h-12 w-12 items-center justify-center rounded-xl bg-[#39BDE4]/15 text-2xl leading-none">
+                    <span aria-hidden="true">{stat.emoji}</span>
                   </div>
                   <p className="text-2xl sm:text-3xl font-black text-white tracking-tight">{stat.value}</p>
                   <p className="mt-1 text-xs text-white/50 font-medium">{stat.label}</p>
@@ -136,8 +197,8 @@ export default function AboutPage() {
             <div className="space-y-8 pt-4">
               <div>
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="w-10 h-10 rounded-xl bg-[#39BDE4]/10 flex items-center justify-center">
-                    <Briefcase className="h-5 w-5 text-[#39BDE4]" />
+                  <div className="w-11 h-11 rounded-xl bg-[#39BDE4]/10 flex items-center justify-center text-xl leading-none">
+                    <span aria-hidden="true">📖</span>
                   </div>
                   <h2 className="text-3xl sm:text-4xl font-black text-[#333365] tracking-tight">How We Started</h2>
                 </div>
@@ -159,7 +220,7 @@ export default function AboutPage() {
                 <p>
                   As word of mouth grew, Veshraj Gautam joined as Operations Manager to develop systematic quality checklists,
                   equipment maintenance standards, and staff screening procedures. Today, our team handles residential,
-                  commercial, bond, and end of lease cleaning across more than 15 Gold Coast suburbs.
+                  commercial, bond, and end of lease cleaning across {serviceAreaCount} Gold Coast suburbs.
                 </p>
                 <p>
                   We&apos;re not an impersonal franchise or a faceless booking app that outsources to unknown contractors.
@@ -169,15 +230,10 @@ export default function AboutPage() {
               </div>
 
               <div className="grid grid-cols-2 gap-4">
-                {[
-                  { icon: Globe, label: "Local Gold Coast", value: "Local" },
-                  { icon: MapPin, label: "Suburbs we service", value: "15+" },
-                  { icon: ShieldCheck, label: "Insured & police-checked", value: "100%" },
-                  { icon: Star, label: "Google star rating", value: "4.9" },
-                ].map((item) => (
-                  <div key={item.value} className="rounded-2xl bg-gradient-to-br from-[#F3F3F3] to-white p-5 border border-gray-100 hover:shadow-md transition-shadow">
+                {credentials.map((item) => (
+                  <div key={item.label} className="rounded-2xl bg-gradient-to-br from-[#F3F3F3] to-white p-5 border border-gray-100 hover:shadow-md transition-shadow">
                     <div className="flex items-center gap-2 mb-2">
-                      <item.icon className="h-4 w-4 text-[#39BDE4]" />
+                      <span className="text-lg leading-none" aria-hidden="true">{item.emoji}</span>
                       <p className="text-3xl font-black text-[#333365]">{item.value}</p>
                     </div>
                     <p className="text-sm text-slate-600 mt-1">{item.label}</p>
@@ -209,52 +265,47 @@ export default function AboutPage() {
           </div>
 
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {[
-              {
-                icon: Phone,
-                title: "You Talk to the Business Owner",
-                desc: "When you call 0450 833 683, you reach Sushant or Veshraj directly — not a call centre or answering machine. Decisions get made fast.",
-                color: "#39BDE4",
-              },
-              {
-                icon: ShieldCheck,
-                title: "Police-Checked, Insured Staff",
-                desc: "Every team member holds a current national police check and we carry full public liability insurance. You can verify this before we start.",
-                color: "#249FC5",
-              },
-              {
-                icon: ClipboardList,
-                title: "We Clean to a Checklist",
-                desc: "Every job follows a documented checklist specific to the property type — residential, bond, office, or commercial. Nothing gets missed.",
-                color: "#39BDE4",
-              },
-              {
-                icon: ShieldCheck,
-                title: "Real Insurance, Not Just a Claim",
-                desc: "We carry public liability insurance and can provide a certificate of currency on request. Your property is actually protected.",
-                color: "#249FC5",
-              },
-              {
-                icon: MapPin,
-                title: "Local Gold Coast Coverage",
-                desc: "We service Southport, Robina, Broadbeach, Surfers Paradise, Burleigh Heads, Nerang, Helensvale, Coomera, Palm Beach, Varsity Lakes and more.",
-                color: "#39BDE4",
-              },
-              {
-                icon: Users,
-                title: "Same Team, Consistent Results",
-                desc: "We don't send random contractors. You get the same trained team members who know your property and your preferences.",
-                color: "#249FC5",
-              },
-            ].map((item, idx) => (
+            {differentiators.map((item) => (
               <div key={item.title} className="group rounded-2xl bg-white p-7 shadow-sm border border-gray-100 hover:shadow-xl hover:border-[#39BDE4]/30 transition-all duration-300">
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#39BDE4]/10 group-hover:bg-[#39BDE4]/20 transition-colors">
-                    <item.icon className="h-5 w-5" style={{ color: item.color }} />
+                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#39BDE4]/10 text-2xl leading-none group-hover:bg-[#39BDE4]/20 transition-colors">
+                    <span aria-hidden="true">{item.emoji}</span>
                   </div>
-                  <span className="text-[11px] font-bold text-[#39BDE4] uppercase tracking-wider">0{idx + 1}</span>
                 </div>
                 <h3 className="text-lg font-bold text-[#333365] mb-3">{item.title}</h3>
+                <p className="text-sm text-slate-600 leading-relaxed">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* How We Work */}
+      <section className="py-16 sm:py-20 lg:py-24 bg-white relative">
+        <div className="classic-container">
+          <div className="text-center mb-14">
+            <div className="inline-flex items-center gap-2 rounded-full bg-[#39BDE4]/10 px-4 py-2 mb-4">
+              <Sparkles className="h-4 w-4 text-[#39BDE4]" />
+              <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#39BDE4]">
+                How It Works
+              </span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl font-black text-[#333365] tracking-tight mb-4">
+              Three Steps, No Surprises
+            </h2>
+            <p className="text-slate-600 text-lg max-w-2xl mx-auto">
+              From first message to finished clean, here is exactly what happens.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+            {process.map((item) => (
+              <div key={item.step} className="relative rounded-2xl border border-gray-100 bg-gradient-to-br from-[#F3F3F3] to-white p-7">
+                <div className="mb-5 flex items-center justify-between">
+                  <span className="text-3xl leading-none" aria-hidden="true">{item.emoji}</span>
+                  <span className="text-[11px] font-black tracking-[0.2em] text-[#39BDE4]">{item.step}</span>
+                </div>
+                <h3 className="text-lg font-bold text-[#333365] mb-2">{item.title}</h3>
                 <p className="text-sm text-slate-600 leading-relaxed">{item.desc}</p>
               </div>
             ))}
@@ -268,13 +319,17 @@ export default function AboutPage() {
           <div className="absolute top-1/4 right-0 w-[400px] h-[400px] bg-[#39BDE4]/5 rounded-full blur-[100px]" />
           <div className="absolute bottom-1/4 left-0 w-[400px] h-[400px] bg-[#249FC5]/5 rounded-full blur-[100px]" />
         </div>
+        <div className="pointer-events-none absolute inset-0 hidden select-none lg:block" aria-hidden="true">
+          <span className="absolute left-[5%] top-[20%] text-3xl opacity-10">🤝</span>
+          <span className="absolute right-[6%] bottom-[22%] text-3xl opacity-10">💙</span>
+        </div>
         <div className="classic-container relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <div className="inline-flex items-center gap-2 rounded-full bg-[#39BDE4]/10 px-4 py-2 mb-4">
                 <Heart className="h-4 w-4 text-[#39BDE4]" />
                 <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#39BDE4]">
-                  Founder's Story
+                  Founder&apos;s Story
                 </span>
               </div>
               <h2 className="text-3xl sm:text-4xl font-black text-white tracking-tight mb-6">
@@ -289,6 +344,7 @@ export default function AboutPage() {
               <div className="flex flex-wrap gap-4">
                 <Link href="/book">
                   <Button size="lg" className="bg-[#39BDE4] hover:bg-[#249FC5] text-white font-bold rounded-xl h-14 px-8 text-sm shadow-lg shadow-[#39BDE4]/20">
+                    <span className="mr-2" aria-hidden="true">🧹</span>
                     Book a Clean <ArrowRight className="ml-2 h-4 w-4" />
                   </Button>
                 </Link>
@@ -300,19 +356,33 @@ export default function AboutPage() {
               </div>
             </div>
 
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
               {[
-                { icon: CheckCircle, value: "4.9", label: "Google Rating" },
-                { icon: MapPin, value: "15+", label: "Suburbs" },
-                { icon: ShieldCheck, value: "100%", label: "Insured" },
-                { icon: Award, value: "100%", label: "Satisfaction" },
-              ].map((stat) => (
-                <div key={stat.label} className="bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 p-6 text-center">
-                  <stat.icon className="h-8 w-8 text-[#39BDE4] mx-auto mb-3" />
-                  <p className="text-3xl font-black text-white">{stat.value}</p>
-                  <p className="text-sm text-white/50 mt-1">{stat.label}</p>
+                { icon: Users, title: "Sushant Timalcena", role: "Founder & CEO", desc: "Sets the standard on every quote and stays reachable on the phone." },
+                { icon: ClipboardList, title: "Veshraj Gautam", role: "Operations Manager", desc: "Runs the checklists, staff screening and equipment standards." },
+              ].map((person) => (
+                <div key={person.title} className="bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 p-6">
+                  <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#39BDE4]/15 mb-4">
+                    <person.icon className="h-5 w-5 text-[#39BDE4]" />
+                  </div>
+                  <p className="text-lg font-bold text-white">{person.title}</p>
+                  <p className="text-xs font-bold uppercase tracking-[0.15em] text-[#39BDE4] mt-1">{person.role}</p>
+                  <p className="text-sm text-white/50 mt-3 leading-relaxed">{person.desc}</p>
                 </div>
               ))}
+              <div className="bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 p-6 sm:col-span-2">
+                <div className="flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-white/70">
+                  <span className="inline-flex items-center gap-2 font-semibold">
+                    <span aria-hidden="true">🛡️</span> Public liability insured
+                  </span>
+                  <span className="inline-flex items-center gap-2 font-semibold">
+                    <span aria-hidden="true">👮</span> National police checks
+                  </span>
+                  <span className="inline-flex items-center gap-2 font-semibold">
+                    <span aria-hidden="true">🔁</span> Free re-clean guarantee
+                  </span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -348,8 +418,8 @@ export default function AboutPage() {
                       href={businessInfo.phoneHref}
                       className="flex items-center gap-4 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/10 p-5 hover:bg-[#39BDE4]/20 transition-all"
                     >
-                      <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#39BDE4]/15">
-                        <Phone className="h-5 w-5 text-[#39BDE4]" />
+                      <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#39BDE4]/15 text-xl leading-none">
+                        <span aria-hidden="true">📞</span>
                       </div>
                       <div>
                         <p className="text-sm text-white/50 font-medium">Call us directly</p>
@@ -358,8 +428,8 @@ export default function AboutPage() {
                     </a>
 
                     <div className="flex items-center gap-4 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/10 p-5">
-                      <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#39BDE4]/15">
-                        <MapPin className="h-5 w-5 text-[#39BDE4]" />
+                      <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#39BDE4]/15 text-xl leading-none">
+                        <span aria-hidden="true">📍</span>
                       </div>
                       <div>
                         <p className="text-sm text-white/50 font-medium">Service area</p>
@@ -368,8 +438,8 @@ export default function AboutPage() {
                     </div>
 
                     <div className="flex items-center gap-4 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/10 p-5">
-                      <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#39BDE4]/15">
-                        <Clock className="h-5 w-5 text-[#39BDE4]" />
+                      <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#39BDE4]/15 text-xl leading-none">
+                        <span aria-hidden="true">🕒</span>
                       </div>
                       <div>
                         <p className="text-sm text-white/50 font-medium">Hours</p>
@@ -383,15 +453,29 @@ export default function AboutPage() {
 
                 <div className="flex flex-col gap-4">
                   <Link href="/book">
-                    <Button size="lg" className="bg-[#39BDE4] hover:bg-[#249FC5] text-white font-bold rounded-xl h-14 text-sm shadow-lg shadow-[#39BDE4]/20">
-                      Book a Clean <ArrowRight className="ml-2 h-4 w-4" />
+                    <Button size="lg" className="w-full bg-[#39BDE4] hover:bg-[#249FC5] text-white font-bold rounded-xl h-14 text-sm shadow-lg shadow-[#39BDE4]/20">
+                      <span className="mr-2" aria-hidden="true">📨</span>
+                      Get a Free Quote <ArrowRight className="ml-2 h-4 w-4" />
                     </Button>
                   </Link>
                   <Link href="/services">
-                    <Button size="lg" variant="outline" className="border-white/20 text-white hover:bg-white/10 font-bold rounded-xl h-14 text-sm">
+                    <Button size="lg" variant="outline" className="w-full border-white/20 text-white hover:bg-white/10 font-bold rounded-xl h-14 text-sm">
                       View All Services
                     </Button>
                   </Link>
+                  <div className="mt-2 rounded-2xl border border-white/10 bg-white/5 p-5">
+                    <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-xs font-semibold text-white/60">
+                      <span className="inline-flex items-center gap-1.5">
+                        <span aria-hidden="true">🛡️</span> Fully insured
+                      </span>
+                      <span className="inline-flex items-center gap-1.5">
+                        <span aria-hidden="true">👮</span> Police-checked
+                      </span>
+                      <span className="inline-flex items-center gap-1.5">
+                        <span aria-hidden="true">💳</span> No payment now
+                      </span>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>

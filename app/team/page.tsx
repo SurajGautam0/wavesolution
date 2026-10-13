@@ -5,6 +5,7 @@ import { CheckCircle, Phone, ShieldCheck, Sparkles, Users } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import { businessInfo, siteLinks } from "@/lib/business-info"
+import { insuranceLongLabel } from "@/lib/claims"
 
 const teamProfiles = [
   {
@@ -169,7 +170,7 @@ export default function TeamPage() {
               <ShieldCheck className="h-8 w-8 text-secondary" />
               <h2 className="mt-4 text-2xl font-black tracking-tight text-primary">Insurance and Service Standards</h2>
               <p className="mt-4 text-sm leading-7 text-slate-600">
-                We maintain full $10M public liability coverage, require verified national police checks for all team members, and follow systematic room-by-room checklists to ensure complete peace of mind for every home and business owner.
+                We maintain {insuranceLongLabel.toLowerCase()} and require verified national police checks for all team members, and follow systematic room-by-room checklists to ensure complete peace of mind for every home and business owner.
               </p>
             </article>
 

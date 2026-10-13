@@ -13,6 +13,7 @@ import {
 } from "lucide-react"
 
 import { businessInfo, siteLinks } from "@/lib/business-info"
+import { guaranteeLabel, insuranceLabel, serviceAreaCount } from "@/lib/claims"
 import { ObfuscatedEmail } from "@/components/obfuscated-email"
 
 const SERVICES = [
@@ -41,6 +42,7 @@ const LOCATIONS = [
 
 const COMPANY = [
   { href: siteLinks.about, label: "About Us" },
+  { href: siteLinks.gallery, label: "Cleaning Gallery" },
   { href: siteLinks.testimonials, label: "Client Reviews" },
   { href: siteLinks.blog, label: "Cleaning & RTA Guides" },
   { href: "/cleaning-prices-gold-coast", label: "Cost & Price Guides" },
@@ -138,12 +140,12 @@ export function SiteFooter() {
             <div className="flex items-center gap-3 pt-2 text-[11px] text-white/50">
               <span className="flex items-center gap-1.5 text-white/70">
                 <ShieldCheck className="h-3.5 w-3.5 text-[#39BDE4]" />
-                $10M Insured
+                {insuranceLabel}
               </span>
               <span>•</span>
               <span className="flex items-center gap-1.5 text-white/70">
                 <CheckCircle2 className="h-3.5 w-3.5 text-[#39BDE4]" />
-                72h Re-Clean Guarantee
+                {guaranteeLabel}
               </span>
             </div>
           </div>
@@ -190,7 +192,7 @@ export function SiteFooter() {
                   href={siteLinks.locations}
                   className="font-semibold text-[#39BDE4] hover:text-[#64d0f2] transition-colors"
                 >
-                  All 18+ Suburbs →
+                  All {serviceAreaCount} Suburbs →
                 </Link>
               </li>
             </ul>

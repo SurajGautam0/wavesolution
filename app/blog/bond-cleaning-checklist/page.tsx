@@ -7,7 +7,7 @@ import { AuthorBio } from "@/components/author-bio"
 export const metadata: Metadata = {
   title: "Bond Cleaning Checklist Queensland | Complete Move-Out Guide",
   description:
-    "Complete bond cleaning checklist for Queensland rental properties. Room-by-room guide covering everything inspectors check — kitchens, bathrooms, carpets, walls and more.",
+    "Complete bond cleaning checklist for Queensland rentals. A room-by-room guide to everything inspectors check — kitchens, bathrooms, carpets and walls.",
   keywords: [
     "bond cleaning checklist Queensland",
     "move out cleaning checklist Gold Coast",
@@ -42,15 +42,9 @@ const jsonLd = {
       headline: "Bond Cleaning Checklist Queensland: Complete Move-Out Guide",
       description: "Complete bond cleaning checklist for Queensland rental properties covering every room inspectors check.",
       author: {
-        "@type": "Person",
-        name: "Suraj Gautam",
-        jobTitle: "Operations Director & Quality Assurance Lead",
-        worksFor: {
-          "@type": "Organization",
-          name: "Wave Solution Cleaning & Pest Control",
-          url: "https://www.wavesolution.com.au",
-        },
-        url: "https://www.wavesolution.com.au/team",
+        "@type": "Organization",
+        name: "Wave Solution Cleaning & Pest Control",
+        url: "https://www.wavesolution.com.au",
       },
       publisher: { "@type": "Organization", name: "Wave Solution Cleaning Gold Coast", url: "https://www.wavesolution.com.au" },
       datePublished: "2025-01-15",
@@ -181,7 +175,7 @@ export default function BondCleaningChecklistPage() {
               <span>•</span>
               <span>10 min read</span>
               <span>•</span>
-              <span className="font-semibold text-white">Written by Suraj Gautam</span>
+              <span className="font-semibold text-white">By the Wave Solution team</span>
               <span>•</span>
               <span className="text-secondary font-bold">QLD Tenancy Reviewed</span>
             </div>

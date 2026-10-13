@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button"
 
 export const metadata: Metadata = {
     title: "Office Cleaning Guide Gold Coast | Wave Solution",
-    description: "Expert guide on office cleaning frequency & best practices for Gold Coast businesses. Daily, weekly & monthly cleaning schedules. Learn how a clean workspace boosts productivity by 15%. Tips from Gold Coast's top commercial cleaners.",
+    description: "How often should a Gold Coast office be cleaned? Daily, weekly and monthly schedules, and how a clean workspace lifts productivity — from local cleaners.",
     keywords: ["office cleaning guide Gold Coast", "commercial cleaning tips", "office cleaning schedule", "workplace cleaning best practices", "office hygiene Gold Coast", "commercial cleaning frequency"],
     alternates: {
         canonical: "https://www.wavesolution.com.au/blog/office-cleaning",

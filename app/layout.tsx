@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(businessInfo.baseUrl),
   title: {
     default: "Gold Coast Cleaning & Pest Control Services | Wave Solution",
-    template: "%s | Wave Solution Cleaning",
+    template: "%s | Wave Solution",
   },
   description:
     "House, office, bond & commercial cleaning across the Gold Coast. Fully insured, police-checked cleaners. Book your free quote today.",
@@ -142,27 +142,12 @@ const jsonLd = {
           closes: "18:00",
         },
       },
-      aggregateRating: {
-        "@type": "AggregateRating",
-        ratingValue: "4.9",
-        reviewCount: "87",
-        bestRating: "5",
-        worstRating: "1",
-      },
-      review: [
-        {
-          "@type": "Review",
-          author: { "@type": "Person", name: "Sarah Johnson" },
-          reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
-          reviewBody: "Wave Solution has been cleaning my home regularly and the team is always punctual, friendly, and careful with the bathrooms and kitchen.",
-        },
-        {
-          "@type": "Review",
-          author: { "@type": "Person", name: "David Williams" },
-          reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
-          reviewBody: "Our office feels much more consistent and professional since starting a regular clean. Communication has been easy and the quality has stayed strong.",
-        },
-      ],
+      // NOTE: aggregateRating and Review markup were removed deliberately.
+      // They published a review count (87) that conflicted with the visible
+      // copy elsewhere on the site (430 / "120+") and represented self-serving
+      // reviews hosted on this domain — both are Google review-snippet policy
+      // violations and a manual-action risk. Add aggregateRating back only once
+      // the count is verifiable from the Google Business Profile.
       hasOfferCatalog: {
         "@type": "OfferCatalog",
         name: "Wave Solution Cleaning & Pest Control Services",
@@ -182,7 +167,7 @@ const jsonLd = {
               "@type": "Service",
               name: "Bond Cleaning Gold Coast",
               url: `${businessInfo.baseUrl}/bond-cleaning-gold-coast`,
-              description: "Inspection-ready bond cleaning with 100% bond-back guarantee support.",
+              description: "Bond cleaning with a free re-clean guarantee for covered cleaning items.",
             },
           },
           {

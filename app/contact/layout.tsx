@@ -3,7 +3,7 @@ import { businessInfo } from "@/lib/business-info"
 
 export const metadata: Metadata = {
   title: "Contact Wave Solution Cleaning | Free Gold Coast Quote",
-  description: `Contact ${businessInfo.businessName} for a free cleaning quote in Gold Coast. Call ${businessInfo.phoneDisplay}, email ${businessInfo.email}, or fill out our contact form.`,
+  description: `Contact ${businessInfo.businessName} for a free Gold Coast cleaning quote. Call ${businessInfo.phoneDisplay}, email us, or send the contact form.`,
   keywords: [
     "contact cleaners Gold Coast",
     "cleaning quote Gold Coast",

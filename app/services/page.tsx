@@ -102,7 +102,7 @@ export default function ServicesPage() {
               Choose the Right Clean
             </h2>
             <p className="mt-3 text-base leading-relaxed text-slate-600">
-              Every service includes our satisfaction guarantee. Select a card to see what is included and request a fast local quote.
+              Every service includes our free re-clean guarantee. Select a card to see what is included and request a local quote.
             </p>
           </div>
           <div className="mx-auto mb-10 max-w-3xl rounded-[2rem] border border-primary/15 bg-white p-6 shadow-sm">

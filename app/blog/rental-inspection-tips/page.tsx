@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button"
 
 export const metadata: Metadata = {
   title: "Rental Inspection Tips for Gold Coast Tenants | How to Pass Every Time",
-  description: "Practical tips for Gold Coast tenants preparing for routine and final rental inspections. Know what landlords check and how to ensure your property is inspection-ready.",
+  description: "Practical tips for Gold Coast tenants preparing for routine and final rental inspections. Know what landlords check and be inspection-ready.",
   keywords: ["rental inspection tips Gold Coast", "how to pass rental inspection Queensland", "routine inspection checklist", "rental property inspection Gold Coast"],
   alternates: { canonical: "https://www.wavesolution.com.au/blog/rental-inspection-tips" },
   openGraph: { title: "Rental Inspection Tips for Gold Coast Tenants", description: "How to prepare your Gold Coast rental for routine and final inspections — what landlords check and what to prioritise.", url: "https://www.wavesolution.com.au/blog/rental-inspection-tips" },

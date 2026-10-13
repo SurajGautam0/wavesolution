@@ -1,5 +1,4 @@
 import type { Metadata } from "next"
-import { businessInfo } from "@/lib/business-info"
 
 export const metadata: Metadata = {
   title: "Customer Testimonials | Gold Coast Cleaning",
@@ -24,41 +23,17 @@ export const metadata: Metadata = {
   },
 }
 
-const reviewSchema = {
-  "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  name: businessInfo.businessNameWithLocation,
-  url: businessInfo.baseUrl,
-  telephone: businessInfo.phoneInternationalDisplay,
-  priceRange: "$$",
-  address: {
-    "@type": "PostalAddress",
-    addressLocality: businessInfo.address.locality,
-    addressRegion: businessInfo.address.region,
-    postalCode: businessInfo.address.postalCode,
-    addressCountry: businessInfo.address.countryCode,
-  },
-  aggregateRating: {
-    "@type": "AggregateRating",
-    ratingValue: "4.9",
-    reviewCount: "430",
-    bestRating: "5",
-    worstRating: "1",
-  },
-}
-
+/**
+ * NOTE: this layout previously emitted a second, @id-less LocalBusiness node
+ * carrying its own aggregateRating (reviewCount "430"). That competed with the
+ * primary /#business entity declared in app/layout.tsx, and contradicted the
+ * "87" published there. The duplicate node and both aggregate ratings have been
+ * removed — the business entity is now declared exactly once, sitewide.
+ */
 export default function TestimonialsLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
-  return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewSchema) }}
-      />
-      {children}
-    </>
-  )
+  return <>{children}</>
 }

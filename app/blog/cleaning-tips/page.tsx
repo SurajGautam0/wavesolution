@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button"
 
 export const metadata: Metadata = {
     title: "10 House Cleaning Tips for Gold Coast Homes",
-    description: "Expert house cleaning tips from Gold Coast's top cleaners. Learn professional cleaning techniques for kitchens, bathrooms, windows & more. Practical tips for maintaining a spotless Gold Coast home year-round.",
+    description: "Expert house cleaning tips for Gold Coast homes — professional techniques for kitchens, bathrooms and windows to keep your home spotless year-round.",
     keywords: ["house cleaning tips Gold Coast", "home cleaning guide", "how to clean house", "cleaning tips Australia", "kitchen cleaning tips", "bathroom cleaning hacks"],
     alternates: {
         canonical: "https://www.wavesolution.com.au/blog/cleaning-tips",

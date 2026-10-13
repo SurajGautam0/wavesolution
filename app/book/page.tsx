@@ -4,7 +4,7 @@ import BookingPageClient from "./BookingPageClient"
 export const metadata: Metadata = {
   title: "Book a Cleaner Online | Instant Booking Gold Coast",
   description:
-    "Book professional cleaning services in the Gold Coast online in under 2 minutes. Choose from house cleaning, office cleaning, bond cleaning, end of lease cleaning, deep cleaning, or commercial cleaning.",
+    "Book professional cleaning on the Gold Coast online in under 2 minutes. House, office, bond, end of lease, deep or commercial cleaning.",
   keywords: [
     "book cleaner Gold Coast",
     "book cleaning online Gold Coast",

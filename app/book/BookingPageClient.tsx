@@ -20,11 +20,7 @@ import {
 	Sparkles,
 	ArrowRight,
 	ArrowLeft,
-	ShieldCheck,
-	Star,
-	Clock,
 	Calendar,
-	BadgeCheck,
 	MessageCircle,
 	Home,
 	Building2,
@@ -49,6 +45,14 @@ import { cn } from "@/lib/utils"
 import { businessInfo } from "@/lib/business-info"
 import { servicePages } from "@/lib/service-pages"
 import { trackEvent } from "@/lib/analytics"
+import {
+	bathroomEmoji,
+	frequencyEmoji,
+	getServiceEmoji,
+	propertySizeEmoji,
+	serviceTypeEmoji,
+	trustPoints,
+} from "@/lib/visuals"
 
 // ── Data ──────────────────────────────────────────────
 const serviceTypes = [
@@ -58,7 +62,7 @@ const serviceTypes = [
 ]
 
 const allServices = servicePages
-	.map((page) => ({ value: page.slug, label: page.shortLabel }))
+	.map((page) => ({ value: page.slug, label: page.shortLabel, emoji: getServiceEmoji(page.slug) }))
 	.sort((a, b) => a.label.localeCompare(b.label))
 
 const bathroomOptions = [
@@ -100,9 +104,9 @@ type FormValues = z.infer<typeof formSchema>
 
 // ── Steps ─────────────────────────────────────────────
 const steps = [
-	{ id: 1, label: "Service" },
-	{ id: 2, label: "Preferences" },
-	{ id: 3, label: "Details" },
+	{ id: 1, label: "Service", emoji: "🧽" },
+	{ id: 2, label: "Preferences", emoji: "⚙️" },
+	{ id: 3, label: "Details", emoji: "📋" },
 ]
 
 export default function BookingPageClient() {
@@ -122,6 +126,11 @@ export default function BookingPageClient() {
 	const quickPick = serviceTypes.find((s) => s.id === selectedService)
 	const specificService = allServices.find((s) => s.value === selectedService)
 	const serviceLabel = quickPick?.label || specificService?.label || selectedService
+	const serviceSlug = quickPick?.id || specificService?.value || selectedService
+	const serviceEmoji =
+		serviceTypeEmoji[serviceSlug as keyof typeof serviceTypeEmoji] ?? getServiceEmoji(serviceSlug)
+	const bathroomLabel =
+		bathroomOptions.find((b) => b.id === selectedBathrooms)?.label || selectedBathrooms
 
 	useEffect(() => {
 		trackEvent("booking_step_view", { step: 1, service: "home" })
@@ -227,18 +236,46 @@ export default function BookingPageClient() {
 			<div className="relative overflow-hidden bg-secondary">
 				<div className="pointer-events-none absolute -right-24 top-0 h-96 w-96 rounded-full bg-white/5 blur-3xl" />
 				<div className="pointer-events-none absolute -left-24 bottom-0 h-96 w-96 rounded-full bg-[#39BDE4]/10 blur-3xl" />
+				<div className="pointer-events-none absolute inset-0 opacity-[0.04]" style={{ backgroundImage: `radial-gradient(circle, #fff 1px, transparent 1px)`, backgroundSize: '34px 34px' }} />
+
+				{/* Floating decorative emoji — hidden from assistive tech and crawlers' eyes */}
+				<div className="pointer-events-none absolute inset-0 hidden select-none md:block" aria-hidden="true">
+					<span className="absolute left-[7%] top-[22%] text-4xl opacity-20 blur-[0.5px]">🫧</span>
+					<span className="absolute right-[9%] top-[30%] text-3xl opacity-20">✨</span>
+					<span className="absolute left-[14%] bottom-[24%] text-3xl opacity-15">🧴</span>
+					<span className="absolute right-[15%] bottom-[20%] text-4xl opacity-15">🧽</span>
+				</div>
+
 				<div className="classic-container relative z-10 px-4 py-12 sm:px-6 sm:py-16">
 					<div className="mx-auto max-w-2xl text-center">
-						<span className="inline-flex items-center gap-1.5 rounded-full border border-white/20 bg-white/10 px-3.5 py-1 text-[10px] font-black uppercase tracking-[0.2em] text-white">
+						<span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3.5 py-1.5 text-[10px] font-black uppercase tracking-[0.2em] text-white backdrop-blur-sm">
 							<span className="h-1.5 w-1.5 rounded-full bg-[#39BDE4]" />
 							Online Booking
 						</span>
-						<h1 className="mt-4 text-3xl font-black tracking-tight text-white sm:text-4xl md:text-5xl">
+
+						<h1 className="mt-5 text-3xl font-black tracking-tight text-white sm:text-4xl md:text-5xl">
+							<span className="mr-2 inline-block" aria-hidden="true">🧹</span>
 							Book Your Clean
 						</h1>
-						<p className="mx-auto mt-3 max-w-xl text-base text-white/70 sm:text-lg">
-							Select your service, tell us about your space, and we will get back to you with a custom quote.
+						<p className="mx-auto mt-4 max-w-xl text-base text-white/70 sm:text-lg">
+							Select your service, tell us about your space, and we&apos;ll send a
+							personalised quote — usually within 15 minutes.
 						</p>
+
+						{/* Reassurance row — replaces the old decorative-only badge */}
+						<div className="mt-6 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs font-semibold text-white/70">
+							<span className="inline-flex items-center gap-1.5">
+								<span aria-hidden="true">🛡️</span> Fully insured
+							</span>
+							<span className="hidden h-3 w-px bg-white/20 sm:block" />
+							<span className="inline-flex items-center gap-1.5">
+								<span aria-hidden="true">👮</span> Police-checked team
+							</span>
+							<span className="hidden h-3 w-px bg-white/20 sm:block" />
+							<span className="inline-flex items-center gap-1.5">
+								<span aria-hidden="true">💳</span> No payment now
+							</span>
+						</div>
 					</div>
 
 					{/* ── Progress Stepper ───────────────────── */}
@@ -253,7 +290,7 @@ export default function BookingPageClient() {
 								>
 									<div
 										className={cn(
-											"flex h-10 w-10 items-center justify-center rounded-full border-2 text-sm font-bold transition-all duration-300",
+											"flex h-11 w-11 items-center justify-center rounded-full border-2 text-base font-bold transition-all duration-300",
 											currentStep > step.id
 												? "border-[#39BDE4] bg-[#39BDE4] text-white"
 												: currentStep === step.id
@@ -264,7 +301,7 @@ export default function BookingPageClient() {
 										{currentStep > step.id ? (
 											<Check className="h-5 w-5" />
 										) : (
-											step.id
+											<span aria-hidden="true">{step.emoji}</span>
 										)}
 									</div>
 									<span
@@ -303,10 +340,13 @@ export default function BookingPageClient() {
 						<div className="animate-in fade-in slide-in-from-right-4 p-6 duration-300 sm:p-10">
 							<div className="mb-8">
 								<span className="eyebrow">Step 1 of 3</span>
-								<h2 className="pt-2 text-2xl font-black tracking-tight text-slate-900 sm:text-3xl">
+								<h2 className="flex items-center gap-3 pt-2 text-2xl font-black tracking-tight text-slate-900 sm:text-3xl">
+									<span aria-hidden="true">🧼</span>
 									What do you need cleaned?
 								</h2>
-								<p className="mt-2 text-slate-500">Select the type of cleaning service you require.</p>
+								<p className="mt-2 text-slate-500">
+									Pick the service that fits best — you can fine-tune everything on the next step.
+								</p>
 							</div>
 
 							<div className="mb-10 grid grid-cols-1 gap-4 sm:grid-cols-3">
@@ -329,8 +369,14 @@ export default function BookingPageClient() {
 													<CheckCircle2 className="h-5 w-5 text-[#39BDE4]" />
 												</div>
 											)}
-											<div className={cn("mb-4 flex h-14 w-14 items-center justify-center rounded-2xl transition-colors", isSelected ? "bg-[#39BDE4] text-white" : "bg-[#39BDE4]/10 text-[#39BDE4]")}>
+											<div className={cn("relative mb-4 flex h-16 w-16 items-center justify-center rounded-2xl transition-colors", isSelected ? "bg-[#39BDE4] text-white" : "bg-[#39BDE4]/10 text-[#39BDE4]")}>
 												<Icon className="h-7 w-7" />
+												<span
+													className="absolute -bottom-2 -right-2 grid h-8 w-8 place-items-center rounded-full border-2 border-white bg-white text-lg shadow-sm"
+													aria-hidden="true"
+												>
+													{serviceTypeEmoji[svc.id as keyof typeof serviceTypeEmoji]}
+												</span>
 											</div>
 											<span className={cn("mb-1 text-base font-bold", isSelected ? "text-secondary" : "text-slate-700")}>
 												{svc.label}
@@ -347,8 +393,9 @@ export default function BookingPageClient() {
 							<div className="mb-10 rounded-2xl border border-slate-200 bg-[#F3F3F3]/60 p-5">
 								<label
 									htmlFor="specific-service"
-									className="mb-2 block text-xs font-black uppercase tracking-[0.15em] text-slate-500"
+									className="mb-3 flex items-center gap-2 text-xs font-black uppercase tracking-[0.15em] text-slate-500"
 								>
+									<span aria-hidden="true">🔍</span>
 									Or choose a specific service
 								</label>
 								<select
@@ -363,10 +410,10 @@ export default function BookingPageClient() {
 									}}
 									className="h-12 w-full rounded-xl border border-slate-200 bg-white px-4 text-sm font-semibold text-slate-700 outline-none transition-all hover:border-slate-300 focus:border-[#39BDE4] focus:ring-2 focus:ring-[#39BDE4]/10"
 								>
-									<option value="">Show all 15 services…</option>
+									<option value="">Show all {allServices.length} services…</option>
 									{allServices.map((service) => (
 										<option key={service.value} value={service.value}>
-											{service.label}
+											{service.emoji} {service.label}
 										</option>
 									))}
 								</select>
@@ -377,16 +424,16 @@ export default function BookingPageClient() {
 							</div>
 
 							{/* Trust strip */}
-							<div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 border-t border-slate-100 py-6">
-								{[
-									{ icon: ShieldCheck, text: "Fully Insured" },
-									{ icon: BadgeCheck, text: "Police Checked" },
-									{ icon: Star, text: "4.9 out of 5 Rating" },
-									{ icon: Clock, text: "Same-day Available" },
-								].map((item) => (
-									<div key={item.text} className="flex items-center gap-2 text-sm text-slate-500">
-										<item.icon className="h-4 w-4 text-[#39BDE4]" />
-										<span className="font-semibold">{item.text}</span>
+							<div className="grid grid-cols-2 gap-3 border-t border-slate-100 py-6 sm:grid-cols-4">
+								{trustPoints.map((item) => (
+									<div
+										key={item.label}
+										className="flex items-center gap-2.5 rounded-xl bg-[#F3F3F3]/70 px-3 py-3"
+									>
+										<span className="text-lg leading-none" aria-hidden="true">
+											{item.emoji}
+										</span>
+										<span className="text-xs font-bold text-slate-600">{item.label}</span>
 									</div>
 								))}
 							</div>
@@ -408,14 +455,35 @@ export default function BookingPageClient() {
 						<div className="animate-in fade-in slide-in-from-right-4 p-6 duration-300 sm:p-10">
 							<div className="mb-8">
 								<span className="eyebrow">Step 2 of 3</span>
-								<h2 className="pt-2 text-2xl font-black tracking-tight text-slate-900 sm:text-3xl">
+								<h2 className="flex items-center gap-3 pt-2 text-2xl font-black tracking-tight text-slate-900 sm:text-3xl">
+									<span aria-hidden="true">📐</span>
 									Tell us about your space
 								</h2>
 								<p className="mt-2 text-slate-500">Select your property size and how often you would like us to clean.</p>
 							</div>
 
+							{/* Selected service recap — keeps the funnel feeling connected */}
+							<div className="mb-8 flex flex-wrap items-center gap-3 rounded-2xl border border-[#39BDE4]/20 bg-[#39BDE4]/5 px-5 py-4">
+								<span className="text-xl leading-none" aria-hidden="true">{serviceEmoji}</span>
+								<div>
+									<p className="text-[10px] font-black uppercase tracking-[0.15em] text-[#249FC5]">
+										Selected service
+									</p>
+									<p className="text-sm font-bold text-secondary">{serviceLabel}</p>
+								</div>
+								<button
+									type="button"
+									onClick={() => setCurrentStep(1)}
+									className="ml-auto text-xs font-bold text-[#249FC5] underline decoration-2 underline-offset-2 hover:text-secondary"
+								>
+									Change
+								</button>
+							</div>
+
 							{/* Property Size Cards */}
-							<h3 className="mb-4 text-xs font-black uppercase tracking-[0.15em] text-slate-500">Property Size</h3>
+							<h3 className="mb-4 flex items-center gap-2 text-xs font-black uppercase tracking-[0.15em] text-slate-500">
+								<span aria-hidden="true">🏠</span> Property Size
+							</h3>
 							<div className="mb-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
 								{propertySizes.map((p) => {
 									const isSelected = selectedSize === p.id
@@ -447,6 +515,9 @@ export default function BookingPageClient() {
 												</div>
 											)}
 
+											<span className="mb-3 text-2xl leading-none" aria-hidden="true">
+												{propertySizeEmoji[p.id]}
+											</span>
 											<h3 className={cn("mb-1 text-lg font-bold", !isSelected && "text-slate-900")}>
 												{p.label}
 											</h3>
@@ -459,26 +530,38 @@ export default function BookingPageClient() {
 							</div>
 
 							{/* Frequency Selection */}
-							<h3 className="mb-4 text-xs font-black uppercase tracking-[0.15em] text-slate-500">Cleaning Frequency</h3>
-							<div className="mx-auto mb-8 flex max-w-lg items-center justify-center gap-1 rounded-2xl bg-[#F3F3F3] p-1.5">
-								{frequencies.map((freq) => (
-									<button
-										key={freq.id}
-										onClick={() => setSelectedFrequency(freq.id)}
-										className={cn(
-											"flex-1 rounded-xl px-4 py-2.5 text-sm font-bold transition-all duration-300",
-											selectedFrequency === freq.id
-												? "bg-white text-secondary shadow-sm"
-												: "text-slate-500 hover:text-slate-700"
-										)}
-									>
-										{freq.label}
-									</button>
-								))}
+							<h3 className="mb-4 flex items-center gap-2 text-xs font-black uppercase tracking-[0.15em] text-slate-500">
+								<span aria-hidden="true">🗓️</span> Cleaning Frequency
+							</h3>
+							<div className="mx-auto mb-10 grid max-w-2xl grid-cols-2 gap-3 sm:grid-cols-4">
+								{frequencies.map((freq) => {
+									const isSelected = selectedFrequency === freq.id
+									return (
+										<button
+											key={freq.id}
+											onClick={() => setSelectedFrequency(freq.id)}
+											className={cn(
+												"flex flex-col items-center gap-1.5 rounded-2xl border-2 px-3 py-4 transition-all duration-300",
+												isSelected
+													? "border-[#39BDE4] bg-[#39BDE4]/5 shadow-md shadow-[#39BDE4]/10"
+													: "border-slate-200 bg-white hover:border-slate-300"
+											)}
+										>
+											<span className="text-xl leading-none" aria-hidden="true">
+												{frequencyEmoji[freq.id]}
+											</span>
+											<span className={cn("text-sm font-bold", isSelected ? "text-secondary" : "text-slate-500")}>
+												{freq.label}
+											</span>
+										</button>
+									)
+								})}
 							</div>
 
 							{/* Bathrooms */}
-							<h3 className="mb-4 text-xs font-black uppercase tracking-[0.15em] text-slate-500">Bathrooms</h3>
+							<h3 className="mb-4 flex items-center gap-2 text-xs font-black uppercase tracking-[0.15em] text-slate-500">
+								<span aria-hidden="true">🛁</span> Bathrooms
+							</h3>
 							<div className="mx-auto mb-8 flex max-w-lg flex-wrap items-center justify-center gap-1 rounded-2xl bg-[#F3F3F3] p-1.5">
 								{bathroomOptions.map((option) => (
 									<button
@@ -486,12 +569,15 @@ export default function BookingPageClient() {
 										type="button"
 										onClick={() => setSelectedBathrooms(option.id)}
 										className={cn(
-											"flex-1 rounded-xl px-3 py-2.5 text-sm font-bold transition-all duration-300",
+											"flex flex-1 items-center justify-center gap-1.5 rounded-xl px-3 py-2.5 text-sm font-bold transition-all duration-300",
 											selectedBathrooms === option.id
 												? "bg-white text-secondary shadow-sm"
 												: "text-slate-500 hover:text-slate-700"
 										)}
 									>
+										<span aria-hidden="true" className="text-base leading-none">
+											{bathroomEmoji[option.id]}
+										</span>
 										{option.label}
 									</button>
 								))}
@@ -508,10 +594,10 @@ export default function BookingPageClient() {
 							>
 								<div className="flex items-center gap-4">
 									<div className={cn(
-										"flex h-11 w-11 items-center justify-center rounded-xl",
+										"flex h-11 w-11 items-center justify-center rounded-xl text-lg",
 										includeDeepClean ? "bg-[#39BDE4] text-white" : "bg-[#39BDE4]/10 text-[#39BDE4]"
 									)}>
-										<Sparkles className="h-5 w-5" />
+										<span aria-hidden="true">✨</span>
 									</div>
 									<div>
 										<p className="font-bold text-slate-900">Add Deep Clean</p>
@@ -557,7 +643,8 @@ export default function BookingPageClient() {
 								<div className="lg:col-span-2">
 									<div className="mb-8">
 										<span className="eyebrow">Step 3 of 3</span>
-										<h2 className="pt-2 text-2xl font-black tracking-tight text-slate-900 sm:text-3xl">
+										<h2 className="flex items-center gap-3 pt-2 text-2xl font-black tracking-tight text-slate-900 sm:text-3xl">
+											<span aria-hidden="true">📋</span>
 											Your details
 										</h2>
 										<p className="mt-2 text-slate-500">
@@ -739,12 +826,17 @@ export default function BookingPageClient() {
 														</>
 													) : (
 														<>
-															Submit Booking Request
+															<span className="mr-2" aria-hidden="true">📨</span>
+															Get My Free Quote
 															<ArrowRight className="ml-2 h-4 w-4" />
 														</>
 													)}
 												</Button>
 											</div>
+											<p className="text-center text-xs text-slate-400 sm:text-left">
+												<span aria-hidden="true">🔒</span> No payment required now — this is a quote request,
+												not a charge.
+											</p>
 										</form>
 									</Form>
 								</div>
@@ -757,45 +849,58 @@ export default function BookingPageClient() {
 											Booking Summary
 										</h3>
 										<div className="space-y-4 text-sm">
-											<div className="flex items-center justify-between border-b border-slate-200 pb-3">
-												<span className="text-slate-500">Service</span>
-												<span className="font-bold text-slate-900">{serviceLabel}</span>
+											<div className="flex items-center justify-between gap-3 border-b border-slate-200 pb-3">
+												<span className="flex items-center gap-2 text-slate-500">
+													<span aria-hidden="true">{serviceEmoji}</span> Service
+												</span>
+												<span className="text-right font-bold text-slate-900">{serviceLabel}</span>
 											</div>
 											<div className="flex items-center justify-between border-b border-slate-200 pb-3">
-												<span className="text-slate-500">Suburb</span>
+												<span className="flex items-center gap-2 text-slate-500">
+													<span aria-hidden="true">📍</span> Suburb
+												</span>
 												<span className="font-bold text-slate-900">{suburbValue.trim() || "—"}</span>
 											</div>
 											<div className="flex items-center justify-between border-b border-slate-200 pb-3">
-												<span className="text-slate-500">Bathrooms</span>
-												<span className="font-bold text-slate-900">
-													{bathroomOptions.find((b) => b.id === selectedBathrooms)?.label || selectedBathrooms}
+												<span className="flex items-center gap-2 text-slate-500">
+													<span aria-hidden="true">{bathroomEmoji[selectedBathrooms]}</span> Bathrooms
 												</span>
+												<span className="font-bold text-slate-900">{bathroomLabel}</span>
 											</div>
 											<div className="flex items-center justify-between border-b border-slate-200 pb-3">
-												<span className="text-slate-500">Property Size</span>
+												<span className="flex items-center gap-2 text-slate-500">
+													<span aria-hidden="true">{propertySizeEmoji[selectedSize]}</span> Property Size
+												</span>
 												<span className="font-bold text-slate-900">{sizeLabel}</span>
 											</div>
 											<div className="flex items-center justify-between border-b border-slate-200 pb-3">
-												<span className="text-slate-500">Frequency</span>
+												<span className="flex items-center gap-2 text-slate-500">
+													<span aria-hidden="true">{frequencyEmoji[selectedFrequency]}</span> Frequency
+												</span>
 												<span className="font-bold capitalize text-slate-900">{selectedFrequency}</span>
 											</div>
 											{includeDeepClean && (
 												<div className="flex items-center justify-between border-b border-slate-200 pb-3">
-													<span className="text-slate-500">Deep Clean</span>
+													<span className="flex items-center gap-2 text-slate-500">
+														<span aria-hidden="true">✨</span> Deep Clean
+													</span>
 													<span className="font-bold text-green-600">Included</span>
 												</div>
 											)}
 										</div>
 										<div className="mt-5 rounded-xl border border-[#39BDE4]/20 bg-[#39BDE4]/5 p-4">
 											<p className="text-center text-xs font-semibold leading-relaxed text-secondary">
-												We will review your details and send you a personalised quote within 15 minutes.
+												<span aria-hidden="true">⚡</span> We will review your details and send you a
+												personalised quote within 15 minutes.
 											</p>
 										</div>
 									</div>
 
 									{/* Contact Support */}
 									<div className="rounded-2xl border border-slate-200 bg-white p-6">
-										<p className="mb-4 text-sm font-bold text-slate-900">Need help booking?</p>
+										<p className="mb-4 flex items-center gap-2 text-sm font-bold text-slate-900">
+											<span aria-hidden="true">💬</span> Need help booking?
+										</p>
 										<div className="space-y-3">
 											<Link
 												href={businessInfo.phoneHref}
@@ -822,8 +927,8 @@ export default function BookingPageClient() {
 
 									{/* Guarantee Badge */}
 									<div className="rounded-2xl border border-green-200 bg-green-50 p-5 text-center">
-										<ShieldCheck className="mx-auto mb-2 h-8 w-8 text-green-600" />
-										<p className="text-sm font-bold text-green-800">100% Satisfaction Guarantee</p>
+										<div className="mx-auto mb-2 text-3xl leading-none" aria-hidden="true">🛡️</div>
+										<p className="text-sm font-bold text-green-800">Free Re-Clean Guarantee</p>
 										<p className="mt-1 text-xs text-green-600">Not happy? We will re-clean for free.</p>
 									</div>
 								</div>
@@ -835,12 +940,13 @@ export default function BookingPageClient() {
 				{/* ── Stats Strip ─────────────────────── */}
 				<div className="mb-16 mt-12 grid grid-cols-2 gap-6 text-center md:grid-cols-4">
 					{[
-						{ value: "2,000+", label: "Happy Customers" },
-						{ value: "4.9 / 5", label: "Average Rating" },
-						{ value: "15 min", label: "Response Time" },
-						{ value: "100%", label: "Satisfaction Rate" },
+						{ emoji: "👮", value: "Vetted", label: "Police Checked" },
+						{ emoji: "🛡️", value: "Insured", label: "Professional Team" },
+						{ emoji: "⚡", value: "15 min", label: "Quote Response" },
+						{ emoji: "✅", value: "Free", label: "Re-Clean Guarantee" },
 					].map((stat) => (
 						<div key={stat.label} className="py-4">
+							<div className="mb-2 text-2xl leading-none" aria-hidden="true">{stat.emoji}</div>
 							<p className="text-2xl font-black text-slate-900 sm:text-3xl">{stat.value}</p>
 							<p className="mt-1 text-xs font-semibold uppercase tracking-widest text-slate-400">{stat.label}</p>
 						</div>
@@ -853,9 +959,14 @@ export default function BookingPageClient() {
 				<DialogContent className="overflow-hidden rounded-[2rem] border-none p-0 shadow-2xl sm:max-w-md">
 					<div className="relative overflow-hidden bg-secondary p-8 text-center text-white sm:p-10">
 						<div className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-[#39BDE4]/20 blur-3xl" />
+						<div className="pointer-events-none absolute inset-0 select-none" aria-hidden="true">
+							<span className="absolute left-4 top-6 text-2xl opacity-30">🎉</span>
+							<span className="absolute right-5 top-10 text-xl opacity-25">✨</span>
+							<span className="absolute bottom-6 left-8 text-xl opacity-25">🫧</span>
+						</div>
 						<div className="relative z-10">
-							<div className="mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-2xl border border-white/20 bg-white/10 backdrop-blur-sm">
-								<CheckCircle2 className="h-8 w-8 text-[#39BDE4]" />
+							<div className="mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-2xl border border-white/20 bg-white/10 text-3xl backdrop-blur-sm">
+								<span aria-hidden="true">🎉</span>
 							</div>
 							<DialogTitle className="mb-3 text-2xl font-black sm:text-3xl">
 								Request Received
@@ -867,26 +978,34 @@ export default function BookingPageClient() {
 					</div>
 					<div className="space-y-5 bg-white p-6 sm:p-8">
 						<div className="space-y-3 rounded-2xl border border-slate-200 bg-[#F3F3F3]/60 p-5">
-							<div className="flex items-center justify-between text-sm">
-								<span className="text-slate-500">Service</span>
-								<span className="font-bold text-slate-900">{serviceLabel}</span>
+							<div className="flex items-center justify-between gap-3 text-sm">
+								<span className="flex items-center gap-2 text-slate-500">
+									<span aria-hidden="true">{serviceEmoji}</span> Service
+								</span>
+								<span className="text-right font-bold text-slate-900">{serviceLabel}</span>
 							</div>
 							<div className="flex items-center justify-between border-t border-slate-200 pt-3 text-sm">
-								<span className="text-slate-500">Suburb</span>
+								<span className="flex items-center gap-2 text-slate-500">
+									<span aria-hidden="true">📍</span> Suburb
+								</span>
 								<span className="font-bold text-slate-900">{suburbValue.trim() || "—"}</span>
 							</div>
 							<div className="flex items-center justify-between border-t border-slate-200 pt-3 text-sm">
-								<span className="text-slate-500">Bathrooms</span>
-								<span className="font-bold text-slate-900">
-									{bathroomOptions.find((b) => b.id === selectedBathrooms)?.label || selectedBathrooms}
+								<span className="flex items-center gap-2 text-slate-500">
+									<span aria-hidden="true">{bathroomEmoji[selectedBathrooms]}</span> Bathrooms
 								</span>
+								<span className="font-bold text-slate-900">{bathroomLabel}</span>
 							</div>
 							<div className="flex items-center justify-between border-t border-slate-200 pt-3 text-sm">
-								<span className="text-slate-500">Property</span>
+								<span className="flex items-center gap-2 text-slate-500">
+									<span aria-hidden="true">{propertySizeEmoji[selectedSize]}</span> Property
+								</span>
 								<span className="font-bold text-slate-900">{sizeLabel}</span>
 							</div>
 							<div className="flex items-center justify-between border-t border-slate-200 pt-3 text-sm">
-								<span className="text-slate-500">Frequency</span>
+								<span className="flex items-center gap-2 text-slate-500">
+									<span aria-hidden="true">{frequencyEmoji[selectedFrequency]}</span> Frequency
+								</span>
 								<span className="font-bold capitalize text-slate-900">{selectedFrequency}</span>
 							</div>
 						</div>
@@ -897,7 +1016,7 @@ export default function BookingPageClient() {
 							Return to Home
 						</Button>
 						<p className="text-center text-xs text-slate-400">
-							Redirecting automatically in a few seconds...
+							Redirecting automatically in a few seconds…
 						</p>
 					</div>
 				</DialogContent>

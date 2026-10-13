@@ -7,7 +7,7 @@ import { AuthorBio } from "@/components/author-bio"
 export const metadata: Metadata = {
   title: "Mould Prevention Guide for Gold Coast Homes | Humidity & Cleaning Tips",
   description:
-    "Gold Coast's warm, humid climate makes mould a common problem in homes. Learn how to prevent, remove, and manage mould and moisture in bathrooms, bedrooms, and kitchens.",
+    "Gold Coast's humid climate makes mould a common problem. How to prevent, remove and manage mould and moisture in bathrooms, bedrooms and kitchens.",
   keywords: [
     "mould prevention Gold Coast",
     "mould removal Gold Coast",
@@ -38,15 +38,9 @@ const jsonLd = {
       "@type": "Article",
       headline: "Mould Prevention Guide for Gold Coast Homes",
       author: {
-        "@type": "Person",
-        name: "Suraj Gautam",
-        jobTitle: "Operations Director & Quality Assurance Lead",
-        worksFor: {
-          "@type": "Organization",
-          name: "Wave Solution Cleaning & Pest Control",
-          url: "https://www.wavesolution.com.au",
-        },
-        url: "https://www.wavesolution.com.au/team",
+        "@type": "Organization",
+        name: "Wave Solution Cleaning & Pest Control",
+        url: "https://www.wavesolution.com.au",
       },
       publisher: { "@type": "Organization", name: "Wave Solution Cleaning Gold Coast", url: "https://www.wavesolution.com.au" },
       datePublished: "2025-02-15",
@@ -98,7 +92,7 @@ export default function MouldPreventionPage() {
               <span>•</span>
               <span>8 min read</span>
               <span>•</span>
-              <span className="font-semibold text-white">Written by Suraj Gautam</span>
+              <span className="font-semibold text-white">By the Wave Solution team</span>
               <span>•</span>
               <span className="text-secondary font-bold">Gold Coast Climate Specialist</span>
             </div>

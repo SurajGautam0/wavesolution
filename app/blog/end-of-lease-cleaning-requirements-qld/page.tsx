@@ -28,7 +28,7 @@ import { AuthorBio } from "@/components/author-bio"
 export const metadata: Metadata = {
   title: "End of Lease Cleaning Requirements QLD (2026) | 100% Bond Back Guide",
   description:
-    "Comprehensive Queensland end of lease cleaning requirements guide. Learn RTA legal rules, fair wear and tear vs cleaning breach, Form 14a exit checklist, and pet clause obligations.",
+    "Queensland end of lease cleaning requirements guide: RTA legal rules, fair wear and tear vs cleaning breach, the exit checklist, and pet clause obligations.",
   alternates: { canonical: "https://www.wavesolution.com.au/blog/end-of-lease-cleaning-requirements-qld" },
   openGraph: {
     title: "End of Lease Cleaning Requirements QLD (2026) | 100% Bond Back Guide",
@@ -74,7 +74,7 @@ const faqs = [
   {
     question: "What happens if my property manager fails my bond inspection?",
     answer:
-      "If the property manager identifies areas that do not meet the exit standard, Queensland best practice gives tenants a reasonable opportunity (typically 24 to 72 hours) to rectify the issues. Professional cleaning services like Wave Solution provide a 72-hour re-clean guarantee, returning free of charge to rectify any items listed on the agent's inspection report.",
+      "If the property manager identifies areas that do not meet the exit standard, Queensland best practice gives tenants a reasonable opportunity (typically 24 to 72 hours) to rectify the issues. Professional cleaning services like Wave Solution provide a free re-clean guarantee, returning at no charge to rectify any items listed on the agent's inspection report.",
   },
 ]
 
@@ -100,15 +100,9 @@ const jsonLd = {
       description:
         "Detailed legal and practical breakdown of Queensland end of lease cleaning requirements under the RTRA Act. Covers Form 14a exit inspections, fair wear and tear, carpet cleaning laws, and room-by-room standards.",
       author: {
-        "@type": "Person",
-        name: "Suraj Gautam",
-        jobTitle: "Operations Director & Quality Assurance Lead",
-        worksFor: {
-          "@type": "Organization",
-          name: "Wave Solution Cleaning & Pest Control",
-          url: "https://www.wavesolution.com.au",
-        },
-        url: "https://www.wavesolution.com.au/team",
+        "@type": "Organization",
+        name: "Wave Solution Cleaning & Pest Control",
+        url: "https://www.wavesolution.com.au",
       },
       publisher: {
         "@type": "Organization",
@@ -255,7 +249,7 @@ const rtaTimeline = [
   {
     time: "Post-Inspection",
     title: "Claim Your Bond via RTA Web Services",
-    desc: "Log into Queensland RTA Web Services to lodge your Refund of Rental Bond. If the agent requests rectifications, activate your cleaner's 72-hour re-clean guarantee immediately.",
+    desc: "Log into Queensland RTA Web Services to lodge your Refund of Rental Bond. If the agent requests rectifications, activate your cleaner's free re-clean guarantee immediately.",
   },
 ]
 
@@ -295,7 +289,7 @@ export default function EndOfLeaseCleaningRequirementsQldPage() {
               <span>•</span>
               <span className="flex items-center gap-1.5"><Clock className="h-4 w-4 text-secondary" /> 11 min read</span>
               <span>•</span>
-              <span className="font-semibold text-white">Written by Suraj Gautam</span>
+              <span className="font-semibold text-white">By the Wave Solution team</span>
               <span>•</span>
               <span className="inline-flex items-center gap-1 text-emerald-400 font-bold bg-emerald-950/60 px-2 py-0.5 rounded border border-emerald-500/30">
                 <ShieldCheck className="h-3.5 w-3.5" /> RTA Compliance Verified
@@ -323,7 +317,7 @@ export default function EndOfLeaseCleaningRequirementsQldPage() {
             </div>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-1.5">
               <ShieldCheck className="h-4 w-4 opacity-80" />
-              <span>72-Hour Re-Clean Guarantee</span>
+              <span>Free Re-Clean Guarantee</span>
             </div>
           </div>
         </div>
@@ -575,14 +569,14 @@ export default function EndOfLeaseCleaningRequirementsQldPage() {
                 </div>
               </section>
 
-              {/* Section 6: How the 72-Hour Re-Clean Guarantee Works */}
+              {/* Section 6: How the Free Re-Clean Guarantee Works */}
               <section className="space-y-6 pt-6 border-t border-slate-100">
                 <div className="flex items-center gap-3">
                   <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-primary font-black">
                     6
                   </div>
                   <h2 className="text-2xl sm:text-3xl font-black tracking-tight text-primary">
-                    The 72-Hour Re-Clean Guarantee: Why It Matters
+                    The Free Re-Clean Guarantee: Why It Matters
                   </h2>
                 </div>
 
@@ -598,12 +592,12 @@ export default function EndOfLeaseCleaningRequirementsQldPage() {
                 <div className="rounded-2xl border border-secondary/30 bg-secondary/5 p-6 space-y-4">
                   <div className="flex items-center gap-3">
                     <Award className="h-6 w-6 text-secondary shrink-0" />
-                    <h3 className="text-lg font-black text-primary">Wave Solution 100% Bond Back Assurance</h3>
+                    <h3 className="text-lg font-black text-primary">Wave Solution Bond-Ready Assurance</h3>
                   </div>
                   <ul className="space-y-2 text-sm text-slate-700">
                     <li className="flex items-start gap-2">
                       <CheckCircle2 className="h-4 w-4 text-secondary mt-0.5 shrink-0" />
-                      <span><strong>Free 72-Hour Rectification:</strong> If your real estate agent flags any item from our standard scope on the exit report, our team returns within 72 hours to re-clean it at zero additional cost.</span>
+                      <span><strong>Free Rectification:</strong> If your real estate agent flags any item from our standard scope on the exit report, our team returns within 72 hours to re-clean it at zero additional cost.</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <CheckCircle2 className="h-4 w-4 text-secondary mt-0.5 shrink-0" />
@@ -657,7 +651,7 @@ export default function EndOfLeaseCleaningRequirementsQldPage() {
                 </span>
                 <h3 className="mt-2 text-2xl font-black">Starting from $249</h3>
                 <p className="mt-2 text-xs sm:text-sm leading-6 text-white/75">
-                  100% Bond Back Guarantee included. All Gold Coast suburbs covered. Same-day &amp; weekend availability.
+                  Free Re-Clean Guarantee included. All Gold Coast suburbs covered. Same-day &amp; weekend availability.
                 </p>
 
                 <div className="mt-6 space-y-3">
@@ -676,7 +670,7 @@ export default function EndOfLeaseCleaningRequirementsQldPage() {
                 </div>
 
                 <div className="mt-5 pt-4 border-t border-white/10 flex items-center justify-between text-[11px] text-white/60">
-                  <span>✓ 72-Hour Free Re-Clean</span>
+                  <span>✓ Free Re-Clean Guarantee</span>
                   <span>✓ Licensed &amp; Insured</span>
                 </div>
               </div>

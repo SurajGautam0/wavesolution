@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button"
 export const metadata: Metadata = {
   title: "Carpet Cleaning Guide Gold Coast | How Often, Costs & Methods",
   description:
-    "Complete carpet cleaning guide for Gold Coast homes and rentals. Find out how often carpets should be cleaned, what methods work best, and when to book a professional service.",
+    "Carpet cleaning guide for Gold Coast homes and rentals: how often carpets should be cleaned, what methods work best, and when to book a professional.",
   keywords: ["carpet cleaning guide Gold Coast", "carpet cleaning tips", "how often carpet cleaning", "carpet steam cleaning Gold Coast", "carpet stain removal Gold Coast"],
   alternates: { canonical: "https://www.wavesolution.com.au/blog/carpet-cleaning-guide" },
   openGraph: {

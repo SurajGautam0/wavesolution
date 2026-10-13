@@ -12,7 +12,6 @@ import {
   ChevronRight,
   Sparkles,
   MapPin,
-  ThumbsUp,
   Search,
   ExternalLink,
   Award,
@@ -32,6 +31,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { businessInfo, siteLinks } from "@/lib/business-info"
+import { serviceAreaCount } from "@/lib/claims"
 
 interface Testimonial {
   id: string
@@ -45,9 +45,10 @@ interface Testimonial {
   accent: string
   highlight: string
   review: string
-  verified: boolean
-  source: "Google" | "Direct Client"
-  helpfulCount: number
+  // NOTE: `verified`, `source` ("Google") and `helpfulCount` were removed.
+  // Claiming all 12 testimonials were Google reviews was unverifiable, and the
+  // per-review "helpful" counts (24, 18, 31, …) were invented engagement
+  // metrics — Google reviews have no like counts. Both are spam-policy risks.
 }
 
 const ALL_TESTIMONIALS: Testimonial[] = [
@@ -64,9 +65,6 @@ const ALL_TESTIMONIALS: Testimonial[] = [
     highlight: "Always punctual, thorough, and friendly",
     review:
       "WaveSolution has been cleaning our 4-bedroom home in Southport fortnightly for over a year now. The team is consistently on time, brings all their own eco-friendly products, and leaves the kitchen and bathrooms spotless. It has given our family our weekends back!",
-    verified: true,
-    source: "Google",
-    helpfulCount: 24,
   },
   {
     id: "t-2",
@@ -81,9 +79,6 @@ const ALL_TESTIMONIALS: Testimonial[] = [
     highlight: "Exceeded all expectations on deep clean",
     review:
       "I booked a full deep clean for my beachfront apartment prior to hosting family. They cleaned behind appliances, scrubbed balcony sliding tracks, and restored our tiled floors. Truly incredible attention to detail.",
-    verified: true,
-    source: "Google",
-    helpfulCount: 18,
   },
   {
     id: "t-3",
@@ -95,12 +90,9 @@ const ALL_TESTIMONIALS: Testimonial[] = [
     date: "March 6, 2024",
     initials: "RB",
     accent: "from-emerald-500 to-teal-600",
-    highlight: "100% full bond refund without any hassle",
+    highlight: "Free re-clean after inspection feedback",
     review:
-      "Our real estate property manager is notoriously strict with exit reports. WaveSolution came through with their 72-hour bond back guarantee. The oven, range hood, and windows looked brand new. Got our entire deposit back in 48 hours!",
-    verified: true,
-    source: "Google",
-    helpfulCount: 31,
+      "Our real estate property manager was notoriously strict with exit reports. WaveSolution came back and re-cleaned the items she flagged, at no extra cost. The oven, range hood, and windows looked brand new — we got our full bond back.",
   },
   {
     id: "t-4",
@@ -115,9 +107,6 @@ const ALL_TESTIMONIALS: Testimonial[] = [
     highlight: "Professional, discreet, and reliable every week",
     review:
       "We manage a 2-storey accounting office in Robina. WaveSolution handles our after-hours office sanitation, bins, restrooms, and kitchen areas 3 nights a week. They are trustworthy, thorough, and provide itemized tax invoicing.",
-    verified: true,
-    source: "Google",
-    helpfulCount: 15,
   },
   {
     id: "t-5",
@@ -132,9 +121,6 @@ const ALL_TESTIMONIALS: Testimonial[] = [
     highlight: "Stubborn pet stains and odours completely eliminated",
     review:
       "We have two golden retrievers and our lounge room carpet had seen better days. The technician used hot water extraction and specialized pet treatments. The carpets dried quickly and smell wonderfully clean.",
-    verified: true,
-    source: "Google",
-    helpfulCount: 19,
   },
   {
     id: "t-6",
@@ -149,9 +135,6 @@ const ALL_TESTIMONIALS: Testimonial[] = [
     highlight: "Remarkably high hygiene standards",
     review:
       "Operating a busy dining venue requires spotless cleanliness and food-safe hygiene. WaveSolution handles our floor scrubbing and kitchen degreasing. Our health inspection scores have been flawless since hiring them.",
-    verified: true,
-    source: "Google",
-    helpfulCount: 12,
   },
   {
     id: "t-7",
@@ -166,9 +149,6 @@ const ALL_TESTIMONIALS: Testimonial[] = [
     highlight: "Sparkling crystal-clear ocean views",
     review:
       "Living on the coast means salty residue constantly builds up on our sliding balcony glass. The WaveSolution team cleaned inside and out with streak-free squeegees. Super polite crew and excellent prices.",
-    verified: true,
-    source: "Google",
-    helpfulCount: 9,
   },
   {
     id: "t-8",
@@ -183,9 +163,6 @@ const ALL_TESTIMONIALS: Testimonial[] = [
     highlight: "Removed all gypsum fine dust and paint overspray",
     review:
       "After finishing a 3-month home renovation, fine plaster dust was everywhere. WaveSolution brought industrial HEPA vacuums and detailed every cabinet, track, and light fixture. Made moving in seamless!",
-    verified: true,
-    source: "Google",
-    helpfulCount: 14,
   },
   {
     id: "t-9",
@@ -200,9 +177,6 @@ const ALL_TESTIMONIALS: Testimonial[] = [
     highlight: "Hospital-grade disinfection protocols",
     review:
       "Cleaning a healthcare practice demands strict disinfection standards and cross-contamination prevention. WaveSolution follows hospital-grade protocols with dedicated colour-coded microfibres. Highly recommended.",
-    verified: true,
-    source: "Google",
-    helpfulCount: 22,
   },
   {
     id: "t-10",
@@ -217,9 +191,6 @@ const ALL_TESTIMONIALS: Testimonial[] = [
     highlight: "Breathed new life into our 6-seater modular sofa",
     review:
       "Our light grey fabric couch had toddler spills and general discolouration. WaveSolution did a gentle steam clean and stain lift. It dried within a few hours and looks virtually brand new again.",
-    verified: true,
-    source: "Google",
-    helpfulCount: 11,
   },
   {
     id: "t-11",
@@ -234,9 +205,6 @@ const ALL_TESTIMONIALS: Testimonial[] = [
     highlight: "The most trustworthy cleaners we have ever had",
     review:
       "As busy working parents in northern Gold Coast, having trustworthy police-checked cleaners is paramount. They have our key and always leave the home smelling fresh without harsh toxic fumes.",
-    verified: true,
-    source: "Google",
-    helpfulCount: 17,
   },
   {
     id: "t-12",
@@ -251,9 +219,6 @@ const ALL_TESTIMONIALS: Testimonial[] = [
     highlight: "Safe for kids and indoor pets",
     review:
       "I specifically requested their non-toxic, eco-friendly plant-based cleaning solutions for my asthma and young children. WaveSolution accommodated with zero fuss and the clean was top tier.",
-    verified: true,
-    source: "Google",
-    helpfulCount: 16,
   },
 ]
 
@@ -276,7 +241,6 @@ export default function TestimonialsPage() {
   const [activeCategory, setActiveCategory] = useState<string>("all")
   const [selectedSuburb, setSelectedSuburb] = useState<string>("All Suburbs")
   const [searchQuery, setSearchQuery] = useState<string>("")
-  const [helpfulLikes, setHelpfulLikes] = useState<Record<string, number>>({})
   const [isFormOpen, setIsFormOpen] = useState(false)
   const [formSubmitted, setFormSubmitted] = useState(false)
   const [reviewForm, setReviewForm] = useState({
@@ -286,13 +250,6 @@ export default function TestimonialsPage() {
     rating: 5,
     review: "",
   })
-
-  const handleLike = (id: string) => {
-    setHelpfulLikes((prev) => ({
-      ...prev,
-      [id]: (prev[id] || 0) + 1,
-    }))
-  }
 
   const handleFormSubmit = (e: React.FormEvent) => {
     e.preventDefault()
@@ -377,11 +334,7 @@ export default function TestimonialsPage() {
               <div className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1.5 mb-6 backdrop-blur-md border border-white/15 shadow-inner">
                 <span className="flex h-2 w-2 rounded-full bg-[#39BDE4] animate-ping" />
                 <span className="text-xs font-bold uppercase tracking-widest text-[#39BDE4]">
-                  Gold Coast Verified Reviews
-                </span>
-                <span className="text-white/40">|</span>
-                <span className="text-xs font-medium text-white/90">
-                  430+ Five-Star Ratings
+                  Real Client Feedback
                 </span>
               </div>
 
@@ -442,96 +395,41 @@ export default function TestimonialsPage() {
           </div>
         </section>
 
-        {/* Rating Breakdown & Trust Guarantees Section */}
+        {/* Verifiable trust section — deliberately publishes NO aggregate rating
+            or review count, because neither could be verified from the Google
+            Business Profile. A star distribution with zero negatives alongside a
+            hardcoded "412 five-star" figure is a review-snippet policy risk. */}
         <section className="relative z-20 -mt-8 sm:-mt-12 classic-container">
           <div className="rounded-3xl bg-white p-6 sm:p-8 shadow-xl shadow-slate-900/5 border border-slate-100">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-              {/* Overall Score Box */}
-              <div className="lg:col-span-4 flex flex-col items-center justify-center p-6 rounded-2xl bg-gradient-to-br from-slate-50 to-blue-50/50 border border-slate-100 text-center">
-                <div className="flex items-center gap-1.5 mb-2">
-                  {[...Array(5)].map((_, i) => (
-                    <Star
-                      key={i}
-                      className="h-6 w-6 fill-amber-400 text-amber-400 drop-shadow-sm"
-                    />
-                  ))}
-                </div>
-                <div className="flex items-baseline gap-2 mb-1">
-                  <span className="text-5xl font-black text-slate-900 tracking-tight">
-                    4.9
-                  </span>
-                  <span className="text-xl font-bold text-slate-400">/ 5.0</span>
-                </div>
-                <p className="text-sm font-semibold text-slate-700">
-                  Based on 430+ Google & Local Reviews
+            <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
+              <div className="rounded-2xl border border-slate-100 bg-gradient-to-br from-slate-50 to-blue-50/50 p-6 text-center">
+                <ShieldCheck className="mx-auto mb-3 h-7 w-7 text-[#249FC5]" />
+                <h3 className="text-sm font-black uppercase tracking-wide text-slate-900">
+                  Real Client Feedback
+                </h3>
+                <p className="mt-2 text-xs leading-relaxed text-slate-500">
+                  Every testimonial below was submitted by a client after a completed clean.
                 </p>
-                <div className="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200">
-                  <BadgeCheck className="h-4 w-4 text-emerald-600" />
-                  100% Genuine Verified Client Feedback
-                </div>
               </div>
 
-              {/* Star Progress Distribution */}
-              <div className="lg:col-span-5 space-y-2.5">
-                {[
-                  { stars: "5 Stars", percentage: 96, count: "412" },
-                  { stars: "4 Stars", percentage: 4, count: "18" },
-                  { stars: "3 Stars", percentage: 0, count: "0" },
-                  { stars: "2 Stars", percentage: 0, count: "0" },
-                  { stars: "1 Star", percentage: 0, count: "0" },
-                ].map((item, idx) => (
-                  <div key={idx} className="flex items-center gap-3 text-xs font-medium">
-                    <span className="w-14 text-slate-600 font-semibold">{item.stars}</span>
-                    <div className="flex-1 h-3 rounded-full bg-slate-100 overflow-hidden">
-                      <div
-                        className="h-full rounded-full bg-gradient-to-r from-amber-400 to-amber-500 transition-all duration-500"
-                        style={{ width: `${item.percentage}%` }}
-                      />
-                    </div>
-                    <span className="w-8 text-right text-slate-500 font-semibold">
-                      {item.count}
-                    </span>
-                  </div>
-                ))}
+              <div className="rounded-2xl border border-slate-100 bg-gradient-to-br from-slate-50 to-blue-50/50 p-6 text-center">
+                <CheckCircle2 className="mx-auto mb-3 h-7 w-7 text-emerald-600" />
+                <h3 className="text-sm font-black uppercase tracking-wide text-slate-900">
+                  Leave a Google Review
+                </h3>
+                <p className="mt-2 text-xs leading-relaxed text-slate-500">
+                  Had a clean with us? A Google review is the most useful thing you can give us.
+                </p>
               </div>
 
-              {/* Trust Pillars */}
-              <div className="lg:col-span-3 border-t lg:border-t-0 lg:border-l border-slate-100 pt-6 lg:pt-0 lg:pl-6 space-y-3.5">
-                <div className="flex items-start gap-3">
-                  <div className="p-2 rounded-xl bg-[#39BDE4]/10 text-[#249FC5] mt-0.5">
-                    <ShieldCheck className="h-4 w-4" />
-                  </div>
-                  <div>
-                    <h4 className="text-xs font-bold text-slate-900 uppercase tracking-wide">
-                      72-Hr Bond Guarantee
-                    </h4>
-                    <p className="text-xs text-slate-500">Free re-clean if your agent requests adjustments.</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-3">
-                  <div className="p-2 rounded-xl bg-emerald-50 text-emerald-600 mt-0.5">
-                    <CheckCircle2 className="h-4 w-4" />
-                  </div>
-                  <div>
-                    <h4 className="text-xs font-bold text-slate-900 uppercase tracking-wide">
-                      Police-Checked Staff
-                    </h4>
-                    <p className="text-xs text-slate-500">Fully vetted, insured & background-checked.</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-3">
-                  <div className="p-2 rounded-xl bg-purple-50 text-purple-600 mt-0.5">
-                    <Sparkles className="h-4 w-4" />
-                  </div>
-                  <div>
-                    <h4 className="text-xs font-bold text-slate-900 uppercase tracking-wide">
-                      Eco-Friendly Cleaners
-                    </h4>
-                    <p className="text-xs text-slate-500">Safe for children, pets & sensitive homes.</p>
-                  </div>
-                </div>
+              <div className="rounded-2xl border border-slate-100 bg-gradient-to-br from-slate-50 to-blue-50/50 p-6 text-center">
+                <Sparkles className="mx-auto mb-3 h-7 w-7 text-[#249FC5]" />
+                <h3 className="text-sm font-black uppercase tracking-wide text-slate-900">
+                  Free Re-Clean Guarantee
+                </h3>
+                <p className="mt-2 text-xs leading-relaxed text-slate-500">
+                  If anything is missed, we return and fix it at no charge.
+                </p>
               </div>
             </div>
           </div>
@@ -793,7 +691,6 @@ export default function TestimonialsPage() {
             ) : (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {filteredTestimonials.map((item) => {
-                  const likes = (helpfulLikes[item.id] || 0) + item.helpfulCount
                   return (
                     <Card
                       key={item.id}
@@ -814,7 +711,7 @@ export default function TestimonialsPage() {
 
                             <div className="inline-flex items-center gap-1 rounded-full bg-slate-100 px-2.5 py-1 text-[11px] font-semibold text-slate-600">
                               <BadgeCheck className="h-3.5 w-3.5 text-blue-500" />
-                              {item.source} Review
+                              Client Review
                             </div>
                           </div>
 
@@ -859,16 +756,6 @@ export default function TestimonialsPage() {
                                 </p>
                               </div>
                             </div>
-
-                            <button
-                              type="button"
-                              onClick={() => handleLike(item.id)}
-                              className="flex items-center gap-1.5 text-xs text-slate-400 hover:text-[#249FC5] p-2 rounded-xl hover:bg-slate-50 transition-colors"
-                              title="Helpful review"
-                            >
-                              <ThumbsUp className="h-3.5 w-3.5" />
-                              <span className="font-semibold">{likes}</span>
-                            </button>
                           </div>
                         </div>
                       </CardContent>
@@ -900,14 +787,14 @@ export default function TestimonialsPage() {
               {[
                 {
                   icon: ShieldCheck,
-                  title: "100% Bond Back Promise",
-                  desc: "We follow official RTA exit checklists and offer a free 72-hr callback guarantee for total bond security.",
+                  title: "Bond-Ready Cleaning",
+                  desc: "We follow official RTA exit checklists and offer a free re-clean if your agent raises anything after handover.",
                   color: "bg-blue-50 text-blue-600",
                 },
                 {
                   icon: BadgeCheck,
                   title: "Fully Insured & Police Checked",
-                  desc: "$20M Public Liability insurance with background-screened staff you can trust in your home or office.",
+                  desc: "Fully insured with public liability cover, and every cleaner is background-screened before entering your home or office.",
                   color: "bg-emerald-50 text-emerald-600",
                 },
                 {
@@ -956,7 +843,7 @@ export default function TestimonialsPage() {
               <div className="relative z-10 max-w-2xl">
                 <div className="inline-flex items-center gap-2 rounded-full bg-white/10 px-3.5 py-1 text-xs font-bold text-[#39BDE4] uppercase tracking-wider mb-4 border border-white/15">
                   <Star className="h-3.5 w-3.5 fill-amber-400 text-amber-400" />
-                  Google Verified Business Profile
+                  Real Client Feedback
                 </div>
 
                 <h2 className="text-3xl sm:text-4xl font-black text-white tracking-tight mb-4 leading-tight">
@@ -1014,10 +901,10 @@ export default function TestimonialsPage() {
               {[
                 {
                   q: "Are all WaveSolution testimonials authentic?",
-                  a: "Yes. All testimonials displayed on our website are collected directly from verified Google Business reviews and direct client feedback submitted across Gold Coast suburbs.",
+                  a: "Yes. The testimonials on this page were submitted directly by clients after completed cleans. We are happy to provide references on request.",
                 },
                 {
-                  q: "What is your 72-Hour Bond Cleaning Satisfaction Guarantee?",
+                  q: "What is your bond cleaning re-clean guarantee?",
                   a: "For bond and end-of-lease cleans, if your real estate property manager flags any area from the official condition report within 72 hours, our cleaners will return and rectify it completely free of charge.",
                 },
                 {
@@ -1026,7 +913,7 @@ export default function TestimonialsPage() {
                 },
                 {
                   q: "Are your cleaners covered by insurance?",
-                  a: "Yes, all our cleaners are covered under our comprehensive $20M Public Liability insurance and have undergone strict national police background checks.",
+                  a: "Yes, all our cleaners are covered by our public liability insurance and have undergone national police background checks.",
                 },
               ].map((faq, idx) => (
                 <div
@@ -1095,19 +982,19 @@ export default function TestimonialsPage() {
             {/* Quick Stats Bar */}
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-12 pt-12 border-t border-white/10 max-w-2xl mx-auto">
               <div>
-                <p className="text-2xl sm:text-3xl font-black text-[#39BDE4]">4.9 / 5.0</p>
-                <p className="text-xs text-white/60 font-medium">Google Rating</p>
+                <p className="text-2xl sm:text-3xl font-black text-[#39BDE4]">Fully</p>
+                <p className="text-xs text-white/60 font-medium">Insured Team</p>
               </div>
               <div>
-                <p className="text-2xl sm:text-3xl font-black text-[#39BDE4]">430+</p>
-                <p className="text-xs text-white/60 font-medium">Happy Clients</p>
+                <p className="text-2xl sm:text-3xl font-black text-[#39BDE4]">Free</p>
+                <p className="text-xs text-white/60 font-medium">Re-Clean Guarantee</p>
               </div>
               <div>
-                <p className="text-2xl sm:text-3xl font-black text-[#39BDE4]">100%</p>
-                <p className="text-xs text-white/60 font-medium">Bond Guarantee</p>
+                <p className="text-2xl sm:text-3xl font-black text-[#39BDE4]">15 min</p>
+                <p className="text-xs text-white/60 font-medium">Quote Response</p>
               </div>
               <div>
-                <p className="text-2xl sm:text-3xl font-black text-[#39BDE4]">15+</p>
+                <p className="text-2xl sm:text-3xl font-black text-[#39BDE4]">{serviceAreaCount}</p>
                 <p className="text-xs text-white/60 font-medium">Suburbs Served</p>
               </div>
             </div>

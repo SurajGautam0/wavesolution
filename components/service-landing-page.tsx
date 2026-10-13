@@ -4,6 +4,7 @@ import { ArrowRight, CheckCircle, ChevronRight, MapPin, Phone } from "lucide-rea
 
 import { Button } from "@/components/ui/button"
 import { businessInfo, siteLinks } from "@/lib/business-info"
+import { trustBadgesShort } from "@/lib/claims"
 import { getServicePage, type ServicePage } from "@/lib/service-pages"
 import { serviceLocationPages } from "@/lib/service-location-pages"
 
@@ -62,7 +63,7 @@ export function ServiceLandingPage({ page }: ServiceLandingPageProps) {
         {
           href: "/blog/bond-cleaning-checklist",
           label: "Ultimate Bond Cleaning Checklist",
-          description: "Room-by-room Queensland rental inspection checklist to guarantee your full deposit refund.",
+          description: "Room-by-room Queensland rental inspection checklist to help you prepare for handover.",
         },
         {
           href: "/blog/end-of-lease-cleaning-cost-gold-coast",
@@ -284,7 +285,7 @@ export function ServiceLandingPage({ page }: ServiceLandingPageProps) {
             </div>
 
             <div className="mt-8 flex flex-wrap items-center gap-2.5">
-              {["Fully insured", "Police-checked", "4.9★ Google rating"].map((badge) => (
+              {trustBadgesShort.map((badge) => (
                 <span key={badge} className="inline-flex items-center gap-1.5 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-[11px] font-bold uppercase tracking-[0.14em] text-white backdrop-blur-sm">
                   <CheckCircle className="h-3.5 w-3.5 text-[#39BDE4]" />
                   {badge}

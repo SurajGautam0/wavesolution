@@ -70,7 +70,7 @@ export const servicePages: ServicePage[] = [
       "Office & Commercial Cleaning: Regular workplace hygiene, retail premises, medical suites, and strata common areas",
       "Deep & Spring Cleaning: Intensive top-to-bottom resets for kitchens, bathrooms, tiles, and high-touch areas",
       "Specialist Care: Carpet steam extraction, post-construction dust removal, and certified pest control",
-      "Transparent Service: Tailored checklists, $10M public liability insurance, and satisfaction follow-up on every job",
+      "Transparent Service: Tailored checklists, full public liability insurance, and satisfaction follow-up on every job",
     ],
     whyChooseUs: sharedWhyChooseUs,
     sections: [
@@ -285,7 +285,7 @@ export const servicePages: ServicePage[] = [
       {
         question: "What if I'm not happy with the clean?",
         answer:
-          "We offer a satisfaction guarantee. If something has been missed or falls short of expectations, contact us promptly and we'll make it right.",
+          "If a covered cleaning item has been missed, contact us and we will return to re-clean it at no charge.",
       },
     ],
     relatedSlugs: [
@@ -362,14 +362,14 @@ export const servicePages: ServicePage[] = [
         title: "Official Queensland bond cleaning checklist & inspection guide",
         paragraphs: [
           "Want to know exactly what property managers inspect room by room before releasing your bond? Read our full bond cleaning checklist for Queensland rentals to see our complete vacate protocol, kitchen oven detailing standards, and bathroom sanitisation requirements.",
-          "Whether you plan to clean yourself or hire our fully guaranteed vacate cleaners, having the exact checklist used by Gold Coast real estate agents ensures no critical areas are missed.",
+          "Whether you plan to clean yourself or book our move-out cleaning service, having a clear room-by-room checklist helps ensure important areas are not missed.",
         ],
       },
       {
-        title: "Our 100% bond-back guarantee commitment",
+        title: "Our free re-clean guarantee",
         paragraphs: [
-          "Your rental bond is a significant financial deposit, and we believe you should get every dollar back without disputes. That is why every bond clean we complete is backed by our full re-clean warranty.",
-          "Following your property manager's final inspection, if any cleaning item is flagged on their report, notify us within 72 hours. We will promptly return to the property and re-clean the disputed area free of charge, giving you and your property manager complete confidence.",
+          "A rental bond is a significant financial deposit. While the bond-return decision belongs to the property manager or landlord, our free re-clean guarantee covers cleaning items missed within the agreed service scope.",
+          "If a covered cleaning item is flagged after the clean, contact us with the inspection details. We will review the request and arrange a return clean for the covered area at no charge.",
         ],
       },
     ],
@@ -568,7 +568,7 @@ export const servicePages: ServicePage[] = [
     slug: "office-cleaning-gold-coast",
     shortLabel: "Office Cleaning Gold Coast",
     navLabel: "Office Cleaning",
-    metaTitle: "Office Cleaning Gold Coast | Workplace Cleaning Services",
+    metaTitle: "Office Cleaning Gold Coast | Workplace Cleaners | Wave Solution",
     metaDescription:
       "Office cleaning in the Gold Coast for professional suites, shared offices and business spaces. Flexible schedules, detailed checklists and local support.",
     heroEyebrow: "Workplace Cleaning",
@@ -695,7 +695,7 @@ export const servicePages: ServicePage[] = [
     slug: "commercial-cleaning-gold-coast",
     shortLabel: "Commercial Cleaning Gold Coast",
     navLabel: "Commercial Cleaning",
-    metaTitle: "Commercial Cleaning Gold Coast | Business Cleaners",
+    metaTitle: "Commercial Cleaning Gold Coast | Business Cleaners | Wave Solution",
     metaDescription:
       "Commercial cleaning in the Gold Coast for offices, retail, clinics, body corporate sites and more. Tailored schedules and dependable local cleaners.",
     heroEyebrow: "Business Cleaning",
@@ -1581,7 +1581,7 @@ export const servicePages: ServicePage[] = [
     slug: "apartment-cleaning-gold-coast",
     shortLabel: "Apartment Cleaning Gold Coast",
     navLabel: "Apartment Cleaning",
-    metaTitle: "Apartment Cleaning Gold Coast | High-Rise & Unit Cleaners",
+    metaTitle: "Apartment Cleaning Gold Coast | High-Rise & Units | Wave Solution",
     metaDescription:
       "Apartment and high-rise cleaning in Surfers Paradise, Broadbeach and Southport, including balcony salt-spray care. Request a quote.",
     heroEyebrow: "Coastal High-Rise & Unit Specialists",
@@ -1697,7 +1697,7 @@ export const servicePages: ServicePage[] = [
     slug: "end-of-lease-pest-control-gold-coast",
     shortLabel: "End of Lease Pest Control Gold Coast",
     navLabel: "End of Lease Pest Control",
-    metaTitle: "End of Lease Pest Control Gold Coast | Bond Receipt",
+    metaTitle: "End of Lease Pest Control Gold Coast | Bond Receipt | Wave Solution",
     metaDescription:
       "End of lease pest control on the Gold Coast for rental handovers, with a treatment receipt for your agent. Request a quote today.",
     heroEyebrow: "QLD Rental Tenancy Compliance",
@@ -1726,7 +1726,7 @@ export const servicePages: ServicePage[] = [
       "Targeted cockroach, spider, and silverfish preventative treatment in kitchens and wet areas",
       "Immediate digital Pest Treatment Certificate and tax invoice issued for your real estate agent",
       "Australian-standard approved, low-odour formulations safe for families and future occupants once dry",
-      "Full warranty and free re-spray guarantee if your property manager flags any pest issue on inspection",
+          "Ask us about treatment documentation and any applicable re-treatment terms when requesting a quote",
     ],
     whyChooseUs: sharedWhyChooseUs,
     sections: [
@@ -1742,7 +1742,7 @@ export const servicePages: ServicePage[] = [
         title: "Coordinating pest control with your bond cleaning and carpet clean",
         paragraphs: [
           "Timing is critical during a vacate clean. Performing pest control before carpets are steam cleaned or before bond cleaners mop the floors can wash away the active residual barrier. The correct, industry-standard sequence is: bond cleaning first, carpet steam cleaning second, and end of lease pest treatment last as the technician locks up.",
-          "Because Wave Solution offers comprehensive bond cleaning, carpet cleaning, and pest control under one roof, we eliminate coordination headaches. Our integrated vacate packages save you money, prevent contractor scheduling conflicts, and guarantee that each step is performed in the ideal sequence.",
+          "Because Wave Solution offers bond cleaning, carpet cleaning, and pest control, you can request a coordinated vacate package. Confirm the included work and timing in your quote.",
         ],
       },
       {
@@ -1753,10 +1753,10 @@ export const servicePages: ServicePage[] = [
         ],
       },
       {
-        title: "Instant digital receipt and full bond back guarantee",
+        title: "Treatment receipt and service follow-up",
         paragraphs: [
           "As soon as our technician completes the vacate treatment, a formal Pest Treatment Certificate specifying the chemical active ingredients, target pests, licence number, and property address is emailed directly to you and your property manager.",
-          "We stand firmly behind our service with a 100% agent satisfaction guarantee. In the rare event that your property manager raises any concern during their exit inspection, we will return to re-inspect and re-treat the area promptly at no additional cost to you.",
+          "After the treatment, we provide the service documentation included in your quote. Contact us if you have a question about the completed work or the treatment terms.",
         ],
       },
     ],
@@ -1794,7 +1794,7 @@ export const servicePages: ServicePage[] = [
       {
         question: "What happens if my property manager fails the pest inspection?",
         answer:
-          "We offer a 100% bond-back guarantee on our treatments. If your property manager reports any pest issues within the warranty period, we return and re-treat the property free of charge.",
+          "Pest treatment does not guarantee bond return. Contact us with any concern about the treatment and we can explain the applicable service terms.",
       },
       {
         question: "Which Gold Coast suburbs do you cover for bond pest control?",
@@ -1858,7 +1858,7 @@ export const servicePages: ServicePage[] = [
         title: "Bond and end of lease cleaning in Carrara",
         paragraphs: [
           "Moving out of a Carrara rental? Our bond cleaning service is designed specifically for Queensland rental inspections. We follow a comprehensive exit checklist covering oven interiors, rangehood filters, bathroom tile grout, window tracks, skirting boards, light switches, and all other areas property managers scrutinise during final walkthroughs.",
-          "Getting your bond back in full starts with a clean that meets the standard required under Queensland tenancy law. Our team has completed hundreds of bond cleans across Carrara and surrounding suburbs, and we understand what Gold Coast property managers expect to see. If there is a re-inspection issue covered by our service, we return to fix it.",
+          "A clean that follows the agreed scope can help prepare a property for a Queensland tenancy handover. If a covered cleaning item is missed, contact us to arrange a free re-clean of that area.",
         ],
       },
       {
@@ -1888,7 +1888,7 @@ export const servicePages: ServicePage[] = [
       {
         question: "Are your Carrara cleaners insured and police-checked?",
         answer:
-          "Yes. All Wave Solution cleaners are fully insured with $10M public liability coverage and undergo police checks before working in homes, rental properties, or business premises.",
+          "Yes. All Wave Solution cleaners are fully insured with public liability cover and undergo police checks before working in homes, rental properties, or business premises.",
       },
       {
         question: "Can I book a one-off clean in Carrara?",

@@ -434,7 +434,7 @@ export default function GalleryPage() {
 									<ShieldCheck className="w-5 h-5 text-secondary flex-shrink-0" />
 									<div>
 										<div className="text-[8px] font-black uppercase tracking-widest text-slate-600">Quality Assured</div>
-										<div className="text-xs font-bold text-primary">100% Satisfaction Guaranteed</div>
+										<div className="text-xs font-bold text-primary">Free Re-Clean Guarantee</div>
 									</div>
 								</div>
 

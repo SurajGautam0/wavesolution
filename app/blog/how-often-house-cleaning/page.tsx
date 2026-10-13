@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button"
 export const metadata: Metadata = {
   title: "How Often Should You Get Your House Professionally Cleaned? | Gold Coast Guide",
   description:
-    "Find out how often Gold Coast homes should be professionally cleaned based on your household size, lifestyle, and property type. Practical guidance from local cleaners.",
+    "How often Gold Coast homes should be professionally cleaned — based on household size, lifestyle and property type. Practical guidance from local cleaners.",
   keywords: [
     "how often house cleaning Gold Coast",
     "house cleaning frequency",

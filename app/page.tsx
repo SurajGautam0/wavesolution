@@ -1,15 +1,16 @@
 import type { Metadata } from "next"
 import Link from "next/link"
-import { CheckCircle, ShieldCheck, Sparkles, Star, TimerReset, Users, MapPin, Clock, Quote } from "lucide-react"
+import { CheckCircle, ShieldCheck, Sparkles, TimerReset, Users, MapPin, Clock, Quote } from "lucide-react"
 
 import { HeroSection } from "@/components/hero-section"
 import { ServiceCard } from "@/components/service-card"
-import { InteractivePricingCalculator } from "@/components/interactive-pricing-calculator"
 import { ServicesShowcaseTabs } from "@/components/services-showcase-tabs"
+import { InteractivePricingCalculator } from "@/components/interactive-pricing-calculator"
 import { FaqAccordion } from "@/components/faq-accordion"
 import { NewsletterForm } from "@/components/newsletter-form"
 import { Button } from "@/components/ui/button"
 import { businessInfo, siteLinks } from "@/lib/business-info"
+import { serviceAreaCount } from "@/lib/claims"
 
 const serviceCards = [
   {
@@ -150,14 +151,14 @@ const homepageFaqs = [
 export const metadata: Metadata = {
   title: "Gold Coast Cleaning & Pest Control | House, Bond & Office",
   description:
-    "Professional house, bond, and office cleaning plus licensed pest control across the Gold Coast. 100% bond-back guarantee. Get your free quote today!",
+    "House, office, bond and commercial cleaning across the Gold Coast, plus pest control. Fully insured, police-checked team. Get a free quote.",
   alternates: {
     canonical: businessInfo.baseUrl,
   },
   openGraph: {
     title: "Gold Coast Cleaning & Pest Control | House, Bond & Office",
     description:
-      "Professional house, bond, and office cleaning plus licensed pest control across the Gold Coast. 100% bond-back guarantee. Get your free quote today!",
+      "House, office, bond and commercial cleaning across the Gold Coast, plus pest control. Fully insured, police-checked team. Get a free quote.",
     url: businessInfo.baseUrl,
     type: "website",
     images: [{ url: `${businessInfo.baseUrl}/gold-coast-cleaning-services.jpeg`, width: 1200, height: 630, alt: "Wave Solution Cleaning & Pest Control Gold Coast" }],
@@ -166,7 +167,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Gold Coast Cleaning & Pest Control | House, Bond & Office",
     description:
-      "Professional house, bond, and office cleaning plus licensed pest control across the Gold Coast. 100% bond-back guarantee. Get your free quote today!",
+      "House, office, bond and commercial cleaning across the Gold Coast, plus pest control. Fully insured, police-checked team. Get a free quote.",
     images: [`${businessInfo.baseUrl}/gold-coast-cleaning-services.jpeg`],
   },
 }
@@ -197,10 +198,10 @@ export default function Home() {
         <div className="classic-container">
           <div className="grid grid-cols-2 gap-3 rounded-[1.75rem] border border-slate-200 bg-white p-4 shadow-xl shadow-slate-900/8 md:grid-cols-4 md:gap-0 md:divide-x md:divide-slate-100 md:p-6">
             {[
-              { icon: Clock, label: "Years Experience", value: "10+" },
-              { icon: CheckCircle, label: "Jobs Completed", value: "1,500+" },
-              { icon: Star, label: "Google Rating", value: "4.9 / 5" },
-              { icon: MapPin, label: "Suburbs Covered", value: "50+" },
+              { icon: ShieldCheck, label: "Professional team", value: "Fully insured" },
+              { icon: CheckCircle, label: "Our cleaners", value: "Police-checked" },
+              { icon: Sparkles, label: "Service guarantee", value: "Free re-clean" },
+              { icon: MapPin, label: "Gold Coast suburbs", value: String(serviceAreaCount) },
             ].map((stat) => (
               <div key={stat.label} className="flex items-center gap-3 px-2 py-2 md:justify-center md:px-4">
                 <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-primary/10 text-primary">
@@ -347,18 +348,13 @@ export default function Home() {
          <div className="classic-container">
            <div className="mx-auto max-w-4xl text-center">
              <div className="inline-flex items-center gap-2 rounded-full border border-secondary/30 bg-secondary/10 px-3.5 py-1 text-xs font-bold text-primary">
-               <Star className="h-3.5 w-3.5 fill-secondary text-secondary" />
-               Verified Gold Coast Reviews
+               <Sparkles className="h-3.5 w-3.5 text-primary" />
+               Customer Feedback
              </div>
-             <h2 className="mt-3 text-3xl font-black tracking-tight text-primary sm:text-4xl">Recent Gold Coast Client Feedback</h2>
+             <h2 className="mt-3 text-3xl font-black tracking-tight text-primary sm:text-4xl">Gold Coast Customer Feedback</h2>
              <p className="mx-auto mt-3 max-w-2xl text-base leading-relaxed text-slate-600">
-               Trust grows faster when visitors can see how local homes and businesses describe the service in their own words. Real reviews from Southport, Robina, and Broadbeach.
+               Notes from customers about house, office, and commercial cleaning across the Gold Coast.
              </p>
-             <div className="mt-4 inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-xs font-bold text-slate-700 shadow-sm">
-               <Star className="h-3.5 w-3.5 fill-amber-500 text-amber-500" />
-               <span>4.9 / 5</span>
-               <span className="text-slate-400">based on 430+ reviews</span>
-             </div>
            </div>
 
           <div className="mt-12 grid gap-6 lg:grid-cols-3">
@@ -369,16 +365,6 @@ export default function Home() {
               >
                 <Quote className="absolute right-6 top-6 h-8 w-8 text-primary/15" />
                 <div>
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-1 text-secondary">
-                      {Array.from({ length: 5 }).map((_, index) => (
-                        <Star key={index} className="h-4 w-4 fill-secondary text-secondary" />
-                      ))}
-                    </div>
-                    <span className="rounded-full bg-secondary/10 px-2.5 py-0.5 text-[10px] font-bold text-primary">
-                      Verified Client
-                    </span>
-                  </div>
                   <p className="mt-4 text-base italic leading-relaxed text-slate-700">
                     "{review.quote}"
                   </p>
@@ -554,7 +540,7 @@ export default function Home() {
            <div className="mx-auto max-w-3xl text-center">
              <span className="inline-flex items-center gap-1.5 rounded-full border border-white/20 bg-white/10 px-3.5 py-1 text-xs font-bold text-white">
                <ShieldCheck className="h-4 w-4 text-[#39BDE4]" />
-               100% Satisfaction Guaranteed
+               Free Re-Clean Guarantee
              </span>
              <h2 className="mt-5 text-3xl font-black tracking-tight text-white sm:text-4xl lg:text-5xl">
                Ready to Book Your Local Cleaner?

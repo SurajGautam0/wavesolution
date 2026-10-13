@@ -132,13 +132,14 @@ export function generateHowToSchema(howTo: {
 }
 
 // Article Schema - Use for blog posts
+// NOTE: deliberately takes no author/jobTitle fields. Attribution is always the
+// Organization, because a free-text person name here previously produced a
+// fabricated author persona in structured data.
 export function generateArticleSchema(article: {
   headline: string
   description: string
   datePublished: string
   dateModified: string
-  author?: string
-  jobTitle?: string
   image: string
   url: string
 }) {
@@ -151,15 +152,9 @@ export function generateArticleSchema(article: {
     datePublished: article.datePublished,
     dateModified: article.dateModified,
     author: {
-      '@type': 'Person',
-      name: article.author || 'Suraj Gautam',
-      jobTitle: article.jobTitle || 'Operations Director & Quality Assurance Lead',
-      worksFor: {
-        '@type': 'Organization',
-        name: businessInfo.businessName,
-        url: businessInfo.baseUrl,
-      },
-      url: `${businessInfo.baseUrl}/team`,
+      '@type': 'Organization',
+      name: businessInfo.businessName,
+      url: businessInfo.baseUrl,
     },
     publisher: {
       '@type': 'Organization',
@@ -242,14 +237,9 @@ export function generateEnhancedLocalBusinessSchema() {
     // Opening hours
     openingHoursSpecification: businessInfo.openingHoursSpecification,
 
-    // Ratings and reviews
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: '4.9',
-      reviewCount: '87',
-      bestRating: '5',
-      worstRating: '1',
-    },
+    // NOTE: aggregateRating removed. This dead-code builder carried a third,
+    // conflicting review count (87) alongside the values published elsewhere.
+    // Re-add only with a count verifiable from the Google Business Profile.
 
     // Contact points
     contactPoint: [
@@ -286,7 +276,7 @@ export function generateEnhancedLocalBusinessSchema() {
           itemOffered: {
             '@type': 'Service',
             name: 'Bond Cleaning Gold Coast',
-            description: 'Detailed bond cleaning with bond-back guarantee for Gold Coast tenants.',
+            description: 'Detailed bond cleaning with a free re-clean guarantee for covered cleaning items.',
           },
         },
         {
@@ -310,7 +300,7 @@ export function generateEnhancedLocalBusinessSchema() {
           itemOffered: {
             '@type': 'Service',
             name: 'End of Lease Cleaning Gold Coast',
-            description: 'Complete end of lease cleaning for rentals with satisfaction guarantee.',
+            description: 'Complete end of lease cleaning for rentals with a free re-clean guarantee.',
           },
         },
         {

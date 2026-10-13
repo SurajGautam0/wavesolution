@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button"
 
 export const metadata: Metadata = {
   title: "Benefits of Professional Commercial Cleaning for Gold Coast Businesses",
-  description: "Why Gold Coast businesses invest in professional commercial cleaning — staff productivity, client impressions, hygiene compliance, and long-term cost savings explained.",
+  description: "Why Gold Coast businesses invest in commercial cleaning — staff productivity, client impressions, hygiene compliance and long-term cost savings.",
   keywords: ["commercial cleaning benefits Gold Coast", "professional office cleaning benefits", "why hire commercial cleaner", "business cleaning Gold Coast", "workplace hygiene benefits"],
   alternates: { canonical: "https://www.wavesolution.com.au/blog/commercial-cleaning-benefits" },
   openGraph: { title: "Benefits of Professional Commercial Cleaning for Gold Coast Businesses", description: "The real business case for professional commercial cleaning in the Gold Coast.", url: "https://www.wavesolution.com.au/blog/commercial-cleaning-benefits" },

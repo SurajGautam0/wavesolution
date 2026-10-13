@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
 import Link from "next/link"
-import { CheckCircle2, ChevronRight, AlertCircle, DollarSign, Home, Clock, Star, ShieldCheck } from "lucide-react"
+import { CheckCircle2, ChevronRight, AlertCircle, DollarSign, Home, Clock, ShieldCheck } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { AuthorBio } from "@/components/author-bio"
 
@@ -33,11 +33,9 @@ const jsonLd = {
       headline: "End of Lease Cleaning Cost Gold Coast — Full Price Guide",
       description: "Price guide for end of lease cleaning on the Gold Coast. Prices by bedroom count, inclusions, add-ons, and tips to avoid overcharging.",
       author: {
-        "@type": "Person",
-        name: "Suraj Gautam",
-        jobTitle: "Operations Director & Quality Assurance Lead",
-        worksFor: { "@type": "Organization", name: "Wave Solution Cleaning & Pest Control", url: "https://www.wavesolution.com.au" },
-        url: "https://www.wavesolution.com.au/team",
+        "@type": "Organization",
+        name: "Wave Solution Cleaning & Pest Control",
+        url: "https://www.wavesolution.com.au",
       },
       publisher: {
         "@type": "Organization",
@@ -175,7 +173,7 @@ export default function EndOfLeaseCleaningCostGoldCoastPage() {
               <span>•</span>
               <span>9 min read</span>
               <span>•</span>
-              <span className="font-semibold text-white">Written by Suraj Gautam</span>
+              <span className="font-semibold text-white">By the Wave Solution team</span>
               <span>•</span>
               <span className="text-secondary font-bold">QLD Tenancy Verified</span>
             </div>
@@ -389,7 +387,7 @@ export default function EndOfLeaseCleaningCostGoldCoastPage() {
                 <p className="text-xs font-black uppercase tracking-[0.2em] text-secondary mb-4">Why Wave Solution</p>
                 <ul className="space-y-3">
                   {[
-                    { icon: Star, text: "4.9 Google rating — 87+ reviews" },
+                    { icon: Home, text: "Local Gold Coast team — not a franchise" },
                     { icon: ShieldCheck, text: "Fully insured and police-checked" },
                     { icon: CheckCircle2, text: "Fixed price — no surprise extras" },
                     { icon: Clock, text: "Free re-clean if inspection fails" },

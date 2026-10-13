@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button"
 export const metadata: Metadata = {
   title: "End of Lease Cleaning Checklist Gold Coast | Move-Out Guide",
   description:
-    "End of lease cleaning checklist for Gold Coast renters. A complete room-by-room guide to help you prepare your rental property for final inspection and get your bond back.",
+    "End of lease cleaning checklist for Gold Coast renters. A room-by-room guide to prepare your rental for final inspection and get your bond back.",
   keywords: [
     "end of lease cleaning checklist Gold Coast",
     "move out checklist Queensland",

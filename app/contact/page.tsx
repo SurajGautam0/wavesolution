@@ -37,6 +37,7 @@ import { useToast } from "@/hooks/use-toast"
 import { saveContact } from "@/lib/firebase-service"
 import { trackEvent } from "@/lib/analytics"
 import { businessInfo, siteLinks } from "@/lib/business-info"
+import { insuranceLabel, serviceAreaCount } from "@/lib/claims"
 
 const POPULAR_SERVICES = [
   "House Cleaning",
@@ -325,7 +326,7 @@ export default function ContactPage() {
                     <ExternalLink className="h-4 w-4 text-[#39BDE4]" />
                   </Link>
                   <span className="text-[11px] text-slate-400 font-medium mt-1 block">
-                    15+ Suburbs Serviced
+                    {serviceAreaCount} Suburbs Serviced
                   </span>
                 </div>
               </CardContent>
@@ -568,7 +569,7 @@ export default function ContactPage() {
 
               {/* Trust & Guarantee Sidebar (5 cols) */}
               <div className="lg:col-span-5 space-y-6">
-                {/* 100% Bond Guarantee Card */}
+                {/* Free Re-Clean Guarantee Card */}
                 <div className="rounded-3xl bg-gradient-to-br from-[#23234d] to-[#333365] text-white p-7 shadow-xl">
                   <div className="flex items-center gap-3 mb-4">
                     <div className="p-3 rounded-2xl bg-[#39BDE4]/20 text-[#39BDE4]">
@@ -576,10 +577,10 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <h3 className="text-lg font-black text-white">
-                        100% Bond Back Guarantee
+                        Free Re-Clean Guarantee
                       </h3>
                       <p className="text-xs text-[#39BDE4] font-semibold">
-                        72-Hour Free Callback Promise
+                        Free re-clean if your agent raises anything
                       </p>
                     </div>
                   </div>
@@ -609,7 +610,7 @@ export default function ContactPage() {
                       <ShieldCheck className="h-4 w-4" />
                     </div>
                     <div>
-                      <p className="text-xs font-bold text-slate-900">$20 Million Public Liability</p>
+                      <p className="text-xs font-bold text-slate-900">{insuranceLabel}</p>
                       <p className="text-xs text-slate-500">Fully insured for complete peace of mind.</p>
                     </div>
                   </div>
@@ -639,8 +640,8 @@ export default function ContactPage() {
                       <Star className="h-4 w-4 fill-amber-400" />
                     </div>
                     <div>
-                      <p className="text-xs font-bold text-slate-900">4.9 / 5.0 Star Rating</p>
-                      <p className="text-xs text-slate-500">430+ verified Gold Coast reviews.</p>
+                      <p className="text-xs font-bold text-slate-900">Free Re-Clean Guarantee</p>
+                      <p className="text-xs text-slate-500">If anything is missed, we return and fix it free.</p>
                     </div>
                   </div>
                 </div>

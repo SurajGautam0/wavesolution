@@ -19,24 +19,24 @@ export const partnershipEmailTemplates: EmailTemplate[] = [
     subject: "Cleaning Partnership - {{AGENCY_NAME}}",
     body: `Hi {{CONTACT_NAME}},
 
-I noticed {{AGENCY_NAME}} manages many rental properties in {{SUBURB}}. We're Wave Solution, a Gold Coast cleaning company specializing in bond cleaning with a 100% bond-back guarantee.
+I noticed {{AGENCY_NAME}} manages rental properties in {{SUBURB}}. We're Wave Solution, a Gold Coast cleaning company offering bond cleaning and a free re-clean for covered items that are missed.
 
 We'd love to become your preferred cleaning partner. Here's what we offer:
 • 15% discount for all your clients and tenants
 • 24/7 availability for urgent move-outs
 • Free quotes within 2 hours
 • Priority booking for your properties
-• Bond-back guarantee (we re-clean free if bond is withheld)
+• Free re-clean for covered cleaning items that are missed
 
 Could we add Wave Solution to your "Recommended Services" or "Preferred Partners" page on {{WEBSITE}}? We're happy to feature {{AGENCY_NAME}} on our partners page as well.
 
 Would you be available for a quick 10-minute call this week to discuss?
 
 Best regards,
-Suraj Gautam
-Director, Wave Solution
+Sushant Timalcena
+Founder, Wave Solution
 0450 833 683
-wavesolution.com.au`,
+www.wavesolution.com.au`,
     targetType: "Real Estate Agency",
     expectedDA: "60-75",
     purpose: "Get listed on agency website (high-value backlink) + ongoing client referrals"
@@ -49,10 +49,10 @@ wavesolution.com.au`,
     subject: "Exclusive Cleaning Partnership for {{COMPANY_NAME}}",
     body: `Hi {{CONTACT_NAME}},
 
-My name is Suraj from Wave Solution. We specialize in end-of-lease and bond cleaning for property management companies across Gold Coast.
+My name is Sushant from Wave Solution. We specialize in end-of-lease and bond cleaning for property management companies across Gold Coast.
 
 I noticed {{COMPANY_NAME}} manages a large portfolio in {{SUBURB}}. We'd love to become your go-to cleaning partner for:
-• Bond cleaning (guaranteed bond back)
+• Bond cleaning with a free re-clean for covered items that are missed
 • Routine property maintenance cleaning
 • Between-tenant turnovers
 • Carpet steam cleaning
@@ -61,7 +61,7 @@ I noticed {{COMPANY_NAME}} manages a large portfolio in {{SUBURB}}. We'd love to
 **Special offer for {{COMPANY_NAME}}:**
 • 20% discount on all services
 • Same-day quotes
-• 48-hour turnaround guarantee
+• Scheduling confirmed before the booking is accepted
 • Direct billing (no tenant involvement needed)
 • Free property condition reports
 
@@ -70,10 +70,10 @@ Could we list each other as preferred partners on our websites? This would make 
 Are you free for a brief call this week?
 
 Regards,
-Suraj Gautam
+Sushant Timalcena
 Wave Solution
 0450 833 683
-wavesolution.com.au`,
+www.wavesolution.com.au`,
     targetType: "Property Management Company",
     expectedDA: "55-70",
     purpose: "High-volume commercial partnership + website backlink exchange"
@@ -105,10 +105,10 @@ Also, if you have a website or blog about property investment, we'd love to be f
 Quick call this week?
 
 Cheers,
-Suraj
+Sushant
 Wave Solution
 0450 833 683
-wavesolution.com.au`,
+www.wavesolution.com.au`,
     targetType: "Airbnb Host / Property Manager",
     expectedDA: "40-60",
     purpose: "Recurring business + potential blog/website backlink from property investors"
@@ -121,7 +121,7 @@ wavesolution.com.au`,
     subject: "Professional Office Cleaning - {{COMPANY_NAME}}, {{LOCATION}}",
     body: `Hi {{CONTACT_NAME}},
 
-I'm Suraj from Wave Solution. We provide commercial cleaning services for offices, coworking spaces, and business centers across Gold Coast.
+I'm Sushant from Wave Solution. We provide commercial cleaning services for offices, coworking spaces, and business centers across Gold Coast.
 
 I noticed {{COMPANY_NAME}} has a professional workspace in {{LOCATION}}. We specialize in:
 • Daily/weekly office cleaning
@@ -143,10 +143,10 @@ Many of our corporate clients feature us on their "Building Services" or "Facili
 I'd love to provide a free quote for your space. Are you available for a site visit this week?
 
 Best,
-Suraj Gautam
+Sushant Timalcena
 Wave Solution
 0450 833 683
-wavesolution.com.au`,
+www.wavesolution.com.au`,
     targetType: "Office / Coworking Space",
     expectedDA: "45-65",
     purpose: "Monthly recurring revenue + corporate website backlink"
@@ -163,23 +163,22 @@ Just following up on my email from last week about a cleaning partnership betwee
 
 I know you're busy, so I'll keep this brief: **We'd like to offer {{BUSINESS_NAME}} an exclusive 20% discount** on all cleaning services for your clients/tenants.
 
-In return, we're looking to be featured as a recommended partner on your website (we'll do the same for you on wavesolution.com.au).
+In return, we're looking to be featured as a recommended partner on your website (we'll do the same for you on www.wavesolution.com.au).
 
 **Quick stats:**
 ✓ 500+ properties cleaned in Gold Coast
-✓ 4.9/5 star rating (120+ reviews)
 ✓ Fully insured, police-checked team
-✓ Same-day quotes, 48-hour service guarantee
+✓ Free quotes and scheduling confirmed before service
 
 Would you be open to a 5-minute call? I can share how we've helped similar {{BUSINESS_TYPE}} save time and keep clients happy.
 
 Reply with "YES" and I'll send my calendar link!
 
 Regards,
-Suraj
+Sushant
 Wave Solution
 0450 833 683
-wavesolution.com.au
+www.wavesolution.com.au
 
 P.S. - We're currently offering a FREE trial clean for new partners. Limited spots available!`,
     targetType: "Any business (follow-up)",
@@ -194,7 +193,7 @@ P.S. - We're currently offering a FREE trial clean for new partners. Limited spo
     subject: "Professional Kitchen & Restaurant Cleaning - {{RESTAURANT_NAME}}",
     body: `Hi {{CONTACT_NAME}},
 
-I'm Suraj from Wave Solution. We specialize in commercial cleaning for restaurants, cafes, and food businesses on the Gold Coast.
+I'm Sushant from Wave Solution. We specialize in commercial cleaning for restaurants, cafes, and food businesses on the Gold Coast.
 
 I love what you're doing at {{RESTAURANT_NAME}} in {{LOCATION}}! We'd be interested in providing:
 • Nightly kitchen deep cleans
@@ -215,10 +214,10 @@ Many of our hospitality clients list us on their website's "Partners" or "Servic
 Could I provide a free quote for your space?
 
 Best,
-Suraj Gautam
+Sushant Timalcena
 Wave Solution
 0450 833 683
-wavesolution.com.au`,
+www.wavesolution.com.au`,
     targetType: "Restaurant / Cafe",
     expectedDA: "35-55",
     purpose: "High-frequency cleaning contracts + local business backlink"
@@ -231,7 +230,7 @@ wavesolution.com.au`,
     subject: "Professional Gym Cleaning Services - {{GYM_NAME}}",
     body: `Hi {{CONTACT_NAME}},
 
-My name is Suraj from Wave Solution. We provide specialized cleaning services for gyms and fitness centers on the Gold Coast.
+My name is Sushant from Wave Solution. We provide specialized cleaning services for gyms and fitness centers on the Gold Coast.
 
 I've seen great reviews for {{GYM_NAME}}, and I wanted to reach out about our cleaning services:
 • Daily gym floor cleaning
@@ -252,10 +251,10 @@ We'd love to partner with {{GYM_NAME}} and be listed on your "Facilities" or "Pa
 Free trial clean available! Are you interested?
 
 Regards,
-Suraj
+Sushant
 Wave Solution
 0450 833 683
-wavesolution.com.au`,
+www.wavesolution.com.au`,
     targetType: "Gym / Fitness Center",
     expectedDA: "40-60",
     purpose: "Recurring business + health/fitness website backlink"
@@ -268,7 +267,7 @@ wavesolution.com.au`,
     subject: "Professional Accommodation Cleaning - {{HOTEL_NAME}}, Gold Coast",
     body: `Hi {{CONTACT_NAME}},
 
-I'm Suraj from Wave Solution. We specialize in cleaning services for hotels, motels, and accommodation providers on the Gold Coast.
+I'm Sushant from Wave Solution. We specialize in cleaning services for hotels, motels, and accommodation providers on the Gold Coast.
 
 {{HOTEL_NAME}} has excellent reviews, and we'd love to support your operations with:
 • Daily room servicing
@@ -289,10 +288,10 @@ Many accommodation providers we work with list us as a recommended partner on th
 We're offering a discounted trial for new hotel partners. Can I send you a custom quote?
 
 Best regards,
-Suraj Gautam
+Sushant Timalcena
 Wave Solution
 0450 833 683
-wavesolution.com.au`,
+www.wavesolution.com.au`,
     targetType: "Hotel / Accommodation",
     expectedDA: "50-70",
     purpose: "High-volume contract + tourism website backlink"

@@ -219,7 +219,7 @@ export const locationPages: LocationPage[] = [
     slug: "burleigh-heads",
     name: "Burleigh Heads",
     heroTitle: "Cleaning Services in Burleigh Heads",
-    metaTitle: "Cleaning Services Burleigh Heads | Home & Office Cleaning",
+    metaTitle: "Cleaning Services Burleigh Heads | Home & Office Clean",
     metaDescription:
       "Cleaning services in Burleigh Heads for homes, apartments and businesses near James Street. Deep, end of lease and commercial cleans. Call 0450 833 683.",
     intro:
@@ -263,7 +263,7 @@ export const locationPages: LocationPage[] = [
     slug: "palm-beach",
     name: "Palm Beach",
     heroTitle: "Cleaning Services in Palm Beach",
-    metaTitle: "Cleaning Services Palm Beach | House, Office & Rental Cleaning",
+    metaTitle: "Cleaning Services Palm Beach | Home, Office & Rental",
     metaDescription:
       "Cleaning services in Palm Beach for homes, rentals and businesses near the Gold Coast Highway. Bond, deep and commercial cleans. Call 0450 833 683.",
     intro:
@@ -307,7 +307,7 @@ export const locationPages: LocationPage[] = [
     slug: "helensvale",
     name: "Helensvale",
     heroTitle: "Cleaning Services in Helensvale",
-    metaTitle: "Cleaning Services Helensvale | Home, Office & Bond Cleaning",
+    metaTitle: "Cleaning Services Helensvale | Home, Office & Bond",
     metaDescription:
       "Cleaning services in Helensvale for homes, offices and rentals near Westfield Helensvale. Deep, end of lease and commercial cleans. Call 0450 833 683.",
     intro:
@@ -351,7 +351,7 @@ export const locationPages: LocationPage[] = [
     slug: "coomera",
     name: "Coomera",
     heroTitle: "Cleaning Services in Coomera",
-    metaTitle: "Cleaning Services Coomera | House, Office & Rental Cleaning",
+    metaTitle: "Cleaning Services Coomera | House, Office & Rental",
     metaDescription:
       "Cleaning services in Coomera for homes, offices and rentals near Coomera Town Centre. House, deep and end of lease cleans. Call 0450 833 683.",
     intro:

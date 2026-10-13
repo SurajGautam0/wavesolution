@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button"
 
 export const metadata: Metadata = {
   title: "Office Cleaning Schedule: How Often Should Your Workplace Be Cleaned? | Gold Coast",
-  description: "Find out how often Gold Coast offices should be professionally cleaned based on staff numbers, industry, and usage. Includes daily, weekly, and monthly task breakdown.",
+  description: "How often should a Gold Coast office be professionally cleaned? Staff numbers, industry and usage, plus daily, weekly and monthly task breakdowns.",
   keywords: ["office cleaning schedule Gold Coast", "how often office cleaning", "workplace cleaning frequency", "commercial cleaning schedule", "office hygiene Gold Coast"],
   alternates: { canonical: "https://www.wavesolution.com.au/blog/office-cleaning-schedule" },
   openGraph: { title: "Office Cleaning Schedule: How Often Should Your Workplace Be Cleaned?", description: "Gold Coast office cleaning frequency guide — from small studios to large commercial premises.", url: "https://www.wavesolution.com.au/blog/office-cleaning-schedule" },

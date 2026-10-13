@@ -52,7 +52,7 @@ const SERVICES_DATA = [
     id: "bond",
     label: "Bond Cleaning",
     icon: Truck,
-    badge: "100% Bond Back",
+    badge: "Bond-Ready",
     title: "Bond Cleaning Gold Coast",
     subtitle: "Inspection-grade handover cleaning for tenants, landlords & property managers",
     inclusions: [
@@ -61,7 +61,7 @@ const SERVICES_DATA = [
       "Skirting boards, door frames, architraves & light switches",
       "Shower screens descaled & tiles scrubbed",
     ],
-    idealFor: "Tenants aiming for 100% bond recovery & real estate agency handover standards",
+    idealFor: "Tenants preparing for a bond inspection and real estate handover",
     href: siteLinks.bondCleaning,
     paragraphs: [
       "Bond cleaning is one of the strongest conversion opportunities for any Gold Coast cleaning business because users searching this term are usually close to booking. They are moving, coordinating inspections, or working toward key-return deadlines. That means the page and the CTA need to reduce uncertainty quickly. Explain what is included, explain how quotes work, and show that the service is designed for move-out pressure, not just normal house maintenance.",
@@ -123,9 +123,9 @@ export function ServicesShowcaseTabs() {
            <Sparkles className="h-3.5 w-3.5 text-primary" />
            Service Deep Dive & Coverage
          </div>
-        <h3 className="mt-3 text-2xl font-black tracking-tight text-primary sm:text-3xl lg:text-4xl">
+        <h2 className="mt-3 text-2xl font-black tracking-tight text-primary sm:text-3xl lg:text-4xl">
           Explore Tailored Cleaning Solutions
-        </h3>
+        </h2>
         <p className="mt-2 text-sm text-slate-600 sm:text-base">
           Every Gold Coast property has distinct requirements. Switch between our specialized services below to compare inclusions, scopes, and local suburb coverage.
         </p>

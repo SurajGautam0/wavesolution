@@ -8,11 +8,25 @@ export type AuthorBioProps = {
   bio?: string
 }
 
+/**
+ * Author attribution for the guides.
+ *
+ * NOTE: this component previously defaulted to a fabricated author persona —
+ * a name not listed on /about or /team, given the title "Operations Director &
+ * Quality Assurance Lead" and "8+ years in Gold Coast property cleaning", plus
+ * "Verified Local Specialist" and "Written & Fact-Checked By" badges.
+ *
+ * Invented author credentials are an explicit Google spam-policy violation and
+ * a serious E-E-A-T problem for a business that sends people into homes. The
+ * defaults below now describe the business itself, which is verifiable, rather
+ * than asserting a person's credentials. Pass an explicit `name`/`role` only
+ * for a real, named team member listed on /team.
+ */
 export function AuthorBio({
-  name = "Suraj Gautam",
-  role = "Operations Director & Quality Assurance Lead",
-  experience = "8+ years in Gold Coast property cleaning & compliance",
-  bio = "Suraj leads service quality, environmental compliance, and property handover standards at Wave Solution Cleaning & Pest Control. With comprehensive field expertise across residential bond cleans, coastal high-rises, and commercial hygiene, he ensures every clean strictly meets Queensland tenancy and health benchmarks.",
+  name = "Wave Solution Cleaning & Pest Control",
+  role = "Gold Coast cleaning and pest control team",
+  experience = "Locally owned and operated on the Gold Coast",
+  bio = "This guide was written and reviewed by the Wave Solution team. We are a local Gold Coast cleaning and pest control business — fully insured, with police-checked staff — covering homes, rentals, offices and commercial premises. Content is checked against current Queensland tenancy requirements where relevant.",
 }: AuthorBioProps) {
   return (
     <div className="my-10 rounded-2xl border border-slate-200 bg-white p-6 sm:p-8 shadow-sm transition-all hover:shadow-md">
@@ -32,11 +46,11 @@ export function AuthorBio({
         <div className="flex-1">
           <div className="flex flex-wrap items-center gap-2">
             <span className="text-xs font-bold uppercase tracking-wider text-secondary">
-              Written & Fact-Checked By
+              Reviewed By
             </span>
             <span className="inline-flex items-center gap-1 rounded-full bg-emerald-50 px-2 py-0.5 text-[11px] font-semibold text-emerald-700 border border-emerald-200">
               <UserCheck className="h-3 w-3" />
-              Verified Local Specialist
+              Local Gold Coast Team
             </span>
           </div>
 

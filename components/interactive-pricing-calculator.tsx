@@ -93,9 +93,9 @@ export function InteractivePricingCalculator() {
           <Sparkles className="h-3.5 w-3.5 text-primary" />
           Transparent Local Rates
         </div>
-        <h3 className="mt-3 text-2xl font-black tracking-tight text-slate-950 sm:text-3xl lg:text-4xl">
+        <h2 className="mt-3 text-2xl font-black tracking-tight text-slate-950 sm:text-3xl lg:text-4xl">
           Instant Cleaning Cost Estimator
-        </h3>
+        </h2>
         <p className="mt-2 text-sm text-slate-600 sm:text-base">
           Customize your property specifications below to receive an immediate realistic Gold Coast quote range.
         </p>
@@ -114,7 +114,7 @@ export function InteractivePricingCalculator() {
               {[
                 { id: "regular", label: "House Clean", badge: "Routine" },
                 { id: "deep", label: "Deep Clean", badge: "Spring / Reset" },
-                { id: "bond", label: "Bond Clean", badge: "100% Back" },
+                { id: "bond", label: "Bond Clean", badge: "Move-out" },
                 { id: "carpet", label: "Carpet Steam", badge: "Refresh" },
               ].map((item) => (
                 <button
@@ -235,11 +235,11 @@ className={cn(
         <div className="flex flex-col justify-between rounded-3xl border border-slate-900/10 bg-gradient-to-br from-slate-950 via-primary to-slate-900 p-6 text-white shadow-2xl sm:p-8">
           <div>
             <div className="flex items-center justify-between border-b border-white/10 pb-4">
-              <span className="text-xs font-black uppercase tracking-widest text-secondary">
+              <span className="text-xs font-black uppercase tracking-widest text-primary">
                 Estimated Price
               </span>
               <span className="inline-flex items-center gap-1 rounded-full bg-white/10 px-2.5 py-0.5 text-[10px] font-bold text-white/90">
-                <Clock className="h-3 w-3 text-secondary" />
+                <Clock className="h-3 w-3 text-primary" />
                 Est. {calculatedEstimate.hours}
               </span>
             </div>
@@ -260,20 +260,20 @@ className={cn(
             {/* Checklist of what's included */}
             <div className="mt-6 space-y-2.5 rounded-2xl bg-white/5 p-4 text-xs">
               <div className="flex items-center gap-2 text-white/90">
-                <Check className="h-4 w-4 text-secondary shrink-0" />
+                <Check className="h-4 w-4 text-primary shrink-0" />
                 <span>All eco-safe cleaning supplies & commercial equipment included</span>
               </div>
               <div className="flex items-center gap-2 text-white/90">
-                <Check className="h-4 w-4 text-secondary shrink-0" />
+                <Check className="h-4 w-4 text-primary shrink-0" />
                 <span>Fully insured & police-checked local Gold Coast cleaners</span>
               </div>
               <div className="flex items-center gap-2 text-white/90">
-                <Check className="h-4 w-4 text-secondary shrink-0" />
-                <span>100% Satisfaction guarantee or free re-clean</span>
+                <Check className="h-4 w-4 text-primary shrink-0" />
+                <span>Free re-clean guarantee</span>
               </div>
               {selectedExtras.length > 0 && (
-                <div className="flex items-center gap-2 text-secondary font-bold">
-                  <Check className="h-4 w-4 text-secondary shrink-0" />
+                <div className="flex items-center gap-2 text-primary font-bold">
+                  <Check className="h-4 w-4 text-primary shrink-0" />
                   <span>{selectedExtras.length} custom add-on(s) selected</span>
                 </div>
               )}

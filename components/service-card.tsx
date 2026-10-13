@@ -62,7 +62,7 @@ export function ServiceCard({ title, description, icon, price, href = "/book", c
   // Determine smart badge based on service type
   const getBadge = () => {
     if (title.toLowerCase().includes("house")) return "Most Popular"
-    if (title.toLowerCase().includes("bond")) return "100% Bond Back"
+    if (title.toLowerCase().includes("bond")) return "Bond-Ready"
     if (title.toLowerCase().includes("office")) return "Tailored Business"
     if (title.toLowerCase().includes("deep")) return "Full Deep Reset"
     if (title.toLowerCase().includes("end of lease")) return "Inspection Ready"

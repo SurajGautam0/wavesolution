@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 import { businessInfo } from "@/lib/business-info"
 
 export const metadata: Metadata = {
-  title: "Gold Coast Cleaning Blog | Local Guides for Homes, Rentals and Businesses",
+  title: "Gold Coast Cleaning Blog | Local Guides & Advice | Wave Solution",
   description:
     "Explore Wave Solution's Gold Coast blog for helpful cleaning, rental, commercial, and pest-control advice written for local homes and businesses.",
   keywords: [
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     canonical: `${businessInfo.baseUrl}/blog`,
   },
   openGraph: {
-    title: "Gold Coast Cleaning Blog | Local Guides for Homes, Rentals and Businesses",
+    title: "Gold Coast Cleaning Blog | Local Guides & Advice | Wave Solution",
     description:
       "Explore Wave Solution's Gold Coast blog for helpful cleaning, rental, commercial, and pest-control advice written for local homes and businesses.",
     url: `${businessInfo.baseUrl}/blog`,
