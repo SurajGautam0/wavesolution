@@ -79,6 +79,19 @@ const ALL_ARTICLES: Article[] = [
     tags: ["End of Lease", "Pricing Guide", "Gold Coast", "Bond Cleaning"],
   },
   {
+    slug: "/blog/professional-vs-diy-bond-cleaning-costs-benefits-wavesolution",
+    title: "Professional vs. DIY Bond Cleaning: Costs & Benefits",
+    description:
+      "Compare professional vs. DIY bond cleaning costs, time and bond-back risks on the Gold Coast. See which option suits your move.",
+    category: "bond",
+    categoryLabel: "Bond & Move-Out",
+    readTime: "8 min read",
+    date: "October 2026",
+    popular: true,
+    icon: DollarSign,
+    tags: ["Bond Cleaning", "DIY Cleaning", "Gold Coast", "Moving Costs"],
+  },
+  {
     slug: "/blog/bond-cleaning-checklist",
     title: "The Ultimate Bond Cleaning Checklist for Queensland Rentals",
     description:
