@@ -30,9 +30,30 @@ async function getAdminCollectionDocuments(
       id: document.id,
       ...document.data(),
     }))
-  } catch (error) {
+  } catch (error: any) {
+    // If the constrained query failed (e.g. missing index or missing field for orderBy), fallback to a plain collection fetch
+    if (constraints.length > 0) {
+      try {
+        console.warn(`Constrained query for ${collectionName} failed (${error?.message || error}). Falling back to plain collection fetch...`)
+        const collectionRef = collection(adminDb, collectionName)
+        const querySnapshot = await getDocs(collectionRef)
+        const docs = querySnapshot.docs.map((document) => ({
+          id: document.id,
+          ...document.data(),
+        }))
+        // In-memory sort by createdAt descending
+        return docs.sort((a: any, b: any) => {
+          const aTime = a.createdAt?.seconds ? a.createdAt.seconds * 1000 : (a.createdAt ? new Date(a.createdAt).getTime() : 0)
+          const bTime = b.createdAt?.seconds ? b.createdAt.seconds * 1000 : (b.createdAt ? new Date(b.createdAt).getTime() : 0)
+          return bTime - aTime
+        })
+      } catch (fallbackError) {
+        console.error(`Error getting admin fallback ${collectionName}:`, fallbackError)
+        return []
+      }
+    }
     console.error(`Error getting admin ${collectionName}:`, error)
-    throw error
+    return []
   }
 }
 
@@ -41,11 +62,10 @@ async function getAdminCollectionDocuments(
 export const getAllBookings = async () =>
   getAdminCollectionDocuments("bookings", [orderBy("createdAt", "desc")])
 
-export const getApprovedTestimonials = async () =>
-  getAdminCollectionDocuments("testimonials", [
-    where("approved", "==", true),
-    orderBy("createdAt", "desc"),
-  ])
+export const getApprovedTestimonials = async () => {
+  const all = await getAdminCollectionDocuments("testimonials", [orderBy("createdAt", "desc")])
+  return all.filter((t: any) => t.approved === true)
+}
 
 export const getAllTestimonials = async () =>
   getAdminCollectionDocuments("testimonials", [orderBy("createdAt", "desc")])

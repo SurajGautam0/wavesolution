@@ -37,13 +37,12 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog"
 import { 
-  Sparkles, 
+  Megaphone, 
   TrendingUp, 
   Users, 
   Mail, 
   Link2, 
   BarChart3,
-  Zap,
   Target,
   CheckCircle2,
   Clock,
@@ -275,14 +274,14 @@ export default function AdminAgenticDashboard() {
       </div>
 
       {/* AI Campaign Generator */}
-      <Card className="border-2 border-purple-300 bg-gradient-to-br from-purple-50 via-white to-blue-50">
+      <Card className="border border-slate-200/80 bg-white shadow-xs">
         <CardHeader>
           <div className="flex items-center gap-2">
-            <Sparkles className="h-5 w-5 text-purple-600" />
-            <CardTitle>AI-Powered Campaign Generator</CardTitle>
+            <Megaphone className="h-5 w-5 text-slate-700" />
+            <CardTitle>Agency & Partner Campaign Generator</CardTitle>
           </div>
           <CardDescription>
-            Let AI analyze your database and create personalized outreach campaigns
+            Target high-performing real estate agencies and business directories for bond cleaning partnerships.
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
@@ -316,11 +315,11 @@ export default function AdminAgenticDashboard() {
           )}
 
           {campaignResults && (
-            <div className="space-y-4 rounded-lg border-2 border-purple-200 bg-white p-4">
+            <div className="space-y-4 rounded-lg border border-slate-200 bg-white p-4">
               <div className="flex items-center justify-between">
                 <h3 className="font-semibold text-lg flex items-center gap-2">
-                  <Zap className="h-5 w-5 text-yellow-500" />
-                  Campaign Generated!
+                  <CheckCircle2 className="h-5 w-5 text-emerald-600" />
+                  Campaign Generated Successfully
                 </h3>
                 <Badge variant="secondary">{campaignResults.totalTargets} Targets</Badge>
               </div>

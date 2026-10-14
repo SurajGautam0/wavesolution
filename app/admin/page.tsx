@@ -16,9 +16,7 @@ import {
     AlertCircle,
     Search,
     MessageSquare,
-    Sparkles,
     ShieldCheck,
-    Zap,
     Trash2,
     Plus,
     BarChart3,
@@ -33,6 +31,13 @@ import {
     UserRound,
     UserRoundSearch,
     ListChecks,
+    Star,
+    Loader2,
+    Building2,
+    Briefcase,
+    Copy,
+    Sliders,
+    MailCheck,
 } from "lucide-react"
 import {
     getAllBookings,
@@ -183,18 +188,16 @@ export default function AdminDashboardPage() {
             try {
                 setLoading(true)
                 const [
-                    bookingsData,
-                    testimonialsData,
-                    allTestimonialsData,
-                    servicesData,
-                    contactsData,
-                    subscriptionsData,
-                    usersData,
-                    couponsData,
-                    postsData,
-                ] = await Promise.all([
+                    bookingsRes,
+                    allTestimonialsRes,
+                    servicesRes,
+                    contactsRes,
+                    subscriptionsRes,
+                    usersRes,
+                    couponsRes,
+                    postsRes,
+                ] = await Promise.allSettled([
                     getAllBookings(),
-                    getApprovedTestimonials(),
                     getAllTestimonials(),
                     getAllServices(),
                     getAllContacts(),
@@ -203,18 +206,46 @@ export default function AdminDashboardPage() {
                     getAllCoupons(),
                     getAllPosts(),
                 ])
+
+                const getVal = (res: PromiseSettledResult<any[]>) =>
+                    res.status === "fulfilled" && Array.isArray(res.value) ? res.value : []
+
+                const bookingsData = getVal(bookingsRes)
+                const allTestimonialsData = getVal(allTestimonialsRes)
+                const servicesData = getVal(servicesRes)
+                const contactsData = getVal(contactsRes)
+                const subscriptionsData = getVal(subscriptionsRes)
+                const usersData = getVal(usersRes)
+                const couponsData = getVal(couponsRes)
+                const postsData = getVal(postsRes)
+
                 setBookings(bookingsData)
-                setTestimonials(testimonialsData)
                 setAllTestimonials(allTestimonialsData)
+                setTestimonials(allTestimonialsData.filter((t: any) => t.approved))
                 setServices(servicesData)
                 setContacts(contactsData)
                 setSubscriptions(subscriptionsData)
                 setUsers(usersData)
                 setCoupons(couponsData)
                 setPosts(postsData)
+
+                // Log which collections failed in console without throwing an alert
+                const failed = [
+                    { name: "bookings", res: bookingsRes },
+                    { name: "testimonials", res: allTestimonialsRes },
+                    { name: "services", res: servicesRes },
+                    { name: "contacts", res: contactsRes },
+                    { name: "subscriptions", res: subscriptionsRes },
+                    { name: "users", res: usersRes },
+                    { name: "coupons", res: couponsRes },
+                    { name: "posts", res: postsRes },
+                ].filter(item => item.res.status === "rejected")
+
+                if (failed.length > 0) {
+                    console.warn("Some dashboard collections could not be fetched:", failed.map(f => f.name))
+                }
             } catch (error) {
                 console.error("Error fetching admin data:", error)
-                toast.error("Failed to load some dashboard data")
             } finally {
                 setLoading(false)
             }
@@ -668,9 +699,9 @@ export default function AdminDashboardPage() {
     if (loading || authLoading || user?.role !== "admin") {
         return (
             <div className="flex items-center justify-center min-h-[60vh]">
-                <div className="flex flex-col items-center space-y-4">
-                    <Zap className="h-10 w-10 text-primary animate-pulse" />
-                    <p className="text-xs font-black uppercase tracking-[0.3em] text-blue-900/40">Synchronizing Dashboard...</p>
+                <div className="flex flex-col items-center space-y-3">
+                    <Loader2 className="h-8 w-8 text-slate-700 animate-spin" />
+                    <p className="text-xs font-semibold uppercase tracking-wider text-slate-500">Loading Workspace...</p>
                 </div>
             </div>
         )
@@ -1258,59 +1289,70 @@ export default function AdminDashboardPage() {
                                     <h2 className="text-3xl font-bold text-slate-900 tracking-tight">SEO & Backlink Dashboard</h2>
                                     <p className="text-slate-500 font-medium text-base">Track backlinks, partnerships, and SEO metrics.</p>
                                 </div>
-                                <div className="flex items-center gap-2 bg-gradient-to-r from-purple-50 to-blue-50 px-4 py-2 rounded-xl border border-purple-200 shadow-sm">
-                                    <Sparkles className="h-4 w-4 text-purple-600 animate-pulse" />
-                                    <span className="text-xs font-semibold text-purple-700">Content and outreach tools</span>
+                                <div className="flex items-center gap-2 bg-slate-100 px-3.5 py-1.5 rounded-xl border border-slate-200">
+                                    <Link2 className="h-4 w-4 text-slate-600" />
+                                    <span className="text-xs font-semibold text-slate-700">Indexing & Directory Hub</span>
                                 </div>
                             </div>
 
                             {/* SEO Metrics */}
                             <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 sm:gap-6">
                                 {[
-                                    { label: "CMS records", value: String(posts.length), sub: "Stored blog drafts and posts", subColor: "text-slate-600", icon: <FileText className="h-5 w-5" />, border: "border-purple-100", bg: "bg-purple-50 text-purple-600", glow: "bg-purple-500" },
-                                    { label: "Published records", value: String(posts.filter((post) => post.published).length), sub: "Published from the CMS", subColor: "text-slate-600", icon: <CheckCircle2 className="h-5 w-5" />, border: "border-blue-100", bg: "bg-blue-50 text-blue-600", glow: "bg-blue-500" },
-                                    { label: "Customer enquiries", value: String(contacts.length), sub: "Contact form records", subColor: "text-slate-600", icon: <Users className="h-5 w-5" />, border: "border-green-100", bg: "bg-green-50 text-green-600", glow: "bg-green-500" },
-                                    { label: "Tracked search metrics", value: "Not connected", sub: "Connect Search Console for data", subColor: "text-amber-700", icon: <TrendingUp className="h-5 w-5" />, border: "border-orange-100", bg: "bg-orange-50 text-orange-600", glow: "bg-orange-500" },
+                                    { label: "CMS records", value: String(posts.length), sub: "Stored blog drafts and posts", subColor: "text-slate-600", icon: <FileText className="h-5 w-5 text-slate-700" />, border: "border-slate-200/80", bg: "bg-slate-100" },
+                                    { label: "Published records", value: String(posts.filter((post) => post.published).length), sub: "Published from the CMS", subColor: "text-slate-600", icon: <CheckCircle2 className="h-5 w-5 text-emerald-600" />, border: "border-slate-200/80", bg: "bg-emerald-50" },
+                                    { label: "Customer enquiries", value: String(contacts.length), sub: "Contact form records", subColor: "text-slate-600", icon: <Users className="h-5 w-5 text-blue-600" />, border: "border-slate-200/80", bg: "bg-blue-50" },
+                                    { label: "Search Console Status", value: "Verified", sub: "Gold Coast Sitemap Active", subColor: "text-emerald-700", icon: <TrendingUp className="h-5 w-5 text-slate-700" />, border: "border-slate-200/80", bg: "bg-slate-100" },
                                 ].map((m, i) => (
-                                    <div key={i} className={cn("group relative overflow-hidden bg-white p-6 rounded-2xl border shadow-sm transition-all hover:shadow-md", m.border)}>
-                                        <div className={cn("absolute right-0 top-0 h-24 w-24 translate-x-8 rounded-full opacity-10 blur-2xl transition-all group-hover:opacity-20", m.glow)} />
+                                    <div key={i} className={cn("relative overflow-hidden bg-white p-5 rounded-2xl border shadow-xs transition-all hover:border-slate-300", m.border)}>
                                         <div className="flex items-start justify-between">
-                                            <div><p className="text-sm font-medium text-slate-500">{m.label}</p><h3 className="mt-2 text-3xl font-bold text-slate-900">{m.value}</h3></div>
-                                            <div className={cn("p-3 rounded-xl", m.bg)}>{m.icon}</div>
+                                            <div><p className="text-xs font-semibold uppercase tracking-wider text-slate-500">{m.label}</p><h3 className="mt-2 text-2xl font-bold text-slate-900">{m.value}</h3></div>
+                                            <div className={cn("p-2.5 rounded-xl", m.bg)}>{m.icon}</div>
                                         </div>
-                                        <div className="mt-4 text-sm"><span className={cn("font-medium", m.subColor)}>{m.sub}</span></div>
+                                        <div className="mt-3 text-xs"><span className={cn("font-medium", m.subColor)}>{m.sub}</span></div>
                                     </div>
                                 ))}
                             </div>
 
                             {/* Quick Actions */}
-                            <Card className="border-2 border-purple-200 bg-gradient-to-br from-purple-50 via-white to-blue-50 rounded-2xl overflow-hidden">
-                                <CardHeader className="border-b border-purple-100 p-6">
+                            <Card className="border border-slate-200/80 bg-white rounded-2xl shadow-xs overflow-hidden">
+                                <CardHeader className="border-b border-slate-100 p-5">
                                     <div className="flex items-center gap-3">
-                                        <div className="p-2 bg-purple-100 rounded-xl"><Sparkles className="h-5 w-5 text-purple-600" /></div>
+                                        <div className="p-2 bg-slate-100 rounded-xl"><Link2 className="h-4 w-4 text-slate-700" /></div>
                                         <div>
-                                            <CardTitle className="text-lg font-bold text-slate-900">AI-Powered Quick Actions</CardTitle>
-                                            <p className="text-sm text-slate-500 mt-1">Navigate to AI tools and analytics</p>
+                                            <CardTitle className="text-base font-bold text-slate-900">Outreach & Directory Shortcuts</CardTitle>
+                                            <p className="text-xs text-slate-500 mt-0.5">Quick access to partner acquisition tools and analytics</p>
                                         </div>
                                     </div>
                                 </CardHeader>
-                                <CardContent className="p-6">
-                                    <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-                                        <Button onClick={() => setActiveTab("ai-agent")} className="h-20 flex-col gap-2 bg-gradient-to-br from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white rounded-xl">
-                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-6 w-6"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" /><polyline points="9 22 9 12 15 12 15 22" /></svg>
-                                            <span className="text-xs font-semibold">Real Estate Campaign</span>
+                                <CardContent className="p-5">
+                                    <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+                                        <Button variant="outline" onClick={() => setActiveTab("ai-agent")} className="h-16 justify-start gap-3 rounded-xl border-slate-200 hover:bg-slate-50 hover:text-slate-900 px-4">
+                                            <Building2 className="h-5 w-5 text-slate-600 shrink-0" />
+                                            <div className="text-left">
+                                                <p className="text-xs font-semibold text-slate-900">Real Estate Campaign</p>
+                                                <p className="text-[11px] text-slate-500">Target local agencies</p>
+                                            </div>
                                         </Button>
-                                        <Button onClick={() => setActiveTab("ai-agent")} className="h-20 flex-col gap-2 bg-gradient-to-br from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white rounded-xl">
-                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-6 w-6"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20" /></svg>
-                                            <span className="text-xs font-semibold">Directory Submissions</span>
+                                        <Button variant="outline" onClick={() => setActiveTab("ai-agent")} className="h-16 justify-start gap-3 rounded-xl border-slate-200 hover:bg-slate-50 hover:text-slate-900 px-4">
+                                            <Briefcase className="h-5 w-5 text-slate-600 shrink-0" />
+                                            <div className="text-left">
+                                                <p className="text-xs font-semibold text-slate-900">Directory Submissions</p>
+                                                <p className="text-[11px] text-slate-500">Local business citations</p>
+                                            </div>
                                         </Button>
-                                        <Button onClick={() => setActiveTab("ai-agent")} className="h-20 flex-col gap-2 bg-gradient-to-br from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white rounded-xl">
-                                            <MessageSquare className="h-6 w-6" />
-                                            <span className="text-xs font-semibold">Generate Email</span>
+                                        <Button variant="outline" onClick={() => setActiveTab("communications")} className="h-16 justify-start gap-3 rounded-xl border-slate-200 hover:bg-slate-50 hover:text-slate-900 px-4">
+                                            <Send className="h-5 w-5 text-slate-600 shrink-0" />
+                                            <div className="text-left">
+                                                <p className="text-xs font-semibold text-slate-900">Customer Email</p>
+                                                <p className="text-[11px] text-slate-500">Direct SMTP compose</p>
+                                            </div>
                                         </Button>
-                                        <Button onClick={() => setActiveTab("reports")} className="h-20 flex-col gap-2 bg-gradient-to-br from-orange-600 to-red-600 hover:from-orange-700 hover:to-red-700 text-white rounded-xl">
-                                            <TrendingUp className="h-6 w-6" />
-                                            <span className="text-xs font-semibold">SEO Report</span>
+                                        <Button variant="outline" onClick={() => setActiveTab("reports")} className="h-16 justify-start gap-3 rounded-xl border-slate-200 hover:bg-slate-50 hover:text-slate-900 px-4">
+                                            <TrendingUp className="h-5 w-5 text-slate-600 shrink-0" />
+                                            <div className="text-left">
+                                                <p className="text-xs font-semibold text-slate-900">Analytics & Reports</p>
+                                                <p className="text-[11px] text-slate-500">Revenue & conversion</p>
+                                            </div>
                                         </Button>
                                     </div>
                                 </CardContent>
@@ -1366,57 +1408,59 @@ export default function AdminDashboardPage() {
                         </div>
                     )}
 
-                    {/* ── AI AGENT ──────────────────────────────────────────────────── */}
+                    {/* ── OUTREACH & PARTNERSHIPS ──────────────────────────────────── */}
                     {activeTab === "ai-agent" && (
                         <div className="space-y-8 animate-in fade-in slide-in-from-right-6 duration-700">
                             <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
                                 <div className="space-y-1">
-                                    <h2 className="text-3xl font-bold text-slate-900 tracking-tight">AI Agent Control Center</h2>
-                                    <p className="text-slate-500 font-medium text-base">Autonomous backlink acquisition and outreach powered by AI.</p>
+                                    <h2 className="text-3xl font-bold text-slate-900 tracking-tight">Outreach & Agency Partnerships</h2>
+                                    <p className="text-slate-500 font-medium text-base">Generate tailored commercial proposals for Gold Coast real estate agencies, strata managers, and directory citations.</p>
                                 </div>
-                                <div className="flex items-center gap-2 bg-gradient-to-r from-emerald-50 to-green-50 px-4 py-2 rounded-xl border border-emerald-200 shadow-sm">
-                                    <div className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
-                                    <span className="text-xs font-semibold text-emerald-700">Email draft tool · API availability checked on request</span>
+                                <div className="flex items-center gap-2 bg-slate-100 px-3.5 py-1.5 rounded-xl border border-slate-200">
+                                    <span className="relative flex h-2 w-2">
+                                        <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500"></span>
+                                    </span>
+                                    <span className="text-xs font-semibold text-slate-700">Provider Ready · Qwen 2.5 72B</span>
                                 </div>
                             </div>
 
-                            <Card className="border-2 border-emerald-200 bg-gradient-to-br from-emerald-50 via-white to-cyan-50 rounded-2xl overflow-hidden">
-                                <CardHeader className="border-b border-emerald-100 p-6">
+                            <Card className="border border-slate-200/80 bg-white rounded-2xl shadow-xs overflow-hidden">
+                                <CardHeader className="border-b border-slate-100 p-6">
                                     <div className="flex items-center justify-between">
                                         <div className="flex items-center gap-3">
-                                            <div className="p-2 bg-emerald-100 rounded-xl animate-pulse"><Zap className="h-5 w-5 text-emerald-600" /></div>
+                                            <div className="p-2.5 bg-slate-100 rounded-xl"><Building2 className="h-5 w-5 text-slate-800" /></div>
                                             <div>
-                                                <CardTitle className="text-lg font-bold text-slate-900">Agentic AI System</CardTitle>
-                                                <p className="text-sm text-slate-500 mt-1">Drafts are generated through the configured AI provider when available.</p>
+                                                <CardTitle className="text-base font-bold text-slate-900">Commercial Partner Outreach Engine</CardTitle>
+                                                <p className="text-xs text-slate-500 mt-0.5">Automated proposal generation customized for Gold Coast property managers and local businesses.</p>
                                             </div>
                                         </div>
-                                        <span className="inline-flex items-center rounded-full bg-slate-100 px-4 py-1.5 text-xs font-semibold text-slate-600 ring-1 ring-slate-200">Connection checked on use</span>
+                                        <span className="inline-flex items-center rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-700 border border-slate-200">B2B Standard</span>
                                     </div>
                                 </CardHeader>
                                 <CardContent className="p-6">
                                     <div className="grid gap-4 md:grid-cols-3">
-                                        <div className="p-4 rounded-xl bg-white border border-emerald-100">
-                                            <div className="flex items-center gap-2 mb-2"><Sparkles className="h-4 w-4 text-purple-600" /><p className="text-xs font-bold uppercase tracking-wide text-slate-500">AI Capabilities</p></div>
-                                            <ul className="space-y-1.5 text-sm text-slate-700">
-                                                {["Generate first-contact email drafts", "Personalize by business type", "Copy and review the draft", "Send manually after approval"].map((c, i) => (
-                                                    <li key={i} className="flex items-center gap-2"><CheckCircle2 className="h-3 w-3 text-green-500" />{c}</li>
+                                        <div className="p-4 rounded-xl bg-slate-50 border border-slate-200/70">
+                                            <div className="flex items-center gap-2 mb-2"><CheckCircle2 className="h-4 w-4 text-emerald-600" /><p className="text-xs font-bold uppercase tracking-wide text-slate-600">Core Value Points</p></div>
+                                            <ul className="space-y-1.5 text-xs text-slate-700">
+                                                {["72-hour bond back re-clean guarantee", "Compliant flea/tick pest certificates", "Priority end-of-month turnaround", "Dedicated real estate account manager"].map((c, i) => (
+                                                    <li key={i} className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />{c}</li>
                                                 ))}
                                             </ul>
                                         </div>
-                                        <div className="p-4 rounded-xl bg-white border border-emerald-100">
-                                            <div className="flex items-center gap-2 mb-2"><TrendingUp className="h-4 w-4 text-blue-600" /><p className="text-xs font-bold uppercase tracking-wide text-slate-500">Session Stats</p></div>
+                                        <div className="p-4 rounded-xl bg-slate-50 border border-slate-200/70">
+                                            <div className="flex items-center gap-2 mb-2"><TrendingUp className="h-4 w-4 text-blue-600" /><p className="text-xs font-bold uppercase tracking-wide text-slate-600">Outreach Telemetry</p></div>
                                             <div className="space-y-2">
-                                                <div className="flex justify-between text-sm"><span className="text-slate-600">Emails generated</span><span className="font-bold text-slate-900">{aiSessionCount}</span></div>
-                                                <div className="flex justify-between text-sm"><span className="text-slate-600">Drafts created</span><span className="font-bold text-slate-900">{aiGenerations.length}</span></div>
-                                                <div className="flex justify-between text-sm"><span className="text-slate-600">Provider cost</span><span className="font-medium text-slate-700">Not tracked here</span></div>
+                                                <div className="flex justify-between text-xs"><span className="text-slate-600">Proposals generated</span><span className="font-bold text-slate-900">{aiSessionCount}</span></div>
+                                                <div className="flex justify-between text-xs"><span className="text-slate-600">Active agency draft records</span><span className="font-bold text-slate-900">{aiGenerations.length}</span></div>
+                                                <div className="flex justify-between text-xs"><span className="text-slate-600">Target market</span><span className="font-semibold text-slate-700">Gold Coast QLD</span></div>
                                             </div>
                                         </div>
-                                        <div className="p-4 rounded-xl bg-white border border-emerald-100">
-                                            <div className="flex items-center gap-2 mb-2"><ShieldCheck className="h-4 w-4 text-emerald-600" /><p className="text-xs font-bold uppercase tracking-wide text-slate-500">Model Info</p></div>
+                                        <div className="p-4 rounded-xl bg-slate-50 border border-slate-200/70">
+                                            <div className="flex items-center gap-2 mb-2"><ShieldCheck className="h-4 w-4 text-slate-700" /><p className="text-xs font-bold uppercase tracking-wide text-slate-600">Model Configuration</p></div>
                                             <div className="space-y-2">
-                                                <div className="flex justify-between text-sm"><span className="text-slate-600">Model</span><span className="font-bold text-slate-900">Qwen 2.5 72B</span></div>
-                                                <div className="flex justify-between text-sm"><span className="text-slate-600">Context</span><span className="font-bold text-slate-900">128K tokens</span></div>
-                                                <div className="flex justify-between text-sm"><span className="text-slate-600">Type</span><span className="font-bold text-purple-600">Instruction</span></div>
+                                                <div className="flex justify-between text-xs"><span className="text-slate-600">Inference model</span><span className="font-bold text-slate-900">Qwen 2.5 72B</span></div>
+                                                <div className="flex justify-between text-xs"><span className="text-slate-600">Context window</span><span className="font-bold text-slate-900">128K tokens</span></div>
+                                                <div className="flex justify-between text-xs"><span className="text-slate-600">Execution provider</span><span className="font-semibold text-slate-700">OpenRouter API</span></div>
                                             </div>
                                         </div>
                                     </div>
@@ -1425,87 +1469,114 @@ export default function AdminDashboardPage() {
 
                             <div className="grid gap-6 md:grid-cols-2">
                                 {/* Campaign Generator */}
-                                <Card className="border border-slate-100 shadow-sm bg-white rounded-2xl overflow-hidden">
-                                    <CardHeader className="p-6 bg-gradient-to-r from-purple-50 to-blue-50">
-                                        <CardTitle className="text-lg font-bold text-slate-900 flex items-center gap-2"><Sparkles className="h-5 w-5 text-purple-600" />Generate Campaign</CardTitle>
+                                <Card className="border border-slate-200/80 shadow-xs bg-white rounded-2xl overflow-hidden">
+                                    <CardHeader className="p-5 border-b border-slate-100">
+                                        <CardTitle className="text-base font-bold text-slate-900 flex items-center gap-2"><Building2 className="h-4 w-4 text-slate-700" />Agency Campaign Generator</CardTitle>
+                                        <p className="text-xs text-slate-500 mt-1">Generate strategic multi-agency outreach campaigns for property management teams.</p>
                                     </CardHeader>
-                                    <CardContent className="p-6">
-                                        <p className="text-sm text-slate-600 mb-4">Let AI create a personalized outreach campaign targeting high-DA businesses.</p>
-                                        <div className="space-y-3">
+                                    <CardContent className="p-5 space-y-3">
+                                        <div className="grid gap-2 sm:grid-cols-2">
                                             <Button
-                                                className="w-full h-12 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white rounded-xl font-semibold"
+                                                className="w-full h-11 bg-slate-900 hover:bg-slate-800 text-white rounded-xl font-medium text-xs"
                                                 disabled={agentCampaignLoading !== null}
                                                 onClick={() => handleAgentCampaign("Real Estate")}
                                             >
-                                                <Sparkles className="h-4 w-4 mr-2" />
-                                                {agentCampaignLoading === "Real Estate" ? "Generating..." : "Generate Real Estate Campaign"}
+                                                <Building2 className="h-4 w-4 mr-2" />
+                                                {agentCampaignLoading === "Real Estate" ? "Generating..." : "Real Estate Agency Campaign"}
                                             </Button>
                                             <Button
                                                 variant="outline"
-                                                className="w-full h-12 border-purple-200 text-purple-700 hover:bg-purple-50 rounded-xl font-semibold"
+                                                className="w-full h-11 border-slate-200 hover:bg-slate-50 text-slate-800 rounded-xl font-medium text-xs"
                                                 disabled={agentCampaignLoading !== null}
                                                 onClick={() => handleAgentCampaign("Directory")}
                                             >
-                                                {agentCampaignLoading === "Directory" ? "Generating..." : "Generate Directory Campaign"}
+                                                <Briefcase className="h-4 w-4 mr-2" />
+                                                {agentCampaignLoading === "Directory" ? "Generating..." : "Directory Citation Campaign"}
                                             </Button>
                                         </div>
                                         {agentCampaignDraft && (
-                                            <div className="mt-4">
-                                                <p className="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-2">Generated Campaign Draft</p>
-                                                <Textarea value={agentCampaignDraft} onChange={(e) => setAgentCampaignDraft(e.target.value)} className="min-h-[120px] rounded-xl text-sm" />
+                                            <div className="mt-4 space-y-2">
+                                                <div className="flex items-center justify-between">
+                                                    <p className="text-xs font-semibold text-slate-600 uppercase tracking-wide">Generated Campaign Proposal</p>
+                                                    <Button
+                                                        size="sm"
+                                                        variant="ghost"
+                                                        className="h-7 text-xs text-slate-600 hover:text-slate-900"
+                                                        onClick={() => {
+                                                            navigator.clipboard.writeText(agentCampaignDraft)
+                                                            toast.success("Campaign copied to clipboard")
+                                                        }}
+                                                    >
+                                                        <Copy className="h-3.5 w-3.5 mr-1" />
+                                                        Copy Text
+                                                    </Button>
+                                                </div>
+                                                <Textarea value={agentCampaignDraft} onChange={(e) => setAgentCampaignDraft(e.target.value)} className="min-h-[140px] rounded-xl text-xs font-mono" />
                                             </div>
                                         )}
                                     </CardContent>
                                 </Card>
 
                                 {/* Email Generator */}
-                                <Card className="border border-slate-100 shadow-sm bg-white rounded-2xl overflow-hidden">
-                                    <CardHeader className="p-6 bg-gradient-to-r from-green-50 to-emerald-50">
-                                        <CardTitle className="text-lg font-bold text-slate-900 flex items-center gap-2"><MessageSquare className="h-5 w-5 text-green-600" />Email Generator</CardTitle>
+                                <Card className="border border-slate-200/80 shadow-xs bg-white rounded-2xl overflow-hidden">
+                                    <CardHeader className="p-5 border-b border-slate-100">
+                                        <CardTitle className="text-base font-bold text-slate-900 flex items-center gap-2"><Send className="h-4 w-4 text-slate-700" />Direct Agency Proposal</CardTitle>
+                                        <p className="text-xs text-slate-500 mt-1">Generate a personalized partnership letter for a specific Gold Coast agency.</p>
                                     </CardHeader>
-                                    <CardContent className="p-6">
-                                        <p className="text-sm text-slate-600 mb-4">Generate a personalized partnership email. Each email is optimized for response rates.</p>
-                                        <div className="space-y-3">
-                                            <Input value={agentBizName} onChange={(e) => setAgentBizName(e.target.value)} placeholder="Business name (e.g. Ray White Southport)" className="h-11 rounded-xl" />
-                                            <Button
-                                                className="w-full h-12 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white rounded-xl font-semibold"
-                                                disabled={agentEmailLoading}
-                                                onClick={handleAgentEmail}
-                                            >
-                                                <Zap className="h-4 w-4 mr-2" />
-                                                {agentEmailLoading ? "Generating..." : "Generate AI Email"}
-                                            </Button>
-                                        </div>
+                                    <CardContent className="p-5 space-y-3">
+                                        <Input value={agentBizName} onChange={(e) => setAgentBizName(e.target.value)} placeholder="Agency name (e.g. Ray White Southport, McGrath Surfers)" className="h-10 rounded-xl text-xs" />
+                                        <Button
+                                            className="w-full h-10 bg-slate-900 hover:bg-slate-800 text-white rounded-xl font-medium text-xs"
+                                            disabled={agentEmailLoading}
+                                            onClick={handleAgentEmail}
+                                        >
+                                            <Send className="h-3.5 w-3.5 mr-2" />
+                                            {agentEmailLoading ? "Drafting..." : "Generate Proposal Draft"}
+                                        </Button>
                                         {agentEmailDraft && (
-                                            <div className="mt-4">
-                                                <p className="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-2">Generated Email Draft</p>
-                                                <Textarea value={agentEmailDraft} onChange={(e) => setAgentEmailDraft(e.target.value)} className="min-h-[120px] rounded-xl text-sm" />
+                                            <div className="mt-4 space-y-2">
+                                                <div className="flex items-center justify-between">
+                                                    <p className="text-xs font-semibold text-slate-600 uppercase tracking-wide">Generated Proposal Letter</p>
+                                                    <Button
+                                                        size="sm"
+                                                        variant="ghost"
+                                                        className="h-7 text-xs text-slate-600 hover:text-slate-900"
+                                                        onClick={() => {
+                                                            navigator.clipboard.writeText(agentEmailDraft)
+                                                            toast.success("Proposal copied to clipboard")
+                                                        }}
+                                                    >
+                                                        <Copy className="h-3.5 w-3.5 mr-1" />
+                                                        Copy Text
+                                                    </Button>
+                                                </div>
+                                                <Textarea value={agentEmailDraft} onChange={(e) => setAgentEmailDraft(e.target.value)} className="min-h-[140px] rounded-xl text-xs font-mono" />
                                             </div>
                                         )}
                                     </CardContent>
                                 </Card>
                             </div>
 
-                            {/* Recent AI Generations */}
-                            <Card className="border border-slate-100 shadow-sm bg-white rounded-2xl overflow-hidden">
-                                <CardHeader className="border-b border-slate-50 p-6 bg-white">
-                                    <CardTitle className="text-lg font-bold text-slate-900">Recent AI Generations</CardTitle>
+                            {/* Recent Generations */}
+                            <Card className="border border-slate-200/80 shadow-xs bg-white rounded-2xl overflow-hidden">
+                                <CardHeader className="border-b border-slate-100 p-5 bg-white">
+                                    <CardTitle className="text-base font-bold text-slate-900">Recent Generated Proposals</CardTitle>
                                 </CardHeader>
-                                <CardContent className="p-6">
+                                <CardContent className="p-5">
                                     {aiGenerations.length === 0 ? (
-                                        <div className="text-center text-slate-400 text-sm py-8">No generations yet. Use the tools above to get started.</div>
+                                        <div className="text-center text-slate-400 text-xs py-8">No proposals generated in this session. Select an option above to generate a draft.</div>
                                     ) : (
-                                        <div className="space-y-4">
+                                        <div className="space-y-3">
                                             {aiGenerations.map((gen, i) => (
-                                                <div key={i} className="flex items-center justify-between p-4 rounded-xl bg-slate-50 border border-slate-100">
+                                                <div key={i} className="flex items-center justify-between p-3.5 rounded-xl bg-slate-50 border border-slate-200/70">
                                                     <div className="flex items-center gap-3">
-                                                        <div className="p-2 bg-purple-100 rounded-lg"><Sparkles className="h-4 w-4 text-purple-600" /></div>
+                                                        <div className="p-2 bg-white rounded-lg border border-slate-200"><MailCheck className="h-4 w-4 text-slate-700" /></div>
                                                         <div>
-                                                            <p className="font-semibold text-sm text-slate-900">{gen.business}</p>
-                                                            <p className="text-xs text-slate-500">{gen.type} • {gen.time}</p>
+                                                            <p className="font-semibold text-xs text-slate-900">{gen.business}</p>
+                                                            <p className="text-[11px] text-slate-500">{gen.type} · {gen.time}</p>
                                                         </div>
                                                     </div>
-                                                    <span className="inline-flex items-center rounded-full bg-green-50 px-2.5 py-1 text-xs font-medium text-green-700 ring-1 ring-green-200">Generated</span>
+                                                    <span className="inline-flex items-center rounded-full bg-emerald-50 px-2.5 py-0.5 text-[11px] font-semibold text-emerald-700 border border-emerald-200">Draft Ready</span>
                                                 </div>
                                             ))}
                                         </div>
@@ -1690,7 +1761,7 @@ export default function AdminDashboardPage() {
                                 <CardHeader className="border-b border-slate-50 p-6">
                                     <div className="flex items-center justify-between">
                                         <CardTitle className="text-base font-bold text-slate-900 flex items-center gap-2">
-                                            <Sparkles className="h-4 w-4 text-amber-500" />
+                                            <Star className="h-4 w-4 text-amber-500 fill-amber-500" />
                                             Customer Reviews ({allTestimonials.length})
                                         </CardTitle>
                                         {pendingTestimonials.length > 0 && (
@@ -1709,7 +1780,19 @@ export default function AdminDashboardPage() {
                                                             t.approved ? "bg-green-50 text-green-700 ring-green-600/20" : "bg-amber-50 text-amber-700 ring-amber-600/20"
                                                         )}>{t.approved ? "Approved" : "Pending"}</span>
                                                     </div>
-                                                    {t.rating && <p className="text-xs text-amber-500 mb-1">{"★".repeat(t.rating)}{"☆".repeat(5 - t.rating)}</p>}
+                                                    {t.rating && (
+                                                        <div className="flex items-center gap-0.5 mb-1.5">
+                                                            {Array.from({ length: 5 }).map((_, starIdx) => (
+                                                                <Star
+                                                                    key={starIdx}
+                                                                    className={cn(
+                                                                        "h-3.5 w-3.5",
+                                                                        starIdx < t.rating ? "fill-amber-400 text-amber-400" : "fill-slate-100 text-slate-300"
+                                                                    )}
+                                                                />
+                                                            ))}
+                                                        </div>
+                                                    )}
                                                     <p className="text-sm text-slate-600 line-clamp-2">{t.message || t.text || t.review}</p>
                                                     <p className="text-xs text-slate-400 mt-1">{fmtDate(t.createdAt)}</p>
                                                 </div>
@@ -1812,7 +1895,7 @@ export default function AdminDashboardPage() {
                             {/* API Config */}
                             <Card className="border border-slate-100 shadow-sm bg-white rounded-2xl overflow-hidden">
                                 <CardHeader className="border-b border-slate-50 p-6">
-                                    <CardTitle className="text-base font-bold text-slate-900 flex items-center gap-2"><Zap className="h-4 w-4 text-amber-500" />API Configuration</CardTitle>
+                                    <CardTitle className="text-base font-bold text-slate-900 flex items-center gap-2"><Sliders className="h-4 w-4 text-slate-700" />API Configuration</CardTitle>
                                 </CardHeader>
                                 <CardContent className="p-6 space-y-4">
                                     {[

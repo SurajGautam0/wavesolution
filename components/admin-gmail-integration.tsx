@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Mail, Send, CheckCircle2, AlertCircle, Copy, Sparkles } from "lucide-react"
+import { Mail, Send, CheckCircle2, AlertCircle, Copy, FileText } from "lucide-react"
 import { goldCoastAgencies, type RealEstateAgency } from "@/lib/real-estate-agencies"
 import { partnershipEmailTemplates, fillTemplate, type EmailTemplate } from "@/lib/partnership-email-templates"
 
@@ -208,7 +208,7 @@ export function GmailIntegration() {
         <Card className="border border-slate-100 shadow-sm bg-white rounded-2xl overflow-hidden">
           <CardHeader className="border-b border-slate-50 p-6 bg-white">
             <CardTitle className="text-lg font-bold text-slate-900 flex items-center gap-2">
-              <Sparkles className="h-5 w-5 text-blue-600" />
+              <Mail className="h-5 w-5 text-slate-700" />
               Partnership Email Composer
             </CardTitle>
             <p className="mt-1 text-sm text-slate-500">Use templates and agency database for quick outreach</p>
@@ -297,9 +297,9 @@ export function GmailIntegration() {
               <Button
                 onClick={handleFillTemplate}
                 variant="outline"
-                className="w-full h-10 rounded-xl border-blue-200 bg-blue-50 text-blue-700 hover:bg-blue-100"
+                className="w-full h-10 rounded-xl border-slate-200 bg-slate-50 text-slate-700 hover:bg-slate-100 font-medium"
               >
-                <Sparkles className="h-4 w-4 mr-2" />
+                <FileText className="h-4 w-4 mr-2" />
                 Auto-Fill Template with Selected Data
               </Button>
             )}
