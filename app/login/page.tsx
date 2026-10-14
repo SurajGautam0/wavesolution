@@ -9,12 +9,13 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import * as z from "zod"
 import {
     Loader2,
-    Mail,
-    Lock,
     ArrowRight,
-    CheckCircle2,
-    ShieldCheck,
-    Facebook
+    Sparkles,
+    CalendarDays,
+    MapPin,
+    Clock3,
+    Star,
+    Check,
 } from "lucide-react"
 import { useAuth } from "@/lib/auth-context"
 import { toast } from "sonner"
@@ -79,101 +80,72 @@ export default function LoginPage() {
     }
 
     return (
-        <div className="min-h-screen grid lg:grid-cols-2 bg-white">
-            {/* Left Side: Brand Panel */}
-            <div className="hidden lg:relative lg:flex flex-col justify-between overflow-hidden bg-secondary p-12 text-white">
-                <div className="absolute inset-0">
-                    <Image
-                        src="/images/gold-coast-cleaning-service.jpg"
-                        alt="Wave Solution professional cleaners at work"
-                        fill
-                        priority
-                        quality={75}
-                        sizes="50vw"
-                        className="object-cover opacity-25"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-br from-secondary via-secondary/95 to-secondary/85" />
-                </div>
-                <div className="pointer-events-none absolute -right-24 top-16 h-96 w-96 rounded-full bg-[#39BDE4]/10 blur-3xl" />
-
-                <div className="relative z-10">
-                    <Link href={siteLinks.home} className="inline-block">
-                        <div className="relative w-48 h-12">
-                            <img src="/logo.png" alt="WaveSolution" width={192} height={48} className="object-contain brightness-0 invert" />
-                        </div>
+        <main className="min-h-screen bg-[#f2f5fb] p-0 text-slate-900 sm:p-5 lg:p-8">
+            <div className="mx-auto grid min-h-screen max-w-[1440px] overflow-hidden bg-white shadow-[0_30px_100px_-48px_rgba(51,51,101,0.32)] sm:min-h-[calc(100vh-2.5rem)] sm:rounded-[2rem] lg:min-h-[calc(100vh-4rem)] lg:grid-cols-[1.08fr_0.92fr]">
+                <section className="relative hidden overflow-hidden bg-secondary p-10 text-white lg:flex lg:flex-col lg:justify-between xl:p-14">
+                    <Image src="/images/gold-coast-cleaning-service.jpg" alt="Wave Solution team providing a professional clean" fill priority quality={75} sizes="50vw" className="object-cover opacity-35" />
+                    <div className="absolute inset-0 bg-gradient-to-br from-[#333365]/95 via-[#333365]/80 to-[#23234d]/90" />
+                    <div className="absolute -right-24 -top-20 h-80 w-80 rounded-full border border-white/10" />
+                    <div className="absolute -right-12 -top-8 h-56 w-56 rounded-full border border-white/10" />
+                    <div className="absolute -bottom-32 -left-32 h-96 w-96 rounded-full bg-primary/20 blur-3xl" />
+                    <Link href={siteLinks.home} className="relative z-10 inline-flex w-fit rounded-xl bg-white/95 px-4 py-2.5">
+                        <img src="/logo.png" alt="Wave Solution" width={160} height={40} className="h-9 object-contain" />
                     </Link>
-                </div>
-
-                <div className="relative z-10 space-y-8 max-w-lg">
-                    <div className="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 backdrop-blur-sm">
-                        <span className="h-2 w-2 rounded-full bg-[#39BDE4]" />
-                        <span className="text-[10px] font-black uppercase tracking-[0.2em]">Client Portal</span>
-                    </div>
-                    <h1 className="text-5xl font-black tracking-tight leading-[1.05]">
-                        Welcome Back to <span className="text-[#39BDE4]">Wave Solution</span>
-                    </h1>
-                    <p className="text-white/70 text-lg font-medium leading-relaxed">
-                        Access your cleaning dashboard, manage bookings, and chat with your dedicated Gold Coast cleaning team — all in one place.
-                    </p>
-
-                    <div className="grid grid-cols-2 gap-4 pt-4">
-                        <div className="rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur-sm">
-                            <ShieldCheck className="h-6 w-6 text-[#39BDE4]" />
-                            <p className="mt-3 text-sm font-black uppercase tracking-widest">Secured Login</p>
-                            <p className="mt-1 text-xs text-white/60 leading-relaxed font-medium">Encrypted protection for your account data.</p>
+                    <div className="relative z-10 max-w-xl py-10">
+                        <span className="mb-5 inline-flex items-center gap-2 rounded-full border border-primary/40 bg-primary/15 px-3.5 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-[#9DE7FA]"><Sparkles className="h-4 w-4" /> A brighter kind of clean</span>
+                        <h1 className="max-w-lg text-5xl font-bold leading-[1.06] tracking-tight xl:text-6xl">Come home to <span className="text-[#58C8E8]">the good feeling.</span></h1>
+                        <p className="mt-5 max-w-md text-base leading-7 text-white/80">More time to unwind. Less time worrying about the clean. Your Wave Solution account keeps it all easy.</p>
+                        <div className="mt-8 flex flex-wrap gap-2 text-xs font-medium text-white/90">
+                            <span className="inline-flex items-center gap-1.5 rounded-full bg-white/10 px-3 py-2"><Check className="h-3.5 w-3.5 text-[#58C8E8]" /> Trusted local team</span>
+                            <span className="inline-flex items-center gap-1.5 rounded-full bg-white/10 px-3 py-2"><Check className="h-3.5 w-3.5 text-[#58C8E8]" /> Easy booking updates</span>
                         </div>
-                        <div className="rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur-sm">
-                            <CheckCircle2 className="h-6 w-6 text-[#39BDE4]" />
-                            <p className="mt-3 text-sm font-black uppercase tracking-widest">Live Bookings</p>
-                            <p className="mt-1 text-xs text-white/60 leading-relaxed font-medium">Track and manage your cleans in real time.</p>
+                        <div className="mt-8 max-w-sm rounded-2xl border border-white/15 bg-white/10 p-5 backdrop-blur-md">
+                            <div className="flex items-start gap-4">
+                                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#39BDE4]/20 text-[#75D8F2]"><CalendarDays className="h-5 w-5" /></div>
+                                <div>
+                                    <div className="mb-1 flex gap-0.5 text-[#79D9F2]" aria-label="5 out of 5 stars"><Star className="h-3.5 w-3.5 fill-current" /><Star className="h-3.5 w-3.5 fill-current" /><Star className="h-3.5 w-3.5 fill-current" /><Star className="h-3.5 w-3.5 fill-current" /><Star className="h-3.5 w-3.5 fill-current" /></div>
+                                    <p className="font-semibold">A fresh start, on your schedule</p><p className="mt-1 text-sm leading-6 text-white/70">See upcoming services and keep your booking details close.</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-
-                <div className="relative z-10 flex flex-wrap items-center gap-x-6 gap-y-2 text-xs font-semibold text-white/60">
-                    <span>Fully insured</span>
-                    <span aria-hidden="true">•</span>
-                    <span>Police-checked staff</span>
-                    <span aria-hidden="true">•</span>
-                    <a href={businessInfo.phoneHref} className="transition-colors hover:text-[#39BDE4]">
-                        {businessInfo.phoneDisplay}
-                    </a>
-                </div>
-            </div>
-
-            {/* Right Side: Login Form */}
-            <div className="flex items-center justify-center bg-white p-6 sm:p-12 lg:p-16 relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-64 h-64 bg-[#39BDE4]/10 rounded-full blur-3xl -mr-32 -mt-32" />
-                <div className="absolute bottom-0 left-0 w-64 h-64 bg-secondary/5 rounded-full blur-3xl -ml-32 -mb-32" />
-
-                <div className="w-full max-w-md space-y-8 relative z-10">
-                    <div className="space-y-3">
-                        <div className="lg:hidden mb-6">
-                            <img src="/logo.png" alt="WaveSolution" width={160} height={40} className="h-10 object-contain mx-auto" />
-                        </div>
-                        <span className="eyebrow">Client Login</span>
-                        <h2 className="pt-1 text-4xl font-black text-secondary tracking-tight">Welcome Back</h2>
-                        <p className="text-slate-600 font-medium text-lg">Enter your credentials to continue to your dashboard.</p>
+                    <div className="relative z-10 flex items-center justify-between gap-4 text-xs text-white/65">
+                        <span className="flex items-center gap-2"><MapPin className="h-3.5 w-3.5" /> Proudly serving the Gold Coast</span>
+                        <a href={businessInfo.phoneHref} className="hover:text-white">{businessInfo.phoneDisplay}</a>
                     </div>
-
-                    <Card className="border border-slate-200 shadow-xl shadow-secondary/5 bg-white rounded-[2rem] overflow-hidden">
-                        <CardContent className="p-8 sm:p-10">
+                </section>
+                <section className="relative flex items-center justify-center overflow-hidden px-5 py-10 sm:px-10 lg:px-12 xl:px-16">
+                    <div className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-primary/[0.07] blur-3xl" />
+                    <div className="w-full max-w-[400px]">
+                        <div className="mb-10 flex items-center justify-between lg:hidden">
+                            <Link href={siteLinks.home} aria-label="Wave Solution home"><img src="/logo.png" alt="Wave Solution" width={150} height={38} className="h-9 object-contain" /></Link>
+                            <span className="rounded-full bg-primary/10 px-3 py-1.5 text-xs font-medium text-secondary">Client portal</span>
+                        </div>
+                        <div className="mb-8">
+                            <p className="text-sm font-semibold tracking-wide text-primary">YOUR CLEANING, MADE EASY</p>
+                            <h2 className="mt-2 text-3xl font-bold tracking-tight text-secondary sm:text-[2.1rem]">Welcome back</h2>
+                            <p className="mt-3 text-sm leading-6 text-slate-500">Sign in to manage your bookings and enjoy a little more peace of mind.</p>
+                        </div>
+                        <Card className="border-0 bg-transparent shadow-none">
+                            <CardContent className="p-0">
                             <Form {...form}>
-                                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-                                    <div className="space-y-6">
+                                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                                    <div className="space-y-5">
                                         <FormField
                                             control={form.control}
                                             name="email"
                                             render={({ field }) => (
-                                                <FormItem className="space-y-3">
-                                                    <FormLabel className="flex items-center text-secondary font-black text-[10px] uppercase tracking-[0.2em] ml-1">
-                                                        <Mail className="w-4 h-4 mr-2 text-primary" /> Email Address
+                                                <FormItem className="space-y-2.5">
+                                                    <FormLabel className="text-sm font-medium text-secondary">
+                                                        Email address
                                                     </FormLabel>
                                                     <FormControl>
                                                         <Input
-                                                            placeholder="admin@WaveSolution.com"
+                                                            type="email"
+                                                            autoComplete="email"
+                                                            placeholder="you@example.com"
                                                             {...field}
-                                                            className="h-14 border-slate-200 bg-[#F3F3F3]/60 hover:border-primary/40 focus:bg-white focus:border-primary focus:ring-8 focus:ring-primary/5 rounded-2xl transition-all font-bold"
+                                                            className="h-12 rounded-xl border-slate-200 bg-slate-50/50 px-4 text-sm shadow-none placeholder:text-slate-400 focus-visible:border-primary focus-visible:ring-4 focus-visible:ring-primary/10"
                                                         />
                                                     </FormControl>
                                                     <FormMessage className="font-bold text-xs" />
@@ -184,20 +156,20 @@ export default function LoginPage() {
                                             control={form.control}
                                             name="password"
                                             render={({ field }) => (
-                                                <FormItem className="space-y-3">
+                                                <FormItem className="space-y-2.5">
                                                     <div className="flex items-center justify-between">
-                                                        <FormLabel className="flex items-center text-secondary font-black text-[10px] uppercase tracking-[0.2em] ml-1">
-                                                            <Lock className="w-4 h-4 mr-2 text-primary" /> Password
+                                                        <FormLabel className="text-sm font-medium text-secondary">
+                                                            Password
                                                         </FormLabel>
-                                                        <Link href="#" className="text-[9px] font-black text-primary/60 uppercase tracking-widest hover:text-primary transition-colors">Forgot?</Link>
                                                     </div>
                                                     <FormControl>
                                                         <div className="relative">
                                                             <Input
                                                                 type="password"
-                                                                placeholder="••••••••"
+                                                                autoComplete="current-password"
+                                                                placeholder="Enter your password"
                                                                 {...field}
-                                                                className="h-14 border-slate-200 bg-[#F3F3F3]/60 hover:border-primary/40 focus:bg-white focus:border-primary focus:ring-8 focus:ring-primary/5 rounded-2xl transition-all font-bold"
+                                                                className="h-12 rounded-xl border-slate-200 bg-slate-50/50 px-4 text-sm shadow-none placeholder:text-slate-400 focus-visible:border-primary focus-visible:ring-4 focus-visible:ring-primary/10"
                                                             />
                                                         </div>
                                                     </FormControl>
@@ -210,44 +182,46 @@ export default function LoginPage() {
                                     <Button
                                         type="submit"
                                         disabled={isSubmitting}
-                                        className="w-full h-14 rounded-full bg-[#39BDE4] hover:bg-[#249FC5] text-white font-black uppercase tracking-widest shadow-xl shadow-primary/25 transition-all hover:scale-[1.02] active:scale-[0.98]"
+                                        className="h-12 w-full rounded-xl bg-primary text-sm font-semibold text-white shadow-lg shadow-primary/20 transition-colors hover:bg-[#249FC5]"
                                     >
                                         {isSubmitting ? (
                                             <Loader2 className="h-6 w-6 animate-spin" />
                                         ) : (
                                             <span className="flex items-center">
-                                                Login to Portal <ArrowRight className="ml-3 w-5 h-5" />
+                                                Sign in <ArrowRight className="ml-2 h-4 w-4" />
                                             </span>
                                         )}
                                     </Button>
                                 </form>
                             </Form>
 
-                            <div className="mt-8 space-y-6">
+                            <div className="mt-6 space-y-5">
                                 <div className="relative">
                                     <div className="absolute inset-0 flex items-center">
                                         <span className="w-full border-t border-slate-200" />
                                     </div>
-                                    <div className="relative flex justify-center text-[10px] uppercase font-black tracking-widest">
-                                        <span className="bg-white px-4 text-slate-400">Authenticated Access</span>
+                                    <div className="relative flex justify-center text-xs">
+                                        <span className="bg-white px-3 text-xs text-slate-400">OR</span>
                                     </div>
                                 </div>
 
-                                <div className="grid grid-cols-2 gap-4">
-                                    <Button variant="outline" className="h-14 rounded-2xl border-slate-200 text-slate-500 hover:text-[#249FC5] hover:border-primary/40 font-black text-[10px] transition-all">
-                                        <Facebook className="w-4 h-4 mr-2" /> Facebook
-                                    </Button>
+                                <div>
                                     <Button
                                         variant="outline"
+                                        type="button"
+                                        disabled={isSubmitting}
                                         onClick={async () => {
+                                            setIsSubmitting(true)
                                             try {
                                                 await signInWithGoogle()
                                                 toast.success("Welcome back to WaveSolution!")
                                             } catch (error) {
                                                 toast.error("Google Sign-In failed.")
+                                            } finally {
+                                                setIsSubmitting(false)
                                             }
                                         }}
-                                        className="h-14 rounded-2xl border-slate-200 text-slate-500 hover:text-slate-900 hover:border-slate-300 font-black text-[10px] transition-all"
+                                        className="h-12 w-full rounded-xl border-slate-200 bg-white text-sm font-medium text-slate-700 shadow-none hover:bg-slate-50"
                                     >
                                         <svg className="w-4 h-4 mr-2" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4" />
@@ -259,17 +233,19 @@ export default function LoginPage() {
                                     </Button>
                                 </div>
 
-                                <div className="text-center pt-2">
-                                    <p className="text-sm font-medium text-slate-500">
-                                        Don&apos;t have an account?{" "}
-                                        <Link href="/register" className="text-primary font-black uppercase tracking-widest hover:underline decoration-2 underline-offset-4">Sign Up</Link>
+                                <div className="pt-1 text-center">
+                                    <p className="text-sm text-slate-500">
+                                        New to Wave Solution?{" "}
+                                        <Link href="/register" className="font-semibold text-primary hover:underline underline-offset-4">Create an account</Link>
                                     </p>
                                 </div>
+                                <p className="mt-8 flex items-center justify-center gap-1.5 text-xs text-slate-400"><Clock3 className="h-3.5 w-3.5" /> Here when you need us, every day.</p>
                             </div>
                         </CardContent>
                     </Card>
                 </div>
+                </section>
             </div>
-        </div>
+        </main>
     )
 }
