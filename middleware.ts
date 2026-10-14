@@ -39,14 +39,19 @@ export function middleware(request: NextRequest) {
   const isProtectedPath = path.startsWith("/admin") || path.startsWith("/dashboard") || path.startsWith("/operations") || path.startsWith("/worker")
 
   if (isProtectedPath) {
-    const user = request.cookies.get("user")?.value
+    const rawUser = request.cookies.get("user")?.value
 
-    if (!user) {
+    if (!rawUser) {
       return NextResponse.redirect(new URL("/login", request.url))
     }
 
     try {
-      const userData = JSON.parse(user)
+      let userData
+      try {
+        userData = JSON.parse(decodeURIComponent(rawUser))
+      } catch {
+        userData = JSON.parse(rawUser)
+      }
 
       const role = userData.role
       if (path.startsWith("/admin") && role !== "admin") {
@@ -56,10 +61,10 @@ export function middleware(request: NextRequest) {
         return NextResponse.redirect(new URL(role === "worker" ? "/worker" : "/dashboard", request.url))
       }
       if (path.startsWith("/worker") && role !== "worker") {
-        return NextResponse.redirect(new URL(role === "admin" || role === "dispatcher" ? "/operations" : "/dashboard", request.url))
+        return NextResponse.redirect(new URL(role === "admin" ? "/admin" : role === "dispatcher" ? "/operations" : "/dashboard", request.url))
       }
       if (path.startsWith("/dashboard") && ["admin", "dispatcher", "worker"].includes(role)) {
-        return NextResponse.redirect(new URL(role === "admin" || role === "dispatcher" ? "/operations" : "/worker", request.url))
+        return NextResponse.redirect(new URL(role === "admin" ? "/admin" : role === "dispatcher" ? "/operations" : "/worker", request.url))
       }
     } catch (error) {
       return NextResponse.redirect(new URL("/login", request.url))

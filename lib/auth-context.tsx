@@ -42,13 +42,14 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const persistUserSession = (userData: Exclude<User, null>) => {
     setUser(userData)
     localStorage.setItem("user", JSON.stringify(userData))
-    document.cookie = `user=${JSON.stringify(userData)}; path=/; max-age=86400`
+    document.cookie = `user=${encodeURIComponent(JSON.stringify(userData))}; path=/; max-age=86400; SameSite=Lax`
   }
 
   const clearUserSession = () => {
     setUser(null)
     localStorage.removeItem("user")
     document.cookie = "user=; path=/; max-age=0"
+    document.cookie = "user=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT"
   }
 
   const buildBasicUser = (firebaseUser: FirebaseUser): Exclude<User, null> => ({

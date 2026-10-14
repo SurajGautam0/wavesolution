@@ -17,8 +17,7 @@ export function StaffShell({ children, kind }: { children: React.ReactNode; kind
     : [{ href: "/worker", label: "My shift", icon: CalendarDays }, { href: "/worker/jobs", label: "Job checklist", icon: ClipboardCheck }]
 
   async function logout() {
-    await signOut(auth)
-    router.replace("/login")
+    router.replace("/logout")
   }
 
   return (
