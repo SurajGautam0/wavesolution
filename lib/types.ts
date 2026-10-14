@@ -2,7 +2,7 @@ export interface User {
   id: string
   name: string
   email: string
-  role: "admin" | "worker" | "customer"
+  role: "admin" | "dispatcher" | "worker" | "customer"
   status: "active" | "inactive"
   createdAt: string
   phone?: string
@@ -27,6 +27,17 @@ export interface Booking {
   status: string
   createdAt: string
   assignedTo?: string
+  scheduledDate?: string
+  scheduledTime?: string
+  internalNotes?: string
+  workerChecklist?: Record<string, boolean>
+  workerNotes?: string
+  workerIssue?: { category: string; description: string; reportedAt: string }
+  workerIssueResolvedAt?: string
+  workerStartedAt?: string
+  workerCompletedAt?: string
+  workerCheckInAt?: string
+  workerPhotoUrls?: string[]
   discount?: {
     code: string
     amount: number

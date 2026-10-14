@@ -10,6 +10,8 @@ import {
   deleteDoc,
   addDoc,
   serverTimestamp,
+  getDoc,
+  setDoc,
 } from "firebase/firestore"
 
 import { adminDb } from "./admin-firebase"
@@ -76,6 +78,117 @@ export const updateBookingStatus = async (bookingId: string, status: string) => 
   await updateDoc(ref, { status, updatedAt: serverTimestamp() })
 }
 
+export const updateBookingOperations = async (bookingId: string, data: {
+  assignedTo?: string
+  scheduledDate?: string
+  scheduledTime?: string
+  internalNotes?: string
+}) => {
+  const ref = doc(adminDb, "bookings", bookingId)
+  await updateDoc(ref, { ...data, updatedAt: serverTimestamp() })
+}
+
+export const updateContactLead = async (contactId: string, data: {
+  leadStatus: string
+  internalNotes?: string
+}) => {
+  const ref = doc(adminDb, "contacts", contactId)
+  await updateDoc(ref, { ...data, updatedAt: serverTimestamp() })
+}
+
+export const getAllQuotes = async () =>
+  getAdminCollectionDocuments("quotes", [orderBy("createdAt", "desc")])
+
+export const createQuote = async (quote: {
+  customerName: string
+  customerEmail: string
+  customerPhone: string
+  service: string
+  propertySize: string
+  bedrooms: number
+  bathrooms: number
+  addOns: string[]
+  amount: number
+  status: "draft" | "sent" | "accepted" | "declined"
+}) => {
+  const ref = await addDoc(collection(adminDb, "quotes"), {
+    ...quote,
+    createdAt: serverTimestamp(),
+    updatedAt: serverTimestamp(),
+  })
+  return { id: ref.id, ...quote }
+}
+
+export const updateQuoteStatus = async (quoteId: string, status: string) => {
+  await updateDoc(doc(adminDb, "quotes", quoteId), { status, updatedAt: serverTimestamp() })
+}
+
+export const getAuditLog = async () =>
+  getAdminCollectionDocuments("adminAuditLog", [orderBy("createdAt", "desc")])
+
+export const recordAdminActivity = async (entry: {
+  actor: string
+  action: string
+  target: string
+  details: string
+}) => {
+  await addDoc(collection(adminDb, "adminAuditLog"), {
+    ...entry,
+    createdAt: serverTimestamp(),
+  })
+}
+
+export const getAllInvoices = async () =>
+  getAdminCollectionDocuments("invoices", [orderBy("createdAt", "desc")])
+
+export const createInvoice = async (invoice: {
+  bookingId: string
+  invoiceNumber: string
+  customerName: string
+  customerEmail: string
+  customerPhone: string
+  service: string
+  amountDue: number
+  amountPaid: number
+  status: "unpaid" | "partial" | "paid"
+  currency: "AUD"
+  issuedAt: string
+}) => {
+  const ref = doc(adminDb, "invoices", invoice.bookingId)
+  const existing = await getDoc(ref)
+  if (existing.exists()) throw new Error("An invoice already exists for this booking")
+  await setDoc(ref, { ...invoice, createdAt: serverTimestamp(), updatedAt: serverTimestamp() })
+  return { id: ref.id, ...invoice }
+}
+
+export const updateInvoicePayment = async (invoiceId: string, data: {
+  amountPaid: number
+  status: "unpaid" | "partial" | "paid"
+  paymentMethod: string
+  paymentReference: string
+}) => {
+  await updateDoc(doc(adminDb, "invoices", invoiceId), { ...data, updatedAt: serverTimestamp() })
+}
+
+export const saveEmailRecord = async (record: {
+  to: string
+  subject: string
+  body: string
+  status: "sent" | "failed"
+  messageId?: string
+  error?: string
+  sentBy: string
+}) => {
+  const ref = await addDoc(collection(adminDb, "adminEmails"), {
+    ...record,
+    createdAt: serverTimestamp(),
+  })
+  return { id: ref.id, ...record }
+}
+
+export const getEmailRecords = async () =>
+  getAdminCollectionDocuments("adminEmails", [orderBy("createdAt", "desc")])
+
 // ── Testimonials ──────────────────────────────────────────────────────────────
 
 export const approveTestimonial = async (testimonialId: string, approved: boolean) => {
@@ -103,6 +216,11 @@ export const saveCoupon = async (couponData: {
     ...couponData,
     createdAt: serverTimestamp(),
     active: true,
+    status: "active",
+    usageCount: couponData.usedCount,
+    usageLimit: couponData.maxUses ?? 999999,
+    type: "percentage",
+    validUntil: couponData.expiry || "2099-12-31T23:59:59.999Z",
   })
   return { id: ref.id, ...couponData }
 }
@@ -117,6 +235,9 @@ export const savePost = async (postData: {
   title: string
   content: string
   slug: string
+  excerpt?: string
+  seoTitle?: string
+  seoDescription?: string
 }) => {
   const ref = await addDoc(collection(adminDb, "posts"), {
     ...postData,
@@ -124,6 +245,18 @@ export const savePost = async (postData: {
     published: false,
   })
   return { id: ref.id, ...postData, published: false }
+}
+
+export const updatePost = async (postId: string, postData: {
+  title: string
+  content: string
+  slug: string
+  excerpt?: string
+  seoTitle?: string
+  seoDescription?: string
+}) => {
+  await updateDoc(doc(adminDb, "posts", postId), { ...postData, updatedAt: serverTimestamp() })
+  return { id: postId, ...postData }
 }
 
 export const deletePost = async (postId: string) => {

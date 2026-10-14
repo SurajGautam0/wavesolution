@@ -62,7 +62,7 @@ export default function RegisterPage() {
             toast.success("Account created successfully! Welcome to WaveSolution.")
 
             setTimeout(() => {
-                router.push("/admin") // Defaulting to dashboard/admin for demonstration
+                router.push("/dashboard")
             }, 1000)
         } catch (error: any) {
             console.error("Sign Up Error:", error)

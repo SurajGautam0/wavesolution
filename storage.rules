@@ -1,0 +1,32 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    function signedIn() { return request.auth != null; }
+    function userData() {
+      return firestore.get(/databases/(default)/documents/users/$(request.auth.uid)).data;
+    }
+    function isAdmin() { return signedIn() && userData().role == "admin"; }
+    function isDispatcher() { return signedIn() && userData().role == "dispatcher"; }
+    function assignedWorker(bookingId) {
+      return signedIn()
+        && userData().role == "worker"
+        && firestore.get(/databases/(default)/documents/bookings/$(bookingId)).data.assignedTo == userData().name;
+    }
+
+    match /job-evidence/{bookingId}/{fileName} {
+      allow read: if isAdmin() || isDispatcher() || assignedWorker(bookingId);
+      allow create, update: if (isAdmin() || isDispatcher() || assignedWorker(bookingId))
+        && request.resource.size < 8 * 1024 * 1024
+        && request.resource.contentType.matches('image/(jpeg|png|webp)');
+      allow delete: if isAdmin() || isDispatcher();
+    }
+
+    match /uploads/{folder}/{fileName} {
+      allow read: if true;
+      allow create, update: if signedIn()
+        && request.resource.size < 5 * 1024 * 1024
+        && request.resource.contentType.matches('image/.*');
+      allow delete: if isAdmin();
+    }
+  }
+}

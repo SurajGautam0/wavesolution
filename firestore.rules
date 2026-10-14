@@ -1,0 +1,154 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    function userData() {
+      return get(/databases/$(database)/documents/users/$(request.auth.uid)).data;
+    }
+
+    function isAdmin() {
+      return signedIn() && userData().role == "admin";
+    }
+
+    function isWorker() {
+      return signedIn() && userData().role == "worker";
+    }
+
+    function isDispatcher() {
+      return signedIn() && userData().role == "dispatcher";
+    }
+
+    match /users/{userId} {
+      allow get: if isAdmin() || (signedIn() && request.auth.uid == userId);
+      allow list: if isAdmin() || (isDispatcher() && resource.data.role == "worker");
+      allow create: if signedIn()
+        && request.auth.uid == userId
+        && request.resource.data.role == "customer";
+      allow update: if isAdmin() || (
+        signedIn()
+        && request.auth.uid == userId
+        && request.resource.data.role == resource.data.role
+        && request.resource.data.diff(resource.data).affectedKeys()
+          .hasOnly(["name", "phone", "profileImage", "address", "updatedAt"])
+      );
+      allow delete: if isAdmin();
+    }
+
+    match /bookings/{bookingId} {
+      allow create: if request.resource.data.name is string
+        && request.resource.data.email is string
+        && request.resource.data["service"] is string;
+      allow read: if isAdmin() || isDispatcher()
+        || (signedIn() && resource.data.email == request.auth.token.email)
+        || (isWorker() && resource.data.assignedTo == userData().name);
+      allow update: if isAdmin() || (isDispatcher()
+        && request.resource.data.diff(resource.data).affectedKeys()
+          .hasOnly(["assignedTo", "scheduledDate", "scheduledTime", "date", "time", "status", "internalNotes", "workerIssueResolvedAt", "updatedAt"])
+      ) || (
+        isWorker()
+        && resource.data.assignedTo == userData().name
+        && request.resource.data.diff(resource.data).affectedKeys()
+          .hasOnly(["status", "workerChecklist", "workerNotes", "workerIssue", "workerIssueResolvedAt", "workerStartedAt", "workerCompletedAt", "workerCheckInAt", "workerPhotoUrls", "updatedAt"])
+      );
+      allow delete: if isAdmin();
+    }
+
+    match /contacts/{contactId} {
+      allow create: if request.resource.data.name is string
+        && request.resource.data.email is string;
+      allow read, update, delete: if isAdmin();
+    }
+
+    match /services/{serviceId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    match /pricing/{pricingId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    match /servicePrices/{priceId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    match /coupons/{couponId} {
+      allow read: if isAdmin() || resource.data.active == true || resource.data.status == "active";
+      allow create, delete: if isAdmin();
+      allow update: if isAdmin() || (
+        signedIn()
+        && (resource.data.active == true || resource.data.status == "active")
+        && resource.data.usageCount is int
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(["usageCount"])
+        && request.resource.data.usageCount == resource.data.usageCount + 1
+        && (!("usageLimit" in resource.data) || request.resource.data.usageCount <= resource.data.usageLimit)
+      );
+    }
+
+    match /testimonials/{testimonialId} {
+      allow read: if isAdmin() || resource.data.approved == true;
+      allow create: if request.resource.data.name is string
+        && request.resource.data.message is string;
+      allow update, delete: if isAdmin();
+    }
+
+    match /posts/{postId} {
+      allow read: if isAdmin()
+        || resource.data.published == true
+        || resource.data.status == "published";
+      allow write: if isAdmin();
+    }
+
+    match /subscriptions/{subscriptionId} {
+      allow create: if request.resource.data.email is string;
+      allow read, update, delete: if isAdmin();
+    }
+
+    match /seo/{pageId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    match /products/{productId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    match /orders/{orderId} {
+      allow read: if isAdmin() || (signedIn() && resource.data.userId == request.auth.uid);
+      allow create: if signedIn() && request.resource.data.userId == request.auth.uid;
+      allow update, delete: if isAdmin();
+    }
+
+    match /quotes/{quoteId} {
+      allow read, write: if isAdmin();
+    }
+
+    match /invoices/{invoiceId} {
+      allow read, write: if isAdmin();
+    }
+
+    match /adminAuditLog/{entryId} {
+      allow read, create: if isAdmin();
+      allow update, delete: if false;
+    }
+
+    match /adminEmails/{emailId} {
+      allow read, create: if isAdmin();
+      allow update, delete: if false;
+    }
+
+    match /admin/{documentId} {
+      allow read, write: if isAdmin();
+    }
+
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

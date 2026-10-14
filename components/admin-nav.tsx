@@ -1,22 +1,54 @@
 "use client"
 
-import { BarChart3, CalendarDays, DollarSign, FileText, Home, Percent, Search, Settings, Users, MessageSquare, Mail, Link2, Sparkles } from "lucide-react"
+import { Activity, BarChart3, CalendarDays, ClipboardList, CreditCard, DollarSign, FileText, Home, Percent, Settings, Users, MessageSquare, Mail, Link2, Sparkles, UserRoundSearch, UsersRound } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
+import { useRouter } from "next/navigation"
 
 interface AdminNavProps {
   activeTab?: string
   setActiveTab?: (tab: string) => void
 }
 
-export function AdminNav({ activeTab = "dashboard", setActiveTab = () => { } }: AdminNavProps) {
+export function AdminNav({ activeTab = "dashboard", setActiveTab }: AdminNavProps) {
+  const router = useRouter()
   const routes = [
     {
       id: "dashboard",
       label: "Dashboard",
       icon: Home,
       active: activeTab === "dashboard",
+    },
+    {
+      id: "operations",
+      label: "Job board",
+      icon: ClipboardList,
+      active: activeTab === "operations",
+    },
+    {
+      id: "customers",
+      label: "Leads & customers",
+      icon: UserRoundSearch,
+      active: activeTab === "customers",
+    },
+    {
+      id: "quotes",
+      label: "Quote builder",
+      icon: FileText,
+      active: activeTab === "quotes",
+    },
+    {
+      id: "invoices",
+      label: "Invoices & payments",
+      icon: CreditCard,
+      active: activeTab === "invoices",
+    },
+    {
+      id: "communications",
+      label: "Customer email",
+      icon: Mail,
+      active: activeTab === "communications",
     },
     {
       id: "bookings",
@@ -26,9 +58,9 @@ export function AdminNav({ activeTab = "dashboard", setActiveTab = () => { } }: 
     },
     {
       id: "users",
-      label: "Users",
-      icon: Users,
-      active: activeTab === "users",
+      label: "Team & access",
+      icon: UsersRound,
+      active: activeTab === "users" || activeTab === "team",
     },
     {
       id: "coupons",
@@ -90,6 +122,12 @@ export function AdminNav({ activeTab = "dashboard", setActiveTab = () => { } }: 
       icon: Settings,
       active: activeTab === "settings",
     },
+    {
+      id: "activity",
+      label: "Activity log",
+      icon: Activity,
+      active: activeTab === "activity",
+    },
   ]
 
   return (
@@ -104,7 +142,7 @@ export function AdminNav({ activeTab = "dashboard", setActiveTab = () => { } }: 
               ? "bg-blue-50 text-blue-700 font-semibold"
               : "text-slate-600 hover:bg-slate-50 hover:text-slate-900"
           )}
-          onClick={() => setActiveTab(route.id)}
+          onClick={() => setActiveTab ? setActiveTab(route.id) : router.push(`/admin?tab=${route.id}`)}
         >
           <route.icon className={cn("mr-2.5 h-4 w-4 transition-colors", route.active ? "text-blue-600" : "text-slate-500")} />
           <span className="text-sm">{route.label}</span>

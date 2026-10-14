@@ -10,6 +10,7 @@ import {
   where,
   serverTimestamp,
   Timestamp,
+  onSnapshot,
   type DocumentData,
 } from "firebase/firestore"
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage"
@@ -167,6 +168,31 @@ export const getBookingsByWorker = async (name: string): Promise<Booking[]> => {
   }
 }
 
+export const getWorkerTeam = async (): Promise<User[]> => {
+  const q = query(collection(db, "users"), where("role", "==", "worker"))
+  const snapshot = await getDocs(q)
+  return snapshot.docs.map((document) => convertDoc<User>(document))
+}
+
+export const watchAllBookings = (onData: (bookings: Booking[]) => void, onError?: (error: Error) => void) =>
+  onSnapshot(collection(db, "bookings"), (snapshot) => {
+    onData(snapshot.docs.map((document) => convertDoc<Booking>(document)))
+  }, onError)
+
+export const watchBookingsByWorker = (name: string, onData: (bookings: Booking[]) => void, onError?: (error: Error) => void) => {
+  const q = query(collection(db, "bookings"), where("assignedTo", "==", name))
+  return onSnapshot(q, (snapshot) => {
+    onData(snapshot.docs.map((document) => convertDoc<Booking>(document)))
+  }, onError)
+}
+
+export const updateStaffBooking = async (id: string, bookingData: Partial<Booking>): Promise<void> => {
+  await updateDoc(doc(db, "bookings", id), {
+    ...bookingData,
+    updatedAt: serverTimestamp(),
+  })
+}
+
 export const createBooking = async (bookingData: Omit<Booking, "id" | "createdAt">): Promise<Booking> => {
   try {
     const bookingRef = doc(collection(db, "bookings"))
@@ -239,7 +265,7 @@ export const getCouponById = async (id: string): Promise<Coupon | null> => {
 
 export const getCouponByCode = async (code: string): Promise<Coupon | null> => {
   try {
-    const q = query(collection(db, "coupons"), where("code", "==", code))
+    const q = query(collection(db, "coupons"), where("code", "==", code), where("status", "==", "active"))
     const querySnapshot = await getDocs(q)
 
     if (querySnapshot.empty) return null

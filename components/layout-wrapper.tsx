@@ -14,6 +14,8 @@ export function LayoutWrapper({ children }: { children: React.ReactNode }) {
         pathname?.startsWith("/register") ||
         pathname?.startsWith("/logout") ||
         pathname?.startsWith("/dashboard")
+        || pathname?.startsWith("/operations")
+        || pathname?.startsWith("/worker")
 
     if (isAdminPage) {
         return (

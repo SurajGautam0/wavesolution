@@ -55,7 +55,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     id: firebaseUser.uid,
     email: firebaseUser.email || "",
     name: firebaseUser.displayName || "User",
-    role: "user",
+    role: "customer",
   })
 
   const hydrateOrCreateUser = async (firebaseUser: FirebaseUser) => {
@@ -122,7 +122,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         id: result.user.uid,
         email,
         name,
-        role: "user",
+        role: "customer",
       }
 
       // Save to Firestore with retry logic

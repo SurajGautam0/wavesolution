@@ -206,14 +206,6 @@ const SUBSCRIPTIONS_COLLECTION = 'subscriptions';
 
 export const saveSubscription = async (email: string) => {
   try {
-    // Check if email already exists
-    const q = query(collection(db, SUBSCRIPTIONS_COLLECTION), where("email", "==", email));
-    const querySnapshot = await getDocs(q);
-
-    if (!querySnapshot.empty) {
-      return { id: querySnapshot.docs[0].id, email, exists: true };
-    }
-
     const subRef = await addDoc(collection(db, SUBSCRIPTIONS_COLLECTION), {
       email,
       id: uuidv4(),
@@ -468,4 +460,4 @@ export const updateOrderStatus = async (orderId: string, status: string) => {
     console.error("Error updating order status: ", error);
     throw error;
   }
-}; 
+};
