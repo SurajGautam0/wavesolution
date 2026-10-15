@@ -169,6 +169,7 @@ export default function BookingPageClient() {
 
 	async function onSubmit(values: FormValues) {
 		setIsSubmitting(true)
+		let notificationSent = false
 		try {
 			const bookingPayload = {
 				...values,
@@ -187,9 +188,11 @@ export default function BookingPageClient() {
 				body: JSON.stringify(bookingPayload),
 			})
 
-			if (!emailRes.ok) {
-				const errData = await emailRes.json().catch(() => ({}))
-				console.warn("Email send issue:", errData)
+			const emailResult = await emailRes.json().catch(() => ({}))
+			if (!emailRes.ok || !emailResult.success) {
+				console.error("Booking notification failed:", emailResult.message || emailRes.statusText)
+			} else {
+				notificationSent = true
 			}
 
 			// 2. Also save to Firebase for dashboard
@@ -216,7 +219,11 @@ export default function BookingPageClient() {
 				flow: "booking_form",
 			})
 
-			toast.success("Booking request sent successfully!")
+			if (notificationSent) {
+				toast.success("Booking request sent successfully!")
+			} else {
+				toast.error("Your booking was saved, but its email notification could not be sent. Please contact us if you need urgent confirmation.")
+			}
 			setShowSuccessDialog(true)
 
 			setTimeout(() => {
