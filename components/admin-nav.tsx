@@ -29,6 +29,7 @@ interface AdminNavProps {
   activeTab?: string
   setActiveTab?: (tab: string) => void
   mobileStacked?: boolean
+  compactMobile?: boolean
 }
 
 interface NavItem {
@@ -43,7 +44,7 @@ interface NavSection {
   items: NavItem[]
 }
 
-export function AdminNav({ activeTab = "dashboard", setActiveTab, mobileStacked = false }: AdminNavProps) {
+export function AdminNav({ activeTab = "dashboard", setActiveTab, mobileStacked = false, compactMobile = false }: AdminNavProps) {
   const router = useRouter()
 
   const sections: NavSection[] = [
@@ -178,13 +179,13 @@ export function AdminNav({ activeTab = "dashboard", setActiveTab, mobileStacked 
   }
 
   return (
-    <nav aria-label="Admin dashboard" className={mobileStacked ? "space-y-4 p-1" : "flex gap-2 overflow-x-auto p-1 lg:block lg:space-y-4 lg:overflow-visible"}>
+    <nav aria-label="Admin dashboard" className={mobileStacked ? "space-y-4 p-1" : compactMobile ? "flex snap-x snap-mandatory gap-2 overflow-x-auto px-1 py-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden lg:hidden" : "hidden gap-2 overflow-x-auto p-1 lg:block lg:space-y-4 lg:overflow-visible"}>
       {sections.map((section, idx) => (
-        <div key={idx} className={mobileStacked ? "space-y-1" : "flex shrink-0 items-center gap-1 lg:block lg:space-y-1"}>
-          <p className={cn("px-3 text-[10px] font-bold uppercase tracking-widest text-slate-400", mobileStacked ? "" : "hidden lg:block")}>
+        <div key={idx} className={mobileStacked ? "space-y-1" : compactMobile ? "flex shrink-0 snap-start items-center gap-1" : "flex shrink-0 items-center gap-1 lg:block lg:space-y-1"}>
+          <p className={cn("px-3 text-[10px] font-bold uppercase tracking-widest text-slate-400", mobileStacked || compactMobile ? "" : "hidden lg:block")}>
             {section.title}
           </p>
-          <div className={mobileStacked ? "space-y-0.5" : "flex gap-1 lg:block lg:space-y-0.5"}>
+          <div className={mobileStacked ? "space-y-0.5" : compactMobile ? "flex gap-1" : "flex gap-1 lg:block lg:space-y-0.5"}>
             {section.items.map((item) => {
               const isActive =
                 activeTab === item.id ||
@@ -197,7 +198,7 @@ export function AdminNav({ activeTab = "dashboard", setActiveTab, mobileStacked 
                   onClick={() => handleNavigate(item.id)}
                   className={cn(
                     "flex min-h-10 items-center justify-between rounded-lg px-3 py-2 text-left text-xs font-medium transition-all duration-150",
-                    mobileStacked ? "w-full" : "w-auto shrink-0 lg:w-full",
+                    mobileStacked ? "w-full" : compactMobile ? "min-h-10 w-auto shrink-0 whitespace-nowrap" : "w-auto shrink-0 lg:w-full",
                     isActive
                       ? "bg-slate-900 text-white font-semibold shadow-xs"
                       : "text-slate-600 hover:bg-slate-100/80 hover:text-slate-900"

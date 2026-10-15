@@ -730,7 +730,7 @@ export default function AdminDashboardPage() {
     // ─── render ────────────────────────────────────────────────────────────
 
     return (
-        <div className="mx-auto w-full max-w-[1680px] px-3 py-4 sm:px-6 sm:py-6 lg:px-8">
+        <div className="mx-auto w-full max-w-[1680px] px-3 py-3 sm:px-6 sm:py-6 lg:px-8">
             {/* Booking Manage Dialog */}
             <Dialog open={!!managingBooking} onOpenChange={(open) => !open && setManagingBooking(null)}>
                 <DialogContent className="max-w-lg rounded-2xl">
@@ -791,11 +791,11 @@ export default function AdminDashboardPage() {
                 </DialogContent>
             </Dialog>
 
-            <div className="flex min-w-0 flex-col gap-4 lg:grid lg:grid-cols-[260px_minmax(0,1fr)] lg:gap-7">
+            <div className="flex min-w-0 flex-col gap-3 sm:gap-4 lg:grid lg:grid-cols-[260px_minmax(0,1fr)] lg:gap-7">
                 {/* Sidebar */}
-                <aside className="lg:col-span-1">
+                <aside className="min-w-0 lg:col-span-1">
                     <div className="space-y-4 lg:sticky lg:top-20">
-                        <Card className="min-w-0 overflow-hidden rounded-2xl border-slate-200/80 bg-white shadow-sm">
+                        <Card className="min-w-0 overflow-hidden rounded-2xl border-slate-200/80 bg-white shadow-sm lg:sticky lg:top-[4.75rem]">
                             <div className="hidden border-b border-slate-100 px-5 py-5 lg:block">
                                 <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-cyan-700">Wave Solution</p>
                                 <h2 className="mt-1 text-lg font-semibold tracking-tight text-slate-900">Operations</h2>
@@ -805,6 +805,11 @@ export default function AdminDashboardPage() {
                                 <AdminNav activeTab={activeTab} setActiveTab={setActiveTab} />
                             </CardContent>
                         </Card>
+
+                        <div className="-mx-1 rounded-2xl border border-slate-200/80 bg-white px-3 py-2 shadow-sm lg:hidden">
+                            <p className="mb-1 px-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-slate-400">Jump to</p>
+                            <AdminNav activeTab={activeTab} setActiveTab={setActiveTab} compactMobile />
+                        </div>
 
                         <div className="hidden rounded-2xl border border-slate-200/80 bg-white p-4 lg:block">
                             <div className="flex items-center gap-3"><span className="rounded-xl bg-emerald-50 p-2 text-emerald-700"><ShieldCheck className="h-4 w-4" /></span><div className="min-w-0"><p className="text-xs font-semibold text-slate-800">Signed in</p><p className="truncate text-[11px] text-slate-500">{user?.email || "Admin account"}</p></div></div>
