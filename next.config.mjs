@@ -9,6 +9,8 @@ try {
 const nextConfig = {
   poweredByHeader: false,
   compress: true,
+  // Never publish browser source maps: they expose the original client bundle source.
+  productionBrowserSourceMaps: false,
   eslint: {
     ignoreDuringBuilds: true,
   },
