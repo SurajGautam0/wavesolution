@@ -1,8 +1,24 @@
 import { NextRequest, NextResponse } from "next/server"
 
-// OpenRouter API Configuration (Free Agentic Models)
+// OpenRouter API Configuration (free model router)
 const OPENROUTER_API_URL = "https://openrouter.ai/api/v1/chat/completions"
-const OPENROUTER_MODEL = process.env.OPENROUTER_MODEL || "dots-studio/dots-3-note-preview:free"
+const OPENROUTER_MODEL = process.env.OPENROUTER_MODEL || "openrouter/free"
+
+function extractMessageContent(content: unknown): string {
+  if (typeof content === "string") return content.trim()
+  if (!Array.isArray(content)) return ""
+
+  return content
+    .map((part) => {
+      if (typeof part === "string") return part
+      if (part && typeof part === "object" && "text" in part && typeof part.text === "string") {
+        return part.text
+      }
+      return ""
+    })
+    .join("")
+    .trim()
+}
 
 export async function POST(request: NextRequest) {
   try {
@@ -50,11 +66,7 @@ export async function POST(request: NextRequest) {
           }
         ],
         temperature: 0.7,
-        max_tokens: 400,
-        reasoning: {
-          effort: "low",
-          exclude: true,
-        },
+        max_tokens: 500,
       }),
     })
 
@@ -67,7 +79,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ message }, { status: completionResponse.status })
     }
 
-    const message = completionData?.choices?.[0]?.message?.content?.trim()
+    const message = extractMessageContent(completionData?.choices?.[0]?.message?.content)
 
     if (!message) {
       return NextResponse.json(
