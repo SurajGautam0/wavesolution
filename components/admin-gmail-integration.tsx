@@ -9,6 +9,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Mail, Send, CheckCircle2, AlertCircle, Copy, FileText } from "lucide-react"
 import { goldCoastAgencies, type RealEstateAgency } from "@/lib/real-estate-agencies"
 import { partnershipEmailTemplates, fillTemplate, type EmailTemplate } from "@/lib/partnership-email-templates"
+import { auth } from "@/lib/firebase"
 
 export function GmailIntegration() {
   // Gmail connection state
@@ -36,11 +37,19 @@ export function GmailIntegration() {
   const checkConnection = async () => {
     setConnectionLoading(true)
     try {
-      const smtpEmail = process.env.NEXT_PUBLIC_SMTP_EMAIL || "qsurajgautam@gmail.com"
+      const token = await auth.currentUser?.getIdToken()
+      if (!token) throw new Error("Sign in as an administrator to check SMTP.")
+      const response = await fetch("/api/admin/email/status", {
+        headers: { Authorization: `Bearer ${token}` },
+        cache: "no-store",
+      })
+      const result = await response.json()
+      if (!response.ok || !result.connected) throw new Error(result.error || "SMTP connection is unavailable.")
       setIsConnected(true)
-      setConnectedEmail(smtpEmail)
+      setConnectedEmail(result.email || "")
     } catch (error) {
       setIsConnected(false)
+      setSendResult({ success: false, message: error instanceof Error ? error.message : "Could not check SMTP connection." })
     } finally {
       setConnectionLoading(false)
     }
@@ -113,13 +122,22 @@ export function GmailIntegration() {
     setSendResult(null)
 
     try {
-      // For now, we'll just show success message
-      // In production, this would call the API route
-      await new Promise(resolve => setTimeout(resolve, 1500))
-      
+      const token = await auth.currentUser?.getIdToken()
+      if (!token) throw new Error("Your admin session expired. Sign in again.")
+      const response = await fetch("/api/admin/email", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ to: recipientEmail.trim(), subject: emailSubject.trim(), body: emailBody }),
+      })
+      const result = await response.json()
+      if (!response.ok || !result.success) throw new Error(result.message || "SMTP could not send this email.")
+
       setSendResult({
         success: true,
-        message: `Email sent successfully to ${recipientEmail}`
+        message: `Email sent successfully to ${recipientEmail}`,
       })
 
       // Reset form
@@ -163,8 +181,8 @@ export function GmailIntegration() {
         <CardHeader className="border-b border-slate-50 p-6 bg-white">
           <div className="flex items-center justify-between">
             <div>
-              <CardTitle className="text-lg font-bold text-slate-900">Gmail Integration</CardTitle>
-              <p className="mt-1 text-sm text-slate-500">Send partnership emails directly from your dashboard</p>
+              <CardTitle className="text-lg font-bold text-slate-900">SMTP Email Integration</CardTitle>
+              <p className="mt-1 text-sm text-slate-500">Send partnership emails through your configured SMTP account</p>
             </div>
             <div className={`inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold ${
               isConnected 
@@ -194,7 +212,7 @@ export function GmailIntegration() {
                   <Mail className="h-5 w-5 text-emerald-600" />
                 </div>
                 <div>
-                  <p className="text-sm font-semibold text-emerald-900">Gmail Account Connected</p>
+                  <p className="text-sm font-semibold text-emerald-900">SMTP account connected</p>
                   <p className="text-xs text-emerald-700 mt-0.5">{connectedEmail}</p>
                 </div>
               </div>
@@ -345,7 +363,7 @@ export function GmailIntegration() {
                 ) : (
                   <>
                     <Send className="h-4 w-4 mr-2" />
-                    Send Email via Gmail
+                    Send email via SMTP
                   </>
                 )}
               </Button>
