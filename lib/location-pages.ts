@@ -19,7 +19,7 @@ export const locationPages: LocationPage[] = [
     slug: "robina",
     name: "Robina",
     heroTitle: "Cleaning Services in Robina",
-    metaTitle: "Cleaning Services Robina | House & Office Cleaning",
+    metaTitle: "Cleaning Services Robina | Wave Solution",
     metaDescription:
       "Cleaning services in Robina for homes, offices and end of lease cleans near Robina Town Centre. Insured, police-checked team. Call 0450 833 683.",
     intro:
@@ -58,7 +58,7 @@ export const locationPages: LocationPage[] = [
     slug: "southport",
     name: "Southport",
     heroTitle: "Cleaning Services in Southport",
-    metaTitle: "Cleaning Services Southport | Home, Office & Bond Cleaning",
+    metaTitle: "Cleaning Services Southport | Wave Solution",
     metaDescription:
       "Cleaning services in Southport for homes, offices and bond cleans near the CBD and Broadwater. Local insured team. Call 0450 833 683.",
     intro:
@@ -97,7 +97,7 @@ export const locationPages: LocationPage[] = [
     slug: "surfers-paradise",
     name: "Surfers Paradise",
     heroTitle: "Cleaning Services in Surfers Paradise",
-    metaTitle: "Cleaning Services Surfers Paradise | Holiday Let & Home Cleaning",
+    metaTitle: "Cleaning Services Surfers Paradise | Wave Solution",
     metaDescription:
       "Cleaning services in Surfers Paradise for homes, holiday lets and offices near Cavill Avenue and the beachfront. Call 0450 833 683.",
     intro:
@@ -136,7 +136,7 @@ export const locationPages: LocationPage[] = [
     slug: "broadbeach",
     name: "Broadbeach",
     heroTitle: "Cleaning Services in Broadbeach",
-    metaTitle: "Cleaning Services Broadbeach | Local House & Office Cleaners",
+    metaTitle: "Cleaning Services Broadbeach | Wave Solution",
     metaDescription:
       "Cleaning services in Broadbeach for homes, offices and rental cleans near Pacific Fair and Broadbeach Waters. Call 0450 833 683.",
     intro:
@@ -175,7 +175,7 @@ export const locationPages: LocationPage[] = [
     slug: "nerang",
     name: "Nerang",
     heroTitle: "Cleaning Services in Nerang",
-    metaTitle: "Cleaning Services Nerang | House, Office & Bond Cleaning",
+    metaTitle: "Cleaning Services Nerang | Wave Solution",
     metaDescription:
       "Cleaning services in Nerang for homes, rentals and offices, including deep and end of lease cleans. Police-checked team. Call 0450 833 683.",
     intro:
@@ -219,7 +219,7 @@ export const locationPages: LocationPage[] = [
     slug: "burleigh-heads",
     name: "Burleigh Heads",
     heroTitle: "Cleaning Services in Burleigh Heads",
-    metaTitle: "Cleaning Services Burleigh Heads | Home & Office Clean",
+    metaTitle: "Cleaning Services Burleigh Heads | Wave Solution",
     metaDescription:
       "Cleaning services in Burleigh Heads for homes, apartments and businesses near James Street. Deep, end of lease and commercial cleans. Call 0450 833 683.",
     intro:
@@ -263,7 +263,7 @@ export const locationPages: LocationPage[] = [
     slug: "palm-beach",
     name: "Palm Beach",
     heroTitle: "Cleaning Services in Palm Beach",
-    metaTitle: "Cleaning Services Palm Beach | Home, Office & Rental",
+    metaTitle: "Cleaning Services Palm Beach | Wave Solution",
     metaDescription:
       "Cleaning services in Palm Beach for homes, rentals and businesses near the Gold Coast Highway. Bond, deep and commercial cleans. Call 0450 833 683.",
     intro:
@@ -307,7 +307,7 @@ export const locationPages: LocationPage[] = [
     slug: "helensvale",
     name: "Helensvale",
     heroTitle: "Cleaning Services in Helensvale",
-    metaTitle: "Cleaning Services Helensvale | Home, Office & Bond",
+    metaTitle: "Cleaning Services Helensvale | Wave Solution",
     metaDescription:
       "Cleaning services in Helensvale for homes, offices and rentals near Westfield Helensvale. Deep, end of lease and commercial cleans. Call 0450 833 683.",
     intro:
@@ -351,7 +351,7 @@ export const locationPages: LocationPage[] = [
     slug: "coomera",
     name: "Coomera",
     heroTitle: "Cleaning Services in Coomera",
-    metaTitle: "Cleaning Services Coomera | House, Office & Rental",
+    metaTitle: "Cleaning Services Coomera | Wave Solution",
     metaDescription:
       "Cleaning services in Coomera for homes, offices and rentals near Coomera Town Centre. House, deep and end of lease cleans. Call 0450 833 683.",
     intro:
@@ -395,7 +395,7 @@ export const locationPages: LocationPage[] = [
     slug: "varsity-lakes",
     name: "Varsity Lakes",
     heroTitle: "Cleaning Services in Varsity Lakes",
-    metaTitle: "Cleaning Services Varsity Lakes | House & Office Cleaning",
+    metaTitle: "Cleaning Services Varsity Lakes | Wave Solution",
     metaDescription:
       "Cleaning services in Varsity Lakes for homes, apartments and businesses near Robina. House, deep and commercial cleans. Call 0450 833 683.",
     intro:
@@ -439,7 +439,7 @@ export const locationPages: LocationPage[] = [
     slug: "carrara",
     name: "Carrara",
     heroTitle: "Cleaning Services in Carrara",
-    metaTitle: "Cleaning Services Carrara | House, Office & Bond Cleaning",
+    metaTitle: "Cleaning Services Carrara | Wave Solution",
     metaDescription:
       "Cleaning services in Carrara for homes, rentals and offices near Carrara Markets. House, bond and deep cleans by an insured local team. Call 0450 833 683.",
     intro:

@@ -17,6 +17,7 @@ export function HeroSection() {
           alt="Sunlit clean home interior with cleaning supplies"
           fill
           priority
+          quality={65}
           sizes="100vw"
           className="object-cover"
         />

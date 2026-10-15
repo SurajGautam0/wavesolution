@@ -22,7 +22,9 @@ export const metadata: Metadata = {
   metadataBase: new URL(businessInfo.baseUrl),
   title: {
     default: "Gold Coast Cleaning & Pest Control Services | Wave Solution",
-    template: "%s | Wave Solution",
+    // Page titles are authored with their brand wording already; adding a site-wide
+    // suffix caused repeated brand names and unnecessarily long search titles.
+    template: "%s",
   },
   description:
     "House, office, bond & commercial cleaning across the Gold Coast. Fully insured, police-checked cleaners. Book your free quote today.",

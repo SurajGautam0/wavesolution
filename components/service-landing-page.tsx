@@ -241,7 +241,7 @@ export function ServiceLandingPage({ page }: ServiceLandingPageProps) {
             alt={`${page.heroTitle} by Wave Solution Gold Coast`}
             fill
             priority
-            quality={80}
+            quality={65}
             sizes="100vw"
             className="object-cover"
           />

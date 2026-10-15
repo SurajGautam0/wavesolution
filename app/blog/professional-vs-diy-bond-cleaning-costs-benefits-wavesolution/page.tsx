@@ -3,7 +3,7 @@ import Link from "next/link"
 import { AuthorBio } from "@/components/author-bio"
 
 const slug = "professional-vs-diy-bond-cleaning-costs-benefits-wavesolution"
-const pageTitle = "Professional vs. DIY Bond Cleaning: Costs & Benefits | Wavesolution"
+const pageTitle = "DIY vs Professional Bond Cleaning | Gold Coast"
 const pageDescription =
   "Compare professional vs. DIY bond cleaning costs, time and bond-back risks on the Gold Coast. See which option suits your move."
 const pageUrl = `https://www.wavesolution.com.au/blog/${slug}`

@@ -43,7 +43,7 @@ export const servicePages: ServicePage[] = [
     slug: "cleaning-gold-coast",
     shortLabel: "Cleaning Services",
     navLabel: "Cleaning Services",
-    metaTitle: "Gold Coast Cleaning Services | Local Areas & Quotes",
+    metaTitle: "Gold Coast Cleaning Services | Local Coverage",
     metaDescription:
       "Find Wave Solution cleaning services across the Gold Coast, see the suburbs we serve, and choose a dedicated page for home, rental, office, or specialist cleaning.",
     heroEyebrow: "Local Gold Coast Cleaning Overview",
@@ -169,7 +169,7 @@ export const servicePages: ServicePage[] = [
     slug: "house-cleaning-gold-coast",
     shortLabel: "House Cleaning Gold Coast",
     navLabel: "House Cleaning",
-    metaTitle: "House Cleaning Gold Coast | Weekly & One-Off Cleans",
+    metaTitle: "House Cleaning Gold Coast | Weekly & One-Off",
     metaDescription:
       "Professional house cleaning in the Gold Coast for apartments, family homes and holiday properties. Weekly, fortnightly and one-off cleans available.",
     heroEyebrow: "Local House Cleaners",
@@ -299,7 +299,7 @@ export const servicePages: ServicePage[] = [
     slug: "bond-cleaning-gold-coast",
     shortLabel: "Bond Cleaning Gold Coast",
     navLabel: "Bond Cleaning",
-    metaTitle: "Bond Cleaning Gold Coast QLD | End of Lease Clean & Quote",
+    metaTitle: "Bond Cleaning Gold Coast QLD | Move-Out Clean",
     metaDescription:
       "Need bond cleaning on the Gold Coast? See inclusions, Queensland handover details and quote factors for houses, units and apartments. Request an itemised quote.",
     heroEyebrow: "Bond & End of Lease Cleaning | Queensland",
@@ -439,7 +439,7 @@ export const servicePages: ServicePage[] = [
     slug: "end-of-lease-cleaning-gold-coast",
     shortLabel: "End of Lease Cleaning Gold Coast",
     navLabel: "End of Lease",
-    metaTitle: "End of Lease Cleaning Gold Coast | Handover Planning",
+    metaTitle: "End of Lease Cleaning Gold Coast | Handover",
     metaDescription:
       "Plan end-of-lease cleaning on the Gold Coast around your handover date, property details, agreed scope, and optional carpet or pest services. Request a quote.",
     heroEyebrow: "Rental Handover Planning",
@@ -569,7 +569,7 @@ export const servicePages: ServicePage[] = [
     slug: "office-cleaning-gold-coast",
     shortLabel: "Office Cleaning Gold Coast",
     navLabel: "Office Cleaning",
-    metaTitle: "Office Cleaning Gold Coast | Workplace Cleaners | Wave Solution",
+    metaTitle: "Office Cleaning Gold Coast | Local Workplaces",
     metaDescription:
       "Office cleaning in the Gold Coast for professional suites, shared offices and business spaces. Flexible schedules, detailed checklists and local support.",
     heroEyebrow: "Workplace Cleaning",
@@ -696,7 +696,7 @@ export const servicePages: ServicePage[] = [
     slug: "commercial-cleaning-gold-coast",
     shortLabel: "Commercial Cleaning Gold Coast",
     navLabel: "Commercial Cleaning",
-    metaTitle: "Commercial Cleaning Gold Coast | Business Cleaners | Wave Solution",
+    metaTitle: "Commercial Cleaning Gold Coast | Business",
     metaDescription:
       "Commercial cleaning in the Gold Coast for offices, retail, clinics, body corporate sites and more. Tailored schedules and dependable local cleaners.",
     heroEyebrow: "Business Cleaning",
@@ -824,7 +824,7 @@ export const servicePages: ServicePage[] = [
     slug: "deep-cleaning-gold-coast",
     shortLabel: "Deep Cleaning Gold Coast",
     navLabel: "Deep Cleaning",
-    metaTitle: "Deep Cleaning Gold Coast | One-Off Intensive Clean",
+    metaTitle: "Deep Cleaning Gold Coast | One-Off Clean",
     metaDescription:
       "Deep cleaning across the Gold Coast for homes, offices and rentals that need a detailed top-to-bottom reset. Book a thorough local clean today.",
     heroEyebrow: "Detailed Cleaning Reset",
@@ -952,7 +952,7 @@ export const servicePages: ServicePage[] = [
     slug: "move-in-cleaning-gold-coast",
     shortLabel: "Move-In Cleaning Gold Coast",
     navLabel: "Move-In Cleaning",
-    metaTitle: "Move-In Cleaning Gold Coast | Fresh Start Clean",
+    metaTitle: "Move-In Cleaning Gold Coast | Home Reset",
     metaDescription:
       "Move-in cleaning across the Gold Coast for homes, apartments, rentals, and newly purchased properties. Start in a cleaner space with a fast local quote.",
     heroEyebrow: "Fresh Start Cleaning",
@@ -1079,7 +1079,7 @@ export const servicePages: ServicePage[] = [
     slug: "after-builders-cleaning-gold-coast",
     shortLabel: "After Builders Cleaning Gold Coast",
     navLabel: "After Builders Cleaning",
-    metaTitle: "After Builders Cleaning Gold Coast | Post-Reno Clean",
+    metaTitle: "After Builders Cleaning Gold Coast | Renovation",
     metaDescription:
       "After builders cleaning across the Gold Coast for homes, renovations and fit-outs needing dust and residue removal before handover. Get a quote.",
     heroEyebrow: "Post-Renovation Cleaning",
@@ -1207,7 +1207,7 @@ export const servicePages: ServicePage[] = [
     slug: "carpet-cleaning-gold-coast",
     shortLabel: "Carpet Cleaning Gold Coast",
     navLabel: "Carpet Cleaning",
-    metaTitle: "Carpet Cleaning Gold Coast | Steam & Stain Removal",
+    metaTitle: "Carpet Cleaning Gold Coast | Steam Clean",
     metaDescription:
       "Professional carpet cleaning across the Gold Coast for homes, rentals, offices, and commercial spaces. Refresh tired carpets and request a fast local quote.",
     heroEyebrow: "Carpet Refresh Service",
@@ -1337,7 +1337,7 @@ export const servicePages: ServicePage[] = [
     slug: "pest-control-gold-coast",
     shortLabel: "Pest Control Gold Coast",
     navLabel: "Pest Control",
-    metaTitle: "Pest Control Gold Coast | Homes & Businesses",
+    metaTitle: "Pest Control Gold Coast | Home & Business",
     metaDescription:
       "Pest control across the Gold Coast for homes, rentals, and business premises dealing with common coastal pest issues. Request a fast local quote today.",
     heroEyebrow: "Gold Coast Pest Support",
@@ -1467,7 +1467,7 @@ export const servicePages: ServicePage[] = [
     slug: "weekly-cleaning-gold-coast",
     shortLabel: "Weekly Cleaning Gold Coast",
     navLabel: "Weekly Cleaning",
-    metaTitle: "Weekly Cleaning Gold Coast | Regular Home Cleaners",
+    metaTitle: "Weekly Cleaning Gold Coast | Regular Service",
     metaDescription:
       "Weekly house cleaning on the Gold Coast with consistent, police-checked cleaners and tailored checklists. Get a fast quote today.",
     heroEyebrow: "Recurring Domestic Cleaning",
@@ -1582,7 +1582,7 @@ export const servicePages: ServicePage[] = [
     slug: "apartment-cleaning-gold-coast",
     shortLabel: "Apartment Cleaning Gold Coast",
     navLabel: "Apartment Cleaning",
-    metaTitle: "Apartment Cleaning Gold Coast | High-Rise & Units | Wave Solution",
+    metaTitle: "Apartment Cleaning Gold Coast | Units & High-Rise",
     metaDescription:
       "Apartment and high-rise cleaning in Surfers Paradise, Broadbeach and Southport, including balcony salt-spray care. Request a quote.",
     heroEyebrow: "Coastal High-Rise & Unit Specialists",
@@ -1698,7 +1698,7 @@ export const servicePages: ServicePage[] = [
     slug: "end-of-lease-pest-control-gold-coast",
     shortLabel: "End of Lease Pest Control Gold Coast",
     navLabel: "End of Lease Pest Control",
-    metaTitle: "End of Lease Pest Control Gold Coast | Bond Receipt | Wave Solution",
+    metaTitle: "End of Lease Pest Control Gold Coast",
     metaDescription:
       "End of lease pest control on the Gold Coast for rental handovers, with a treatment receipt for your agent. Request a quote today.",
     heroEyebrow: "QLD Rental Tenancy Compliance",

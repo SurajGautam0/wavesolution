@@ -7,20 +7,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
     const baseUrl = 'https://www.wavesolution.com.au'
 
     // Static pages with realistic last-modified dates
-    const homeLastModified = new Date('2026-09-14')
-    const servicesLastModified = new Date('2026-09-14')
+    const homeLastModified = new Date('2026-10-15')
+    const servicesLastModified = new Date('2026-10-15')
     const bookLastModified = new Date('2026-09-14')
-    const aboutLastModified = new Date('2026-09-01')
+    const aboutLastModified = new Date('2026-10-15')
     const contactLastModified = new Date('2026-09-01')
     const teamLastModified = new Date('2026-08-15')
     const testimonialsLastModified = new Date('2026-09-10')
     const galleryLastModified = new Date('2026-09-10')
-    const blogLastModified = new Date('2026-09-14')
+    const blogLastModified = new Date('2026-10-15')
     const checklistLastModified = new Date('2026-08-20')
 
     // Blog posts with actual publish dates
     const blogPosts: { slug: string; lastModified: string }[] = [
-        { slug: 'end-of-lease-cleaning-requirements-qld', lastModified: '2026-03-01' },
+        { slug: 'end-of-lease-cleaning-requirements-qld', lastModified: '2026-10-15' },
         { slug: 'end-of-lease-cleaning-cost-gold-coast', lastModified: '2025-09-22' },
         { slug: 'cleaning-tips', lastModified: '2026-02-15' },
         { slug: 'eco-friendly', lastModified: '2026-02-02' },
@@ -38,7 +38,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         { slug: 'office-cleaning-schedule', lastModified: '2025-03-15' },
         { slug: 'carpet-cleaning-guide', lastModified: '2025-03-01' },
         { slug: 'pest-control-guide', lastModified: '2025-03-20' },
-        { slug: 'professional-vs-diy-bond-cleaning-costs-benefits-wavesolution', lastModified: '2026-10-01' },
+        { slug: 'professional-vs-diy-bond-cleaning-costs-benefits-wavesolution', lastModified: '2026-10-15' },
         { slug: 'spring-cleaning-guide-gold-coast', lastModified: '2026-10-15' },
     ]
 

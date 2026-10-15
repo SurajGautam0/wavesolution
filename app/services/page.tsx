@@ -9,14 +9,14 @@ import { businessInfo, siteLinks } from "@/lib/business-info"
 import { servicePages } from "@/lib/service-pages"
 
 export const metadata: Metadata = {
-  title: "Cleaning Service Directory | Wave Solution Gold Coast",
+  title: "Cleaning Services | Wave Solution Gold Coast",
   description:
     "Browse Wave Solution's Gold Coast service directory. Compare house, bond, end-of-lease, office, commercial, carpet and specialist cleaning, then open a service page or request a quote.",
   alternates: {
     canonical: `${businessInfo.baseUrl}/services`,
   },
   openGraph: {
-    title: "Cleaning Service Directory | Wave Solution Gold Coast",
+    title: "Cleaning Services | Wave Solution Gold Coast",
     description:
       "Browse Gold Coast house, bond, end-of-lease, office, commercial, carpet and specialist cleaning services, with links to dedicated service details and quotes.",
     url: `${businessInfo.baseUrl}/services`,

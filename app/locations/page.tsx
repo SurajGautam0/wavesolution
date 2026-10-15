@@ -8,7 +8,7 @@ import { businessInfo, siteLinks } from "@/lib/business-info"
 import { locationPages } from "@/lib/location-pages"
 
 export const metadata: Metadata = {
-  title: "Gold Coast Cleaning Service Areas | Expert Local Cleaners | Wave Solution",
+  title: "Gold Coast Cleaning Areas | Wave Solution",
   description:
     "Explore Wave Solution Cleaning service areas across Gold Coast, including Robina, Southport, Surfers Paradise and Broadbeach.",
   alternates: {
