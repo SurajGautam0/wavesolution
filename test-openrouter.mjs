@@ -1,7 +1,7 @@
 // Direct OpenRouter API Test Script
 // This bypasses Next.js to test the API directly
 
-const OPENROUTER_API_KEY = "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"
+const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY?.trim()
 const OPENROUTER_API_URL = "https://openrouter.ai/api/v1/chat/completions"
 
 // Test models (we'll try each one)
@@ -76,7 +76,12 @@ async function testModel(modelId) {
 }
 
 async function runTests() {
-  console.log(`\n🔑 API Key: ${OPENROUTER_API_KEY.substring(0, 20)}...${OPENROUTER_API_KEY.substring(OPENROUTER_API_KEY.length - 4)}`)
+  if (!OPENROUTER_API_KEY) {
+    console.error("OPENROUTER_API_KEY is not set.")
+    process.exitCode = 1
+    return
+  }
+
   console.log(`📍 URL: ${OPENROUTER_API_URL}`)
   
   let workingModels = []
