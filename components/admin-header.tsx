@@ -62,7 +62,7 @@ export function AdminHeader() {
                 </div>
               </SheetHeader>
               <div className="p-3">
-                <AdminNav />
+                <AdminNav mobileStacked />
               </div>
             </SheetContent>
           </Sheet>

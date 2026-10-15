@@ -137,7 +137,7 @@ export default function UserDashboardPage() {
             <div className="classic-container py-6 sm:py-8 lg:py-10">
                 <div className="flex flex-col lg:grid lg:grid-cols-[280px_1fr] gap-6 lg:gap-8">
                     {/* Sidebar */}
-                    <aside className="lg:sticky lg:top-24 lg:self-start">
+                    <aside className="min-w-0 lg:sticky lg:top-24 lg:self-start">
                         <div className="space-y-4">
                             {/* User Card */}
                             <Card className="border border-slate-200 shadow-sm bg-white rounded-2xl overflow-hidden">
@@ -159,7 +159,7 @@ export default function UserDashboardPage() {
                             </Card>
 
                             {/* Quick Contact Card */}
-                            <Card className="border border-slate-200 shadow-sm bg-white rounded-2xl overflow-hidden">
+                            <Card className="hidden border border-slate-200 bg-white shadow-sm lg:block rounded-2xl overflow-hidden">
                                 <CardContent className="p-5 space-y-3">
                                     <p className="text-[10px] font-black uppercase tracking-widest text-slate-400">Need Help?</p>
                                     <div className="space-y-2">

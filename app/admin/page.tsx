@@ -38,6 +38,7 @@ import {
     Copy,
     Sliders,
     MailCheck,
+    Download,
 } from "lucide-react"
 import {
     getAllBookings,
@@ -118,6 +119,25 @@ export default function AdminDashboardPage() {
     const [emailRecords, setEmailRecords] = useState<any[]>([])
     const [loading, setLoading] = useState(true)
     const [searchTerm, setSearchTerm] = useState("")
+    const [subscriberSearch, setSubscriberSearch] = useState("")
+    const filteredSubscriptions = subscriptions.filter((sub) =>
+        String(sub.email || "").toLowerCase().includes(subscriberSearch.trim().toLowerCase())
+    )
+
+    const exportSubscribers = () => {
+        const escapeCsv = (value: unknown) => `"${String(value ?? "").replace(/"/g, '""')}"`
+        const rows = [
+            ["Email address", "Subscribed on", "Status"],
+            ...filteredSubscriptions.map((sub) => [sub.email, fmtDate(sub.createdAt), sub.status || "Active"]),
+        ]
+        const csv = rows.map((row) => row.map(escapeCsv).join(",")).join("\r\n")
+        const url = URL.createObjectURL(new Blob(["\uFEFF", csv], { type: "text/csv;charset=utf-8" }))
+        const link = document.createElement("a")
+        link.href = url
+        link.download = "wave-solution-newsletter-subscribers.csv"
+        link.click()
+        URL.revokeObjectURL(url)
+    }
 
     // ── AI outreach (dashboard)
     const [aiBusinessName, setAiBusinessName] = useState("")
@@ -710,7 +730,7 @@ export default function AdminDashboardPage() {
     // ─── render ────────────────────────────────────────────────────────────
 
     return (
-        <div className="mx-auto w-full max-w-[1680px] px-4 py-6 sm:px-6 lg:px-8">
+        <div className="mx-auto w-full max-w-[1680px] px-3 py-4 sm:px-6 sm:py-6 lg:px-8">
             {/* Booking Manage Dialog */}
             <Dialog open={!!managingBooking} onOpenChange={(open) => !open && setManagingBooking(null)}>
                 <DialogContent className="max-w-lg rounded-2xl">
@@ -771,17 +791,17 @@ export default function AdminDashboardPage() {
                 </DialogContent>
             </Dialog>
 
-            <div className="flex flex-col gap-6 lg:grid lg:grid-cols-[260px_minmax(0,1fr)] lg:gap-7">
+            <div className="flex min-w-0 flex-col gap-4 lg:grid lg:grid-cols-[260px_minmax(0,1fr)] lg:gap-7">
                 {/* Sidebar */}
                 <aside className="lg:col-span-1">
                     <div className="space-y-4 lg:sticky lg:top-20">
-                        <Card className="overflow-hidden rounded-2xl border-slate-200/80 bg-white shadow-sm">
-                            <div className="border-b border-slate-100 px-5 py-5">
+                        <Card className="min-w-0 overflow-hidden rounded-2xl border-slate-200/80 bg-white shadow-sm">
+                            <div className="hidden border-b border-slate-100 px-5 py-5 lg:block">
                                 <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-cyan-700">Wave Solution</p>
                                 <h2 className="mt-1 text-lg font-semibold tracking-tight text-slate-900">Operations</h2>
                                 <p className="mt-1 text-xs text-slate-500">Workspace · {user?.role || "Admin"}</p>
                             </div>
-                            <CardContent className="p-3">
+                            <CardContent className="min-w-0 p-2 lg:p-3">
                                 <AdminNav activeTab={activeTab} setActiveTab={setActiveTab} />
                             </CardContent>
                         </Card>
@@ -793,7 +813,7 @@ export default function AdminDashboardPage() {
                 </aside>
 
                 {/* Main content */}
-                <main className="min-w-0 space-y-8">
+                <main className="min-w-0 space-y-6 sm:space-y-8">
 
                     {/* ── DASHBOARD ─────────────────────────────────────────────────── */}
                     {activeTab === "dashboard" && (
@@ -1820,15 +1840,52 @@ export default function AdminDashboardPage() {
 
                     {/* ── SUBSCRIBERS ───────────────────────────────────────────────── */}
                     {activeTab === "subscribers" && (
-                        <div className="space-y-8 animate-in fade-in slide-in-from-right-6 duration-700">
-                            <div className="space-y-1">
-                                <h2 className="text-3xl font-bold text-slate-900 tracking-tight">Newsletter Subscribers</h2>
-                                <p className="text-slate-500 font-medium text-base">{subscriptions.length} active email subscribers.</p>
+                        <div className="min-w-0 space-y-5 animate-in fade-in slide-in-from-right-6 duration-700 sm:space-y-8">
+                            <div className="flex flex-col gap-4 rounded-2xl bg-gradient-to-br from-[#333365] to-[#454582] p-5 text-white shadow-sm sm:flex-row sm:items-center sm:justify-between sm:p-7">
+                                <div className="min-w-0">
+                                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-cyan-200">Audience</p>
+                                    <h2 className="mt-1 text-2xl font-bold tracking-tight sm:text-3xl">Newsletter Subscribers</h2>
+                                    <p className="mt-2 text-sm text-white/70">Manage your email community in one place.</p>
+                                </div>
+                                <div className="flex items-center gap-3 rounded-xl border border-white/15 bg-white/10 px-4 py-3 sm:min-w-44">
+                                    <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-[#39BDE4]/20 text-cyan-200"><MailCheck className="h-5 w-5" /></span>
+                                    <div><p className="text-2xl font-bold leading-none">{subscriptions.length}</p><p className="mt-1 text-xs text-white/70">Active subscribers</p></div>
+                                </div>
                             </div>
-                            <Card className="border border-slate-100 shadow-sm bg-white rounded-2xl overflow-hidden">
+
+                            <Card className="overflow-hidden rounded-2xl border border-slate-200/80 bg-white shadow-sm">
+                                <CardHeader className="gap-4 border-b border-slate-100 px-4 py-4 sm:px-6">
+                                    <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                                        <CardTitle className="text-base font-semibold text-slate-900">Subscriber list <span className="ml-1 text-sm font-normal text-slate-400">({filteredSubscriptions.length}{subscriberSearch ? ` of ${subscriptions.length}` : ""})</span></CardTitle>
+                                        <div className="flex flex-col gap-2 sm:flex-row">
+                                            <label className="relative min-w-0 sm:w-64">
+                                                <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
+                                                <Input value={subscriberSearch} onChange={(event) => setSubscriberSearch(event.target.value)} placeholder="Search email addresses" className="h-10 rounded-xl pl-9 text-sm" />
+                                            </label>
+                                            <Button type="button" variant="outline" onClick={exportSubscribers} disabled={!filteredSubscriptions.length} className="h-10 rounded-xl">
+                                                <Download className="mr-2 h-4 w-4" />Export CSV
+                                            </Button>
+                                        </div>
+                                    </div>
+                                </CardHeader>
                                 <CardContent className="p-0">
-                                    <div className="overflow-x-auto">
-                                        <table className="w-full text-left border-collapse">
+                                    <div className="divide-y divide-slate-100 sm:hidden">
+                                        {filteredSubscriptions.map((sub, i) => (
+                                            <article key={sub.id || sub.email || i} className="flex min-w-0 items-start justify-between gap-3 p-4">
+                                                <div className="flex min-w-0 items-start gap-3">
+                                                    <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-primary/10 text-primary"><MailCheck className="h-4 w-4" /></span>
+                                                    <div className="min-w-0 pt-0.5">
+                                                        <p className="break-all text-sm font-semibold text-slate-800">{sub.email}</p>
+                                                        <p className="mt-1 text-xs text-slate-500">Joined {fmtDate(sub.createdAt)}</p>
+                                                    </div>
+                                                </div>
+                                                <span className="inline-flex shrink-0 items-center rounded-full bg-green-50 px-2.5 py-1 text-[11px] font-semibold text-green-700 ring-1 ring-inset ring-green-600/20">{sub.status || "Active"}</span>
+                                            </article>
+                                        ))}
+                                        {filteredSubscriptions.length === 0 && <div className="px-4 py-12 text-center text-sm text-slate-500">{subscriptions.length ? "No emails match your search." : "No subscribers yet."}</div>}
+                                    </div>
+                                    <div className="hidden overflow-x-auto sm:block">
+                                        <table className="w-full min-w-[560px] text-left">
                                             <thead className="bg-slate-50 border-b border-slate-100">
                                                 <tr>
                                                     <th className="px-6 py-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">Email Address</th>
@@ -1837,17 +1894,17 @@ export default function AdminDashboardPage() {
                                                 </tr>
                                             </thead>
                                             <tbody className="divide-y divide-slate-50">
-                                                {subscriptions.map((sub, i) => (
-                                                    <tr key={i} className="hover:bg-slate-50/50 transition-colors">
-                                                        <td className="px-6 py-4 font-medium text-slate-900 text-sm">{sub.email}</td>
-                                                        <td className="px-6 py-4 text-sm text-slate-500">{fmtDate(sub.createdAt)}</td>
+                                                {filteredSubscriptions.map((sub, i) => (
+                                                    <tr key={sub.id || sub.email || i} className="transition-colors hover:bg-slate-50/70">
+                                                        <td className="max-w-md break-all px-6 py-4 text-sm font-medium text-slate-900">{sub.email}</td>
+                                                        <td className="whitespace-nowrap px-6 py-4 text-sm text-slate-500">{fmtDate(sub.createdAt)}</td>
                                                         <td className="px-6 py-4 text-right">
                                                             <span className="inline-flex items-center rounded-full bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20">{sub.status || "Active"}</span>
                                                         </td>
                                                     </tr>
                                                 ))}
-                                                {subscriptions.length === 0 && (
-                                                    <tr><td colSpan={3} className="px-6 py-12 text-center text-slate-500 text-sm">No subscribers yet.</td></tr>
+                                                {filteredSubscriptions.length === 0 && (
+                                                    <tr><td colSpan={3} className="px-6 py-12 text-center text-slate-500 text-sm">{subscriptions.length ? "No emails match your search." : "No subscribers yet."}</td></tr>
                                                 )}
                                             </tbody>
                                         </table>
