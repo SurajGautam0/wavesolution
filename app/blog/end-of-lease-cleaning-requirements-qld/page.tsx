@@ -26,21 +26,21 @@ import { Button } from "@/components/ui/button"
 import { AuthorBio } from "@/components/author-bio"
 
 export const metadata: Metadata = {
-  title: "End of Lease Cleaning Requirements QLD (2026) | 100% Bond Back Guide",
+  title: "End of Lease Cleaning Requirements QLD 2026 | Wave Solution",
   description:
-    "Queensland end of lease cleaning requirements guide: RTA legal rules, fair wear and tear vs cleaning breach, the exit checklist, and pet clause obligations.",
+    "Queensland rental handover guide: entry-condition standards, fair wear and tear, the exit checklist, and inspection preparation.",
   alternates: { canonical: "https://www.wavesolution.com.au/blog/end-of-lease-cleaning-requirements-qld" },
   openGraph: {
-    title: "End of Lease Cleaning Requirements QLD (2026) | 100% Bond Back Guide",
+    title: "End of Lease Cleaning Requirements QLD 2026 | Wave Solution",
     description:
-      "What is legally required for bond cleaning in Queensland? RTA compliance, room-by-room exit checklist, fair wear & tear rules, and tips to guarantee 100% bond return.",
+      "Queensland rental handover guidance: compare the property with the entry condition report, understand fair wear and tear, and prepare for the exit inspection.",
     url: "https://www.wavesolution.com.au/blog/end-of-lease-cleaning-requirements-qld",
     images: [{ url: "/gold-coast-cleaning-services.jpeg", width: 1200, height: 630, alt: "End of lease cleaning requirements QLD" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "End of Lease Cleaning Requirements QLD (2026) | 100% Bond Back Guide",
-    description: "Full guide to Queensland RTA bond cleaning standards, tenancy legislation, and room inspection checklist.",
+    title: "End of Lease Cleaning Requirements QLD 2026 | Wave Solution",
+    description: "Practical guidance for Queensland rental handover, condition reports, and exit inspections.",
     images: ["/gold-coast-cleaning-services.jpeg"],
   },
 }
@@ -69,12 +69,12 @@ const faqs = [
   {
     question: "Do pet owners need end of lease pest control in Queensland?",
     answer:
-      "Yes. Under Queensland RTA rental pet laws, if you received permission to keep a pet on the premises, landlords typically require end-of-lease flea fumigation and carpet pest treatment. You must provide a formal invoice from a licensed Queensland pest control operator upon key handover.",
+      "Not automatically. Check your tenancy agreement and any lawful special terms for requirements related to pets or treatments. Queensland rules do not let an owner require a particular service provider. Keep any relevant service records and ask the property manager to clarify written requirements.",
   },
   {
     question: "What happens if my property manager fails my bond inspection?",
     answer:
-      "If the property manager identifies areas that do not meet the exit standard, Queensland best practice gives tenants a reasonable opportunity (typically 24 to 72 hours) to rectify the issues. Professional cleaning services like Wave Solution provide a free re-clean guarantee, returning at no charge to rectify any items listed on the agent's inspection report.",
+      "Compare the exit report with your entry condition report and discuss any disputed or unclear items with the property manager. If an item within Wave Solution's agreed bond-clean scope is raised, contact us promptly so we can review it under our covered-item re-clean support. A re-clean review does not guarantee a bond refund.",
   },
 ]
 
@@ -96,7 +96,7 @@ const jsonLd = {
     },
     {
       "@type": "Article",
-      headline: "End of Lease Cleaning Requirements QLD: The Complete 2026 Tenant Guide to 100% Bond Back",
+      headline: "End of Lease Cleaning Requirements QLD: Tenant Handover Guide",
       description:
         "Detailed legal and practical breakdown of Queensland end of lease cleaning requirements under the RTRA Act. Covers Form 14a exit inspections, fair wear and tear, carpet cleaning laws, and room-by-room standards.",
       author: {
@@ -249,7 +249,7 @@ const rtaTimeline = [
   {
     time: "Post-Inspection",
     title: "Claim Your Bond via RTA Web Services",
-    desc: "Log into Queensland RTA Web Services to lodge your Refund of Rental Bond. If the agent requests rectifications, activate your cleaner's free re-clean guarantee immediately.",
+    desc: "Use the RTA Web Services process to claim your bond. Compare any requested cleaning rectifications with the entry report and contact your cleaner promptly if an agreed-scope item needs review.",
   },
 ]
 
@@ -278,10 +278,10 @@ export default function EndOfLeaseCleaningRequirementsQldPage() {
               Queensland Tenancy & RTA Compliance (2026)
             </div>
             <h1 className="text-3xl sm:text-5xl font-black tracking-tight leading-tight mb-6">
-              End of Lease Cleaning Requirements QLD: The Complete Tenant&apos;s Guide to 100% Bond Return
+              End of Lease Cleaning Requirements QLD: A Tenant&apos;s Handover Guide
             </h1>
             <p className="text-base sm:text-lg text-white/80 leading-relaxed mb-8">
-              Moving out of a Queensland rental property? Here is everything you need to know about RTRA Act standards, the difference between fair wear and tear versus tenant cleaning breaches, the Form 14a exit inspection checklist, and how to guarantee your full bond refund.
+              Moving out of a Queensland rental property? Use this guide to understand the entry-condition standard, compare fair wear and tear with cleaning issues, and prepare for the exit inspection and handover.
             </p>
 
             <div className="flex flex-wrap items-center gap-4 text-xs text-white/70">
@@ -292,7 +292,7 @@ export default function EndOfLeaseCleaningRequirementsQldPage() {
               <span className="font-semibold text-white">By the Wave Solution team</span>
               <span>•</span>
               <span className="inline-flex items-center gap-1 text-emerald-400 font-bold bg-emerald-950/60 px-2 py-0.5 rounded border border-emerald-500/30">
-                <ShieldCheck className="h-3.5 w-3.5" /> RTA Compliance Verified
+                <ShieldCheck className="h-3.5 w-3.5" /> RTA Guidance Linked
               </span>
             </div>
           </div>
@@ -317,7 +317,7 @@ export default function EndOfLeaseCleaningRequirementsQldPage() {
             </div>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-1.5">
               <ShieldCheck className="h-4 w-4 opacity-80" />
-              <span>Free Re-Clean Guarantee</span>
+              <span>Covered-item re-clean support</span>
             </div>
           </div>
         </div>
@@ -337,10 +337,10 @@ export default function EndOfLeaseCleaningRequirementsQldPage() {
                   In Queensland, the average rental bond equals four full weeks of rent — representing anywhere from <strong className="text-slate-900">$2,400 to over $4,500</strong> for Gold Coast apartments and family homes. With rental vacancy rates tight and property managers under pressure from landlords to protect asset values, final exit inspections are more rigorous than ever.
                 </p>
                 <p>
-                  According to dispute statistics from the <strong>Residential Tenancies Authority (RTA)</strong>, over <strong className="text-slate-900">45% of all bond disputes</strong> originate from disagreements over cleanliness, carpet stains, and flea treatment receipts.
+                  The Queensland RTA advises tenants and property managers to use the entry and exit condition reports to assess the property&apos;s condition. Photos and clear communication can help document any cleaning concerns.
                 </p>
                 <p>
-                  Whether you are planning to tackle the vacate clean yourself or hiring professional cleaners, knowing your exact legal obligations under Queensland tenancy legislation is the single most important step to securing your bond back without delays or tribunal disputes.
+                  Whether you clean the property yourself or hire a professional, use your entry condition report and tenancy agreement to plan the handover. Cleaning guidance is available from the <a href="https://www.rta.qld.gov.au/ending-a-tenancy/vacating-a-property/cleaning" target="_blank" rel="noopener noreferrer" className="underline">Queensland RTA</a>; the exit report should be compared with the entry report, with photos where useful.
                 </p>
               </div>
 
@@ -487,12 +487,12 @@ export default function EndOfLeaseCleaningRequirementsQldPage() {
                     4
                   </div>
                   <h2 className="text-2xl sm:text-3xl font-black tracking-tight text-primary">
-                    Special Queensland Climate &amp; Pet Requirements
+                    Handover Checks for Queensland Rentals
                   </h2>
                 </div>
 
                 <p className="text-slate-600 leading-7">
-                  Queensland&apos;s humid subtropical climate and unique residential tenancy regulations introduce several specialized requirements that differ from southern states like NSW or Victoria:
+                  Queensland&apos;s climate can affect cleaning needs, while the tenancy agreement and condition reports guide the handover requirements:
                 </p>
 
                 <div className="grid gap-4 sm:grid-cols-2">
@@ -502,7 +502,7 @@ export default function EndOfLeaseCleaningRequirementsQldPage() {
                       Subtropical Mould in Wet Areas
                     </div>
                     <p className="text-xs sm:text-sm text-slate-600 leading-6">
-                      With high humidity in Gold Coast coastal suburbs (Broadbeach, Surfers Paradise, Burleigh), silicone joints and ceiling corners readily harbour mildew. Agents test grout and bathroom fans for active mould spores.
+                      Humidity can contribute to mildew in wet areas. Check the entry and exit reports and clean visible build-up as part of preparing the property for handover.
                     </p>
                   </div>
 
@@ -512,7 +512,7 @@ export default function EndOfLeaseCleaningRequirementsQldPage() {
                       Air Con Filters &amp; Ceiling Fans
                     </div>
                     <p className="text-xs sm:text-sm text-slate-600 leading-6">
-                      Every split system and ducted air conditioner filter must be unclipped, washed of grey lint, dried, and refitted. Ceiling fan blades collect sticky static dust on top edges that agents always run a finger across.
+                      Check the agreed cleaning scope and entry report for air conditioner filters and ceiling fans. Dust can collect on fan blades and filters, so include them in your handover clean where appropriate.
                     </p>
                   </div>
                 </div>
@@ -524,14 +524,14 @@ export default function EndOfLeaseCleaningRequirementsQldPage() {
                     Queensland Pet Approval Laws &amp; Flea Fumigation
                   </div>
                   <p className="text-sm leading-6 text-indigo-900">
-                    Under Queensland rental reforms, landlords can approve pets subject to reasonable conditions. Almost all approved pet addendums mandate two things upon vacating:
+                    If you kept a pet, check your tenancy agreement for any lawful special terms that apply at the end of the tenancy. Requirements can vary; the RTA gives examples of pet-related cleaning terms and does not allow an owner to require a particular service provider. See the RTA&apos;s <a href="https://www.rta.qld.gov.au/before-renting/tenancy-agreements/special-terms" target="_blank" rel="noopener noreferrer" className="underline">special terms guidance</a>.
                   </p>
                   <ol className="list-decimal pl-5 text-sm space-y-1.5 text-indigo-950 font-medium">
                     <li>
-                      <strong>Professional carpet steam extraction:</strong> Deep hot-water extraction to eliminate animal dander, hair, and urine enzymes.
+                      Check whether a carpet clean is required by a lawful term or the documented entry condition.
                     </li>
                     <li>
-                      <strong>Licensed end-of-lease flea treatment:</strong> A formal pest spray inside and on external turf/patios. The managing agent will require an official invoice from an insured, licensed pest management technician.
+                      Check whether pest treatment applies to your tenancy and what documentation is requested. Do not assume it is required solely because you had a pet.
                     </li>
                   </ol>
                   <p className="text-xs text-indigo-800 pt-1">
@@ -547,7 +547,7 @@ export default function EndOfLeaseCleaningRequirementsQldPage() {
                     5
                   </div>
                   <h2 className="text-2xl sm:text-3xl font-black tracking-tight text-primary">
-                    The 5-Step Move-Out Timeline for 100% Bond Return
+                    A 5-Step Move-Out Timeline for Handover
                   </h2>
                 </div>
 
@@ -569,14 +569,14 @@ export default function EndOfLeaseCleaningRequirementsQldPage() {
                 </div>
               </section>
 
-              {/* Section 6: How the Free Re-Clean Guarantee Works */}
+              {/* Section 6: Re-clean support */}
               <section className="space-y-6 pt-6 border-t border-slate-100">
                 <div className="flex items-center gap-3">
                   <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-primary font-black">
                     6
                   </div>
                   <h2 className="text-2xl sm:text-3xl font-black tracking-tight text-primary">
-                    The Free Re-Clean Guarantee: Why It Matters
+                    What to Do If an Agreed Cleaning Item Is Raised
                   </h2>
                 </div>
 
@@ -585,7 +585,7 @@ export default function EndOfLeaseCleaningRequirementsQldPage() {
                     No matter how thorough a clean is, different property managers have individual pet peeves — one might focus intensely on rangehood clips, while another checks the top ridge of bathroom mirrors.
                   </p>
                   <p>
-                    This is why hiring a professional cleaning service with a genuine <strong>bond return guarantee</strong> is vital. At Wave Solution, our standard bond cleaning service includes:
+                    A cleaning company can review concerns about items included in the agreed service scope. This is separate from the bond decision, which is made through the tenancy process.
                   </p>
                 </div>
 
@@ -597,7 +597,7 @@ export default function EndOfLeaseCleaningRequirementsQldPage() {
                   <ul className="space-y-2 text-sm text-slate-700">
                     <li className="flex items-start gap-2">
                       <CheckCircle2 className="h-4 w-4 text-secondary mt-0.5 shrink-0" />
-                      <span><strong>Free Rectification:</strong> If your real estate agent flags any item from our standard scope on the exit report, our team returns within 72 hours to re-clean it at zero additional cost.</span>
+                      <span><strong>Covered-item review:</strong> Contact us promptly with the inspection feedback. We can review items within the agreed bond-clean scope and arrange a re-clean where the support terms apply. This does not guarantee a bond refund.</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <CheckCircle2 className="h-4 w-4 text-secondary mt-0.5 shrink-0" />
@@ -651,7 +651,7 @@ export default function EndOfLeaseCleaningRequirementsQldPage() {
                 </span>
                 <h3 className="mt-2 text-2xl font-black">Starting from $249</h3>
                 <p className="mt-2 text-xs sm:text-sm leading-6 text-white/75">
-                  Free Re-Clean Guarantee included. All Gold Coast suburbs covered. Same-day &amp; weekend availability.
+                  Covered-item re-clean support for eligible bond cleans. Gold Coast service areas and availability are confirmed when you request a quote.
                 </p>
 
                 <div className="mt-6 space-y-3">
@@ -670,7 +670,7 @@ export default function EndOfLeaseCleaningRequirementsQldPage() {
                 </div>
 
                 <div className="mt-5 pt-4 border-t border-white/10 flex items-center justify-between text-[11px] text-white/60">
-                  <span>✓ Free Re-Clean Guarantee</span>
+                  <span>✓ Covered-item re-clean support</span>
                   <span>✓ Licensed &amp; Insured</span>
                 </div>
               </div>
@@ -773,10 +773,10 @@ export default function EndOfLeaseCleaningRequirementsQldPage() {
             Protect Your Rental Bond
           </span>
           <h2 className="mt-3 text-3xl sm:text-4xl font-black tracking-tight">
-            Book Your Queensland Bond Clean with 100% Peace of Mind
+            Plan Your Queensland Rental Handover Clean
           </h2>
           <p className="mt-4 text-base sm:text-lg leading-8 text-white/75 max-w-2xl mx-auto">
-            Don&apos;t spend 15 exhausting hours scrubbing oven racks or scrubbing shower glass. Let our police-checked, insured team deliver an inspection-standard clean backed by our 72-hour re-clean guarantee.
+            Get a quote for a clean planned around your handover date and agreed scope. Our team can explain which items are covered by re-clean support before you book.
           </p>
 
           <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center items-center">

@@ -160,7 +160,7 @@ const jsonLd = {
               "@type": "Service",
               name: "Bond Cleaning Gold Coast",
               url: `${businessInfo.baseUrl}/bond-cleaning-gold-coast`,
-              description: "Bond cleaning with a free re-clean guarantee for covered cleaning items.",
+              description: "Bond cleaning with re-clean support for covered items within the agreed service scope; no bond refund is guaranteed.",
             },
           },
           {

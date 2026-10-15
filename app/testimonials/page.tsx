@@ -91,7 +91,7 @@ const ALL_TESTIMONIALS: Testimonial[] = [
     date: "March 6, 2024",
     initials: "RB",
     accent: "from-emerald-500 to-teal-600",
-    highlight: "Free re-clean after inspection feedback",
+    highlight: "Covered-item re-clean after feedback",
     review:
       "Our real estate property manager was notoriously strict with exit reports. WaveSolution came back and re-cleaned the items she flagged, at no extra cost. The oven, range hood, and windows looked brand new — we got our full bond back.",
   },
@@ -461,7 +461,7 @@ export default function TestimonialsPage() {
               <div className="rounded-2xl border border-slate-100 bg-gradient-to-br from-slate-50 to-blue-50/50 p-6 text-center">
                 <Sparkles className="mx-auto mb-3 h-7 w-7 text-[#249FC5]" />
                 <h3 className="text-sm font-black uppercase tracking-wide text-slate-900">
-                  Free Re-Clean Guarantee
+                  Covered-item re-clean support
                 </h3>
                 <p className="mt-2 text-xs leading-relaxed text-slate-500">
                   If anything is missed, we return and fix it at no charge.
@@ -829,7 +829,7 @@ export default function TestimonialsPage() {
                 {
                   icon: ShieldCheck,
                   title: "Bond-Ready Cleaning",
-                  desc: "We follow official RTA exit checklists and offer a free re-clean if your agent raises anything after handover.",
+                  desc: "We use a detailed bond-clean checklist and can review covered items from the agreed scope if inspection feedback is raised.",
                   color: "bg-blue-50 text-blue-600",
                 },
                 {
@@ -945,8 +945,8 @@ export default function TestimonialsPage() {
                   a: "Yes. The testimonials on this page were submitted directly by clients after completed cleans. We are happy to provide references on request.",
                 },
                 {
-                  q: "What is your bond cleaning re-clean guarantee?",
-                  a: "For bond and end-of-lease cleans, if your real estate property manager flags any area from the official condition report within 72 hours, our cleaners will return and rectify it completely free of charge.",
+                  q: "What re-clean support is available for bond cleaning?",
+                  a: "For bond and end-of-lease cleans, contact us promptly if inspection feedback identifies an item within the agreed scope. We will review it under our covered-item re-clean support. This does not guarantee a bond refund.",
                 },
                 {
                   q: "Can I request the same regular cleaner for my home or office?",
@@ -1028,7 +1028,7 @@ export default function TestimonialsPage() {
               </div>
               <div>
                 <p className="text-2xl sm:text-3xl font-black text-[#39BDE4]">Free</p>
-                <p className="text-xs text-white/60 font-medium">Re-Clean Guarantee</p>
+                <p className="text-xs text-white/60 font-medium">Covered-item re-clean support</p>
               </div>
               <div>
                 <p className="text-2xl sm:text-3xl font-black text-[#39BDE4]">15 min</p>

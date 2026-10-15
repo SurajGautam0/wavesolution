@@ -217,7 +217,7 @@ export default function EndOfLeaseCleaningCostGoldCoastPage() {
                   <div>
                     <p className="font-bold text-amber-800">Queensland Tenancy Law — Know Your Rights</p>
                     <p className="mt-2 text-sm leading-7 text-amber-700">
-                      Under the <strong>Residential Tenancies &amp; Rooming Accommodation Act (RTRA)</strong>, landlords in Queensland <strong>cannot require you to use a professional cleaner</strong> unless a professional clean was documented at the start of your tenancy. However, the property must be returned in the same condition as the entry report (fair wear and tear excepted). In practice, professional cleaning is the safest way to guarantee the standard is met.
+                      Under the <strong>Residential Tenancies &amp; Rooming Accommodation Act (RTRA)</strong>, landlords in Queensland generally cannot require you to use a professional cleaner. The property must be returned in the same condition as the entry report (fair wear and tear excepted). Professional cleaning is one option that may help you meet that standard.
                     </p>
                   </div>
                 </div>
@@ -349,7 +349,7 @@ export default function EndOfLeaseCleaningCostGoldCoastPage() {
                   <p><strong className="text-slate-800">Confirm what your lease requires.</strong> Check the entry condition report to see if carpets and pest control were professionally done when you moved in. Queensland law only requires you to match the entry condition — not exceed it.</p>
                   <p><strong className="text-slate-800">Book early, not last-minute.</strong> Same-day and next-day bookings attract surcharges. Booking 5–7 days ahead avoids short-notice fees.</p>
                   <p><strong className="text-slate-800">Empty the property first.</strong> Having all furniture removed before your clean avoids additional time charges for cleaning around items.</p>
-                  <p><strong className="text-slate-800">Ask about a re-clean guarantee.</strong> Reputable companies offer a free re-clean within 24–72 hours if the property fails inspection on a covered item.</p>
+                  <p><strong className="text-slate-800">Check the re-clean terms.</strong> Ask which items are covered, how to report inspection feedback, and what notification period applies to the service you book.</p>
                 </div>
               </div>
 
@@ -390,7 +390,7 @@ export default function EndOfLeaseCleaningCostGoldCoastPage() {
                     { icon: Home, text: "Local Gold Coast team — not a franchise" },
                     { icon: ShieldCheck, text: "Fully insured and police-checked" },
                     { icon: CheckCircle2, text: "Fixed price — no surprise extras" },
-                    { icon: Clock, text: "Free re-clean if inspection fails" },
+                    { icon: Clock, text: "Ask about covered-item re-clean support" },
                   ].map(({ icon: Icon, text }) => (
                     <li key={text} className="flex items-center gap-3 text-sm text-slate-700">
                       <Icon className="h-4 w-4 text-secondary shrink-0" />

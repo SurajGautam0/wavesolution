@@ -276,7 +276,7 @@ export function generateEnhancedLocalBusinessSchema() {
           itemOffered: {
             '@type': 'Service',
             name: 'Bond Cleaning Gold Coast',
-            description: 'Detailed bond cleaning with a free re-clean guarantee for covered cleaning items.',
+            description: 'Detailed bond cleaning with re-clean support for covered items within the agreed service scope; no bond refund is guaranteed.',
           },
         },
         {
@@ -300,7 +300,7 @@ export function generateEnhancedLocalBusinessSchema() {
           itemOffered: {
             '@type': 'Service',
             name: 'End of Lease Cleaning Gold Coast',
-            description: 'Complete end of lease cleaning for rentals with a free re-clean guarantee.',
+            description: 'End of lease cleaning with re-clean support for covered items within the agreed service scope; no bond refund is guaranteed.',
           },
         },
         {

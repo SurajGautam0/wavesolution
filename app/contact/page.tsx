@@ -602,7 +602,7 @@ export default function ContactPage() {
 
               {/* Trust & Guarantee Sidebar (5 cols) */}
               <div className="lg:col-span-5 space-y-6">
-                {/* Free Re-Clean Guarantee Card */}
+              {/* Bond-clean re-clean support */}
                 <div className="rounded-3xl bg-gradient-to-br from-[#23234d] to-[#333365] text-white p-7 shadow-xl">
                   <div className="flex items-center gap-3 mb-4">
                     <div className="p-3 rounded-2xl bg-[#39BDE4]/20 text-[#39BDE4]">
@@ -610,15 +610,15 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <h3 className="text-lg font-black text-white">
-                        Free Re-Clean Guarantee
+                        Bond-clean re-clean support
                       </h3>
                       <p className="text-xs text-[#39BDE4] font-semibold">
-                        Free re-clean if your agent raises anything
+                        Covered items within the agreed bond-clean scope
                       </p>
                     </div>
                   </div>
                   <p className="text-xs sm:text-sm text-white/80 leading-relaxed mb-4">
-                    If your property manager flags any cleaning item from the official RTA exit report, our cleaners will return and fix it at zero extra charge.
+                    Contact us promptly if inspection feedback identifies an item within your agreed bond or end-of-lease clean scope. We can review it under our covered-item re-clean support; this does not guarantee a bond refund.
                   </p>
                   <ul className="space-y-2 text-xs text-white/90">
                     <li className="flex items-center gap-2">
@@ -673,8 +673,8 @@ export default function ContactPage() {
                       <Star className="h-4 w-4 fill-amber-400" />
                     </div>
                     <div>
-                      <p className="text-xs font-bold text-slate-900">Free Re-Clean Guarantee</p>
-                      <p className="text-xs text-slate-500">If anything is missed, we return and fix it free.</p>
+                      <p className="text-xs font-bold text-slate-900">Covered-item re-clean support</p>
+                      <p className="text-xs text-slate-500">Available for eligible items in agreed bond-clean scope.</p>
                     </div>
                   </div>
                 </div>

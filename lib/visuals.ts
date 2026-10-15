@@ -87,7 +87,7 @@ export const bathroomEmoji: Record<string, string> = {
 export const trustPoints = [
   { emoji: "🛡️", label: "Fully Insured" },
   { emoji: "👮", label: "Police Checked" },
-  { emoji: "⭐", label: "Free Re-Clean Guarantee" },
+  { emoji: "⭐", label: "Covered-item re-clean support" },
   { emoji: "⚡", label: "Same-day Available" },
 ] as const
 

@@ -944,8 +944,8 @@ export default function BookingPageClient() {
 									{/* Guarantee Badge */}
 									<div className="rounded-2xl border border-green-200 bg-green-50 p-5 text-center">
 										<div className="mx-auto mb-2 text-3xl leading-none" aria-hidden="true">🛡️</div>
-										<p className="text-sm font-bold text-green-800">Free Re-Clean Guarantee</p>
-										<p className="mt-1 text-xs text-green-600">Not happy? We will re-clean for free.</p>
+										<p className="text-sm font-bold text-green-800">Covered-item re-clean support</p>
+										<p className="mt-1 text-xs text-green-600">For eligible items in agreed bond-clean scope.</p>
 									</div>
 								</div>
 							</div>
@@ -959,7 +959,7 @@ export default function BookingPageClient() {
 						{ emoji: "👮", value: "Vetted", label: "Police Checked" },
 						{ emoji: "🛡️", value: "Insured", label: "Professional Team" },
 						{ emoji: "⚡", value: "15 min", label: "Quote Response" },
-						{ emoji: "✅", value: "Free", label: "Re-Clean Guarantee" },
+						{ emoji: "✅", value: "Scoped", label: "Re-Clean Support" },
 					].map((stat) => (
 						<div key={stat.label} className="py-4">
 							<div className="mb-2 text-2xl leading-none" aria-hidden="true">{stat.emoji}</div>

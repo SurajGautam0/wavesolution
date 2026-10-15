@@ -4,7 +4,7 @@ import { ChevronRight, CheckCircle2 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 export const metadata: Metadata = {
-  title: "Move-In Cleaning Tips: How to Prepare Your New Gold Coast Home",
+  title: "Move-In Cleaning Checklist Gold Coast | Wave Solution",
   description: "Moving into a new Gold Coast property? Here's how to clean it properly before you unpack — what to prioritise, what to check, and when to call a professional.",
   keywords: ["move in cleaning tips Gold Coast", "new home cleaning Gold Coast", "pre move in cleaning checklist", "move in cleaning guide Queensland"],
   alternates: { canonical: "https://www.wavesolution.com.au/blog/move-in-cleaning-tips" },

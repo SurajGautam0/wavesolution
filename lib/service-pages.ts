@@ -43,13 +43,13 @@ export const servicePages: ServicePage[] = [
     slug: "cleaning-gold-coast",
     shortLabel: "Cleaning Services",
     navLabel: "Cleaning Services",
-    metaTitle: "Cleaning Services Gold Coast | Home, Office & Bond",
+    metaTitle: "Gold Coast Cleaning Services | Local Areas & Quotes",
     metaDescription:
-      "Professional cleaning services across the Gold Coast for homes, rentals, offices and commercial spaces. Fully insured, police-checked local team. Get a quote.",
-    heroEyebrow: "Gold Coast Cleaning Services Hub",
-    heroTitle: "Cleaning Services on the Gold Coast",
+      "Find Wave Solution cleaning services across the Gold Coast, see the suburbs we serve, and choose a dedicated page for home, rental, office, or specialist cleaning.",
+    heroEyebrow: "Local Gold Coast Cleaning Overview",
+    heroTitle: "Local Cleaning Services Across the Gold Coast",
     heroDescription:
-      "Whether you need recurring domestic cleaning, an inspection-ready bond clean, or dependable workplace maintenance, Wave Solution delivers consistent, high-standard property care across the Gold Coast.",
+      "Explore Wave Solution's Gold Coast service coverage, see which cleaning options fit your property, and open the dedicated service page for inclusions and quote details.",
     primaryKeyword: "cleaning services Gold Coast",
     keywords: [
       "cleaning services Gold Coast",
@@ -58,7 +58,7 @@ export const servicePages: ServicePage[] = [
       "commercial cleaning Gold Coast",
       "bond cleaning Gold Coast",
     ],
-    quickAnswer: "Wave Solution covers cleaning and pest control across the Gold Coast, from Coomera and Helensvale down to Burleigh Heads and Palm Beach. One insured, police-checked team handles recurring house cleans, bond and end of lease work, office and commercial programs, carpet steam cleaning and pest treatment. Every job is quoted up front by property size, condition and timing, so the scope is agreed before work starts.",
+    quickAnswer: "Wave Solution provides house, rental, office, commercial and specialist cleaning across the Gold Coast, including Southport, Robina, Surfers Paradise, Broadbeach, Burleigh Heads, Palm Beach, Nerang, Helensvale, Coomera and Varsity Lakes. Choose the relevant service page to review its scope, then request a quote using your suburb, property details and preferred timing.",
     overview: [
       "Finding the right cleaning team should be simple. You want reliable cleaners who arrive on schedule, communicate clearly, and leave your property noticeably cleaner, fresher, and properly sanitized. At Wave Solution, we provide dependable domestic, commercial, and move-out cleaning across the Gold Coast without lock-in contracts or hidden fees.",
       "Different properties require different levels of care. A family home in Robina needs practical routine upkeep; a coastal apartment in Surfers Paradise requires attention to salt spray and sliding tracks; while a rental bond clean in Southport demands strict adherence to Queensland tenancy inspection checklists. This guide helps you identify the right service for your situation.",
@@ -79,7 +79,7 @@ export const servicePages: ServicePage[] = [
         title: "Find the right service for your property",
         paragraphs: [
           "To make booking straightforward, our services are organized into four core categories: Residential, Rental Handover, Commercial, and Specialist care. If you need regular maintenance to keep up with daily life, our recurring house cleaning keeps kitchens, bathrooms, and floors continuously clean. If your home hasn't had deep attention in months, our one-off deep clean provides an intensive reset.",
-          "For tenants moving out, our bond and end-of-lease cleaning focuses strictly on the items property managers scrutinize during final inspections. We methodically clean oven interiors, rangehood filters, window tracks, skirting boards, and bathroom tile grout to give you the best possible protection for your bond refund.",
+          "For tenants moving out, our bond and end-of-lease cleaning focuses on the agreed handover scope, including oven interiors, rangehood filters, window tracks, skirting boards, and bathroom tile grout. A professional clean can help prepare the property for inspection, but the bond refund decision belongs to the property manager or landlord.",
         ],
       },
       {
@@ -285,7 +285,7 @@ export const servicePages: ServicePage[] = [
       {
         question: "What if I'm not happy with the clean?",
         answer:
-          "If a covered cleaning item has been missed, contact us and we will return to re-clean it at no charge.",
+          "Please check the agreed scope at the quote stage. Re-clean support for covered missed items applies to bond and end-of-lease cleans, not as a general guarantee on every service.",
       },
     ],
     relatedSlugs: [
@@ -299,22 +299,24 @@ export const servicePages: ServicePage[] = [
     slug: "bond-cleaning-gold-coast",
     shortLabel: "Bond Cleaning Gold Coast",
     navLabel: "Bond Cleaning",
-    metaTitle: "Bond Cleaning Gold Coast | Detailed Move-Out Cleaning",
+    metaTitle: "Bond Cleaning Gold Coast QLD | End of Lease Clean & Quote",
     metaDescription:
-      "Thorough bond cleaning in the Gold Coast with agent-ready checklists for tenants, landlords and property managers. Request a quote for your move-out clean.",
-    heroEyebrow: "Move-Out Cleaning",
+      "Need bond cleaning on the Gold Coast? See inclusions, Queensland handover details and quote factors for houses, units and apartments. Request an itemised quote.",
+    heroEyebrow: "Bond & End of Lease Cleaning | Queensland",
     heroTitle: "Bond Cleaning Gold Coast",
     heroDescription:
-      "Book detailed bond cleaning in the Gold Coast for apartments, units, townhouses, and family homes that need to present well for final inspection and handover.",
+      "Book a detailed Gold Coast bond clean for your Queensland rental handover. We clean apartments, units, townhouses, and family homes against an agreed, property-specific checklist.",
     primaryKeyword: "bond cleaning Gold Coast",
     keywords: [
       "bond cleaning Gold Coast",
+      "bond cleaning Gold Coast QLD",
       "bond cleaners Gold Coast",
       "move out cleaning Gold Coast",
       "rental cleaning Gold Coast",
       "vacate cleaning Gold Coast",
       "exit cleaning Gold Coast",
       "end of lease bond clean Gold Coast",
+      "end of lease cleaners Gold Coast",
       "bond back cleaning Gold Coast",
       "REIQ bond cleaning Gold Coast",
       "rental inspection cleaning Gold Coast",
@@ -323,7 +325,7 @@ export const servicePages: ServicePage[] = [
     overview: [
       "Moving out of a rental property is stressful enough without worrying about whether you will get your full bond back. Property managers and real estate agents conduct rigorous exit inspections, comparing every room against your entry condition report. Standard household cleaning is rarely enough to meet their exacting standards.",
       "Wave Solution specializes in inspection-ready bond cleaning designed to satisfy real estate property managers across the Gold Coast. We systematically tackle the toughest areas—baked-on oven grease, exhaust fan filters, bathroom soap scum, window tracks, and skirting boards—ensuring your rental is handed over in pristine condition.",
-      "We stand firmly behind our workmanship. If your property manager identifies any cleaning issue on their exit inspection report, we return within 48 hours to rectify the item at zero additional cost to you.",
+      "If your property manager identifies a cleaning issue after the service, contact us promptly. We review it against the agreed checklist and arrange any follow-up support that applies to the original scope.",
     ],
     includedItems: [
       "Kitchen: Deep oven clean (racks, glass, trays), stovetop, rangehood filters, cupboards inside/out, splashbacks, and tapware",
@@ -331,15 +333,15 @@ export const servicePages: ServicePage[] = [
       "Living & Bedrooms: Wardrobe interiors, shelving, doors, handles, light switches, and skirting boards wiped clean",
       "Windows & Tracks: Interior window glass, sills, and deep vacuuming/scrubbing of sliding door tracks",
       "Floors: High-suction HEPA vacuuming of carpets and damp mopping of hard tiled and vinyl surfaces",
-      "Bond Warranty: Free re-clean support if your real estate agent notes any cleaning defect on inspection",
+      "Follow-up support: Contact us promptly if an inspection raises a cleaning issue within the agreed service scope",
     ],
     whyChooseUs: sharedWhyChooseUs,
     sections: [
       {
         directAnswer: "Your bond clean is judged against the entry condition report rather than a generic checklist, so the priority areas are the oven, rangehood, window tracks, shower screens, skirting boards and any marks on walls or floors. Queensland tenants must leave the property reasonably clean and in substantially the same condition as at the start of the tenancy, allowing for fair wear and tear, and hiring a professional cleaner is a practical way to prove that standard rather than a legal requirement.",
-        title: "Built specifically for Queensland rental exit inspections",
+        title: "Queensland bond cleaning for rental exit inspections",
         paragraphs: [
-          "In Queensland, tenancy legislation requires properties to be returned in the same condition as noted on the initial Entry Condition Report (fair wear and tear excepted). Real estate agents inspect rental properties methodically, checking high and low for dust, grease, and grime that daily living leaves behind.",
+          "For a Queensland end-of-lease clean, use the Entry Condition Report as the reference for the property's starting condition, allowing for fair wear and tear. Property managers inspect rental properties methodically, checking for dust, grease, and grime in the areas covered by the agreed cleaning scope.",
           "Our bond cleaning checklist is modeled directly on standard REIQ (Real Estate Institute of Queensland) handover requirements. We clean systematically from ceilings and light fittings down to skirting boards and floor edges, ensuring every room is presented to inspection-ready standards.",
         ],
       },
@@ -352,10 +354,10 @@ export const servicePages: ServicePage[] = [
       },
       {
         directAnswer: "Coastal apartments add lift bookings, balcony salt residue and body corporate access rules, while houses and townhouses add yards, garages and exterior windows. Tell us the property type when you quote so the checklist and the time allowed on site match the actual site.",
-        title: "How to book your Gold Coast bond clean for handover day",
+        title: "Bond cleaning quotes and handover timing on the Gold Coast",
         paragraphs: [
           "Timing your clean properly is essential for a stress-free move. We strongly recommend scheduling your bond clean for the day after all furniture, boxes, and personal belongings have been removed by removalists. This ensures our cleaners can access all corners, cupboards, and wall surfaces without obstruction.",
-          "To request a quote, simply provide your property address, bedroom and bathroom count, preferred cleaning date, and any extras needed (such as carpet steam cleaning or end-of-lease flea treatment). We provide an all-inclusive, fixed-price quote with no surprise fees on arrival.",
+          "For an itemised quote, share your suburb, property type, bedroom and bathroom count, preferred cleaning date, and any requested extras such as carpet steam cleaning or pest treatment. Confirm the inclusions and any exclusions before booking so the quote matches the property and handover requirements.",
         ],
       },
       {
@@ -366,10 +368,10 @@ export const servicePages: ServicePage[] = [
         ],
       },
       {
-        title: "Our free re-clean guarantee",
+        title: "Re-clean support for covered bond-clean items",
         paragraphs: [
-          "A rental bond is a significant financial deposit. While the bond-return decision belongs to the property manager or landlord, our free re-clean guarantee covers cleaning items missed within the agreed service scope.",
-          "If a covered cleaning item is flagged after the clean, contact us with the inspection details. We will review the request and arrange a return clean for the covered area at no charge.",
+          "For bond and end-of-lease cleans, covered cleaning items from the agreed service scope can be reviewed after the property inspection. This support applies to cleaning work only and does not guarantee that a bond will be refunded.",
+          "If the inspection identifies a possible missed item, contact us promptly with the inspection details. We will compare the request with the original checklist and confirm whether it is covered for a no-charge re-clean.",
         ],
       },
     ],
@@ -380,9 +382,9 @@ export const servicePages: ServicePage[] = [
           "Bond cleaning generally covers kitchens, bathrooms, floors, internal surfaces, cupboards, fittings, and room-by-room detailing based on the agreed scope and property condition.",
       },
       {
-        question: "How is bond cleaning priced?",
+        question: "How much does bond cleaning cost on the Gold Coast?",
         answer:
-          "Pricing depends on the size of the property, the condition, the number of rooms, access timing, and any optional extras requested. Bond cleaning starts from $250.",
+          "Bond cleaning starts from $250. The quote depends on property type and size, condition, access and timing, and any optional extras. Share your suburb, bedroom and bathroom count, preferred date, and requested add-ons for an itemised quote.",
       },
       {
         question: "Can I add carpet cleaning or extra detailing to my bond clean?",
@@ -397,7 +399,7 @@ export const servicePages: ServicePage[] = [
       {
         question: "Do you guarantee bond back with your cleaning?",
         answer:
-          "We deliver a thorough, inspection-ready clean. While bond return decisions are made by the property manager or landlord, our detailed approach is designed to meet standard rental inspection requirements.",
+          "No cleaner can guarantee a bond refund because that decision belongs to the property manager or landlord. We clean to the agreed scope and can review covered items if an inspection identifies a possible omission.",
       },
       {
         question: "How long does bond cleaning take?",
@@ -422,7 +424,7 @@ export const servicePages: ServicePage[] = [
       {
         question: "What if the property manager finds something after the clean?",
         answer:
-          "Contact us promptly with the details. We will review the scope and arrange a follow-up visit if a missed item falls within the original agreed service.",
+          "Contact us promptly with the details. We will review the inspection note against the original agreed checklist and confirm whether the item is covered for a no-charge re-clean.",
       },
     ],
     relatedSlugs: [
@@ -437,13 +439,13 @@ export const servicePages: ServicePage[] = [
     slug: "end-of-lease-cleaning-gold-coast",
     shortLabel: "End of Lease Cleaning Gold Coast",
     navLabel: "End of Lease",
-    metaTitle: "End of Lease Cleaning Gold Coast | Rental Exit Clean",
+    metaTitle: "End of Lease Cleaning Gold Coast | Handover Planning",
     metaDescription:
-      "End of lease cleaning across the Gold Coast for apartments, houses and rental properties. Detailed cleaning designed to help present the property at handover.",
-    heroEyebrow: "Rental Exit Cleaning",
+      "Plan end-of-lease cleaning on the Gold Coast around your handover date, property details, agreed scope, and optional carpet or pest services. Request a quote.",
+    heroEyebrow: "Rental Handover Planning",
     heroTitle: "End of Lease Cleaning Gold Coast",
     heroDescription:
-      "Wave Solution provides end of lease cleaning across the Gold Coast for tenants, landlords, and property managers who need a detailed handover-ready clean.",
+      "Plan an end-of-lease clean around your Gold Coast handover date. Share your property details and requested extras so the agreed cleaning scope and access timing are clear before booking.",
     primaryKeyword: "end of lease cleaning Gold Coast",
     keywords: [
       "end of lease cleaning Gold Coast",
@@ -452,12 +454,11 @@ export const servicePages: ServicePage[] = [
       "move out cleaning Gold Coast",
       "vacate cleaning Gold Coast",
       "exit cleaning Gold Coast",
-      "bond cleaning Gold Coast",
       "final inspection cleaning Gold Coast",
       "move out clean Gold Coast",
       "end of tenancy cleaning Gold Coast",
     ],
-    quickAnswer: "End of lease cleaning on the Gold Coast is the final clean before you hand back keys, covering ovens, rangehoods, skirting boards, window tracks, bathrooms and floors. It is priced by property size and condition, with carpet cleaning and pest treatment bookable in the same visit if your agency asks for them. Wave Solution schedules the work around your handover date and walks the property through the checklist with you before finishing.",
+    quickAnswer: "End-of-lease cleaning on the Gold Coast is planned around the rental handover date, property access, and the agreed room-by-room scope. Share your suburb, property type, bedroom and bathroom count, and requested extras such as carpet cleaning or pest treatment. This page focuses on scheduling and coordinating the handover clean; the bond-cleaning page explains cleaning inclusions and inspection-related re-clean support.",
     overview: [
       "Vacating a rental property involves an overwhelming list of tasks—packing boxes, booking removalists, redirecting mail, and finalizing utility accounts. The last thing you need during this transition is the exhausting burden of spending entire days on hands-and-knees scrubbing before returning your keys.",
       "Wave Solution's end-of-lease cleaning service is designed to take complete ownership of your final property handover. We understand what real estate agents look for during vacating inspections and methodically clean your rental from top to bottom so you can complete your handover with confidence.",
@@ -474,8 +475,8 @@ export const servicePages: ServicePage[] = [
     whyChooseUs: sharedWhyChooseUs,
     sections: [
       {
-        directAnswer: "Give yourself a buffer between the clean and your handover date so anything your agent flags can be corrected before the keys go back. The scope is taken from the entry condition report plus the property size and condition, which is what drives the quote.",
-        title: "Comprehensive rental exit cleaning before key handover",
+        directAnswer: "Choose a cleaning date after belongings have been removed and leave time before key handover to review the completed scope. Share access details and the handover deadline when requesting a quote.",
+        title: "Plan end-of-lease cleaning around your handover date",
         paragraphs: [
           "Moving out requires a far more intensive clean than routine household maintenance. Real estate property managers expect light fixtures dusted, exhaust fans cleared of lint, oven racks and glass degreased, internal cabinetry washed, and tile grout scrubbed clean.",
           "Our end-of-lease cleaning checklist covers every room systematically. By handing this demanding job to an experienced, insured team, you eliminate the risk of delayed handovers, re-inspection fees, and last-minute disputes with your leasing agent.",
@@ -506,9 +507,9 @@ export const servicePages: ServicePage[] = [
     ],
     faqs: [
       {
-        question: "Is end of lease cleaning the same as bond cleaning?",
+        question: "When should I schedule end-of-lease cleaning?",
         answer:
-          "They are closely related. End of lease cleaning focuses on preparing the property for handover, while bond cleaning language often focuses on the standard expected before the bond is returned.",
+          "Book after your furniture and belongings have been removed, and leave a buffer before key handover for access, inspection, or any follow-up on covered items. Share your handover date and building access requirements when requesting a quote.",
       },
       {
         question: "What parts of the property are usually included?",
@@ -1703,7 +1704,7 @@ export const servicePages: ServicePage[] = [
     heroEyebrow: "QLD Rental Tenancy Compliance",
     heroTitle: "End of Lease Pest Control in Gold Coast",
     heroDescription:
-      "Wave Solution delivers certified end of lease pest control for tenants moving out of Gold Coast rental properties. Flea treatments for pet clauses, cockroach eradication, and immediate compliance certificates for your property manager to ensure full bond return.",
+      "Wave Solution provides end-of-lease pest treatments for Gold Coast rental properties, including flea treatments where required by a documented pet clause and treatment records for the property manager. Pest treatment does not determine whether a bond is refunded.",
     primaryKeyword: "end of lease pest control Gold Coast",
     keywords: [
       "end of lease pest control Gold Coast",
@@ -1717,7 +1718,7 @@ export const servicePages: ServicePage[] = [
     quickAnswer: "End of lease pest control is a treatment booked before or alongside your bond clean so you can hand your agent a treatment receipt at the final inspection. Pricing depends on the property size, the pests being treated and whether fleas, cockroaches or spiders are the focus. Wave Solution can sequence pest treatment, carpet cleaning and bond cleaning in one booking so nothing clashes with your handover date.",
     overview: [
       "Moving out of a rental property in Queensland is demanding, and lease agreements frequently require professional pest control before your rental bond can be legally released. Under Queensland Residential Tenancies Authority (RTA) regulations, tenants who have kept domestic pets are almost universally obligated to provide a certified end of lease flea treatment receipt.",
-      "Even properties without pets frequently specify an end of lease pest spray for common pests like cockroaches, silverfish, and spiders as part of the vacate condition standards. Failing to provide an authorized pest control receipt from an insured, licensed technician can cause bond disputes, delayed refunds, or costly agent re-cleans.",
+          "A rental agreement or documented pet condition may specify an end-of-lease pest treatment. Check your agreement and ask the property manager what documentation is required; treatment records can help show which service was completed.",
       "Wave Solution provides hassle-free, fully compliant end of lease pest management across the Gold Coast. We coordinate seamlessly with your bond cleaning and carpet steam cleaning schedule, issuing an immediate digital receipt and treatment certificate that property managers accept without question.",
     ],
     includedItems: [
@@ -1858,7 +1859,7 @@ export const servicePages: ServicePage[] = [
         title: "Bond and end of lease cleaning in Carrara",
         paragraphs: [
           "Moving out of a Carrara rental? Our bond cleaning service is designed specifically for Queensland rental inspections. We follow a comprehensive exit checklist covering oven interiors, rangehood filters, bathroom tile grout, window tracks, skirting boards, light switches, and all other areas property managers scrutinise during final walkthroughs.",
-          "A clean that follows the agreed scope can help prepare a property for a Queensland tenancy handover. If a covered cleaning item is missed, contact us to arrange a free re-clean of that area.",
+          "A clean that follows the agreed scope can help prepare a property for a Queensland tenancy handover. For bond and end-of-lease cleans, contact us promptly if an inspection identifies a possible missed item within the agreed scope so we can review it for re-clean support.",
         ],
       },
       {

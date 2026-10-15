@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button"
 import { AuthorBio } from "@/components/author-bio"
 
 export const metadata: Metadata = {
-  title: "Mould Prevention Guide for Gold Coast Homes | Humidity & Cleaning Tips",
+  title: "Mould Prevention Guide for Gold Coast Homes | Wave Solution",
   description:
     "Gold Coast's humid climate makes mould a common problem. How to prevent, remove and manage mould and moisture in bathrooms, bedrooms and kitchens.",
   keywords: [

@@ -38,6 +38,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
         { slug: 'office-cleaning-schedule', lastModified: '2025-03-15' },
         { slug: 'carpet-cleaning-guide', lastModified: '2025-03-01' },
         { slug: 'pest-control-guide', lastModified: '2025-03-20' },
+        { slug: 'professional-vs-diy-bond-cleaning-costs-benefits-wavesolution', lastModified: '2026-10-01' },
+        { slug: 'spring-cleaning-guide-gold-coast', lastModified: '2026-10-15' },
     ]
 
     return [

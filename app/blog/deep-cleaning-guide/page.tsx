@@ -4,7 +4,7 @@ import { ChevronRight, CheckCircle2 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 export const metadata: Metadata = {
-  title: "Deep Cleaning vs Regular Cleaning: When to Book a Deep Clean | Gold Coast",
+  title: "Deep Cleaning Guide Gold Coast | When & How to Book",
   description: "Understand the difference between standard cleaning and deep cleaning — and when your Gold Coast home or office needs a more thorough one-off reset.",
   keywords: ["deep cleaning vs regular cleaning", "when to book deep clean Gold Coast", "one-off deep clean Gold Coast", "spring cleaning Gold Coast", "deep cleaning benefits"],
   alternates: { canonical: "https://www.wavesolution.com.au/blog/deep-cleaning-guide" },

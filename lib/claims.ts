@@ -39,9 +39,10 @@ export const serviceAreaLabel = `${serviceAreaCount} Gold Coast suburbs`
 export const insuranceLabel = "Fully insured"
 export const insuranceLongLabel = "Fully insured with public liability cover"
 
-/** The one guarantee term used sitewide (previously 72h / 100% / inspection-ready). */
-export const guaranteeLabel = "Free re-clean guarantee"
-export const guaranteeDetail = "If anything is missed, we return and fix it at no charge."
+/** Re-clean support is limited to covered items in the agreed bond-clean scope. */
+export const guaranteeLabel = "Bond-clean re-clean support"
+export const guaranteeDetail =
+  "For bond and end-of-lease cleans, covered items from the agreed scope can be reviewed after inspection. This does not guarantee a bond refund."
 
 /**
  * Objective trust points that are verifiable from the business's own policy
@@ -51,7 +52,7 @@ export const trustBadges = [
   "Fully insured",
   "Police-checked team",
   "Locally owned",
-  "Free re-clean guarantee",
+  "Bond-clean re-clean support",
 ] as const
 
 /** Short badge text for tight spaces (cards, inline strips). */

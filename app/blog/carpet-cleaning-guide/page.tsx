@@ -4,13 +4,13 @@ import { ChevronRight, CheckCircle2 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 export const metadata: Metadata = {
-  title: "Carpet Cleaning Guide Gold Coast | How Often, Costs & Methods",
+  title: "Carpet Cleaning Guide Gold Coast | Wave Solution",
   description:
     "Carpet cleaning guide for Gold Coast homes and rentals: how often carpets should be cleaned, what methods work best, and when to book a professional.",
   keywords: ["carpet cleaning guide Gold Coast", "carpet cleaning tips", "how often carpet cleaning", "carpet steam cleaning Gold Coast", "carpet stain removal Gold Coast"],
   alternates: { canonical: "https://www.wavesolution.com.au/blog/carpet-cleaning-guide" },
   openGraph: {
-    title: "Carpet Cleaning Guide Gold Coast | How Often, Costs & Methods",
+    title: "Carpet Cleaning Guide Gold Coast | Wave Solution",
     description: "Everything Gold Coast homeowners and renters need to know about professional carpet cleaning.",
     url: "https://www.wavesolution.com.au/blog/carpet-cleaning-guide",
   },

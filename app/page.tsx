@@ -149,25 +149,25 @@ const homepageFaqs = [
 ]
 
 export const metadata: Metadata = {
-  title: "Gold Coast Cleaning & Pest Control | House, Bond & Office",
+  title: "Wave Solution Cleaning | Gold Coast Local Cleaners",
   description:
-    "House, office, bond and commercial cleaning across the Gold Coast, plus pest control. Fully insured, police-checked team. Get a free quote.",
+    "Meet Wave Solution, a local Gold Coast cleaning team for homes, rentals, offices, and businesses. Compare services, explore local coverage, or request a quote.",
   alternates: {
     canonical: businessInfo.baseUrl,
   },
   openGraph: {
-    title: "Gold Coast Cleaning & Pest Control | House, Bond & Office",
+    title: "Wave Solution Cleaning | Gold Coast Local Cleaners",
     description:
-      "House, office, bond and commercial cleaning across the Gold Coast, plus pest control. Fully insured, police-checked team. Get a free quote.",
+      "Meet Wave Solution, a local Gold Coast cleaning team for homes, rentals, offices, and businesses. Compare services, explore local coverage, or request a quote.",
     url: businessInfo.baseUrl,
     type: "website",
     images: [{ url: `${businessInfo.baseUrl}/gold-coast-cleaning-services.jpeg`, width: 1200, height: 630, alt: "Wave Solution Cleaning & Pest Control Gold Coast" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Gold Coast Cleaning & Pest Control | House, Bond & Office",
+    title: "Wave Solution Cleaning | Gold Coast Local Cleaners",
     description:
-      "House, office, bond and commercial cleaning across the Gold Coast, plus pest control. Fully insured, police-checked team. Get a free quote.",
+      "Meet Wave Solution, a local Gold Coast cleaning team for homes, rentals, offices, and businesses. Compare services, explore local coverage, or request a quote.",
     images: [`${businessInfo.baseUrl}/gold-coast-cleaning-services.jpeg`],
   },
 }
@@ -200,7 +200,7 @@ export default function Home() {
             {[
               { icon: ShieldCheck, label: "Professional team", value: "Fully insured" },
               { icon: CheckCircle, label: "Our cleaners", value: "Police-checked" },
-              { icon: Sparkles, label: "Service guarantee", value: "Free re-clean" },
+              { icon: Sparkles, label: "Bond & end-of-lease", value: "Covered-item re-clean" },
               { icon: MapPin, label: "Gold Coast suburbs", value: String(serviceAreaCount) },
             ].map((stat) => (
               <div key={stat.label} className="flex items-center gap-3 px-2 py-2 md:justify-center md:px-4">
@@ -540,7 +540,7 @@ export default function Home() {
            <div className="mx-auto max-w-3xl text-center">
              <span className="inline-flex items-center gap-1.5 rounded-full border border-white/20 bg-white/10 px-3.5 py-1 text-xs font-bold text-white">
                <ShieldCheck className="h-4 w-4 text-[#39BDE4]" />
-               Free Re-Clean Guarantee
+               Bond-clean re-clean support for covered items
              </span>
              <h2 className="mt-5 text-3xl font-black tracking-tight text-white sm:text-4xl lg:text-5xl">
                Ready to Book Your Local Cleaner?

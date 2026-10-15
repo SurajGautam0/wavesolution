@@ -55,7 +55,7 @@ const ALL_ARTICLES: Article[] = [
     slug: "/blog/end-of-lease-cleaning-requirements-qld",
     title: "End of Lease Cleaning Requirements QLD: Tenant's 2026 Legal & Checklist Guide",
     description:
-      "What are the official end of lease cleaning requirements in Queensland? Section 188 RTRA Act standards, fair wear and tear rules, Form 14a exit checklist, and tips for 100% bond back.",
+      "Queensland rental handover guidance: entry-condition standards, fair wear and tear, the exit checklist, and practical inspection preparation.",
     category: "bond",
     categoryLabel: "Bond & Move-Out",
     readTime: "11 min read",
@@ -63,7 +63,7 @@ const ALL_ARTICLES: Article[] = [
     featured: true,
     popular: true,
     icon: ShieldCheck,
-    tags: ["RTA Queensland", "Bond Cleaning", "Legal Requirements", "100% Bond Back"],
+    tags: ["RTA Queensland", "Bond Cleaning", "Legal Requirements", "Rental Handover"],
   },
   {
     slug: "/blog/end-of-lease-cleaning-cost-gold-coast",
@@ -96,7 +96,7 @@ const ALL_ARTICLES: Article[] = [
     slug: "/blog/bond-cleaning-checklist",
     title: "The Ultimate Bond Cleaning Checklist for Queensland Rentals",
     description:
-      "A comprehensive, step-by-step room checklist designed to satisfy strict real estate property managers and secure your 100% bond refund.",
+      "A step-by-step room checklist to help you prepare for a Queensland rental exit inspection.",
     category: "bond",
     categoryLabel: "Bond & Move-Out",
     readTime: "7 min read",
@@ -206,6 +206,19 @@ const ALL_ARTICLES: Article[] = [
     tags: ["Deep Clean", "Spring Cleaning", "Grout Cleaning"],
   },
   {
+    slug: "/blog/spring-cleaning-guide-gold-coast",
+    title: "Spring Cleaning Guide for Gold Coast Homes 2025",
+    description:
+      "A complete room-by-room spring cleaning checklist for Gold Coast homes. Covers mould, salt air, AC filters, gutters, and everything that builds up over a Gold Coast winter.",
+    category: "house",
+    categoryLabel: "House Cleaning",
+    readTime: "11 min read",
+    date: "September 2025",
+    popular: true,
+    icon: Sparkles,
+    tags: ["Spring Cleaning", "Deep Clean", "Gold Coast", "Seasonal Guide"],
+  },
+  {
     slug: "/blog/how-often-house-cleaning",
     title: "How Often Should You Clean Your Home? Weekly vs Fortnightly",
     description:
@@ -307,7 +320,7 @@ const CONTENT_CLUSTERS = [
   },
   {
     title: "Bond & End of Lease Hub",
-    description: "Official Queensland RTA checklist items and inspection advice to guarantee 100% deposit return.",
+    description: "Queensland RTA guidance, checklist items, and practical rental handover advice.",
     icon: Award,
     href: siteLinks.bondCleaning,
     serviceLabel: "Bond Cleaning Services",

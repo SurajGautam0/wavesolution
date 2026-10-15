@@ -66,7 +66,7 @@ const moveServices: ServiceItem[] = [
   {
     href: siteLinks.bondCleaning,
     label: "Bond Cleaning",
-    description: "Move-out cleaning with a free re-clean guarantee",
+    description: "Move-out cleaning with covered-item re-clean support",
     icon: Truck,
   },
   {

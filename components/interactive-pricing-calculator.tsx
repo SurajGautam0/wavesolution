@@ -269,7 +269,7 @@ className={cn(
               </div>
               <div className="flex items-center gap-2 text-white/90">
                 <Check className="h-4 w-4 text-primary shrink-0" />
-                <span>Free re-clean guarantee</span>
+                <span>Agreed scope confirmed before booking</span>
               </div>
               {selectedExtras.length > 0 && (
                 <div className="flex items-center gap-2 text-primary font-bold">

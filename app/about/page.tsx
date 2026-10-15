@@ -62,7 +62,7 @@ const heroStats = [
   { emoji: "🛡️", value: "Insured", label: "Public liability" },
   { emoji: "👮", value: "Vetted", label: "Police-checked" },
   { emoji: "⏱️", value: "15 min", label: "Quote response" },
-  { emoji: "✅", value: "Free", label: "Re-clean guarantee" },
+  { emoji: "✅", value: "Covered items", label: "Bond-clean re-clean support" },
 ]
 
 /** Credentials — deliberately different from the hero stats above. */
@@ -70,7 +70,7 @@ const credentials = [
   { emoji: "🇦🇺", label: "Locally owned", value: "Gold Coast" },
   { emoji: "📍", label: "Suburbs serviced", value: String(serviceAreaCount) },
   { emoji: "🛡️", label: "Insured & police-checked", value: "Fully" },
-  { emoji: "🔁", label: "Re-clean guarantee", value: "Free" },
+  { emoji: "🔁", label: "Bond-clean re-clean support", value: "Covered items" },
 ]
 
 const differentiators = [
@@ -379,7 +379,7 @@ export default function AboutPage() {
                     <span aria-hidden="true">👮</span> National police checks
                   </span>
                   <span className="inline-flex items-center gap-2 font-semibold">
-                    <span aria-hidden="true">🔁</span> Free re-clean guarantee
+                    <span aria-hidden="true">🔁</span> Covered-item bond re-clean support
                   </span>
                 </div>
               </div>

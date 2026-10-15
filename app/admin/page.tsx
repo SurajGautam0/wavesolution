@@ -1467,7 +1467,7 @@ export default function AdminDashboardPage() {
                                         <div className="p-4 rounded-xl bg-slate-50 border border-slate-200/70">
                                             <div className="flex items-center gap-2 mb-2"><CheckCircle2 className="h-4 w-4 text-emerald-600" /><p className="text-xs font-bold uppercase tracking-wide text-slate-600">Core Value Points</p></div>
                                             <ul className="space-y-1.5 text-xs text-slate-700">
-                                                {["72-hour bond back re-clean guarantee", "Compliant flea/tick pest certificates", "Priority end-of-month turnaround", "Dedicated real estate account manager"].map((c, i) => (
+                                                {["Covered-item bond-clean re-clean support", "Pest service documentation where applicable", "Priority end-of-month turnaround", "Dedicated real estate account manager"].map((c, i) => (
                                                     <li key={i} className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />{c}</li>
                                                 ))}
                                             </ul>

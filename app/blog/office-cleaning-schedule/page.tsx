@@ -4,7 +4,7 @@ import { ChevronRight, CheckCircle2 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 export const metadata: Metadata = {
-  title: "Office Cleaning Schedule: How Often Should Your Workplace Be Cleaned? | Gold Coast",
+  title: "Office Cleaning Schedule Gold Coast | Wave Solution",
   description: "How often should a Gold Coast office be professionally cleaned? Staff numbers, industry and usage, plus daily, weekly and monthly task breakdowns.",
   keywords: ["office cleaning schedule Gold Coast", "how often office cleaning", "workplace cleaning frequency", "commercial cleaning schedule", "office hygiene Gold Coast"],
   alternates: { canonical: "https://www.wavesolution.com.au/blog/office-cleaning-schedule" },

@@ -4,7 +4,7 @@ import { ChevronRight, CheckCircle2 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 export const metadata: Metadata = {
-  title: "Rental Inspection Tips for Gold Coast Tenants | How to Pass Every Time",
+  title: "Rental Inspection Tips Gold Coast | Wave Solution",
   description: "Practical tips for Gold Coast tenants preparing for routine and final rental inspections. Know what landlords check and be inspection-ready.",
   keywords: ["rental inspection tips Gold Coast", "how to pass rental inspection Queensland", "routine inspection checklist", "rental property inspection Gold Coast"],
   alternates: { canonical: "https://www.wavesolution.com.au/blog/rental-inspection-tips" },

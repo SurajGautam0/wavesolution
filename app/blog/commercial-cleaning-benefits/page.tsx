@@ -4,7 +4,7 @@ import { ChevronRight, CheckCircle2 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 export const metadata: Metadata = {
-  title: "Benefits of Professional Commercial Cleaning for Gold Coast Businesses",
+  title: "Commercial Cleaning Benefits Gold Coast | Wave Solution",
   description: "Why Gold Coast businesses invest in commercial cleaning — staff productivity, client impressions, hygiene compliance and long-term cost savings.",
   keywords: ["commercial cleaning benefits Gold Coast", "professional office cleaning benefits", "why hire commercial cleaner", "business cleaning Gold Coast", "workplace hygiene benefits"],
   alternates: { canonical: "https://www.wavesolution.com.au/blog/commercial-cleaning-benefits" },

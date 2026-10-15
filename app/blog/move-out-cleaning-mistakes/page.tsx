@@ -4,7 +4,7 @@ import { ChevronRight, XCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 export const metadata: Metadata = {
-  title: "Move-Out Cleaning Mistakes That Cost You Your Bond | Gold Coast Guide",
+  title: "Move-Out Cleaning Mistakes That Cost Your Bond | Gold Coast",
   description:
     "Discover the most common move-out cleaning mistakes Gold Coast tenants make that lead to bond disputes — and how to avoid every one of them.",
   keywords: [

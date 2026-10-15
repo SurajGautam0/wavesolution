@@ -9,16 +9,16 @@ import { businessInfo, siteLinks } from "@/lib/business-info"
 import { servicePages } from "@/lib/service-pages"
 
 export const metadata: Metadata = {
-  title: "Cleaning Services Gold Coast | House, Office & Bond",
+  title: "Cleaning Service Directory | Wave Solution Gold Coast",
   description:
-    "Explore Wave Solution's full catalogue of cleaning services: house, office, bond, carpet, after-builders, and pest control across Queensland. Book online.",
+    "Browse Wave Solution's Gold Coast service directory. Compare house, bond, end-of-lease, office, commercial, carpet and specialist cleaning, then open a service page or request a quote.",
   alternates: {
     canonical: `${businessInfo.baseUrl}/services`,
   },
   openGraph: {
-    title: "Cleaning Services Gold Coast | House, Office, Bond & Carpet Cleaning",
+    title: "Cleaning Service Directory | Wave Solution Gold Coast",
     description:
-      "House, office, bond & commercial cleaning across the Gold Coast. Fully insured, police-checked cleaners. Book your free quote today.",
+      "Browse Gold Coast house, bond, end-of-lease, office, commercial, carpet and specialist cleaning services, with links to dedicated service details and quotes.",
     url: `${businessInfo.baseUrl}/services`,
     images: [{ url: "/gold-coast-cleaning-services.jpeg", width: 1200, height: 630, alt: "Wave Solution cleaning services Gold Coast" }],
   },
@@ -102,7 +102,7 @@ export default function ServicesPage() {
               Choose the Right Clean
             </h2>
             <p className="mt-3 text-base leading-relaxed text-slate-600">
-              Every service includes our free re-clean guarantee. Select a card to see what is included and request a local quote.
+              For bond and end-of-lease cleans, covered items from the agreed scope can be reviewed for re-clean support after inspection. This does not guarantee a bond refund. Select a service card to compare inclusions and request a local quote.
             </p>
           </div>
           <div className="mx-auto mb-10 max-w-3xl rounded-[2rem] border border-primary/15 bg-white p-6 shadow-sm">

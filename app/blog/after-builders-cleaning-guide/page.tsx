@@ -4,7 +4,7 @@ import { ChevronRight, CheckCircle2 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 export const metadata: Metadata = {
-  title: "After Builders Cleaning Guide: What to Expect After Renovation | Gold Coast",
+  title: "After Builders Cleaning Guide Gold Coast | Wave Solution",
   description: "Everything you need to know about after builders cleaning for Gold Coast renovations, fit-outs and new builds. When to book and what is included.",
   keywords: ["after builders cleaning Gold Coast", "post renovation cleaning", "builders clean Queensland", "construction cleaning Gold Coast", "renovation cleaning guide"],
   alternates: { canonical: "https://www.wavesolution.com.au/blog/after-builders-cleaning-guide" },
