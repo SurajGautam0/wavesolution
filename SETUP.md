@@ -54,6 +54,8 @@ SMTP_PASSWORD=your-brevo-smtp-key
 
 `SMTP_EMAIL` is the verified From address; `SMTP_USER` is the SMTP login Brevo gives you. Restart the development server after saving `.env.local`. The existing Gmail setup remains supported by omitting `SMTP_HOST` and `SMTP_USER` and using a Gmail app password as `SMTP_PASSWORD`.
 
+For Vercel deployments, set `BREVO_API_KEY` to a Brevo API key. The email service uses Brevo's transactional email API when this variable is present, avoiding SMTP IP allowlist failures from serverless deployments. Keep the API key server-side and never use a `NEXT_PUBLIC_` prefix.
+
 If the connection check reports `525 5.7.1 Unauthorized IP address`, Brevo is blocking the public outbound IP of the machine or hosting service running this app. Authorize that IP in Brevo's SMTP/IP access settings; local development and production may use different outbound IPs. Then run **Check connection** again.
 
 > If you add a new service to `lib/service-pages.ts`, it appears in the booking dropdown automatically.

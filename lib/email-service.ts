@@ -27,8 +27,39 @@ export interface SentEmailRecord {
  */
 export async function sendEmail(options: EmailOptions): Promise<{ success: boolean; messageId?: string; error?: string }> {
   try {
-    // Validate environment variables
+    const brevoApiKey = process.env.BREVO_API_KEY
     const smtpEmail = getSmtpSender()
+
+    if (brevoApiKey) {
+      const fromMatch = options.from?.match(/^\s*"?([^"<>]*)"?\s*<([^<>]+)>\s*$/)
+      const sender = fromMatch
+        ? { name: fromMatch[1].trim() || "Wave Solution", email: fromMatch[2].trim() }
+        : { name: "Wave Solution", email: smtpEmail }
+      const response = await fetch("https://api.brevo.com/v3/smtp/email", {
+        method: "POST",
+        headers: {
+          "api-key": brevoApiKey,
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          sender,
+          to: (Array.isArray(options.to) ? options.to : [options.to]).map((email) => ({ email })),
+          subject: options.subject,
+          textContent: options.body,
+          htmlContent: options.html || options.body.replace(/\n/g, "<br>"),
+          ...(options.replyTo ? { replyTo: { email: options.replyTo } } : {}),
+        }),
+        cache: "no-store",
+      })
+      const result = await response.json().catch(() => ({}))
+      if (!response.ok) {
+        throw new Error(typeof result.message === "string" ? result.message : `Brevo API returned ${response.status}`)
+      }
+      return { success: true, messageId: result.messageId }
+    }
+
+    // Fall back to SMTP when a Brevo API key is not configured.
     const transporter = createSmtpTransport()
 
     // Prepare email

@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server"
-import { createSmtpTransport, getSmtpSender } from "@/lib/smtp"
+import { sendEmail } from "@/lib/email-service"
 import { businessInfo } from "@/lib/business-info"
 
 export async function POST(request: NextRequest) {
@@ -7,8 +7,8 @@ export async function POST(request: NextRequest) {
     const body = await request.json()
     const { name, phone, email, address, suburb, bathrooms, preferredDate, notes, service, packageSize, frequency, includeDeepClean } = body
 
-    const smtpEmail = getSmtpSender()
-    const transporter = createSmtpTransport()
+    const smtpEmail = process.env.SMTP_EMAIL
+    if (!smtpEmail) throw new Error("Booking email sender is not configured.")
 
     const formattedDate = preferredDate
       ? new Date(preferredDate).toLocaleString("en-AU", {
@@ -113,7 +113,7 @@ ${notes ? `- Notes: ${notes}` : ""}
     `.trim()
 
     // Send notification to business owner
-    await transporter.sendMail({
+    const ownerNotification = await sendEmail({
       from: `"WaveSolution Booking" <${smtpEmail}>`,
       to: businessInfo.notificationEmails,
       replyTo: email,
@@ -121,6 +121,7 @@ ${notes ? `- Notes: ${notes}` : ""}
       text: textContent,
       html: htmlContent,
     })
+    if (!ownerNotification.success) throw new Error(ownerNotification.error || "Booking notification could not be sent.")
 
     // Send confirmation to customer
     const customerHtml = `
@@ -167,16 +168,20 @@ ${notes ? `- Notes: ${notes}` : ""}
       </div>
     `
 
+    let customerConfirmationSent = false
     if (email) {
-      await transporter.sendMail({
+      const customerConfirmation = await sendEmail({
         from: `"WaveSolution" <${smtpEmail}>`,
         to: email,
         subject: `Booking Confirmed — WaveSolution`,
+        body: `Hi ${name},\n\nWe received your booking request for ${service} at ${packageSize}. Our team will review your details and contact you with a personalised quote.\n\nWaveSolution Team`,
         html: customerHtml,
       })
+      customerConfirmationSent = customerConfirmation.success
+      if (!customerConfirmationSent) console.error("Customer booking confirmation failed", customerConfirmation.error)
     }
 
-    return NextResponse.json({ success: true, message: "Booking sent successfully" })
+    return NextResponse.json({ success: true, customerConfirmationSent, message: "Booking notification sent successfully" })
   } catch (error: any) {
     console.error("Email send error:", error)
     return NextResponse.json(

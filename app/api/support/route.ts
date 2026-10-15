@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server"
-import { createSmtpTransport, getSmtpSender } from "@/lib/smtp"
+import { sendEmail } from "@/lib/email-service"
 
 import { businessInfo } from "@/lib/business-info"
 
@@ -29,8 +29,8 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    const smtpEmail = getSmtpSender()
-    const transporter = createSmtpTransport()
+    const smtpEmail = process.env.SMTP_EMAIL
+    if (!smtpEmail) throw new Error("Support email sender is not configured.")
 
     const safeName = escapeHtml(name)
     const safeEmail = escapeHtml(email)
@@ -88,7 +88,7 @@ Message:
 ${message}
     `.trim()
 
-    await transporter.sendMail({
+    const result = await sendEmail({
       from: `"WaveSolution Support" <${smtpEmail}>`,
       to: businessInfo.notificationEmails,
       replyTo: email,
@@ -96,6 +96,7 @@ ${message}
       text: textContent,
       html: htmlContent,
     })
+    if (!result.success) throw new Error(result.error || "Support email could not be sent.")
 
     return NextResponse.json({ success: true, message: "Support request sent successfully." })
   } catch (error: any) {
