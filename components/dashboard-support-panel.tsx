@@ -68,6 +68,15 @@ export function DashboardSupportPanel({ user }: DashboardSupportPanelProps) {
     event.preventDefault()
     setIsSubmitting(true)
 
+    let supportSaved = false
+    let emailSent = false
+    try {
+      await saveContact({ ...formData, source: "customer-dashboard-support", subject: `Support: ${formData.subject}` })
+      supportSaved = true
+    } catch (error) {
+      console.error("Support request could not be saved to the admin database", error)
+    }
+
     try {
       const response = await fetch("/api/support", {
         method: "POST",
@@ -79,27 +88,23 @@ export function DashboardSupportPanel({ user }: DashboardSupportPanelProps) {
 
       const data = await response.json()
 
-      if (!response.ok) {
-        throw new Error(data.message || "Failed to send support request.")
-      }
-
-      let adminCopySaved = true
-      try {
-        await saveContact({ ...formData, source: "customer-dashboard-support", subject: `Support: ${formData.subject}` })
-      } catch (error) {
-        adminCopySaved = false
-        console.error("Support email sent but could not save an admin copy", error)
-      }
-
-      toast.success(adminCopySaved
-        ? "Support request sent to our team and added to the admin enquiries."
-        : "Support request emailed to our team. The dashboard copy could not be saved.")
-      setFormData(createInitialFormState(user))
+      if (!response.ok || !data.success) throw new Error(data.message || "Failed to send support request.")
+      emailSent = true
     } catch (error: any) {
-      toast.error(error.message || "We couldn't send your support request.")
-    } finally {
-      setIsSubmitting(false)
+      console.error("Support notification email failed", error)
     }
+
+    if (supportSaved || emailSent) {
+      toast.success(supportSaved && emailSent
+        ? "Support request emailed to both inboxes and saved in admin enquiries."
+        : supportSaved
+          ? "Support request saved in admin enquiries, but the email alert could not be sent."
+          : "Support request emailed to both inboxes, but could not be saved to admin enquiries.")
+      setFormData(createInitialFormState(user))
+    } else {
+      toast.error("We couldn't save or email your support request. Please try again.")
+    }
+    setIsSubmitting(false)
   }
 
   return (

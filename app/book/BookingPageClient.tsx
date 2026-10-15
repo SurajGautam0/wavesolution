@@ -170,6 +170,7 @@ export default function BookingPageClient() {
 	async function onSubmit(values: FormValues) {
 		setIsSubmitting(true)
 		let notificationSent = false
+		let bookingSaved = false
 		try {
 			const bookingPayload = {
 				...values,
@@ -181,25 +182,29 @@ export default function BookingPageClient() {
 				includeDeepClean,
 			}
 
-			// 1. Send email notification
-			const emailRes = await fetch("/api/send-booking", {
-				method: "POST",
-				headers: { "Content-Type": "application/json" },
-				body: JSON.stringify(bookingPayload),
-			})
-
-			const emailResult = await emailRes.json().catch(() => ({}))
-			if (!emailRes.ok || !emailResult.success) {
-				console.error("Booking notification failed:", emailResult.message || emailRes.statusText)
-			} else {
-				notificationSent = true
-			}
-
-			// 2. Also save to Firebase for dashboard
+			// Save the booking independently so an SMTP outage cannot lose the request.
 			try {
 				await saveBooking(bookingPayload)
-			} catch {
-				// Firebase save is optional — email is the primary notification
+				bookingSaved = true
+			} catch (error) {
+				console.error("Booking could not be saved to the database:", error)
+			}
+
+			// Notify both business inboxes; the endpoint also sends a customer receipt.
+			try {
+				const emailRes = await fetch("/api/send-booking", {
+					method: "POST",
+					headers: { "Content-Type": "application/json" },
+					body: JSON.stringify(bookingPayload),
+				})
+				const emailResult = await emailRes.json().catch(() => ({}))
+				if (!emailRes.ok || !emailResult.success) {
+					console.error("Booking notification failed:", emailResult.message || emailRes.statusText)
+				} else {
+					notificationSent = true
+				}
+			} catch (error) {
+				console.error("Booking notification request failed:", error)
 			}
 
 			// 3. Save to localStorage for client-side tracking
@@ -219,10 +224,14 @@ export default function BookingPageClient() {
 				flow: "booking_form",
 			})
 
-			if (notificationSent) {
+			if (bookingSaved && notificationSent) {
 				toast.success("Booking request sent successfully!")
-			} else {
+			} else if (bookingSaved) {
 				toast.error("Your booking was saved, but its email notification could not be sent. Please contact us if you need urgent confirmation.")
+			} else if (notificationSent) {
+				toast.error("Your request was emailed to our team, but could not be saved to the admin database. Please contact us if you need confirmation.")
+			} else {
+				toast.error("We could not save or email your booking request. Please call 0450 833 683.")
 			}
 			setShowSuccessDialog(true)
 

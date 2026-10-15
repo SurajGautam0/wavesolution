@@ -94,13 +94,19 @@ export default function ContactPage() {
     setIsSubmitting(true)
 
     try {
-      await saveContact({
-        ...formData,
-        subject: `${formData.service} - ${formData.suburb || "Gold Coast"}`,
-        timestamp: new Date().toISOString(),
-      })
+      let contactSaved = false
+      let notificationSent = false
+      try {
+        await saveContact({
+          ...formData,
+          subject: `${formData.service} - ${formData.suburb || "Gold Coast"}`,
+          timestamp: new Date().toISOString(),
+        })
+        contactSaved = true
+      } catch (error) {
+        console.error("Contact enquiry could not be saved", error)
+      }
 
-      let notificationSent = true
       try {
         const response = await fetch("/api/notify-enquiry", {
           method: "POST",
@@ -115,16 +121,23 @@ export default function ContactPage() {
           }),
         })
         notificationSent = response.ok
+        if (!response.ok) console.error("Contact enquiry email notification failed", await response.json().catch(() => null))
       } catch {
         notificationSent = false
       }
 
-      toast({
-        title: notificationSent ? "Message Sent Successfully" : "Enquiry Saved",
-        description: notificationSent
-          ? "Your enquiry is in our admin inbox and an email alert was sent to our team."
-          : "Your enquiry is safely saved in our admin dashboard. Our team will follow up by email.",
-      })
+      if (contactSaved || notificationSent) {
+        toast({
+          title: contactSaved && notificationSent ? "Message Sent Successfully" : notificationSent ? "Enquiry emailed to our team" : "Enquiry Saved",
+          description: contactSaved && notificationSent
+            ? "Your enquiry is in our admin inbox and an email alert was sent to both team inboxes."
+            : notificationSent
+              ? "Our team received your enquiry by email, but it could not be saved to the admin database."
+              : "Your enquiry is saved in the admin database, but the email alert could not be sent.",
+        })
+      } else {
+        throw new Error("We could not save or email your enquiry. Please call 0450 833 683.")
+      }
 
       setIsSubmitted(true)
       trackEvent("contact_form_submit", { service: formData.service || "general" })

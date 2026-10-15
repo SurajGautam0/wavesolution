@@ -32,9 +32,22 @@ export function NewsletterForm({ variant = "default" }: { variant?: "default" | 
           description: "You are already on our newsletter list!",
         })
       } else {
+        let emailAlertSent = false
+        try {
+          const response = await fetch("/api/notify-enquiry", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ type: "newsletter", email: result.email }),
+          })
+          emailAlertSent = response.ok
+        } catch (error) {
+          console.error("Newsletter alert email failed", error)
+        }
         toast({
           title: "Subscribed!",
-          description: "Thank you for subscribing to our newsletter.",
+          description: emailAlertSent
+            ? "Your subscription is saved, and our team has been notified."
+            : "Your subscription is saved. The team email alert could not be sent.",
         })
         setEmail("")
       }

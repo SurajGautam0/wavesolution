@@ -246,6 +246,7 @@ export default function TestimonialsPage() {
   const [formSubmitted, setFormSubmitted] = useState(false)
   const [isSubmittingReview, setIsSubmittingReview] = useState(false)
   const [reviewSubmitError, setReviewSubmitError] = useState("")
+  const [reviewEmailAlertSent, setReviewEmailAlertSent] = useState<boolean | null>(null)
   const [reviewForm, setReviewForm] = useState({
     name: "",
     suburb: "",
@@ -270,6 +271,7 @@ export default function TestimonialsPage() {
         category: "residential",
       })
 
+      let emailAlertSent = false
       try {
         const notification = await fetch("/api/notify-enquiry", {
           method: "POST",
@@ -280,11 +282,13 @@ export default function TestimonialsPage() {
             message: `Rating: ${reviewForm.rating}/5\nService: ${reviewForm.service}\nSuburb: ${reviewForm.suburb}\n\n${reviewForm.review}`,
           }),
         })
+        emailAlertSent = notification.ok
         if (!notification.ok) console.warn("Review saved but notification email could not be sent.")
       } catch (error) {
         console.error("Review saved but notification email failed", error)
       }
 
+      setReviewEmailAlertSent(emailAlertSent)
       setFormSubmitted(true)
       setTimeout(() => {
         setIsFormOpen(false)
@@ -489,7 +493,9 @@ export default function TestimonialsPage() {
                     <CheckCircle2 className="h-12 w-12 text-emerald-400 mx-auto mb-2" />
                     <h4 className="text-lg font-bold text-white">Thank You for Your Feedback!</h4>
                     <p className="text-sm text-white/80 mt-1">
-                      Your review has been saved for approval. Thanks for sharing your experience.
+                      {reviewEmailAlertSent
+                        ? "Your review has been saved for approval and our team has been notified. Thanks for sharing your experience."
+                        : "Your review has been saved for approval, but the team email alert could not be sent. Thanks for sharing your experience."}
                     </p>
                   </div>
                 ) : (

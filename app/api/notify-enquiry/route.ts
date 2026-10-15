@@ -14,21 +14,27 @@ function escapeHtml(value: string) {
 export async function POST(request: NextRequest) {
   try {
     const payload = await request.json()
-    const type = payload.type === "testimonial" ? "testimonial" : "contact"
+    const type = payload.type === "testimonial" || payload.type === "newsletter" ? payload.type : "contact"
     const name = typeof payload.name === "string" ? payload.name.trim().slice(0, 120) : ""
     const email = typeof payload.email === "string" ? payload.email.trim().slice(0, 254) : ""
     const subject = typeof payload.subject === "string" ? payload.subject.trim().slice(0, 180) : ""
     const message = typeof payload.message === "string" ? payload.message.trim().slice(0, 5000) : ""
     const phone = typeof payload.phone === "string" ? payload.phone.trim().slice(0, 50) : ""
 
-    if (!name || !message || (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))) {
+    if ((type !== "newsletter" && (!name || !message)) ||
+      (type === "newsletter" && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) ||
+      (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))) {
       return NextResponse.json({ success: false, message: "Please provide a name and valid message details." }, { status: 400 })
     }
 
-    const title = type === "testimonial" ? "New customer review for approval" : subject || "New website enquiry"
+    const title = type === "testimonial"
+      ? "New customer review for approval"
+      : type === "newsletter"
+        ? "New newsletter subscriber"
+        : subject || "New website enquiry"
     const details = [
-      `Type: ${type === "testimonial" ? "Customer review" : "Website enquiry"}`,
-      `Name: ${name}`,
+      `Type: ${type === "testimonial" ? "Customer review" : type === "newsletter" ? "Newsletter subscription" : "Website enquiry"}`,
+      name ? `Name: ${name}` : "",
       email ? `Email: ${email}` : "",
       phone ? `Phone: ${phone}` : "",
       subject && type === "contact" ? `Subject: ${subject}` : "",

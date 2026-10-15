@@ -352,6 +352,7 @@ export default function BlogHubPage() {
   const [newsletterSubscribed, setNewsletterSubscribed] = useState(false)
   const [newsletterSubmitting, setNewsletterSubmitting] = useState(false)
   const [newsletterError, setNewsletterError] = useState("")
+  const [newsletterAlertSent, setNewsletterAlertSent] = useState<boolean | null>(null)
 
   const filteredArticles = useMemo(() => {
     return ALL_ARTICLES.filter((article) => {
@@ -377,7 +378,23 @@ export default function BlogHubPage() {
     setNewsletterSubmitting(true)
     setNewsletterError("")
     try {
-      await saveSubscription(newsletterEmail)
+      const subscription = await saveSubscription(newsletterEmail)
+      let alertSent = true
+      if (!subscription.exists) {
+        try {
+          const response = await fetch("/api/notify-enquiry", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ type: "newsletter", email: subscription.email }),
+          })
+          alertSent = response.ok
+          if (!response.ok) console.error("Newsletter saved but email alert failed")
+        } catch (error) {
+          alertSent = false
+          console.error("Newsletter saved but email alert failed", error)
+        }
+      }
+      setNewsletterAlertSent(alertSent)
       setNewsletterSubscribed(true)
     } catch (error) {
       console.error("Newsletter signup failed", error)
@@ -796,7 +813,7 @@ export default function BlogHubPage() {
                   {newsletterSubscribed ? (
                     <div className="p-4 rounded-xl bg-emerald-500/20 border border-emerald-500/40 text-emerald-200 text-sm font-semibold flex items-center gap-2">
                       <CheckCircle2 className="h-5 w-5 text-emerald-400" />
-                      <span>You’re subscribed. <Link href="/bond-cleaning-checklist.html" className="underline underline-offset-2 hover:text-white">Download the checklist</Link>.</span>
+                      <span>You’re subscribed{newsletterAlertSent === false ? " (our team email alert could not be sent)" : ""}. <Link href="/bond-cleaning-checklist.html" className="underline underline-offset-2 hover:text-white">Download the checklist</Link>.</span>
                     </div>
                   ) : (
                     <form onSubmit={handleNewsletterSubmit} className="flex max-w-md flex-col gap-3 sm:flex-row">

@@ -206,13 +206,14 @@ const SUBSCRIPTIONS_COLLECTION = 'subscriptions';
 
 export const saveSubscription = async (email: string) => {
   try {
+    const normalizedEmail = email.trim().toLowerCase();
     const subRef = await addDoc(collection(db, SUBSCRIPTIONS_COLLECTION), {
-      email,
+      email: normalizedEmail,
       id: uuidv4(),
       createdAt: serverTimestamp(),
       status: 'active'
     });
-    return { id: subRef.id, email, exists: false };
+    return { id: subRef.id, email: normalizedEmail, exists: false };
   } catch (error) {
     console.error("Error saving subscription: ", error);
     throw error;
