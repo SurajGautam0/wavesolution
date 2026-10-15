@@ -9,6 +9,7 @@ export const businessInfo = {
   phoneE164: "+61450833683",
   phoneHref: "tel:+61450833683",
   email: "info@wavesolution.com.au",
+  notificationEmails: ["susanttimalcena@gmail.com", "qsurajgautam@gmail.com"],
   address: {
     locality: "Gold Coast",
     region: "QLD",

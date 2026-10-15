@@ -100,10 +100,30 @@ export default function ContactPage() {
         timestamp: new Date().toISOString(),
       })
 
+      let notificationSent = true
+      try {
+        const response = await fetch("/api/notify-enquiry", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            type: "contact",
+            name: formData.name,
+            email: formData.email,
+            phone: formData.phone,
+            subject: `${formData.service} - ${formData.suburb || "Gold Coast"}`,
+            message: formData.message,
+          }),
+        })
+        notificationSent = response.ok
+      } catch {
+        notificationSent = false
+      }
+
       toast({
-        title: "Message Sent Successfully",
-        description:
-          "Thank you! Our Gold Coast team has received your enquiry and will respond promptly.",
+        title: notificationSent ? "Message Sent Successfully" : "Enquiry Saved",
+        description: notificationSent
+          ? "Your enquiry is in our admin inbox and an email alert was sent to our team."
+          : "Your enquiry is safely saved in our admin dashboard. Our team will follow up by email.",
       })
 
       setIsSubmitted(true)

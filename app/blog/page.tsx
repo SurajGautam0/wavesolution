@@ -3,6 +3,7 @@
 import { useState, useMemo } from "react"
 import Image from "next/image"
 import Link from "next/link"
+import { saveSubscription } from "@/lib/firebase-service"
 import {
   ArrowRight,
   BookOpen,
@@ -349,6 +350,8 @@ export default function BlogHubPage() {
   const [searchQuery, setSearchQuery] = useState<string>("")
   const [newsletterEmail, setNewsletterEmail] = useState("")
   const [newsletterSubscribed, setNewsletterSubscribed] = useState(false)
+  const [newsletterSubmitting, setNewsletterSubmitting] = useState(false)
+  const [newsletterError, setNewsletterError] = useState("")
 
   const filteredArticles = useMemo(() => {
     return ALL_ARTICLES.filter((article) => {
@@ -369,10 +372,18 @@ export default function BlogHubPage() {
 
   const featuredArticle = ALL_ARTICLES.find((a) => a.featured) || ALL_ARTICLES[0]
 
-  const handleNewsletterSubmit = (e: React.FormEvent) => {
+  const handleNewsletterSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    if (newsletterEmail) {
+    setNewsletterSubmitting(true)
+    setNewsletterError("")
+    try {
+      await saveSubscription(newsletterEmail)
       setNewsletterSubscribed(true)
+    } catch (error) {
+      console.error("Newsletter signup failed", error)
+      setNewsletterError("We couldn’t save your subscription. Please try again.")
+    } finally {
+      setNewsletterSubmitting(false)
     }
   }
 
@@ -785,10 +796,10 @@ export default function BlogHubPage() {
                   {newsletterSubscribed ? (
                     <div className="p-4 rounded-xl bg-emerald-500/20 border border-emerald-500/40 text-emerald-200 text-sm font-semibold flex items-center gap-2">
                       <CheckCircle2 className="h-5 w-5 text-emerald-400" />
-                      Checklist sent! Check your inbox for the download link.
+                      <span>You’re subscribed. <Link href="/bond-cleaning-checklist.html" className="underline underline-offset-2 hover:text-white">Download the checklist</Link>.</span>
                     </div>
                   ) : (
-                    <form onSubmit={handleNewsletterSubmit} className="flex flex-col sm:flex-row gap-3 max-w-md">
+                    <form onSubmit={handleNewsletterSubmit} className="flex max-w-md flex-col gap-3 sm:flex-row">
                       <input
                         type="email"
                         required
@@ -799,13 +810,15 @@ export default function BlogHubPage() {
                       />
                       <Button
                         type="submit"
+                        disabled={newsletterSubmitting}
                         className="bg-[#39BDE4] hover:bg-[#2fb2d8] text-[#1b1b3a] font-bold rounded-xl whitespace-nowrap"
                       >
                         <Mail className="mr-2 h-4 w-4" />
-                        Send Checklist
+                        {newsletterSubmitting ? "Saving…" : "Subscribe & Get Checklist"}
                       </Button>
                     </form>
                   )}
+                  {newsletterError && <p role="alert" className="mt-2 text-sm text-red-200">{newsletterError}</p>}
                 </div>
 
                 <div className="lg:col-span-5 flex justify-center">

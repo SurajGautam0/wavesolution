@@ -39,6 +39,23 @@ Measurement, verification and owner inputs for the Phase 0–6 work in this repo
 
 `app/api/send-booking/route.ts` accepts and emails `suburb` and `bathrooms`, and no longer appends "Cleaning" to the service label.
 
+## SMTP email setup (free Brevo tier)
+
+The booking, support, and admin email routes use the SMTP settings below. Brevo currently lists 300 email sends per day on its free plan. Create a Brevo account, verify a sender address/domain, then copy the SMTP login and SMTP key from the SMTP & API settings page into your local `.env.local` file. Keep the SMTP key private and never add it to a `NEXT_PUBLIC_` variable.
+
+```env
+SMTP_HOST=smtp-relay.brevo.com
+SMTP_PORT=587
+SMTP_SECURE=false
+SMTP_EMAIL=your-verified-sender@example.com
+SMTP_USER=your-brevo-smtp-login
+SMTP_PASSWORD=your-brevo-smtp-key
+```
+
+`SMTP_EMAIL` is the verified From address; `SMTP_USER` is the SMTP login Brevo gives you. Restart the development server after saving `.env.local`. The existing Gmail setup remains supported by omitting `SMTP_HOST` and `SMTP_USER` and using a Gmail app password as `SMTP_PASSWORD`.
+
+If the connection check reports `525 5.7.1 Unauthorized IP address`, Brevo is blocking the public outbound IP of the machine or hosting service running this app. Authorize that IP in Brevo's SMTP/IP access settings; local development and production may use different outbound IPs. Then run **Check connection** again.
+
 > If you add a new service to `lib/service-pages.ts`, it appears in the booking dropdown automatically.
 
 ## 3. New / changed URLs

@@ -32,6 +32,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { businessInfo, siteLinks } from "@/lib/business-info"
 import { serviceAreaCount } from "@/lib/claims"
+import { saveTestimonial } from "@/lib/firebase-service"
 
 interface Testimonial {
   id: string
@@ -243,6 +244,8 @@ export default function TestimonialsPage() {
   const [searchQuery, setSearchQuery] = useState<string>("")
   const [isFormOpen, setIsFormOpen] = useState(false)
   const [formSubmitted, setFormSubmitted] = useState(false)
+  const [isSubmittingReview, setIsSubmittingReview] = useState(false)
+  const [reviewSubmitError, setReviewSubmitError] = useState("")
   const [reviewForm, setReviewForm] = useState({
     name: "",
     suburb: "",
@@ -251,20 +254,49 @@ export default function TestimonialsPage() {
     review: "",
   })
 
-  const handleFormSubmit = (e: React.FormEvent) => {
+  const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    setFormSubmitted(true)
-    setTimeout(() => {
-      setIsFormOpen(false)
-      setFormSubmitted(false)
-      setReviewForm({
-        name: "",
-        suburb: "",
-        service: "House Cleaning",
-        rating: 5,
-        review: "",
+    setIsSubmittingReview(true)
+    setReviewSubmitError("")
+    try {
+      await saveTestimonial({
+        name: reviewForm.name.trim(),
+        location: reviewForm.suburb.trim(),
+        suburb: reviewForm.suburb.trim(),
+        service: reviewForm.service,
+        rating: reviewForm.rating,
+        message: reviewForm.review.trim(),
+        text: reviewForm.review.trim(),
+        category: "residential",
       })
-    }, 2500)
+
+      try {
+        const notification = await fetch("/api/notify-enquiry", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            type: "testimonial",
+            name: reviewForm.name,
+            message: `Rating: ${reviewForm.rating}/5\nService: ${reviewForm.service}\nSuburb: ${reviewForm.suburb}\n\n${reviewForm.review}`,
+          }),
+        })
+        if (!notification.ok) console.warn("Review saved but notification email could not be sent.")
+      } catch (error) {
+        console.error("Review saved but notification email failed", error)
+      }
+
+      setFormSubmitted(true)
+      setTimeout(() => {
+        setIsFormOpen(false)
+        setFormSubmitted(false)
+        setReviewForm({ name: "", suburb: "", service: "House Cleaning", rating: 5, review: "" })
+      }, 3500)
+    } catch (error) {
+      console.error("Could not save customer review", error)
+      setReviewSubmitError("We couldn’t submit your review. Please try again or contact our team directly.")
+    } finally {
+      setIsSubmittingReview(false)
+    }
   }
 
   const filteredTestimonials = useMemo(() => {
@@ -448,7 +480,7 @@ export default function TestimonialsPage() {
                     Share Your Cleaning Experience
                   </h3>
                   <p className="text-sm text-white/70 mt-1">
-                    Your feedback helps Gold Coast families and businesses choose a cleaner they can trust.
+                    Your review will be checked by our team before it appears on the website.
                   </p>
                 </div>
 
@@ -457,11 +489,12 @@ export default function TestimonialsPage() {
                     <CheckCircle2 className="h-12 w-12 text-emerald-400 mx-auto mb-2" />
                     <h4 className="text-lg font-bold text-white">Thank You for Your Feedback!</h4>
                     <p className="text-sm text-white/80 mt-1">
-                      Your review has been submitted and will be verified by our team.
+                      Your review has been saved for approval. Thanks for sharing your experience.
                     </p>
                   </div>
                 ) : (
                   <form onSubmit={handleFormSubmit} className="space-y-4">
+                    {reviewSubmitError && <p role="alert" className="rounded-xl border border-red-300/40 bg-red-500/10 p-3 text-sm text-red-100">{reviewSubmitError}</p>}
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div>
                         <label className="block text-xs font-bold text-white/80 uppercase mb-1">
@@ -563,6 +596,7 @@ export default function TestimonialsPage() {
                       <Button
                         type="button"
                         variant="ghost"
+                        disabled={isSubmittingReview}
                         onClick={() => setIsFormOpen(false)}
                         className="text-white/70 hover:text-white"
                       >
@@ -570,10 +604,11 @@ export default function TestimonialsPage() {
                       </Button>
                       <Button
                         type="submit"
+                        disabled={isSubmittingReview}
                         className="bg-[#39BDE4] hover:bg-[#2fb2d8] text-[#1b1b3a] font-bold rounded-xl"
                       >
-                        <Send className="mr-2 h-4 w-4" />
-                        Submit Review
+                        {isSubmittingReview ? <span className="mr-2 h-4 w-4 animate-spin rounded-full border-2 border-current border-t-transparent" /> : <Send className="mr-2 h-4 w-4" />}
+                        {isSubmittingReview ? "Submitting…" : "Submit Review"}
                       </Button>
                     </div>
                   </form>

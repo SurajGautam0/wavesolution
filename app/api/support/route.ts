@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server"
-import nodemailer from "nodemailer"
+import { createSmtpTransport, getSmtpSender } from "@/lib/smtp"
 
 import { businessInfo } from "@/lib/business-info"
 
@@ -29,15 +29,8 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    const smtpEmail = process.env.SMTP_EMAIL || "qsurajgautam@gmail.com"
-
-    const transporter = nodemailer.createTransport({
-      service: "gmail",
-      auth: {
-        user: smtpEmail,
-        pass: process.env.SMTP_PASSWORD || "",
-      },
-    })
+    const smtpEmail = getSmtpSender()
+    const transporter = createSmtpTransport()
 
     const safeName = escapeHtml(name)
     const safeEmail = escapeHtml(email)
@@ -97,7 +90,7 @@ ${message}
 
     await transporter.sendMail({
       from: `"WaveSolution Support" <${smtpEmail}>`,
-      to: businessInfo.email,
+      to: businessInfo.notificationEmails,
       replyTo: email,
       subject: `Support Request: ${subject}`,
       text: textContent,

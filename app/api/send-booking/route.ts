@@ -1,19 +1,14 @@
 import { NextRequest, NextResponse } from "next/server"
-import nodemailer from "nodemailer"
+import { createSmtpTransport, getSmtpSender } from "@/lib/smtp"
+import { businessInfo } from "@/lib/business-info"
 
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json()
     const { name, phone, email, address, suburb, bathrooms, preferredDate, notes, service, packageSize, frequency, includeDeepClean } = body
 
-    // Create a transporter using Gmail SMTP
-    const transporter = nodemailer.createTransport({
-      service: "gmail",
-      auth: {
-        user: process.env.SMTP_EMAIL || "qsurajgautam@gmail.com",
-        pass: process.env.SMTP_PASSWORD || "",
-      },
-    })
+    const smtpEmail = getSmtpSender()
+    const transporter = createSmtpTransport()
 
     const formattedDate = preferredDate
       ? new Date(preferredDate).toLocaleString("en-AU", {
@@ -119,8 +114,8 @@ ${notes ? `- Notes: ${notes}` : ""}
 
     // Send notification to business owner
     await transporter.sendMail({
-      from: `"WaveSolution Booking" <${process.env.SMTP_EMAIL || "qsurajgautam@gmail.com"}>`,
-      to: "susanttimalcena@gmail.com",
+      from: `"WaveSolution Booking" <${smtpEmail}>`,
+      to: businessInfo.notificationEmails,
       replyTo: email,
       subject: `New Booking: ${service} — ${name}`,
       text: textContent,
@@ -174,7 +169,7 @@ ${notes ? `- Notes: ${notes}` : ""}
 
     if (email) {
       await transporter.sendMail({
-        from: `"WaveSolution" <${process.env.SMTP_EMAIL || "qsurajgautam@gmail.com"}>`,
+        from: `"WaveSolution" <${smtpEmail}>`,
         to: email,
         subject: `Booking Confirmed — WaveSolution`,
         html: customerHtml,

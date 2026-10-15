@@ -1,10 +1,10 @@
 // Gmail/SMTP Email Service for Admin Dashboard
 // Allows sending partnership emails directly from admin panel
 
-import nodemailer from 'nodemailer'
+import { createSmtpTransport, getSmtpSender } from "@/lib/smtp"
 
 export interface EmailOptions {
-  to: string
+  to: string | string[]
   subject: string
   body: string
   html?: string
@@ -28,21 +28,8 @@ export interface SentEmailRecord {
 export async function sendEmail(options: EmailOptions): Promise<{ success: boolean; messageId?: string; error?: string }> {
   try {
     // Validate environment variables
-    const smtpEmail = process.env.SMTP_EMAIL
-    const smtpPassword = process.env.SMTP_PASSWORD
-
-    if (!smtpEmail || !smtpPassword) {
-      throw new Error('SMTP credentials not configured. Please set SMTP_EMAIL and SMTP_PASSWORD in environment variables.')
-    }
-
-    // Create transporter
-    const transporter = nodemailer.createTransport({
-      service: 'gmail',
-      auth: {
-        user: smtpEmail,
-        pass: smtpPassword
-      }
-    })
+    const smtpEmail = getSmtpSender()
+    const transporter = createSmtpTransport()
 
     // Prepare email
     const mailOptions = {
@@ -115,22 +102,14 @@ export async function sendPartnershipEmail(
 export async function testEmailConnection(): Promise<{ connected: boolean; email?: string; error?: string }> {
   try {
     const smtpEmail = process.env.SMTP_EMAIL
-    const smtpPassword = process.env.SMTP_PASSWORD
-
-    if (!smtpEmail || !smtpPassword) {
+    if (!smtpEmail || !process.env.SMTP_PASSWORD) {
       return {
         connected: false,
         error: 'SMTP credentials not configured'
       }
     }
 
-    const transporter = nodemailer.createTransport({
-      service: 'gmail',
-      auth: {
-        user: smtpEmail,
-        pass: smtpPassword
-      }
-    })
+    const transporter = createSmtpTransport()
 
     // Verify connection
     await transporter.verify()

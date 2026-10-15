@@ -9,6 +9,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { businessInfo } from "@/lib/business-info"
+import { saveContact } from "@/lib/firebase-service"
 
 type DashboardSupportPanelProps = {
   user?: {
@@ -82,7 +83,17 @@ export function DashboardSupportPanel({ user }: DashboardSupportPanelProps) {
         throw new Error(data.message || "Failed to send support request.")
       }
 
-      toast.success("Support request sent. Our team will reply by email soon.")
+      let adminCopySaved = true
+      try {
+        await saveContact({ ...formData, source: "customer-dashboard-support", subject: `Support: ${formData.subject}` })
+      } catch (error) {
+        adminCopySaved = false
+        console.error("Support email sent but could not save an admin copy", error)
+      }
+
+      toast.success(adminCopySaved
+        ? "Support request sent to our team and added to the admin enquiries."
+        : "Support request emailed to our team. The dashboard copy could not be saved.")
       setFormData(createInitialFormState(user))
     } catch (error: any) {
       toast.error(error.message || "We couldn't send your support request.")
