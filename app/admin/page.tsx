@@ -1961,7 +1961,7 @@ export default function AdminDashboardPage() {
                                 </CardHeader>
                                 <CardContent className="p-6 space-y-4">
                                     {[
-                                        { name: "OpenRouter API", key: "OPENROUTER_API_KEY", desc: "Used for AI outreach draft generation. Get a free key at openrouter.ai/keys", model: "qwen/qwen-2.5-72b-instruct:free" },
+                                        { name: "OpenRouter API", key: "OPENROUTER_API_KEY", desc: "Used for AI outreach draft generation. Get a free key at openrouter.ai/keys", model: "dots-studio/dots-3-note-preview:free" },
                                         { name: "Firebase", key: "FIREBASE_*", desc: "Authentication, Firestore database, and file storage.", model: null },
                                     ].map((api, i) => (
                                         <div key={i} className="flex items-start justify-between p-4 rounded-xl border border-slate-100 bg-slate-50">

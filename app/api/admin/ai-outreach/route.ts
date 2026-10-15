@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server"
 
 // OpenRouter API Configuration (Free Agentic Models)
 const OPENROUTER_API_URL = "https://openrouter.ai/api/v1/chat/completions"
-const OPENROUTER_MODEL = process.env.OPENROUTER_MODEL || "qwen/qwen-2.5-72b-instruct:free"
+const OPENROUTER_MODEL = process.env.OPENROUTER_MODEL || "dots-studio/dots-3-note-preview:free"
 
 export async function POST(request: NextRequest) {
   try {
@@ -50,7 +50,11 @@ export async function POST(request: NextRequest) {
           }
         ],
         temperature: 0.7,
-        max_tokens: 150,
+        max_tokens: 400,
+        reasoning: {
+          effort: "low",
+          exclude: true,
+        },
       }),
     })
 
