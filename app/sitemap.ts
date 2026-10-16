@@ -25,6 +25,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         { slug: 'end-of-lease-cleaning-requirements-qld', lastModified: '2026-10-15' },
         { slug: 'end-of-lease-cleaning-cost-gold-coast', lastModified: '2025-09-22' },
         { slug: 'cleaning-tips', lastModified: '2026-02-15' },
+        { slug: 'house-cleaning-checklist', lastModified: '2026-10-16' },
         { slug: 'eco-friendly', lastModified: '2026-02-02' },
         { slug: 'office-cleaning', lastModified: '2026-01-20' },
         { slug: 'bond-cleaning-checklist', lastModified: '2025-01-15' },

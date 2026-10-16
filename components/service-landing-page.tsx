@@ -112,6 +112,30 @@ export function ServiceLandingPage({ page }: ServiceLandingPageProps) {
         priceHub,
       ]
     }
+    if (page.slug === "house-cleaning-gold-coast") {
+      return [
+        {
+          href: "/blog/house-cleaning-checklist",
+          label: "Gold Coast House Cleaning Checklist",
+          description: "Weekly, monthly and seasonal tasks for kitchens, bathrooms, bedrooms and living areas.",
+        },
+        {
+          href: "/blog/how-often-house-cleaning",
+          label: "How Often Should You Clean Your Home?",
+          description: "Choose a practical cleaning frequency for your household and the way you use each room.",
+        },
+        {
+          href: "/blog/cleaning-tips",
+          label: "House Cleaning Tips",
+          description: "Simple maintenance habits for Gold Coast homes in warm, humid weather.",
+        },
+        {
+          href: "/house-cleaning-cost-gold-coast",
+          label: "House Cleaning Cost Guide",
+          description: "See what affects a local quote, from home size to frequency and service scope.",
+        },
+      ]
+    }
     if (page.slug === "pest-control-gold-coast") {
       return [
         {

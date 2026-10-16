@@ -120,6 +120,19 @@ const ALL_ARTICLES: Article[] = [
     tags: ["Home Maintenance", "Humidity", "Gold Coast", "Eco Tips"],
   },
   {
+    slug: "/blog/house-cleaning-checklist",
+    title: "House Cleaning Checklist for Gold Coast Homes",
+    description:
+      "A practical weekly, monthly and seasonal cleaning checklist for Gold Coast kitchens, bathrooms, bedrooms and living areas.",
+    category: "house",
+    categoryLabel: "House Cleaning",
+    readTime: "7 min read",
+    date: "October 2026",
+    popular: true,
+    icon: CheckSquare,
+    tags: ["House Cleaning Checklist", "Weekly Cleaning", "Gold Coast", "Home Maintenance"],
+  },
+  {
     slug: "/blog/mould-prevention-gold-coast",
     title: "Mould Prevention & Safe Removal in Subtropical Gold Coast",
     description:
