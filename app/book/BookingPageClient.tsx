@@ -109,14 +109,23 @@ const steps = [
 	{ id: 3, label: "Details", emoji: "📋" },
 ]
 
-export default function BookingPageClient() {
+type BookingPageClientProps = {
+	initialService?: string
+}
+
+export default function BookingPageClient({ initialService }: BookingPageClientProps) {
 	const router = useRouter()
 	const [currentStep, setCurrentStep] = useState(1)
 	const [isSubmitting, setIsSubmitting] = useState(false)
 	const [showSuccessDialog, setShowSuccessDialog] = useState(false)
 
 	// Selections
-	const [selectedService, setSelectedService] = useState("home")
+	const [selectedService, setSelectedService] = useState(() => {
+		const requestedService = initialService?.trim()
+		return requestedService && allServices.some((service) => service.value === requestedService)
+			? requestedService
+			: "home"
+	})
 	const [selectedSize, setSelectedSize] = useState("3bed")
 	const [selectedFrequency, setSelectedFrequency] = useState<Frequency>("fortnightly")
 	const [selectedBathrooms, setSelectedBathrooms] = useState("2")
@@ -133,7 +142,7 @@ export default function BookingPageClient() {
 		bathroomOptions.find((b) => b.id === selectedBathrooms)?.label || selectedBathrooms
 
 	useEffect(() => {
-		trackEvent("booking_step_view", { step: 1, service: "home" })
+		trackEvent("booking_step_view", { step: 1, service: selectedService })
 	}, [])
 
 	const form = useForm<FormValues>({

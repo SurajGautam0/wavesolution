@@ -43,13 +43,13 @@ export const servicePages: ServicePage[] = [
     slug: "cleaning-gold-coast",
     shortLabel: "Cleaning Services",
     navLabel: "Cleaning Services",
-    metaTitle: "Gold Coast Cleaning Services | Local Coverage",
+    metaTitle: "Cleaning Services Gold Coast | House, Bond & Office",
     metaDescription:
-      "Find Wave Solution cleaning services across the Gold Coast, see the suburbs we serve, and choose a dedicated page for home, rental, office, or specialist cleaning.",
+      "Compare house, bond, carpet and office cleaning across the Gold Coast. See service details, check coverage and request a clear local quote.",
     heroEyebrow: "Local Gold Coast Cleaning Overview",
-    heroTitle: "Local Cleaning Services Across the Gold Coast",
+    heroTitle: "Cleaning Services Gold Coast",
     heroDescription:
-      "Explore Wave Solution's Gold Coast service coverage, see which cleaning options fit your property, and open the dedicated service page for inclusions and quote details.",
+      "Compare Wave Solution's house, bond, carpet, office and commercial cleaning across the Gold Coast. Review what each service includes, then request a local quote.",
     primaryKeyword: "cleaning services Gold Coast",
     keywords: [
       "cleaning services Gold Coast",
@@ -171,11 +171,11 @@ export const servicePages: ServicePage[] = [
     navLabel: "House Cleaning",
     metaTitle: "House Cleaning Gold Coast | Weekly & One-Off",
     metaDescription:
-      "Professional house cleaning in the Gold Coast for apartments, family homes and holiday properties. Weekly, fortnightly and one-off cleans available.",
+      "House cleaning on the Gold Coast for apartments, family homes and holiday properties. Book weekly, fortnightly or one-off cleaning and request a clear quote.",
     heroEyebrow: "Local House Cleaners",
     heroTitle: "House Cleaning Gold Coast",
     heroDescription:
-      "Book reliable house cleaning in the Gold Coast for apartments, townhouses, family homes, and holiday properties. Flexible weekly, fortnightly, and one-off cleans available.",
+      "Book local house cleaners across the Gold Coast for apartments, townhouses, family homes and holiday properties. Choose weekly, fortnightly or one-off cleaning.",
     primaryKeyword: "house cleaning Gold Coast",
     keywords: [
       "house cleaning Gold Coast",
@@ -301,7 +301,7 @@ export const servicePages: ServicePage[] = [
     navLabel: "Bond Cleaning",
     metaTitle: "Bond Cleaning Gold Coast QLD | Move-Out Clean",
     metaDescription:
-      "Need bond cleaning on the Gold Coast? See inclusions, Queensland handover details and quote factors for houses, units and apartments. Request an itemised quote.",
+      "Need bond cleaning on the Gold Coast? Review the room-by-room scope, optional carpet or pest add-ons, and request an itemised rental handover quote.",
     heroEyebrow: "Bond & End of Lease Cleaning | Queensland",
     heroTitle: "Bond Cleaning Gold Coast",
     heroDescription:
@@ -323,8 +323,8 @@ export const servicePages: ServicePage[] = [
     ],
     quickAnswer: "A bond clean is a professional end of lease clean measured against the entry condition report your agent issued at the start of the tenancy. Queensland law does not require you to hire a professional cleaner, but the property must be left reasonably clean and in substantially the same condition as when you moved in, allowing for fair wear and tear, and that is exactly what inspectors check at the final exit inspection. Wave Solution quotes each bond clean up front by property size, condition and any add-ons such as carpet steam cleaning or pest treatment.",
     overview: [
-      "Moving out of a rental property is stressful enough without worrying about whether you will get your full bond back. Property managers and real estate agents conduct rigorous exit inspections, comparing every room against your entry condition report. Standard household cleaning is rarely enough to meet their exacting standards.",
-      "Wave Solution specializes in inspection-ready bond cleaning designed to satisfy real estate property managers across the Gold Coast. We systematically tackle the toughest areas—baked-on oven grease, exhaust fan filters, bathroom soap scum, window tracks, and skirting boards—ensuring your rental is handed over in pristine condition.",
+      "Moving out of a rental property is stressful enough without planning a detailed clean around your handover date. Gold Coast bond cleaners work from the agreed scope and the property's entry condition report, allowing for fair wear and tear. A professional clean can help prepare the home for inspection, but the refund decision belongs to the property manager or lessor.",
+      "Wave Solution provides bond and end-of-lease cleaning across the Gold Coast using an agreed, room-by-room checklist. The scope can cover oven grease, exhaust fan filters, bathroom soap scum, window tracks, and skirting boards; carpet cleaning and pest treatment are quoted as add-ons when needed.",
       "If your property manager identifies a cleaning issue after the service, contact us promptly. We review it against the agreed checklist and arrange any follow-up support that applies to the original scope.",
     ],
     includedItems: [
@@ -569,13 +569,13 @@ export const servicePages: ServicePage[] = [
     slug: "office-cleaning-gold-coast",
     shortLabel: "Office Cleaning Gold Coast",
     navLabel: "Office Cleaning",
-    metaTitle: "Office Cleaning Gold Coast | Local Workplaces",
+    metaTitle: "Office Cleaning Services Gold Coast | Local Team",
     metaDescription:
-      "Office cleaning in the Gold Coast for professional suites, shared offices and business spaces. Flexible schedules, detailed checklists and local support.",
+      "Office cleaning services on the Gold Coast for suites, shared offices and business spaces. Choose a recurring schedule, clear task list and local quote.",
     heroEyebrow: "Workplace Cleaning",
     heroTitle: "Office Cleaning Gold Coast",
     heroDescription:
-      "Wave Solution provides office cleaning in the Gold Coast for professional suites, reception areas, shared workplaces, and business spaces that need dependable presentation and hygiene.",
+      "Wave Solution's office cleaners support professional suites, reception areas and shared workplaces across the Gold Coast with agreed task lists and flexible schedules.",
     primaryKeyword: "office cleaning Gold Coast",
     keywords: [
       "office cleaning Gold Coast",
@@ -696,9 +696,9 @@ export const servicePages: ServicePage[] = [
     slug: "commercial-cleaning-gold-coast",
     shortLabel: "Commercial Cleaning Gold Coast",
     navLabel: "Commercial Cleaning",
-    metaTitle: "Commercial Cleaning Gold Coast | Business",
+    metaTitle: "Commercial Cleaners Gold Coast | Business Cleaning",
     metaDescription:
-      "Commercial cleaning in the Gold Coast for offices, retail, clinics, body corporate sites and more. Tailored schedules and dependable local cleaners.",
+      "Commercial cleaning across the Gold Coast for offices, retail, clinics and shared sites. Get a task list, schedule and quote matched to your premises.",
     heroEyebrow: "Business Cleaning",
     heroTitle: "Commercial Cleaning Gold Coast",
     heroDescription:
@@ -706,6 +706,7 @@ export const servicePages: ServicePage[] = [
     primaryKeyword: "commercial cleaning Gold Coast",
     keywords: [
       "commercial cleaning Gold Coast",
+      "commercial cleaners Gold Coast",
       "business cleaning Gold Coast",
       "professional cleaners Gold Coast",
       "local commercial cleaners Gold Coast",
@@ -1207,13 +1208,13 @@ export const servicePages: ServicePage[] = [
     slug: "carpet-cleaning-gold-coast",
     shortLabel: "Carpet Cleaning Gold Coast",
     navLabel: "Carpet Cleaning",
-    metaTitle: "Carpet Cleaning Gold Coast | Steam Clean",
+    metaTitle: "Carpet Cleaning Gold Coast | From $150",
     metaDescription:
-      "Professional carpet cleaning across the Gold Coast for homes, rentals, offices, and commercial spaces. Refresh tired carpets and request a fast local quote.",
+      "Carpet cleaning across the Gold Coast from $150. Hot-water extraction for homes, rentals and offices, with stain treatment and clear local quotes.",
     heroEyebrow: "Carpet Refresh Service",
     heroTitle: "Carpet Cleaning Gold Coast",
     heroDescription:
-      "Wave Solution provides carpet cleaning across the Gold Coast for family homes, rental properties, offices, and business spaces that need fresher, cleaner carpets.",
+      "Need carpet cleaners on the Gold Coast? Wave Solution provides hot-water extraction for homes, rentals and offices, with clear quotes from $150.",
     primaryKeyword: "carpet cleaning Gold Coast",
     keywords: [
       "carpet cleaning Gold Coast",
@@ -1229,7 +1230,7 @@ export const servicePages: ServicePage[] = [
       "tile and grout cleaning Gold Coast",
       "floor cleaning Gold Coast",
     ],
-    quickAnswer: "Carpet cleaning on the Gold Coast is mostly hot water extraction, also called steam cleaning, which lifts ground-in dirt, stains and odours from the pile instead of only refreshing the surface. Quotes depend on carpet area, room count and the level of staining, and drying time varies with airflow and humidity. Coastal homes often book it alongside a bond clean or a seasonal refresh.",
+    quickAnswer: "Wave Solution provides carpet cleaning across the Gold Coast from $150, with hot-water extraction for suitable carpets in homes, rentals and offices. The quote depends on carpet area, room count, condition and access. Drying time varies with carpet type, airflow and humidity; we confirm the expected range when quoting.",
     overview: [
       "Carpets absorb daily life in ways hard floors don't. Sand tracked in from the beach, food and drink spills, pet hair, moisture, and repeated foot traffic through main areas all leave carpets looking flat and tired — often long before a room needs any other attention.",
       "Professional carpet cleaning lifts what vacuuming can't reach: embedded grit, traffic-lane discolouration, odour-causing residues, and surface marks that have been set into the fibres. The result is a fresher, cleaner feel throughout the home or workplace.",
@@ -1245,17 +1246,17 @@ export const servicePages: ServicePage[] = [
     whyChooseUs: sharedWhyChooseUs,
     sections: [
       {
-        directAnswer: "Hot water extraction injects hot water and cleaning solution into the pile and extracts it back out with the dirt, which is why it outperforms surface-level cleaning on stains and ground-in soil. Carpets stay damp for a few hours afterwards, so plan the job for a day with airflow through the rooms.",
-        title: "What carpet cleaning actually achieves",
+        directAnswer: "Hot-water extraction applies a cleaning solution and water to suitable carpet fibres, then extracts it with loosened soil. The carpet remains damp after cleaning; drying time depends on carpet type, airflow, humidity and the amount of moisture used.",
+        title: "Gold Coast carpet cleaning with hot-water extraction",
         paragraphs: [
           "Even in a generally tidy home, worn or discoloured carpet changes how the whole room looks and feels. Clean carpets affect how hygienic a space seems, how fresh it smells, and how comfortable it is underfoot — particularly in living areas, bedrooms, and high-traffic hallways.",
-          "For Gold Coast homes, the combination of sand, moisture, and year-round foot traffic can accelerate carpet wear. Regular professional treatment extends the life of the carpet and prevents grit from working deeper into the pile where it causes lasting fibre damage.",
+          "For Gold Coast homes, sand, moisture, and regular foot traffic can leave grit in the pile. Vacuuming between professional cleans helps manage loose soil; the suitable cleaning method depends on the carpet fibre and its condition.",
         ],
       },
       {
         title: "Carpet cleaning for rental properties and move-out",
         paragraphs: [
-          "Carpet condition is one of the most common points of dispute at rental handover. Tenants are often required by their lease to have carpets professionally cleaned before vacating — and the condition can affect how bond is assessed.",
+          "Carpet condition can be considered during rental handover. Queensland requirements depend on the entry condition, fair wear and tear, and any valid pet-related conditions in the tenancy agreement. Check your agreement and the RTA guidance before booking.",
           "We can combine carpet cleaning with a bond clean or end-of-lease service to handle both in a single booking. If you need a receipt for carpet cleaning to provide to your property manager or agent, we can provide that.",
         ],
       },
@@ -1269,7 +1270,7 @@ export const servicePages: ServicePage[] = [
       {
         title: "Drying times and what to expect",
         paragraphs: [
-          "Hot water extraction leaves carpets damp rather than wet. Most carpets dry within 2–4 hours with reasonable airflow — faster in warm weather with windows and fans running. We advise keeping foot traffic off the carpet until it is fully dry.",
+          "Hot-water extraction leaves carpets damp. Drying times vary with carpet construction, moisture level, ventilation, humidity and weather, so we avoid promising a single drying time. Keep foot traffic off the carpet until it is fully dry.",
           "We use appropriate methods for the carpet type. Not all carpets suit steam cleaning — we confirm the right approach when quoting so the treatment works properly and doesn't damage the fibres.",
         ],
       },
@@ -1298,12 +1299,12 @@ export const servicePages: ServicePage[] = [
       {
         question: "How much does carpet cleaning cost in the Gold Coast?",
         answer:
-          "Carpet cleaning starts from $150 depending on the size of the area, the number of rooms, and the condition of the carpets. Contact us for a fast local quote.",
+          "Carpet cleaning starts from $150. The final quote depends on the carpet area, number of rooms, condition, access and any stain-treatment requirements. Contact us to confirm the price for your property.",
       },
       {
         question: "How long does it take for carpets to dry after cleaning?",
         answer:
-          "Drying times typically range from 2–6 hours depending on the cleaning method used, carpet thickness, airflow, and weather conditions.",
+          "Drying time varies by carpet type, moisture level, airflow, humidity and weather. We can provide an estimate for the specific carpet and method when quoting; allow the carpet to dry fully before walking on it.",
       },
       {
         question: "Can carpet cleaning remove pet stains and odours?",
@@ -1323,7 +1324,7 @@ export const servicePages: ServicePage[] = [
       {
         question: "Do you clean carpets in rental properties before the final inspection?",
         answer:
-          "Yes. Carpet cleaning for rental inspections and move-outs is one of our most common requests. We can combine it with bond or end of lease cleaning for a complete service.",
+          "Yes. We can quote carpet cleaning alongside a bond or end-of-lease clean. Whether professional carpet cleaning is required depends on your agreement and circumstances, including any valid pet-related condition; check the RTA guidance or your property manager.",
       },
     ],
     relatedSlugs: [

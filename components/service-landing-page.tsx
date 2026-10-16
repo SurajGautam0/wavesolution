@@ -14,6 +14,10 @@ type ServiceLandingPageProps = {
 
 export function ServiceLandingPage({ page }: ServiceLandingPageProps) {
   const pageUrl = `${businessInfo.baseUrl}/${page.slug}`
+  const bookingHref =
+    page.slug === "carpet-cleaning-gold-coast"
+      ? `${siteLinks.book}?service=${encodeURIComponent(page.slug)}`
+      : siteLinks.book
   const relatedPages = page.relatedSlugs
     .map((slug) => getServicePage(slug))
     .filter((entry): entry is ServicePage => Boolean(entry))
@@ -271,7 +275,7 @@ export function ServiceLandingPage({ page }: ServiceLandingPageProps) {
 
             <div className="mt-8 flex flex-col gap-4 sm:flex-row">
               <Button asChild className="h-12 rounded-full bg-[#39BDE4] px-6 text-[11px] font-black uppercase tracking-[0.18em] text-white shadow-xl shadow-black/25 transition-transform hover:scale-105 hover:bg-[#249FC5]">
-                <Link href={siteLinks.book}>
+                <Link href={bookingHref}>
                   Get Free Quote
                   <ArrowRight className="h-4 w-4" />
                 </Link>
@@ -380,7 +384,7 @@ export function ServiceLandingPage({ page }: ServiceLandingPageProps) {
             </div>
             <div className="flex shrink-0 flex-col gap-3 sm:flex-row">
               <Button asChild className="h-11 rounded-full bg-primary px-5 text-[11px] font-black uppercase tracking-[0.18em] text-white hover:bg-primary/90">
-                <Link href={siteLinks.book}>
+                <Link href={bookingHref}>
                   Get Free Quote
                   <ArrowRight className="h-4 w-4" />
                 </Link>
@@ -397,7 +401,9 @@ export function ServiceLandingPage({ page }: ServiceLandingPageProps) {
           <div className="mb-10 rounded-[2rem] border border-slate-200 bg-[#F3F3F3] p-7 shadow-sm">
             <h2 className="text-2xl font-black tracking-tight text-primary">Pricing Guide for {page.shortLabel}</h2>
             <p className="mt-4 text-sm leading-7 text-slate-600">
-              We use tailored quotes because cleaning and pest-control needs vary by property, condition, timing, and service scope. The most accurate pricing comes from a quick local quote, but these are the main factors that shape the estimate.
+              {page.slug === "carpet-cleaning-gold-coast"
+                ? "Carpet cleaning starts from $150. Your final quote depends on the carpet area, room count, carpet condition and access. Share your suburb and details for a confirmed, itemised quote."
+                : "We use tailored quotes because cleaning and pest-control needs vary by property, condition, timing, and service scope. The most accurate pricing comes from a quick local quote, but these are the main factors that shape the estimate."}
             </p>
             <div className="mt-6 grid gap-4 md:grid-cols-3">
               {pricingDetails.map((detail) => (
@@ -543,7 +549,7 @@ export function ServiceLandingPage({ page }: ServiceLandingPageProps) {
             </p>
             <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row">
               <Button asChild className="h-12 rounded-full bg-secondary px-6 text-[11px] font-black uppercase tracking-[0.18em] text-white hover:bg-secondary/90 shadow-lg shadow-black/20">
-                <Link href={siteLinks.book}>Get a Free Quote</Link>
+                <Link href={bookingHref}>Get a Free Quote</Link>
               </Button>
               <Button asChild variant="outline" className="h-12 rounded-full border-white/20 bg-white/10 px-6 text-[11px] font-black uppercase tracking-[0.18em] text-white hover:bg-white/20 hover:text-white">
                 <a href={businessInfo.phoneHref} className="inline-flex items-center gap-2">

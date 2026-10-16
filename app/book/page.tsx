@@ -26,7 +26,12 @@ export const metadata: Metadata = {
   },
 }
 
-export default function BookingPage() {
-  return <BookingPageClient />
+type BookingPageProps = {
+  searchParams: Promise<{ service?: string }>
+}
+
+export default async function BookingPage({ searchParams }: BookingPageProps) {
+  const { service } = await searchParams
+  return <BookingPageClient initialService={service} />
 }
 
