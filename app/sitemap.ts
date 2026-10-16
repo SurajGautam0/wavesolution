@@ -1,15 +1,17 @@
+import { businessInfo } from '@/lib/business-info'
 import { locationPages } from '@/lib/location-pages'
 import { servicePageSlugs } from '@/lib/service-pages'
 import { serviceLocationPages } from '@/lib/service-location-pages'
 import { MetadataRoute } from 'next'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-    const baseUrl = 'https://www.wavesolution.com.au'
+    const baseUrl = businessInfo.baseUrl
 
     // Static pages with realistic last-modified dates
     const homeLastModified = new Date('2026-10-15')
     const servicesLastModified = new Date('2026-10-15')
-    const bookLastModified = new Date('2026-09-14')
+    const bookLastModified = new Date('2026-10-16')
+    const carpetCleaningLastModified = new Date('2026-10-16')
     const aboutLastModified = new Date('2026-10-15')
     const contactLastModified = new Date('2026-09-01')
     const teamLastModified = new Date('2026-08-15')
@@ -62,7 +64,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         // Individual service pages - High priority for money keywords
         ...servicePageSlugs.map((slug) => ({
             url: `${baseUrl}/${slug}`,
-            lastModified: servicesLastModified,
+            lastModified: slug === 'carpet-cleaning-gold-coast' ? carpetCleaningLastModified : servicesLastModified,
             changeFrequency: 'weekly' as const,
             priority: slug === 'cleaning-gold-coast' ? 0.96 : slug === 'cleaning-carrara' ? 0.93 : 0.92,
         })),
