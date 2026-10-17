@@ -312,7 +312,6 @@ export default function PestControlCostPage() {
           <div className="grid gap-10 lg:grid-cols-[1.35fr_0.85fr]">
             <div className="space-y-6">
               <div className="rounded-[2rem] border border-primary/15 bg-[#F3F3F3] p-6">
-                <p className="text-xs font-black uppercase tracking-[0.2em] text-secondary">Direct Answer</p>
                 <p className="mt-3 text-base leading-8 text-slate-700">
                   Pest control on the Gold Coast is quoted per property, not sold from a fixed menu, because the pest, the
                   extent of the activity and how much of the site needs treating all change the job. We will confirm an

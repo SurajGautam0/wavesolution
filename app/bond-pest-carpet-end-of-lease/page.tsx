@@ -313,7 +313,6 @@ export default function BondPestCarpetBundlePage() {
           <div className="grid gap-10 lg:grid-cols-[1.35fr_0.85fr]">
             <div className="space-y-6">
               <div className="rounded-[2rem] border border-primary/15 bg-[#F3F3F3] p-6">
-                <p className="text-xs font-black uppercase tracking-[0.2em] text-secondary">Direct Answer</p>
                 <p className="mt-3 text-base leading-8 text-slate-700">
                   Yes — bond cleaning, carpet steam cleaning and pest treatment can be booked together, and it is the
                   simplest option when your agent asks for all three. The work runs in order: clean first, carpets second so

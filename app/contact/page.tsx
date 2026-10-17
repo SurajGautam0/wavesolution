@@ -421,7 +421,7 @@ export default function ContactPage() {
                         Message Received!
                       </h3>
                       <p className="text-sm text-emerald-700 max-w-md mx-auto mb-6 leading-relaxed">
-                        Thank you for contacting WaveSolution. One of our Gold Coast cleaning coordinators will review your details and respond with a personalized quote within 15–30 minutes.
+                        Thank you for contacting WaveSolution. One of our Gold Coast cleaning coordinators will review your details and respond with a personalized quote as soon as we can during business hours.
                       </p>
                       <div className="flex flex-col sm:flex-row gap-3 justify-center">
                         <Button
@@ -623,7 +623,7 @@ export default function ContactPage() {
                   <ul className="space-y-2 text-xs text-white/90">
                     <li className="flex items-center gap-2">
                       <Check className="h-4 w-4 text-[#39BDE4]" />
-                      <span>RTA-compliant comprehensive room checklist</span>
+                      <span>Room-by-room checklist based on the agreed service scope</span>
                     </li>
                     <li className="flex items-center gap-2">
                       <Check className="h-4 w-4 text-[#39BDE4]" />
@@ -635,7 +635,7 @@ export default function ContactPage() {
                 {/* Trust Badges Box */}
                 <div className="rounded-3xl bg-white border border-slate-200/80 p-7 shadow-sm space-y-4">
                   <h4 className="font-black text-slate-900 text-sm uppercase tracking-wider">
-                    Why Gold Coast Residents Trust Us:
+                    Why Gold Coast customers choose us
                   </h4>
 
                   <div className="flex items-start gap-3">
@@ -664,7 +664,7 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <p className="text-xs font-bold text-slate-900">Eco-Friendly & Pet Safe</p>
-                      <p className="text-xs text-slate-500">Non-toxic formulas safe for kids and pets.</p>
+                      <p className="text-xs text-slate-500">Product details and preparation guidance are confirmed before the service.</p>
                     </div>
                   </div>
 
@@ -788,7 +788,7 @@ export default function ContactPage() {
               {[
                 {
                   q: "How fast will I receive my cleaning quote?",
-                  a: "For standard residential and office cleans, we typically respond within 15 to 30 minutes during business hours with a clear, itemized quote.",
+                  a: "For standard residential and office cleans, we typically respond as soon as we can during business hours with a clear, itemized quote.",
                 },
                 {
                   q: "Do I need to be home when the cleaners arrive?",

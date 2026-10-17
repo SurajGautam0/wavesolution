@@ -311,7 +311,6 @@ export default function MedicalCleaningPage() {
           <div className="grid gap-10 lg:grid-cols-[1.35fr_0.85fr]">
             <div className="space-y-6">
               <div className="rounded-[2rem] border border-primary/15 bg-[#F3F3F3] p-6">
-                <p className="text-xs font-black uppercase tracking-[0.2em] text-secondary">Direct Answer</p>
                 <p className="mt-3 text-base leading-8 text-slate-700">
                   Yes — medical and dental practices are cleaned outside appointment hours, against a checklist built around
                   your practice's own infection-control requirements. That covers treatment rooms, reception, waiting areas,

@@ -671,7 +671,7 @@ export default function EndOfLeaseCleaningRequirementsQldPage() {
 
                 <div className="mt-5 pt-4 border-t border-white/10 flex items-center justify-between text-[11px] text-white/60">
                   <span>✓ Covered-item re-clean support</span>
-                  <span>✓ Licensed &amp; Insured</span>
+                  <span>✓ Insured team</span>
                 </div>
               </div>
 

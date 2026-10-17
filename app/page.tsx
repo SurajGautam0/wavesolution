@@ -24,73 +24,87 @@ const serviceCards = [
     title: "Office Cleaning Gold Coast",
     description: "Flexible workplace cleaning for professional suites, shared offices, and staff spaces.",
     icon: "Building2",
-    price: "From $[TO CONFIRM]",
+    price: "",
     href: siteLinks.officeCleaning,
   },
   {
     title: "Bond Cleaning Gold Coast",
     description: "Detailed move-out cleaning for tenants, landlords, and property managers before inspection and handover.",
     icon: "Truck",
-    price: "From $[TO CONFIRM]",
+    price: "From $250",
     href: siteLinks.bondCleaning,
   },
   {
     title: "End of Lease Cleaning Gold Coast",
     description: "Rental exit cleaning for apartments, units, townhouses, and homes across key Gold Coast suburbs.",
     icon: "Repeat",
-    price: "From $[TO CONFIRM]",
+    price: "From $250",
     href: siteLinks.endOfLeaseCleaning,
   },
   {
     title: "Move-In Cleaning Gold Coast",
     description: "Detailed move-in cleaning so homes, rentals, and newly purchased properties feel fresh from day one.",
     icon: "Home",
-    price: "From $[TO CONFIRM]",
+    price: "",
     href: siteLinks.moveInCleaning,
   },
   {
     title: "Commercial Cleaning Gold Coast",
     description: "Cleaning plans for businesses, retail spaces, clinics, and other commercial premises.",
     icon: "Briefcase",
-    price: "From $[TO CONFIRM]",
+    price: "",
     href: siteLinks.commercialCleaning,
   },
   {
     title: "Deep Cleaning Gold Coast",
     description: "One-off detailed cleaning for properties that need more than a standard maintenance visit.",
     icon: "Sparkles",
-    price: "From $[TO CONFIRM]",
+    price: "",
     href: siteLinks.deepCleaning,
   },
   {
     title: "Carpet Cleaning Gold Coast",
     description: "Carpet refresh and stain-focused cleaning for homes, rentals, offices, and commercial fit-outs.",
     icon: "Carpet",
-    price: "From $[TO CONFIRM]",
+    price: "From $150",
     href: siteLinks.carpetCleaning,
   },
   {
     title: "Pest Control Gold Coast",
     description: "Targeted pest control support for homes, rentals, and businesses dealing with common Gold Coast pests.",
     icon: "Bug",
-    price: "From $[TO CONFIRM]",
+    price: "",
     href: siteLinks.pestControl,
   },
   {
     title: "After Builders Cleaning Gold Coast",
     description: "Post-construction and renovation cleaning for homes, fit-outs, and business spaces that need a full reset.",
     icon: "Sparkles",
-    price: "From $[TO CONFIRM]",
+    price: "",
     href: siteLinks.afterBuildersCleaning,
+  },
+  {
+    title: "Strata & Body Corporate Cleaning Gold Coast",
+    description: "Scheduled cleaning for shared areas such as lobbies, stairwells and bin rooms.",
+    icon: "Building2",
+    price: "",
+    href: "/strata-cleaning-gold-coast",
+  },
+  {
+    title: "Short-Stay & Airbnb Turnover Cleaning",
+    description: "Guest changeover cleaning with the agreed checklist confirmed before booking.",
+    icon: "Home",
+    price: "",
+    href: "/airbnb-cleaning-gold-coast",
   },
 ]
 
 const whyChooseUs = [
   "Fully insured cleaners who communicate clearly from quote to completion.",
   "Police-checked staff for homes, offices, rental properties, and business spaces.",
-  "Eco-friendly cleaning options available for families, pets, and sensitive indoor spaces.",
+  "We confirm the products and preparation guidance for your service before booking.",
   "Local Gold Coast team with practical suburb coverage and flexible scheduling.",
-  "Fast booking response so you can move quickly on urgent household or rental jobs.",
+  "A clear scope and price confirmed before you book.",
   "Cleaning plans that match the property type instead of forcing every lead into the same package.",
 ]
 
@@ -98,12 +112,12 @@ const homepageFaqs = [
   {
     question: "Do you offer bond cleaning and end of lease cleaning?",
     answer:
-      "Yes. We clean to the agreed scope for your property manager’s inspection. If an area within that scope fails inspection, we return within 24 hours at no charge. Carpet cleaning and pest control can be added to the booking.",
+      "Yes. We clean to the standard property managers expect. For bond and end-of-lease cleans, covered-item re-clean support applies to items within the agreed scope; it does not guarantee a bond refund. Carpet steam cleaning and pest control can be added to the same booking. Our separate house-cleaning guarantee covers an agreed area that fails the initial inspection: we return within 24 hours at no charge.",
   },
   {
     question: "Can I book office or commercial cleaning?",
     answer:
-      "Yes. We clean offices, clinics, retail and strata sites on the Gold Coast. We can discuss a regular schedule that suits your site. Quote process: [TO CONFIRM].",
+      "Yes. We clean offices, clinics, retail and strata sites on the Gold Coast. We can discuss a regular schedule that suits your site and provide a quote after we understand the premises and required scope.",
   },
   {
     question: "How do I get a cleaning quote?",
@@ -113,7 +127,7 @@ const homepageFaqs = [
   {
     question: "How much does end of lease cleaning cost on the Gold Coast?",
     answer:
-      "End of lease cleaning starts from $[TO CONFIRM]. The final quote depends on property size, condition and requested extras. Use the estimator or contact us for a price for your property.",
+      "End of lease cleaning starts from $250. The final quote depends on property size, condition and requested extras. Use the estimator or contact us for a price for your property.",
   },
   {
     question: "Do you offer pest control with bond cleaning?",
@@ -121,7 +135,7 @@ const homepageFaqs = [
   },
   {
     question: "Is pest control done by a licensed technician?",
-    answer: "Yes. Our pest control licence number is 7854094762. Contact us if you need treatment-specific details before booking.",
+    answer: "Ask us for the treating technician’s licence details before you book so you can verify them against the certificate.",
   },
   {
     question: "Do you bring your own equipment and products?",
@@ -129,11 +143,11 @@ const homepageFaqs = [
   },
   {
     question: "What happens if my property manager is not happy?",
-    answer: "Send us the inspection notes within 24 hours and we’ll compare them with the agreed cleaning scope. If an included area was missed, we’ll return at no charge to re-clean it. The guarantee covers cleaning items in the agreed scope.",
+    answer: "Send us the inspection feedback and we’ll compare it with the agreed scope. Bond and end-of-lease support covers eligible items within that scope and does not guarantee a bond refund. For a house clean, if an agreed area fails the initial inspection, we return within 24 hours at no charge.",
   },
   {
     question: "Do you clean on weekends?",
-    answer: "Yes. Saturday bookings are available from 9am to 4pm, subject to availability. We’re closed on Sundays, so contact us early to check weekend availability.",
+    answer: "Yes. We are open Saturday from 9am to 4pm, subject to availability. We are closed on Sundays.",
   },
 ]
 
@@ -188,9 +202,7 @@ export default function Home() {
           <div className="grid gap-4 rounded-2xl border border-slate-200 bg-slate-50 p-5 text-sm sm:grid-cols-2 lg:grid-cols-5">
             <p><strong>Fully insured</strong><br />Service team cover</p>
             <p><strong>Police-checked</strong><br />Staff for your property</p>
-            <p><strong>Pest control licence</strong><br />7854094762</p>
             <p><strong>Bond clean guarantee</strong><br />Free re-clean within 24 hours for covered missed areas</p>
-            <p><strong>ABN</strong><br />[TO CONFIRM]</p>
           </div>
         </div>
       </section>

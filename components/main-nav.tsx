@@ -57,7 +57,7 @@ const residentialServices: ServiceItem[] = [
   {
     href: siteLinks.pestControl,
     label: "Pest Control",
-    description: "Licensed pest treatments for Gold Coast homes",
+    description: "Pest treatments for Gold Coast homes",
     icon: Bug,
   },
 ]

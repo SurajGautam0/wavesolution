@@ -275,7 +275,7 @@ export const servicePages: ServicePage[] = [
       {
         question: "Is your cleaning service suitable for homes with pets or children?",
         answer:
-          "Yes. We offer eco-friendly and non-toxic product options for families with children or pets. Let us know when booking and we'll use the right products for your household.",
+          "Tell us about your household when booking. We can confirm which products are planned and provide preparation and re-entry guidance before the service.",
       },
       {
         question: "Can I get the same cleaner each visit?",
@@ -335,14 +335,20 @@ export const servicePages: ServicePage[] = [
       "Floors: High-suction HEPA vacuuming of carpets and damp mopping of hard tiled and vinyl surfaces",
       "Follow-up support: Contact us promptly if an inspection raises a cleaning issue within the agreed service scope",
     ],
-    whyChooseUs: sharedWhyChooseUs,
+    whyChooseUs: [
+      "Bond and end-of-lease cleaning starts from $250.",
+      "We agree the room-by-room scope before the booking.",
+      "The work can be planned around your handover date, subject to availability.",
+      "You receive an itemised quote in writing before booking.",
+      "Covered-item re-clean support applies to the agreed scope and does not guarantee a bond refund.",
+    ],
     sections: [
       {
         directAnswer: "Your bond clean is judged against the entry condition report rather than a generic checklist, so the priority areas are the oven, rangehood, window tracks, shower screens, skirting boards and any marks on walls or floors. Queensland tenants must leave the property reasonably clean and in substantially the same condition as at the start of the tenancy, allowing for fair wear and tear, and hiring a professional cleaner is a practical way to prove that standard rather than a legal requirement.",
         title: "Queensland bond cleaning for rental exit inspections",
         paragraphs: [
           "For a Queensland end-of-lease clean, use the Entry Condition Report as the reference for the property's starting condition, allowing for fair wear and tear. Property managers inspect rental properties methodically, checking for dust, grease, and grime in the areas covered by the agreed cleaning scope.",
-          "Our bond cleaning checklist is modeled directly on standard REIQ (Real Estate Institute of Queensland) handover requirements. We clean systematically from ceilings and light fittings down to skirting boards and floor edges, ensuring every room is presented to inspection-ready standards.",
+          "We work from the agreed, room-by-room scope and the property's entry condition report. The checklist covers the areas included in your quote, from fittings and surfaces to skirting boards and floors.",
         ],
       },
       {
@@ -361,7 +367,7 @@ export const servicePages: ServicePage[] = [
         ],
       },
       {
-        title: "Official Queensland bond cleaning checklist & inspection guide",
+        title: "Queensland bond cleaning checklist and inspection guide",
         paragraphs: [
           "Want to know exactly what property managers inspect room by room before releasing your bond? Read our full bond cleaning checklist for Queensland rentals to see our complete vacate protocol, kitchen oven detailing standards, and bathroom sanitisation requirements.",
           "Whether you plan to clean yourself or book our move-out cleaning service, having a clear room-by-room checklist helps ensure important areas are not missed.",
@@ -1243,7 +1249,13 @@ export const servicePages: ServicePage[] = [
       "Whole-room or targeted area cleaning based on agreed scope",
       "Quotes based on carpet area, fibre type, condition, and access",
     ],
-    whyChooseUs: sharedWhyChooseUs,
+    whyChooseUs: [
+      "Carpet cleaning starts from $150.",
+      "Hot-water extraction is the cleaning method used.",
+      "We ask about carpet type and condition before confirming the approach.",
+      "Drying time varies with fibre, airflow, humidity and moisture used.",
+      "The rooms and any stain or odour work are agreed before booking.",
+    ],
     sections: [
       {
         directAnswer: "Hot-water extraction applies a cleaning solution and water to suitable carpet fibres, then extracts it with loosened soil. The carpet remains damp after cleaning; drying time depends on carpet type, airflow, humidity and the amount of moisture used.",
@@ -1373,7 +1385,13 @@ export const servicePages: ServicePage[] = [
       "Pet-safe treatment protocols with clear re-entry guidance",
       "Quotes based on property size, pest type, and treatment scope",
     ],
-    whyChooseUs: sharedWhyChooseUs,
+    whyChooseUs: [
+      "We ask what pest you have seen and where it is active.",
+      "Treatment scope is discussed for your property and access conditions.",
+      "We explain preparation and re-entry guidance before the treatment.",
+      "The price is confirmed before you book.",
+      "Pest treatment can be scheduled after bond cleaning and carpet work for a handover.",
+    ],
     sections: [
       {
         directAnswer: "Warm, humid weather and plenty of nearby vegetation mean Gold Coast properties regularly deal with cockroaches, spiders, ants and fleas, with rodents more common around garages, sheds and food storage. Because the right treatment depends on what is actually present, identification comes before any recommendation.",
@@ -1723,7 +1741,7 @@ export const servicePages: ServicePage[] = [
       "Wave Solution provides hassle-free, fully compliant end of lease pest management across the Gold Coast. We coordinate seamlessly with your bond cleaning and carpet steam cleaning schedule, issuing an immediate digital receipt and treatment certificate that property managers accept without question.",
     ],
     includedItems: [
-      "Licensed internal pest spray covering skirting boards, cornices, cupboards, and entryways",
+      "Pest treatment to the agreed interior scope",
       "Specialized flea eradication treatment for rental properties with domestic pet clauses",
       "Targeted cockroach, spider, and silverfish preventative treatment in kitchens and wet areas",
       "Immediate digital Pest Treatment Certificate and tax invoice issued for your real estate agent",
@@ -1757,7 +1775,7 @@ export const servicePages: ServicePage[] = [
       {
         title: "Treatment receipt and service follow-up",
         paragraphs: [
-          "As soon as our technician completes the vacate treatment, a formal Pest Treatment Certificate specifying the chemical active ingredients, target pests, licence number, and property address is emailed directly to you and your property manager.",
+          "We can provide a pest treatment receipt for the agreed service. Ask us what treatment details it will include when you request a quote.",
           "After the treatment, we provide the service documentation included in your quote. Contact us if you have a question about the completed work or the treatment terms.",
         ],
       },
@@ -1771,7 +1789,7 @@ export const servicePages: ServicePage[] = [
       {
         question: "Do you provide a formal receipt for my real estate agent?",
         answer:
-          "Yes. Immediately upon completion, we issue an official digital Pest Treatment Certificate and tax invoice detailing the licence number, chemicals applied, and property details for your property manager.",
+          "We can provide a pest treatment receipt for the agreed service. Ask us about its details when you request a quote.",
       },
       {
         question: "Should pest control be done before or after the bond clean?",

@@ -324,7 +324,6 @@ export default function BondCleaningCostPage() {
           <div className="grid gap-10 lg:grid-cols-[1.35fr_0.85fr]">
             <div className="space-y-6">
               <div className="rounded-[2rem] border border-primary/15 bg-[#F3F3F3] p-6">
-                <p className="text-xs font-black uppercase tracking-[0.2em] text-secondary">Direct Answer</p>
                 <p className="mt-3 text-base leading-8 text-slate-700">
                   Bond cleaning on the Gold Coast is priced for the individual property, not sold from a fixed menu, because
                   size, condition and extras change on every job. We will confirm an itemised price for your property size

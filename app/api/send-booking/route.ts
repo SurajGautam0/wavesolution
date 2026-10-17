@@ -133,7 +133,7 @@ ${notes ? `- Notes: ${notes}` : ""}
         
         <div style="padding: 32px;">
           <p style="color: #333366; font-size: 16px; line-height: 1.6;">Hi <strong>${name}</strong>,</p>
-          <p style="color: #475569; font-size: 14px; line-height: 1.6;">Thank you for your booking request! We've received your details and our team will get back to you within <strong>15 minutes</strong> with a personalised quote.</p>
+          <p style="color: #475569; font-size: 14px; line-height: 1.6;">Thank you for your booking request. We have received your details and will contact you with a personalised quote.</p>
           
           <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 20px; margin: 20px 0;">
             <h2 style="color: #333366; font-size: 16px; margin: 0 0 16px;">Your Booking Summary</h2>

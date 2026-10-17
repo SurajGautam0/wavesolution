@@ -166,7 +166,6 @@ export default async function LocationDetailPage({ params }: LocationPageProps) 
           <div className="grid gap-10 lg:grid-cols-[1.4fr_0.8fr]">
             <div className="space-y-8">
               <div className="rounded-[2rem] border border-primary/15 bg-[#F3F3F3] p-6">
-                <p className="text-xs font-black uppercase tracking-[0.2em] text-secondary">Direct Answer</p>
                 <p className="mt-3 text-base leading-8 text-slate-700">
                   Wave Solution provides cleaning services in {location.name} for homes, offices, rentals and commercial
                   spaces — regular house cleaning, deep cleaning, bond and end of lease cleaning, carpet cleaning and pest

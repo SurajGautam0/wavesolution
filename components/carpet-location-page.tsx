@@ -68,17 +68,17 @@ export function CarpetLocationPage({ page }: { page: CarpetLocationContent }) {
       <div className="classic-container max-w-5xl space-y-14 py-14 md:py-20">
         <section>
           <h2 className="text-3xl font-black text-primary">Our carpet cleaning method</h2>
-          <p className="mt-4 leading-8">We first check the carpet type, condition and areas you want treated. The method we use is [TO CONFIRM]. Not every carpet fibre suits the same cleaning process, so we confirm the approach before starting. Drying time is [TO CONFIRM] and can vary with fibre, airflow, humidity and the amount of moisture used. We’ll explain the expected care and drying guidance for your property when we quote.</p>
+          <p className="mt-4 leading-8">We clean carpets using hot-water extraction. First we check the carpet type, condition and areas you want treated, because not every fibre suits the same process. Drying time varies with fibre, airflow, humidity and the amount of moisture used. We’ll explain the expected care and drying guidance for your property when we quote.</p>
         </section>
 
         <section>
           <h2 className="text-3xl font-black text-primary">What we clean</h2>
-          <p className="mt-4 leading-8">Carpeted rooms, hallways and stairs can be included in your quote. Tell us about stains, pet accidents, odours or heavily used paths so we can discuss the right scope. Rug, couch and mattress cleaning: [TO CONFIRM]. We’ll identify what is included in writing before you book, so you know which rooms and items are covered and whether a specialist treatment is needed.</p>
+          <p className="mt-4 leading-8">Carpeted rooms, hallways and stairs can be included in your quote. Tell us about stains, pet accidents, odours or heavily used paths so we can discuss the right scope. We’ll identify what is included in writing before you book, so you know which rooms and items are covered and whether a specialist treatment is needed.</p>
         </section>
 
         <section className="rounded-3xl border border-slate-200 bg-slate-50 p-7">
           <h2 className="text-3xl font-black text-primary">Price</h2>
-          <p className="mt-4 leading-8">Carpet cleaning in {page.suburb} starts from $[TO CONFIRM]. The quote depends on the number and size of rooms, carpet condition, access and any stain or odour work requested. Share the property details and preferred date through our <Link className="font-bold text-primary underline" href={siteLinks.book}>online quote form</Link>, call us or message us on WhatsApp. We confirm the scope and price before the booking is accepted.</p>
+          <p className="mt-4 leading-8">Carpet cleaning in {page.suburb} starts from $150. The quote depends on the number and size of rooms, carpet condition, access and any stain or odour work requested. Share the property details and preferred date through our <Link className="font-bold text-primary underline" href={siteLinks.book}>online quote form</Link>, call us or message us on WhatsApp. We confirm the scope and price before the booking is accepted.</p>
         </section>
 
         {page.localSections.map((section) => (

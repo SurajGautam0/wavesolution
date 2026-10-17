@@ -62,6 +62,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
             changeFrequency: 'weekly',
             priority: 0.95,
         },
+        {
+            url: `${baseUrl}/property-managers`,
+            lastModified: new Date('2026-10-17'),
+            changeFrequency: 'monthly',
+            priority: 0.85,
+        },
 
         // Individual service pages - High priority for money keywords
         ...servicePageSlugs.map((slug) => ({

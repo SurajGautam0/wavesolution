@@ -311,7 +311,6 @@ export default function AirbnbCleaningPage() {
           <div className="grid gap-10 lg:grid-cols-[1.35fr_0.85fr]">
             <div className="space-y-6">
               <div className="rounded-[2rem] border border-primary/15 bg-[#F3F3F3] p-6">
-                <p className="text-xs font-black uppercase tracking-[0.2em] text-secondary">Direct Answer</p>
                 <p className="mt-3 text-base leading-8 text-slate-700">
                   Yes — short-stay turnover cleaning is scheduled around your departure and arrival times, run against a
                   fixed room-by-room checklist, and includes restocking against the list your listing promises. Back-to-back

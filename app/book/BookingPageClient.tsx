@@ -56,9 +56,11 @@ import {
 
 // ── Data ──────────────────────────────────────────────
 const serviceTypes = [
-	{ id: "home", label: "Home Cleaning", icon: Home, desc: "Regular or one-off house cleaning" },
-	{ id: "office", label: "Office Cleaning", icon: Building2, desc: "Commercial and workplace cleaning" },
-	{ id: "deep", label: "Deep Cleaning", icon: Sparkles, desc: "Thorough top-to-bottom clean" },
+	{ id: "bond-cleaning-gold-coast", label: "Bond / End of Lease", icon: Home, desc: "Move-out cleaning from $250" },
+	{ id: "pest-control-gold-coast", label: "Pest Control", icon: Sparkles, desc: "Tell us the pest and property type" },
+	{ id: "carpet-cleaning-gold-coast", label: "Carpet Cleaning", icon: Home, desc: "Hot-water extraction from $150" },
+	{ id: "home", label: "House Cleaning", icon: Home, desc: "Weekly, fortnightly or one-off from $120" },
+	{ id: "office-cleaning-gold-coast", label: "Office Cleaning", icon: Building2, desc: "Regular workplace cleaning" },
 ]
 
 const allServices = servicePages
@@ -284,7 +286,7 @@ export default function BookingPageClient({ initialService }: BookingPageClientP
 						</h1>
 						<p className="mx-auto mt-4 max-w-xl text-base text-white/70 sm:text-lg">
 							Select your service, tell us about your space, and we&apos;ll send a
-							personalised quote — usually within 15 minutes.
+							personalised quote. We confirm the scope and price before you book.
 						</p>
 
 						{/* Reassurance row — replaces the old decorative-only badge */}
@@ -374,7 +376,7 @@ export default function BookingPageClient({ initialService }: BookingPageClientP
 								</p>
 							</div>
 
-							<div className="mb-10 grid grid-cols-1 gap-4 sm:grid-cols-3">
+							<div className="mb-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5">
 								{serviceTypes.map((svc) => {
 									const Icon = svc.icon
 									const isSelected = selectedService === svc.id
@@ -916,7 +918,7 @@ export default function BookingPageClient({ initialService }: BookingPageClientP
 										<div className="mt-5 rounded-xl border border-[#39BDE4]/20 bg-[#39BDE4]/5 p-4">
 											<p className="text-center text-xs font-semibold leading-relaxed text-secondary">
 												<span aria-hidden="true">⚡</span> We will review your details and send you a
-												personalised quote within 15 minutes.
+												personalised quote.
 											</p>
 										</div>
 									</div>
@@ -997,7 +999,7 @@ export default function BookingPageClient({ initialService }: BookingPageClientP
 								Request Received
 							</DialogTitle>
 							<DialogDescription className="text-sm leading-relaxed text-white/70">
-								Thank you. We will review your booking details and contact you within 15 minutes with a personalised quote.
+								Thank you. We will review your booking details and contact you with a personalised quote.
 							</DialogDescription>
 						</div>
 					</div>

@@ -52,176 +52,7 @@ interface Testimonial {
   // metrics — Google reviews have no like counts. Both are spam-policy risks.
 }
 
-const ALL_TESTIMONIALS: Testimonial[] = [
-  {
-    id: "t-1",
-    name: "Sarah Johnson",
-    location: "Southport, QLD",
-    rating: 5,
-    category: "residential",
-    service: "Regular House Cleaning",
-    date: "March 15, 2024",
-    initials: "SJ",
-    accent: "from-[#39BDE4] to-[#249FC5]",
-    highlight: "Always punctual, thorough, and friendly",
-    review:
-      "WaveSolution has been cleaning our 4-bedroom home in Southport fortnightly for over a year now. The team is consistently on time, brings all their own eco-friendly products, and leaves the kitchen and bathrooms spotless. It has given our family our weekends back!",
-  },
-  {
-    id: "t-2",
-    name: "Michael Thompson",
-    location: "Broadbeach, QLD",
-    rating: 5,
-    category: "residential",
-    service: "Deep Spring Cleaning",
-    date: "March 10, 2024",
-    initials: "MT",
-    accent: "from-[#333365] to-[#4a4a7a]",
-    highlight: "Exceeded all expectations on deep clean",
-    review:
-      "I booked a full deep clean for my beachfront apartment prior to hosting family. They cleaned behind appliances, scrubbed balcony sliding tracks, and restored our tiled floors. Truly incredible attention to detail.",
-  },
-  {
-    id: "t-3",
-    name: "Robert & Kelly Brown",
-    location: "Palm Beach, QLD",
-    rating: 5,
-    category: "bond",
-    service: "Bond / End of Lease Cleaning",
-    date: "March 6, 2024",
-    initials: "RB",
-    accent: "from-emerald-500 to-teal-600",
-    highlight: "Covered-item re-clean after feedback",
-    review:
-      "Our real estate property manager was notoriously strict with exit reports. WaveSolution came back and re-cleaned the items she flagged, at no extra cost. The oven, range hood, and windows looked brand new — we got our full bond back.",
-  },
-  {
-    id: "t-4",
-    name: "David Williams",
-    location: "Robina, QLD",
-    rating: 5,
-    category: "commercial",
-    service: "Corporate Office Cleaning",
-    date: "March 12, 2024",
-    initials: "DW",
-    accent: "from-blue-600 to-indigo-700",
-    highlight: "Professional, discreet, and reliable every week",
-    review:
-      "We manage a 2-storey accounting office in Robina. WaveSolution handles our after-hours office sanitation, bins, restrooms, and kitchen areas 3 nights a week. They are trustworthy, thorough, and provide itemized tax invoicing.",
-  },
-  {
-    id: "t-5",
-    name: "Amanda Wilson",
-    location: "Helensvale, QLD",
-    rating: 5,
-    category: "specialized",
-    service: "Carpet Steam Cleaning & Stain Removal",
-    date: "March 14, 2024",
-    initials: "AW",
-    accent: "from-cyan-500 to-blue-600",
-    highlight: "Stubborn pet stains and odours completely eliminated",
-    review:
-      "We have two golden retrievers and our lounge room carpet had seen better days. The technician used hot water extraction and specialized pet treatments. The carpets dried quickly and smell wonderfully clean.",
-  },
-  {
-    id: "t-6",
-    name: "Emma Roberts",
-    location: "Surfers Paradise, QLD",
-    rating: 5,
-    category: "commercial",
-    service: "Restaurant & Kitchen Sanitation",
-    date: "March 8, 2024",
-    initials: "ER",
-    accent: "from-purple-600 to-indigo-600",
-    highlight: "Remarkably high hygiene standards",
-    review:
-      "Operating a busy dining venue requires spotless cleanliness and food-safe hygiene. WaveSolution handles our floor scrubbing and kitchen degreasing. Our health inspection scores have been flawless since hiring them.",
-  },
-  {
-    id: "t-7",
-    name: "Jennifer Lee",
-    location: "Surfers Paradise, QLD",
-    rating: 5,
-    category: "specialized",
-    service: "Window & High-Rise Glass Cleaning",
-    date: "March 5, 2024",
-    initials: "JL",
-    accent: "from-teal-500 to-cyan-600",
-    highlight: "Sparkling crystal-clear ocean views",
-    review:
-      "Living on the coast means salty residue constantly builds up on our sliding balcony glass. The WaveSolution team cleaned inside and out with streak-free squeegees. Super polite crew and excellent prices.",
-  },
-  {
-    id: "t-8",
-    name: "Chris Martin",
-    location: "Varsity Lakes, QLD",
-    rating: 5,
-    category: "bond",
-    service: "After Builders / Post-Renovation Clean",
-    date: "February 25, 2024",
-    initials: "CM",
-    accent: "from-amber-500 to-orange-600",
-    highlight: "Removed all gypsum fine dust and paint overspray",
-    review:
-      "After finishing a 3-month home renovation, fine plaster dust was everywhere. WaveSolution brought industrial HEPA vacuums and detailed every cabinet, track, and light fixture. Made moving in seamless!",
-  },
-  {
-    id: "t-9",
-    name: "James Parker",
-    location: "Nerang, QLD",
-    rating: 5,
-    category: "commercial",
-    service: "Medical Clinic & Dental Practice Clean",
-    date: "February 20, 2024",
-    initials: "JP",
-    accent: "from-emerald-600 to-teal-700",
-    highlight: "Hospital-grade disinfection protocols",
-    review:
-      "Cleaning a healthcare practice demands strict disinfection standards and cross-contamination prevention. WaveSolution follows hospital-grade protocols with dedicated colour-coded microfibres. Highly recommended.",
-  },
-  {
-    id: "t-10",
-    name: "Sophie Harris",
-    location: "Merrimac, QLD",
-    rating: 5,
-    category: "specialized",
-    service: "Upholstery & Fabric Couch Cleaning",
-    date: "February 18, 2024",
-    initials: "SH",
-    accent: "from-rose-500 to-pink-600",
-    highlight: "Breathed new life into our 6-seater modular sofa",
-    review:
-      "Our light grey fabric couch had toddler spills and general discolouration. WaveSolution did a gentle steam clean and stain lift. It dried within a few hours and looks virtually brand new again.",
-  },
-  {
-    id: "t-11",
-    name: "Rebecca Taylor",
-    location: "Coomera, QLD",
-    rating: 5,
-    category: "residential",
-    service: "Fortnightly Housekeeping",
-    date: "February 15, 2024",
-    initials: "RT",
-    accent: "from-sky-500 to-blue-600",
-    highlight: "The most trustworthy cleaners we have ever had",
-    review:
-      "As busy working parents in northern Gold Coast, having trustworthy police-checked cleaners is paramount. They have our key and always leave the home smelling fresh without harsh toxic fumes.",
-  },
-  {
-    id: "t-12",
-    name: "Lisa Chen",
-    location: "Burleigh Heads, QLD",
-    rating: 5,
-    category: "residential",
-    service: "Eco-Friendly House Cleaning",
-    date: "February 28, 2024",
-    initials: "LC",
-    accent: "from-emerald-500 to-teal-600",
-    highlight: "Safe for kids and indoor pets",
-    review:
-      "I specifically requested their non-toxic, eco-friendly plant-based cleaning solutions for my asthma and young children. WaveSolution accommodated with zero fuss and the clean was top tier.",
-  },
-]
+const ALL_TESTIMONIALS: Testimonial[] = []
 
 const SUBURB_FILTERS = [
   "All Suburbs",
@@ -370,13 +201,13 @@ export default function TestimonialsPage() {
               <div className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1.5 mb-6 backdrop-blur-md border border-white/15 shadow-inner">
                 <span className="flex h-2 w-2 rounded-full bg-[#39BDE4] animate-ping" />
                 <span className="text-xs font-bold uppercase tracking-widest text-[#39BDE4]">
-                  Real Client Feedback
+                  Google reviews
                 </span>
               </div>
 
               {/* Main Heading for SEO */}
               <h1 className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight text-white leading-[1.08] mb-6">
-                Real Customer Reviews &{" "}
+                Customer Reviews &{" "}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#39BDE4] via-[#6be0ff] to-white">
                   Gold Coast Feedback
                 </span>
@@ -441,10 +272,10 @@ export default function TestimonialsPage() {
               <div className="rounded-2xl border border-slate-100 bg-gradient-to-br from-slate-50 to-blue-50/50 p-6 text-center">
                 <ShieldCheck className="mx-auto mb-3 h-7 w-7 text-[#249FC5]" />
                 <h3 className="text-sm font-black uppercase tracking-wide text-slate-900">
-                  Real Client Feedback
+                  Google reviews
                 </h3>
                 <p className="mt-2 text-xs leading-relaxed text-slate-500">
-                  Every testimonial below was submitted by a client after a completed clean.
+                  Read customer reviews on Google, where their source is shown.
                 </p>
               </div>
 
@@ -639,7 +470,7 @@ export default function TestimonialsPage() {
                 </h2>
               </div>
               <p className="text-xs sm:text-sm text-slate-500 max-w-md">
-                Showing {filteredTestimonials.length} verified testimonials across Gold Coast residential and commercial services.
+                Reviews are hosted on our Google Business Profile and shown with Google as their source.
               </p>
             </div>
 
@@ -713,9 +544,9 @@ export default function TestimonialsPage() {
             {filteredTestimonials.length === 0 ? (
               <div className="text-center py-16 bg-white rounded-3xl border border-slate-100 p-8 shadow-sm">
                 <Search className="h-12 w-12 text-slate-300 mx-auto mb-3" />
-                <h3 className="text-lg font-bold text-slate-800">No matching reviews found</h3>
+                <h3 className="text-lg font-bold text-slate-800">Read reviews on Google</h3>
                 <p className="text-sm text-slate-500 mt-1 max-w-sm mx-auto">
-                  Try adjusting your search terms or clearing your suburb filter to see all client feedback.
+                  We are linking to the original Google profile so you can read the reviews at their source.
                 </p>
                 <Button
                   variant="outline"
@@ -847,7 +678,7 @@ export default function TestimonialsPage() {
                 {
                   icon: Sparkles,
                   title: "Eco-Friendly Chemistry",
-                  desc: "Commercial-grade HEPA filters and non-toxic formulas that keep children, pets, and waterways safe.",
+                  desc: "Tell us about your property and any product requirements when you request a quote.",
                   color: "bg-purple-50 text-purple-600",
                 },
               ].map((feature, idx) => {
@@ -884,7 +715,7 @@ export default function TestimonialsPage() {
               <div className="relative z-10 max-w-2xl">
                 <div className="inline-flex items-center gap-2 rounded-full bg-white/10 px-3.5 py-1 text-xs font-bold text-[#39BDE4] uppercase tracking-wider mb-4 border border-white/15">
                   <Star className="h-3.5 w-3.5 fill-amber-400 text-amber-400" />
-                  Real Client Feedback
+                  Google reviews
                 </div>
 
                 <h2 className="text-3xl sm:text-4xl font-black text-white tracking-tight mb-4 leading-tight">
@@ -941,8 +772,8 @@ export default function TestimonialsPage() {
             <div className="space-y-4">
               {[
                 {
-                  q: "Are all WaveSolution testimonials authentic?",
-                  a: "Yes. The testimonials on this page were submitted directly by clients after completed cleans. We are happy to provide references on request.",
+                  q: "Where can I read customer reviews?",
+                  a: "Visit our Google Business Profile to read customer reviews with Google shown as the source.",
                 },
                 {
                   q: "What re-clean support is available for bond cleaning?",

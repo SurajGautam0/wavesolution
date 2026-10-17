@@ -6,14 +6,14 @@ import { Button } from "@/components/ui/button"
 
 export const metadata: Metadata = {
     title: "Eco-Friendly Cleaning Methods | Gold Coast",
-    description: "Discover eco-friendly cleaning solutions for Gold Coast homes. Safe, non-toxic green cleaning methods for all suburbs.",
+    description: "Learn about product choices and cleaning methods for Gold Coast homes.",
     keywords: ["eco-friendly cleaning Gold Coast", "green cleaning products", "natural cleaning methods", "non-toxic cleaning Gold Coast", "sustainable cleaning Australia", "pet safe cleaning"],
     alternates: {
         canonical: "https://www.wavesolution.com.au/blog/eco-friendly",
     },
     openGraph: {
         title: "Eco-Friendly Cleaning Solutions | Green Cleaning Gold Coast",
-        description: "Non-toxic, sustainable cleaning methods for Gold Coast homes. Safe for kids & pets.",
+        description: "Cleaning product choices and methods for Gold Coast homes.",
         url: "https://www.wavesolution.com.au/blog/eco-friendly",
         images: [{ url: "/gold-coast-cleaning-services.jpeg", width: 1200, height: 630, alt: "Eco-friendly cleaning Gold Coast" }],
     },
@@ -33,7 +33,7 @@ const breadcrumbJsonLd = {
     {
       "@type": "Article",
       headline: "Eco-Friendly Cleaning Methods | Gold Coast",
-      description: "Discover eco-friendly cleaning solutions for Gold Coast homes. Safe, non-toxic green cleaning methods for all suburbs.",
+      description: "Learn about product choices and cleaning methods for Gold Coast homes.",
       author: { "@type": "Organization", name: "Wave Solution Cleaning", url: "https://www.wavesolution.com.au" },
       publisher: { "@type": "Organization", name: "Wave Solution Cleaning" },
       datePublished: "2026-02-02",
@@ -112,7 +112,7 @@ export default function EcoFriendlyCleaningPage() {
                             <div className="mt-16 pt-10 border-t border-blue-50">
                                 <h3 className="text-2xl font-black text-blue-950 mb-6 uppercase tracking-tight">WaveSolution Commitment</h3>
                                 <p className="text-slate-600 mb-8">
-                                    Our team is dedicated to environmental stewardship. We prioritize biodegradable and non-toxic products in all our services, ensuring a pristine clean that respects the planet.
+                                    Ask us which products are planned for your booking. We can explain the product details and any preparation guidance relevant to the service.
                                 </p>
                                 <Button asChild className="rounded-full bg-secondary text-white font-black uppercase tracking-widest px-10 h-14">
                                     <Link href="/book">Schedule a Clean</Link>

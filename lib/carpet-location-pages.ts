@@ -21,9 +21,9 @@ export const carpetLocationPages: CarpetLocationContent[] = [
     ],
     faqs: [
       { question: "Can you clean carpets in a Helensvale family home with pets?", answer: "Tell us about pet hair, marks or odours when you request a quote. We’ll confirm which areas can be treated and the expected scope before booking." },
-      { question: "How much does carpet cleaning cost in Helensvale?", answer: "Prices start from $[TO CONFIRM]. The quote depends on the room sizes, carpet condition, access and any extra treatment requested." },
+      { question: "How much does carpet cleaning cost in Helensvale?", answer: "Prices start from $150. The quote depends on the room sizes, carpet condition, access and any extra treatment requested." },
       { question: "Can I book carpet cleaning for a Helensvale rental?", answer: "Yes, request a quote with your inspection or move-out date. If you also need bond cleaning, tell us so we can discuss coordinating both services." },
-      { question: "How long will the carpet take to dry?", answer: "Dry time is [TO CONFIRM] and varies with carpet type, airflow and humidity. We’ll give you guidance for the method used at your property." },
+      { question: "How long will the carpet take to dry?", answer: "Drying time varies with carpet type, airflow, humidity and the amount of moisture used. We’ll give you care guidance for your property." },
     ],
   },
   {
@@ -47,8 +47,8 @@ export const carpetLocationPages: CarpetLocationContent[] = [
     faqs: [
       { question: "Can you clean premium carpets in Hope Island homes?", answer: "Tell us the carpet fibre or share a photo and describe its condition. We’ll confirm a suitable method before accepting the booking." },
       { question: "Can carpet cleaning fit between holiday home bookings?", answer: "Send your changeover window and access details. We’ll check availability and confirm whether the cleaning and drying time can fit your schedule." },
-      { question: "What is the starting price in Hope Island?", answer: "Carpet cleaning starts from $[TO CONFIRM]. Final pricing depends on room sizes, carpet condition, access and requested treatments." },
-      { question: "Do you clean carpeted stairs and rugs?", answer: "Stairs can be included in the quote. Rug cleaning availability is [TO CONFIRM], so tell us what items you want cleaned and we’ll clarify the scope." },
+      { question: "What is the starting price in Hope Island?", answer: "Carpet cleaning starts from $150. Final pricing depends on room sizes, carpet condition, access and requested treatments." },
+      { question: "Do you clean carpeted stairs?", answer: "Stairs can be included in the quote. Tell us what areas you want cleaned and we’ll clarify the scope." },
     ],
   },
   {
@@ -72,7 +72,7 @@ export const carpetLocationPages: CarpetLocationContent[] = [
     faqs: [
       { question: "Can you clean selected rooms in a Varsity Lakes rental?", answer: "Yes, list the rooms you want included and we’ll quote for that scope. Tell us if the rest of the property is furnished or occupied." },
       { question: "Can carpet cleaning be booked with a bond clean?", answer: "Yes, request both services together and include your inspection date. We’ll confirm the separate inclusions, schedule and combined quote before booking." },
-      { question: "How much does carpet cleaning cost in Varsity Lakes?", answer: "Prices start from $[TO CONFIRM]. We calculate the quote from the room sizes, carpet condition, access and treatments needed." },
+      { question: "How much does carpet cleaning cost in Varsity Lakes?", answer: "Prices start from $150. We calculate the quote from the room sizes, carpet condition, access and treatments needed." },
       { question: "Can you remove every stain before my inspection?", answer: "Stain results depend on the mark, carpet fibre and any prior treatment, so complete removal cannot be promised. Describe the stain when you enquire and we’ll explain what may be possible." },
     ],
   },
@@ -97,7 +97,7 @@ export const carpetLocationPages: CarpetLocationContent[] = [
     faqs: [
       { question: "Can you clean carpets in a new Coomera estate home?", answer: "Yes, tell us whether the concern is construction dust, moving marks or normal household use. We’ll assess the carpet details and confirm the scope in your quote." },
       { question: "Can you treat pet stains in Coomera family homes?", answer: "Tell us what happened and whether a cleaning product has already been used. We’ll confirm whether stain treatment is suitable; results depend on the carpet and stain." },
-      { question: "What is the starting price for Coomera carpet cleaning?", answer: "Carpet cleaning starts from $[TO CONFIRM]. The final quote depends on the room sizes, carpet condition, access and any extra treatment." },
+      { question: "What is the starting price for Coomera carpet cleaning?", answer: "Carpet cleaning starts from $150. The final quote depends on the room sizes, carpet condition, access and any extra treatment." },
       { question: "Do you clean carpets in Coomera rentals before handover?", answer: "Yes, share your inspection date and the rooms that need cleaning. We can also quote bond cleaning separately and discuss coordinating the work." },
     ],
   },

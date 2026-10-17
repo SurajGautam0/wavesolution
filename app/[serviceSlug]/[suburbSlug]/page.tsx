@@ -49,7 +49,6 @@ const additionalPestFaqs: Record<string, ServiceLocationFaq[]> = {
   ],
   robina: [
     { question: "What should I tell you about garden pest activity?", answer: "Describe where you see activity, when it occurs and whether it is inside, outside or both. Photos can help us understand the enquiry, but the treatment scope and price are confirmed before booking." },
-    { question: "Can you confirm whether a property needs a termite inspection?", answer: "Tell us what signs you have noticed and what kind of assessment you need. Inspection availability and scope are [TO CONFIRM] before booking." },
   ],
   "burleigh-heads": [
     { question: "What information helps quote pest control for a coastal home?", answer: "Let us know the property type, which areas are affected and whether you have pets or children at home. We’ll confirm the proposed scope, preparation advice and price before the visit." },
@@ -65,7 +64,6 @@ const additionalPestFaqs: Record<string, ServiceLocationFaq[]> = {
   ],
   carrara: [
     { question: "Can you quote pest control for different property types?", answer: "Yes. Tell us whether the site is a house, townhouse or business and which areas are affected. We’ll confirm the recommended scope and price before you decide." },
-    { question: "Do you provide termite inspections?", answer: "Termite inspection availability and scope are [TO CONFIRM]. Contact us with the property details and we’ll confirm what service can be arranged." },
   ],
   coomera: [
     { question: "Can you check pest concerns in a new home?", answer: "Share the handover or build stage, the areas of concern and any access restrictions. We’ll confirm the service scope and whether an inspection is available before booking." },
@@ -112,7 +110,7 @@ export async function generateMetadata({ params }: ServiceLocationRouteProps): P
   const isTargetPestPage = page.serviceSlug === "pest-control-gold-coast" && pestTargetSlugs.includes(page.suburbSlug)
   const seoTitle = isTargetPestPage ? `${page.suburbName} Pest Control | Wave Solution` : page.title
   const seoDescription = isTargetPestPage
-    ? `Pest control in ${page.suburbName} for homes, rentals and businesses. Licensed pest control, insured team. Call 0450 833 683 for a quote.`
+    ? `Pest control in ${page.suburbName} for homes, rentals and businesses. Fully insured, police-checked team. Call 0450 833 683 for a quote.`
     : page.metaDescription
   const title = seoTitle
 
@@ -156,12 +154,9 @@ export default async function ServiceLocationPage({ params }: ServiceLocationRou
   const profile = serviceProfiles[page.serviceSlug]
   const isTargetPestPage = page.serviceSlug === "pest-control-gold-coast" && pestTargetSlugs.includes(page.suburbSlug)
   const pageFaqs = isTargetPestPage
-    ? [...page.faqs, ...additionalPestFaqs[page.suburbSlug]].map((faq) => ({
-      ...faq,
-      answer: faq.answer.replaceAll(page.suburbName, "the area"),
-    }))
+    ? [...page.faqs, ...additionalPestFaqs[page.suburbSlug]].filter((faq) => !faq.question.toLowerCase().includes("termite inspection"))
     : page.faqs
-  const localCopySuburb = isTargetPestPage ? "your area" : page.suburbName
+  const localCopySuburb = page.suburbName
   const pageUrl = `${businessInfo.baseUrl}/${page.serviceSlug}/${page.suburbSlug}`
   const locationUrl = `${businessInfo.baseUrl}/locations/${page.suburbSlug}`
 
@@ -319,15 +314,8 @@ export default async function ServiceLocationPage({ params }: ServiceLocationRou
         <section className="bg-white py-6">
           <div className="classic-container">
             <div className="grid gap-3 rounded-2xl border border-slate-200 bg-slate-50 p-5 text-sm sm:grid-cols-2 lg:grid-cols-4">
-              <p><strong>Pest control licence</strong><br />7854094762</p>
               <p><strong>Fully insured</strong><br />Cover for your peace of mind</p>
               <p><strong>Police-checked team</strong><br />Local service staff</p>
-              <p><strong>Cleaning re-clean guarantee</strong><br />Free return within 24 hours for a covered missed area</p>
-            </div>
-            <p className="mt-2 text-xs text-slate-500">Pest re-treatment guarantee: [TO CONFIRM]</p>
-            <div className="mt-4 rounded-2xl border border-primary/15 bg-primary/5 p-5">
-              <h2 className="font-bold text-primary">Pest control pricing</h2>
-              <p className="mt-2 text-sm leading-7 text-slate-700">Pest control starts from $[TO CONFIRM]. Your quote depends on the pest, property size and treatment scope. We confirm the price before you book.</p>
             </div>
             <div className="mt-4 rounded-2xl border border-slate-200 p-5">
               <h2 className="font-bold text-primary">Pest control with bond or end of lease cleaning</h2>

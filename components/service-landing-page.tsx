@@ -330,8 +330,7 @@ export function ServiceLandingPage({ page }: ServiceLandingPageProps) {
             <div className="space-y-6">
               {page.quickAnswer ? (
                 <div className="rounded-[2rem] border border-primary/15 bg-[#F3F3F3] p-6">
-                  <p className="text-xs font-black uppercase tracking-[0.2em] text-secondary">Direct Answer</p>
-                  <p className="mt-3 text-base leading-8 text-slate-700">{page.quickAnswer}</p>
+                <p className="mt-3 text-base leading-8 text-slate-700">{page.quickAnswer}</p>
                 </div>
               ) : null}
               {page.overview.map((paragraph) => (
@@ -343,7 +342,7 @@ export function ServiceLandingPage({ page }: ServiceLandingPageProps) {
 
             <aside className="space-y-6">
               <div className="rounded-[2rem] border border-slate-200 bg-[#F3F3F3] p-6 shadow-sm">
-                <p className="text-xs font-black uppercase tracking-[0.2em] text-secondary">What's Included in Your Clean</p>
+                <p className="text-xs font-black uppercase tracking-[0.2em] text-secondary">{page.slug === "pest-control-gold-coast" ? "Pest treatment scope" : "What's Included in Your Clean"}</p>
                 <ul className="mt-4 space-y-3">
                   {page.includedItems.map((item) => (
                     <li key={item} className="flex items-start gap-3 text-sm leading-7 text-slate-600">
@@ -439,22 +438,7 @@ export function ServiceLandingPage({ page }: ServiceLandingPageProps) {
           </div>
 
           <div className="rounded-[2.5rem] border border-slate-200 bg-[#F3F3F3] p-8 shadow-sm sm:p-10">
-            <h2 className="text-3xl font-black tracking-tight text-primary">Helpful Internal Links</h2>
-            <p className="mt-4 max-w-3xl text-base leading-8 text-slate-600">
-              If you are comparing{" "}
-              <Link href="/cleaning-gold-coast" className="font-semibold text-primary underline-offset-4 hover:text-secondary hover:underline">
-                cleaning Gold Coast
-              </Link>{" "}
-              providers, need{" "}
-              <Link href={siteLinks.contact} className="font-semibold text-primary underline-offset-4 hover:text-secondary hover:underline">
-                professional cleaners Gold Coast
-              </Link>{" "}
-              homes and businesses can contact directly, or are looking for{" "}
-              <Link href="/house-cleaning-gold-coast" className="font-semibold text-primary underline-offset-4 hover:text-secondary hover:underline">
-                local house cleaners
-              </Link>
-              , these pages will help you compare the right service before booking.
-            </p>
+            <h2 className="text-3xl font-black tracking-tight text-primary">Popular services</h2>
 
             <div className="mt-8 grid gap-4 md:grid-cols-3">
               {relatedPages.map((relatedPage) => (
@@ -498,9 +482,9 @@ export function ServiceLandingPage({ page }: ServiceLandingPageProps) {
         <div className="classic-container">
           <div className="grid gap-6 lg:grid-cols-2">
             <div className="rounded-[2rem] border border-slate-200 bg-[#F3F3F3] p-7 shadow-sm">
-              <h2 className="text-2xl font-black tracking-tight text-primary">Areas We Cover</h2>
+              <h2 className="text-2xl font-black tracking-tight text-primary">Areas we service</h2>
               <p className="mt-4 text-sm leading-7 text-slate-600">
-                We regularly support homes, rentals, and businesses across nearby suburbs, and these local pages help reinforce suburb relevance without relying on duplicate templates.
+                We work across Gold Coast suburbs, including the areas listed below. Contact us with the property address and service needed to check availability.
               </p>
               {serviceAreaPages.length > 0 && (
                 <div className="mt-6">

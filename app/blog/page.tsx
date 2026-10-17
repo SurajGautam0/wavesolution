@@ -328,7 +328,7 @@ const CONTENT_CLUSTERS = [
       { text: "How often house cleaning is needed in humid Gold Coast suburbs", href: "/blog/how-often-house-cleaning" },
       { text: "Regular maintenance vs intensive deep cleaning breakdown", href: "/blog/deep-cleaning-guide" },
       { text: "House cleaning tips and habits for busy families", href: "/blog/cleaning-tips" },
-      { text: "Eco-friendly non-toxic solutions safe for pets and children", href: "/blog/eco-friendly" },
+      { text: "Cleaning product choices for homes", href: "/blog/eco-friendly" },
     ],
   },
   {
@@ -830,7 +830,7 @@ export default function BlogHubPage() {
                     Free PDF Guide
                   </div>
                   <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-white tracking-tight mb-4">
-                    Download the 2024 Queensland Bond Cleaning Checklist
+                    Download the Queensland Bond Cleaning Checklist
                   </h2>
                   <p className="text-white/80 text-sm sm:text-base leading-relaxed mb-6">
                     Get the exact room-by-room inspection checklist used by Gold Coast real estate property managers to inspect rentals and release full security bonds.
@@ -867,7 +867,7 @@ export default function BlogHubPage() {
                 <div className="lg:col-span-5 flex justify-center">
                   <div className="p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md max-w-xs text-center">
                     <FileText className="h-12 w-12 text-[#39BDE4] mx-auto mb-3" />
-                    <h4 className="font-bold text-white text-base mb-1">RTA-Compliant Template</h4>
+                    <h4 className="font-bold text-white text-base mb-1">Queensland tenancy checklist</h4>
                     <p className="text-xs text-white/70">
                       Includes oven detailing, sliding door tracks, bathroom descaling & wall scuff protocols.
                     </p>
