@@ -479,6 +479,33 @@ export const locationPages: LocationPage[] = [
       },
     ],
   },
+  {
+    slug: "hope-island",
+    name: "Hope Island",
+    heroTitle: "Cleaning Services in Hope Island",
+    metaTitle: "Cleaning Services Hope Island | Wave Solution",
+    metaDescription:
+      "Cleaning for Hope Island homes, townhouses and holiday properties. Carpet, bond and regular cleaning quotes from an insured Gold Coast team.",
+    intro:
+      "Cleaning support for Hope Island homes, townhouses, holiday properties and local businesses.",
+    nearbyReference: "Hope Island Marina, Sanctuary Cove and the northern Gold Coast waterways",
+    paragraphs: [
+      "Wave Solution provides cleaning quotes for homes, townhouses and managed properties in Hope Island. Tell us the property type, which rooms or services you need and the date you have in mind. We’ll confirm the scope and price before you decide to book.",
+      "For carpeted rooms, share the room count, carpet condition and any marks or odours you would like us to assess. If the property is used for holiday stays, include the guest changeover window and access instructions so we can check whether the timing works.",
+      "You can also ask about house, bond and end of lease cleaning. We’ll explain which services can be combined and what each quote includes, so you can plan the work around your property schedule.",
+    ],
+    serviceBullets: [
+      "Carpet cleaning for homes and holiday properties",
+      "House cleaning for townhouses and family homes",
+      "Bond and end of lease cleaning quotes",
+      "Cleaning plans for managed and commercial properties",
+    ],
+    faq: [
+      { question: "Can I request carpet cleaning in Hope Island?", answer: "Yes. Share the rooms, carpet condition and preferred date, and we’ll confirm the method and price for your property." },
+      { question: "Can you work around a holiday property changeover?", answer: "Send the booking window and access details. We’ll check availability and confirm the timing before you book." },
+      { question: "How can I get a Hope Island cleaning quote?", answer: "Use the online booking form, call 0450 833 683 or message us on WhatsApp with the property type and service needed." },
+    ],
+  },
 ]
 
 export function getLocationPage(slug: string) {

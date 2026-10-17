@@ -109,6 +109,7 @@ export function SiteFooter() {
             <p className="text-xs leading-relaxed text-white/70 max-w-sm">
               Professional residential, commercial, and bond exit cleaning across all major Gold Coast suburbs. Fully insured and police-checked.
             </p>
+            <p className="text-xs leading-relaxed text-white/70">Pest control licence: 7854094762 · ABN: [TO CONFIRM]</p>
 
             <div className="space-y-2 pt-1 text-xs">
               <a

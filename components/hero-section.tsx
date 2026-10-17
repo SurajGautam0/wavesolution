@@ -1,6 +1,6 @@
 import Image from "next/image"
 import Link from "next/link"
-import { ArrowRight, BadgeCheck, Clock, MapPin, Phone, ShieldCheck } from "lucide-react"
+import { ArrowRight, BadgeCheck, Clock, MapPin, ShieldCheck } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import { businessInfo, siteLinks } from "@/lib/business-info"
@@ -37,7 +37,7 @@ export function HeroSection() {
           </h1>
 
           <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-white/80 sm:text-lg lg:mx-0">
-            Bond cleans, house cleaning, carpet cleaning and pest control from one local, insured team. Get a clear price in minutes.
+            Bond cleans, house cleaning, carpet cleaning and pest control from one fully insured, police-checked Gold Coast team. Get a clear price for your job.
           </p>
 
           <div className="mt-8 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center sm:justify-center lg:justify-start">
@@ -51,18 +51,9 @@ export function HeroSection() {
                 <ArrowRight className="h-4 w-4" />
               </Link>
             </Button>
-            <Button
-              asChild
-              size="lg"
-              variant="outline"
-              className="h-14 w-full rounded-full border-white/30 bg-white/10 px-8 text-xs font-black uppercase tracking-[0.18em] text-white backdrop-blur-md hover:bg-white hover:text-secondary sm:w-auto sm:min-w-56"
-            >
-              <Link href={businessInfo.phoneHref} className="flex items-center justify-center gap-2">
-                <Phone className="h-4 w-4" />
-                <span>{businessInfo.phoneDisplay}</span>
-              </Link>
-            </Button>
           </div>
+
+          <p className="mt-3 text-sm text-white/80">Call <a className="underline underline-offset-4" href={businessInfo.phoneHref}>{businessInfo.phoneDisplay}</a> or <a className="underline underline-offset-4" href="https://wa.me/61450833683">message us on WhatsApp</a>.</p>
 
           <div className="mt-7 flex flex-wrap items-center justify-center gap-2.5 lg:justify-start">
             {heroTrustItems.map((item) => (

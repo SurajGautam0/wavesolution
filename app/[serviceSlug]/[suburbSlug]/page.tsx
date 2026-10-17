@@ -16,6 +16,7 @@ import {
   getServiceLocationPage,
   getServiceLocationParams,
   serviceProfiles,
+  type ServiceLocationFaq,
 } from "@/lib/service-location-pages"
 
 type ServiceLocationRouteProps = {
@@ -28,6 +29,49 @@ type ServiceLocationRouteProps = {
 export const dynamicParams = false
 
 const locationSlugs = new Set(locationPages.map((location) => location.slug))
+const pestTargetSlugs = [
+  "palm-beach", "southport", "surfers-paradise", "robina", "burleigh-heads",
+  "broadbeach", "helensvale", "carrara", "coomera",
+]
+
+const additionalPestFaqs: Record<string, ServiceLocationFaq[]> = {
+  "palm-beach": [
+    { question: "What pest details should I share for a unit?", answer: "Tell us which rooms or areas are affected, when you first noticed activity and whether there are shared walls or common areas. We can use that information to scope the visit and confirm the price before booking." },
+    { question: "Can I arrange pest control for a beachside home before guests arrive?", answer: "Contact us with your preferred date and the property details. We’ll check availability and explain any preparation or re-entry guidance for the treatment proposed." },
+  ],
+  southport: [
+    { question: "Can pest control be arranged around apartment access?", answer: "Yes, tell us about building access, parking, lifts and any strata requirements when you request a quote. We’ll confirm the practical arrangements and appointment time with you." },
+    { question: "What should a local business include in a pest control enquiry?", answer: "Share the site type, affected areas, operating hours and any access rules. We can then discuss a suitable visit time and confirm the treatment scope and price." },
+  ],
+  "surfers-paradise": [
+    { question: "Can you plan pest control around a holiday rental changeover?", answer: "Send the changeover dates, access details and the areas of concern. We’ll check availability and explain any treatment preparation and re-entry timing before you confirm." },
+    { question: "What should I do if I suspect bed bugs in an apartment?", answer: "Avoid moving bedding or furniture between rooms and contact us with what you’ve noticed. Treatment availability and the recommended approach need to be confirmed after we understand the property and issue." },
+  ],
+  robina: [
+    { question: "What should I tell you about garden pest activity?", answer: "Describe where you see activity, when it occurs and whether it is inside, outside or both. Photos can help us understand the enquiry, but the treatment scope and price are confirmed before booking." },
+    { question: "Can you confirm whether a property needs a termite inspection?", answer: "Tell us what signs you have noticed and what kind of assessment you need. Inspection availability and scope are [TO CONFIRM] before booking." },
+  ],
+  "burleigh-heads": [
+    { question: "What information helps quote pest control for a coastal home?", answer: "Let us know the property type, which areas are affected and whether you have pets or children at home. We’ll confirm the proposed scope, preparation advice and price before the visit." },
+    { question: "Can you arrange treatment before a rental handover?", answer: "Send the handover date and any treatment requirements in your lease or property manager’s instructions. We’ll check availability and confirm the service details before you book." },
+  ],
+  broadbeach: [
+    { question: "Can apartment pest control be scheduled around strata access?", answer: "Share the building access rules, parking details and any required appointment windows. We’ll confirm the arrangements and treatment scope before setting a time." },
+    { question: "Can pest control be booked outside hospitality trading hours?", answer: "Tell us your trading hours and the areas that need attention. We’ll check scheduling options and confirm whether an after-hours visit is available for your site." },
+  ],
+  helensvale: [
+    { question: "What pest details should I share for a family home?", answer: "Tell us where you have noticed activity, whether it is indoors or near garden or bushland edges, and if children or pets are present. We’ll explain any preparation steps before treatment." },
+    { question: "Can you help with a pest concern in a rental?", answer: "Yes, you can request a quote for a rental property. Include the property manager’s requirements, access details and preferred date so we can confirm the scope." },
+  ],
+  carrara: [
+    { question: "Can you quote pest control for different property types?", answer: "Yes. Tell us whether the site is a house, townhouse or business and which areas are affected. We’ll confirm the recommended scope and price before you decide." },
+    { question: "Do you provide termite inspections?", answer: "Termite inspection availability and scope are [TO CONFIRM]. Contact us with the property details and we’ll confirm what service can be arranged." },
+  ],
+  coomera: [
+    { question: "Can you check pest concerns in a new home?", answer: "Share the handover or build stage, the areas of concern and any access restrictions. We’ll confirm the service scope and whether an inspection is available before booking." },
+    { question: "What should I mention about a nearby building site?", answer: "Tell us where you have noticed pest activity and how close the property is to construction or open ground. This helps us understand the enquiry and explain the next steps." },
+  ],
+}
 
 export function generateStaticParams() {
   return getServiceLocationParams()
@@ -65,17 +109,22 @@ export async function generateMetadata({ params }: ServiceLocationRouteProps): P
   }
 
   const url = `${businessInfo.baseUrl}/${serviceSlug}/${suburbSlug}`
-  const title = `${page.title} | Wave Solution Cleaning`
+  const isTargetPestPage = page.serviceSlug === "pest-control-gold-coast" && pestTargetSlugs.includes(page.suburbSlug)
+  const seoTitle = isTargetPestPage ? `${page.suburbName} Pest Control | Wave Solution` : page.title
+  const seoDescription = isTargetPestPage
+    ? `Pest control in ${page.suburbName} for homes, rentals and businesses. Licensed pest control, insured team. Call 0450 833 683 for a quote.`
+    : page.metaDescription
+  const title = seoTitle
 
   return {
-    title: page.title,
-    description: page.metaDescription,
+    title: seoTitle,
+    description: seoDescription,
     alternates: {
       canonical: url,
     },
     openGraph: {
       title,
-      description: page.metaDescription,
+      description: seoDescription,
       url,
       type: "website",
       images: [
@@ -90,7 +139,7 @@ export async function generateMetadata({ params }: ServiceLocationRouteProps): P
     twitter: {
       card: "summary_large_image",
       title,
-      description: page.metaDescription,
+      description: seoDescription,
       images: ["/gold-coast-cleaning-services.jpeg"],
     },
   }
@@ -105,6 +154,14 @@ export default async function ServiceLocationPage({ params }: ServiceLocationRou
   }
 
   const profile = serviceProfiles[page.serviceSlug]
+  const isTargetPestPage = page.serviceSlug === "pest-control-gold-coast" && pestTargetSlugs.includes(page.suburbSlug)
+  const pageFaqs = isTargetPestPage
+    ? [...page.faqs, ...additionalPestFaqs[page.suburbSlug]].map((faq) => ({
+      ...faq,
+      answer: faq.answer.replaceAll(page.suburbName, "the area"),
+    }))
+    : page.faqs
+  const localCopySuburb = isTargetPestPage ? "your area" : page.suburbName
   const pageUrl = `${businessInfo.baseUrl}/${page.serviceSlug}/${page.suburbSlug}`
   const locationUrl = `${businessInfo.baseUrl}/locations/${page.suburbSlug}`
 
@@ -112,7 +169,12 @@ export default async function ServiceLocationPage({ params }: ServiceLocationRou
     .map((item) => ({ ...item, href: resolveNearbyHref(page.serviceSlug, item) }))
     .filter((item): item is typeof item & { href: string } => item.href !== null)
 
-  const relatedLinks: { href: string; label: string; body: string }[] = [
+  const relatedLinks: { href: string; label: string; body: string }[] = isTargetPestPage ? [
+    { href: "/carpet-cleaning-gold-coast", label: "Carpet cleaning", body: "Ask about carpet cleaning for your home or rental." },
+    { href: "/bond-cleaning-gold-coast", label: "Bond cleaning", body: "Plan a property clean before your handover." },
+    { href: "/end-of-lease-pest-control-gold-coast", label: "End of lease pest control", body: "Review pest treatment for rental handovers." },
+    { href: `/${page.serviceSlug}/${page.nearby.find((item) => getServiceLocationPage(page.serviceSlug, item.slug))?.slug ?? "southport"}`, label: "Nearby pest control", body: "View pest control service details for a nearby suburb." },
+  ] : [
     {
       href: profile.parentHref,
       label: `${profile.label} Gold Coast`,
@@ -125,7 +187,7 @@ export default async function ServiceLocationPage({ params }: ServiceLocationRou
     },
   ]
 
-  if (profile.priceGuideHref) {
+  if (!isTargetPestPage && profile.priceGuideHref) {
     relatedLinks.push({
       href: profile.priceGuideHref,
       label: "Price guide",
@@ -133,7 +195,7 @@ export default async function ServiceLocationPage({ params }: ServiceLocationRou
     })
   }
 
-  if (profile.extraLink) {
+  if (!isTargetPestPage && profile.extraLink) {
     relatedLinks.push({
       href: profile.extraLink.href,
       label: profile.extraLink.label,
@@ -149,13 +211,22 @@ export default async function ServiceLocationPage({ params }: ServiceLocationRou
         { name: profile.label, url: profile.parentHref },
         { name: page.title, url: `/${page.serviceSlug}/${page.suburbSlug}` },
       ]),
-      generateFAQSchema(page.faqs),
+      generateFAQSchema(pageFaqs),
       generateServiceSchema({
         name: `${profile.label} in ${page.suburbName}`,
         description: page.directAnswer,
         areaServed: [page.suburbName, "Gold Coast"],
         url: `/${page.serviceSlug}/${page.suburbSlug}`,
       }),
+      ...(isTargetPestPage ? [{
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "@id": `${businessInfo.baseUrl}/#business`,
+        name: businessInfo.businessNameWithLocation,
+        url: businessInfo.baseUrl,
+        telephone: businessInfo.phoneE164,
+        areaServed: { "@type": "City", name: page.suburbName, containedInPlace: { "@type": "State", name: "Queensland" } },
+      }] : []),
     ],
   }
 
@@ -167,7 +238,7 @@ export default async function ServiceLocationPage({ params }: ServiceLocationRou
         <div className="absolute inset-0">
           <Image
             src="/images/cleaning-service.jpg"
-            alt={`${profile.label} in ${page.suburbName}`}
+            alt={isTargetPestPage ? "Gold Coast pest control service" : `${profile.label} in ${page.suburbName}`}
             fill
             priority
             quality={80}
@@ -190,19 +261,19 @@ export default async function ServiceLocationPage({ params }: ServiceLocationRou
                 {profile.label}
               </Link>
               <ChevronRight className="h-3.5 w-3.5" aria-hidden="true" />
-              <span className="text-[#39BDE4]">{page.suburbName}</span>
+              <span className="text-[#39BDE4]">{isTargetPestPage ? "Gold Coast" : page.suburbName}</span>
             </nav>
 
             <div className="mt-6 inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-2 text-[11px] font-black uppercase tracking-[0.2em] text-white backdrop-blur-md">
               <MapPin className="h-4 w-4 text-[#39BDE4]" />
-              Gold Coast · {page.suburbName}
+              {isTargetPestPage ? "Gold Coast local service" : `Gold Coast · ${page.suburbName}`}
             </div>
 
             <h1 className="mt-6 max-w-3xl text-4xl font-black tracking-tight text-white sm:text-5xl md:text-6xl">
               {profile.label} in {page.suburbName}
             </h1>
             <p className="mt-6 max-w-3xl text-lg leading-8 text-white/80">
-              Local {profile.label.toLowerCase()} across {page.suburbName}: the scope is written for your
+              Local {profile.label.toLowerCase()} across {localCopySuburb}: the scope is written for your
               property, the price is confirmed before the booking, and the work is run against the
               checklist your property manager or premises actually needs.
             </p>
@@ -244,16 +315,36 @@ export default async function ServiceLocationPage({ params }: ServiceLocationRou
         </div>
       </section>
 
+      {isTargetPestPage && (
+        <section className="bg-white py-6">
+          <div className="classic-container">
+            <div className="grid gap-3 rounded-2xl border border-slate-200 bg-slate-50 p-5 text-sm sm:grid-cols-2 lg:grid-cols-4">
+              <p><strong>Pest control licence</strong><br />7854094762</p>
+              <p><strong>Fully insured</strong><br />Cover for your peace of mind</p>
+              <p><strong>Police-checked team</strong><br />Local service staff</p>
+              <p><strong>Cleaning re-clean guarantee</strong><br />Free return within 24 hours for a covered missed area</p>
+            </div>
+            <p className="mt-2 text-xs text-slate-500">Pest re-treatment guarantee: [TO CONFIRM]</p>
+            <div className="mt-4 rounded-2xl border border-primary/15 bg-primary/5 p-5">
+              <h2 className="font-bold text-primary">Pest control pricing</h2>
+              <p className="mt-2 text-sm leading-7 text-slate-700">Pest control starts from $[TO CONFIRM]. Your quote depends on the pest, property size and treatment scope. We confirm the price before you book.</p>
+            </div>
+            <div className="mt-4 rounded-2xl border border-slate-200 p-5">
+              <h2 className="font-bold text-primary">Pest control with bond or end of lease cleaning</h2>
+              <p className="mt-2 text-sm leading-7 text-slate-700">If your rental handover needs both services, we can discuss the cleaning and pest treatment in one booking. Check your lease or agent instructions and share your handover date so we can confirm the requested scope.</p>
+              <Link className="mt-3 inline-block text-sm font-bold text-primary underline" href="/bond-pest-carpet-end-of-lease">See the bond, pest and carpet bundle</Link>
+            </div>
+          </div>
+        </section>
+      )}
+
       <section className="bg-white py-14 md:py-20">
         <div className="classic-container">
           <div className="grid gap-10 lg:grid-cols-[1.35fr_0.85fr]">
             <div className="space-y-6">
-              <div className="rounded-[2rem] border border-primary/15 bg-[#F3F3F3] p-6">
-                <p className="text-xs font-black uppercase tracking-[0.2em] text-secondary">
-                  Direct Answer
-                </p>
-                <p className="mt-3 text-base leading-8 text-slate-700">{page.directAnswer}</p>
-              </div>
+              {!isTargetPestPage && <div className="rounded-[2rem] border border-primary/15 bg-[#F3F3F3] p-6">
+                <p className="text-base leading-8 text-slate-700">{page.directAnswer}</p>
+              </div>}
 
               {page.intro.map((paragraph) => (
                 <p key={paragraph.slice(0, 40)} className="text-base leading-8 text-slate-600">
@@ -263,7 +354,7 @@ export default async function ServiceLocationPage({ params }: ServiceLocationRou
             </div>
 
             <aside className="space-y-6">
-              <div className="rounded-[2rem] border border-slate-200 bg-primary p-6 text-white shadow-xl">
+              {!isTargetPestPage && <div className="rounded-[2rem] border border-slate-200 bg-primary p-6 text-white shadow-xl">
                 <p className="text-xs font-black uppercase tracking-[0.2em] text-secondary">
                   Book in {page.suburbName}
                 </p>
@@ -290,9 +381,9 @@ export default async function ServiceLocationPage({ params }: ServiceLocationRou
                 >
                   <Link href={siteLinks.book}>Request a Quote</Link>
                 </Button>
-              </div>
+              </div>}
 
-              <div className="rounded-[2rem] border border-slate-200 bg-[#F3F3F3] p-6 shadow-sm">
+              {!isTargetPestPage && <div className="rounded-[2rem] border border-slate-200 bg-[#F3F3F3] p-6 shadow-sm">
                 <p className="text-xs font-black uppercase tracking-[0.2em] text-secondary">
                   Prefer to talk?
                 </p>
@@ -307,7 +398,7 @@ export default async function ServiceLocationPage({ params }: ServiceLocationRou
                   <Phone className="h-4 w-4" />
                   {businessInfo.phoneDisplay}
                 </a>
-              </div>
+              </div>}
             </aside>
           </div>
         </div>
@@ -318,16 +409,16 @@ export default async function ServiceLocationPage({ params }: ServiceLocationRou
           <div className="mx-auto max-w-3xl text-center">
             <span className="eyebrow">Local detail</span>
             <h2 className="mt-4 text-3xl font-black tracking-tight text-primary">
-              What is different about {page.suburbName}
+              {isTargetPestPage ? "Local property details" : `What is different about ${page.suburbName}`}
             </h2>
-            <p className="mt-4 text-base leading-8 text-slate-600">
-              Direct answer: the property type, access arrangements and how the place is used shape
+            {!isTargetPestPage && <p className="mt-4 text-base leading-8 text-slate-600">
+              The property type, access arrangements and how the place is used shape
               the job more than the suburb name does, and we plan around all three.
-            </p>
+            </p>}
           </div>
 
           <div className="mt-10 grid gap-4 sm:grid-cols-2">
-            {page.localNotes.map((note) => (
+              {(isTargetPestPage ? page.localNotes.slice(0, 2) : page.localNotes).map((note) => (
               <article
                 key={note.title}
                 className="rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm"
@@ -348,7 +439,7 @@ export default async function ServiceLocationPage({ params }: ServiceLocationRou
               {profile.scopeHeading}
             </h2>
             <p className="mt-4 text-base leading-8 text-slate-600">
-              Direct answer: {profile.scopeIntro}
+              {profile.scopeIntro}
             </p>
           </div>
 
@@ -372,13 +463,12 @@ export default async function ServiceLocationPage({ params }: ServiceLocationRou
 
             <div className="rounded-[2rem] border border-slate-200 bg-white p-7 shadow-sm">
               <p className="text-xs font-black uppercase tracking-[0.2em] text-secondary">
-                How booking works in {page.suburbName}
+                How booking works in {localCopySuburb}
               </p>
               <p className="mt-4 text-sm leading-7 text-slate-600">
                 Send the property type, size and the date you need it completed. We confirm what is
                 included, which extras are worth adding, and the price before anything is booked.
-                Access arrangements for {page.suburbName} buildings and estates are sorted at the
-                same time rather than on the day.
+                Access arrangements are sorted at the same time rather than on the day.
               </p>
               <div className="mt-6 flex flex-col gap-3">
                 <Button
@@ -418,7 +508,7 @@ export default async function ServiceLocationPage({ params }: ServiceLocationRou
         </div>
       </section>
 
-      <section className="bg-[#F3F3F3] py-14 md:py-20">
+      {!isTargetPestPage && <section className="bg-[#F3F3F3] py-14 md:py-20">
         <div className="classic-container">
           <div className="mx-auto max-w-3xl text-center">
             <span className="eyebrow">Nearby suburbs</span>
@@ -426,7 +516,7 @@ export default async function ServiceLocationPage({ params }: ServiceLocationRou
               {profile.label} around {page.suburbName}
             </h2>
             <p className="mt-4 text-base leading-8 text-slate-600">
-              Direct answer: we cover {page.suburbName} and the surrounding Gold Coast suburbs, so
+              We cover {page.suburbName} and the surrounding Gold Coast suburbs, so
               neighbouring areas can be booked on the same schedule.
             </p>
           </div>
@@ -444,14 +534,14 @@ export default async function ServiceLocationPage({ params }: ServiceLocationRou
             ))}
           </div>
         </div>
-      </section>
+      </section>}
 
       <section className="bg-white py-14 md:py-20">
         <div className="classic-container">
           <div className="mx-auto max-w-4xl">
             <div className="text-center">
               <h2 className="text-3xl font-black tracking-tight text-primary">
-                {profile.label} in {page.suburbName} — frequently asked questions
+                {profile.label} in {localCopySuburb} — frequently asked questions
               </h2>
               <p className="mx-auto mt-4 max-w-2xl text-base leading-8 text-slate-600">
                 Straight answers for {page.suburbName} properties before you book.
@@ -459,7 +549,7 @@ export default async function ServiceLocationPage({ params }: ServiceLocationRou
             </div>
 
             <div className="mt-10 space-y-4">
-              {page.faqs.map((faq) => (
+              {pageFaqs.map((faq) => (
                 <article
                   key={faq.question}
                   className="rounded-[1.5rem] border border-slate-200 bg-white p-6 shadow-sm"
@@ -477,10 +567,10 @@ export default async function ServiceLocationPage({ params }: ServiceLocationRou
         <div className="classic-container">
           <div className="rounded-[2.5rem] border border-white/10 bg-white/5 p-8 text-center backdrop-blur-sm sm:p-12">
             <h2 className="text-3xl font-black tracking-tight sm:text-4xl">
-              Need {profile.label.toLowerCase()} in {page.suburbName}?
+              Need {profile.label.toLowerCase()} in {localCopySuburb}?
             </h2>
             <p className="mx-auto mt-5 max-w-2xl text-base leading-8 text-white/75">
-              Tell us about the {page.suburbName} property and the date you need it completed. We
+              Tell us about your property and the date you need it completed. We
               will confirm the scope and the price before anything is booked.
             </p>
             <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row">

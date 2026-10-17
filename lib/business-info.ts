@@ -48,6 +48,7 @@ export const businessInfo = {
     "Coomera",
     "Varsity Lakes",
     "Carrara",
+    "Hope Island",
     "Merrimac",
     "Main Beach",
     "Benowa",

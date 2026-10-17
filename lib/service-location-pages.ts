@@ -1074,7 +1074,7 @@ export const serviceLocationPages: ServiceLocationPage[] = [
           "Most residential treatments are completed in a single visit. We confirm the expected time with the quote, along with preparation and re-entry guidance.",
       },
       {
-        question: "How often should a Robina property be treated?",
+        question: "How often should a property be treated?",
         answer:
           "It depends on the property and its surroundings. Homes backing onto parkland often benefit from periodic treatment rather than waiting until activity is obvious.",
       },

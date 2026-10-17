@@ -2,6 +2,7 @@ import { businessInfo } from '@/lib/business-info'
 import { locationPages } from '@/lib/location-pages'
 import { servicePageSlugs } from '@/lib/service-pages'
 import { serviceLocationPages } from '@/lib/service-location-pages'
+import { carpetLocationPages } from '@/lib/carpet-location-pages'
 import { MetadataRoute } from 'next'
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -68,6 +69,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
             lastModified: slug === 'carpet-cleaning-gold-coast' ? carpetCleaningLastModified : servicesLastModified,
             changeFrequency: 'weekly' as const,
             priority: slug === 'cleaning-gold-coast' ? 0.96 : slug === 'cleaning-carrara' ? 0.93 : 0.92,
+        })),
+        ...carpetLocationPages.map((page) => ({
+            url: `${baseUrl}/carpet-cleaning-${page.slug}`,
+            lastModified: new Date('2026-10-17'),
+            changeFrequency: 'weekly' as const,
+            priority: 0.88,
         })),
 
         // High-intent guide pages

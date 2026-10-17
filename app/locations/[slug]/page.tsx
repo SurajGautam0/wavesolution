@@ -211,7 +211,9 @@ export default async function LocationDetailPage({ params }: LocationPageProps) 
                     ].map((service) => (
                       <Link
                         key={service.href}
-                        href={service.href}
+                        href={service.href === siteLinks.carpetCleaning && ["helensvale", "hope-island", "varsity-lakes", "coomera"].includes(location.slug)
+                          ? `/carpet-cleaning-${location.slug}`
+                          : service.href}
                         className="rounded-full border border-slate-200 bg-white px-3.5 py-1.5 text-xs font-semibold text-primary transition-colors hover:border-secondary hover:bg-secondary/5 hover:text-secondary"
                       >
                         {service.label} {location.name} →
