@@ -24,8 +24,7 @@ const SERVICES_DATA = [
     idealFor: "Apartments & family homes across Southport, Robina, Broadbeach & Burleigh Heads",
     href: siteLinks.homeCleaning,
     paragraphs: [
-      "House cleaning remains one of the most searched and most commercially useful services for a Gold Coast cleaning business because the demand is consistent year-round. Busy households need help staying on top of bathrooms, kitchens, floors, dust, and the day-to-day mess that builds up when work, school, and family routines take priority. A strong house-cleaning offer should therefore feel flexible and practical, with weekly, fortnightly, and one-off options that match the way people actually live.",
-      "The goal is not just a neater property. It is a home that feels easier to manage and more enjoyable to be in. That is especially important in apartment-heavy and high-lifestyle areas such as Surfers Paradise and Broadbeach, but it matters just as much for family homes in Robina, Southport, Burleigh Heads, and surrounding suburbs. If a visitor wants local house cleaners, the page should help them recognise the service quickly and move straight to a tailored quote.",
+      "Busy week? We keep your home clean so you do not have to. Choose weekly, fortnightly or one-off visits. We clean kitchens, bathrooms, floors and dust. We work in apartments in Surfers Paradise and Broadbeach, and family homes in Robina, Southport and Burleigh Heads. Prices start from $120.",
     ],
   },
   {
@@ -44,8 +43,7 @@ const SERVICES_DATA = [
     idealFor: "Offices, professional suites, clinics & commercial venues in Southport & Robina",
     href: siteLinks.officeCleaning,
     paragraphs: [
-      "Office cleaning needs different messaging from domestic cleaning because the buyer is usually thinking about presentation, hygiene, and consistency rather than lifestyle convenience. Gold Coast businesses want an office cleaner who shows up on time, works around access needs, maintains shared kitchens and bathrooms properly, and helps the workplace feel more professional every day. A page built around office cleaning Gold Coast should speak to that business reality clearly.",
-      "Local relevance matters here too. Business precincts in Southport, Robina, Broadbeach, and Surfers Paradise all create demand for recurring workplace cleaning. By separating office cleaning from general household messaging, Wave Solution can rank more strongly for business search terms while giving office managers a page that feels built for their exact problem instead of squeezed into a generic services list.",
+      "Keep your workplace clean, presentable and ready for staff and visitors. We clean offices and professional spaces around Southport, Robina, Broadbeach and Surfers Paradise, with regular schedules shaped around your hours and site requirements.",
     ],
   },
   {
@@ -64,8 +62,7 @@ const SERVICES_DATA = [
     idealFor: "Tenants preparing for a bond inspection and real estate handover",
     href: siteLinks.bondCleaning,
     paragraphs: [
-      "Bond cleaning is one of the strongest conversion opportunities for any Gold Coast cleaning business because users searching this term are usually close to booking. They are moving, coordinating inspections, or working toward key-return deadlines. That means the page and the CTA need to reduce uncertainty quickly. Explain what is included, explain how quotes work, and show that the service is designed for move-out pressure, not just normal house maintenance.",
-      "This is where a more structured site beats weaker competitors. Instead of forcing the renter to guess which service applies, the site can send them directly to a focused bond-cleaning page with FAQs, related links, and a simple quote path based on suburb, property size, and preferred timing. The easier you make that decision, the more bookings you recover from high-intent traffic.",
+      "Moving out? We clean kitchens, bathrooms, floors and other agreed areas to prepare your property for handover. Share your inspection date and property details for a clear quote, with carpet steam cleaning and pest control available as add-ons.",
     ],
   },
   {
@@ -84,8 +81,7 @@ const SERVICES_DATA = [
     idealFor: "Units, townhouses & homes preparing for tenancy transfer or landlord inspection",
     href: siteLinks.endOfLeaseCleaning,
     paragraphs: [
-      "End of lease cleaning Gold Coast searches are closely related to bond cleaning, but the user intent is often framed around the rental handover itself rather than just the bond return. This distinction matters because it lets Wave Solution create another strong rental page without duplicating the exact same pitch. The end-of-lease page can speak more directly to handover readiness, inspection timing, and move-out organisation, which helps reduce keyword cannibalisation while still addressing a major local booking category.",
-      "For tenants, landlords, and property managers, the most useful site is the one that makes the process feel manageable. That means clear inclusions, local suburb coverage, and related links to bond cleaning, deep cleaning, and contact pathways that actually help the visitor decide what to do next.",
+      "Preparing a rental for handover? We provide end of lease cleaning for apartments, units, townhouses and homes across the Gold Coast. Tell us the property size, suburb and inspection date so we can confirm the service scope and quote.",
     ],
   },
   {

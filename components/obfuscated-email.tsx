@@ -20,7 +20,7 @@ export function ObfuscatedEmail({ className }: { className?: string }) {
       className={className}
       aria-label="Email Wave Solution"
     >
-      Loading...
+      info@wavesolution.com.au
     </a>
   )
 }

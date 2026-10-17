@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
 import Link from "next/link"
-import { CheckCircle, ShieldCheck, Sparkles, TimerReset, Users, MapPin, Clock, Quote } from "lucide-react"
+import { CheckCircle, ShieldCheck, Sparkles, TimerReset, Users, MapPin, Clock } from "lucide-react"
 
 import { HeroSection } from "@/components/hero-section"
 import { ServiceCard } from "@/components/service-card"
@@ -14,13 +14,6 @@ import { serviceAreaCount } from "@/lib/claims"
 
 const serviceCards = [
   {
-    title: "Cleaning Gold Coast",
-    description: "A local landing page for homes, offices, rentals, and businesses that need reliable cleaning across the Gold Coast.",
-    icon: "Sparkles",
-    price: "Local quote",
-    href: siteLinks.cleaningGoldCoast,
-  },
-  {
     title: "House Cleaning Gold Coast",
     description: "Weekly, fortnightly, and one-off house cleaning for apartments, family homes, and holiday properties.",
     icon: "Home",
@@ -31,63 +24,63 @@ const serviceCards = [
     title: "Office Cleaning Gold Coast",
     description: "Flexible workplace cleaning for professional suites, shared offices, and staff spaces.",
     icon: "Building2",
-    price: "Tailored quote",
+    price: "Request a quote",
     href: siteLinks.officeCleaning,
   },
   {
     title: "Bond Cleaning Gold Coast",
     description: "Detailed move-out cleaning for tenants, landlords, and property managers before inspection and handover.",
     icon: "Truck",
-    price: "Inspection-ready",
+    price: "Request a quote",
     href: siteLinks.bondCleaning,
   },
   {
     title: "End of Lease Cleaning Gold Coast",
     description: "Rental exit cleaning for apartments, units, townhouses, and homes across key Gold Coast suburbs.",
     icon: "Repeat",
-    price: "Move-out support",
+    price: "Request a quote",
     href: siteLinks.endOfLeaseCleaning,
   },
   {
     title: "Move-In Cleaning Gold Coast",
     description: "Detailed move-in cleaning so homes, rentals, and newly purchased properties feel fresh from day one.",
     icon: "Home",
-    price: "Fresh start",
+    price: "Request a quote",
     href: siteLinks.moveInCleaning,
   },
   {
     title: "Commercial Cleaning Gold Coast",
     description: "Cleaning plans for businesses, retail spaces, clinics, and other commercial premises.",
     icon: "Briefcase",
-    price: "Custom schedule",
+    price: "Request a quote",
     href: siteLinks.commercialCleaning,
   },
   {
     title: "Deep Cleaning Gold Coast",
     description: "One-off detailed cleaning for properties that need more than a standard maintenance visit.",
     icon: "Sparkles",
-    price: "Detailed reset",
+    price: "Request a quote",
     href: siteLinks.deepCleaning,
   },
   {
     title: "Carpet Cleaning Gold Coast",
     description: "Carpet refresh and stain-focused cleaning for homes, rentals, offices, and commercial fit-outs.",
     icon: "Carpet",
-    price: "Fresh carpets",
+    price: "Request a quote",
     href: siteLinks.carpetCleaning,
   },
   {
     title: "Pest Control Gold Coast",
     description: "Targeted pest control support for homes, rentals, and businesses dealing with common Gold Coast pests.",
     icon: "Bug",
-    price: "Local treatment",
+    price: "Request a quote",
     href: siteLinks.pestControl,
   },
   {
     title: "After Builders Cleaning Gold Coast",
     description: "Post-construction and renovation cleaning for homes, fit-outs, and business spaces that need a full reset.",
     icon: "Sparkles",
-    price: "Post-build clean",
+    price: "Request a quote",
     href: siteLinks.afterBuildersCleaning,
   },
 ]
@@ -101,73 +94,69 @@ const whyChooseUs = [
   "Cleaning plans that match the property type instead of forcing every lead into the same package.",
 ]
 
-const reviewHighlights = [
-  {
-    name: "Sarah Johnson",
-    suburb: "Southport",
-    service: "House cleaning",
-    quote:
-      "Wave Solution has been cleaning my home regularly and the team is always punctual, friendly, and careful with the bathrooms and kitchen.",
-  },
-  {
-    name: "David Williams",
-    suburb: "Robina",
-    service: "Office cleaning",
-    quote:
-      "Our office feels much more consistent and professional since starting a regular clean. Communication has been easy and the quality has stayed strong.",
-  },
-  {
-    name: "Emma Roberts",
-    suburb: "Broadbeach",
-    service: "Commercial cleaning",
-    quote:
-      "We needed a cleaner who understood presentation and hygiene for a busy customer-facing site, and Wave Solution has been dependable from the start.",
-  },
-]
-
 const homepageFaqs = [
   {
-    question: "Do you provide house cleaning across the Gold Coast?",
+    question: "Do you offer bond cleaning and end of lease cleaning?",
     answer:
-      "Yes. We provide house cleaning across key Gold Coast suburbs including Southport, Robina, Surfers Paradise, Broadbeach, Burleigh Heads, Palm Beach, Helensvale, Coomera, and nearby areas.",
+      "Yes. We clean to the standard property managers expect. If anything fails inspection, we return within 24 hours at no charge. Carpet steam cleaning and pest control can be added to the same booking.",
   },
   {
     question: "Can I book office or commercial cleaning?",
     answer:
-      "Yes. We provide office cleaning and broader commercial cleaning for workplaces, customer-facing spaces, and business premises that need recurring or one-off support.",
-  },
-  {
-    question: "Do you offer bond cleaning and end of lease cleaning?",
-    answer:
-      "Yes. We provide detailed move-out and rental handover cleaning for tenants, landlords, and property managers across the Gold Coast.",
+      "Yes. We clean offices, clinics, retail and strata sites on the Gold Coast. We set a regular schedule and send a fixed quote after a short site check.",
   },
   {
     question: "How do I get a cleaning quote?",
     answer:
-      "Use the booking page, call 0450 833 683, or contact us online. We can quote based on your suburb, service type, property size, timing, and any extra detail required.",
+      "Use the online estimator, call 0450 833 683, or send us a WhatsApp message. Tell us the suburb, property size and date, and we’ll reply with a clear price.",
+  },
+  {
+    question: "How much does end of lease cleaning cost on the Gold Coast?",
+    answer:
+      "Pricing depends on the property size, condition and requested extras. Use our online estimator or contact us for a clear, itemised quote.",
+  },
+  {
+    question: "Do you offer pest control with bond cleaning?",
+    answer: "Yes. Pest control can be added to a bond clean in the same booking. Tell us what treatment you need when requesting your quote.",
+  },
+  {
+    question: "Is pest control done by a licensed technician?",
+    answer: "Contact us before booking and we’ll confirm the licence details for the technician assigned to your treatment.",
+  },
+  {
+    question: "Do you bring your own equipment and products?",
+    answer: "Equipment and products depend on the service. Contact us with your job details and we’ll confirm what’s included before you book.",
+  },
+  {
+    question: "What happens if my property manager is not happy?",
+    answer: "Contact us within 24 hours with the inspection notes. We’ll review them against the agreed cleaning scope and arrange a no-charge return for covered cleaning items.",
+  },
+  {
+    question: "Do you clean on weekends?",
+    answer: "Saturday bookings are available from 9am to 4pm, subject to availability. We’re closed on Sundays.",
   },
 ]
 
 export const metadata: Metadata = {
-  title: "Wave Solution Cleaning | Gold Coast Local Cleaners",
+  title: "Cleaning & Pest Control Gold Coast | Wave Solution",
   description:
-    "Meet Wave Solution, a local Gold Coast cleaning team for homes, rentals, offices, and businesses. Compare services, explore local coverage, or request a quote.",
+    "Bond cleaning, house and office cleaning, carpet steam cleaning and pest control across the Gold Coast. Fully insured. Get a fast quote online.",
   alternates: {
     canonical: businessInfo.baseUrl,
   },
   openGraph: {
-    title: "Wave Solution Cleaning | Gold Coast Local Cleaners",
+    title: "Cleaning & Pest Control Gold Coast | Wave Solution",
     description:
-      "Meet Wave Solution, a local Gold Coast cleaning team for homes, rentals, offices, and businesses. Compare services, explore local coverage, or request a quote.",
+      "Bond cleaning, house and office cleaning, carpet steam cleaning and pest control across the Gold Coast. Fully insured. Get a fast quote online.",
     url: businessInfo.baseUrl,
     type: "website",
     images: [{ url: `${businessInfo.baseUrl}/gold-coast-cleaning-services.jpeg`, width: 1200, height: 630, alt: "Wave Solution Cleaning & Pest Control Gold Coast" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Wave Solution Cleaning | Gold Coast Local Cleaners",
+    title: "Cleaning & Pest Control Gold Coast | Wave Solution",
     description:
-      "Meet Wave Solution, a local Gold Coast cleaning team for homes, rentals, offices, and businesses. Compare services, explore local coverage, or request a quote.",
+      "Bond cleaning, house and office cleaning, carpet steam cleaning and pest control across the Gold Coast. Fully insured. Get a fast quote online.",
     images: [`${businessInfo.baseUrl}/gold-coast-cleaning-services.jpeg`],
   },
 }
@@ -199,8 +188,8 @@ export default function Home() {
           <div className="grid grid-cols-2 gap-3 rounded-[1.75rem] border border-slate-200 bg-white p-4 shadow-xl shadow-slate-900/8 md:grid-cols-4 md:gap-0 md:divide-x md:divide-slate-100 md:p-6">
             {[
               { icon: ShieldCheck, label: "Professional team", value: "Fully insured" },
-              { icon: CheckCircle, label: "Our cleaners", value: "Police-checked" },
-              { icon: Sparkles, label: "Bond & end-of-lease", value: "Covered-item re-clean" },
+              { icon: CheckCircle, label: "Trained, vetted cleaners", value: "Police-checked" },
+              { icon: Sparkles, label: "Bond & end-of-lease", value: "Free re-clean if anything is missed" },
               { icon: MapPin, label: "Gold Coast suburbs", value: String(serviceAreaCount) },
             ].map((stat) => (
               <div key={stat.label} className="flex items-center gap-3 px-2 py-2 md:justify-center md:px-4">
@@ -288,7 +277,6 @@ export default function Home() {
       <section className="bg-white pb-4 pt-6">
         <div className="classic-container">
           <div className="rounded-[2rem] border border-primary/15 bg-[#F3F3F3] p-6 sm:p-7">
-            <p className="text-xs font-black uppercase tracking-[0.2em] text-secondary">Direct Answer</p>
             <p className="mt-3 text-base leading-8 text-slate-700">
               Wave Solution Cleaning &amp; Pest Control provides house cleaning, office and commercial cleaning, bond and
               end of lease cleaning, carpet cleaning and pest control across the Gold Coast. The team is fully insured,
@@ -314,7 +302,7 @@ export default function Home() {
           </div>
 
           <div className="flex flex-col rounded-[2rem] bg-secondary p-8 text-white shadow-xl">
-            <h2 className="text-3xl font-black tracking-tight">Gold Coast Trust Signals</h2>
+            <h2 className="text-3xl font-black tracking-tight">Why Gold Coast customers choose us</h2>
             <p className="mt-4 text-base leading-8 text-white/75">
               A local Gold Coast team that is easy to contact, easy to book, and clear about what is included — fully insured cleaners, police-checked staff, and fast quotes for home, office, rental, and commercial jobs.
             </p>
@@ -351,62 +339,23 @@ export default function Home() {
                <Sparkles className="h-3.5 w-3.5 text-primary" />
                Customer Feedback
              </div>
-             <h2 className="mt-3 text-3xl font-black tracking-tight text-primary sm:text-4xl">Gold Coast Customer Feedback</h2>
+             <h2 className="mt-3 text-3xl font-black tracking-tight text-primary sm:text-4xl">Google reviews</h2>
              <p className="mx-auto mt-3 max-w-2xl text-base leading-relaxed text-slate-600">
-               Notes from customers about house, office, and commercial cleaning across the Gold Coast.
+               Read customer reviews on our Google Business Profile.
              </p>
            </div>
-
-          <div className="mt-12 grid gap-6 lg:grid-cols-3">
-            {reviewHighlights.map((review) => (
-              <article
-                key={`${review.name}-${review.suburb}`}
-                className="group relative flex flex-col justify-between rounded-3xl border border-slate-200/90 bg-white p-7 shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:border-secondary/30 hover:shadow-xl"
-              >
-                <Quote className="absolute right-6 top-6 h-8 w-8 text-primary/15" />
-                <div>
-                  <p className="mt-4 text-base italic leading-relaxed text-slate-700">
-                    "{review.quote}"
-                  </p>
-                </div>
-                <div className="mt-6 border-t border-slate-100 pt-4">
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <p className="font-extrabold text-[#212429]">{review.name}</p>
-                      <p className="text-xs font-medium text-slate-500">
-                        {review.suburb}, QLD • <span className="font-semibold text-primary">{review.service}</span>
-                      </p>
-                    </div>
-                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-primary to-secondary text-xs font-black text-white">
-                      {review.name.split(" ").map((part) => part.charAt(0)).join("")}
-                    </div>
-                  </div>
-                </div>
-              </article>
-            ))}
-          </div>
+           <div className="mt-8 text-center">
+             <a href={businessInfo.googleBusinessProfile} target="_blank" rel="noopener noreferrer" className="inline-flex rounded-full bg-primary px-6 py-3 text-sm font-bold text-white hover:bg-secondary">
+               Read our Google reviews
+             </a>
+           </div>
         </div>
       </section>
 
       <section className="bg-white py-14 md:py-20">
         <div className="classic-container">
           <div className="rounded-[2rem] border border-slate-200 bg-[#F8FAFC] p-8 sm:p-10">
-            <h2 className="text-3xl font-black tracking-tight text-secondary">Helpful Internal Links</h2>
-            <p className="mt-5 max-w-4xl text-base leading-8 text-slate-600">
-              If you are still comparing{" "}
-              <Link href={siteLinks.cleaningGoldCoast} className="font-semibold text-primary underline-offset-4 hover:text-secondary hover:underline">
-                cleaning Gold Coast
-              </Link>{" "}
-              providers, want to speak with{" "}
-              <Link href={siteLinks.contact} className="font-semibold text-primary underline-offset-4 hover:text-secondary hover:underline">
-                professional cleaners Gold Coast
-              </Link>{" "}
-              homes and businesses can contact directly, or are looking for{" "}
-              <Link href={siteLinks.homeCleaning} className="font-semibold text-primary underline-offset-4 hover:text-secondary hover:underline">
-                local house cleaners
-              </Link>
-              , the pages below make it easier to move to the service, suburb, or article cluster that matches your property and timing.
-            </p>
+            <h2 className="text-3xl font-black tracking-tight text-secondary">Popular services</h2>
 
             <div className="mt-8 flex flex-wrap gap-3">
               {serviceCards.map((service) => (
@@ -458,7 +407,7 @@ export default function Home() {
 
             <div className="mt-8 grid gap-4 lg:grid-cols-2">
               <div className="rounded-2xl border border-slate-200 bg-white p-6">
-                <p className="text-xs font-black uppercase tracking-[0.2em] text-primary">Top Gold Coast Suburbs</p>
+                <p className="text-xs font-black uppercase tracking-[0.2em] text-primary">Areas we service</p>
                 <div className="mt-4 flex flex-wrap gap-3 text-sm font-semibold">
                   {[
                     ["/locations/southport", "Southport"],

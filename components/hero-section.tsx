@@ -33,13 +33,11 @@ export function HeroSection() {
           </div>
 
           <h1 className="mt-6 font-black leading-[1.08] tracking-tight text-white">
-            Professional cleaning on the Gold Coast for{" "}
-            <span className="text-[#39BDE4]">Homes, Offices &amp; Rentals</span>
+            Cleaning and Pest Control on the Gold Coast
           </h1>
 
           <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-white/80 sm:text-lg lg:mx-0">
-            House cleaning, office cleaning, bond cleaning, end of lease cleaning, deep cleaning
-            and commercial cleaning — done by a local, fully insured Gold Coast team.
+            Bond cleans, house cleaning, carpet cleaning and pest control from one local, insured team. Get a clear price in minutes.
           </p>
 
           <div className="mt-8 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center sm:justify-center lg:justify-start">

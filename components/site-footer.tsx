@@ -14,7 +14,6 @@ import {
 
 import { businessInfo, siteLinks } from "@/lib/business-info"
 import { guaranteeLabel, insuranceLabel, serviceAreaCount } from "@/lib/claims"
-import { ObfuscatedEmail } from "@/components/obfuscated-email"
 
 const SERVICES = [
   { href: siteLinks.bondCleaning, label: "Bond Cleaning" },
@@ -65,7 +64,7 @@ export function SiteFooter() {
             <div className="flex items-center gap-2.5 text-white/90">
               <span className="flex h-2 w-2 rounded-full bg-[#39BDE4]" />
               <span>
-                <strong className="text-white font-semibold">Need a clean on the Gold Coast?</strong> We reply within 15 minutes during business hours.
+                <strong className="text-white font-semibold">Need a clean on the Gold Coast?</strong> Contact us for availability and a clear quote.
               </span>
             </div>
 
@@ -120,10 +119,10 @@ export function SiteFooter() {
                 <span className="font-semibold text-white">{businessInfo.phoneDisplay}</span>
               </a>
 
-              <div className="flex items-center gap-2.5 text-white/80">
+              <a href={`mailto:${businessInfo.email}`} className="flex items-center gap-2.5 text-white/80">
                 <Mail className="h-3.5 w-3.5 text-[#39BDE4] shrink-0" />
-                <ObfuscatedEmail className="hover:text-[#39BDE4] transition-colors cursor-pointer" />
-              </div>
+                <span className="hover:text-[#39BDE4] transition-colors">{businessInfo.email}</span>
+              </a>
 
               <Link
                 href={businessInfo.mapsUrl}
