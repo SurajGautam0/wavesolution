@@ -73,21 +73,21 @@ export function NewsletterForm({ variant = "default" }: { variant?: "default" | 
               type="email"
               value={email}
               onChange={(event) => setEmail(event.target.value)}
-              className="h-12 rounded-xl border border-[#E2E9E2] bg-[#FBFCFA] px-4 pr-11 text-sm text-[#263B3A] placeholder:text-[#9AA6A1] focus-visible:border-[#6FA095] focus-visible:ring-2 focus-visible:ring-[#6FA095]/20"
+              className="h-12 rounded-xl border border-slate-200 bg-[#F8FAFC] px-4 pr-11 text-sm text-slate-900 placeholder:text-slate-400 focus-visible:border-[#39BDE4] focus-visible:ring-2 focus-visible:ring-[#39BDE4]/20"
               onKeyDown={(event) => event.key === "Enter" && handleSubscribe()}
             />
-            <Mail className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-[#82918C]" />
+            <Mail className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
           </div>
           <Button
             onClick={handleSubscribe}
             disabled={loading}
-            className="h-12 rounded-xl bg-[#377D70] px-5 text-sm font-semibold text-white shadow-none hover:bg-[#2C685D]"
+            className="h-12 rounded-xl bg-[#39BDE4] px-5 text-sm font-semibold text-white shadow-none hover:bg-[#249FC5]"
           >
             {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : null}
             {loading ? "Subscribing..." : <>Sign me up <ArrowRight className="ml-2 h-4 w-4" /></>}
           </Button>
         </div>
-        <p className="text-xs text-[#87918E]">No spam. Unsubscribe anytime.</p>
+        <p className="text-xs text-slate-500">No spam. Unsubscribe anytime.</p>
       </div>
     )
   }
