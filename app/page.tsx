@@ -474,14 +474,26 @@ export default function Home() {
         </div>
        </section>
 
-       <section className="bg-gradient-to-br from-primary to-secondary py-16 md:py-20 text-white">
-         <div className="classic-container max-w-2xl text-center">
-           <h2 className="text-3xl font-black tracking-tight sm:text-4xl">Stay Clean, Stay Updated</h2>
-           <p className="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-white/80">
-             Get cleaning tips, exclusive offers, and seasonal deals delivered to your inbox.
-           </p>
-           <div className="mt-8">
-             <NewsletterForm variant="hero" />
+       <section className="relative overflow-hidden bg-[#F4F7F4] py-14 md:py-20">
+         <div className="pointer-events-none absolute -left-24 -top-24 h-72 w-72 rounded-full bg-[#DCECE5] blur-3xl" />
+         <div className="pointer-events-none absolute -bottom-28 -right-16 h-80 w-80 rounded-full bg-[#E7EBDD] blur-3xl" />
+         <div className="classic-container relative">
+           <div className="mx-auto grid max-w-5xl overflow-hidden rounded-3xl border border-[#E2E9E2] bg-white shadow-sm md:grid-cols-[1fr_1.1fr]">
+             <div className="flex flex-col justify-center bg-[#315F56] p-7 text-white sm:p-10">
+               <span className="text-xs font-semibold uppercase tracking-[0.18em] text-[#C8E4D8]">A little help for a cleaner home</span>
+               <h2 className="mt-4 text-3xl font-semibold leading-tight tracking-tight sm:text-4xl">Fresh tips, straight to your inbox.</h2>
+               <p className="mt-4 max-w-md text-sm leading-7 text-white/80">
+                 Practical cleaning advice, seasonal reminders and occasional offers from your local Gold Coast team.
+               </p>
+               <div className="mt-6 flex items-center gap-2 text-xs text-white/70"><span className="h-2 w-2 rounded-full bg-[#B9D8C9]" />Useful notes, only now and then</div>
+             </div>
+             <div className="flex flex-col justify-center p-7 sm:p-10">
+               <p className="text-sm font-semibold text-[#344846]">Join our newsletter</p>
+               <p className="mt-2 text-sm leading-6 text-[#687574]">Sign up for simple ways to keep your home feeling its best.</p>
+               <div className="mt-6">
+                 <NewsletterForm variant="hero" />
+               </div>
+             </div>
            </div>
          </div>
        </section>
