@@ -56,10 +56,10 @@ import {
 
 // ── Data ──────────────────────────────────────────────
 const serviceTypes = [
-	{ id: "bond-cleaning-gold-coast", label: "Bond / End of Lease", icon: Home, desc: "Move-out cleaning from $250" },
+	{ id: "bond-cleaning-gold-coast", label: "Bond / End of Lease", icon: Home, desc: "Move-out cleaning, tailored to your property" },
 	{ id: "pest-control-gold-coast", label: "Pest Control", icon: Sparkles, desc: "Tell us the pest and property type" },
-	{ id: "carpet-cleaning-gold-coast", label: "Carpet Cleaning", icon: Home, desc: "Hot-water extraction from $150" },
-	{ id: "home", label: "House Cleaning", icon: Home, desc: "Weekly, fortnightly or one-off from $120" },
+	{ id: "carpet-cleaning-gold-coast", label: "Carpet Cleaning", icon: Home, desc: "Hot-water extraction for your rooms and carpets" },
+	{ id: "home", label: "House Cleaning", icon: Home, desc: "Weekly, fortnightly or one-off visits" },
 	{ id: "office-cleaning-gold-coast", label: "Office Cleaning", icon: Building2, desc: "Regular workplace cleaning" },
 ]
 
@@ -113,9 +113,12 @@ const steps = [
 
 type BookingPageClientProps = {
 	initialService?: string
+	initialBedrooms?: string
+	initialBathrooms?: string
+	initialNotes?: string
 }
 
-export default function BookingPageClient({ initialService }: BookingPageClientProps) {
+export default function BookingPageClient({ initialService, initialBedrooms, initialBathrooms, initialNotes }: BookingPageClientProps) {
 	const router = useRouter()
 	const [currentStep, setCurrentStep] = useState(1)
 	const [isSubmitting, setIsSubmitting] = useState(false)
@@ -128,9 +131,16 @@ export default function BookingPageClient({ initialService }: BookingPageClientP
 			? requestedService
 			: "home"
 	})
-	const [selectedSize, setSelectedSize] = useState("3bed")
+	const [selectedSize, setSelectedSize] = useState(() => {
+		const count = Number(initialBedrooms)
+		if (!Number.isFinite(count) || count < 1) return "3bed"
+		return count >= 4 ? "4+bed" : count === 3 ? "3bed" : "1-2bed"
+	})
 	const [selectedFrequency, setSelectedFrequency] = useState<Frequency>("fortnightly")
-	const [selectedBathrooms, setSelectedBathrooms] = useState("2")
+	const [selectedBathrooms, setSelectedBathrooms] = useState(() => {
+		const count = Number(initialBathrooms)
+		return Number.isFinite(count) && count >= 4 ? "4+" : Number.isFinite(count) && count >= 1 ? String(count) : "2"
+	})
 	const [includeDeepClean, setIncludeDeepClean] = useState(false)
 
 	const sizeLabel = propertySizes.find((s) => s.id === selectedSize)?.label || selectedSize
@@ -156,7 +166,7 @@ export default function BookingPageClient({ initialService }: BookingPageClientP
 			suburb: "",
 			address: "",
 			preferredDate: "",
-			notes: "",
+			notes: initialNotes || "",
 		},
 	})
 

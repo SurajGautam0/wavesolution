@@ -95,8 +95,7 @@ export function ServiceCard({ title, description, icon, price, href = "/book", c
         </div>
         <div className="relative z-10 mt-6 flex items-center justify-between gap-3 border-t border-white/10 pt-5">
           <div>
-            <span className="block text-[10px] font-black uppercase tracking-[0.2em] text-white/50">Pricing</span>
-            <span className="text-base font-extrabold text-white">{price}</span>
+            <span className="block text-xs font-semibold text-white/75">Personalised quote</span>
           </div>
           <Link
             href={href}
@@ -132,10 +131,7 @@ export function ServiceCard({ title, description, icon, price, href = "/book", c
         </p>
       </div>
       <div className="mt-6 flex items-center justify-between gap-3 border-t border-slate-100 pt-5">
-        <div>
-          <span className="block text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">Pricing</span>
-          <span className="text-base font-extrabold text-secondary">{price}</span>
-        </div>
+        <span className="text-sm font-semibold text-slate-600">Request a quote</span>
         <Link
           href={href}
           aria-label={`${ctaLabel}: ${title}`}

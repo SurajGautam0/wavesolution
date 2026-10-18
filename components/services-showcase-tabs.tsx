@@ -24,7 +24,7 @@ const SERVICES_DATA = [
     idealFor: "Apartments & family homes across Southport, Robina, Broadbeach & Burleigh Heads",
     href: siteLinks.homeCleaning,
     paragraphs: [
-      "Busy week? We keep your home clean so you do not have to. Choose weekly, fortnightly or one-off visits. We clean kitchens, bathrooms, floors and dust. We work in apartments in Surfers Paradise and Broadbeach, and family homes in Robina, Southport and Burleigh Heads. Prices start from $120.",
+      "Busy week? We keep your home clean so you do not have to. Choose weekly, fortnightly or one-off visits. We clean kitchens, bathrooms, floors and dust. We work in apartments in Surfers Paradise and Broadbeach, and family homes in Robina, Southport and Burleigh Heads. Contact us for a tailored quote.",
     ],
   },
   {

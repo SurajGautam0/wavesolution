@@ -27,11 +27,11 @@ export const metadata: Metadata = {
 }
 
 type BookingPageProps = {
-  searchParams: Promise<{ service?: string }>
+  searchParams: Promise<{ service?: string; bedrooms?: string; bathrooms?: string; notes?: string }>
 }
 
 export default async function BookingPage({ searchParams }: BookingPageProps) {
-  const { service } = await searchParams
-  return <BookingPageClient initialService={service} />
+  const { service, bedrooms, bathrooms, notes } = await searchParams
+  return <BookingPageClient initialService={service} initialBedrooms={bedrooms} initialBathrooms={bathrooms} initialNotes={notes} />
 }
 

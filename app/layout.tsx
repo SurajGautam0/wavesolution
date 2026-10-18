@@ -102,7 +102,6 @@ const jsonLd = {
       url: businessInfo.baseUrl,
       telephone: businessInfo.phoneE164,
       email: businessInfo.email,
-      priceRange: "$120 - $600",
       currenciesAccepted: "AUD",
       paymentAccepted: "Cash, Credit Card, Bank Transfer",
       areaServed: businessInfo.serviceAreas.map((s) => ({

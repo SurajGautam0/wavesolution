@@ -17,7 +17,7 @@ const serviceCards = [
     title: "House Cleaning Gold Coast",
     description: "Weekly, fortnightly, and one-off house cleaning for apartments, family homes, and holiday properties.",
     icon: "Home",
-    price: "From $120",
+    price: "",
     href: siteLinks.homeCleaning,
   },
   {
@@ -31,14 +31,14 @@ const serviceCards = [
     title: "Bond Cleaning Gold Coast",
     description: "Detailed move-out cleaning for tenants, landlords, and property managers before inspection and handover.",
     icon: "Truck",
-    price: "From $250",
+    price: "",
     href: siteLinks.bondCleaning,
   },
   {
     title: "End of Lease Cleaning Gold Coast",
     description: "Rental exit cleaning for apartments, units, townhouses, and homes across key Gold Coast suburbs.",
     icon: "Repeat",
-    price: "From $250",
+    price: "",
     href: siteLinks.endOfLeaseCleaning,
   },
   {
@@ -66,7 +66,7 @@ const serviceCards = [
     title: "Carpet Cleaning Gold Coast",
     description: "Carpet refresh and stain-focused cleaning for homes, rentals, offices, and commercial fit-outs.",
     icon: "Carpet",
-    price: "From $150",
+    price: "",
     href: siteLinks.carpetCleaning,
   },
   {
@@ -122,12 +122,12 @@ const homepageFaqs = [
   {
     question: "How do I get a cleaning quote?",
     answer:
-      "Use the online estimator, call 0450 833 683, or send us a WhatsApp message. Tell us the suburb, property size and preferred date. We’ll confirm the scope and price before you book.",
+      "Use the quote request form, call 0450 833 683, or send us a WhatsApp message. Tell us the suburb, property size and preferred date. We’ll confirm the scope and price before you book.",
   },
   {
-    question: "How much does end of lease cleaning cost on the Gold Coast?",
+    question: "How do you price end of lease cleaning?",
     answer:
-      "End of lease cleaning starts from $250. The final quote depends on property size, condition and requested extras. Use the estimator or contact us for a price for your property.",
+      "Each property is different. Share the size, condition and any extras you need, and we’ll confirm a tailored price before you book.",
   },
   {
     question: "Do you offer pest control with bond cleaning?",

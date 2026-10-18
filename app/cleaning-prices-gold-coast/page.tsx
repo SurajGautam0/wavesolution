@@ -9,9 +9,9 @@ import { businessInfo, siteLinks } from "@/lib/business-info"
 const pageUrl = `${businessInfo.baseUrl}/cleaning-prices-gold-coast`
 
 export const metadata: Metadata = {
-  title: "Cleaning Prices Gold Coast | Cost & Quote Guides",
+  title: "Cleaning Quotes Gold Coast | Free Personalised Quotes",
   description:
-    "Gold Coast cleaning and pest price guides: house cleaning, bond cleaning, pest control and end of lease bundles, with what drives each quote.",
+    "Request a free, personalised quote for house cleaning, bond cleaning, pest control or end-of-lease cleaning on the Gold Coast.",
   alternates: {
     canonical: pageUrl,
   },
@@ -77,7 +77,7 @@ const jsonLd = {
           name: "How much does cleaning cost on the Gold Coast?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "House cleaning starts from $120, carpet hot-water extraction from $150 and bond or end-of-lease cleaning from $250. The final price depends on the property and agreed scope, and is confirmed in writing before booking.",
+            text: "Cleaning is quoted for your property and agreed scope. Contact our team for a free quote, confirmed in writing before booking.",
           },
         },
         {
@@ -85,7 +85,7 @@ const jsonLd = {
           name: "How much does end of lease cleaning cost?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "Bond and end-of-lease cleaning starts from $250. The final price depends on property size, condition and the agreed scope. We confirm an itemised quote in writing before booking.",
+            text: "Bond and end-of-lease cleaning is quoted based on property size, condition and the agreed scope. We confirm an itemised quote in writing before booking.",
           },
         },
         {
@@ -230,11 +230,11 @@ const steps = [
 const faqs = [
   {
     q: "How much does cleaning cost on the Gold Coast?",
-    a: "House cleaning starts from $120, carpet hot-water extraction from $150, and bond or end-of-lease cleaning from $250. Property size, condition and extras affect the final itemised quote, which we confirm in writing before booking.",
+    a: "We prepare a quote based on the property, service, condition and requested extras, then confirm the itemised price in writing before booking.",
   },
   {
     q: "How much does end of lease cleaning cost?",
-    a: "Bond and end-of-lease cleaning starts from $250. The final price depends on property size, condition and agreed scope. We confirm an itemised quote in writing before booking.",
+    a: "Bond and end-of-lease cleaning is quoted based on property size, condition and agreed scope. We confirm an itemised price in writing before booking.",
   },
   {
     q: "How much does pest control cost on the Gold Coast?",
@@ -298,8 +298,7 @@ export default function CleaningPricesPage() {
               Cleaning Prices on the Gold Coast
             </h1>
             <p className="mt-6 max-w-3xl text-lg leading-8 text-white/80">
-              House cleaning starts from $120, carpet hot-water extraction from $150, and bond or end-of-lease cleaning
-              from $250. Your final itemised price depends on the property and agreed scope.
+              Every property is different. Tell us what you need and our local team will prepare a tailored quote, with the scope and price confirmed before booking.
             </p>
 
             <div className="mt-8 flex flex-col gap-4 sm:flex-row">
@@ -338,7 +337,7 @@ export default function CleaningPricesPage() {
             <div className="space-y-6">
               <div className="rounded-[2rem] border border-primary/15 bg-[#F3F3F3] p-6">
                 <p className="mt-3 text-base leading-8 text-slate-700">
-                  House cleaning starts from $120, carpet hot-water extraction from $150, and bond or end-of-lease cleaning from $250. The final price depends on the property and agreed scope.
+                  We tailor each quote to your property, cleaning needs and agreed scope, then confirm the price in writing before booking.
                 </p>
               </div>
 
@@ -393,14 +392,10 @@ export default function CleaningPricesPage() {
 
       <section className="bg-[#F3F3F3] py-12">
         <div className="classic-container max-w-5xl">
-          <h2 className="text-3xl font-black text-primary">Cleaning prices at a glance</h2>
-          <p className="mt-3 leading-7 text-slate-600">These are starting prices. A final itemised quote is confirmed in writing before booking.</p>
-          <div className="mt-6 overflow-x-auto rounded-2xl border border-slate-200 bg-white">
-            <table className="w-full text-left text-sm"><thead className="bg-slate-100 text-primary"><tr><th className="p-4">Service</th><th className="p-4">From price</th><th className="p-4">What can change the price</th></tr></thead>
-              <tbody className="divide-y divide-slate-200"><tr><td className="p-4 font-semibold">House cleaning</td><td className="p-4">$120</td><td className="p-4">Home size, condition, frequency and requested extras.</td></tr><tr><td className="p-4 font-semibold">Carpet cleaning</td><td className="p-4">$150</td><td className="p-4">Carpet area, room count, condition, access and requested treatment.</td></tr><tr><td className="p-4 font-semibold">Bond / end-of-lease cleaning</td><td className="p-4">$250</td><td className="p-4">Property size, condition and agreed scope or add-ons.</td></tr><tr><td className="p-4 font-semibold">Pest treatment</td><td className="p-4">Quote required</td><td className="p-4">Pest issue, property type, access and treatment scope.</td></tr></tbody>
-            </table>
-          </div>
-          <h3 className="mt-8 text-xl font-bold text-primary">Why the final price can differ</h3><p className="mt-3 max-w-4xl leading-7 text-slate-600">The starting price covers an initial scope. Property size, condition, access, service frequency and add-ons can change the work required. Tell us what you need and we will confirm the inclusions and itemised total in writing before booking.</p>
+          <h2 className="text-3xl font-black text-primary">Get a quote for your cleaning</h2>
+          <p className="mt-3 max-w-3xl leading-7 text-slate-600">There’s no one-size-fits-all price. Property size, condition, access, frequency and requested extras all affect the work involved. Contact us with a few details and we’ll provide a free, tailored quote.</p>
+          <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">{["House cleaning", "Bond and end-of-lease", "Carpet cleaning", "Pest treatment"].map((service) => <div key={service} className="rounded-2xl border border-slate-200 bg-white p-5"><p className="font-semibold text-primary">{service}</p><p className="mt-2 text-sm text-slate-600">Price confirmed in your personalised quote.</p></div>)}</div>
+          <h3 className="mt-8 text-xl font-bold text-primary">How your quote is prepared</h3><p className="mt-3 max-w-4xl leading-7 text-slate-600">Property size, condition, access, service frequency and add-ons can change the work required. Tell us what you need and we will confirm the inclusions and itemised total in writing before booking.</p>
         </div>
       </section>
 
