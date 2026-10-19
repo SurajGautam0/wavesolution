@@ -183,6 +183,19 @@ const ALL_ARTICLES: Article[] = [
     tags: ["Pest Prevention", "Cockroaches", "Termites", "Safety"],
   },
   {
+    slug: "/blog/end-of-lease-pest-control-gold-coast",
+    title: "End-of-Lease Pest Control on the Gold Coast: Tenant Guide",
+    description:
+      "Find out what to check in your Queensland rental records, when to schedule pest treatment, and how to plan a bond clean handover.",
+    category: "pest",
+    categoryLabel: "Pest Control",
+    readTime: "5 min read",
+    date: "October 2026",
+    popular: true,
+    icon: Bug,
+    tags: ["End of Lease", "Pest Control", "Queensland Rentals"],
+  },
+  {
     slug: "/blog/eco-friendly",
     title: "Eco-Friendly Cleaning Solutions for Families & Pets",
     description:
