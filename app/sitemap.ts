@@ -18,7 +18,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     const teamLastModified = new Date('2026-08-15')
     const testimonialsLastModified = new Date('2026-09-10')
     const galleryLastModified = new Date('2026-09-10')
-    const blogLastModified = new Date('2026-10-15')
+    const blogLastModified = new Date('2026-10-21')
     const checklistLastModified = new Date('2026-08-20')
 
     // Blog posts with actual publish dates
@@ -43,6 +43,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         { slug: 'carpet-cleaning-guide', lastModified: '2025-03-01' },
         { slug: 'pest-control-guide', lastModified: '2025-03-20' },
         { slug: 'end-of-lease-pest-control-gold-coast', lastModified: '2026-10-19' },
+        { slug: 'dashain-house-cleaning-gold-coast', lastModified: '2026-10-21' },
         { slug: 'professional-vs-diy-bond-cleaning-costs-benefits-wavesolution', lastModified: '2026-10-15' },
         { slug: 'spring-cleaning-guide-gold-coast', lastModified: '2026-10-15' },
     ]

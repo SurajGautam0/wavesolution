@@ -196,6 +196,19 @@ const ALL_ARTICLES: Article[] = [
     tags: ["End of Lease", "Pest Control", "Queensland Rentals"],
   },
   {
+    slug: "/blog/dashain-house-cleaning-gold-coast",
+    title: "Dashain House Cleaning on the Gold Coast: Save 10%",
+    description:
+      "Getting ready for Dashain? Refresh your Gold Coast home for family and friends, and ask about 10% off Dashain house cleaning.",
+    category: "house",
+    categoryLabel: "House Cleaning",
+    readTime: "5 min read",
+    date: "October 2026",
+    popular: true,
+    icon: Home,
+    tags: ["Dashain", "House Cleaning", "Gold Coast", "Nepali Community"],
+  },
+  {
     slug: "/blog/eco-friendly",
     title: "Eco-Friendly Cleaning Solutions for Families & Pets",
     description:
