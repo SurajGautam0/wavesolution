@@ -95,6 +95,14 @@ function fmtDate(ts: any) {
     return new Date(ts.seconds * 1000).toLocaleDateString("en-AU")
 }
 
+function leadTimestamp(contact: any) {
+    const createdAt = contact?.createdAt
+    if (typeof createdAt?.seconds === "number") return createdAt.seconds * 1000
+    if (createdAt instanceof Date) return createdAt.getTime()
+    const parsed = createdAt ? new Date(createdAt).getTime() : 0
+    return Number.isFinite(parsed) ? parsed : 0
+}
+
 function fmtSchedule(value: any, fallback?: any) {
     const raw = value || (fallback?.seconds ? new Date(fallback.seconds * 1000) : null)
     if (!raw) return "Not scheduled"
@@ -308,6 +316,9 @@ export default function AdminDashboardPage() {
     // ── operations / CRM / quotes
     const [operationDrafts, setOperationDrafts] = useState<Record<string, any>>({})
     const [leadDrafts, setLeadDrafts] = useState<Record<string, any>>({})
+    const [crmQuery, setCrmQuery] = useState("")
+    const [crmStage, setCrmStage] = useState("all")
+    const [crmSort, setCrmSort] = useState("priority")
     const [quoteDraft, setQuoteDraft] = useState({ customerName: "", customerEmail: "", customerPhone: "", service: "Bond cleaning", propertySize: "", bedrooms: 2, bathrooms: 1, amount: "", addOns: "" })
     const [quoteSaving, setQuoteSaving] = useState(false)
     const [operationFilter, setOperationFilter] = useState("all")
@@ -315,6 +326,24 @@ export default function AdminDashboardPage() {
     const [emailDraft, setEmailDraft] = useState({ to: "", subject: "", body: "" })
     const [emailSending, setEmailSending] = useState(false)
     const [emailConnection, setEmailConnection] = useState<{ connected: boolean; email?: string; error?: string } | null>(null)
+
+    const filteredContacts = useMemo(() => {
+        const query = crmQuery.trim().toLowerCase()
+        const stageRank: Record<string, number> = { new: 0, contacted: 1, quoted: 2, booked: 3, closed: 4 }
+        const rows = contacts.filter((contact) => {
+            const stage = contact.leadStatus || "new"
+            const matchesStage = crmStage === "all" || stage === crmStage
+            const haystack = [contact.name, contact.email, contact.phone, contact.subject, contact.message, contact.area, contact.suburb, contact.website]
+                .filter(Boolean).join(" ").toLowerCase()
+            return matchesStage && (!query || haystack.includes(query))
+        })
+        return rows.sort((a, b) => {
+            if (crmSort === "oldest") return leadTimestamp(a) - leadTimestamp(b)
+            if (crmSort === "newest") return leadTimestamp(b) - leadTimestamp(a)
+            const stageDifference = (stageRank[a.leadStatus || "new"] ?? 5) - (stageRank[b.leadStatus || "new"] ?? 5)
+            return stageDifference || leadTimestamp(a) - leadTimestamp(b)
+        })
+    }, [contacts, crmQuery, crmStage, crmSort])
 
     // ── AI agent tab
     const [agentBizName, setAgentBizName] = useState("")
@@ -633,6 +662,35 @@ export default function AdminDashboardPage() {
         } catch {
             toast.error("Could not update this lead. Check Firestore permissions and try again.")
         }
+    }
+
+    function exportLeadsCsv() {
+        const columns = ["Name", "Email", "Phone", "Stage", "Subject", "Message", "Area", "Suburb", "Website", "Received"]
+        const csvCell = (value: unknown) => {
+            const text = String(value ?? "")
+            const safeText = /^[=+\-@\t\r]/.test(text) ? `'${text}` : text
+            return `"${safeText.replace(/"/g, '""')}"`
+        }
+        const rows = filteredContacts.map((contact) => [
+            contact.name,
+            contact.email,
+            contact.phone,
+            contact.leadStatus || "new",
+            contact.subject,
+            contact.message,
+            contact.area,
+            contact.suburb,
+            contact.website,
+            leadTimestamp(contact) ? new Date(leadTimestamp(contact)).toISOString() : "",
+        ])
+        const csv = [columns, ...rows].map((row) => row.map(csvCell).join(",")).join("\r\n")
+        const url = URL.createObjectURL(new Blob([`\uFEFF${csv}`], { type: "text/csv;charset=utf-8" }))
+        const link = document.createElement("a")
+        link.href = url
+        link.download = `wavesolution-leads-${new Date().toISOString().slice(0, 10)}.csv`
+        link.click()
+        window.setTimeout(() => URL.revokeObjectURL(url), 1000)
+        toast.success(`Exported ${filteredContacts.length} lead${filteredContacts.length === 1 ? "" : "s"}`)
     }
 
     async function handleCreateQuote(event: FormEvent<HTMLFormElement>) {
@@ -1445,9 +1503,24 @@ export default function AdminDashboardPage() {
                                 </CardContent>
                             </Card>
 
+                            <Card className="rounded-xl border-slate-200/80 shadow-sm">
+                                <CardContent className="grid gap-3 p-4 sm:grid-cols-[minmax(0,1fr)_170px_170px_auto] sm:items-end">
+                                    <label className="text-xs font-medium text-slate-600">Search leads
+                                        <div className="relative mt-1.5"><Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" /><Input value={crmQuery} onChange={(event) => setCrmQuery(event.target.value)} placeholder="Name, email, phone, suburb…" className="h-10 rounded-lg pl-9" /></div>
+                                    </label>
+                                    <label className="text-xs font-medium text-slate-600">Pipeline stage
+                                        <select value={crmStage} onChange={(event) => setCrmStage(event.target.value)} className="mt-1.5 h-10 w-full rounded-lg border border-slate-300 bg-white px-3 text-sm text-slate-800"><option value="all">All stages</option>{["new", "contacted", "quoted", "booked", "closed"].map((stage) => <option key={stage} value={stage}>{stage[0].toUpperCase() + stage.slice(1)}</option>)}</select>
+                                    </label>
+                                    <label className="text-xs font-medium text-slate-600">Sort by
+                                        <select value={crmSort} onChange={(event) => setCrmSort(event.target.value)} className="mt-1.5 h-10 w-full rounded-lg border border-slate-300 bg-white px-3 text-sm text-slate-800"><option value="priority">Follow-up priority</option><option value="newest">Newest first</option><option value="oldest">Oldest first</option></select>
+                                    </label>
+                                    <Button type="button" variant="outline" onClick={exportLeadsCsv} disabled={filteredContacts.length === 0} className="h-10 w-full rounded-lg sm:w-auto"><Download className="mr-2 h-4 w-4" />Export CSV</Button>
+                                </CardContent>
+                            </Card>
                             <div className="grid grid-cols-2 gap-3 sm:grid-cols-2 xl:grid-cols-5">{["new", "contacted", "quoted", "booked", "closed"].map((stage) => <Card key={stage} className="rounded-xl border-slate-200/80"><CardContent className="p-4"><p className="text-xs font-semibold uppercase tracking-wide text-slate-500">{stage}</p><p className="mt-2 text-2xl font-semibold text-slate-900">{contacts.filter((contact) => (contact.leadStatus || "new") === stage).length}</p></CardContent></Card>)}</div>
+                            <p className="text-xs text-slate-500" aria-live="polite">Showing {filteredContacts.length} of {contacts.length} records. Follow-up priority puts new and untouched enquiries first.</p>
                             <Card className="overflow-hidden rounded-xl border-slate-200/80 shadow-sm"><CardContent className="divide-y divide-slate-100 p-0">
-                                {contacts.map((contact) => { const draft = leadDrafts[contact.id] || {}; return <div key={contact.id} className="grid gap-4 p-5 lg:grid-cols-[minmax(180px,0.9fr)_minmax(220px,1.2fr)_minmax(230px,1.2fr)_auto] lg:items-start">
+                                {filteredContacts.map((contact) => { const draft = leadDrafts[contact.id] || {}; return <div key={contact.id} className="grid gap-4 p-4 sm:p-5 lg:grid-cols-[minmax(180px,0.9fr)_minmax(220px,1.2fr)_minmax(230px,1.2fr)_auto] lg:items-start">
                                     <div className="min-w-0">
                                         <div className="flex items-start gap-2">
                                             <p className="line-clamp-2 text-sm font-semibold text-slate-900">{contact.name || "Website enquiry"}</p>
@@ -1471,10 +1544,35 @@ export default function AdminDashboardPage() {
                                     </div>
                                     <div><p className="line-clamp-3 text-sm leading-6 text-slate-600">{contact.message || contact.subject || "No message provided."}</p>{contact.subject && <p className="mt-1 text-xs font-medium text-slate-500">{contact.subject}</p>}</div>
                                     <div className="space-y-2"><select value={draft.leadStatus ?? contact.leadStatus ?? "new"} onChange={(event) => setLeadDrafts((rows) => ({ ...rows, [contact.id]: { ...rows[contact.id], leadStatus: event.target.value } }))} className="h-9 w-full rounded-lg border border-slate-200 bg-white px-3 text-xs font-medium text-slate-700"><option value="new">New</option><option value="contacted">Contacted</option><option value="quoted">Quoted</option><option value="booked">Booked</option><option value="closed">Closed</option></select><textarea rows={2} value={draft.internalNotes ?? contact.internalNotes ?? ""} onChange={(event) => setLeadDrafts((rows) => ({ ...rows, [contact.id]: { ...rows[contact.id], internalNotes: event.target.value } }))} placeholder="Internal follow-up note" className="w-full resize-y rounded-lg border border-slate-200 px-3 py-2 text-xs outline-none focus:border-[#333365]" /></div>
-                                    <Button size="sm" variant="outline" onClick={() => saveLead(contact)} className="rounded-lg"><Save className="mr-2 h-3.5 w-3.5" />Save</Button>
+                                    <div className="flex flex-wrap gap-2">
+                                        {contact.phone && <a href={`tel:${contact.phone}`} className="inline-flex h-9 items-center gap-1.5 rounded-lg border border-slate-200 px-3 text-xs font-medium text-slate-700 hover:bg-slate-50"><Phone className="h-3.5 w-3.5" />Call</a>}
+                                        {contact.email && <a href={`mailto:${contact.email}?subject=${encodeURIComponent(contact.subject ? `Re: ${contact.subject}` : "Your Wave Solution enquiry")}`} className="inline-flex h-9 items-center gap-1.5 rounded-lg border border-slate-200 px-3 text-xs font-medium text-slate-700 hover:bg-slate-50"><Mail className="h-3.5 w-3.5" />Email</a>}
+                                        <Button size="sm" variant="outline" onClick={() => saveLead(contact)} className="rounded-lg"><Save className="mr-2 h-3.5 w-3.5" />Save</Button>
+                                    </div>
                                 </div>})}
                                 {contacts.length === 0 && <div className="p-12 text-center"><MessageSquare className="mx-auto h-8 w-8 text-slate-400" /><p className="mt-3 text-sm font-medium text-slate-800">No enquiries yet</p><p className="mt-1 text-xs text-slate-500">Website contact form submissions will appear here.</p></div>}
+                                {contacts.length > 0 && filteredContacts.length === 0 && <div className="p-10 text-center"><Search className="mx-auto h-7 w-7 text-slate-300" /><p className="mt-3 text-sm font-medium text-slate-800">No matching records</p><p className="mt-1 text-xs text-slate-500">Try a different search or pipeline stage.</p></div>}
                             </CardContent></Card>
+
+                            <Card className="overflow-hidden rounded-xl border-slate-200/80 shadow-sm">
+                                <CardHeader className="border-b border-slate-100 px-5 py-4">
+                                    <div className="flex flex-wrap items-center justify-between gap-2">
+                                        <div><CardTitle className="text-base font-semibold text-slate-900">Registered customers</CardTitle><p className="mt-1 text-xs text-slate-500">Customer accounts with quick contact links.</p></div>
+                                        <Badge variant="secondary">{users.filter((item) => item.role === "customer").length} accounts</Badge>
+                                    </div>
+                                </CardHeader>
+                                <CardContent className="grid gap-3 p-4 sm:grid-cols-2 xl:grid-cols-3">
+                                    {users.filter((item) => item.role === "customer" && (!crmQuery.trim() || [item.name, item.email, item.phone, item.address].filter(Boolean).join(" ").toLowerCase().includes(crmQuery.trim().toLowerCase()))).map((customer) => (
+                                        <div key={customer.id} className="min-w-0 rounded-lg border border-slate-200 p-4">
+                                            <p className="truncate text-sm font-semibold text-slate-900">{customer.name || "Customer"}</p>
+                                            <a href={customer.email ? `mailto:${customer.email}` : undefined} className="mt-1 block truncate text-xs text-slate-600 hover:underline">{customer.email || "No email on file"}</a>
+                                            {customer.phone && <a href={`tel:${customer.phone}`} className="mt-1 block text-xs text-slate-600 hover:underline">{customer.phone}</a>}
+                                            {customer.address && <p className="mt-1 line-clamp-2 text-xs text-slate-500">{customer.address}</p>}
+                                        </div>
+                                    ))}
+                                    {users.filter((item) => item.role === "customer" && (!crmQuery.trim() || [item.name, item.email, item.phone, item.address].filter(Boolean).join(" ").toLowerCase().includes(crmQuery.trim().toLowerCase()))).length === 0 && <p className="py-5 text-center text-sm text-slate-500 sm:col-span-2 xl:col-span-3">No registered customers match this search.</p>}
+                                </CardContent>
+                            </Card>
                         </div>
                     )}
 
