@@ -1,4 +1,5 @@
 import type React from "react"
+import type { Viewport } from "next"
 import type { Metadata } from "next"
 import { Plus_Jakarta_Sans } from "next/font/google"
 import "./globals.css"
@@ -85,6 +86,12 @@ export const metadata: Metadata = {
   },
   verification: googleVerification ? { google: googleVerification } : undefined,
   category: "Cleaning Services",
+}
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
 }
 
 const jsonLd = {
