@@ -131,25 +131,6 @@ function dateValue(booking: BookingRecord) {
     return typeof time === "number" ? time : Number.MAX_SAFE_INTEGER
 }
 
-// TEMP PREVIEW DATA — remove after visual review
-const PREVIEW_USER = {
-    id: "preview-customer",
-    name: "Sarah Whitmore",
-    email: "sarah.whitmore@example.com",
-    role: "customer",
-    phone: "0412 884 302",
-    address: "18 Kurrajong Avenue, Broadbeach QLD 4218",
-}
-
-const previewISO = (days: number) => new Date(Date.now() + days * 86400000).toISOString().slice(0, 10)
-const PREVIEW_BOOKINGS: BookingRecord[] = [
-    { id: "bk_8f31c2", status: "confirmed", address: "18 Kurrajong Avenue", city: "Broadbeach", postcode: "4218", bedrooms: "3", bathrooms: "2", propertyType: "Apartment", scheduledDate: previewISO(3), scheduledTime: "9:00 AM", package: { category: "End of lease cleaning", totalPrice: 420, frequency: "One-time" }, createdAt: { seconds: Math.floor(Date.now() / 1000) - 172800 } },
-    { id: "bk_71a0de", status: "pending", address: "18 Kurrajong Avenue", city: "Broadbeach", postcode: "4218", bedrooms: "3", bathrooms: "2", propertyType: "Apartment", scheduledDate: previewISO(9), scheduledTime: "1:30 PM", package: { category: "Carpet steam cleaning", totalPrice: 180, frequency: "One-time" }, createdAt: { seconds: Math.floor(Date.now() / 1000) - 432000 } },
-    { id: "bk_55c9ab", status: "completed", address: "18 Kurrajong Avenue", city: "Broadbeach", postcode: "4218", scheduledDate: previewISO(-12), scheduledTime: "8:30 AM", package: { category: "Regular house cleaning", totalPrice: 160, frequency: "Fortnightly" }, createdAt: { seconds: Math.floor(Date.now() / 1000) - 1209600 } },
-    { id: "bk_44b7e1", status: "completed", address: "18 Kurrajong Avenue", city: "Broadbeach", postcode: "4218", scheduledDate: previewISO(-33), scheduledTime: "10:00 AM", package: { category: "Bond cleaning", totalPrice: 385, frequency: "One-time" }, createdAt: { seconds: Math.floor(Date.now() / 1000) - 2851200 } },
-    { id: "bk_2f90cd", status: "completed", address: "18 Kurrajong Avenue", city: "Broadbeach", postcode: "4218", scheduledDate: previewISO(-61), scheduledTime: "9:30 AM", package: { category: "Deep clean", totalPrice: 290, frequency: "One-time" }, createdAt: { seconds: Math.floor(Date.now() / 1000) - 5270400 } },
-]
-
 // ─── small presentational pieces ────────────────────────────────────────────
 
 function StatusBadge({ status }: { status?: string }) {
@@ -244,7 +225,7 @@ function LoadingScreen() {
 // ─── page ───────────────────────────────────────────────────────────────────
 
 export default function UserDashboardPage() {
-    const { user: authUser, loading: authLoading } = useAuth()
+    const { user, loading: authLoading } = useAuth()
     const { toast } = useToast()
 
     const [activeTab, setActiveTab] = useState("dashboard")
@@ -257,25 +238,6 @@ export default function UserDashboardPage() {
         address: "",
         instructions: "",
     })
-
-    // TEMP PREVIEW — remove after visual review
-    const [previewMode, setPreviewMode] = useState(false)
-    const user = previewMode ? PREVIEW_USER : authUser
-    useEffect(() => {
-        if (typeof window === "undefined") return
-        const params = new URLSearchParams(window.location.search)
-        if (params.has("preview")) {
-            setPreviewMode(true)
-            const tab = params.get("tab")
-            if (tab) setActiveTab(tab)
-        }
-    }, [])
-    useEffect(() => {
-        if (previewMode) {
-            setBookings(PREVIEW_BOOKINGS)
-            setLoading(false)
-        }
-    }, [previewMode])
 
     useEffect(() => {
         if (user) {
@@ -421,7 +383,7 @@ export default function UserDashboardPage() {
                                     </div>
                                     <div className="min-w-0">
                                         <p className="truncate text-sm font-semibold text-slate-900">{user?.name || "Guest account"}</p>
-                                        <p className="truncate text-xs text-slate-500">{user?.email || "Not signed in"}</p>
+                                        <p className="break-all text-[11px] leading-4 text-slate-500">{user?.email || "Not signed in"}</p>
                                     </div>
                                 </div>
                                 <div className="mt-4 flex items-center justify-between rounded-lg bg-slate-50 px-3 py-2">
@@ -453,7 +415,7 @@ export default function UserDashboardPage() {
                                 >
                                     <Mail className="mt-0.5 h-4 w-4 shrink-0 text-slate-400" />
                                     <span className="min-w-0">
-                                        <span className="block break-all text-sm font-medium text-slate-900">{businessInfo.email}</span>
+                                        <span className="block break-words text-xs font-medium text-slate-900">{businessInfo.email}</span>
                                         <span className="block text-xs text-slate-500">Replies within one business day</span>
                                     </span>
                                 </a>
@@ -520,20 +482,32 @@ export default function UserDashboardPage() {
                                 </div>
 
                                 {/* KPI strip */}
-                                <section aria-label="Account summary" className="grid grid-cols-2 gap-px overflow-hidden rounded-xl border border-slate-200 bg-slate-200 xl:grid-cols-4">
-                                    {stats.map(({ label, value, hint, icon: Icon }) => (
-                                        <div key={label} className="bg-white p-4 sm:p-5">
-                                            <div className="flex items-center justify-between gap-2">
-                                                <p className="text-xs font-medium text-slate-500">{label}</p>
-                                                <Icon className="h-4 w-4 shrink-0 text-slate-400" aria-hidden="true" />
+                                {loading && user ? (
+                                    <section aria-hidden="true" className="grid grid-cols-2 gap-px overflow-hidden rounded-xl border border-slate-200 bg-slate-200 xl:grid-cols-4">
+                                        {[0, 1, 2, 3].map((index) => (
+                                            <div key={index} className="bg-white p-4 sm:p-5">
+                                                <div className="h-3 w-24 animate-pulse rounded bg-slate-100" />
+                                                <div className="mt-4 h-7 w-16 animate-pulse rounded bg-slate-100" />
+                                                <div className="mt-3 h-3 w-20 animate-pulse rounded bg-slate-100" />
                                             </div>
-                                            <p className="mt-3 truncate text-[26px] font-semibold leading-none tracking-tight text-slate-900 tabular-nums">
-                                                {value}
-                                            </p>
-                                            <p className="mt-2 truncate text-xs text-slate-500">{hint}</p>
-                                        </div>
-                                    ))}
-                                </section>
+                                        ))}
+                                    </section>
+                                ) : (
+                                    <section aria-label="Account summary" className="grid grid-cols-2 gap-px overflow-hidden rounded-xl border border-slate-200 bg-slate-200 xl:grid-cols-4">
+                                        {stats.map(({ label, value, hint, icon: Icon }) => (
+                                            <div key={label} className="bg-white p-4 sm:p-5">
+                                                <div className="flex items-center justify-between gap-2">
+                                                    <p className="text-xs font-medium text-slate-500">{label}</p>
+                                                    <Icon className="h-4 w-4 shrink-0 text-slate-400" aria-hidden="true" />
+                                                </div>
+                                                <p className="mt-3 truncate text-[26px] font-semibold leading-none tracking-tight text-slate-900 tabular-nums">
+                                                    {value}
+                                                </p>
+                                                <p className="mt-2 truncate text-xs text-slate-500">{hint}</p>
+                                            </div>
+                                        ))}
+                                    </section>
+                                )}
 
                                 {loading && user ? (
                                     <div className="grid gap-6 xl:grid-cols-[minmax(0,1.55fr)_minmax(0,1fr)]">

@@ -23,7 +23,7 @@ const routes = [
     },
     {
         id: "history",
-        label: "Service history",
+        label: "History",
         icon: Clock3,
     },
     {

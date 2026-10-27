@@ -22,7 +22,10 @@ export default function DashboardLayout({
 }) {
     return (
         <AuthProvider>
-            <div className="min-h-screen bg-[#F3F3F3]">
+            <div
+                className="min-h-screen bg-[#F6F7F9] antialiased"
+                style={{ fontFamily: "var(--font-heading), system-ui, sans-serif" }}
+            >
                 {children}
             </div>
         </AuthProvider>

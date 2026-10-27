@@ -39,11 +39,6 @@ export function middleware(request: NextRequest) {
   const isProtectedPath = path.startsWith("/admin") || path.startsWith("/dashboard") || path.startsWith("/operations") || path.startsWith("/worker")
 
   if (isProtectedPath) {
-    // TEMP PREVIEW BYPASS — remove after visual review
-    if (request.nextUrl.searchParams.has("preview")) {
-      return NextResponse.next()
-    }
-
     const rawUser = request.cookies.get("user")?.value
 
     if (!rawUser) {
