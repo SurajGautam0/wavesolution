@@ -125,8 +125,75 @@ function statusColor(status: string) {
 
 // ─── component ──────────────────────────────────────────────────────────────
 
+// TEMP RESPONSIVE PREVIEW — remove after audit
+const PREVIEW_ADMIN = { id: "preview-admin", name: "Alex Morgan", email: "alex.morgan@wavesolution.com.au", role: "admin" }
+const previewAt = (daysAgo: number) => ({ seconds: Math.floor(Date.now() / 1000) - daysAgo * 86400 })
+const previewDay = (offset: number) => {
+    const date = new Date()
+    date.setDate(date.getDate() + offset)
+    return date.toISOString().slice(0, 10)
+}
+const PREVIEW_ADMIN_DATA = {
+    bookings: [
+        { id: "bk_1", name: "Sarah Whitmore", email: "sarah.whitmore@example.com", phone: "0412 884 302", status: "confirmed", scheduledDate: previewDay(2), scheduledTime: "9:00 AM", package: { category: "End of lease cleaning", totalPrice: 420, frequency: "One-time", propertyType: "Apartment" }, createdAt: previewAt(2) },
+        { id: "bk_2", name: "Michael Chen", email: "michael.chen@example.com", phone: "0455 210 887", status: "pending", scheduledDate: previewDay(0), scheduledTime: "1:30 PM", package: { category: "Regular house cleaning", totalPrice: 160, frequency: "Fortnightly" }, createdAt: previewAt(1) },
+        { id: "bk_3", name: "Priya Nair", email: "priya.nair@example.com", phone: "0401 772 930", status: "completed", scheduledDate: previewDay(-5), package: { category: "Carpet steam cleaning", totalPrice: 220, frequency: "One-time" }, createdAt: previewAt(9) },
+        { id: "bk_4", name: "James O'Connor", email: "james.oconnor@example.com", phone: "0433 118 244", status: "completed", scheduledDate: previewDay(-12), package: { category: "Bond cleaning", totalPrice: 385, frequency: "One-time" }, createdAt: previewAt(18) },
+        { id: "bk_5", name: "Amelia Brooks", email: "amelia.brooks@example.com", phone: "0421 556 018", status: "cancelled", scheduledDate: previewDay(-3), package: { category: "Pest control", totalPrice: 180, frequency: "One-time" }, createdAt: previewAt(7) },
+        { id: "bk_6", name: "Lucas Meyer", email: "lucas.meyer@example.com", phone: "0466 903 771", status: "confirmed", scheduledDate: previewDay(4), package: { category: "Office cleaning", totalPrice: 540, frequency: "Weekly" }, createdAt: previewAt(3) },
+    ],
+    contacts: [
+        { id: "ct_1", name: "Olivia Bennett", email: "olivia.bennett@example.com", phone: "0402 118 663", subject: "Bond clean quote", message: "Interested in a bond clean for a 3-bedroom townhouse in Robina next month.", leadStatus: "new", createdAt: previewAt(0) },
+        { id: "ct_2", name: "Harbour Realty", email: "leasing@harbourrealty.example.com", phone: "07 5555 0218", subject: "Property management partnership", message: "We manage 40 rentals across the southern Gold Coast.", leadStatus: "contacted", createdAt: previewAt(2) },
+        { id: "ct_3", name: "Noah Patel", email: "noah.patel@example.com", phone: "0433 901 872", subject: "Carpet cleaning", message: "Two bedrooms and a hallway, pet stains.", leadStatus: "quoted", createdAt: previewAt(4) },
+    ],
+    quotes: [
+        { id: "qt_1", customerName: "Sophie Turner", customerEmail: "sophie.turner@example.com", service: "Deep clean", propertySize: "3 bed townhouse, Southport", amount: 320, status: "draft" },
+        { id: "qt_2", customerName: "Coastal Property Group", customerEmail: "ops@coastalproperty.example.com", service: "Commercial cleaning", propertySize: "Office, Bundall", amount: 1250, status: "sent" },
+    ],
+    users: [
+        { id: "us_1", name: "Alex Morgan", email: "alex@wavesolution.com.au", role: "admin", createdAt: previewAt(120) },
+        { id: "us_2", name: "Daniel Roberts", email: "daniel@wavesolution.com.au", role: "worker", createdAt: previewAt(60) },
+        { id: "us_3", name: "Mia Chen", email: "mia@wavesolution.com.au", role: "dispatcher", createdAt: previewAt(30) },
+    ],
+    coupons: [
+        { id: "cp_1", code: "SPRING20", discount: 20, expiry: previewDay(30), usedCount: 8, maxUses: 100 },
+        { id: "cp_2", code: "BOND10", discount: 10, expiry: "", usedCount: 3, maxUses: 50 },
+    ],
+    posts: [
+        { id: "po_1", title: "End of lease cleaning checklist", slug: "end-of-lease-cleaning-checklist", published: true, excerpt: "What agents look for.", content: "Full article", seoTitle: "End of lease cleaning checklist", seoDescription: "A practical checklist." },
+        { id: "po_2", title: "Spring cleaning guide", slug: "spring-cleaning-guide", published: false, excerpt: "Room by room.", content: "Draft article", seoTitle: "", seoDescription: "" },
+    ],
+    invoices: [
+        { id: "inv_1", bookingId: "bk_1", invoiceNumber: "WS-2026-8F31C2", customerName: "Sarah Whitmore", customerEmail: "sarah.whitmore@example.com", amountDue: 420, amountPaid: 420, status: "paid" },
+        { id: "inv_2", bookingId: "bk_2", invoiceNumber: "WS-2026-71A0DE", customerName: "Michael Chen", customerEmail: "michael.chen@example.com", amountDue: 160, amountPaid: 0, status: "unpaid" },
+    ],
+    subscriptions: [
+        { id: "sb_1", email: "olivia.bennett@example.com", status: "Active", createdAt: previewAt(4) },
+        { id: "sb_2", email: "noah.patel@example.com", status: "Active", createdAt: previewAt(9) },
+        { id: "sb_3", email: "harbour.realty@example.com", status: "Active", createdAt: previewAt(14) },
+    ],
+    testimonials: [
+        { id: "tm_1", name: "Emma Wilson", content: "The team was on time and thorough.", rating: 5, approved: true, createdAt: previewAt(6) },
+        { id: "tm_2", name: "Daniel Kim", content: "Great communication and a careful bond clean.", rating: 5, approved: false, createdAt: previewAt(1) },
+    ],
+    services: [
+        { id: "sv_1", name: "House cleaning", basePrice: 160, description: "Regular domestic clean" },
+        { id: "sv_2", name: "Bond cleaning", basePrice: 385, description: "End of lease clean" },
+    ],
+    auditLog: [
+        { id: "au_1", action: "Updated booking status", details: "Status set to confirmed", actor: "alex@wavesolution.com.au", target: "bk_1", createdAt: previewAt(0) },
+        { id: "au_2", action: "Created quote", details: "Deep clean · A$320", actor: "alex@wavesolution.com.au", target: "qt_1", createdAt: previewAt(1) },
+        { id: "au_3", action: "Added web lead", details: "NGU Real Estate", actor: "alex@wavesolution.com.au", target: "ct_1", createdAt: previewAt(2) },
+    ],
+    emailRecords: [
+        { id: "em_1", subject: "Your quote", to: "sophie.turner@example.com", status: "sent", createdAt: previewAt(1) },
+        { id: "em_2", subject: "Booking confirmation", to: "sarah.whitmore@example.com", status: "sent", createdAt: previewAt(2) },
+    ],
+}
+
 export default function AdminDashboardPage() {
-    const { user, loading: authLoading } = useAuth()
+    const { user: authUser, loading: authLoading } = useAuth()
     const router = useRouter()
 
     // ── core data
@@ -145,6 +212,31 @@ export default function AdminDashboardPage() {
     const [invoices, setInvoices] = useState<any[]>([])
     const [emailRecords, setEmailRecords] = useState<any[]>([])
     const [loading, setLoading] = useState(true)
+
+    // TEMP RESPONSIVE PREVIEW — remove after audit
+    const [previewMode, setPreviewMode] = useState(false)
+    const user = previewMode ? PREVIEW_ADMIN : authUser
+    useEffect(() => {
+        if (typeof window === "undefined") return
+        if (new URLSearchParams(window.location.search).has("preview")) setPreviewMode(true)
+    }, [])
+    useEffect(() => {
+        if (!previewMode) return
+        setBookings(PREVIEW_ADMIN_DATA.bookings)
+        setContacts(PREVIEW_ADMIN_DATA.contacts)
+        setQuotes(PREVIEW_ADMIN_DATA.quotes)
+        setUsers(PREVIEW_ADMIN_DATA.users)
+        setCoupons(PREVIEW_ADMIN_DATA.coupons)
+        setPosts(PREVIEW_ADMIN_DATA.posts)
+        setInvoices(PREVIEW_ADMIN_DATA.invoices)
+        setSubscriptions(PREVIEW_ADMIN_DATA.subscriptions)
+        setAllTestimonials(PREVIEW_ADMIN_DATA.testimonials)
+        setTestimonials(PREVIEW_ADMIN_DATA.testimonials.filter((item) => item.approved))
+        setServices(PREVIEW_ADMIN_DATA.services)
+        setAuditLog(PREVIEW_ADMIN_DATA.auditLog)
+        setEmailRecords(PREVIEW_ADMIN_DATA.emailRecords)
+        setLoading(false)
+    }, [previewMode])
 
     const [searchTerm, setSearchTerm] = useState("")
     const [subscriberSearch, setSubscriberSearch] = useState("")
@@ -243,6 +335,7 @@ export default function AdminDashboardPage() {
 
     useEffect(() => {
         if (authLoading || user?.role !== "admin") return
+        if (previewMode) return
         async function fetchData() {
             try {
                 setLoading(true)
@@ -310,7 +403,7 @@ export default function AdminDashboardPage() {
             }
         }
         fetchData()
-    }, [authLoading, user?.role])
+    }, [authLoading, user?.role, previewMode])
 
     useEffect(() => {
         const requestedTab = new URLSearchParams(window.location.search).get("tab")

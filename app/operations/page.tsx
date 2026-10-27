@@ -32,8 +32,21 @@ function goldCoastToday() {
   return `${part("year")}-${part("month")}-${part("day")}`
 }
 
+// TEMP RESPONSIVE PREVIEW — remove after audit
+const PREVIEW_OPS_USER = { id: "preview-ops", name: "Alex Morgan", email: "alex.morgan@wavesolution.com.au", role: "admin" }
+const PREVIEW_OPS_TEAM = [
+  { id: "tm_1", name: "Daniel Roberts", email: "daniel@wavesolution.com.au", role: "worker", status: "active", createdAt: "" },
+  { id: "tm_2", name: "Mia Chen", email: "mia@wavesolution.com.au", role: "worker", status: "active", createdAt: "" },
+] as unknown as User[]
+const PREVIEW_OPS_JOBS = [
+  { id: "job_9f2c81", name: "Sarah Whitmore", service: "End of lease cleaning", propertyType: "Apartment", bedrooms: "3", bathrooms: "2", scheduledDate: goldCoastToday(), scheduledTime: "9:00 AM", status: "in-progress", assignedTo: "Daniel Roberts", address: "18 Kurrajong Avenue", city: "Broadbeach", postcode: "4218", phone: "0412 884 302", email: "sarah.whitmore@example.com", internalNotes: "Keys in lockbox 4218." },
+  { id: "job_71a0de", name: "Michael Chen", service: "Regular house cleaning", propertyType: "Townhouse", bedrooms: "2", bathrooms: "1", scheduledDate: goldCoastToday(), scheduledTime: "1:30 PM", status: "confirmed", assignedTo: "Mia Chen", address: "7 Cypress Terrace", city: "Robina", postcode: "4226", phone: "0455 210 887", email: "", internalNotes: "" },
+  { id: "job_44b7e1", name: "Priya Nair", service: "Carpet steam cleaning", propertyType: "House", bedrooms: "4", bathrooms: "2", scheduledDate: goldCoastToday(), scheduledTime: "3:00 PM", status: "pending", assignedTo: "", address: "12 Seagrass Court", city: "Burleigh Heads", postcode: "4220", phone: "0401 772 930", email: "", internalNotes: "", workerIssue: { category: "Access problem", description: "Gate code did not work on arrival." } },
+  { id: "job_55c9ab", name: "James O'Connor", service: "Bond cleaning", propertyType: "Apartment", bedrooms: "2", bathrooms: "1", scheduledDate: goldCoastToday(), scheduledTime: "8:00 AM", status: "completed", assignedTo: "Daniel Roberts", address: "9 Ocean Parade", city: "Surfers Paradise", postcode: "4217", phone: "0433 118 244", email: "", internalNotes: "" },
+] as unknown as Booking[]
+
 export default function OperationsDashboardPage() {
-  const { user, loading: authLoading } = useAuth()
+  const { user: authUser, loading: authLoading } = useAuth()
   const router = useRouter()
   const [bookings, setBookings] = useState<Booking[]>([])
   const [team, setTeam] = useState<User[]>([])
@@ -43,6 +56,20 @@ export default function OperationsDashboardPage() {
   const [search, setSearch] = useState("")
   const [filter, setFilter] = useState<"today" | "all" | "unassigned">("today")
 
+  // TEMP RESPONSIVE PREVIEW — remove after audit
+  const [previewMode, setPreviewMode] = useState(false)
+  const user = previewMode ? PREVIEW_OPS_USER : authUser
+  useEffect(() => {
+    if (typeof window === "undefined") return
+    if (new URLSearchParams(window.location.search).has("preview")) setPreviewMode(true)
+  }, [])
+  useEffect(() => {
+    if (!previewMode) return
+    setBookings(PREVIEW_OPS_JOBS)
+    setTeam(PREVIEW_OPS_TEAM)
+    setLoading(false)
+  }, [previewMode])
+
   useEffect(() => {
     if (authLoading) return
     if (!user) router.replace("/login")
@@ -50,7 +77,7 @@ export default function OperationsDashboardPage() {
   }, [authLoading, user, router])
 
   useEffect(() => {
-    if (authLoading || !user || !["admin", "dispatcher"].includes(user.role)) return
+    if (authLoading || previewMode || !user || !["admin", "dispatcher"].includes(user.role)) return
     let firstSnapshot = true
     const unsubscribe = watchAllBookings((jobs) => {
       setBookings(jobs)
@@ -68,7 +95,7 @@ export default function OperationsDashboardPage() {
       setLoading(false)
     })
     return unsubscribe
-  }, [authLoading, user])
+  }, [authLoading, user, previewMode])
 
   const today = goldCoastToday()
   const counts = useMemo(() => ({

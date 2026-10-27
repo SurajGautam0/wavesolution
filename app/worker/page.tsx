@@ -58,8 +58,33 @@ function jobStatusClass(status = "") {
   return "border-blue-200 bg-blue-50 text-blue-800"
 }
 
+// TEMP RESPONSIVE PREVIEW — remove after audit
+const PREVIEW_WORKER = { id: "preview-worker", name: "Daniel Roberts", email: "daniel.roberts@wavesolution.com.au", role: "worker" }
+const PREVIEW_JOBS = [
+  {
+    id: "job_9f2c81", service: "End of lease cleaning", propertyType: "Apartment", bedrooms: "3", bathrooms: "2",
+    date: "", time: "", scheduledDate: goldCoastToday(), scheduledTime: "9:00 AM",
+    address: "18 Kurrajong Avenue", city: "Broadbeach", postcode: "4218",
+    name: "Sarah Whitmore", phone: "0412 884 302", email: "sarah.whitmore@example.com",
+    notes: "", status: "in-progress", createdAt: "",
+    internalNotes: "Keys are in the lockbox, code 4218. Visitor parking in bay 12.",
+    workerChecklist: { task0: true, task1: true, task2: true },
+    workerNotes: "Kitchen and bathrooms completed. Floors drying before final walk-through.",
+  },
+  {
+    id: "job_71a0de", service: "Regular house cleaning", propertyType: "Townhouse", bedrooms: "2", bathrooms: "1",
+    date: "", time: "", scheduledDate: goldCoastToday(), scheduledTime: "1:30 PM",
+    address: "7 Cypress Terrace", city: "Robina", postcode: "4226",
+    name: "Michael Chen", phone: "0455 210 887", email: "",
+    notes: "", status: "completed", createdAt: "",
+    internalNotes: "",
+    workerChecklist: Object.fromEntries(checklistItems.map((_, index) => [`task${index}`, true])),
+    workerCompletedAt: new Date().toISOString(),
+  },
+] as unknown as Booking[]
+
 export default function WorkerDashboardPage() {
-  const { user, loading: authLoading } = useAuth()
+  const { user: authUser, loading: authLoading } = useAuth()
   const router = useRouter()
   const pathname = usePathname()
   const [jobs, setJobs] = useState<Booking[]>([])
@@ -70,6 +95,19 @@ export default function WorkerDashboardPage() {
   const [uploadingId, setUploadingId] = useState<string | null>(null)
   const [online, setOnline] = useState(true)
   const jobsPage = pathname === "/worker/jobs"
+
+  // TEMP RESPONSIVE PREVIEW — remove after audit
+  const [previewMode, setPreviewMode] = useState(false)
+  const user = previewMode ? PREVIEW_WORKER : authUser
+  useEffect(() => {
+    if (typeof window === "undefined") return
+    if (new URLSearchParams(window.location.search).has("preview")) setPreviewMode(true)
+  }, [])
+  useEffect(() => {
+    if (!previewMode) return
+    setJobs(PREVIEW_JOBS)
+    setLoading(false)
+  }, [previewMode])
 
   const refreshJobs = useCallback(async () => {
     if (!user?.name || user.role !== "worker") return
@@ -92,7 +130,7 @@ export default function WorkerDashboardPage() {
   }, [authLoading, user, router])
 
   useEffect(() => {
-    if (authLoading || !user || user.role !== "worker" || !user.name) return
+    if (authLoading || previewMode || !user || user.role !== "worker" || !user.name) return
     let firstSnapshot = true
     const unsubscribe = watchBookingsByWorker(user.name, (data) => {
       setJobs(data.sort((a, b) => `${a.scheduledDate || a.date || ""} ${a.scheduledTime || a.time || ""}`.localeCompare(`${b.scheduledDate || b.date || ""} ${b.scheduledTime || b.time || ""}`)))
@@ -106,7 +144,7 @@ export default function WorkerDashboardPage() {
       setLoading(false)
     })
     return unsubscribe
-  }, [authLoading, user])
+  }, [authLoading, user, previewMode])
 
   useEffect(() => {
     const updateOnline = () => setOnline(navigator.onLine)
