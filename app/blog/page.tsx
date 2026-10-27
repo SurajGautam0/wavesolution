@@ -28,7 +28,8 @@ import {
   Download,
   Mail,
   Check,
-  DollarSign
+  DollarSign,
+  Droplets
 } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
@@ -51,6 +52,43 @@ interface Article {
 }
 
 const ALL_ARTICLES: Article[] = [
+  {
+    slug: "/blog/end-of-lease-cleaning-before-christmas-gold-coast",
+    title: "End of Lease Cleaning Before Christmas: Gold Coast Move-Out Timeline",
+    description:
+      "The December handover timeline for Gold Coast renters: when to book the bond clean, agency inspection cut-offs, and the order that gets it approved.",
+    category: "bond",
+    categoryLabel: "Bond & Move-Out",
+    readTime: "9 min read",
+    date: "October 2026",
+    featured: true,
+    icon: Calendar,
+    tags: ["End of Lease", "December Move-Out", "Gold Coast", "Bond Cleaning"],
+  },
+  {
+    slug: "/blog/airbnb-cleaning-christmas-gold-coast",
+    title: "Airbnb Cleaning for the Christmas Peak: Gold Coast Turnover Guide",
+    description:
+      "Peak-season turnover for Gold Coast short-stay hosts: linen maths, back-to-back scheduling, and the details that actually decide your review score.",
+    category: "specialized",
+    categoryLabel: "Short-Stay & Specialist",
+    readTime: "8 min read",
+    date: "October 2026",
+    icon: Home,
+    tags: ["Airbnb Cleaning", "Holiday Rental", "Gold Coast", "Peak Season"],
+  },
+  {
+    slug: "/blog/gold-coast-storm-season-cleaning-mould",
+    title: "Gold Coast Storm Season: Cleaning, Water Damage and Mould Prevention",
+    description:
+      "Storm season runs November to March. Pre-season prep, the correct post-storm cleanup order, and how to stop mould taking hold in the first 48 hours.",
+    category: "house",
+    categoryLabel: "Seasonal & Prevention",
+    readTime: "8 min read",
+    date: "October 2026",
+    icon: Droplets,
+    tags: ["Storm Season", "Mould Prevention", "Gold Coast", "Water Damage"],
+  },
   {
     slug: "/blog/end-of-lease-cleaning-requirements-qld",
     title: "End of Lease Cleaning Requirements QLD: Tenant's 2026 Legal & Checklist Guide",

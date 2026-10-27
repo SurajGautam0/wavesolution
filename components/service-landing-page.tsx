@@ -114,6 +114,11 @@ export function ServiceLandingPage({ page }: ServiceLandingPageProps) {
           label: "End of Lease Pest Control Guide",
           description: "When a pest treatment receipt is expected at handover, and the order to book it in.",
         },
+        {
+          href: "/blog/end-of-lease-cleaning-before-christmas-gold-coast",
+          label: "Moving Out Before Christmas",
+          description: "The December handover timeline: booking dates, agency cut-offs and the order to do things.",
+        },
         priceHub,
       ]
     }
@@ -201,6 +206,11 @@ export function ServiceLandingPage({ page }: ServiceLandingPageProps) {
         href: "/blog/spring-cleaning-guide-gold-coast",
         label: "Spring Cleaning Guide",
         description: "A room-by-room seasonal deep clean plan for Gold Coast homes.",
+      },
+      {
+        href: "/blog/gold-coast-storm-season-cleaning-mould",
+        label: "Storm Season & Mould Prevention",
+        description: "Prepare a Gold Coast home for storm season and stop mould in the first 48 hours.",
       },
       {
         href: "/blog/cleaning-tips",

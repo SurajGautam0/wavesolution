@@ -200,6 +200,11 @@ const faqs = [
 
 const relatedLinks = [
   {
+    href: "/blog/airbnb-cleaning-christmas-gold-coast",
+    label: "Christmas Peak Turnover Guide",
+    body: "Linens, back-to-back scheduling and the details that decide your review score.",
+  },
+  {
     href: siteLinks.homeCleaning,
     label: "House Cleaning",
     body: "The residential clean the turnover checklist is built from.",

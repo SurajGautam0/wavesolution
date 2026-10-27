@@ -25,6 +25,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
     // Blog posts with actual publish dates
     const blogPosts: { slug: string; lastModified: string }[] = [
+        { slug: 'end-of-lease-cleaning-before-christmas-gold-coast', lastModified: '2026-10-27' },
+        { slug: 'airbnb-cleaning-christmas-gold-coast', lastModified: '2026-10-27' },
+        { slug: 'gold-coast-storm-season-cleaning-mould', lastModified: '2026-10-27' },
         { slug: 'end-of-lease-cleaning-requirements-qld', lastModified: '2026-10-15' },
         { slug: 'end-of-lease-cleaning-cost-gold-coast', lastModified: '2025-09-22' },
         { slug: 'cleaning-tips', lastModified: '2026-02-15' },
