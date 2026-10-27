@@ -1,11 +1,10 @@
 "use client"
 
 import { ChangeEvent, FormEvent, useEffect, useMemo, useState } from "react"
-import { Loader2, Mail, MessageCircle, PhoneCall, Send, ShieldCheck, Clock } from "lucide-react"
+import { Clock3, Loader2, Mail, MessageCircle, PhoneCall, Send, ShieldCheck } from "lucide-react"
 import { toast } from "sonner"
 
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { businessInfo } from "@/lib/business-info"
@@ -25,6 +24,9 @@ type SupportFormState = {
   subject: string
   message: string
 }
+
+const fieldClassName =
+  "h-11 rounded-lg border-slate-300 bg-white text-sm focus-visible:border-[#333365] focus-visible:ring-2 focus-visible:ring-[#333365]/15 focus-visible:ring-offset-0"
 
 function createInitialFormState(user?: DashboardSupportPanelProps["user"]): SupportFormState {
   return {
@@ -108,88 +110,80 @@ export function DashboardSupportPanel({ user }: DashboardSupportPanelProps) {
   }
 
   return (
-    <div className="space-y-6 animate-in fade-in slide-in-from-right-4 duration-300">
-      <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+    <div className="space-y-5">
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
         <div>
-          <h2 className="text-2xl font-black text-slate-900 tracking-tight">Support Center</h2>
-          <p className="text-slate-500 text-sm mt-1">
-            Reach us on WhatsApp, call directly, or send a support request.
+          <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-500">Support</p>
+          <h2 className="mt-1.5 text-2xl font-semibold tracking-tight text-slate-900">Contact support</h2>
+          <p className="mt-1.5 max-w-2xl text-sm leading-6 text-slate-500">
+            Reach the team about a booking, a payment or anything else on your account.
           </p>
         </div>
-        <div className="inline-flex items-center rounded-full bg-[#39BDE4]/10 px-3 py-1.5 text-xs font-bold text-[#39BDE4]">
-          <Clock className="h-3.5 w-3.5 mr-1.5" />
-          Response within 24 hours
+        <p className="inline-flex shrink-0 items-center gap-1.5 text-xs text-slate-500">
+          <Clock3 className="h-3.5 w-3.5 text-slate-400" />
+          Replies within one business day
+        </p>
+      </div>
+
+      {/* Contact channels */}
+      <div className="grid gap-px overflow-hidden rounded-xl border border-slate-200 bg-slate-200 sm:grid-cols-3">
+        <div className="flex flex-col bg-white p-5">
+          <span className="flex h-9 w-9 items-center justify-center rounded-lg border border-slate-200 bg-slate-50">
+            <MessageCircle className="h-4 w-4 text-slate-600" />
+          </span>
+          <h3 className="mt-3 text-sm font-semibold text-slate-900">WhatsApp</h3>
+          <p className="mt-1 flex-1 text-xs leading-5 text-slate-500">
+            Quick questions and live assistance during business hours.
+          </p>
+          <Button asChild variant="outline" className="mt-4 h-9 rounded-lg border-slate-300 bg-white px-3 text-sm font-medium text-slate-700 hover:bg-slate-50 hover:text-slate-900">
+            <a href={whatsappHref} target="_blank" rel="noopener noreferrer">
+              Message on WhatsApp
+            </a>
+          </Button>
+        </div>
+
+        <div className="flex flex-col bg-white p-5">
+          <span className="flex h-9 w-9 items-center justify-center rounded-lg border border-slate-200 bg-slate-50">
+            <PhoneCall className="h-4 w-4 text-slate-600" />
+          </span>
+          <h3 className="mt-3 text-sm font-semibold text-slate-900">Phone</h3>
+          <p className="mt-1 flex-1 text-xs leading-5 text-slate-500">
+            Best for urgent issues and same-day changes.
+          </p>
+          <Button asChild variant="outline" className="mt-4 h-9 rounded-lg border-slate-300 bg-white px-3 text-sm font-medium text-slate-700 hover:bg-slate-50 hover:text-slate-900">
+            <a href={businessInfo.phoneHref}>{businessInfo.phoneDisplay}</a>
+          </Button>
+        </div>
+
+        <div className="flex flex-col bg-white p-5">
+          <span className="flex h-9 w-9 items-center justify-center rounded-lg border border-slate-200 bg-slate-50">
+            <Mail className="h-4 w-4 text-slate-600" />
+          </span>
+          <h3 className="mt-3 text-sm font-semibold text-slate-900">Email</h3>
+          <p className="mt-1 flex-1 text-xs leading-5 text-slate-500">
+            For written follow-ups and documentation.
+          </p>
+          <Button asChild variant="outline" className="mt-4 h-9 rounded-lg border-slate-300 bg-white px-3 text-sm font-medium text-slate-700 hover:bg-slate-50 hover:text-slate-900">
+            <a href={`mailto:${businessInfo.email}`} className="truncate">
+              Send an email
+            </a>
+          </Button>
         </div>
       </div>
 
-      {/* Contact Cards */}
-      <div className="grid gap-4 sm:grid-cols-3">
-        <Card className="border border-slate-200 shadow-sm bg-white rounded-2xl overflow-hidden hover:border-green-400/30 transition-colors">
-          <CardContent className="p-5 space-y-4">
-            <div className="h-12 w-12 rounded-2xl bg-green-50 flex items-center justify-center">
-              <MessageCircle className="h-6 w-6 text-green-500" />
-            </div>
-            <div>
-              <h3 className="text-base font-bold text-slate-900">WhatsApp</h3>
-              <p className="mt-1.5 text-xs text-slate-500 leading-relaxed">
-                Quick questions and live assistance.
-              </p>
-            </div>
-            <Button asChild className="w-full h-11 rounded-full bg-green-500 hover:bg-green-600 text-white text-xs font-black uppercase tracking-widest">
-              <a href={whatsappHref} target="_blank" rel="noopener noreferrer">
-                Chat Now
-              </a>
-            </Button>
-          </CardContent>
-        </Card>
-
-        <Card className="border border-slate-200 shadow-sm bg-white rounded-2xl overflow-hidden hover:border-[#39BDE4]/30 transition-colors">
-          <CardContent className="p-5 space-y-4">
-            <div className="h-12 w-12 rounded-2xl bg-[#39BDE4]/10 flex items-center justify-center">
-              <PhoneCall className="h-6 w-6 text-[#39BDE4]" />
-            </div>
-            <div>
-              <h3 className="text-base font-bold text-slate-900">Call Us</h3>
-              <p className="mt-1.5 text-xs text-slate-500 leading-relaxed">
-                Best for urgent issues during business hours.
-              </p>
-            </div>
-            <Button asChild variant="outline" className="w-full h-11 rounded-full border-slate-200 text-xs font-black uppercase tracking-widest text-slate-700 hover:border-[#39BDE4]/30 hover:text-[#39BDE4]">
-              <a href={businessInfo.phoneHref}>{businessInfo.phoneDisplay}</a>
-            </Button>
-          </CardContent>
-        </Card>
-
-        <Card className="border border-slate-200 shadow-sm bg-white rounded-2xl overflow-hidden hover:border-secondary/30 transition-colors">
-          <CardContent className="p-5 space-y-4">
-            <div className="h-12 w-12 rounded-2xl bg-secondary/10 flex items-center justify-center">
-              <Mail className="h-6 w-6 text-secondary" />
-            </div>
-            <div>
-              <h3 className="text-base font-bold text-slate-900">Email</h3>
-              <p className="mt-1.5 text-xs text-slate-500 leading-relaxed">
-                Written follow-up via our company inbox.
-              </p>
-            </div>
-            <div className="rounded-full bg-[#F3F3F3] px-4 py-3 text-xs font-bold text-slate-600 text-center">
-              {businessInfo.email}
-            </div>
-          </CardContent>
-        </Card>
-      </div>
-
-      {/* Form + Promise */}
-      <div className="grid gap-6 xl:grid-cols-[1.2fr_0.8fr]">
-        <Card className="border border-slate-200 shadow-sm bg-white rounded-2xl overflow-hidden">
-          <CardHeader className="border-b border-slate-100 p-5">
-            <CardTitle className="text-base font-bold text-slate-900">Write to Support</CardTitle>
-          </CardHeader>
-          <CardContent className="p-6">
-            <form onSubmit={handleSubmit} className="space-y-5">
+      {/* Form + policy */}
+      <div className="grid gap-6 xl:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)]">
+        <section className="overflow-hidden rounded-xl border border-slate-200 bg-white">
+          <header className="border-b border-slate-200 px-5 py-4">
+            <h3 className="text-sm font-semibold text-slate-900">Send a support request</h3>
+            <p className="mt-0.5 text-xs text-slate-500">Include your booking reference if your question relates to a service</p>
+          </header>
+          <form onSubmit={handleSubmit}>
+            <div className="space-y-5 p-5">
               <div className="grid gap-4 sm:grid-cols-2">
-                <div className="space-y-2">
-                  <label htmlFor="name" className="text-xs font-bold uppercase tracking-wider text-slate-500">
-                    Full Name
+                <div className="space-y-1.5">
+                  <label htmlFor="name" className="text-xs font-medium text-slate-600">
+                    Full name
                   </label>
                   <Input
                     id="name"
@@ -197,12 +191,13 @@ export function DashboardSupportPanel({ user }: DashboardSupportPanelProps) {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="h-12 rounded-xl border-slate-200 bg-[#F3F3F3]/50 focus:bg-white focus:border-[#39BDE4]"
+                    autoComplete="name"
+                    className={fieldClassName}
                   />
                 </div>
-                <div className="space-y-2">
-                  <label htmlFor="email" className="text-xs font-bold uppercase tracking-wider text-slate-500">
-                    Email Address
+                <div className="space-y-1.5">
+                  <label htmlFor="email" className="text-xs font-medium text-slate-600">
+                    Email address
                   </label>
                   <Input
                     id="email"
@@ -211,26 +206,28 @@ export function DashboardSupportPanel({ user }: DashboardSupportPanelProps) {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="h-12 rounded-xl border-slate-200 bg-[#F3F3F3]/50 focus:bg-white focus:border-[#39BDE4]"
+                    autoComplete="email"
+                    className={fieldClassName}
                   />
                 </div>
               </div>
 
               <div className="grid gap-4 sm:grid-cols-2">
-                <div className="space-y-2">
-                  <label htmlFor="phone" className="text-xs font-bold uppercase tracking-wider text-slate-500">
-                    Phone Number
+                <div className="space-y-1.5">
+                  <label htmlFor="phone" className="text-xs font-medium text-slate-600">
+                    Phone number <span className="font-normal text-slate-400">(optional)</span>
                   </label>
                   <Input
                     id="phone"
-                    placeholder="Optional"
+                    placeholder="0400 000 000"
                     value={formData.phone}
                     onChange={handleChange}
-                    className="h-12 rounded-xl border-slate-200 bg-[#F3F3F3]/50 focus:bg-white focus:border-[#39BDE4]"
+                    autoComplete="tel"
+                    className={fieldClassName}
                   />
                 </div>
-                <div className="space-y-2">
-                  <label htmlFor="subject" className="text-xs font-bold uppercase tracking-wider text-slate-500">
+                <div className="space-y-1.5">
+                  <label htmlFor="subject" className="text-xs font-medium text-slate-600">
                     Subject
                   </label>
                   <Input
@@ -239,13 +236,13 @@ export function DashboardSupportPanel({ user }: DashboardSupportPanelProps) {
                     value={formData.subject}
                     onChange={handleChange}
                     required
-                    className="h-12 rounded-xl border-slate-200 bg-[#F3F3F3]/50 focus:bg-white focus:border-[#39BDE4]"
+                    className={fieldClassName}
                   />
                 </div>
               </div>
 
-              <div className="space-y-2">
-                <label htmlFor="message" className="text-xs font-bold uppercase tracking-wider text-slate-500">
+              <div className="space-y-1.5">
+                <label htmlFor="message" className="text-xs font-medium text-slate-600">
                   Message
                 </label>
                 <Textarea
@@ -255,62 +252,84 @@ export function DashboardSupportPanel({ user }: DashboardSupportPanelProps) {
                   value={formData.message}
                   onChange={handleChange}
                   required
-                  className="rounded-xl border-slate-200 bg-[#F3F3F3]/50 focus:bg-white focus:border-[#39BDE4] resize-none"
+                  className="min-h-28 resize-y rounded-lg border-slate-300 bg-white text-sm focus-visible:border-[#333365] focus-visible:ring-2 focus-visible:ring-[#333365]/15 focus-visible:ring-offset-0"
                 />
               </div>
-
+            </div>
+            <div className="flex justify-end border-t border-slate-200 bg-slate-50 px-5 py-4">
               <Button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full h-12 rounded-full bg-[#333365] hover:bg-[#333365]/90 text-white text-xs font-black uppercase tracking-widest"
+                className="h-10 rounded-lg bg-[#333365] px-5 text-sm font-medium text-white hover:bg-[#3d3d78]"
               >
                 {isSubmitting ? (
-                  <span className="flex items-center gap-2">
-                    <Loader2 className="h-4 w-4 animate-spin" />
-                    Sending...
-                  </span>
+                  <>
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    Sending
+                  </>
                 ) : (
-                  <span className="flex items-center gap-2">
-                    <Send className="h-4 w-4" />
-                    Send Support Request
-                  </span>
+                  <>
+                    <Send className="mr-2 h-4 w-4" />
+                    Send request
+                  </>
                 )}
               </Button>
-            </form>
-          </CardContent>
-        </Card>
-
-        <Card className="border border-slate-200 shadow-sm bg-[#333365] text-white rounded-2xl overflow-hidden">
-          <CardContent className="p-6 space-y-6">
-            <div className="space-y-3">
-              <div className="h-12 w-12 rounded-2xl bg-white/10 flex items-center justify-center">
-                <ShieldCheck className="h-6 w-6 text-[#39BDE4]" />
-              </div>
-              <div>
-                <h3 className="text-lg font-bold">Our Support Promise</h3>
-                <p className="mt-2 text-sm leading-relaxed text-white/70">
-                  Use whichever channel feels easiest. WhatsApp is fastest, calling is best for urgent issues,
-                  and the form is ideal when you need a written response.
-                </p>
-              </div>
             </div>
+          </form>
+        </section>
 
-            <div className="space-y-4 rounded-2xl bg-white/5 p-5 ring-1 ring-white/10">
-              <div>
-                <p className="text-[10px] font-black uppercase tracking-widest text-white/40">Phone</p>
-                <p className="mt-1 text-sm font-bold">{businessInfo.phoneInternationalDisplay}</p>
-              </div>
-              <div>
-                <p className="text-[10px] font-black uppercase tracking-widest text-white/40">Email</p>
-                <p className="mt-1 text-sm font-bold break-all">{businessInfo.email}</p>
-              </div>
-              <div>
-                <p className="text-[10px] font-black uppercase tracking-widest text-white/40">Coverage</p>
-                <p className="mt-1 text-sm text-white/70">Gold Coast support for bookings, billing, service updates, and general questions.</p>
-              </div>
+        <section className="flex flex-col rounded-xl border border-slate-200 bg-white p-5">
+          <div className="flex items-center gap-2.5">
+            <span className="flex h-9 w-9 items-center justify-center rounded-lg border border-slate-200 bg-slate-50">
+              <ShieldCheck className="h-4 w-4 text-slate-600" />
+            </span>
+            <div>
+              <h3 className="text-sm font-semibold text-slate-900">Support policy</h3>
+              <p className="text-xs text-slate-500">What to expect when you contact us</p>
             </div>
-          </CardContent>
-        </Card>
+          </div>
+
+          <dl className="mt-4 divide-y divide-slate-100 rounded-lg border border-slate-200">
+            <div className="px-4 py-3">
+              <dt className="text-[11px] font-medium uppercase tracking-[0.08em] text-slate-500">Hours</dt>
+              <dd className="mt-1 text-sm text-slate-700">Monday to Friday, 8am–6pm</dd>
+            </div>
+            <div className="px-4 py-3">
+              <dt className="text-[11px] font-medium uppercase tracking-[0.08em] text-slate-500">Response time</dt>
+              <dd className="mt-1 text-sm text-slate-700">Within one business day, usually sooner</dd>
+            </div>
+            <div className="px-4 py-3">
+              <dt className="text-[11px] font-medium uppercase tracking-[0.08em] text-slate-500">Coverage</dt>
+              <dd className="mt-1 text-sm text-slate-700">Bookings, billing, service updates and general questions across the Gold Coast</dd>
+            </div>
+          </dl>
+
+          <div className="mt-4 rounded-lg bg-slate-50 p-4">
+            <p className="text-[11px] font-medium uppercase tracking-[0.08em] text-slate-500">Direct contacts</p>
+            <a href={businessInfo.phoneHref} className="mt-2 block text-sm font-medium text-slate-900 hover:underline">
+              {businessInfo.phoneInternationalDisplay}
+            </a>
+            <a href={`mailto:${businessInfo.email}`} className="mt-1 block break-all text-sm text-slate-600 hover:underline">
+              {businessInfo.email}
+            </a>
+          </div>
+
+          <div className="mt-auto pt-5">
+            <div className="rounded-lg border border-slate-200 px-4 py-3">
+              <p className="text-xs font-medium text-slate-900">Need a same-day change?</p>
+              <p className="mt-1 text-xs leading-5 text-slate-500">
+                Call us directly and we will do our best to move your appointment.
+              </p>
+              <a
+                href={businessInfo.phoneHref}
+                className="mt-2 inline-flex items-center gap-1.5 text-xs font-medium text-slate-700 hover:underline"
+              >
+                <PhoneCall className="h-3.5 w-3.5" />
+                {businessInfo.phoneDisplay}
+              </a>
+            </div>
+          </div>
+        </section>
       </div>
     </div>
   )

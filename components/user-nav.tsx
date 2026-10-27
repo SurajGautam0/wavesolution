@@ -1,47 +1,46 @@
 "use client"
 
-import { CalendarDays, Home, Clock, MessageSquare, User, LogOut } from "lucide-react"
+import { CalendarDays, Clock3, Home, LifeBuoy, LogOut, UserRound } from "lucide-react"
 import { useRouter } from "next/navigation"
 import { useAuth } from "@/lib/auth-context"
 import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/button"
 
 interface UserNavProps {
     activeTab?: string
     setActiveTab?: (tab: string) => void
 }
 
+const routes = [
+    {
+        id: "dashboard",
+        label: "Overview",
+        icon: Home,
+    },
+    {
+        id: "bookings",
+        label: "Bookings",
+        icon: CalendarDays,
+    },
+    {
+        id: "history",
+        label: "Service history",
+        icon: Clock3,
+    },
+    {
+        id: "support",
+        label: "Support",
+        icon: LifeBuoy,
+    },
+    {
+        id: "profile",
+        label: "Profile",
+        icon: UserRound,
+    },
+]
+
 export function UserNav({ activeTab = "dashboard", setActiveTab = () => { } }: UserNavProps) {
     const { logout } = useAuth()
     const router = useRouter()
-
-    const routes = [
-        {
-            id: "dashboard",
-            label: "Overview",
-            icon: Home,
-        },
-        {
-            id: "bookings",
-            label: "My Bookings",
-            icon: CalendarDays,
-        },
-        {
-            id: "history",
-            label: "Service History",
-            icon: Clock,
-        },
-        {
-            id: "support",
-            label: "Support",
-            icon: MessageSquare,
-        },
-        {
-            id: "profile",
-            label: "Profile Settings",
-            icon: User,
-        },
-    ]
 
     const handleLogout = async () => {
         await logout()
@@ -49,42 +48,48 @@ export function UserNav({ activeTab = "dashboard", setActiveTab = () => { } }: U
     }
 
     return (
-        <nav aria-label="Customer dashboard" className="flex gap-1 overflow-x-auto p-1 lg:flex-col lg:overflow-visible lg:p-2">
+        <nav
+            aria-label="Client portal"
+            className="-mx-1 flex flex-wrap gap-1 px-1 pb-1 lg:mx-0 lg:flex-col lg:gap-0.5 lg:overflow-visible lg:px-0 lg:pb-0"
+        >
             {routes.map((route) => {
                 const isActive = activeTab === route.id
                 return (
                     <button
                         key={route.id}
+                        type="button"
                         onClick={() => setActiveTab(route.id)}
+                        aria-current={isActive ? "page" : undefined}
                         className={cn(
-                            "flex min-h-11 shrink-0 items-center gap-2 rounded-xl px-3 py-2.5 text-xs font-semibold transition-all duration-200 sm:text-sm lg:w-full lg:gap-3 lg:px-4 lg:py-3",
+                            "flex shrink-0 items-center gap-2.5 rounded-lg px-3 py-2 text-sm font-medium transition-colors lg:w-full",
                             isActive
-                                ? "bg-[#39BDE4]/10 text-secondary shadow-sm"
-                                : "text-slate-500 hover:bg-slate-100 hover:text-slate-700"
+                                ? "bg-slate-100 text-slate-900"
+                                : "text-slate-600 hover:bg-slate-50 hover:text-slate-900"
                         )}
                     >
                         <route.icon
                             className={cn(
-                                "h-5 w-5 shrink-0 transition-colors",
-                                isActive ? "text-[#39BDE4]" : "text-slate-400"
+                                "h-4 w-4 shrink-0",
+                                isActive ? "text-[#333365]" : "text-slate-400"
                             )}
                         />
                         <span className="whitespace-nowrap">{route.label}</span>
                         {isActive && (
-                            <div className="ml-auto h-1.5 w-1.5 rounded-full bg-[#39BDE4]" />
+                            <span className="ml-auto hidden h-1.5 w-1.5 rounded-full bg-[#333365] lg:block" />
                         )}
                     </button>
                 )
             })}
 
-            <div className="hidden lg:my-3 lg:block lg:border-t lg:border-slate-200" />
+            <div className="hidden lg:my-2 lg:block lg:border-t lg:border-slate-200" />
 
             <button
+                type="button"
                 onClick={handleLogout}
-                className="hidden items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold text-slate-400 transition-all duration-200 hover:bg-red-50 hover:text-red-600 lg:flex"
+                className="hidden items-center gap-2.5 rounded-lg px-3 py-2 text-sm font-medium text-slate-500 transition-colors hover:bg-rose-50 hover:text-rose-700 lg:flex lg:w-full"
             >
-                <LogOut className="h-5 w-5 shrink-0" />
-                <span>Sign Out</span>
+                <LogOut className="h-4 w-4 shrink-0" />
+                <span>Sign out</span>
             </button>
         </nav>
     )
