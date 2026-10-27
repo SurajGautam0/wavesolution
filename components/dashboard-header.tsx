@@ -38,7 +38,9 @@ export function DashboardHeader() {
                         className="h-10 w-auto object-contain sm:h-11"
                     />
                     <span className="hidden h-4 w-px bg-slate-200 sm:block" />
-                    <span className="hidden text-xs font-medium text-slate-500 sm:block">Client portal</span>
+                    <span className="hidden max-w-[140px] truncate text-xs font-medium text-slate-500 sm:block">
+                        {user?.name || "Client portal"}
+                    </span>
                 </Link>
 
                 <div className="flex items-center gap-1.5 sm:gap-2">
