@@ -7,6 +7,7 @@ import { businessInfo, siteLinks } from "@/lib/business-info"
 import { trustBadgesShort } from "@/lib/claims"
 import { getServicePage, type ServicePage } from "@/lib/service-pages"
 import { serviceLocationPages } from "@/lib/service-location-pages"
+import { carpetLocationPages } from "@/lib/carpet-location-pages"
 
 type ServiceLandingPageProps = {
   page: ServicePage
@@ -36,6 +37,20 @@ export function ServiceLandingPage({ page }: ServiceLandingPageProps) {
     { href: siteLinks.locations, label: "More Gold Coast Areas" },
   ]
   const serviceAreaPages = serviceLocationPages.filter((entry) => entry.serviceSlug === page.slug)
+  // Carpet suburb pages live at root level (/carpet-cleaning-{suburb}) rather than nested
+  // under the parent service page, so they are mapped separately.
+  const suburbLinks = [
+    ...serviceAreaPages.map((area) => ({
+      href: `/${page.slug}/${area.suburbSlug}`,
+      label: area.suburbName,
+    })),
+    ...(page.slug === "carpet-cleaning-gold-coast"
+      ? carpetLocationPages.map((entry) => ({
+          href: `/carpet-cleaning-${entry.slug}`,
+          label: entry.suburb,
+        }))
+      : []),
+  ]
   const relatedArticles = (() => {
     const priceHub = {
       href: "/cleaning-prices-gold-coast",
@@ -89,6 +104,16 @@ export function ServiceLandingPage({ page }: ServiceLandingPageProps) {
           label: "End of Lease Cleaning Checklist",
           description: "Room-by-room exit checklist with RTA guidance for Queensland rentals.",
         },
+        {
+          href: "/blog/professional-vs-diy-bond-cleaning-costs-benefits-wavesolution",
+          label: "DIY vs Professional Bond Cleaning",
+          description: "What a DIY move-out clean really costs compared with a professional bond clean.",
+        },
+        {
+          href: "/blog/end-of-lease-pest-control-gold-coast",
+          label: "End of Lease Pest Control Guide",
+          description: "When a pest treatment receipt is expected at handover, and the order to book it in.",
+        },
         priceHub,
       ]
     }
@@ -123,6 +148,11 @@ export function ServiceLandingPage({ page }: ServiceLandingPageProps) {
           href: "/blog/how-often-house-cleaning",
           label: "How Often Should You Clean Your Home?",
           description: "Choose a practical cleaning frequency for your household and the way you use each room.",
+        },
+        {
+          href: "/blog/dashain-house-cleaning-gold-coast",
+          label: "Dashain House Cleaning Offer",
+          description: "Seasonal deep-clean offer for Gold Coast homes ahead of the Dashain festival.",
         },
         {
           href: "/blog/cleaning-tips",
@@ -166,6 +196,11 @@ export function ServiceLandingPage({ page }: ServiceLandingPageProps) {
         href: "/house-cleaning-cost-gold-coast",
         label: "House Cleaning Cost Guide",
         description: "What drives a house clean price — size, condition, frequency and the extras you add.",
+      },
+      {
+        href: "/blog/spring-cleaning-guide-gold-coast",
+        label: "Spring Cleaning Guide",
+        description: "A room-by-room seasonal deep clean plan for Gold Coast homes.",
       },
       {
         href: "/blog/cleaning-tips",
@@ -486,19 +521,19 @@ export function ServiceLandingPage({ page }: ServiceLandingPageProps) {
               <p className="mt-4 text-sm leading-7 text-slate-600">
                 We work across Gold Coast suburbs, including the areas listed below. Contact us with the property address and service needed to check availability.
               </p>
-              {serviceAreaPages.length > 0 && (
+              {suburbLinks.length > 0 && (
                 <div className="mt-6">
                   <p className="text-xs font-black uppercase tracking-[0.2em] text-secondary">
                     {page.shortLabel} by suburb
                   </p>
                   <div className="mt-4 flex flex-wrap gap-3">
-                    {serviceAreaPages.map((area) => (
+                    {suburbLinks.map((area) => (
                       <Link
-                        key={area.suburbSlug}
-                        href={`/${page.slug}/${area.suburbSlug}`}
+                        key={area.href}
+                        href={area.href}
                         className="rounded-full border border-secondary/30 bg-secondary/5 px-4 py-2 text-sm font-semibold text-primary transition-colors hover:border-secondary hover:bg-secondary hover:text-white"
                       >
-                        {area.suburbName}
+                        {area.label}
                       </Link>
                     ))}
                   </div>

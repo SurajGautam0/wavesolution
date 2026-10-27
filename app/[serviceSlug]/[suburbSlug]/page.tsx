@@ -108,7 +108,12 @@ export async function generateMetadata({ params }: ServiceLocationRouteProps): P
 
   const url = `${businessInfo.baseUrl}/${serviceSlug}/${suburbSlug}`
   const isTargetPestPage = page.serviceSlug === "pest-control-gold-coast" && pestTargetSlugs.includes(page.suburbSlug)
-  const seoTitle = isTargetPestPage ? `${page.suburbName} Pest Control | Wave Solution` : page.title
+  // Every service x suburb page carries the "Gold Coast" region modifier, and the brand
+  // is appended only where it still fits inside the ~65 character SERP limit.
+  const baseTitle = isTargetPestPage ? `${page.suburbName} Pest Control` : page.title
+  const titleWithRegion = `${baseTitle} | Gold Coast`
+  const brandedTitle = `${titleWithRegion} | Wave Solution`
+  const seoTitle = brandedTitle.length <= 65 ? brandedTitle : titleWithRegion
   const seoDescription = isTargetPestPage
     ? `Pest control in ${page.suburbName} for homes, rentals and businesses. Fully insured, police-checked team. Call 0450 833 683 for a quote.`
     : page.metaDescription

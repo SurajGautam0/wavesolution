@@ -163,6 +163,7 @@ export const servicePages: ServicePage[] = [
       "end-of-lease-cleaning-gold-coast",
       "commercial-cleaning-gold-coast",
       "deep-cleaning-gold-coast",
+      "cleaning-carrara",
     ],
   },
   {
@@ -293,6 +294,7 @@ export const servicePages: ServicePage[] = [
       "deep-cleaning-gold-coast",
       "bond-cleaning-gold-coast",
       "end-of-lease-cleaning-gold-coast",
+      "cleaning-carrara",
     ],
   },
   {

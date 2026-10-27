@@ -12,7 +12,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     const homeLastModified = new Date('2026-10-15')
     const servicesLastModified = new Date('2026-10-15')
     const bookLastModified = new Date('2026-10-16')
-    const carpetCleaningLastModified = new Date('2026-10-16')
     const aboutLastModified = new Date('2026-10-15')
     const contactLastModified = new Date('2026-09-01')
     const teamLastModified = new Date('2026-08-15')
@@ -20,6 +19,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     const galleryLastModified = new Date('2026-09-10')
     const blogLastModified = new Date('2026-10-21')
     const checklistLastModified = new Date('2026-08-20')
+
+    // Pages whose titles / internal links changed in the SEO linking release.
+    const linkUpdateLastModified = new Date('2026-10-27')
 
     // Blog posts with actual publish dates
     const blogPosts: { slug: string; lastModified: string }[] = [
@@ -74,13 +76,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
         // Individual service pages - High priority for money keywords
         ...servicePageSlugs.map((slug) => ({
             url: `${baseUrl}/${slug}`,
-            lastModified: slug === 'carpet-cleaning-gold-coast' ? carpetCleaningLastModified : servicesLastModified,
+            lastModified: linkUpdateLastModified,
             changeFrequency: 'weekly' as const,
             priority: slug === 'cleaning-gold-coast' ? 0.96 : slug === 'cleaning-carrara' ? 0.93 : 0.92,
         })),
         ...carpetLocationPages.map((page) => ({
             url: `${baseUrl}/carpet-cleaning-${page.slug}`,
-            lastModified: new Date('2026-10-17'),
+            lastModified: linkUpdateLastModified,
             changeFrequency: 'weekly' as const,
             priority: 0.88,
         })),
@@ -154,7 +156,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         // Service x suburb landing pages
         ...serviceLocationPages.map((page) => ({
             url: `${baseUrl}/${page.serviceSlug}/${page.suburbSlug}`,
-            lastModified: new Date('2026-09-27'),
+            lastModified: linkUpdateLastModified,
             changeFrequency: 'weekly' as const,
             priority: 0.86,
         })),
