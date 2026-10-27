@@ -1,12 +1,20 @@
 "use client"
 
 import Link from "next/link"
+import { usePathname } from "next/navigation"
+
+const PORTAL_ROUTES = ["/dashboard", "/admin", "/operations", "/worker"]
 
 export function WhatsAppWidget() {
+  const pathname = usePathname()
   const whatsappNumber = "61450833683"
   const message = encodeURIComponent(
     "Hi Wave Solution, I would like a quote for cleaning services on the Gold Coast."
   )
+
+  if (PORTAL_ROUTES.some((route) => pathname === route || pathname.startsWith(`${route}/`))) {
+    return null
+  }
 
   return (
     <div className="fixed bottom-6 right-6 z-50">

@@ -21,7 +21,10 @@ export default function AdminLayout({
 }) {
     return (
         <AuthProvider>
-            <div className="flex min-h-screen flex-col bg-slate-50/50">
+            <div
+                className="flex min-h-screen flex-col bg-[#F6F7F9] antialiased"
+                style={{ fontFamily: "var(--font-heading), system-ui, sans-serif" }}
+            >
                 <AdminHeader />
                 <main className="flex-1">{children}</main>
             </div>

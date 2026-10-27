@@ -9,6 +9,7 @@ import { Badge } from "@/components/ui/badge"
 import {
     Users,
     CalendarDays,
+    CreditCard,
     DollarSign,
     TrendingUp,
     CheckCircle2,
@@ -84,15 +85,25 @@ import { useRouter } from "next/navigation"
 
 function fmtDate(ts: any) {
     if (!ts?.seconds) return "N/A"
-    return new Date(ts.seconds * 1000).toLocaleDateString()
+    return new Date(ts.seconds * 1000).toLocaleDateString("en-AU")
+}
+
+function fmtSchedule(value: any, fallback?: any) {
+    const raw = value || (fallback?.seconds ? new Date(fallback.seconds * 1000) : null)
+    if (!raw) return "Not scheduled"
+    const date = new Date(raw)
+    return Number.isNaN(date.getTime())
+        ? String(raw)
+        : date.toLocaleDateString("en-AU", { day: "numeric", month: "short", year: "numeric" })
 }
 
 function statusColor(status: string) {
     switch (status) {
-        case "confirmed": return "bg-green-50 text-green-700 ring-green-600/20"
-        case "completed": return "bg-blue-50 text-blue-700 ring-blue-600/20"
-        case "cancelled": return "bg-red-50 text-red-700 ring-red-600/20"
-        default: return "bg-yellow-50 text-yellow-700 ring-yellow-600/20"
+        case "confirmed": return "bg-blue-50 text-blue-700 ring-blue-600/20"
+        case "scheduled": return "bg-cyan-50 text-cyan-700 ring-cyan-600/20"
+        case "completed": return "bg-emerald-50 text-emerald-700 ring-emerald-600/20"
+        case "cancelled": return "bg-rose-50 text-rose-700 ring-rose-600/20"
+        default: return "bg-amber-50 text-amber-700 ring-amber-600/20"
     }
 }
 
@@ -118,6 +129,7 @@ export default function AdminDashboardPage() {
     const [invoices, setInvoices] = useState<any[]>([])
     const [emailRecords, setEmailRecords] = useState<any[]>([])
     const [loading, setLoading] = useState(true)
+
     const [searchTerm, setSearchTerm] = useState("")
     const [subscriberSearch, setSubscriberSearch] = useState("")
     const filteredSubscriptions = subscriptions.filter((sub) =>
@@ -730,12 +742,12 @@ export default function AdminDashboardPage() {
     // ─── render ────────────────────────────────────────────────────────────
 
     return (
-        <div className="mx-auto w-full max-w-[1680px] px-3 py-3 sm:px-6 sm:py-6 lg:px-8">
+        <div className="mx-auto w-full max-w-[1680px] px-4 py-6 sm:px-6 lg:px-8">
             {/* Booking Manage Dialog */}
             <Dialog open={!!managingBooking} onOpenChange={(open) => !open && setManagingBooking(null)}>
-                <DialogContent className="max-w-lg rounded-2xl">
+                <DialogContent className="max-w-lg rounded-xl">
                     <DialogHeader>
-                        <DialogTitle className="text-lg font-bold text-slate-900">Manage Booking</DialogTitle>
+                        <DialogTitle className="text-lg font-semibold text-slate-900">Manage Booking</DialogTitle>
                     </DialogHeader>
                     {managingBooking && (
                         <div className="space-y-4">
@@ -779,7 +791,7 @@ export default function AdminDashboardPage() {
                                             variant={managingBooking.status === s ? "default" : "outline"}
                                             disabled={bookingStatusUpdating}
                                             onClick={() => handleUpdateBookingStatus(managingBooking.id, s)}
-                                            className={cn("rounded-xl capitalize h-10 font-medium", managingBooking.status === s ? "bg-slate-900 text-white" : "border-slate-200")}
+                                            className={cn("rounded-xl capitalize h-10 font-medium", managingBooking.status === s ? "bg-[#333365] text-white" : "border-slate-200")}
                                         >
                                             {s}
                                         </Button>
@@ -791,97 +803,252 @@ export default function AdminDashboardPage() {
                 </DialogContent>
             </Dialog>
 
-            <div className="flex min-w-0 flex-col gap-3 sm:gap-4 lg:grid lg:grid-cols-[260px_minmax(0,1fr)] lg:gap-7">
+            <div className="flex min-w-0 flex-col gap-4 lg:grid lg:grid-cols-[248px_minmax(0,1fr)] lg:gap-6">
                 {/* Sidebar */}
-                <aside className="min-w-0 lg:col-span-1">
-                    <div className="space-y-4 lg:sticky lg:top-20">
-                        <Card className="min-w-0 overflow-hidden rounded-2xl border-slate-200/80 bg-white shadow-sm lg:sticky lg:top-[4.75rem]">
-                            <div className="hidden border-b border-slate-100 px-5 py-5 lg:block">
-                                <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-cyan-700">Wave Solution</p>
-                                <h2 className="mt-1 text-lg font-semibold tracking-tight text-slate-900">Operations</h2>
-                                <p className="mt-1 text-xs text-slate-500">Workspace · {user?.role || "Admin"}</p>
+                <aside className="min-w-0">
+                    <div className="space-y-3 lg:sticky lg:top-24">
+                        <div className="hidden overflow-hidden rounded-xl border border-slate-200 bg-white lg:block">
+                            <div className="border-b border-slate-200 p-4">
+                                <div className="flex items-center gap-3">
+                                    <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md bg-[#333365] text-xs font-semibold text-white">
+                                        {(user?.name || "A").split(" ").map((part) => part[0]).join("").slice(0, 2).toUpperCase()}
+                                    </span>
+                                    <div className="min-w-0">
+                                        <p className="truncate text-sm font-semibold text-slate-900">{user?.name || "Administrator"}</p>
+                                        <p className="truncate text-[11px] text-slate-500">{user?.email || "Admin account"}</p>
+                                    </div>
+                                </div>
+                                <div className="mt-3 flex items-center justify-between rounded-lg bg-slate-50 px-3 py-1.5">
+                                    <span className="text-[10px] font-medium uppercase tracking-[0.1em] text-slate-500">Workspace</span>
+                                    <span className="text-[10px] font-semibold capitalize text-slate-700">{user?.role || "Admin"}</span>
+                                </div>
                             </div>
-                            <CardContent className="min-w-0 p-2 lg:p-3">
+                            <div className="p-2">
                                 <AdminNav activeTab={activeTab} setActiveTab={setActiveTab} />
-                            </CardContent>
-                        </Card>
-
-                        <div className="-mx-1 rounded-2xl border border-slate-200/80 bg-white px-3 py-2 shadow-sm lg:hidden">
-                            <p className="mb-1 px-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-slate-400">Jump to</p>
-                            <AdminNav activeTab={activeTab} setActiveTab={setActiveTab} compactMobile />
+                            </div>
+                            <div className="flex items-center gap-2 border-t border-slate-200 px-4 py-3 text-[11px] text-slate-500">
+                                <ShieldCheck className="h-3.5 w-3.5 text-slate-400" />
+                                Admin access only
+                            </div>
                         </div>
 
-                        <div className="hidden rounded-2xl border border-slate-200/80 bg-white p-4 lg:block">
-                            <div className="flex items-center gap-3"><span className="rounded-xl bg-emerald-50 p-2 text-emerald-700"><ShieldCheck className="h-4 w-4" /></span><div className="min-w-0"><p className="text-xs font-semibold text-slate-800">Signed in</p><p className="truncate text-[11px] text-slate-500">{user?.email || "Admin account"}</p></div></div>
+                        <div className="rounded-xl border border-slate-200 bg-white p-2 lg:hidden">
+                            <p className="px-1 pb-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-slate-400">Jump to</p>
+                            <AdminNav activeTab={activeTab} setActiveTab={setActiveTab} compactMobile />
                         </div>
                     </div>
                 </aside>
 
                 {/* Main content */}
-                <main className="min-w-0 space-y-6 sm:space-y-8">
+                <main className="min-w-0 space-y-6">
 
                     {/* ── DASHBOARD ─────────────────────────────────────────────────── */}
                     {activeTab === "dashboard" && (
                         <div className="space-y-6">
-                            <section className="relative overflow-hidden rounded-[28px] bg-[#142b3b] p-7 text-white shadow-sm sm:p-9">
-                                <div className="pointer-events-none absolute -right-12 -top-24 h-72 w-72 rounded-full bg-cyan-400/15 blur-3xl" />
-                                <div className="relative flex flex-col justify-between gap-6 md:flex-row md:items-end">
-                                    <div>
-                                        <p className="text-xs font-bold uppercase tracking-[0.2em] text-cyan-300">Wave Solution · Operations</p>
-                                        <h1 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">Operations overview{user?.name ? ` · ${user.name.split(" ")[0]}` : ""}</h1>
-                                        <p className="mt-2 max-w-xl text-sm leading-6 text-slate-300">Your bookings, field jobs and customer enquiries in one workspace.</p>
-                                    </div>
-                                    <div className="flex flex-wrap gap-2">
-                                        <Button onClick={() => setActiveTab("quotes")} className="rounded-xl bg-cyan-400 px-4 font-semibold text-slate-950 hover:bg-cyan-300"><PlusCircle className="mr-2 h-4 w-4" />Create quote</Button>
-                                        <Button onClick={() => setActiveTab("operations")} variant="outline" className="rounded-xl border-white/20 bg-white/5 text-white hover:bg-white/10 hover:text-white"><ListChecks className="mr-2 h-4 w-4" />Open job board</Button>
-                                    </div>
+                            <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+                                <div className="min-w-0">
+                                    <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-500">Operations</p>
+                                    <h1 className="mt-1.5 text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl">
+                                        Operations overview
+                                    </h1>
+                                    <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-500">
+                                        {user?.name ? `${user.name.split(" ")[0]}, here is` : "Here is"} the current state of bookings, enquiries and field work.
+                                    </p>
                                 </div>
-                            </section>
+                                <div className="flex shrink-0 items-center gap-2">
+                                    <Button
+                                        variant="outline"
+                                        onClick={() => setActiveTab("operations")}
+                                        className="h-10 rounded-lg border-slate-300 bg-white px-3.5 text-sm font-medium text-slate-700 shadow-none hover:bg-slate-50 hover:text-slate-900"
+                                    >
+                                        <ListChecks className="mr-2 h-4 w-4" />
+                                        Job board
+                                    </Button>
+                                    <Button
+                                        onClick={() => setActiveTab("quotes")}
+                                        className="h-10 rounded-lg bg-[#333365] px-4 text-sm font-medium text-white shadow-none hover:bg-[#3d3d78]"
+                                    >
+                                        <PlusCircle className="mr-2 h-4 w-4" />
+                                        Create quote
+                                    </Button>
+                                </div>
+                            </div>
 
-                            <section className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+                            <section aria-label="Operations summary" className="grid grid-cols-2 gap-px overflow-hidden rounded-xl border border-slate-200 bg-slate-200 xl:grid-cols-4">
                                 {[
-                                    { label: "Bookings", value: bookings.length.toLocaleString(), note: `${bookings.filter((b) => !["completed", "cancelled"].includes((b.status || "").toLowerCase())).length} active`, icon: CalendarDays, color: "text-blue-700 bg-blue-50" },
-                                    { label: "New enquiries", value: contacts.filter((c) => !c.leadStatus || c.leadStatus === "new").length.toLocaleString(), note: `${contacts.length} total leads`, icon: UserRoundSearch, color: "text-violet-700 bg-violet-50" },
-                                    { label: "Jobs to schedule", value: bookings.filter((b) => !b.scheduledDate && !b.date && b.status !== "cancelled" && b.status !== "completed").length.toLocaleString(), note: "Needs a date or time", icon: Clock, color: "text-amber-700 bg-amber-50" },
-                                    { label: "Recorded booking value", value: `A$${totalRevenue.toLocaleString("en-AU")}`, note: "From saved bookings", icon: DollarSign, color: "text-emerald-700 bg-emerald-50" },
-                                ].map((metric) => (
-                                    <Card key={metric.label} className="rounded-2xl border-slate-200/80 shadow-sm">
-                                        <CardContent className="p-5">
-                                            <div className="flex items-start justify-between"><div><p className="text-sm font-medium text-slate-500">{metric.label}</p><p className="mt-3 text-3xl font-semibold tracking-tight text-slate-900">{metric.value}</p></div><span className={cn("rounded-xl p-2.5", metric.color)}><metric.icon className="h-5 w-5" /></span></div>
-                                            <p className="mt-3 text-xs text-slate-500">{metric.note}</p>
-                                        </CardContent>
-                                    </Card>
+                                    { label: "Bookings", value: bookings.length.toLocaleString(), note: `${bookings.filter((b) => !["completed", "cancelled"].includes((b.status || "").toLowerCase())).length} active`, icon: CalendarDays },
+                                    { label: "New enquiries", value: contacts.filter((c) => !c.leadStatus || c.leadStatus === "new").length.toLocaleString(), note: `${contacts.length} total leads`, icon: UserRoundSearch },
+                                    { label: "Jobs to schedule", value: bookings.filter((b) => !b.scheduledDate && !b.date && b.status !== "cancelled" && b.status !== "completed").length.toLocaleString(), note: "Needs a date or time", icon: Clock },
+                                    { label: "Recorded value", value: `A$${totalRevenue.toLocaleString("en-AU")}`, note: "From saved bookings", icon: DollarSign },
+                                ].map(({ label, value, note, icon: Icon }) => (
+                                    <div key={label} className="bg-white p-4 sm:p-5">
+                                        <div className="flex items-center justify-between gap-2">
+                                            <p className="text-xs font-medium text-slate-500">{label}</p>
+                                            <Icon className="h-4 w-4 shrink-0 text-slate-400" aria-hidden="true" />
+                                        </div>
+                                        <p className="mt-3 truncate text-[26px] font-semibold leading-none tracking-tight text-slate-900 tabular-nums">
+                                            {value}
+                                        </p>
+                                        <p className="mt-2 truncate text-xs text-slate-500">{note}</p>
+                                    </div>
                                 ))}
                             </section>
 
-                            <section className="grid gap-6 xl:grid-cols-[minmax(0,1.55fr)_minmax(300px,0.8fr)]">
-                                <Card className="overflow-hidden rounded-2xl border-slate-200/80 shadow-sm">
-                                    <CardHeader className="flex flex-row items-center justify-between border-b border-slate-100 px-5 py-4 sm:px-6">
-                                        <div><CardTitle className="text-base font-semibold text-slate-900">Latest bookings</CardTitle><p className="mt-1 text-sm text-slate-500">Recent customer requests and job status</p></div>
-                                        <Button variant="outline" size="sm" onClick={() => setActiveTab("bookings")} className="rounded-lg">All bookings</Button>
-                                    </CardHeader>
-                                    <CardContent className="p-0">
-                                        <div className="divide-y divide-slate-100">
-                                            {bookings.slice(0, 6).map((booking) => <button key={booking.id} onClick={() => setManagingBooking(booking)} className="flex w-full items-center gap-4 px-5 py-4 text-left transition hover:bg-slate-50 sm:px-6">
-                                                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-slate-100 text-sm font-semibold text-slate-600">{booking.name?.charAt(0) || "?"}</span>
-                                                <span className="min-w-0 flex-1"><span className="block truncate text-sm font-semibold text-slate-900">{booking.name || "New customer"}</span><span className="mt-1 block truncate text-xs text-slate-500">{booking.package?.category || booking.service || "Cleaning service"} · {booking.scheduledDate || booking.date || "Date not set"}</span></span>
-                                                <span className="text-right"><span className="block text-sm font-semibold text-slate-900">A${(booking.package?.totalPrice || booking.package?.price || 0).toLocaleString("en-AU")}</span><span className={cn("mt-1 inline-flex rounded-full px-2 py-0.5 text-[11px] font-medium capitalize ring-1 ring-inset", statusColor(booking.status || "pending"))}>{booking.status || "pending"}</span></span>
-                                            </button>)}
-                                            {bookings.length === 0 && <p className="px-6 py-12 text-center text-sm text-slate-500">No bookings have been recorded yet.</p>}
+                            <div className="grid gap-6 xl:grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)]">
+                                <section className="overflow-hidden rounded-xl border border-slate-200 bg-white">
+                                    <header className="flex items-center justify-between gap-3 border-b border-slate-200 px-5 py-4">
+                                        <div>
+                                            <h2 className="text-sm font-semibold text-slate-900">Latest bookings</h2>
+                                            <p className="mt-0.5 text-xs text-slate-500">Recent customer requests and job status</p>
                                         </div>
-                                    </CardContent>
-                                </Card>
-                                <Card className="rounded-2xl border-slate-200/80 shadow-sm">
-                                    <CardHeader className="border-b border-slate-100 px-5 py-4"><CardTitle className="text-base font-semibold text-slate-900">Needs attention</CardTitle><p className="mt-1 text-sm text-slate-500">Items that may need a follow-up</p></CardHeader>
-                                    <CardContent className="space-y-3 p-4">
+                                        <button
+                                            type="button"
+                                            onClick={() => setActiveTab("bookings")}
+                                            className="text-xs font-medium text-slate-600 transition-colors hover:text-slate-900"
+                                        >
+                                            All bookings
+                                        </button>
+                                    </header>
+                                    {bookings.length ? (
+                                        <>
+                                            <ul className="divide-y divide-slate-100 md:hidden">
+                                                {bookings.slice(0, 6).map((booking) => (
+                                                    <li key={booking.id} className="p-5">
+                                                        <div className="flex items-start justify-between gap-3">
+                                                            <div className="min-w-0">
+                                                                <p className="truncate text-sm font-medium text-slate-900">{booking.name || "New customer"}</p>
+                                                                <p className="mt-0.5 text-xs text-slate-500">
+                                                                    {booking.package?.category || booking.service || "Cleaning service"}
+                                                                </p>
+                                                            </div>
+                                                            <span className={cn("shrink-0 rounded-full px-2.5 py-1 text-[11px] font-medium capitalize ring-1 ring-inset", statusColor(booking.status || "pending"))}>
+                                                                {booking.status || "pending"}
+                                                            </span>
+                                                        </div>
+                                                        <div className="mt-3 flex flex-wrap items-center justify-between gap-3">
+                                                            <span className="text-xs text-slate-500">
+                                                                {fmtSchedule(booking.scheduledDate || booking.date, booking.createdAt)}
+                                                            </span>
+                                                            <div className="flex items-center gap-3">
+                                                                <span className="text-sm font-medium tabular-nums text-slate-900">
+                                                                    A${(booking.package?.totalPrice || booking.package?.price || 0).toLocaleString("en-AU")}
+                                                                </span>
+                                                                <Button
+                                                                    variant="outline"
+                                                                    size="sm"
+                                                                    onClick={() => setManagingBooking(booking)}
+                                                                    className="h-8 rounded-md border-slate-300 bg-white px-2.5 text-xs font-medium text-slate-700 hover:bg-slate-50 hover:text-slate-900"
+                                                                >
+                                                                    Manage
+                                                                </Button>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                ))}
+                                            </ul>
+
+                                            <div className="hidden overflow-x-auto md:block">
+                                            <table className="w-full text-sm">
+                                                <thead>
+                                                    <tr className="border-b border-slate-200 bg-slate-50 text-left">
+                                                        <th scope="col" className="px-5 py-3 text-[11px] font-semibold uppercase tracking-[0.08em] text-slate-500">Client</th>
+                                                        <th scope="col" className="px-5 py-3 text-[11px] font-semibold uppercase tracking-[0.08em] text-slate-500">Scheduled</th>
+                                                        <th scope="col" className="px-5 py-3 text-[11px] font-semibold uppercase tracking-[0.08em] text-slate-500">Status</th>
+                                                        <th scope="col" className="px-5 py-3 text-right text-[11px] font-semibold uppercase tracking-[0.08em] text-slate-500">Value</th>
+                                                        <th scope="col" className="px-5 py-3"><span className="sr-only">Actions</span></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody className="divide-y divide-slate-100">
+                                                    {bookings.slice(0, 6).map((booking) => (
+                                                        <tr key={booking.id} className="transition-colors hover:bg-slate-50/80">
+                                                            <td className="px-5 py-4">
+                                                                <p className="font-medium text-slate-900">{booking.name || "New customer"}</p>
+                                                                <p className="mt-0.5 text-xs text-slate-500">
+                                                                    {booking.package?.category || booking.service || "Cleaning service"}
+                                                                </p>
+                                                            </td>
+                                                            <td className="whitespace-nowrap px-5 py-4 text-slate-600">
+                                                                {fmtSchedule(booking.scheduledDate || booking.date, booking.createdAt)}
+                                                            </td>
+                                                            <td className="px-5 py-4">
+                                                                <span className={cn("inline-flex rounded-full px-2.5 py-1 text-[11px] font-medium capitalize ring-1 ring-inset", statusColor(booking.status || "pending"))}>
+                                                                    {booking.status || "pending"}
+                                                                </span>
+                                                            </td>
+                                                            <td className="whitespace-nowrap px-5 py-4 text-right font-medium tabular-nums text-slate-900">
+                                                                A${(booking.package?.totalPrice || booking.package?.price || 0).toLocaleString("en-AU")}
+                                                            </td>
+                                                            <td className="px-5 py-4 text-right">
+                                                                <Button
+                                                                    variant="outline"
+                                                                    size="sm"
+                                                                    onClick={() => setManagingBooking(booking)}
+                                                                    className="h-8 rounded-md border-slate-300 bg-white px-2.5 text-xs font-medium text-slate-700 hover:bg-slate-50 hover:text-slate-900"
+                                                                >
+                                                                    Manage
+                                                                </Button>
+                                                            </td>
+                                                        </tr>
+                                                    ))}
+                                                </tbody>
+                                            </table>
+                                            </div>
+                                        </>
+                                    ) : (
+                                        <p className="px-6 py-12 text-center text-sm text-slate-500">No bookings have been recorded yet.</p>
+                                    )}
+                                </section>
+
+                                <section className="self-start overflow-hidden rounded-xl border border-slate-200 bg-white">
+                                    <header className="border-b border-slate-200 px-5 py-4">
+                                        <h2 className="text-sm font-semibold text-slate-900">Needs attention</h2>
+                                        <p className="mt-0.5 text-xs text-slate-500">Items that may need a follow-up</p>
+                                    </header>
+                                    <div className="divide-y divide-slate-100">
                                         {[
                                             { label: "New leads", count: contacts.filter((c) => !c.leadStatus || c.leadStatus === "new").length, action: "customers", icon: UserRoundSearch },
                                             { label: "Unscheduled jobs", count: bookings.filter((b) => !b.scheduledDate && !b.date && b.status !== "cancelled" && b.status !== "completed").length, action: "operations", icon: CalendarDays },
                                             { label: "Reviews to approve", count: pendingTestimonials.length, action: "messages", icon: MessageSquare },
-                                            { label: "Draft quotes", count: quotes.filter((q) => q.status === "draft").length, action: "quotes", icon: FileText },
-                                        ].map((item) => <button key={item.label} onClick={() => setActiveTab(item.action)} className="flex w-full items-center gap-3 rounded-xl border border-slate-100 p-3 text-left transition hover:border-slate-300 hover:bg-slate-50"><span className="rounded-lg bg-slate-100 p-2 text-slate-600"><item.icon className="h-4 w-4" /></span><span className="flex-1 text-sm font-medium text-slate-700">{item.label}</span><span className="rounded-full bg-slate-100 px-2.5 py-1 text-xs font-semibold text-slate-700">{item.count}</span></button>)}
-                                    </CardContent>
-                                </Card>
+                                            { label: "Draft quotes", count: quotes.filter((q) => q.status === "draft").length, action: "quotes", icon: FileText },{ label: "Unpaid invoices", count: invoices.filter((invoice) => invoice.status !== "paid").length, action: "invoices", icon: CreditCard },
+                                        ].map((item) => (
+                                            <button
+                                                key={item.label}
+                                                type="button"
+                                                onClick={() => setActiveTab(item.action)}
+                                                className="flex w-full items-center gap-3 px-5 py-3.5 text-left transition-colors hover:bg-slate-50"
+                                            >
+                                                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-slate-200 bg-slate-50">
+                                                    <item.icon className="h-4 w-4 text-slate-500" />
+                                                </span>
+                                                <span className="flex-1 text-sm text-slate-700">{item.label}</span>
+                                                <span className="rounded-full bg-slate-100 px-2 py-0.5 text-xs font-medium text-slate-700 tabular-nums">{item.count}</span>
+                                            </button>
+                                        ))}
+                                    </div>
+                                </section>
+                            </div>
+
+                            <section className="grid gap-px overflow-hidden rounded-xl border border-slate-200 bg-slate-200 sm:grid-cols-3">
+                                {[
+                                    { title: "Create a quote", description: "Build and send an estimate", icon: PlusCircle, action: "quotes" },
+                                    { title: "Open the job board", description: "Assign crews and schedule jobs", icon: ListChecks, action: "operations" },
+                                    { title: "Email a customer", description: "Send a message from the workspace", icon: Send, action: "communications" },
+                                ].map((item) => (
+                                    <button
+                                        key={item.title}
+                                        type="button"
+                                        onClick={() => setActiveTab(item.action)}
+                                        className="group flex items-center gap-3 bg-white px-5 py-4 text-left transition-colors hover:bg-slate-50"
+                                    >
+                                        <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-slate-200 bg-slate-50 text-slate-600">
+                                            <item.icon className="h-4 w-4" />
+                                        </span>
+                                        <span className="min-w-0">
+                                            <span className="block text-sm font-medium text-slate-900">{item.title}</span>
+                                            <span className="block truncate text-xs text-slate-500">{item.description}</span>
+                                        </span>
+                                    </button>
+                                ))}
                             </section>
                         </div>
                     )}
@@ -890,34 +1057,34 @@ export default function AdminDashboardPage() {
                     {activeTab === "operations" && (
                         <div className="space-y-6">
                             <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
-                                <div><p className="text-xs font-bold uppercase tracking-[0.16em] text-cyan-700">Field operations</p><h2 className="mt-2 text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl">Job board</h2><p className="mt-2 text-sm text-slate-500">Schedule bookings, assign a crew member and keep job notes with the booking.</p></div>
-                                <div className="flex flex-wrap gap-2">{[["all", "All jobs"], ["unscheduled", "Unscheduled"], ["active", "Active"]].map(([value, label]) => <Button key={value} size="sm" variant={operationFilter === value ? "default" : "outline"} onClick={() => setOperationFilter(value)} className={cn("rounded-lg", operationFilter === value && "bg-slate-900 text-white hover:bg-slate-800")}>{label}</Button>)}</div>
+                                <div><p className="text-xs font-bold uppercase tracking-[0.16em] text-slate-500">Field operations</p><h2 className="mt-2 text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl">Job board</h2><p className="mt-2 text-sm text-slate-500">Schedule bookings, assign a crew member and keep job notes with the booking.</p></div>
+                                <div className="flex flex-wrap gap-2">{[["all", "All jobs"], ["unscheduled", "Unscheduled"], ["active", "Active"]].map(([value, label]) => <Button key={value} size="sm" variant={operationFilter === value ? "default" : "outline"} onClick={() => setOperationFilter(value)} className={cn("rounded-lg", operationFilter === value && "bg-[#333365] text-white hover:bg-[#3d3d78]")}>{label}</Button>)}</div>
                             </div>
                             <div className="grid gap-4 md:grid-cols-3">
-                                {[{ title: "To schedule", value: bookings.filter((b) => !b.scheduledDate && !b.date && !["completed", "cancelled"].includes(b.status)).length, color: "text-amber-700 bg-amber-50" }, { title: "Confirmed", value: bookings.filter((b) => b.status === "confirmed").length, color: "text-blue-700 bg-blue-50" }, { title: "Completed", value: bookings.filter((b) => b.status === "completed").length, color: "text-emerald-700 bg-emerald-50" }].map((item) => <Card key={item.title} className="rounded-2xl border-slate-200/80"><CardContent className="flex items-center justify-between p-4"><p className="text-sm font-medium text-slate-600">{item.title}</p><span className={cn("rounded-full px-3 py-1 text-sm font-semibold", item.color)}>{item.value}</span></CardContent></Card>)}
+                                {[{ title: "To schedule", value: bookings.filter((b) => !b.scheduledDate && !b.date && !["completed", "cancelled"].includes(b.status)).length, color: "text-amber-700 bg-amber-50" }, { title: "Confirmed", value: bookings.filter((b) => b.status === "confirmed").length, color: "text-blue-700 bg-blue-50" }, { title: "Completed", value: bookings.filter((b) => b.status === "completed").length, color: "text-emerald-700 bg-emerald-50" }].map((item) => <Card key={item.title} className="rounded-xl border-slate-200/80"><CardContent className="flex items-center justify-between p-4"><p className="text-sm font-medium text-slate-600">{item.title}</p><span className={cn("rounded-full px-3 py-1 text-sm font-semibold", item.color)}>{item.value}</span></CardContent></Card>)}
                             </div>
                             <div className="grid gap-4 xl:grid-cols-2">
                                 {bookings.filter((b) => operationFilter === "all" || (operationFilter === "unscheduled" ? !b.scheduledDate && !b.date && !["completed", "cancelled"].includes(b.status) : !["completed", "cancelled"].includes(b.status))).map((booking) => {
                                     const draft = operationDrafts[booking.id] || {}
                                     const address = [booking.address, booking.city, booking.postcode].filter(Boolean).join(", ")
-                                    return <Card key={booking.id} className="overflow-hidden rounded-2xl border-slate-200/80 shadow-sm">
-                                        <CardHeader className="border-b border-slate-100 bg-white px-5 py-4">
+                                    return <Card key={booking.id} className="overflow-hidden rounded-xl border-slate-200/80 shadow-sm">
+                                        <CardHeader className="border-b border-slate-200 bg-white px-5 py-4">
                                             <div className="flex items-start justify-between gap-4"><div className="flex min-w-0 items-center gap-3"><span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-slate-100 text-sm font-semibold text-slate-600">{booking.name?.charAt(0) || "?"}</span><div className="min-w-0"><CardTitle className="truncate text-base font-semibold text-slate-900">{booking.name || "Customer booking"}</CardTitle><p className="mt-1 truncate text-xs text-slate-500">{booking.package?.category || booking.service || "Cleaning service"} · {booking.package?.propertyType || booking.propertyType || "Property details pending"}</p></div></div><span className={cn("shrink-0 rounded-full px-2.5 py-1 text-[11px] font-medium capitalize ring-1 ring-inset", statusColor(booking.status || "pending"))}>{booking.status || "pending"}</span></div>
                                         </CardHeader>
                                         <CardContent className="space-y-4 p-5">
-                                            <div className="flex flex-wrap items-center justify-between gap-3 text-xs text-slate-500"><span>{booking.email || "No email"}{booking.phone ? ` · ${booking.phone}` : ""}</span>{address && <a className="inline-flex items-center gap-1 font-medium text-cyan-800 hover:underline" href={`https://maps.google.com/?q=${encodeURIComponent(address)}`} target="_blank" rel="noreferrer"><MapPin className="h-3.5 w-3.5" />Open map</a>}</div>
+                                            <div className="flex flex-wrap items-center justify-between gap-3 text-xs text-slate-500"><span>{booking.email || "No email"}{booking.phone ? ` · ${booking.phone}` : ""}</span>{address && <a className="inline-flex items-center gap-1 font-medium text-slate-700 hover:underline" href={`https://maps.google.com/?q=${encodeURIComponent(address)}`} target="_blank" rel="noreferrer"><MapPin className="h-3.5 w-3.5" />Open map</a>}</div>
                                             {address && <p className="text-xs text-slate-600">{address}</p>}
                                             <div className="grid gap-3 sm:grid-cols-2">
-                                                <label className="text-xs font-medium text-slate-600">Job date<input type="date" value={String(draft.scheduledDate ?? booking.scheduledDate ?? booking.date ?? "").slice(0, 10)} onChange={(event) => setOperationDrafts((rows) => ({ ...rows, [booking.id]: { ...rows[booking.id], scheduledDate: event.target.value } }))} className="mt-1.5 h-10 w-full rounded-lg border border-slate-200 bg-white px-3 text-sm text-slate-800 outline-none focus:border-cyan-500 focus:ring-2 focus:ring-cyan-100" /></label>
-                                                <label className="text-xs font-medium text-slate-600">Arrival time<input type="time" value={draft.scheduledTime ?? booking.scheduledTime ?? booking.time ?? ""} onChange={(event) => setOperationDrafts((rows) => ({ ...rows, [booking.id]: { ...rows[booking.id], scheduledTime: event.target.value } }))} className="mt-1.5 h-10 w-full rounded-lg border border-slate-200 bg-white px-3 text-sm text-slate-800 outline-none focus:border-cyan-500 focus:ring-2 focus:ring-cyan-100" /></label>
+                                                <label className="text-xs font-medium text-slate-600">Job date<input type="date" value={String(draft.scheduledDate ?? booking.scheduledDate ?? booking.date ?? "").slice(0, 10)} onChange={(event) => setOperationDrafts((rows) => ({ ...rows, [booking.id]: { ...rows[booking.id], scheduledDate: event.target.value } }))} className="mt-1.5 h-10 w-full rounded-lg border border-slate-200 bg-white px-3 text-sm text-slate-800 outline-none focus:border-[#333365] focus:ring-2 focus:ring-[#333365]/10" /></label>
+                                                <label className="text-xs font-medium text-slate-600">Arrival time<input type="time" value={draft.scheduledTime ?? booking.scheduledTime ?? booking.time ?? ""} onChange={(event) => setOperationDrafts((rows) => ({ ...rows, [booking.id]: { ...rows[booking.id], scheduledTime: event.target.value } }))} className="mt-1.5 h-10 w-full rounded-lg border border-slate-200 bg-white px-3 text-sm text-slate-800 outline-none focus:border-[#333365] focus:ring-2 focus:ring-[#333365]/10" /></label>
                                             </div>
-                                            <label className="block text-xs font-medium text-slate-600">Assign crew<select value={draft.assignedTo ?? booking.assignedTo ?? ""} onChange={(event) => setOperationDrafts((rows) => ({ ...rows, [booking.id]: { ...rows[booking.id], assignedTo: event.target.value } }))} className="mt-1.5 h-10 w-full rounded-lg border border-slate-200 bg-white px-3 text-sm text-slate-800 outline-none focus:border-cyan-500 focus:ring-2 focus:ring-cyan-100"><option value="">Unassigned</option>{users.filter((member) => ["worker", "admin"].includes(member.role)).map((member) => <option key={member.id} value={member.name || member.email}>{member.name || member.email} · {member.role}</option>)}</select></label>
-                                            <label className="block text-xs font-medium text-slate-600">Internal job notes<textarea rows={2} value={draft.internalNotes ?? booking.internalNotes ?? ""} onChange={(event) => setOperationDrafts((rows) => ({ ...rows, [booking.id]: { ...rows[booking.id], internalNotes: event.target.value } }))} placeholder="Access details, crew instructions…" className="mt-1.5 w-full resize-y rounded-lg border border-slate-200 px-3 py-2 text-sm text-slate-800 outline-none focus:border-cyan-500 focus:ring-2 focus:ring-cyan-100" /></label>
-                                            <div className="flex flex-wrap items-center justify-between gap-2 border-t border-slate-100 pt-4"><div className="flex gap-2"><Button size="sm" variant="outline" onClick={() => setManagingBooking(booking)} className="rounded-lg">Booking status</Button><a href={booking.phone ? `tel:${booking.phone}` : booking.email ? `mailto:${booking.email}` : undefined} className={cn("inline-flex h-9 items-center rounded-lg border border-slate-200 px-3 text-xs font-medium text-slate-700", !booking.phone && !booking.email && "pointer-events-none opacity-40")}>Contact customer</a></div><Button size="sm" onClick={() => saveOperation(booking)} className="rounded-lg bg-slate-900 text-white hover:bg-slate-800"><Save className="mr-2 h-3.5 w-3.5" />Save job</Button></div>
+                                            <label className="block text-xs font-medium text-slate-600">Assign crew<select value={draft.assignedTo ?? booking.assignedTo ?? ""} onChange={(event) => setOperationDrafts((rows) => ({ ...rows, [booking.id]: { ...rows[booking.id], assignedTo: event.target.value } }))} className="mt-1.5 h-10 w-full rounded-lg border border-slate-200 bg-white px-3 text-sm text-slate-800 outline-none focus:border-[#333365] focus:ring-2 focus:ring-[#333365]/10"><option value="">Unassigned</option>{users.filter((member) => ["worker", "admin"].includes(member.role)).map((member) => <option key={member.id} value={member.name || member.email}>{member.name || member.email} · {member.role}</option>)}</select></label>
+                                            <label className="block text-xs font-medium text-slate-600">Internal job notes<textarea rows={2} value={draft.internalNotes ?? booking.internalNotes ?? ""} onChange={(event) => setOperationDrafts((rows) => ({ ...rows, [booking.id]: { ...rows[booking.id], internalNotes: event.target.value } }))} placeholder="Access details, crew instructions…" className="mt-1.5 w-full resize-y rounded-lg border border-slate-200 px-3 py-2 text-sm text-slate-800 outline-none focus:border-[#333365] focus:ring-2 focus:ring-[#333365]/10" /></label>
+                                            <div className="flex flex-wrap items-center justify-between gap-2 border-t border-slate-200 pt-4"><div className="flex gap-2"><Button size="sm" variant="outline" onClick={() => setManagingBooking(booking)} className="rounded-lg">Booking status</Button><a href={booking.phone ? `tel:${booking.phone}` : booking.email ? `mailto:${booking.email}` : undefined} className={cn("inline-flex h-9 items-center rounded-lg border border-slate-200 px-3 text-xs font-medium text-slate-700", !booking.phone && !booking.email && "pointer-events-none opacity-40")}>Contact customer</a></div><Button size="sm" onClick={() => saveOperation(booking)} className="rounded-lg bg-[#333365] text-white hover:bg-[#3d3d78]"><Save className="mr-2 h-3.5 w-3.5" />Save job</Button></div>
                                         </CardContent>
                                     </Card>
                                 })}
-                                {bookings.length === 0 && <Card className="rounded-2xl border-dashed border-slate-300 xl:col-span-2"><CardContent className="p-12 text-center"><CalendarDays className="mx-auto h-8 w-8 text-slate-400" /><h3 className="mt-3 font-semibold text-slate-800">Your job board is clear</h3><p className="mt-1 text-sm text-slate-500">New bookings will appear here when customers submit a request.</p></CardContent></Card>}
+                                {bookings.length === 0 && <Card className="rounded-xl border-dashed border-slate-300 xl:col-span-2"><CardContent className="p-12 text-center"><CalendarDays className="mx-auto h-8 w-8 text-slate-400" /><h3 className="mt-3 font-semibold text-slate-800">Your job board is clear</h3><p className="mt-1 text-sm text-slate-500">New bookings will appear here when customers submit a request.</p></CardContent></Card>}
                             </div>
                         </div>
                     )}
@@ -925,13 +1092,13 @@ export default function AdminDashboardPage() {
                     {/* ── CRM ───────────────────────────────────────────────────────── */}
                     {activeTab === "customers" && (
                         <div className="space-y-6">
-                            <div><p className="text-xs font-bold uppercase tracking-[0.16em] text-cyan-700">Customer relationships</p><h2 className="mt-2 text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl">Leads &amp; customers</h2><p className="mt-2 text-sm text-slate-500">Track enquiries from first contact to booking. Updates are saved on each contact record.</p></div>
-                            <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-5">{["new", "contacted", "quoted", "booked", "closed"].map((stage) => <Card key={stage} className="rounded-2xl border-slate-200/80"><CardContent className="p-4"><p className="text-xs font-semibold uppercase tracking-wide text-slate-500">{stage}</p><p className="mt-2 text-2xl font-semibold text-slate-900">{contacts.filter((contact) => (contact.leadStatus || "new") === stage).length}</p></CardContent></Card>)}</div>
-                            <Card className="overflow-hidden rounded-2xl border-slate-200/80 shadow-sm"><CardContent className="divide-y divide-slate-100 p-0">
+                            <div><p className="text-xs font-bold uppercase tracking-[0.16em] text-slate-500">Customer relationships</p><h2 className="mt-2 text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl">Leads &amp; customers</h2><p className="mt-2 text-sm text-slate-500">Track enquiries from first contact to booking. Updates are saved on each contact record.</p></div>
+                            <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-5">{["new", "contacted", "quoted", "booked", "closed"].map((stage) => <Card key={stage} className="rounded-xl border-slate-200/80"><CardContent className="p-4"><p className="text-xs font-semibold uppercase tracking-wide text-slate-500">{stage}</p><p className="mt-2 text-2xl font-semibold text-slate-900">{contacts.filter((contact) => (contact.leadStatus || "new") === stage).length}</p></CardContent></Card>)}</div>
+                            <Card className="overflow-hidden rounded-xl border-slate-200/80 shadow-sm"><CardContent className="divide-y divide-slate-100 p-0">
                                 {contacts.map((contact) => { const draft = leadDrafts[contact.id] || {}; return <div key={contact.id} className="grid gap-4 p-5 lg:grid-cols-[minmax(180px,0.9fr)_minmax(220px,1.2fr)_minmax(230px,1.2fr)_auto] lg:items-start">
-                                    <div className="min-w-0"><p className="truncate text-sm font-semibold text-slate-900">{contact.name || "Website enquiry"}</p><a className="mt-1 block truncate text-xs text-cyan-800 hover:underline" href={contact.email ? `mailto:${contact.email}` : undefined}>{contact.email || "No email supplied"}</a>{contact.phone && <a className="mt-1 block text-xs text-slate-500" href={`tel:${contact.phone}`}>{contact.phone}</a>}<p className="mt-2 text-[11px] text-slate-400">Received {fmtDate(contact.createdAt)}</p></div>
+                                    <div className="min-w-0"><p className="truncate text-sm font-semibold text-slate-900">{contact.name || "Website enquiry"}</p><a className="mt-1 block truncate text-xs text-slate-700 hover:underline" href={contact.email ? `mailto:${contact.email}` : undefined}>{contact.email || "No email supplied"}</a>{contact.phone && <a className="mt-1 block text-xs text-slate-500" href={`tel:${contact.phone}`}>{contact.phone}</a>}<p className="mt-2 text-[11px] text-slate-400">Received {fmtDate(contact.createdAt)}</p></div>
                                     <div><p className="line-clamp-3 text-sm leading-6 text-slate-600">{contact.message || contact.subject || "No message provided."}</p>{contact.subject && <p className="mt-1 text-xs font-medium text-slate-500">{contact.subject}</p>}</div>
-                                    <div className="space-y-2"><select value={draft.leadStatus ?? contact.leadStatus ?? "new"} onChange={(event) => setLeadDrafts((rows) => ({ ...rows, [contact.id]: { ...rows[contact.id], leadStatus: event.target.value } }))} className="h-9 w-full rounded-lg border border-slate-200 bg-white px-3 text-xs font-medium text-slate-700"><option value="new">New</option><option value="contacted">Contacted</option><option value="quoted">Quoted</option><option value="booked">Booked</option><option value="closed">Closed</option></select><textarea rows={2} value={draft.internalNotes ?? contact.internalNotes ?? ""} onChange={(event) => setLeadDrafts((rows) => ({ ...rows, [contact.id]: { ...rows[contact.id], internalNotes: event.target.value } }))} placeholder="Internal follow-up note" className="w-full resize-y rounded-lg border border-slate-200 px-3 py-2 text-xs outline-none focus:border-cyan-500" /></div>
+                                    <div className="space-y-2"><select value={draft.leadStatus ?? contact.leadStatus ?? "new"} onChange={(event) => setLeadDrafts((rows) => ({ ...rows, [contact.id]: { ...rows[contact.id], leadStatus: event.target.value } }))} className="h-9 w-full rounded-lg border border-slate-200 bg-white px-3 text-xs font-medium text-slate-700"><option value="new">New</option><option value="contacted">Contacted</option><option value="quoted">Quoted</option><option value="booked">Booked</option><option value="closed">Closed</option></select><textarea rows={2} value={draft.internalNotes ?? contact.internalNotes ?? ""} onChange={(event) => setLeadDrafts((rows) => ({ ...rows, [contact.id]: { ...rows[contact.id], internalNotes: event.target.value } }))} placeholder="Internal follow-up note" className="w-full resize-y rounded-lg border border-slate-200 px-3 py-2 text-xs outline-none focus:border-[#333365]" /></div>
                                     <Button size="sm" variant="outline" onClick={() => saveLead(contact)} className="rounded-lg"><Save className="mr-2 h-3.5 w-3.5" />Save</Button>
                                 </div>})}
                                 {contacts.length === 0 && <div className="p-12 text-center"><MessageSquare className="mx-auto h-8 w-8 text-slate-400" /><p className="mt-3 text-sm font-medium text-slate-800">No enquiries yet</p><p className="mt-1 text-xs text-slate-500">Website contact form submissions will appear here.</p></div>}
@@ -942,14 +1109,14 @@ export default function AdminDashboardPage() {
                     {/* ── QUOTES ─────────────────────────────────────────────────────── */}
                     {activeTab === "quotes" && (
                         <div className="space-y-6">
-                            <div><p className="text-xs font-bold uppercase tracking-[0.16em] text-cyan-700">Sales workflow</p><h2 className="mt-2 text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl">Quote builder</h2><p className="mt-2 text-sm text-slate-500">Create and track written estimates. Saving a quote does not send it to the customer.</p></div>
+                            <div><p className="text-xs font-bold uppercase tracking-[0.16em] text-slate-500">Sales workflow</p><h2 className="mt-2 text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl">Quote builder</h2><p className="mt-2 text-sm text-slate-500">Create and track written estimates. Saving a quote does not send it to the customer.</p></div>
                             <div className="grid items-start gap-6 xl:grid-cols-[minmax(0,1fr)_minmax(360px,0.9fr)]">
-                                <Card className="rounded-2xl border-slate-200/80 shadow-sm"><CardHeader className="border-b border-slate-100 px-5 py-4"><CardTitle className="text-base font-semibold">New estimate</CardTitle><p className="text-sm text-slate-500">Enter the amount you approved for this job.</p></CardHeader><CardContent className="p-5"><form onSubmit={handleCreateQuote} className="space-y-4">
+                                <Card className="rounded-xl border-slate-200/80 shadow-sm"><CardHeader className="border-b border-slate-200 px-5 py-4"><CardTitle className="text-base font-semibold">New estimate</CardTitle><p className="text-sm text-slate-500">Enter the amount you approved for this job.</p></CardHeader><CardContent className="p-5"><form onSubmit={handleCreateQuote} className="space-y-4">
                                     <div className="grid gap-3 sm:grid-cols-2"><label className="text-xs font-medium text-slate-600">Customer name<Input required value={quoteDraft.customerName} onChange={(e) => setQuoteDraft((q) => ({ ...q, customerName: e.target.value }))} className="mt-1.5 h-10 rounded-lg" /></label><label className="text-xs font-medium text-slate-600">Service<Input required value={quoteDraft.service} onChange={(e) => setQuoteDraft((q) => ({ ...q, service: e.target.value }))} className="mt-1.5 h-10 rounded-lg" /></label><label className="text-xs font-medium text-slate-600">Email<Input type="email" value={quoteDraft.customerEmail} onChange={(e) => setQuoteDraft((q) => ({ ...q, customerEmail: e.target.value }))} className="mt-1.5 h-10 rounded-lg" /></label><label className="text-xs font-medium text-slate-600">Phone<Input value={quoteDraft.customerPhone} onChange={(e) => setQuoteDraft((q) => ({ ...q, customerPhone: e.target.value }))} className="mt-1.5 h-10 rounded-lg" /></label><label className="text-xs font-medium text-slate-600">Property / suburb<Input value={quoteDraft.propertySize} onChange={(e) => setQuoteDraft((q) => ({ ...q, propertySize: e.target.value }))} className="mt-1.5 h-10 rounded-lg" /></label><label className="text-xs font-medium text-slate-600">Approved quote amount (AUD)<Input required type="number" min="1" step="0.01" value={quoteDraft.amount} onChange={(e) => setQuoteDraft((q) => ({ ...q, amount: e.target.value }))} className="mt-1.5 h-10 rounded-lg" /></label><label className="text-xs font-medium text-slate-600">Bedrooms<Input type="number" min="0" value={quoteDraft.bedrooms} onChange={(e) => setQuoteDraft((q) => ({ ...q, bedrooms: Number(e.target.value) }))} className="mt-1.5 h-10 rounded-lg" /></label><label className="text-xs font-medium text-slate-600">Bathrooms<Input type="number" min="0" value={quoteDraft.bathrooms} onChange={(e) => setQuoteDraft((q) => ({ ...q, bathrooms: Number(e.target.value) }))} className="mt-1.5 h-10 rounded-lg" /></label></div>
                                     <label className="block text-xs font-medium text-slate-600">Add-ons, separated by commas<Input value={quoteDraft.addOns} onChange={(e) => setQuoteDraft((q) => ({ ...q, addOns: e.target.value }))} placeholder="Carpet steam clean, pest treatment" className="mt-1.5 h-10 rounded-lg" /></label>
-                                    <Button type="submit" disabled={quoteSaving} className="w-full rounded-xl bg-slate-900 text-white hover:bg-slate-800"><PlusCircle className="mr-2 h-4 w-4" />{quoteSaving ? "Saving quote…" : "Save quote draft"}</Button>
+                                    <Button type="submit" disabled={quoteSaving} className="w-full rounded-xl bg-[#333365] text-white hover:bg-[#3d3d78]"><PlusCircle className="mr-2 h-4 w-4" />{quoteSaving ? "Saving quote…" : "Save quote draft"}</Button>
                                 </form></CardContent></Card>
-                                <Card className="overflow-hidden rounded-2xl border-slate-200/80 shadow-sm"><CardHeader className="border-b border-slate-100 px-5 py-4"><CardTitle className="text-base font-semibold">Quote pipeline</CardTitle><p className="text-sm text-slate-500">{quotes.length} saved estimates</p></CardHeader><CardContent className="divide-y divide-slate-100 p-0">{quotes.map((quote) => <div key={quote.id} className="space-y-3 p-5"><div className="flex items-start justify-between gap-4"><div><p className="text-sm font-semibold text-slate-900">{quote.customerName}</p><p className="mt-1 text-xs text-slate-500">{quote.service}{quote.propertySize ? ` · ${quote.propertySize}` : ""}</p></div><p className="text-sm font-semibold text-slate-900">A${Number(quote.amount || 0).toLocaleString("en-AU")}</p></div><div className="flex flex-wrap items-center justify-between gap-3"><span className="text-xs text-slate-500">{quote.customerEmail || quote.customerPhone || "No contact details"}</span><div className="flex items-center gap-2"><select aria-label={`Status for quote to ${quote.customerName}`} value={quote.status || "draft"} onChange={(event) => changeQuoteStatus(quote, event.target.value)} className="h-8 rounded-lg border border-slate-200 bg-white px-2 text-xs capitalize"><option value="draft">Draft</option><option value="sent">Sent</option><option value="accepted">Accepted</option><option value="declined">Declined</option></select><Button size="sm" variant="outline" disabled={!quote.customerEmail} onClick={() => { setEmailDraft({ to: quote.customerEmail, subject: `Wave Solution quote: ${quote.service}`, body: `Hi ${quote.customerName},\n\nYour quote for ${quote.service}${quote.propertySize ? ` at ${quote.propertySize}` : ""} is A$${Number(quote.amount || 0).toLocaleString("en-AU")}.\n\nPlease reply if you have any questions.\n\nWave Solution` }); setActiveTab("communications") }} className="h-8 rounded-lg">Compose</Button></div></div></div>)}{quotes.length === 0 && <div className="p-10 text-center text-sm text-slate-500">Quote records will appear here after you save a draft.</div>}</CardContent></Card>
+                                <Card className="overflow-hidden rounded-xl border-slate-200/80 shadow-sm"><CardHeader className="border-b border-slate-200 px-5 py-4"><CardTitle className="text-base font-semibold">Quote pipeline</CardTitle><p className="text-sm text-slate-500">{quotes.length} saved estimates</p></CardHeader><CardContent className="divide-y divide-slate-100 p-0">{quotes.map((quote) => <div key={quote.id} className="space-y-3 p-5"><div className="flex items-start justify-between gap-4"><div><p className="text-sm font-semibold text-slate-900">{quote.customerName}</p><p className="mt-1 text-xs text-slate-500">{quote.service}{quote.propertySize ? ` · ${quote.propertySize}` : ""}</p></div><p className="text-sm font-semibold text-slate-900">A${Number(quote.amount || 0).toLocaleString("en-AU")}</p></div><div className="flex flex-wrap items-center justify-between gap-3"><span className="text-xs text-slate-500">{quote.customerEmail || quote.customerPhone || "No contact details"}</span><div className="flex items-center gap-2"><select aria-label={`Status for quote to ${quote.customerName}`} value={quote.status || "draft"} onChange={(event) => changeQuoteStatus(quote, event.target.value)} className="h-8 rounded-lg border border-slate-200 bg-white px-2 text-xs capitalize"><option value="draft">Draft</option><option value="sent">Sent</option><option value="accepted">Accepted</option><option value="declined">Declined</option></select><Button size="sm" variant="outline" disabled={!quote.customerEmail} onClick={() => { setEmailDraft({ to: quote.customerEmail, subject: `Wave Solution quote: ${quote.service}`, body: `Hi ${quote.customerName},\n\nYour quote for ${quote.service}${quote.propertySize ? ` at ${quote.propertySize}` : ""} is A$${Number(quote.amount || 0).toLocaleString("en-AU")}.\n\nPlease reply if you have any questions.\n\nWave Solution` }); setActiveTab("communications") }} className="h-8 rounded-lg">Compose</Button></div></div></div>)}{quotes.length === 0 && <div className="p-10 text-center text-sm text-slate-500">Quote records will appear here after you save a draft.</div>}</CardContent></Card>
                             </div>
                         </div>
                     )}
@@ -957,18 +1124,18 @@ export default function AdminDashboardPage() {
                     {/* ── INVOICES AND PAYMENT TRACKING ──────────────────────────────── */}
                     {activeTab === "invoices" && (
                         <div className="space-y-6">
-                            <div><p className="text-xs font-bold uppercase tracking-[0.16em] text-cyan-700">Accounts receivable</p><h2 className="mt-2 text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl">Invoices &amp; payments</h2><p className="mt-2 text-sm text-slate-500">Create an invoice from a booking and record payments received. This records payments manually; it does not charge a card.</p></div>
+                            <div><p className="text-xs font-bold uppercase tracking-[0.16em] text-slate-500">Accounts receivable</p><h2 className="mt-2 text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl">Invoices &amp; payments</h2><p className="mt-2 text-sm text-slate-500">Create an invoice from a booking and record payments received. This records payments manually; it does not charge a card.</p></div>
                             <div className="grid gap-4 sm:grid-cols-3">{[
                                 { label: "Outstanding", value: invoices.filter((invoice) => invoice.status !== "paid").reduce((sum, invoice) => sum + Math.max(0, Number(invoice.amountDue || 0) - Number(invoice.amountPaid || 0)), 0) },
                                 { label: "Paid", value: invoices.filter((invoice) => invoice.status === "paid").reduce((sum, invoice) => sum + Number(invoice.amountPaid || 0), 0) },
                                 { label: "Invoices", value: invoices.length },
-                            ].map((metric) => <Card key={metric.label} className="rounded-2xl border-slate-200/80"><CardContent className="p-4"><p className="text-xs font-semibold uppercase tracking-wide text-slate-500">{metric.label}</p><p className="mt-2 text-2xl font-semibold text-slate-900">{typeof metric.value === "number" && metric.label !== "Invoices" ? `A$${metric.value.toLocaleString("en-AU")}` : metric.value}</p></CardContent></Card>)}</div>
-                            <Card className="overflow-hidden rounded-2xl border-slate-200/80 shadow-sm"><CardHeader className="border-b border-slate-100 px-5 py-4"><CardTitle className="text-base font-semibold">Invoice register</CardTitle><p className="text-sm text-slate-500">Create a single invoice per booking, then record payment details below.</p></CardHeader><CardContent className="divide-y divide-slate-100 p-0">
+                            ].map((metric) => <Card key={metric.label} className="rounded-xl border-slate-200/80"><CardContent className="p-4"><p className="text-xs font-semibold uppercase tracking-wide text-slate-500">{metric.label}</p><p className="mt-2 text-2xl font-semibold text-slate-900">{typeof metric.value === "number" && metric.label !== "Invoices" ? `A$${metric.value.toLocaleString("en-AU")}` : metric.value}</p></CardContent></Card>)}</div>
+                            <Card className="overflow-hidden rounded-xl border-slate-200/80 shadow-sm"><CardHeader className="border-b border-slate-200 px-5 py-4"><CardTitle className="text-base font-semibold">Invoice register</CardTitle><p className="text-sm text-slate-500">Create a single invoice per booking, then record payment details below.</p></CardHeader><CardContent className="divide-y divide-slate-100 p-0">
                                 {bookings.map((booking) => {
                                     const invoice = invoices.find((item) => item.bookingId === booking.id || item.id === booking.id)
                                     return <div key={booking.id} className="grid gap-4 p-5 lg:grid-cols-[minmax(180px,1fr)_minmax(200px,1fr)_minmax(260px,1.2fr)_auto] lg:items-center">
                                         <div><p className="text-sm font-semibold text-slate-900">{booking.name || "Customer"}</p><p className="mt-1 text-xs text-slate-500">{booking.package?.category || booking.service || "Cleaning service"}</p></div>
-                                        {invoice ? <><div><p className="text-xs font-semibold text-slate-700">{invoice.invoiceNumber}</p><p className="mt-1 text-xs text-slate-500">Due A${Number(invoice.amountDue || 0).toLocaleString("en-AU")} · Paid A${Number(invoice.amountPaid || 0).toLocaleString("en-AU")}</p><span className={cn("mt-2 inline-flex rounded-full px-2.5 py-1 text-[11px] font-semibold capitalize", invoice.status === "paid" ? "bg-emerald-50 text-emerald-700" : invoice.status === "partial" ? "bg-amber-50 text-amber-700" : "bg-slate-100 text-slate-700")}>{invoice.status}</span></div><div className="grid gap-2 sm:grid-cols-3"><Input type="number" min="0" max={invoice.amountDue} step="0.01" aria-label="Amount received" placeholder="Amount received" value={invoiceDrafts[invoice.id]?.amountPaid ?? invoice.amountPaid ?? ""} onChange={(event) => setInvoiceDrafts((rows) => ({ ...rows, [invoice.id]: { ...rows[invoice.id], amountPaid: event.target.value } }))} className="h-9 rounded-lg text-xs" /><Input aria-label="Payment method" placeholder="Method" value={invoiceDrafts[invoice.id]?.paymentMethod ?? invoice.paymentMethod ?? ""} onChange={(event) => setInvoiceDrafts((rows) => ({ ...rows, [invoice.id]: { ...rows[invoice.id], paymentMethod: event.target.value } }))} className="h-9 rounded-lg text-xs" /><Input aria-label="Payment reference" placeholder="Reference" value={invoiceDrafts[invoice.id]?.paymentReference ?? invoice.paymentReference ?? ""} onChange={(event) => setInvoiceDrafts((rows) => ({ ...rows, [invoice.id]: { ...rows[invoice.id], paymentReference: event.target.value } }))} className="h-9 rounded-lg text-xs" /></div><div className="flex flex-wrap gap-2"><Button size="sm" variant="outline" onClick={() => handleSaveInvoicePayment(invoice)} className="rounded-lg"><Save className="mr-2 h-3.5 w-3.5" />Save payment</Button><Button size="sm" variant="outline" disabled={!invoice.customerEmail} onClick={() => { setEmailDraft({ to: invoice.customerEmail, subject: `Invoice ${invoice.invoiceNumber} from Wave Solution`, body: `Hi ${invoice.customerName},\n\nPlease find the details for invoice ${invoice.invoiceNumber}:\nService: ${invoice.service}\nAmount due: A$${Number(invoice.amountDue || 0).toLocaleString("en-AU")}\n\nPlease contact us if you have any questions.\n\nWave Solution` }); setActiveTab("communications") }} className="rounded-lg">Email invoice</Button></div></> : <><div><p className="text-xs text-slate-500">Booking value</p><p className="mt-1 text-sm font-semibold text-slate-900">A${Number(booking.package?.totalPrice || booking.package?.price || 0).toLocaleString("en-AU")}</p></div><p className="text-xs text-slate-500 lg:col-span-1">Not invoiced</p><Button size="sm" disabled={!Number(booking.package?.totalPrice || booking.package?.price || 0)} onClick={() => handleCreateInvoice(booking)} className="rounded-lg bg-slate-900 text-white hover:bg-slate-800"><PlusCircle className="mr-2 h-3.5 w-3.5" />Create invoice</Button></>}
+                                        {invoice ? <><div><p className="text-xs font-semibold text-slate-700">{invoice.invoiceNumber}</p><p className="mt-1 text-xs text-slate-500">Due A${Number(invoice.amountDue || 0).toLocaleString("en-AU")} · Paid A${Number(invoice.amountPaid || 0).toLocaleString("en-AU")}</p><span className={cn("mt-2 inline-flex rounded-full px-2.5 py-1 text-[11px] font-semibold capitalize", invoice.status === "paid" ? "bg-emerald-50 text-emerald-700" : invoice.status === "partial" ? "bg-amber-50 text-amber-700" : "bg-slate-100 text-slate-700")}>{invoice.status}</span></div><div className="grid gap-2 sm:grid-cols-3"><Input type="number" min="0" max={invoice.amountDue} step="0.01" aria-label="Amount received" placeholder="Amount received" value={invoiceDrafts[invoice.id]?.amountPaid ?? invoice.amountPaid ?? ""} onChange={(event) => setInvoiceDrafts((rows) => ({ ...rows, [invoice.id]: { ...rows[invoice.id], amountPaid: event.target.value } }))} className="h-9 rounded-lg text-xs" /><Input aria-label="Payment method" placeholder="Method" value={invoiceDrafts[invoice.id]?.paymentMethod ?? invoice.paymentMethod ?? ""} onChange={(event) => setInvoiceDrafts((rows) => ({ ...rows, [invoice.id]: { ...rows[invoice.id], paymentMethod: event.target.value } }))} className="h-9 rounded-lg text-xs" /><Input aria-label="Payment reference" placeholder="Reference" value={invoiceDrafts[invoice.id]?.paymentReference ?? invoice.paymentReference ?? ""} onChange={(event) => setInvoiceDrafts((rows) => ({ ...rows, [invoice.id]: { ...rows[invoice.id], paymentReference: event.target.value } }))} className="h-9 rounded-lg text-xs" /></div><div className="flex flex-wrap gap-2"><Button size="sm" variant="outline" onClick={() => handleSaveInvoicePayment(invoice)} className="rounded-lg"><Save className="mr-2 h-3.5 w-3.5" />Save payment</Button><Button size="sm" variant="outline" disabled={!invoice.customerEmail} onClick={() => { setEmailDraft({ to: invoice.customerEmail, subject: `Invoice ${invoice.invoiceNumber} from Wave Solution`, body: `Hi ${invoice.customerName},\n\nPlease find the details for invoice ${invoice.invoiceNumber}:\nService: ${invoice.service}\nAmount due: A$${Number(invoice.amountDue || 0).toLocaleString("en-AU")}\n\nPlease contact us if you have any questions.\n\nWave Solution` }); setActiveTab("communications") }} className="rounded-lg">Email invoice</Button></div></> : <><div><p className="text-xs text-slate-500">Booking value</p><p className="mt-1 text-sm font-semibold text-slate-900">A${Number(booking.package?.totalPrice || booking.package?.price || 0).toLocaleString("en-AU")}</p></div><p className="text-xs text-slate-500 lg:col-span-1">Not invoiced</p><Button size="sm" disabled={!Number(booking.package?.totalPrice || booking.package?.price || 0)} onClick={() => handleCreateInvoice(booking)} className="rounded-lg bg-[#333365] text-white hover:bg-[#3d3d78]"><PlusCircle className="mr-2 h-3.5 w-3.5" />Create invoice</Button></>}
                                     </div>
                                 })}
                                 {bookings.length === 0 && <div className="p-12 text-center text-sm text-slate-500">Bookings appear here when available.</div>}
@@ -979,39 +1146,39 @@ export default function AdminDashboardPage() {
                     {/* ── CUSTOMER EMAIL ────────────────────────────────────────────── */}
                     {activeTab === "communications" && (
                         <div className="space-y-6">
-                            <div><p className="text-xs font-bold uppercase tracking-[0.16em] text-cyan-700">Customer care</p><h2 className="mt-2 text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl">Customer email</h2><p className="mt-2 text-sm text-slate-500">Send a message using the configured SMTP account. Sending requires an admin account and a working SMTP connection.</p></div>
+                            <div><p className="text-xs font-bold uppercase tracking-[0.16em] text-slate-500">Customer care</p><h2 className="mt-2 text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl">Customer email</h2><p className="mt-2 text-sm text-slate-500">Send a message using the configured SMTP account. Sending requires an admin account and a working SMTP connection.</p></div>
                             <div className={cn("flex flex-col justify-between gap-3 rounded-xl border p-4 sm:flex-row sm:items-center", emailConnection?.connected ? "border-emerald-200 bg-emerald-50" : "border-amber-200 bg-amber-50")}><div><p className="text-sm font-semibold text-slate-800">{emailConnection?.connected ? `Email connected${emailConnection.email ? ` · ${emailConnection.email}` : ""}` : "Email is not ready to send"}</p><p className="mt-1 text-xs text-slate-600">{emailConnection?.connected ? "SMTP connection verified. Messages send only when you press Send." : emailConnection?.error || "Checking SMTP configuration…"}</p></div><Button size="sm" variant="outline" onClick={() => void checkEmailConnection()} className="rounded-lg">Check connection</Button></div>
                             <div className="grid items-start gap-6 xl:grid-cols-[minmax(0,1fr)_minmax(320px,0.8fr)]">
-                                <Card className="rounded-2xl border-slate-200/80 shadow-sm"><CardHeader className="border-b border-slate-100 px-5 py-4"><CardTitle className="text-base font-semibold">Compose message</CardTitle><p className="text-sm text-slate-500">Email is sent immediately after confirmation by clicking Send.</p></CardHeader><CardContent className="p-5"><form onSubmit={handleSendCustomerEmail} className="space-y-4"><label className="block text-xs font-medium text-slate-600">To<Input required type="email" value={emailDraft.to} onChange={(event) => setEmailDraft((draft) => ({ ...draft, to: event.target.value }))} className="mt-1.5 h-10 rounded-lg" /></label><label className="block text-xs font-medium text-slate-600">Subject<Input required maxLength={180} value={emailDraft.subject} onChange={(event) => setEmailDraft((draft) => ({ ...draft, subject: event.target.value }))} className="mt-1.5 h-10 rounded-lg" /></label><label className="block text-xs font-medium text-slate-600">Message<Textarea required maxLength={12000} rows={9} value={emailDraft.body} onChange={(event) => setEmailDraft((draft) => ({ ...draft, body: event.target.value }))} className="mt-1.5 rounded-lg" /></label><Button type="submit" disabled={emailSending || !emailDraft.to || !emailDraft.subject || !emailDraft.body} className="w-full rounded-xl bg-slate-900 text-white hover:bg-slate-800"><Send className="mr-2 h-4 w-4" />{emailSending ? "Sending…" : "Send email"}</Button></form></CardContent></Card>
-                                <div className="space-y-6"><Card className="overflow-hidden rounded-2xl border-slate-200/80 shadow-sm"><CardHeader className="border-b border-slate-100 px-5 py-4"><CardTitle className="text-base font-semibold">Recent email history</CardTitle></CardHeader><CardContent className="divide-y divide-slate-100 p-0">{emailRecords.slice(0, 8).map((record) => <div key={record.id} className="p-4"><p className="truncate text-sm font-medium text-slate-800">{record.subject}</p><p className="mt-1 truncate text-xs text-slate-500">To {record.to}</p><p className="mt-1 text-[11px] text-slate-400">{fmtDate(record.createdAt)} · {record.status}</p></div>)}{emailRecords.length === 0 && <p className="p-8 text-center text-xs text-slate-500">Sent customer messages are listed here.</p>}</CardContent></Card>
-                                <Card className="overflow-hidden rounded-2xl border-slate-200/80 shadow-sm"><CardHeader className="border-b border-slate-100 px-5 py-4"><CardTitle className="text-base font-semibold">Start from an enquiry</CardTitle></CardHeader><CardContent className="divide-y divide-slate-100 p-0">{contacts.slice(0, 8).map((contact) => <div key={contact.id} className="flex items-center justify-between gap-3 p-4"><div className="min-w-0"><p className="truncate text-sm font-medium text-slate-800">{contact.name || "Enquiry"}</p><p className="truncate text-xs text-slate-500">{contact.email || "No email"}</p></div><Button size="sm" variant="outline" disabled={!contact.email} onClick={() => setEmailDraft({ to: contact.email, subject: `Re: ${contact.subject || "Your Wave Solution enquiry"}`, body: `Hi ${contact.name || "there"},\n\nThanks for getting in touch with Wave Solution.\n\n` })} className="shrink-0 rounded-lg">Compose</Button></div>)}{contacts.length === 0 && <p className="p-8 text-center text-xs text-slate-500">Enquiries will be available here.</p>}</CardContent></Card></div>
+                                <Card className="rounded-xl border-slate-200/80 shadow-sm"><CardHeader className="border-b border-slate-200 px-5 py-4"><CardTitle className="text-base font-semibold">Compose message</CardTitle><p className="text-sm text-slate-500">Email is sent immediately after confirmation by clicking Send.</p></CardHeader><CardContent className="p-5"><form onSubmit={handleSendCustomerEmail} className="space-y-4"><label className="block text-xs font-medium text-slate-600">To<Input required type="email" value={emailDraft.to} onChange={(event) => setEmailDraft((draft) => ({ ...draft, to: event.target.value }))} className="mt-1.5 h-10 rounded-lg" /></label><label className="block text-xs font-medium text-slate-600">Subject<Input required maxLength={180} value={emailDraft.subject} onChange={(event) => setEmailDraft((draft) => ({ ...draft, subject: event.target.value }))} className="mt-1.5 h-10 rounded-lg" /></label><label className="block text-xs font-medium text-slate-600">Message<Textarea required maxLength={12000} rows={9} value={emailDraft.body} onChange={(event) => setEmailDraft((draft) => ({ ...draft, body: event.target.value }))} className="mt-1.5 rounded-lg" /></label><Button type="submit" disabled={emailSending || !emailDraft.to || !emailDraft.subject || !emailDraft.body} className="w-full rounded-xl bg-[#333365] text-white hover:bg-[#3d3d78]"><Send className="mr-2 h-4 w-4" />{emailSending ? "Sending…" : "Send email"}</Button></form></CardContent></Card>
+                                <div className="space-y-6"><Card className="overflow-hidden rounded-xl border-slate-200/80 shadow-sm"><CardHeader className="border-b border-slate-200 px-5 py-4"><CardTitle className="text-base font-semibold">Recent email history</CardTitle></CardHeader><CardContent className="divide-y divide-slate-100 p-0">{emailRecords.slice(0, 8).map((record) => <div key={record.id} className="p-4"><p className="truncate text-sm font-medium text-slate-800">{record.subject}</p><p className="mt-1 truncate text-xs text-slate-500">To {record.to}</p><p className="mt-1 text-[11px] text-slate-400">{fmtDate(record.createdAt)} · {record.status}</p></div>)}{emailRecords.length === 0 && <p className="p-8 text-center text-xs text-slate-500">Sent customer messages are listed here.</p>}</CardContent></Card>
+                                <Card className="overflow-hidden rounded-xl border-slate-200/80 shadow-sm"><CardHeader className="border-b border-slate-200 px-5 py-4"><CardTitle className="text-base font-semibold">Start from an enquiry</CardTitle></CardHeader><CardContent className="divide-y divide-slate-100 p-0">{contacts.slice(0, 8).map((contact) => <div key={contact.id} className="flex items-center justify-between gap-3 p-4"><div className="min-w-0"><p className="truncate text-sm font-medium text-slate-800">{contact.name || "Enquiry"}</p><p className="truncate text-xs text-slate-500">{contact.email || "No email"}</p></div><Button size="sm" variant="outline" disabled={!contact.email} onClick={() => setEmailDraft({ to: contact.email, subject: `Re: ${contact.subject || "Your Wave Solution enquiry"}`, body: `Hi ${contact.name || "there"},\n\nThanks for getting in touch with Wave Solution.\n\n` })} className="shrink-0 rounded-lg">Compose</Button></div>)}{contacts.length === 0 && <p className="p-8 text-center text-xs text-slate-500">Enquiries will be available here.</p>}</CardContent></Card></div>
                             </div>
                         </div>
                     )}
 
                     {/* ── ACTIVITY ───────────────────────────────────────────────────── */}
                     {activeTab === "activity" && (
-                        <div className="space-y-6"><div><p className="text-xs font-bold uppercase tracking-[0.16em] text-cyan-700">Governance</p><h2 className="mt-2 text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl">Activity log</h2><p className="mt-2 text-sm text-slate-500">Recent changes recorded by this admin dashboard.</p></div><Card className="overflow-hidden rounded-2xl border-slate-200/80 shadow-sm"><CardContent className="divide-y divide-slate-100 p-0">{auditLog.map((entry) => <div key={entry.id} className="grid gap-2 p-5 sm:grid-cols-[1fr_auto] sm:items-center"><div><p className="text-sm font-semibold text-slate-900">{entry.action}</p><p className="mt-1 text-xs text-slate-600">{entry.details}</p><p className="mt-1 text-[11px] text-slate-400">{entry.actor} · {entry.target}</p></div><span className="text-xs text-slate-500">{fmtDate(entry.createdAt)}</span></div>)}{auditLog.length === 0 && <div className="p-12 text-center"><Activity className="mx-auto h-8 w-8 text-slate-400" /><p className="mt-3 text-sm font-medium text-slate-800">No activity has been logged yet</p><p className="mt-1 text-xs text-slate-500">Booking, lead and quote updates from this workspace will be recorded here.</p></div>}</CardContent></Card></div>
+                        <div className="space-y-6"><div><p className="text-xs font-bold uppercase tracking-[0.16em] text-slate-500">Governance</p><h2 className="mt-2 text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl">Activity log</h2><p className="mt-2 text-sm text-slate-500">Recent changes recorded by this admin dashboard.</p></div><Card className="overflow-hidden rounded-xl border-slate-200/80 shadow-sm"><CardContent className="divide-y divide-slate-100 p-0">{auditLog.map((entry) => <div key={entry.id} className="grid gap-2 p-5 sm:grid-cols-[1fr_auto] sm:items-center"><div><p className="text-sm font-semibold text-slate-900">{entry.action}</p><p className="mt-1 text-xs text-slate-600">{entry.details}</p><p className="mt-1 text-[11px] text-slate-400">{entry.actor} · {entry.target}</p></div><span className="text-xs text-slate-500">{fmtDate(entry.createdAt)}</span></div>)}{auditLog.length === 0 && <div className="p-12 text-center"><Activity className="mx-auto h-8 w-8 text-slate-400" /><p className="mt-3 text-sm font-medium text-slate-800">No activity has been logged yet</p><p className="mt-1 text-xs text-slate-500">Booking, lead and quote updates from this workspace will be recorded here.</p></div>}</CardContent></Card></div>
                     )}
 
                     {/* ── BOOKINGS ───────────────────────────────────────────────────── */}
                     {activeTab === "bookings" && (
-                        <div className="space-y-8 animate-in fade-in slide-in-from-right-6 duration-700">
+                        <div className="space-y-8 ">
                             <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
                                 <div className="space-y-1">
-                                    <h2 className="text-3xl font-bold text-slate-900 tracking-tight">Bookings Management</h2>
-                                    <p className="text-slate-500 font-medium text-base">Detailed overview of all client requests.</p>
+                                    <h2 className="text-2xl font-semibold tracking-tight text-slate-900">Bookings register</h2>
+                                    <p className="text-sm text-slate-500">Every client request, with status and payment details.</p>
                                 </div>
-                                <div className="relative w-full md:w-80">
-                                    <Search className="absolute left-5 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                                    <Input placeholder="Search by name or package..." className="h-14 pl-12 rounded-2xl border-gray-100 bg-white focus:ring-primary/10 shadow-sm" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
+                                <div className="relative w-full md:w-72">
+                                    <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
+                                    <Input placeholder="Search by name or package..." className="h-10 rounded-lg border-slate-300 bg-white pl-9 text-sm shadow-none focus-visible:border-[#333365] focus-visible:ring-2 focus-visible:ring-[#333365]/15 focus-visible:ring-offset-0" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
                                 </div>
                             </div>
-                            <Card className="border border-slate-100 shadow-sm bg-white rounded-2xl overflow-hidden">
+                            <Card className="border border-slate-200 shadow-sm bg-white rounded-xl overflow-hidden">
                                 <CardContent className="p-0">
                                     <div className="overflow-x-auto">
                                         <table className="w-full text-left border-collapse">
-                                            <thead className="bg-slate-50 border-b border-slate-100">
+                                            <thead className="bg-slate-50 border-b border-slate-200">
                                                 <tr>
                                                     <th className="px-6 py-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">Client</th>
                                                     <th className="px-6 py-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">Service</th>
@@ -1020,12 +1187,12 @@ export default function AdminDashboardPage() {
                                                     <th className="px-6 py-4 text-xs font-semibold text-slate-500 uppercase tracking-wider text-right">Actions</th>
                                                 </tr>
                                             </thead>
-                                            <tbody className="divide-y divide-slate-50">
+                                            <tbody className="divide-y divide-slate-100">
                                                 {filteredBookings.map((booking, i) => (
                                                     <tr key={i} className="hover:bg-slate-50/50 transition-colors">
                                                         <td className="px-6 py-4">
                                                             <div className="flex items-center gap-3">
-                                                                <div className="h-9 w-9 rounded-full bg-blue-50 flex items-center justify-center text-blue-600 font-bold text-sm">{booking.name?.charAt(0) || "?"}</div>
+                                                                <div className="h-9 w-9 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 font-semibold text-sm">{booking.name?.charAt(0) || "?"}</div>
                                                                 <div>
                                                                     <p className="font-semibold text-slate-900 text-sm">{booking.name}</p>
                                                                     <p className="text-xs text-slate-400">{fmtDate(booking.createdAt)}</p>
@@ -1060,16 +1227,16 @@ export default function AdminDashboardPage() {
 
                     {/* ── USERS ─────────────────────────────────────────────────────── */}
                     {activeTab === "users" && (
-                        <div className="space-y-8 animate-in fade-in slide-in-from-right-6 duration-700">
+                        <div className="space-y-8 ">
                             <div className="space-y-1">
-                                <h2 className="text-3xl font-bold text-slate-900 tracking-tight">User Management</h2>
-                                <p className="text-slate-500 font-medium text-base">{users.length} registered users.</p>
+                                <h2 className="text-2xl font-semibold tracking-tight text-slate-900">Team & access</h2>
+                                <p className="text-sm text-slate-500">{users.length} registered users.</p>
                             </div>
-                            <Card className="border border-slate-100 shadow-sm bg-white rounded-2xl overflow-hidden">
+                            <Card className="border border-slate-200 shadow-sm bg-white rounded-xl overflow-hidden">
                                 <CardContent className="p-0">
                                     <div className="overflow-x-auto">
                                         <table className="w-full text-left border-collapse">
-                                            <thead className="bg-slate-50 border-b border-slate-100">
+                                            <thead className="bg-slate-50 border-b border-slate-200">
                                                 <tr>
                                                     <th className="px-6 py-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">User</th>
                                                     <th className="px-6 py-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">Email</th>
@@ -1078,12 +1245,12 @@ export default function AdminDashboardPage() {
                                                     <th className="px-6 py-4 text-xs font-semibold text-slate-500 uppercase tracking-wider text-right">Change Role</th>
                                                 </tr>
                                             </thead>
-                                            <tbody className="divide-y divide-slate-50">
+                                            <tbody className="divide-y divide-slate-100">
                                                 {users.map((u, i) => (
                                                     <tr key={i} className="hover:bg-slate-50/50 transition-colors">
                                                         <td className="px-6 py-4">
                                                             <div className="flex items-center gap-3">
-                                                                <div className="h-9 w-9 rounded-full bg-indigo-50 flex items-center justify-center text-indigo-600 font-bold text-sm">{u.name?.charAt(0) || "?"}</div>
+                                                                <div className="h-9 w-9 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 font-semibold text-sm">{u.name?.charAt(0) || "?"}</div>
                                                                 <p className="font-semibold text-slate-900 text-sm">{u.name || "Unknown"}</p>
                                                             </div>
                                                         </td>
@@ -1091,7 +1258,7 @@ export default function AdminDashboardPage() {
                                                         <td className="px-6 py-4 text-sm text-slate-500">{fmtDate(u.createdAt)}</td>
                                                         <td className="px-6 py-4">
                                                             <span className={cn("inline-flex items-center rounded-full px-2.5 py-1 text-xs font-semibold ring-1 ring-inset capitalize",
-                                                                u.role === "admin" ? "bg-purple-50 text-purple-700 ring-purple-600/20" : "bg-slate-50 text-slate-600 ring-slate-200"
+                                                                u.role === "admin" ? "bg-[#333365]/10 text-[#333365] ring-[#333365]/20" : "bg-slate-50 text-slate-600 ring-slate-200"
                                                             )}>{u.role || "user"}</span>
                                                         </td>
                                                         <td className="px-6 py-4 text-right">
@@ -1114,15 +1281,15 @@ export default function AdminDashboardPage() {
 
                     {/* ── COUPONS ───────────────────────────────────────────────────── */}
                     {activeTab === "coupons" && (
-                        <div className="space-y-8 animate-in fade-in slide-in-from-right-6 duration-700">
+                        <div className="space-y-8 ">
                             <div className="space-y-1">
-                                <h2 className="text-3xl font-bold text-slate-900 tracking-tight">Coupon Management</h2>
-                                <p className="text-slate-500 font-medium text-base">Create and manage discount codes.</p>
+                                <h2 className="text-2xl font-semibold tracking-tight text-slate-900">Coupons & discounts</h2>
+                                <p className="text-sm text-slate-500">Create and manage discount codes.</p>
                             </div>
 
-                            <Card className="border border-slate-100 shadow-sm bg-white rounded-2xl overflow-hidden">
+                            <Card className="border border-slate-200 shadow-sm bg-white rounded-xl overflow-hidden">
                                 <CardHeader className="border-b border-slate-50 p-6">
-                                    <CardTitle className="text-base font-bold text-slate-900 flex items-center gap-2"><Plus className="h-4 w-4" /> Create New Coupon</CardTitle>
+                                    <CardTitle className="text-base font-semibold text-slate-900 flex items-center gap-2"><Plus className="h-4 w-4" /> Create New Coupon</CardTitle>
                                 </CardHeader>
                                 <CardContent className="p-6">
                                     <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
@@ -1131,17 +1298,17 @@ export default function AdminDashboardPage() {
                                         <Input value={couponExpiry} onChange={(e) => setCouponExpiry(e.target.value)} type="date" placeholder="Expiry date" className="h-11 rounded-xl" />
                                         <Input value={couponMaxUses} onChange={(e) => setCouponMaxUses(e.target.value)} type="number" min="1" placeholder="Max uses (optional)" className="h-11 rounded-xl" />
                                     </div>
-                                    <Button onClick={handleSaveCoupon} disabled={couponSaving} className="mt-4 h-11 rounded-xl bg-slate-900 text-white hover:bg-slate-800">
+                                    <Button onClick={handleSaveCoupon} disabled={couponSaving} className="mt-4 h-11 rounded-xl bg-[#333365] text-white hover:bg-[#3d3d78]">
                                         {couponSaving ? "Saving..." : "Create Coupon"}
                                     </Button>
                                 </CardContent>
                             </Card>
 
-                            <Card className="border border-slate-100 shadow-sm bg-white rounded-2xl overflow-hidden">
+                            <Card className="border border-slate-200 shadow-sm bg-white rounded-xl overflow-hidden">
                                 <CardContent className="p-0">
                                     <div className="overflow-x-auto">
                                         <table className="w-full text-left border-collapse">
-                                            <thead className="bg-slate-50 border-b border-slate-100">
+                                            <thead className="bg-slate-50 border-b border-slate-200">
                                                 <tr>
                                                     <th className="px-6 py-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">Code</th>
                                                     <th className="px-6 py-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">Discount</th>
@@ -1150,10 +1317,10 @@ export default function AdminDashboardPage() {
                                                     <th className="px-6 py-4 text-xs font-semibold text-slate-500 uppercase tracking-wider text-right">Actions</th>
                                                 </tr>
                                             </thead>
-                                            <tbody className="divide-y divide-slate-50">
+                                            <tbody className="divide-y divide-slate-100">
                                                 {coupons.map((c, i) => (
                                                     <tr key={i} className="hover:bg-slate-50/50 transition-colors">
-                                                        <td className="px-6 py-4"><span className="font-mono font-bold text-slate-900 bg-slate-100 px-2 py-1 rounded-md text-sm">{c.code}</span></td>
+                                                        <td className="px-6 py-4"><span className="font-mono font-semibold text-slate-900 bg-slate-100 px-2 py-1 rounded-md text-sm">{c.code}</span></td>
                                                         <td className="px-6 py-4 font-semibold text-emerald-700 text-sm">{c.discount}% off</td>
                                                         <td className="px-6 py-4 text-sm text-slate-500">{c.expiry || "No expiry"}</td>
                                                         <td className="px-6 py-4 text-sm text-slate-600">{c.usedCount || 0} / {c.maxUses || "∞"}</td>
@@ -1177,21 +1344,21 @@ export default function AdminDashboardPage() {
 
                     {/* ── PRICING ───────────────────────────────────────────────────── */}
                     {activeTab === "pricing" && (
-                        <div className="space-y-8 animate-in fade-in slide-in-from-right-6 duration-700">
+                        <div className="space-y-8 ">
                             <div className="space-y-1">
-                                <h2 className="text-3xl font-bold text-slate-900 tracking-tight">Pricing Overview</h2>
-                                <p className="text-slate-500 font-medium text-base">Revenue breakdown from all bookings.</p>
+                                <h2 className="text-2xl font-semibold tracking-tight text-slate-900">Pricing analysis</h2>
+                                <p className="text-sm text-slate-500">Revenue breakdown from all bookings.</p>
                             </div>
 
                             {/* Revenue by service category */}
-                            <Card className="border border-slate-100 shadow-sm bg-white rounded-2xl overflow-hidden">
+                            <Card className="border border-slate-200 shadow-sm bg-white rounded-xl overflow-hidden">
                                 <CardHeader className="border-b border-slate-50 p-6">
-                                    <CardTitle className="text-base font-bold text-slate-900">Revenue by Service Category</CardTitle>
+                                    <CardTitle className="text-base font-semibold text-slate-900">Revenue by Service Category</CardTitle>
                                 </CardHeader>
                                 <CardContent className="p-0">
                                     <div className="overflow-x-auto">
                                         <table className="w-full text-left border-collapse">
-                                            <thead className="bg-slate-50 border-b border-slate-100">
+                                            <thead className="bg-slate-50 border-b border-slate-200">
                                                 <tr>
                                                     <th className="px-6 py-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">Category</th>
                                                     <th className="px-6 py-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">Bookings</th>
@@ -1199,7 +1366,7 @@ export default function AdminDashboardPage() {
                                                     <th className="px-6 py-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">Recorded booking value</th>
                                                 </tr>
                                             </thead>
-                                            <tbody className="divide-y divide-slate-50">
+                                            <tbody className="divide-y divide-slate-100">
                                                 {(() => {
                                                     const byCategory: Record<string, { count: number; revenue: number }> = {}
                                                     bookings.forEach((b) => {
@@ -1234,11 +1401,11 @@ export default function AdminDashboardPage() {
                                     { label: "Total Bookings", value: bookings.length, color: "blue" },
                                     { label: "Average booking value", value: bookings.length > 0 ? "A$" + Math.round(totalRevenue / bookings.length).toLocaleString("en-AU") : "—", color: "indigo" },
                                 ].map((s, i) => (
-                                    <div key={i} className={cn("rounded-2xl p-6 border",
+                                    <div key={i} className={cn("rounded-xl p-6 border",
                                         s.color === "emerald" ? "bg-emerald-50 border-emerald-100" : s.color === "blue" ? "bg-blue-50 border-blue-100" : "bg-indigo-50 border-indigo-100"
                                     )}>
                                         <p className="text-xs font-bold uppercase tracking-wide text-slate-500">{s.label}</p>
-                                        <p className={cn("text-2xl font-bold mt-1",
+                                        <p className={cn("text-2xl font-semibold mt-1",
                                             s.color === "emerald" ? "text-emerald-700" : s.color === "blue" ? "text-blue-700" : "text-indigo-700"
                                         )}>{s.value}</p>
                                     </div>
@@ -1249,12 +1416,12 @@ export default function AdminDashboardPage() {
 
                     {/* ── POSTS ─────────────────────────────────────────────────────── */}
                     {activeTab === "posts" && (
-                        <div className="space-y-8 animate-in fade-in slide-in-from-right-6 duration-700">
-                            <div className="flex flex-col justify-between gap-3 sm:flex-row sm:items-end"><div><p className="text-xs font-bold uppercase tracking-[0.16em] text-cyan-700">Publishing studio</p><h2 className="mt-2 text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl">Blog &amp; content</h2><p className="mt-2 text-sm text-slate-500">Draft, edit, preview metadata and publish posts.</p></div><span className="rounded-full bg-slate-100 px-3 py-1.5 text-xs font-medium text-slate-600">{posts.length} CMS records</span></div>
+                        <div className="space-y-8 ">
+                            <div className="flex flex-col justify-between gap-3 sm:flex-row sm:items-end"><div><p className="text-xs font-bold uppercase tracking-[0.16em] text-slate-500">Publishing studio</p><h2 className="mt-2 text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl">Blog &amp; content</h2><p className="mt-2 text-sm text-slate-500">Draft, edit, preview metadata and publish posts.</p></div><span className="rounded-full bg-slate-100 px-3 py-1.5 text-xs font-medium text-slate-600">{posts.length} CMS records</span></div>
 
-                            <Card className="border border-slate-100 shadow-sm bg-white rounded-2xl overflow-hidden">
+                            <Card className="border border-slate-200 shadow-sm bg-white rounded-xl overflow-hidden">
                                 <CardHeader className="border-b border-slate-50 p-6">
-                                    <CardTitle className="text-base font-bold text-slate-900 flex items-center gap-2">{editingPost ? <FileText className="h-4 w-4" /> : <Plus className="h-4 w-4" />}{editingPost ? "Edit post" : "New post"}</CardTitle>
+                                    <CardTitle className="text-base font-semibold text-slate-900 flex items-center gap-2">{editingPost ? <FileText className="h-4 w-4" /> : <Plus className="h-4 w-4" />}{editingPost ? "Edit post" : "New post"}</CardTitle>
                                 </CardHeader>
                                 <CardContent className="grid gap-6 p-5 xl:grid-cols-[minmax(0,1fr)_minmax(280px,0.7fr)] sm:p-6">
                                     <div className="space-y-4">
@@ -1266,14 +1433,14 @@ export default function AdminDashboardPage() {
                                         <div className="rounded-xl border border-slate-200 bg-slate-50 p-4"><p className="text-xs font-semibold text-slate-800">Search preview</p><p className="mt-3 truncate text-sm font-semibold text-blue-800">{postSeoTitle || postTitle || "Your article title"}</p><p className="mt-1 truncate text-[11px] text-emerald-800">wavesolution.com.au/blog/{editingPost?.slug || (postTitle.toLowerCase().trim().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "") || "your-article-slug")}</p><p className="mt-1 line-clamp-2 text-xs leading-5 text-slate-600">{postSeoDescription || postExcerpt || "Your description preview will appear here."}</p></div>
                                         <label className="block text-xs font-medium text-slate-600">Meta title<Input maxLength={70} value={postSeoTitle} onChange={(e) => setPostSeoTitle(e.target.value)} placeholder="Search result title" className="mt-1.5 h-10 rounded-lg" /><span className="mt-1 block text-right text-[11px] text-slate-400">{postSeoTitle.length}/70</span></label>
                                         <label className="block text-xs font-medium text-slate-600">Meta description<Textarea maxLength={160} value={postSeoDescription} onChange={(e) => setPostSeoDescription(e.target.value)} placeholder="Short description for search results" className="mt-1.5 min-h-[82px] rounded-lg text-sm" /><span className="mt-1 block text-right text-[11px] text-slate-400">{postSeoDescription.length}/160</span></label>
-                                        <div className="flex gap-2"><Button onClick={handleSavePost} disabled={postSaving} className="h-10 flex-1 rounded-xl bg-slate-900 text-white hover:bg-slate-800"><Save className="mr-2 h-4 w-4" />{postSaving ? "Saving…" : editingPost ? "Save changes" : "Save draft"}</Button>{editingPost && <Button variant="outline" onClick={clearPostEditor} className="h-10 rounded-xl">Cancel</Button>}</div>
+                                        <div className="flex gap-2"><Button onClick={handleSavePost} disabled={postSaving} className="h-10 flex-1 rounded-xl bg-[#333365] text-white hover:bg-[#3d3d78]"><Save className="mr-2 h-4 w-4" />{postSaving ? "Saving…" : editingPost ? "Save changes" : "Save draft"}</Button>{editingPost && <Button variant="outline" onClick={clearPostEditor} className="h-10 rounded-xl">Cancel</Button>}</div>
                                     </div>
                                 </CardContent>
                             </Card>
 
-                            <Card className="border border-slate-100 shadow-sm bg-white rounded-2xl overflow-hidden">
+                            <Card className="border border-slate-200 shadow-sm bg-white rounded-xl overflow-hidden">
                                 <CardContent className="p-0">
-                                    <div className="divide-y divide-slate-50">
+                                    <div className="divide-y divide-slate-100">
                                         {posts.map((post, i) => (
                                             <div key={i} className="p-6 flex items-start justify-between gap-4 hover:bg-slate-50/50 transition-colors">
                                                 <div className="flex-1 min-w-0">
@@ -1308,11 +1475,11 @@ export default function AdminDashboardPage() {
 
                     {/* ── SEO ───────────────────────────────────────────────────────── */}
                     {activeTab === "seo" && (
-                        <div className="space-y-8 animate-in fade-in slide-in-from-right-6 duration-700">
+                        <div className="space-y-8 ">
                             <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
                                 <div className="space-y-1">
-                                    <h2 className="text-3xl font-bold text-slate-900 tracking-tight">SEO & Backlink Dashboard</h2>
-                                    <p className="text-slate-500 font-medium text-base">Track backlinks, partnerships, and SEO metrics.</p>
+                                    <h2 className="text-2xl font-semibold tracking-tight text-slate-900">SEO & backlinks</h2>
+                                    <p className="text-sm text-slate-500">Track backlinks, partnerships, and SEO metrics.</p>
                                 </div>
                                 <div className="flex items-center gap-2 bg-slate-100 px-3.5 py-1.5 rounded-xl border border-slate-200">
                                     <Link2 className="h-4 w-4 text-slate-600" />
@@ -1328,9 +1495,9 @@ export default function AdminDashboardPage() {
                                     { label: "Customer enquiries", value: String(contacts.length), sub: "Contact form records", subColor: "text-slate-600", icon: <Users className="h-5 w-5 text-blue-600" />, border: "border-slate-200/80", bg: "bg-blue-50" },
                                     { label: "Search Console Status", value: "Verified", sub: "Gold Coast Sitemap Active", subColor: "text-emerald-700", icon: <TrendingUp className="h-5 w-5 text-slate-700" />, border: "border-slate-200/80", bg: "bg-slate-100" },
                                 ].map((m, i) => (
-                                    <div key={i} className={cn("relative overflow-hidden bg-white p-5 rounded-2xl border shadow-xs transition-all hover:border-slate-300", m.border)}>
+                                    <div key={i} className={cn("relative overflow-hidden bg-white p-5 rounded-xl border shadow-sm transition-all hover:border-slate-300", m.border)}>
                                         <div className="flex items-start justify-between">
-                                            <div><p className="text-xs font-semibold uppercase tracking-wider text-slate-500">{m.label}</p><h3 className="mt-2 text-2xl font-bold text-slate-900">{m.value}</h3></div>
+                                            <div><p className="text-xs font-semibold uppercase tracking-wider text-slate-500">{m.label}</p><h3 className="mt-2 text-2xl font-semibold text-slate-900">{m.value}</h3></div>
                                             <div className={cn("p-2.5 rounded-xl", m.bg)}>{m.icon}</div>
                                         </div>
                                         <div className="mt-3 text-xs"><span className={cn("font-medium", m.subColor)}>{m.sub}</span></div>
@@ -1339,12 +1506,12 @@ export default function AdminDashboardPage() {
                             </div>
 
                             {/* Quick Actions */}
-                            <Card className="border border-slate-200/80 bg-white rounded-2xl shadow-xs overflow-hidden">
-                                <CardHeader className="border-b border-slate-100 p-5">
+                            <Card className="border border-slate-200/80 bg-white rounded-xl shadow-sm overflow-hidden">
+                                <CardHeader className="border-b border-slate-200 p-5">
                                     <div className="flex items-center gap-3">
                                         <div className="p-2 bg-slate-100 rounded-xl"><Link2 className="h-4 w-4 text-slate-700" /></div>
                                         <div>
-                                            <CardTitle className="text-base font-bold text-slate-900">Outreach & Directory Shortcuts</CardTitle>
+                                            <CardTitle className="text-base font-semibold text-slate-900">Outreach & Directory Shortcuts</CardTitle>
                                             <p className="text-xs text-slate-500 mt-0.5">Quick access to partner acquisition tools and analytics</p>
                                         </div>
                                     </div>
@@ -1383,17 +1550,17 @@ export default function AdminDashboardPage() {
                                 </CardContent>
                             </Card>
 
-                            <Card className="rounded-2xl border-slate-200/80 bg-white shadow-sm">
-                                <CardHeader className="border-b border-slate-100 px-5 py-4"><CardTitle className="text-base font-semibold text-slate-900">Search and backlink integrations</CardTitle><p className="mt-1 text-sm text-slate-500">This workspace does not currently receive Search Console, analytics or backlink provider data.</p></CardHeader>
+                            <Card className="rounded-xl border-slate-200/80 bg-white shadow-sm">
+                                <CardHeader className="border-b border-slate-200 px-5 py-4"><CardTitle className="text-base font-semibold text-slate-900">Search and backlink integrations</CardTitle><p className="mt-1 text-sm text-slate-500">This workspace does not currently receive Search Console, analytics or backlink provider data.</p></CardHeader>
                                 <CardContent className="flex flex-col justify-between gap-4 p-5 sm:flex-row sm:items-center"><div><p className="text-sm font-medium text-slate-800">Connect a provider before relying on search or backlink metrics.</p><p className="mt-1 text-xs text-slate-500">Blog records and contact enquiries shown above come from this site. External ranking data is not available here.</p></div><Button variant="outline" className="shrink-0 rounded-lg" onClick={() => setActiveTab("posts")}>Open content studio</Button></CardContent>
                             </Card>
 
                             {/* Partnership Pipeline */}
-                            <Card className="border border-slate-100 shadow-sm bg-white rounded-2xl overflow-hidden">
+                            <Card className="border border-slate-200 shadow-sm bg-white rounded-xl overflow-hidden">
                                 <CardHeader className="border-b border-slate-50 p-6 bg-white">
                                     <div className="flex items-center justify-between">
                                         <div>
-                                            <CardTitle className="text-lg font-bold text-slate-900">Enquiry pipeline</CardTitle>
+                                            <CardTitle className="text-lg font-semibold text-slate-900">Enquiry pipeline</CardTitle>
                                             <p className="text-slate-500 text-sm mt-1">Live stages from contact form records</p>
                                         </div>
                                         <Button variant="outline" size="sm" className="text-xs font-medium border-slate-200" onClick={() => setActiveTab("customers")}>Manage leads</Button>
@@ -1411,7 +1578,7 @@ export default function AdminDashboardPage() {
                                             <div key={i} className={cn("p-4 rounded-xl text-center border",
                                                 stage.color === "slate" ? "bg-slate-50 border-slate-200" : stage.color === "blue" ? "bg-blue-50 border-blue-200" : stage.color === "indigo" ? "bg-indigo-50 border-indigo-200" : stage.color === "purple" ? "bg-purple-50 border-purple-200" : stage.color === "green" ? "bg-green-50 border-green-200" : "bg-emerald-50 border-emerald-200"
                                             )}>
-                                                <p className={cn("text-2xl font-bold",
+                                                <p className={cn("text-2xl font-semibold",
                                                     stage.color === "slate" ? "text-slate-900" : stage.color === "blue" ? "text-blue-900" : stage.color === "indigo" ? "text-indigo-900" : stage.color === "purple" ? "text-purple-900" : stage.color === "green" ? "text-green-900" : "text-emerald-900"
                                                 )}>{stage.count}</p>
                                                 <p className="text-xs font-medium text-slate-600 mt-1">{stage.stage}</p>
@@ -1435,11 +1602,11 @@ export default function AdminDashboardPage() {
 
                     {/* ── OUTREACH & PARTNERSHIPS ──────────────────────────────────── */}
                     {activeTab === "ai-agent" && (
-                        <div className="space-y-8 animate-in fade-in slide-in-from-right-6 duration-700">
+                        <div className="space-y-8 ">
                             <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
                                 <div className="space-y-1">
-                                    <h2 className="text-3xl font-bold text-slate-900 tracking-tight">Outreach & Agency Partnerships</h2>
-                                    <p className="text-slate-500 font-medium text-base">Generate tailored commercial proposals for Gold Coast real estate agencies, strata managers, and directory citations.</p>
+                                    <h2 className="text-2xl font-semibold tracking-tight text-slate-900">Outreach & agency partnerships</h2>
+                                    <p className="text-sm text-slate-500">Generate tailored commercial proposals for Gold Coast real estate agencies, strata managers, and directory citations.</p>
                                 </div>
                                 <div className="flex items-center gap-2 bg-slate-100 px-3.5 py-1.5 rounded-xl border border-slate-200">
                                     <span className="relative flex h-2 w-2">
@@ -1449,13 +1616,13 @@ export default function AdminDashboardPage() {
                                 </div>
                             </div>
 
-                            <Card className="border border-slate-200/80 bg-white rounded-2xl shadow-xs overflow-hidden">
-                                <CardHeader className="border-b border-slate-100 p-6">
+                            <Card className="border border-slate-200/80 bg-white rounded-xl shadow-sm overflow-hidden">
+                                <CardHeader className="border-b border-slate-200 p-6">
                                     <div className="flex items-center justify-between">
                                         <div className="flex items-center gap-3">
                                             <div className="p-2.5 bg-slate-100 rounded-xl"><Building2 className="h-5 w-5 text-slate-800" /></div>
                                             <div>
-                                                <CardTitle className="text-base font-bold text-slate-900">Commercial Partner Outreach Engine</CardTitle>
+                                                <CardTitle className="text-base font-semibold text-slate-900">Commercial Partner Outreach Engine</CardTitle>
                                                 <p className="text-xs text-slate-500 mt-0.5">Automated proposal generation customized for Gold Coast property managers and local businesses.</p>
                                             </div>
                                         </div>
@@ -1475,16 +1642,16 @@ export default function AdminDashboardPage() {
                                         <div className="p-4 rounded-xl bg-slate-50 border border-slate-200/70">
                                             <div className="flex items-center gap-2 mb-2"><TrendingUp className="h-4 w-4 text-blue-600" /><p className="text-xs font-bold uppercase tracking-wide text-slate-600">Outreach Telemetry</p></div>
                                             <div className="space-y-2">
-                                                <div className="flex justify-between text-xs"><span className="text-slate-600">Proposals generated</span><span className="font-bold text-slate-900">{aiSessionCount}</span></div>
-                                                <div className="flex justify-between text-xs"><span className="text-slate-600">Active agency draft records</span><span className="font-bold text-slate-900">{aiGenerations.length}</span></div>
+                                                <div className="flex justify-between text-xs"><span className="text-slate-600">Proposals generated</span><span className="font-semibold text-slate-900">{aiSessionCount}</span></div>
+                                                <div className="flex justify-between text-xs"><span className="text-slate-600">Active agency draft records</span><span className="font-semibold text-slate-900">{aiGenerations.length}</span></div>
                                                 <div className="flex justify-between text-xs"><span className="text-slate-600">Target market</span><span className="font-semibold text-slate-700">Gold Coast QLD</span></div>
                                             </div>
                                         </div>
                                         <div className="p-4 rounded-xl bg-slate-50 border border-slate-200/70">
                                             <div className="flex items-center gap-2 mb-2"><ShieldCheck className="h-4 w-4 text-slate-700" /><p className="text-xs font-bold uppercase tracking-wide text-slate-600">Model Configuration</p></div>
                                             <div className="space-y-2">
-                                                <div className="flex justify-between text-xs"><span className="text-slate-600">Inference model</span><span className="font-bold text-slate-900">Qwen 2.5 72B</span></div>
-                                                <div className="flex justify-between text-xs"><span className="text-slate-600">Context window</span><span className="font-bold text-slate-900">128K tokens</span></div>
+                                                <div className="flex justify-between text-xs"><span className="text-slate-600">Inference model</span><span className="font-semibold text-slate-900">Qwen 2.5 72B</span></div>
+                                                <div className="flex justify-between text-xs"><span className="text-slate-600">Context window</span><span className="font-semibold text-slate-900">128K tokens</span></div>
                                                 <div className="flex justify-between text-xs"><span className="text-slate-600">Execution provider</span><span className="font-semibold text-slate-700">OpenRouter API</span></div>
                                             </div>
                                         </div>
@@ -1494,15 +1661,15 @@ export default function AdminDashboardPage() {
 
                             <div className="grid gap-6 md:grid-cols-2">
                                 {/* Campaign Generator */}
-                                <Card className="border border-slate-200/80 shadow-xs bg-white rounded-2xl overflow-hidden">
-                                    <CardHeader className="p-5 border-b border-slate-100">
-                                        <CardTitle className="text-base font-bold text-slate-900 flex items-center gap-2"><Building2 className="h-4 w-4 text-slate-700" />Agency Campaign Generator</CardTitle>
+                                <Card className="border border-slate-200/80 shadow-sm bg-white rounded-xl overflow-hidden">
+                                    <CardHeader className="p-5 border-b border-slate-200">
+                                        <CardTitle className="text-base font-semibold text-slate-900 flex items-center gap-2"><Building2 className="h-4 w-4 text-slate-700" />Agency Campaign Generator</CardTitle>
                                         <p className="text-xs text-slate-500 mt-1">Generate strategic multi-agency outreach campaigns for property management teams.</p>
                                     </CardHeader>
                                     <CardContent className="p-5 space-y-3">
                                         <div className="grid gap-2 sm:grid-cols-2">
                                             <Button
-                                                className="w-full h-11 bg-slate-900 hover:bg-slate-800 text-white rounded-xl font-medium text-xs"
+                                                className="w-full h-11 bg-[#333365] hover:bg-[#3d3d78] text-white rounded-xl font-medium text-xs"
                                                 disabled={agentCampaignLoading !== null}
                                                 onClick={() => handleAgentCampaign("Real Estate")}
                                             >
@@ -1543,15 +1710,15 @@ export default function AdminDashboardPage() {
                                 </Card>
 
                                 {/* Email Generator */}
-                                <Card className="border border-slate-200/80 shadow-xs bg-white rounded-2xl overflow-hidden">
-                                    <CardHeader className="p-5 border-b border-slate-100">
-                                        <CardTitle className="text-base font-bold text-slate-900 flex items-center gap-2"><Send className="h-4 w-4 text-slate-700" />Direct Agency Proposal</CardTitle>
+                                <Card className="border border-slate-200/80 shadow-sm bg-white rounded-xl overflow-hidden">
+                                    <CardHeader className="p-5 border-b border-slate-200">
+                                        <CardTitle className="text-base font-semibold text-slate-900 flex items-center gap-2"><Send className="h-4 w-4 text-slate-700" />Direct Agency Proposal</CardTitle>
                                         <p className="text-xs text-slate-500 mt-1">Generate a personalized partnership letter for a specific Gold Coast agency.</p>
                                     </CardHeader>
                                     <CardContent className="p-5 space-y-3">
                                         <Input value={agentBizName} onChange={(e) => setAgentBizName(e.target.value)} placeholder="Agency name (e.g. Ray White Southport, McGrath Surfers)" className="h-10 rounded-xl text-xs" />
                                         <Button
-                                            className="w-full h-10 bg-slate-900 hover:bg-slate-800 text-white rounded-xl font-medium text-xs"
+                                            className="w-full h-10 bg-[#333365] hover:bg-[#3d3d78] text-white rounded-xl font-medium text-xs"
                                             disabled={agentEmailLoading}
                                             onClick={handleAgentEmail}
                                         >
@@ -1583,9 +1750,9 @@ export default function AdminDashboardPage() {
                             </div>
 
                             {/* Recent Generations */}
-                            <Card className="border border-slate-200/80 shadow-xs bg-white rounded-2xl overflow-hidden">
-                                <CardHeader className="border-b border-slate-100 p-5 bg-white">
-                                    <CardTitle className="text-base font-bold text-slate-900">Recent Generated Proposals</CardTitle>
+                            <Card className="border border-slate-200/80 shadow-sm bg-white rounded-xl overflow-hidden">
+                                <CardHeader className="border-b border-slate-200 p-5 bg-white">
+                                    <CardTitle className="text-base font-semibold text-slate-900">Recent Generated Proposals</CardTitle>
                                 </CardHeader>
                                 <CardContent className="p-5">
                                     {aiGenerations.length === 0 ? (
@@ -1613,10 +1780,10 @@ export default function AdminDashboardPage() {
 
                     {/* ── REPORTS ───────────────────────────────────────────────────── */}
                     {activeTab === "reports" && (
-                        <div className="space-y-8 animate-in fade-in slide-in-from-right-6 duration-700">
+                        <div className="space-y-8 ">
                             <div className="space-y-1">
-                                <h2 className="text-3xl font-bold text-slate-900 tracking-tight">Analytics & Reports</h2>
-                                <p className="text-slate-500 font-medium text-base">Performance overview for the last 6 months.</p>
+                                <h2 className="text-2xl font-semibold tracking-tight text-slate-900">Analytics & Reports</h2>
+                                <p className="text-sm text-slate-500">Performance overview for the last 6 months.</p>
                             </div>
 
                             {/* Summary cards */}
@@ -1627,11 +1794,11 @@ export default function AdminDashboardPage() {
                                     { label: "Messages", value: contacts.length, color: "indigo" },
                                     { label: "Subscribers", value: subscriptions.length, color: "amber" },
                                 ].map((s, i) => (
-                                    <div key={i} className={cn("rounded-2xl p-5 border",
+                                    <div key={i} className={cn("rounded-xl p-5 border",
                                         s.color === "blue" ? "bg-blue-50 border-blue-100" : s.color === "emerald" ? "bg-emerald-50 border-emerald-100" : s.color === "indigo" ? "bg-indigo-50 border-indigo-100" : "bg-amber-50 border-amber-100"
                                     )}>
                                         <p className="text-xs font-bold uppercase tracking-wide text-slate-500">{s.label}</p>
-                                        <p className={cn("text-2xl font-bold mt-1",
+                                        <p className={cn("text-2xl font-semibold mt-1",
                                             s.color === "blue" ? "text-blue-700" : s.color === "emerald" ? "text-emerald-700" : s.color === "indigo" ? "text-indigo-700" : "text-amber-700"
                                         )}>{s.value}</p>
                                     </div>
@@ -1639,14 +1806,14 @@ export default function AdminDashboardPage() {
                             </div>
 
                             {/* Monthly table */}
-                            <Card className="border border-slate-100 shadow-sm bg-white rounded-2xl overflow-hidden">
+                            <Card className="border border-slate-200 shadow-sm bg-white rounded-xl overflow-hidden">
                                 <CardHeader className="border-b border-slate-50 p-6">
-                                    <CardTitle className="text-base font-bold text-slate-900">Monthly Breakdown (Last 6 Months)</CardTitle>
+                                    <CardTitle className="text-base font-semibold text-slate-900">Monthly Breakdown (Last 6 Months)</CardTitle>
                                 </CardHeader>
                                 <CardContent className="p-0">
                                     <div className="overflow-x-auto">
                                         <table className="w-full text-left border-collapse">
-                                            <thead className="bg-slate-50 border-b border-slate-100">
+                                            <thead className="bg-slate-50 border-b border-slate-200">
                                                 <tr>
                                                     <th className="px-6 py-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">Month</th>
                                                     <th className="px-6 py-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">Bookings</th>
@@ -1655,7 +1822,7 @@ export default function AdminDashboardPage() {
                                                     <th className="px-6 py-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">New Subscribers</th>
                                                 </tr>
                                             </thead>
-                                            <tbody className="divide-y divide-slate-50">
+                                            <tbody className="divide-y divide-slate-100">
                                                 {monthlyBreakdown.map((row, i) => (
                                                     <tr key={i} className="hover:bg-slate-50/50 transition-colors">
                                                         <td className="px-6 py-4 font-semibold text-slate-900 text-sm">{row.month}</td>
@@ -1672,9 +1839,9 @@ export default function AdminDashboardPage() {
                             </Card>
 
                             {/* Booking status breakdown */}
-                            <Card className="border border-slate-100 shadow-sm bg-white rounded-2xl overflow-hidden">
+                            <Card className="border border-slate-200 shadow-sm bg-white rounded-xl overflow-hidden">
                                 <CardHeader className="border-b border-slate-50 p-6">
-                                    <CardTitle className="text-base font-bold text-slate-900">Booking Status Breakdown</CardTitle>
+                                    <CardTitle className="text-base font-semibold text-slate-900">Booking Status Breakdown</CardTitle>
                                 </CardHeader>
                                 <CardContent className="p-6">
                                     <div className="grid gap-4 sm:grid-cols-4">
@@ -1682,7 +1849,7 @@ export default function AdminDashboardPage() {
                                             const count = bookings.filter((b) => (b.status || "pending") === s).length
                                             return (
                                                 <div key={s} className={cn("rounded-xl p-4 text-center border", statusColor(s).includes("yellow") ? "bg-yellow-50 border-yellow-100" : statusColor(s).includes("green") ? "bg-green-50 border-green-100" : statusColor(s).includes("blue") ? "bg-blue-50 border-blue-100" : "bg-red-50 border-red-100")}>
-                                                    <p className="text-2xl font-bold text-slate-900">{count}</p>
+                                                    <p className="text-2xl font-semibold text-slate-900">{count}</p>
                                                     <p className="text-xs font-medium text-slate-600 mt-1 capitalize">{s}</p>
                                                 </div>
                                             )
@@ -1695,23 +1862,23 @@ export default function AdminDashboardPage() {
 
                     {/* ── SERVICES ──────────────────────────────────────────────────── */}
                     {activeTab === "services" && (
-                        <div className="space-y-8 animate-in fade-in slide-in-from-right-6 duration-700">
+                        <div className="space-y-8 ">
                             <div className="space-y-1">
-                                <h2 className="text-3xl font-bold text-slate-900 tracking-tight">Service Offerings</h2>
-                                <p className="text-slate-500 font-medium text-base">Manage all available services.</p>
+                                <h2 className="text-2xl font-semibold tracking-tight text-slate-900">Service Offerings</h2>
+                                <p className="text-sm text-slate-500">Manage all available services.</p>
                             </div>
-                            <Card className="border border-slate-100 shadow-sm bg-white rounded-2xl overflow-hidden">
+                            <Card className="border border-slate-200 shadow-sm bg-white rounded-xl overflow-hidden">
                                 <CardContent className="p-0">
                                     <div className="overflow-x-auto">
                                         <table className="w-full text-left border-collapse">
-                                            <thead className="bg-slate-50 border-b border-slate-100">
+                                            <thead className="bg-slate-50 border-b border-slate-200">
                                                 <tr>
                                                     <th className="px-6 py-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">Service Name</th>
                                                     <th className="px-6 py-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">Description</th>
                                                     <th className="px-6 py-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">Added</th>
                                                 </tr>
                                             </thead>
-                                            <tbody className="divide-y divide-slate-50">
+                                            <tbody className="divide-y divide-slate-100">
                                                 {services.map((service, i) => (
                                                     <tr key={i} className="hover:bg-slate-50/50 transition-colors">
                                                         <td className="px-6 py-4 font-semibold text-slate-900 text-sm">{service.title || service.name}</td>
@@ -1732,21 +1899,21 @@ export default function AdminDashboardPage() {
 
                     {/* ── MESSAGES (+ Testimonials) ─────────────────────────────────── */}
                     {activeTab === "messages" && (
-                        <div className="space-y-8 animate-in fade-in slide-in-from-right-6 duration-700">
+                        <div className="space-y-8 ">
                             <div className="space-y-1">
-                                <h2 className="text-3xl font-bold text-slate-900 tracking-tight">Inbox & Reviews</h2>
-                                <p className="text-slate-500 font-medium text-base">Contact form messages and customer testimonials.</p>
+                                <h2 className="text-2xl font-semibold tracking-tight text-slate-900">Inbox & Reviews</h2>
+                                <p className="text-sm text-slate-500">Contact form messages and customer testimonials.</p>
                             </div>
 
                             {/* Contact messages */}
-                            <Card className="border border-slate-100 shadow-sm bg-white rounded-2xl overflow-hidden">
+                            <Card className="border border-slate-200 shadow-sm bg-white rounded-xl overflow-hidden">
                                 <CardHeader className="border-b border-slate-50 p-6">
-                                    <CardTitle className="text-base font-bold text-slate-900 flex items-center gap-2"><MessageSquare className="h-4 w-4" />Contact Messages ({contacts.length})</CardTitle>
+                                    <CardTitle className="text-base font-semibold text-slate-900 flex items-center gap-2"><MessageSquare className="h-4 w-4" />Contact Messages ({contacts.length})</CardTitle>
                                 </CardHeader>
                                 <CardContent className="p-0">
                                     <div className="overflow-x-auto">
                                         <table className="w-full text-left border-collapse">
-                                            <thead className="bg-slate-50 border-b border-slate-100">
+                                            <thead className="bg-slate-50 border-b border-slate-200">
                                                 <tr>
                                                     <th className="px-6 py-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">Date</th>
                                                     <th className="px-6 py-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">Contact</th>
@@ -1754,7 +1921,7 @@ export default function AdminDashboardPage() {
                                                     <th className="px-6 py-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">Message</th>
                                                 </tr>
                                             </thead>
-                                            <tbody className="divide-y divide-slate-50">
+                                            <tbody className="divide-y divide-slate-100">
                                                 {contacts.map((contact, i) => (
                                                     <tr key={i} className="hover:bg-slate-50/50 transition-colors">
                                                         <td className="px-6 py-4">
@@ -1782,10 +1949,10 @@ export default function AdminDashboardPage() {
                             </Card>
 
                             {/* Testimonials management */}
-                            <Card className="border border-slate-100 shadow-sm bg-white rounded-2xl overflow-hidden">
+                            <Card className="border border-slate-200 shadow-sm bg-white rounded-xl overflow-hidden">
                                 <CardHeader className="border-b border-slate-50 p-6">
                                     <div className="flex items-center justify-between">
-                                        <CardTitle className="text-base font-bold text-slate-900 flex items-center gap-2">
+                                        <CardTitle className="text-base font-semibold text-slate-900 flex items-center gap-2">
                                             <Star className="h-4 w-4 text-amber-500 fill-amber-500" />
                                             Customer Reviews ({allTestimonials.length})
                                         </CardTitle>
@@ -1795,7 +1962,7 @@ export default function AdminDashboardPage() {
                                     </div>
                                 </CardHeader>
                                 <CardContent className="p-0">
-                                    <div className="divide-y divide-slate-50">
+                                    <div className="divide-y divide-slate-100">
                                         {allTestimonials.map((t, i) => (
                                             <div key={i} className="p-6 flex items-start justify-between gap-4 hover:bg-slate-50/50 transition-colors">
                                                 <div className="flex-1 min-w-0">
@@ -1845,21 +2012,21 @@ export default function AdminDashboardPage() {
 
                     {/* ── SUBSCRIBERS ───────────────────────────────────────────────── */}
                     {activeTab === "subscribers" && (
-                        <div className="min-w-0 space-y-5 animate-in fade-in slide-in-from-right-6 duration-700 sm:space-y-8">
-                            <div className="flex flex-col gap-4 rounded-2xl bg-gradient-to-br from-[#333365] to-[#454582] p-5 text-white shadow-sm sm:flex-row sm:items-center sm:justify-between sm:p-7">
+                        <div className="min-w-0 space-y-5  sm:space-y-8">
+                            <div className="flex flex-col gap-4 rounded-xl bg-gradient-to-br from-[#333365] to-[#454582] p-5 text-white shadow-sm sm:flex-row sm:items-center sm:justify-between sm:p-7">
                                 <div className="min-w-0">
                                     <p className="text-xs font-semibold uppercase tracking-[0.16em] text-cyan-200">Audience</p>
-                                    <h2 className="mt-1 text-2xl font-bold tracking-tight sm:text-3xl">Newsletter Subscribers</h2>
+                                    <h2 className="mt-1 text-2xl font-semibold tracking-tight sm:text-3xl">Newsletter subscribers</h2>
                                     <p className="mt-2 text-sm text-white/70">Manage your email community in one place.</p>
                                 </div>
                                 <div className="flex items-center gap-3 rounded-xl border border-white/15 bg-white/10 px-4 py-3 sm:min-w-44">
                                     <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-[#39BDE4]/20 text-cyan-200"><MailCheck className="h-5 w-5" /></span>
-                                    <div><p className="text-2xl font-bold leading-none">{subscriptions.length}</p><p className="mt-1 text-xs text-white/70">Active subscribers</p></div>
+                                    <div><p className="text-2xl font-semibold leading-none">{subscriptions.length}</p><p className="mt-1 text-xs text-white/70">Active subscribers</p></div>
                                 </div>
                             </div>
 
-                            <Card className="overflow-hidden rounded-2xl border border-slate-200/80 bg-white shadow-sm">
-                                <CardHeader className="gap-4 border-b border-slate-100 px-4 py-4 sm:px-6">
+                            <Card className="overflow-hidden rounded-xl border border-slate-200/80 bg-white shadow-sm">
+                                <CardHeader className="gap-4 border-b border-slate-200 px-4 py-4 sm:px-6">
                                     <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                                         <CardTitle className="text-base font-semibold text-slate-900">Subscriber list <span className="ml-1 text-sm font-normal text-slate-400">({filteredSubscriptions.length}{subscriberSearch ? ` of ${subscriptions.length}` : ""})</span></CardTitle>
                                         <div className="flex flex-col gap-2 sm:flex-row">
@@ -1891,14 +2058,14 @@ export default function AdminDashboardPage() {
                                     </div>
                                     <div className="hidden overflow-x-auto sm:block">
                                         <table className="w-full min-w-[560px] text-left">
-                                            <thead className="bg-slate-50 border-b border-slate-100">
+                                            <thead className="bg-slate-50 border-b border-slate-200">
                                                 <tr>
                                                     <th className="px-6 py-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">Email Address</th>
                                                     <th className="px-6 py-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">Subscribed On</th>
                                                     <th className="px-6 py-4 text-xs font-semibold text-slate-500 uppercase tracking-wider text-right">Status</th>
                                                 </tr>
                                             </thead>
-                                            <tbody className="divide-y divide-slate-50">
+                                            <tbody className="divide-y divide-slate-100">
                                                 {filteredSubscriptions.map((sub, i) => (
                                                     <tr key={sub.id || sub.email || i} className="transition-colors hover:bg-slate-50/70">
                                                         <td className="max-w-md break-all px-6 py-4 text-sm font-medium text-slate-900">{sub.email}</td>
@@ -1921,16 +2088,16 @@ export default function AdminDashboardPage() {
 
                     {/* ── SETTINGS ──────────────────────────────────────────────────── */}
                     {activeTab === "settings" && (
-                        <div className="space-y-8 animate-in fade-in slide-in-from-right-6 duration-700">
+                        <div className="space-y-8 ">
                             <div className="space-y-1">
-                                <h2 className="text-3xl font-bold text-slate-900 tracking-tight">Settings & Security</h2>
-                                <p className="text-slate-500 font-medium text-base">Admin account configuration and access log.</p>
+                                <h2 className="text-2xl font-semibold tracking-tight text-slate-900">Settings & Security</h2>
+                                <p className="text-sm text-slate-500">Admin account configuration and access log.</p>
                             </div>
 
                             {/* Account Info */}
-                            <Card className="border border-slate-100 shadow-sm bg-white rounded-2xl overflow-hidden">
+                            <Card className="border border-slate-200 shadow-sm bg-white rounded-xl overflow-hidden">
                                 <CardHeader className="border-b border-slate-50 p-6">
-                                    <CardTitle className="text-base font-bold text-slate-900 flex items-center gap-2"><ShieldCheck className="h-4 w-4 text-emerald-600" />Account Information</CardTitle>
+                                    <CardTitle className="text-base font-semibold text-slate-900 flex items-center gap-2"><ShieldCheck className="h-4 w-4 text-emerald-600" />Account Information</CardTitle>
                                 </CardHeader>
                                 <CardContent className="p-6">
                                     <div className="grid gap-4 sm:grid-cols-2">
@@ -1955,16 +2122,16 @@ export default function AdminDashboardPage() {
                             </Card>
 
                             {/* API Config */}
-                            <Card className="border border-slate-100 shadow-sm bg-white rounded-2xl overflow-hidden">
+                            <Card className="border border-slate-200 shadow-sm bg-white rounded-xl overflow-hidden">
                                 <CardHeader className="border-b border-slate-50 p-6">
-                                    <CardTitle className="text-base font-bold text-slate-900 flex items-center gap-2"><Sliders className="h-4 w-4 text-slate-700" />API Configuration</CardTitle>
+                                    <CardTitle className="text-base font-semibold text-slate-900 flex items-center gap-2"><Sliders className="h-4 w-4 text-slate-700" />API Configuration</CardTitle>
                                 </CardHeader>
                                 <CardContent className="p-6 space-y-4">
                                     {[
                                         { name: "OpenRouter API", key: "OPENROUTER_API_KEY", desc: "Used for AI outreach draft generation. Get a free key at openrouter.ai/keys", model: "dots-studio/dots-3-note-preview:free" },
                                         { name: "Firebase", key: "FIREBASE_*", desc: "Authentication, Firestore database, and file storage.", model: null },
                                     ].map((api, i) => (
-                                        <div key={i} className="flex items-start justify-between p-4 rounded-xl border border-slate-100 bg-slate-50">
+                                        <div key={i} className="flex items-start justify-between p-4 rounded-xl border border-slate-200 bg-slate-50">
                                             <div>
                                                 <p className="font-semibold text-slate-900 text-sm">{api.name}</p>
                                                 <p className="text-xs text-slate-500 mt-0.5">{api.desc}</p>
@@ -1977,9 +2144,9 @@ export default function AdminDashboardPage() {
                             </Card>
 
                             {/* Security / Activity Log */}
-                            <Card className="border border-slate-100 shadow-sm bg-white rounded-2xl overflow-hidden">
+                            <Card className="border border-slate-200 shadow-sm bg-white rounded-xl overflow-hidden">
                                 <CardHeader className="border-b border-slate-50 p-6">
-                                    <CardTitle className="text-base font-bold text-slate-900 flex items-center gap-2"><BarChart3 className="h-4 w-4 text-blue-600" />Activity Summary</CardTitle>
+                                    <CardTitle className="text-base font-semibold text-slate-900 flex items-center gap-2"><BarChart3 className="h-4 w-4 text-blue-600" />Activity Summary</CardTitle>
                                 </CardHeader>
                                 <CardContent className="p-6">
                                     <div className="grid gap-3 sm:grid-cols-2">
@@ -1991,11 +2158,11 @@ export default function AdminDashboardPage() {
                                             { label: "Published Posts", value: posts.filter((p) => p.published).length, icon: FileText },
                                             { label: "Active Coupons", value: coupons.filter((c) => c.active).length, icon: Tag },
                                         ].map((item, i) => (
-                                            <div key={i} className="flex items-center gap-4 p-4 rounded-xl bg-slate-50 border border-slate-100">
-                                                <div className="p-2 bg-white rounded-lg border border-slate-100"><item.icon className="h-4 w-4 text-slate-500" /></div>
+                                            <div key={i} className="flex items-center gap-4 p-4 rounded-xl bg-slate-50 border border-slate-200">
+                                                <div className="p-2 bg-white rounded-lg border border-slate-200"><item.icon className="h-4 w-4 text-slate-500" /></div>
                                                 <div>
                                                     <p className="text-xs text-slate-500 font-medium">{item.label}</p>
-                                                    <p className="font-bold text-slate-900">{item.value}</p>
+                                                    <p className="font-semibold text-slate-900">{item.value}</p>
                                                 </div>
                                             </div>
                                         ))}
