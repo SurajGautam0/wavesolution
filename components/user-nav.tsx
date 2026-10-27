@@ -50,7 +50,7 @@ export function UserNav({ activeTab = "dashboard", setActiveTab = () => { } }: U
     return (
         <nav
             aria-label="Client portal"
-            className="-mx-1 flex flex-wrap gap-1 px-1 pb-1 lg:mx-0 lg:flex-col lg:gap-0.5 lg:overflow-visible lg:px-0 lg:pb-0"
+            className="-mx-1 flex max-w-full flex-nowrap gap-1 overflow-x-auto px-1 pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden lg:mx-0 lg:flex-col lg:gap-0.5 lg:overflow-visible lg:px-0 lg:pb-0"
         >
             {routes.map((route) => {
                 const isActive = activeTab === route.id
@@ -61,7 +61,7 @@ export function UserNav({ activeTab = "dashboard", setActiveTab = () => { } }: U
                         onClick={() => setActiveTab(route.id)}
                         aria-current={isActive ? "page" : undefined}
                         className={cn(
-                            "flex shrink-0 items-center gap-2.5 rounded-lg px-3 py-2 text-sm font-medium transition-colors lg:w-full",
+                            "flex min-h-10 shrink-0 items-center gap-2.5 whitespace-nowrap rounded-lg px-3 py-2 text-sm font-medium transition-colors lg:w-full",
                             isActive
                                 ? "bg-slate-100 text-slate-900"
                                 : "text-slate-600 hover:bg-slate-50 hover:text-slate-900"
@@ -73,7 +73,7 @@ export function UserNav({ activeTab = "dashboard", setActiveTab = () => { } }: U
                                 isActive ? "text-[#333365]" : "text-slate-400"
                             )}
                         />
-                        <span className="whitespace-nowrap">{route.label}</span>
+                        <span>{route.label}</span>
                         {isActive && (
                             <span className="ml-auto hidden h-1.5 w-1.5 rounded-full bg-[#333365] lg:block" />
                         )}

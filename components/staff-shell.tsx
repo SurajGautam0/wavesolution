@@ -62,11 +62,11 @@ export function StaffShell({ children, kind }: { children: React.ReactNode; kind
         </div>
       </header>
 
-      <div className="mx-auto grid max-w-[1440px] items-start gap-6 px-4 py-6 sm:px-6 lg:grid-cols-[240px_minmax(0,1fr)] lg:gap-8 lg:px-8 lg:py-8">
+      <div className="mx-auto grid min-w-0 max-w-[1440px] items-start gap-4 px-3 py-4 sm:gap-6 sm:px-6 sm:py-6 lg:grid-cols-[240px_minmax(0,1fr)] lg:gap-8 lg:px-8 lg:py-8">
         <aside className="lg:sticky lg:top-24">
           <nav
             aria-label="Team dashboard"
-            className="flex flex-wrap gap-1 rounded-xl border border-slate-200 bg-white p-2 lg:flex-col"
+            className="flex max-w-full flex-nowrap gap-1 overflow-x-auto rounded-xl border border-slate-200 bg-white p-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden lg:flex-col lg:overflow-visible"
           >
             {links.map(({ href, label, icon: Icon }) => {
               const active = pathname === href
@@ -75,7 +75,7 @@ export function StaffShell({ children, kind }: { children: React.ReactNode; kind
                   key={href}
                   href={href}
                   aria-current={active ? "page" : undefined}
-                  className={`group flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm font-medium transition-colors lg:w-full ${
+                  className={`group flex min-h-10 shrink-0 items-center gap-2.5 whitespace-nowrap rounded-lg px-3 py-2 text-sm font-medium transition-colors lg:w-full ${
                     active ? "bg-slate-100 text-slate-900" : "text-slate-600 hover:bg-slate-50 hover:text-slate-900"
                   }`}
                 >

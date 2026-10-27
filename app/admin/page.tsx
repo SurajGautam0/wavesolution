@@ -1056,7 +1056,7 @@ export default function AdminDashboardPage() {
                                         {user?.name ? `${user.name.split(" ")[0]}, here is` : "Here is"} the current state of bookings, enquiries and field work.
                                     </p>
                                 </div>
-                                <div className="flex shrink-0 items-center gap-2">
+                                <div className="flex flex-wrap items-center gap-2 sm:shrink-0">
                                     <Button
                                         variant="outline"
                                         onClick={() => setActiveTab("operations")}
