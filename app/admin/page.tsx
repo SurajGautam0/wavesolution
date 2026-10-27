@@ -13,9 +13,14 @@ import {
     DollarSign,
     TrendingUp,
     CheckCircle2,
+    Check,
     Clock,
     AlertCircle,
     Search,
+    Globe,
+    ExternalLink,
+    Phone,
+    Mail,
     MessageSquare,
     ShieldCheck,
     Trash2,
@@ -79,6 +84,8 @@ import { Button } from "@/components/ui/button"
 import { Textarea } from "@/components/ui/textarea"
 import { toast } from "sonner"
 import { auth } from "@/lib/firebase"
+import { saveContact } from "@/lib/firebase-service"
+import { leadAreas, leadCategories } from "@/lib/lead-discovery-config"
 import { useRouter } from "next/navigation"
 
 // ─── helpers ────────────────────────────────────────────────────────────────
@@ -97,6 +104,15 @@ function fmtSchedule(value: any, fallback?: any) {
         : date.toLocaleDateString("en-AU", { day: "numeric", month: "short", year: "numeric" })
 }
 
+function websiteHost(value?: string) {
+    if (!value) return ""
+    try {
+        return new URL(value).hostname.replace(/^www\./i, "")
+    } catch {
+        return value
+    }
+}
+
 function statusColor(status: string) {
     switch (status) {
         case "confirmed": return "bg-blue-50 text-blue-700 ring-blue-600/20"
@@ -109,8 +125,24 @@ function statusColor(status: string) {
 
 // ─── component ──────────────────────────────────────────────────────────────
 
+// TEMP PREVIEW DATA — remove after visual review
+const PREVIEW_ADMIN_USER = {
+    id: "preview-admin",
+    name: "Alex Morgan",
+    email: "alex@wavesolution.com.au",
+    role: "admin",
+}
+const PREVIEW_WEB_LEADS = [
+    { id: "osm-node-1", businessName: "NGU Real Estate", category: "Real estate agencies", area: "Gold Coast", suburb: "Southport", address: "56 Scarborough Street, Southport, 4215", website: "https://www.ngugoldcoast.com.au", email: "info@ngugoldcoast.com.au", phone: "+61 7 3103 0723", source: "openstreetmap", sourceUrl: "https://www.openstreetmap.org/node/1", notes: "" },
+    { id: "osm-node-2", businessName: "LJ Hooker Burleigh Heads", category: "Real estate agencies", area: "Gold Coast", suburb: "Burleigh Waters", address: "1/20 Classic Way, Burleigh Waters, 4220", website: "https://burleighheads.ljhooker.com.au", email: "", phone: "", source: "openstreetmap", sourceUrl: "https://www.openstreetmap.org/node/2", notes: "" },
+    { id: "osm-node-3", businessName: "Abode Property Management", category: "Real estate agencies", area: "Darwin", suburb: "Darwin", address: "Darwin, 0800", website: "http://www.abode4me.com.au", email: "", phone: "", source: "openstreetmap", sourceUrl: "https://www.openstreetmap.org/node/3", notes: "" },
+]
+const PREVIEW_WEB_CONTACTS = [
+    { id: "preview-lead-1", name: "Abode Property Management", email: "", phone: "", subject: "Real estate agencies · web lead", message: "Publicly listed business details; verify before outreach.", source: "web-lead-discovery", area: "Darwin", suburb: "Darwin", website: "http://www.abode4me.com.au", leadStatus: "new", createdAt: { seconds: Math.floor(Date.now() / 1000) - 3600 } },
+]
+
 export default function AdminDashboardPage() {
-    const { user, loading: authLoading } = useAuth()
+    const { user: authUser, loading: authLoading } = useAuth()
     const router = useRouter()
 
     // ── core data
@@ -130,8 +162,34 @@ export default function AdminDashboardPage() {
     const [emailRecords, setEmailRecords] = useState<any[]>([])
     const [loading, setLoading] = useState(true)
 
+    // TEMP PREVIEW — remove after visual review
+    const [previewMode, setPreviewMode] = useState(false)
+    const user = previewMode ? PREVIEW_ADMIN_USER : authUser
+    useEffect(() => {
+        if (typeof window === "undefined") return
+        if (new URLSearchParams(window.location.search).has("preview")) setPreviewMode(true)
+    }, [])
+    useEffect(() => {
+        if (!previewMode) return
+        setContacts(PREVIEW_WEB_CONTACTS)
+        setLeadResults(PREVIEW_WEB_LEADS)
+        setLeadSearchInfo({ area: "Gold Coast", category: "Real estate agencies", sources: ["OpenStreetMap (Overpass + Nominatim)", "Business websites"] })
+        setLoading(false)
+    }, [previewMode])
+
     const [searchTerm, setSearchTerm] = useState("")
     const [subscriberSearch, setSubscriberSearch] = useState("")
+
+    // ── web lead discovery
+    const [leadArea, setLeadArea] = useState("gold-coast")
+    const [leadCategory, setLeadCategory] = useState("real-estate")
+    const [leadSearching, setLeadSearching] = useState(false)
+    const [leadResults, setLeadResults] = useState<any[]>([])
+    const [leadSearchInfo, setLeadSearchInfo] = useState<{ area: string; category: string; sources: string[] } | null>(null)
+    const [leadError, setLeadError] = useState("")
+    const [leadSavingId, setLeadSavingId] = useState<string | null>(null)
+    const [addedLeadIds, setAddedLeadIds] = useState<string[]>([])
+
     const filteredSubscriptions = subscriptions.filter((sub) =>
         String(sub.email || "").toLowerCase().includes(subscriberSearch.trim().toLowerCase())
     )
@@ -216,6 +274,7 @@ export default function AdminDashboardPage() {
 
     useEffect(() => {
         if (authLoading || user?.role !== "admin") return
+        if (previewMode) return
         async function fetchData() {
             try {
                 setLoading(true)
@@ -283,7 +342,7 @@ export default function AdminDashboardPage() {
             }
         }
         fetchData()
-    }, [authLoading, user?.role])
+    }, [authLoading, user?.role, previewMode])
 
     useEffect(() => {
         const requestedTab = new URLSearchParams(window.location.search).get("tab")
@@ -399,6 +458,87 @@ export default function AdminDashboardPage() {
         } catch (error) {
             // The operational change has already succeeded; an unavailable log must not misreport it.
             console.warn("Admin activity log could not be written", error)
+        }
+    }
+
+    function normalizeWebsite(value: unknown) {
+        return String(value || "").trim().replace(/\/$/, "").toLowerCase()
+    }
+
+    function leadAlreadySaved(lead: any) {
+        const email = String(lead.email || "").toLowerCase()
+        const website = normalizeWebsite(lead.website)
+        const name = String(lead.businessName || "").toLowerCase()
+        return contacts.some((contact) => {
+            const contactEmail = String(contact.email || "").toLowerCase()
+            const contactWebsite = normalizeWebsite(contact.website)
+            return Boolean(
+                (email && contactEmail === email)
+                || (website && contactWebsite === website)
+                || (name && String(contact.name || "").toLowerCase() === name)
+            )
+        })
+    }
+
+    async function discoverWebLeads() {
+        setLeadSearching(true)
+        setLeadError("")
+        setLeadSearchInfo(null)
+        setLeadResults([])
+
+        try {
+            const token = await auth.currentUser?.getIdToken()
+            if (!token) throw new Error("Your session expired. Sign in again.")
+
+            const response = await fetch("/api/admin/lead-discovery", {
+                method: "POST",
+                headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
+                body: JSON.stringify({ area: leadArea, category: leadCategory }),
+            })
+            const result = await response.json().catch(() => ({}))
+            if (!response.ok || !result.success) throw new Error(result.message || "Lead search failed.")
+
+            const leads = Array.isArray(result.leads) ? result.leads : []
+            setLeadResults(leads)
+            setLeadSearchInfo({ area: result.area, category: result.category, sources: result.sources || [] })
+            if (!leads.length) {
+                setLeadError(result.message || "No businesses were found for this selection.")
+            } else {
+                writeAudit("Searched web leads", `${result.area} · ${result.category}`, `${leads.length} results`)
+            }
+        } catch (error: any) {
+            setLeadError(error.message || "Lead search failed. Please try again.")
+        } finally {
+            setLeadSearching(false)
+        }
+    }
+
+    async function addWebLead(lead: any) {
+        setLeadSavingId(lead.id)
+        try {
+            const saved = await saveContact({
+                name: lead.businessName,
+                email: lead.email || "",
+                phone: lead.phone || "",
+                subject: `${lead.category} · web lead`,
+                message: lead.notes || "",
+                source: "web-lead-discovery",
+                area: lead.area,
+                suburb: lead.suburb,
+                website: lead.website,
+                sourceUrl: lead.sourceUrl,
+                leadStatus: "new",
+                websiteEmailSource: lead.emailSource,
+            })
+            setContacts((rows) => [{ ...saved, createdAt: { seconds: Math.floor(Date.now() / 1000) } }, ...rows])
+            setAddedLeadIds((ids) => [...ids, lead.id])
+            toast.success(`${lead.businessName} added to leads`)
+            writeAudit("Added web lead", saved.id, lead.businessName)
+        } catch (error) {
+            console.error("Unable to add web lead", error)
+            toast.error("Could not add this lead. Check Firestore permissions and try again.")
+        } finally {
+            setLeadSavingId(null)
         }
     }
 
@@ -1093,10 +1233,179 @@ export default function AdminDashboardPage() {
                     {activeTab === "customers" && (
                         <div className="space-y-6">
                             <div><p className="text-xs font-bold uppercase tracking-[0.16em] text-slate-500">Customer relationships</p><h2 className="mt-2 text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl">Leads &amp; customers</h2><p className="mt-2 text-sm text-slate-500">Track enquiries from first contact to booking. Updates are saved on each contact record.</p></div>
+
+                            <Card className="overflow-hidden rounded-xl border-slate-200 bg-white shadow-sm">
+                                <CardHeader className="border-b border-slate-200 px-5 py-4">
+                                    <div className="flex flex-wrap items-start justify-between gap-3">
+                                        <div className="flex items-start gap-3">
+                                            <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-slate-200 bg-slate-50">
+                                                <Globe className="h-4 w-4 text-slate-500" />
+                                            </span>
+                                            <div>
+                                                <CardTitle className="text-base font-semibold text-slate-900">Web lead discovery</CardTitle>
+                                                <p className="mt-1 text-sm text-slate-500">Find new businesses to approach in a selected service area.</p>
+                                            </div>
+                                        </div>
+                                        <span className="rounded-full border border-slate-200 bg-slate-50 px-2.5 py-1 text-[11px] font-medium text-slate-500">Free public data</span>
+                                    </div>
+                                </CardHeader>
+                                <CardContent className="space-y-4 p-5">
+                                    <div className="grid gap-3 sm:grid-cols-[minmax(0,1fr)_minmax(0,1.4fr)_auto] sm:items-end">
+                                        <label className="text-xs font-medium text-slate-600">
+                                            Area
+                                            <select
+                                                value={leadArea}
+                                                onChange={(event) => setLeadArea(event.target.value)}
+                                                className="mt-1.5 h-10 w-full rounded-lg border border-slate-300 bg-white px-3 text-sm text-slate-800 outline-none focus:border-[#333365] focus:ring-2 focus:ring-[#333365]/10"
+                                            >
+                                                {leadAreas.map((area) => (
+                                                    <option key={area.id} value={area.id}>{area.label} · {area.state}</option>
+                                                ))}
+                                            </select>
+                                        </label>
+                                        <label className="text-xs font-medium text-slate-600">
+                                            Business type
+                                            <select
+                                                value={leadCategory}
+                                                onChange={(event) => setLeadCategory(event.target.value)}
+                                                className="mt-1.5 h-10 w-full rounded-lg border border-slate-300 bg-white px-3 text-sm text-slate-800 outline-none focus:border-[#333365] focus:ring-2 focus:ring-[#333365]/10"
+                                            >
+                                                {leadCategories.map((category) => (
+                                                    <option key={category.id} value={category.id}>{category.label}</option>
+                                                ))}
+                                            </select>
+                                        </label>
+                                        <Button
+                                            type="button"
+                                            onClick={() => void discoverWebLeads()}
+                                            disabled={leadSearching}
+                                            className="h-10 rounded-lg bg-[#333365] px-4 text-sm font-medium text-white hover:bg-[#3d3d78]"
+                                        >
+                                            {leadSearching ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Search className="mr-2 h-4 w-4" />}
+                                            {leadSearching ? "Searching" : "Search web"}
+                                        </Button>
+                                    </div>
+
+                                    <p className="text-[11px] leading-5 text-slate-500">
+                                        Searches public OpenStreetMap business listings and scans each company’s website for a publicly listed contact email.
+                                        Coverage varies by area and category. Verify details before outreach and follow Australian spam rules.
+                                    </p>
+
+                                    {leadSearching && (
+                                        <div className="flex items-center gap-3 rounded-lg border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-600">
+                                            <Loader2 className="h-4 w-4 shrink-0 animate-spin text-slate-400" />
+                                            Searching public listings and business websites. This can take 10–30 seconds.
+                                        </div>
+                                    )}
+
+                                    {leadError && !leadSearching && (
+                                        <div className="rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-sm leading-6 text-amber-900">
+                                            {leadError}
+                                        </div>
+                                    )}
+
+                                    {leadResults.length > 0 && !leadSearching && (
+                                        <div className="space-y-3">
+                                            <div className="flex flex-wrap items-center justify-between gap-2">
+                                                <p className="text-xs text-slate-500">
+                                                    {leadResults.length} result{leadResults.length === 1 ? "" : "s"} · {leadSearchInfo?.area} · {leadSearchInfo?.category}
+                                                    {leadSearchInfo?.sources?.length ? ` · ${leadSearchInfo.sources.join(" · ")}` : ""}
+                                                </p>
+                                                <button
+                                                    type="button"
+                                                    onClick={() => { setLeadResults([]); setLeadError(""); setLeadSearchInfo(null) }}
+                                                    className="text-xs font-medium text-slate-600 hover:text-slate-900"
+                                                >
+                                                    Clear
+                                                </button>
+                                            </div>
+                                            <ul className="divide-y divide-slate-100 overflow-hidden rounded-lg border border-slate-200">
+                                                {leadResults.map((lead) => {
+                                                    const alreadySaved = addedLeadIds.includes(lead.id) || leadAlreadySaved(lead)
+                                                    return (
+                                                        <li key={lead.id} className="p-4">
+                                                            <div className="flex flex-wrap items-start justify-between gap-3">
+                                                                <div className="min-w-0">
+                                                                    <p className="text-sm font-semibold text-slate-900">{lead.businessName}</p>
+                                                                    <p className="mt-0.5 text-xs text-slate-500">
+                                                                        {[lead.suburb, lead.category].filter(Boolean).join(" · ")}
+                                                                    </p>
+                                                                </div>
+                                                                <Button
+                                                                    size="sm"
+                                                                    onClick={() => void addWebLead(lead)}
+                                                                    disabled={alreadySaved || leadSavingId === lead.id}
+                                                                    className={cn(
+                                                                        "h-8 rounded-md px-2.5 text-xs font-medium",
+                                                                        alreadySaved
+                                                                            ? "border border-slate-200 bg-slate-50 text-slate-500"
+                                                                            : "bg-[#333365] text-white hover:bg-[#3d3d78]",
+                                                                    )}
+                                                                >
+                                                                    {leadSavingId === lead.id
+                                                                        ? <Loader2 className="mr-1.5 h-3.5 w-3.5 animate-spin" />
+                                                                        : alreadySaved ? <Check className="mr-1.5 h-3.5 w-3.5" /> : <Plus className="mr-1.5 h-3.5 w-3.5" />}
+                                                                    {alreadySaved ? "Added" : "Add lead"}
+                                                                </Button>
+                                                            </div>
+                                                            <div className="mt-2 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-slate-600">
+                                                                {lead.website && (
+                                                                    <a href={lead.website} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1.5 hover:text-slate-900 hover:underline">
+                                                                        <Globe className="h-3.5 w-3.5 text-slate-400" />
+                                                                        {websiteHost(lead.website)}
+                                                                    </a>
+                                                                )}
+                                                                {lead.email && (
+                                                                    <a href={`mailto:${lead.email}`} className="inline-flex items-center gap-1.5 hover:underline">
+                                                                        <Mail className="h-3.5 w-3.5 text-slate-400" />
+                                                                        {lead.email}
+                                                                    </a>
+                                                                )}
+                                                                {lead.phone && (
+                                                                    <a href={`tel:${lead.phone}`} className="inline-flex items-center gap-1.5 hover:underline">
+                                                                        <Phone className="h-3.5 w-3.5 text-slate-400" />
+                                                                        {lead.phone}
+                                                                    </a>
+                                                                )}
+                                                            </div>
+                                                            {lead.address && <p className="mt-1 text-xs text-slate-500">{lead.address}</p>}
+                                                            {lead.sourceUrl && (
+                                                                <a href={lead.sourceUrl} target="_blank" rel="noreferrer" className="mt-1 inline-flex items-center gap-1 text-[11px] text-slate-400 hover:text-slate-600">
+                                                                    <ExternalLink className="h-3 w-3" />
+                                                                    Source listing
+                                                                </a>
+                                                            )}
+                                                        </li>
+                                                    )
+                                                })}
+                                            </ul>
+                                        </div>
+                                    )}
+                                </CardContent>
+                            </Card>
+
                             <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-5">{["new", "contacted", "quoted", "booked", "closed"].map((stage) => <Card key={stage} className="rounded-xl border-slate-200/80"><CardContent className="p-4"><p className="text-xs font-semibold uppercase tracking-wide text-slate-500">{stage}</p><p className="mt-2 text-2xl font-semibold text-slate-900">{contacts.filter((contact) => (contact.leadStatus || "new") === stage).length}</p></CardContent></Card>)}</div>
                             <Card className="overflow-hidden rounded-xl border-slate-200/80 shadow-sm"><CardContent className="divide-y divide-slate-100 p-0">
                                 {contacts.map((contact) => { const draft = leadDrafts[contact.id] || {}; return <div key={contact.id} className="grid gap-4 p-5 lg:grid-cols-[minmax(180px,0.9fr)_minmax(220px,1.2fr)_minmax(230px,1.2fr)_auto] lg:items-start">
-                                    <div className="min-w-0"><p className="truncate text-sm font-semibold text-slate-900">{contact.name || "Website enquiry"}</p><a className="mt-1 block truncate text-xs text-slate-700 hover:underline" href={contact.email ? `mailto:${contact.email}` : undefined}>{contact.email || "No email supplied"}</a>{contact.phone && <a className="mt-1 block text-xs text-slate-500" href={`tel:${contact.phone}`}>{contact.phone}</a>}<p className="mt-2 text-[11px] text-slate-400">Received {fmtDate(contact.createdAt)}</p></div>
+                                    <div className="min-w-0">
+                                        <div className="flex items-center gap-2">
+                                            <p className="truncate text-sm font-semibold text-slate-900">{contact.name || "Website enquiry"}</p>
+                                            {contact.source === "web-lead-discovery" && (
+                                                <span className="shrink-0 rounded border border-slate-200 bg-slate-50 px-1.5 py-0.5 text-[10px] font-medium text-slate-500">Web lead</span>
+                                            )}
+                                        </div>
+                                        <a className="mt-1 block truncate text-xs text-slate-700 hover:underline" href={contact.email ? `mailto:${contact.email}` : undefined}>{contact.email || "No email supplied"}</a>
+                                        {contact.website && (
+                                            <a className="mt-1 block truncate text-xs text-slate-500 hover:underline" href={contact.website} target="_blank" rel="noreferrer">
+                                                {websiteHost(contact.website)}
+                                            </a>
+                                        )}
+                                        {contact.phone && <a className="mt-1 block text-xs text-slate-500" href={`tel:${contact.phone}`}>{contact.phone}</a>}
+                                        {(contact.area || contact.suburb) && (
+                                            <p className="mt-1 text-[11px] text-slate-500">{[contact.area, contact.suburb].filter(Boolean).join(" · ")}</p>
+                                        )}
+                                        <p className="mt-2 text-[11px] text-slate-400">Received {fmtDate(contact.createdAt)}</p>
+                                    </div>
                                     <div><p className="line-clamp-3 text-sm leading-6 text-slate-600">{contact.message || contact.subject || "No message provided."}</p>{contact.subject && <p className="mt-1 text-xs font-medium text-slate-500">{contact.subject}</p>}</div>
                                     <div className="space-y-2"><select value={draft.leadStatus ?? contact.leadStatus ?? "new"} onChange={(event) => setLeadDrafts((rows) => ({ ...rows, [contact.id]: { ...rows[contact.id], leadStatus: event.target.value } }))} className="h-9 w-full rounded-lg border border-slate-200 bg-white px-3 text-xs font-medium text-slate-700"><option value="new">New</option><option value="contacted">Contacted</option><option value="quoted">Quoted</option><option value="booked">Booked</option><option value="closed">Closed</option></select><textarea rows={2} value={draft.internalNotes ?? contact.internalNotes ?? ""} onChange={(event) => setLeadDrafts((rows) => ({ ...rows, [contact.id]: { ...rows[contact.id], internalNotes: event.target.value } }))} placeholder="Internal follow-up note" className="w-full resize-y rounded-lg border border-slate-200 px-3 py-2 text-xs outline-none focus:border-[#333365]" /></div>
                                     <Button size="sm" variant="outline" onClick={() => saveLead(contact)} className="rounded-lg"><Save className="mr-2 h-3.5 w-3.5" />Save</Button>

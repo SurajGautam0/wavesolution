@@ -40,15 +40,16 @@ interface NominatimRow {
     name?: string
     display_name?: string
     type?: string
+    class?: string
     extratags?: Record<string, string>
     address?: Record<string, string>
 }
 
 const USER_AGENT = "WaveSolutionLeadDiscovery/1.0 (info@wavesolution.com.au)"
 const OVERPASS_ENDPOINTS = [
+    "https://overpass.openstreetmap.fr/api/interpreter",
     "https://overpass-api.de/api/interpreter",
     "https://overpass.kumi.systems/api/interpreter",
-    "https://overpass.private.coffee/api/interpreter",
 ]
 const ENRICH_SKIP_HOSTS = [
     "facebook.com",
@@ -63,7 +64,18 @@ const ENRICH_SKIP_HOSTS = [
     "airbnb.com",
     "booking.com",
     "wikipedia.org",
+    "healthdirect.gov.au",
 ]
+const NOMINATIM_TYPE_FILTERS: Record<string, string[]> = {
+    "real-estate": ["estate_agent", "office"],
+    "property-management": ["estate_agent", "property_management", "company", "office"],
+    medical: ["clinic", "dentist", "doctors", "hospital", "healthcare", "doctor"],
+    hotels: ["hotel", "guest_house", "motel", "hostel", "apartment", "chalet"],
+    gyms: ["fitness_centre", "sports_centre", "gym"],
+    restaurants: ["restaurant", "cafe", "fast_food"],
+    builders: ["builder", "construction", "company"],
+    education: ["school", "kindergarten", "childcare", "college", "university"],
+}
 const BAD_EMAIL_DOMAINS = ["sentry.io", "wixpress.com", "example.com", "domain.com", "email.com", "sentry-next.wixpress.com"]
 
 function safeHost(website: string) {
@@ -170,27 +182,40 @@ async function fetchOverpass(query: string): Promise<OverpassElement[]> {
 }
 
 async function fetchNominatim(area: LeadArea, category: LeadCategory): Promise<NominatimRow[]> {
-    const params = new URLSearchParams({
-        q: category.nominatim,
-        format: "jsonv2",
-        addressdetails: "1",
-        extratags: "1",
-        limit: "30",
-        viewbox: area.viewbox,
-        bounded: "1",
-    })
-    try {
-        const response = await fetch(`https://nominatim.openstreetmap.org/search?${params.toString()}`, {
-            headers: { "User-Agent": USER_AGENT, Accept: "application/json" },
-            cache: "no-store",
-            signal: AbortSignal.timeout(20_000),
+    if (category.nominatim.length === 0) return []
+
+    const rows: NominatimRow[] = []
+    for (const [index, query] of category.nominatim.entries()) {
+        if (index > 0) await new Promise((resolve) => setTimeout(resolve, 1100))
+        const params = new URLSearchParams({
+            q: query,
+            format: "jsonv2",
+            addressdetails: "1",
+            extratags: "1",
+            limit: "30",
+            viewbox: area.viewbox,
+            bounded: "1",
         })
-        if (!response.ok) return []
-        const data = await response.json()
-        return Array.isArray(data) ? (data as NominatimRow[]) : []
-    } catch {
-        return []
+        try {
+            const response = await fetch(`https://nominatim.openstreetmap.org/search?${params.toString()}`, {
+                headers: { "User-Agent": USER_AGENT, Accept: "application/json" },
+                cache: "no-store",
+                signal: AbortSignal.timeout(20_000),
+            })
+            if (!response.ok) continue
+            const data = await response.json()
+            if (Array.isArray(data)) {
+                const allowedTypes = NOMINATIM_TYPE_FILTERS[category.id]
+                const rowsForQuery = allowedTypes
+                    ? (data as NominatimRow[]).filter((row) => allowedTypes.includes(row.type || "") || allowedTypes.includes(row.class || ""))
+                    : (data as NominatimRow[])
+                rows.push(...rowsForQuery)
+            }
+        } catch {
+            // Keep results from the other queries.
+        }
     }
+    return rows
 }
 
 function addressFromTags(tags: Record<string, string>) {

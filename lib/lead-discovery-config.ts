@@ -31,8 +31,8 @@ export interface LeadCategory {
     label: string
     /** Overpass tag filters; the bounding box is appended server-side. */
     overpass: string[]
-    /** Free-text query used for the Nominatim fallback. */
-    nominatim: string
+    /** Free-text queries used for the Nominatim fallback. */
+    nominatim: string[]
 }
 
 export const leadAreas: LeadArea[] = [
@@ -64,55 +64,55 @@ export const leadCategories: LeadCategory[] = [
         id: "real-estate",
         label: "Real estate agencies",
         overpass: ['["office"="estate_agent"]', '["shop"="estate_agent"]'],
-        nominatim: "real estate agency",
+        nominatim: ["real estate"],
     },
     {
         id: "property-management",
         label: "Strata & property managers",
         overpass: ['["office"="estate_agent"]', '["office"="property_management"]'],
-        nominatim: "property management",
+        nominatim: ["strata management"],
     },
     {
         id: "offices",
         label: "Commercial offices",
         overpass: ['["office"]'],
-        nominatim: "office",
+        nominatim: [],
     },
     {
         id: "medical",
         label: "Medical & dental",
         overpass: ['["amenity"~"^(clinic|doctors|dentist)$"]', '["healthcare"~"^(clinic|dentist|doctor)$"]'],
-        nominatim: "medical centre",
+        nominatim: ["medical centre"],
     },
     {
         id: "hotels",
         label: "Hotels & short-stay",
         overpass: ['["tourism"~"^(hotel|guest_house|apartment|hostel)$"]'],
-        nominatim: "hotel",
+        nominatim: ["hotel"],
     },
     {
         id: "gyms",
         label: "Gyms & fitness studios",
         overpass: ['["leisure"="fitness_centre"]'],
-        nominatim: "gym",
+        nominatim: ["gym"],
     },
     {
         id: "restaurants",
         label: "Restaurants & cafes",
         overpass: ['["amenity"~"^(restaurant|cafe)$"]'],
-        nominatim: "restaurant",
+        nominatim: ["restaurant"],
     },
     {
         id: "builders",
         label: "Builders & trades",
         overpass: ['["craft"="builder"]', '["office"="construction_company"]'],
-        nominatim: "builder",
+        nominatim: ["builder"],
     },
     {
         id: "education",
         label: "Schools & childcare",
         overpass: ['["amenity"~"^(school|kindergarten|childcare)$"]'],
-        nominatim: "child care centre",
+        nominatim: ["child care centre"],
     },
 ]
 

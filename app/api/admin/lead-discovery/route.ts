@@ -12,10 +12,8 @@ export async function POST(request: NextRequest) {
     const authorization = request.headers.get("authorization") || ""
     const match = authorization.match(/^Bearer\s+(.+)$/i)
     const admin = match ? await verifyAdminIdToken(match[1]) : null
-    // TEMP LOCAL TEST BYPASS — remove after verification
-    const devPreview = process.env.NODE_ENV !== "production" && request.headers.get("x-dsh-preview") === "1"
 
-    if (!admin && !devPreview) {
+    if (!admin) {
         return NextResponse.json({ success: false, message: "Admin authentication required." }, { status: 401 })
     }
 
