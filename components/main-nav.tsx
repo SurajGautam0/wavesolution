@@ -27,6 +27,7 @@ import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { cn } from "@/lib/utils"
 import { businessInfo, siteLinks } from "@/lib/business-info"
+import { useAuth } from "@/lib/auth-context"
 
 interface ServiceItem {
   href: string
@@ -111,6 +112,7 @@ const commercialServices: ServiceItem[] = [
 ]
 
 export function MainNav() {
+  const { user } = useAuth()
   const pathname = usePathname()
   const [isOpen, setIsOpen] = React.useState(false)
   const [isServicesOpen, setIsServicesOpen] = React.useState(false)
@@ -163,7 +165,7 @@ export function MainNav() {
               className="hidden items-center gap-1.5 font-semibold text-white/70 transition-colors hover:text-white lg:inline-flex"
             >
               <User className="h-3.5 w-3.5" />
-              <span>Client Portal</span>
+              <span>{user?.name || "Client Portal"}</span>
             </Link>
             <Link
               href={siteLinks.book}
@@ -494,7 +496,7 @@ export function MainNav() {
                         onClick={() => setIsOpen(false)}
                         className="block rounded-lg px-4 py-2.5 text-sm font-semibold text-slate-700 hover:bg-slate-50"
                       >
-                        Client Portal
+                        {user?.name || "Client Portal"}
                       </Link>
                     </div>
                   </div>
