@@ -125,24 +125,8 @@ function statusColor(status: string) {
 
 // ─── component ──────────────────────────────────────────────────────────────
 
-// TEMP PREVIEW DATA — remove after visual review
-const PREVIEW_ADMIN_USER = {
-    id: "preview-admin",
-    name: "Alex Morgan",
-    email: "alex@wavesolution.com.au",
-    role: "admin",
-}
-const PREVIEW_WEB_LEADS = [
-    { id: "osm-node-1", businessName: "NGU Real Estate", category: "Real estate agencies", area: "Gold Coast", suburb: "Southport", address: "56 Scarborough Street, Southport, 4215", website: "https://www.ngugoldcoast.com.au", email: "info@ngugoldcoast.com.au", phone: "+61 7 3103 0723", source: "openstreetmap", sourceUrl: "https://www.openstreetmap.org/node/1", notes: "" },
-    { id: "osm-node-2", businessName: "LJ Hooker Burleigh Heads", category: "Real estate agencies", area: "Gold Coast", suburb: "Burleigh Waters", address: "1/20 Classic Way, Burleigh Waters, 4220", website: "https://burleighheads.ljhooker.com.au", email: "", phone: "", source: "openstreetmap", sourceUrl: "https://www.openstreetmap.org/node/2", notes: "" },
-    { id: "osm-node-3", businessName: "Abode Property Management", category: "Real estate agencies", area: "Darwin", suburb: "Darwin", address: "Darwin, 0800", website: "http://www.abode4me.com.au", email: "", phone: "", source: "openstreetmap", sourceUrl: "https://www.openstreetmap.org/node/3", notes: "" },
-]
-const PREVIEW_WEB_CONTACTS = [
-    { id: "preview-lead-1", name: "Abode Property Management", email: "", phone: "", subject: "Real estate agencies · web lead", message: "Publicly listed business details; verify before outreach.", source: "web-lead-discovery", area: "Darwin", suburb: "Darwin", website: "http://www.abode4me.com.au", leadStatus: "new", createdAt: { seconds: Math.floor(Date.now() / 1000) - 3600 } },
-]
-
 export default function AdminDashboardPage() {
-    const { user: authUser, loading: authLoading } = useAuth()
+    const { user, loading: authLoading } = useAuth()
     const router = useRouter()
 
     // ── core data
@@ -161,21 +145,6 @@ export default function AdminDashboardPage() {
     const [invoices, setInvoices] = useState<any[]>([])
     const [emailRecords, setEmailRecords] = useState<any[]>([])
     const [loading, setLoading] = useState(true)
-
-    // TEMP PREVIEW — remove after visual review
-    const [previewMode, setPreviewMode] = useState(false)
-    const user = previewMode ? PREVIEW_ADMIN_USER : authUser
-    useEffect(() => {
-        if (typeof window === "undefined") return
-        if (new URLSearchParams(window.location.search).has("preview")) setPreviewMode(true)
-    }, [])
-    useEffect(() => {
-        if (!previewMode) return
-        setContacts(PREVIEW_WEB_CONTACTS)
-        setLeadResults(PREVIEW_WEB_LEADS)
-        setLeadSearchInfo({ area: "Gold Coast", category: "Real estate agencies", sources: ["OpenStreetMap (Overpass + Nominatim)", "Business websites"] })
-        setLoading(false)
-    }, [previewMode])
 
     const [searchTerm, setSearchTerm] = useState("")
     const [subscriberSearch, setSubscriberSearch] = useState("")
@@ -274,7 +243,6 @@ export default function AdminDashboardPage() {
 
     useEffect(() => {
         if (authLoading || user?.role !== "admin") return
-        if (previewMode) return
         async function fetchData() {
             try {
                 setLoading(true)
@@ -342,7 +310,7 @@ export default function AdminDashboardPage() {
             }
         }
         fetchData()
-    }, [authLoading, user?.role, previewMode])
+    }, [authLoading, user?.role])
 
     useEffect(() => {
         const requestedTab = new URLSearchParams(window.location.search).get("tab")
@@ -1384,14 +1352,14 @@ export default function AdminDashboardPage() {
                                 </CardContent>
                             </Card>
 
-                            <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-5">{["new", "contacted", "quoted", "booked", "closed"].map((stage) => <Card key={stage} className="rounded-xl border-slate-200/80"><CardContent className="p-4"><p className="text-xs font-semibold uppercase tracking-wide text-slate-500">{stage}</p><p className="mt-2 text-2xl font-semibold text-slate-900">{contacts.filter((contact) => (contact.leadStatus || "new") === stage).length}</p></CardContent></Card>)}</div>
+                            <div className="grid grid-cols-2 gap-3 sm:grid-cols-2 xl:grid-cols-5">{["new", "contacted", "quoted", "booked", "closed"].map((stage) => <Card key={stage} className="rounded-xl border-slate-200/80"><CardContent className="p-4"><p className="text-xs font-semibold uppercase tracking-wide text-slate-500">{stage}</p><p className="mt-2 text-2xl font-semibold text-slate-900">{contacts.filter((contact) => (contact.leadStatus || "new") === stage).length}</p></CardContent></Card>)}</div>
                             <Card className="overflow-hidden rounded-xl border-slate-200/80 shadow-sm"><CardContent className="divide-y divide-slate-100 p-0">
                                 {contacts.map((contact) => { const draft = leadDrafts[contact.id] || {}; return <div key={contact.id} className="grid gap-4 p-5 lg:grid-cols-[minmax(180px,0.9fr)_minmax(220px,1.2fr)_minmax(230px,1.2fr)_auto] lg:items-start">
                                     <div className="min-w-0">
-                                        <div className="flex items-center gap-2">
-                                            <p className="truncate text-sm font-semibold text-slate-900">{contact.name || "Website enquiry"}</p>
+                                        <div className="flex items-start gap-2">
+                                            <p className="line-clamp-2 text-sm font-semibold text-slate-900">{contact.name || "Website enquiry"}</p>
                                             {contact.source === "web-lead-discovery" && (
-                                                <span className="shrink-0 rounded border border-slate-200 bg-slate-50 px-1.5 py-0.5 text-[10px] font-medium text-slate-500">Web lead</span>
+                                                <span className="mt-0.5 shrink-0 rounded border border-slate-200 bg-slate-50 px-1.5 py-0.5 text-[10px] font-medium text-slate-500">Web lead</span>
                                             )}
                                         </div>
                                         <a className="mt-1 block truncate text-xs text-slate-700 hover:underline" href={contact.email ? `mailto:${contact.email}` : undefined}>{contact.email || "No email supplied"}</a>
@@ -1402,7 +1370,9 @@ export default function AdminDashboardPage() {
                                         )}
                                         {contact.phone && <a className="mt-1 block text-xs text-slate-500" href={`tel:${contact.phone}`}>{contact.phone}</a>}
                                         {(contact.area || contact.suburb) && (
-                                            <p className="mt-1 text-[11px] text-slate-500">{[contact.area, contact.suburb].filter(Boolean).join(" · ")}</p>
+                                            <p className="mt-1 text-[11px] text-slate-500">
+                                                {Array.from(new Set([contact.area, contact.suburb].filter(Boolean))).join(" · ")}
+                                            </p>
                                         )}
                                         <p className="mt-2 text-[11px] text-slate-400">Received {fmtDate(contact.createdAt)}</p>
                                     </div>
