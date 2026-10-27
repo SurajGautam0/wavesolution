@@ -43,6 +43,7 @@ const COMPANY = [
   { href: siteLinks.about, label: "About Us" },
   { href: siteLinks.gallery, label: "Cleaning Gallery" },
   { href: siteLinks.testimonials, label: "Client Reviews" },
+  { href: "/property-managers", label: "For Property Managers" },
   { href: siteLinks.blog, label: "Cleaning & RTA Guides" },
   { href: "/cleaning-prices-gold-coast", label: "Cost & Price Guides" },
   { href: "/blog/end-of-lease-cleaning-requirements-qld", label: "QLD Bond Requirements" },

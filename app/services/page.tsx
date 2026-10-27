@@ -11,7 +11,7 @@ import { servicePages } from "@/lib/service-pages"
 export const metadata: Metadata = {
   title: "Cleaning Services | Wave Solution Gold Coast",
   description:
-    "Browse Wave Solution's Gold Coast service directory. Compare house, bond, end-of-lease, office, commercial, carpet and specialist cleaning, then open a service page or request a quote.",
+    "Compare Wave Solution's Gold Coast cleaning services — house, bond, end-of-lease, office, commercial, carpet and specialist cleaning — then request a quote.",
   alternates: {
     canonical: `${businessInfo.baseUrl}/services`,
   },
